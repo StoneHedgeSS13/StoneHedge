@@ -1,9 +1,10 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur_old
-	icon = 'icons/roguetown/mob/monster/minotaur.dmi'
-	name = "Minotaur"
-	icon_state = "Gor"
-	icon_living = "Gor"
-	icon_dead = "GorD"
+/mob/living/simple_animal/hostile/retaliate/rogue/troll
+	icon = 'icons/roguetown/mob/monster/trolls.dmi'
+	name = "troll"
+	desc = "A hulking monster, known to lurk in deep forests. Elven legends say they were servants of Dendor tasked to guard his realm, but nowadays are sometimes found in the company of orcs."
+	icon_state = "Troll2"
+	icon_living = "Troll2"
+	icon_dead = "Troll2d"
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -11,41 +12,48 @@
 	turns_per_move = 2
 	see_in_dark = 10
 	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
-						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2)
-	faction = list("caves")
+	base_intents = list(/datum/intent/unarmed/wwolf, /datum/intent/simple/bigbite)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/rawcutlet/xeno = 1,
+						/obj/item/natural/hide = 2)
+	faction = list("orcs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 300
-	maxHealth = 400
-	melee_damage_lower = 45
-	melee_damage_upper = 70
-	vision_range = 3
-	aggro_vision_range = 4
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	health = 600
+	maxHealth = 600
+	melee_damage_lower = 40
+	melee_damage_upper = 60
+	vision_range = 6
+	aggro_vision_range = 6
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
-	STACON = 19
+	STACON = 15
 	STASTR = 16
-	STASPD = 5
+	STASPD = 2
+	STAEND = 16
 	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	defprob = 20
+	defdrain = 15
+	del_on_deaggro = 99 SECONDS
 	retreat_health = 0
+	food_max = 250
 	food = 0
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
-	dodgetime = 0
+	dodgetime = 20
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
+	remains_type = /obj/effect/decal/remains/xeno/troll // Placeholder until Troll remains are sprited.
+	body_eater = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/troll/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood
 	name = "FLESH HOMUNCULUS"
-	desc = null
 	hud_type = /datum/hud/human
 	icon_state = "FLESH"
 	icon_living = "FLESH"
@@ -58,31 +66,29 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended
 	name = "???"
-	desc = null
 	hud_type = /datum/hud/human
 	icon_state = "ascend"
 	icon_living = "ascend"
 	icon = 'icons/mob/32x64.dmi'
+	move_to_delay = 0
 	base_intents = list(/datum/intent/unarmed/ascendedclaw)
-	health = 750
-	maxHealth = 750
-	melee_damage_lower = 55
-	melee_damage_upper = 80
-	STACON = 20
-	STASTR = 20
-	STASPD = 20
-	STAEND = 20
+	melee_damage_lower = 250
+	melee_damage_upper = 550
+	health = 666666
+	maxHealth = 666666
+	STACON = 66
+	STASTR = 66
+	STASPD = 66
+	STAEND = 66
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/examine(mob/user)
 	. = ..()
-	. += "<span class='cultbigbold'>MY MIND CAN NOT COMPREHEND!!!</span>"
-	if(ishuman(user) && !iscultist(user))
-		var/mob/living/carbon/human/userhuman = user
-		userhuman.freak_out(3) //may give you a heart attack if the initial mass stress is still on you.
+	. += "<span class='narsiesmall'>It is impossible to comprehend such a thing.</span>"
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/Initialize()
 	. = ..()
-	set_light(5,5, LIGHT_COLOR_PURPLE)
+	set_light(5,5, LIGHT_COLOR_RED)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/ascended/get_sound(input)
 	switch(input)
@@ -99,15 +105,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/blood/death(gibbed)
 	. = ..()
-	var/datum/game_mode/chaosmode/CM = SSticker.mode
-	for(var/mob/living/carbon/V in GLOB.human_list)
-		if(V.mind in CM.cultists)
-			to_chat(V, span_danger("WE FAILED, THE NEW GOD HAS FALLEN!!! I CANT.. OH NO!!! THE DIVINE LIGHT RETURNS TO THIS AREA!!! "))
-			V.gib()
-		else
-			to_chat(V, span_greenannounce("THE DIVINE LIGHT RETURNS TO US!!!"))
-			V.remove_stress(/datum/stressevent/hatezizo)
-			V.add_stress(/datum/stressevent/zizodefeated)
 	gib()
 	qdel(src)
 
@@ -115,31 +112,32 @@
 	..()
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur_old/taunted(mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/troll/get_sound(input)
+	switch(input)
+		if("aggro")
+			return pick('sound/vo/mobs/troll/aggro1.ogg','sound/vo/mobs/troll/aggro2.ogg')
+		if("pain")
+			return pick('sound/vo/mobs/troll/pain1.ogg','sound/vo/mobs/troll/pain2.ogg')
+		if("death")
+			return pick('sound/vo/mobs/troll/death.ogg')
+		if("idle")
+			return pick('sound/vo/mobs/troll/idle1.ogg','sound/vo/mobs/troll/idle2.ogg')
+		if("cidle")
+			return pick('sound/vo/mobs/troll/cidle1.ogg','sound/vo/mobs/troll/aggro2.ogg')
+
+/mob/living/simple_animal/hostile/retaliate/rogue/troll/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur_old/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/troll/Life()
 	..()
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur_old/get_sound(input)
-	switch(input)
-		if("aggro")
-			return pick('sound/vo/mobs/minotaur/minoroar.ogg','sound/vo/mobs/minotaur/minoroar2.ogg','sound/vo/mobs/minotaur/minoroar3.ogg','sound/vo/mobs/minotaur/minoroar4.ogg')
-		if("pain")
-			return pick('sound/vo/mobs/minotaur/minopain.ogg', 'sound/vo/mobs/minotaur/minopain2.ogg')
-		if("death")
-			return pick('sound/vo/mobs/minotaur/minodie.ogg', 'sound/vo/mobs/minotaur/minodie2.ogg')
-		if("idle")
-			return pick('sound/vo/mobs/minotaur/minoidle.ogg', 'sound/vo/mobs/minotaur/minoidle2.ogg')
-
-
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur_old/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/retaliate/rogue/troll/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -180,4 +178,3 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
-
