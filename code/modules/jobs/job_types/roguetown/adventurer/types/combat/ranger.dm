@@ -14,7 +14,7 @@
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Ranger")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
@@ -55,7 +55,7 @@
 			H.change_stat("speed", 2)
 		if("Gloom Stalker")
 			H.set_blindness(0)
-			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
+			to_chat(H, span_warning("Gloom Stalkers specialize in navigating dark places, such as the Underdark or in hunting at night. For this reason, they tend to have darkvision."))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -92,7 +92,12 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
-		
+
+			ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)
+			if(!HAS_TRAIT(H, TRAIT_NIGHT_VISION))
+				ADD_TRAIT(H, TRAIT_NIGHT_VISION, "[type]")
+				H.update_sight()
+
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -101,7 +106,7 @@
 		if(prob(50))
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	if(prob(23))

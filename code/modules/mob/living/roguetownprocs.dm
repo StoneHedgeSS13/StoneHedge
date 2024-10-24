@@ -100,9 +100,11 @@
 		prob2defend = 0
 
 	if(!can_see_cone(user))
-		if(d_intent == INTENT_PARRY)
+		if(user.alpha < 15 && !HAS_TRAIT(src, TRAIT_BLINDFIGHTING))//For attacks from invisibility.
 			return FALSE
-		else
+		if(d_intent == INTENT_PARRY && !HAS_TRAIT(src, TRAIT_BLINDFIGHTING))
+			return FALSE
+		if(d_intent == INTENT_DODGE && !HAS_TRAIT(src, TRAIT_BLINDFIGHTING))
 			prob2defend = max(prob2defend-15,0)
 
 //	if(!cmode) // not currently used, see cmode check above
@@ -130,6 +132,7 @@
 			if(intenty && !intenty.canparry)
 				return FALSE
 			var/drained = user.defdrain
+			var/draincoeff = 1 //
 			var/weapon_parry = FALSE
 			var/offhand_defense = 0
 			var/mainhand_defense = 0
@@ -149,10 +152,12 @@
 				if(mainhand.can_parry)
 					mainhand_defense += (H.mind ? (H.mind.get_skill_level(mainhand.associated_skill) * 20) : 20)
 					mainhand_defense += (mainhand.wdefense * 10)
+					draincoeff += H.mind.get_skill_level(mainhand.associated_skill)
 			if(offhand)
 				if(offhand.can_parry)
 					offhand_defense += (H.mind ? (H.mind.get_skill_level(offhand.associated_skill) * 20) : 20)
 					offhand_defense += (offhand.wdefense * 10)
+					draincoeff += H.mind.get_skill_level(offhand.associated_skill)
 
 			if(mainhand_defense >= offhand_defense)
 				highest_defense += mainhand_defense
@@ -185,7 +190,7 @@
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
 				prob2defend *= 0.65
-			prob2defend = clamp(prob2defend, 5, 90)
+			prob2defend = clamp(prob2defend, 5, 95)//The counter to parrying is feinting
 			if(src.client?.prefs.showrolls)
 				to_chat(src, span_info("Roll to parry... [prob2defend]%"))
 
@@ -197,7 +202,7 @@
 				to_chat(src, span_warning("The enemy defeated my parry!"))
 				return FALSE
 
-			drained = max(drained, 5)
+			drained = (max(drained, 5) / draincoeff)//Two-weapon fighters armed with one-handed weapons they are skilled in can gain a steep defensive advantage. In riposte stance, they
 			var/exp_multi = 1
 
 			if(!U.mind)
@@ -402,14 +407,10 @@
 		if(!H?.check_armor_skill())
 			H.Knockdown(1)
 			return FALSE
-		/* Commented out due to gaping imbalance
+//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
 			if(H?.check_dodge_skill())
-				drained = drained - 5  commented out for being too much. It was giving effectively double stamina efficiency compared to everyone else.
-			if(H.mind)
-				drained = drained + max((H.checkwornweight() * 10)-(mind.get_skill_level(/datum/skill/misc/athletics) * 10),0)
-			else
-				drained = drained + (H.checkwornweight() * 10)
-		*/
+				drained = drained - 5
+
 		if(I) //the enemy attacked us with a weapon
 			if(!I.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack
 				prob2defend = prob2defend + 10
@@ -431,7 +432,7 @@
 		// dodging while knocked down sucks ass
 		if(!(L.mobility_flags & MOBILITY_STAND))
 			prob2defend *= 0.25
-		prob2defend = clamp(prob2defend, 5, 90)
+		prob2defend = clamp(prob2defend, 5, 95)//The counter to Dodging is swift attacks to drain stamina
 		if(client?.prefs.showrolls)
 			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
 		if(!prob(prob2defend))
@@ -443,6 +444,9 @@
 		prob2defend = clamp(prob2defend, 5, 90)
 		if(client?.prefs.showrolls)
 			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
+		if(!can_see_cone(user) || user.alpha <=15)
+			if(!HAS_TRAIT(src, TRAIT_BLINDFIGHTING))
+				prob2defend = 5//Have to roll a nat 20 to dodge an attack we can't sense coming.
 		if(!prob(prob2defend))
 			return FALSE
 	dodgecd = TRUE

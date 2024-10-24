@@ -60,6 +60,26 @@
 	desc = "My BANE!"
 	icon_state = "hunger3"
 
+//STEALTH COOLDOWN
+
+/datum/status_effect/debuff/stealthcd
+	id = "stealth_cd"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/stealthcd
+	duration = 12 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/stealthcd
+	name = "Stealth Broken"
+	desc = "I've recently dealt a sneak attack and can't sneak again for a short while"
+	icon_state = "sleepy"
+
+/datum/status_effect/debuff/stealthcd/on_apply()
+	if(owner.mind)
+		duration = duration - (owner.mind.get_skill_level(/datum/skill/misc/sneaking))
+	if(owner.m_intent == MOVE_INTENT_SNEAK)
+		owner.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		owner.update_sneak_invis()
+	return ..()
+
 ////////////////////
 
 /datum/status_effect/debuff/moondust_crash

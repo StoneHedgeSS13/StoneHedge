@@ -98,10 +98,15 @@
 		return 0
 
 /datum/intent/proc/get_releasedrain()
+	var/actualdrain = 0
 	if(releasedrain)
-		return releasedrain
-	else
-		return 0
+		if(mastermob.mind && masteritem)
+			if(masteritem.associated_skill)
+				var/userskill = mastermob.mind.get_skill_level(masteritem.associated_skill) + 1 //Yes, this means a novice fighter should be able to swing the same weapon for twice as long as an untrained user before needing a break.
+				actualdrain = releasedrain / userskill
+		else
+			actualdrain = releasedrain
+	return actualdrain
 
 /datum/intent/proc/parrytime()
 	return 0

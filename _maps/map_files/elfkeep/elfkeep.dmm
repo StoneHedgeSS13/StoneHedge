@@ -11133,8 +11133,8 @@
 "fqR" = (
 /obj/structure/closet/crate/chest,
 /obj/structure/spider/stickyweb,
-/obj/item/organ/eyes/elf,
-/obj/item/organ/eyes/elf,
+/obj/item/organ/eyes/night_vision/elf,
+/obj/item/organ/eyes/night_vision/elf,
 /obj/item/organ/eyes/goblin,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel{

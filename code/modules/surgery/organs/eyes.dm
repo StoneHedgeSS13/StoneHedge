@@ -73,7 +73,12 @@
 		else
 			eye_color = HMN.eye_color
 		if(HAS_TRAIT(HMN, TRAIT_NIGHT_VISION) && !lighting_alpha)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+			see_in_dark = 7
+		if(HAS_TRAIT(HMN, TRAIT_SUPER_NV))
+			see_in_dark = 14
+			actions_types = list(/datum/action/item_action/organ_action/use)
+
 	for(var/datum/wound/facial/eyes/eye_wound as anything in M.get_wounds())
 		qdel(eye_wound)
 	M.update_tint()
@@ -118,7 +123,7 @@
 /obj/item/organ/eyes/night_vision
 	name = "shadow eyes"
 	desc = ""
-	see_in_dark = 8
+	see_in_dark = 14
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	actions_types = list(/datum/action/item_action/organ_action/use)
 	var/night_vision = TRUE
@@ -137,6 +142,19 @@
 			sight_flags &= ~SEE_BLACKNESS
 	owner.update_sight()
 
+/obj/item/organ/eyes/ui_action_click()//for superior Darkvision havers.
+	sight_flags = initial(sight_flags)
+	switch(lighting_alpha)
+		if (LIGHTING_PLANE_ALPHA_VISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+		if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+		else
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+			sight_flags &= ~SEE_BLACKNESS
+	owner.update_sight()
 
 /obj/item/organ/eyes/night_vision/argonian
 	name = "sissean eyes"
@@ -165,23 +183,22 @@
 	name = "fung-eye"
 	desc = ""
 
-/obj/item/organ/eyes/elf
+/obj/item/organ/eyes/night_vision/elf
 	name = "elf eyes"
 	desc = ""
-	see_in_dark = 4
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	see_in_dark = 14
 
 /obj/item/organ/eyes/halfelf
 	name = "half-elf eyes"
 	desc = ""
-	see_in_dark = 3
-	lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
+	see_in_dark = 7
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 /obj/item/organ/eyes/goblin
 	name = "goblin eyes"
 	desc = ""
 	see_in_dark = 15
-	lighting_alpha = 200
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 ///Robotic
 

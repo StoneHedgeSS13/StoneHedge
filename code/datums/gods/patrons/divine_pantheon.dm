@@ -24,7 +24,7 @@
 	domain = "Intellect, Study, Divination, Introspection. Rivers, Moons, Reflections. (Passive Energies)"
 	desc = "Lune, the Silver Dragon. Twin of Elysius, symbolized by the moon. She is Patron of wisdom."
 	worshippers = "Wizards, Scholars, Wisened Folk,"
-	mob_traits = list(TRAIT_NOCSIGHT)
+	mob_traits = list(TRAIT_NOCSNEAK, TRAIT_NIGHT_OWL)
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
 	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
 	confess_lines = list(

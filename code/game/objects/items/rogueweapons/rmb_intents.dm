@@ -26,14 +26,25 @@
 				I = L.get_active_held_item()
 				if(I?.associated_skill)
 					theirskill = L.mind.get_skill_level(I.associated_skill)
-		perc += (ourskill - theirskill)*15 	//skill is of the essence
-		perc += (user.STAINT - L.STAINT)*10	//but it's also mostly a mindgame
-		perc += (user.STASPD - L.STASPD)*5 	//yet a speedy feint is hard to counter
-		
+		perc += (ourskill - theirskill)*20 	//skill is of the essence
+		perc += (user.STAINT - L.STAINT)*15	//but it's also a mindgame
+		perc += (user.STASPD - L.STASPD)*15 	//a swift feint can still fool a slow opponent
+
 
 
 	if(L.d_intent == INTENT_DODGE)
-		perc = 0
+		if(!L.mind && !user.has_status_effect(/datum/status_effect/debuff/feintcd))//Feinting an NPC will now perform a 'Trip' combat manuever. This feature is designed as a way to counter the AI's ability to dodge attacks that have a hit delay by constantly moving around..
+			if(prob(80) || istype(user.rmb_intent, /datum/rmb_intent/feint))//Guaranteed if you're actually in a feinting stance.
+				L.Knockdown(30)
+				L.Immobilize(30)
+				to_chat(user, span_notice("[L] is tripped up by my combat maneuver and momentarily stunned!"))
+				user.apply_status_effect(/datum/status_effect/debuff/feintcd)
+			else
+				to_chat(user, span_warning("[L] avoids my trip maneuver... 80%"))
+			return
+		else
+			perc = 0
+
 	if(!L.cmode)
 		perc = 0
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
@@ -46,13 +57,13 @@
 		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
 			L.changeNext_move(10)
-			L.Immobilize(12)
+			L.Immobilize(30)
 			to_chat(user, span_notice("[L] fell for my feint attack!"))
 			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 		else
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
-			L.changeNext_move(4)
-			L.Immobilize(5)
+			L.changeNext_move(5)
+			L.Immobilize(10)
 			to_chat(user, span_notice("[L] fell for my feint attack!"))
 			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 	else

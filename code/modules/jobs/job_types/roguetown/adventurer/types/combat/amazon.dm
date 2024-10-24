@@ -7,7 +7,7 @@
 
 	category_tags = list(CTAG_ADVENTURER)
 
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED, TRAIT_BLINDFIGHTING)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
@@ -43,7 +43,7 @@
 	backpack_contents = list(/obj/item/restraints/legcuffs/bola, /obj/item/restraints/legcuffs/bola, /obj/item/restraints/legcuffs/bola)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNOOSNOO, TRAIT_GENERIC) //doubles sex damage
 	ADD_TRAIT(H, TRAIT_STRONGTHROW, TRAIT_GENERIC) //mighty throws, javelins etc
-	
+
 	if(H.wear_mask) //for stupid idiots with bad eyes
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)
