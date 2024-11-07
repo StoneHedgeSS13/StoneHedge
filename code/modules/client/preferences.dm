@@ -424,7 +424,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
 
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
+				// DREAMKEEP EDIT: Add family
+				if(length(family))
+					dat += "<b>Family: <b>[english_list()]"
+				else
 				dat += "<br>"
+				// DREAMKEEP EDIT END: Add family
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 

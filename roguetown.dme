@@ -3730,5 +3730,6 @@
 #include "modular_stonehedge\code\game\objects\items\war_horn.dm"
 #include "modular_stonehedge\code\lewdai\lewdai.dm"
 #include "modular_stonehedge\code\modules\datums\accents.dm"
+#include "modular_stonehedge\code\modules\family\family.dm"
 #include "modular_stonehedge\code\modules\roguetown\roguejobs\cook\recipes\sussyfood.dm"
 // END_INCLUDE

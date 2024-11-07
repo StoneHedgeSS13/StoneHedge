@@ -1196,61 +1196,64 @@
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
 				if(A.bitten_names.len)
-					if(A.bitten_names.len == 2)
-						var/list/found_mobs = list()
-						for(var/mob/M in viewers(src, 7))
-							testing("check [M]")
-							if(found_mobs.len >= 2)
-								break
-							if(!ishuman(M))
+					var/list/found_mobs = list()
+					for(var/mob/M in viewers(src, 7))
+						testing("check [M]")
+						if(found_mobs.len >= 2)
+							break
+						if(!ishuman(M))
+							continue
+						var/mob/living/carbon/human/C = M
+						for(var/X in A.bitten_names)
+							if(C.real_name == X)
+								testing("foundbiter [C.real_name]")
+								found_mobs += C
+					testing("foundmobslen [found_mobs.len]")
+					if(found_mobs.len == 2)
+						var/mob/living/carbon/human/FirstPerson
+						var/mob/living/carbon/human/SecondPerson
+						for(var/mob/living/carbon/human/M in found_mobs)
+							if(M.marriedto)
 								continue
-							var/mob/living/carbon/human/C = M
-							for(var/X in A.bitten_names)
-								if(C.real_name == X)
-									testing("foundbiter [C.real_name]")
-									found_mobs += C
-						testing("foundmobslen [found_mobs.len]")
-						if(found_mobs.len == 2)
-							var/mob/living/carbon/human/FirstPerson
-							var/mob/living/carbon/human/SecondPerson
-							for(var/mob/living/carbon/human/M in found_mobs)
-								if(M.marriedto)
-									continue
-								if(!FirstPerson)
-									FirstPerson = M
-								else
-									if(!SecondPerson)
-										SecondPerson = M
-							if(!FirstPerson || !SecondPerson)
-								testing("fail22")
-								return
-							var/surname2use
-							var/index = findtext(FirstPerson.real_name, " ")
-							var/SecondPersonFirstName
-							FirstPerson.original_name = FirstPerson.real_name
-							SecondPerson.original_name = SecondPerson.real_name
-							if(!index)
-								surname2use = FirstPerson.dna.species.random_surname()
+							if(!FirstPerson)
+								FirstPerson = M
 							else
-								if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
-									surname2use = FirstPerson.dna.species.random_surname()
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-								else
-									surname2use = copytext(FirstPerson.real_name, index)
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-							index = findtext(SecondPerson.real_name, " ")
-							if(index)
-								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
-							SecondPersonFirstName = SecondPerson.real_name
-							FirstPerson.change_name(FirstPerson.real_name + surname2use)
-							SecondPerson.change_name(SecondPerson.real_name + surname2use)
-							FirstPerson.marriedto = SecondPerson.real_name
-							SecondPerson.marriedto = FirstPerson.real_name
-							FirstPerson.adjust_triumphs(1)
-							SecondPerson.adjust_triumphs(1)
-							priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
-							marriage = TRUE
-							qdel(A)
+								if(!SecondPerson)
+									SecondPerson = M
+						if(!FirstPerson || !SecondPerson)
+							testing("fail22")
+							return
+						var/surname2use
+						var/index = findtext(FirstPerson.real_name, " ")
+						var/SecondPersonFirstName
+						FirstPerson.original_name = FirstPerson.real_name
+						SecondPerson.original_name = SecondPerson.real_name
+						if(!index)
+							surname2use = FirstPerson.dna.species.random_surname()
+						else
+							if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
+								surname2use = FirstPerson.dna.species.random_surname()
+								FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+							else
+								surname2use = copytext(FirstPerson.real_name, index)
+								FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+						index = findtext(SecondPerson.real_name, " ")
+						if(index)
+							SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
+						SecondPersonFirstName = SecondPerson.real_name
+						FirstPerson.change_name(FirstPerson.real_name + surname2use)
+						SecondPerson.change_name(SecondPerson.real_name + surname2use)
+						FirstPerson.marriedto = SecondPerson.real_name
+						SecondPerson.marriedto = FirstPerson.real_name
+						FirstPerson.adjust_triumphs(1)
+						SecondPerson.adjust_triumphs(1)
+						priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+						marriage = TRUE
+						// STONEKEEP EDIT START add family
+						// FirstPerson.add_family(SecondPerson, SecondPerson.get_spouse_relation())
+						// SecondPerson.add_family(FirstPerson, FirstPerson.get_spouse_relation())
+						// STONEKEEP EDIT END add family
+						qdel(A)
 //							if(FirstPerson.has_stress(/datum/stressevent/nobel))
 //								SecondPerson.add_stress(/datum/stressevent/nobel)
 //							if(SecondPerson.has_stress(/datum/stressevent/nobel))
