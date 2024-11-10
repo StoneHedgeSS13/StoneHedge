@@ -1250,8 +1250,8 @@
 						priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 						marriage = TRUE
 						// STONEKEEP EDIT START add family
-						// FirstPerson.add_family(SecondPerson, SecondPerson.get_spouse_relation())
-						// SecondPerson.add_family(FirstPerson, FirstPerson.get_spouse_relation())
+						FirstPerson.add_family(SecondPerson, SecondPerson.get_spouse_relation())
+						SecondPerson.add_family(FirstPerson, FirstPerson.get_spouse_relation())
 						// STONEKEEP EDIT END add family
 						qdel(A)
 //							if(FirstPerson.has_stress(/datum/stressevent/nobel))
