@@ -1223,26 +1223,28 @@
 						if(!FirstPerson || !SecondPerson)
 							testing("fail22")
 							return
-						var/surname2use
-						var/index = findtext(FirstPerson.real_name, " ")
-						var/SecondPersonFirstName
-						FirstPerson.original_name = FirstPerson.real_name
-						SecondPerson.original_name = SecondPerson.real_name
-						if(!index)
-							surname2use = FirstPerson.dna.species.random_surname()
-						else
-							if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
-								surname2use = FirstPerson.dna.species.random_surname()
-								FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-							else
-								surname2use = copytext(FirstPerson.real_name, index)
-								FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-						index = findtext(SecondPerson.real_name, " ")
-						if(index)
-							SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
-						SecondPersonFirstName = SecondPerson.real_name
-						FirstPerson.change_name(FirstPerson.real_name + surname2use)
-						SecondPerson.change_name(SecondPerson.real_name + surname2use)
+						// STONEKEEP EDIT START add family
+						// var/surname2use
+						// var/index = findtext(FirstPerson.real_name, " ")
+						// var/SecondPersonFirstName
+						// FirstPerson.original_name = FirstPerson.real_name
+						// SecondPerson.original_name = SecondPerson.real_name
+						// if(!index)
+						// 	surname2use = FirstPerson.dna.species.random_surname()
+						// else
+						// 	if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
+						// 		surname2use = FirstPerson.dna.species.random_surname()
+						// 		FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+						// 	else
+						// 		surname2use = copytext(FirstPerson.real_name, index)
+						// 		FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+						// index = findtext(SecondPerson.real_name, " ")
+						// if(index)
+						// 	SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
+						// SecondPersonFirstName = SecondPerson.real_name
+						// FirstPerson.change_name(FirstPerson.real_name + surname2use)
+						// SecondPerson.change_name(SecondPerson.real_name + surname2use)
+						// STONEKEEP EDIT END add family
 						FirstPerson.marriedto = SecondPerson.real_name
 						SecondPerson.marriedto = FirstPerson.real_name
 						FirstPerson.adjust_triumphs(1)
