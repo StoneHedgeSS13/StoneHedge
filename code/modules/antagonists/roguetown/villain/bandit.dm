@@ -10,9 +10,9 @@
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
+	var/favor = 50
+	var/totaldonated = 0
 	rogue_enabled = TRUE
-	var/tri_amt
-	var/contrib
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
@@ -75,13 +75,12 @@
 
 /datum/antagonist/bandit/roundend_report()
 	if(owner?.current)
-		var/amt = tri_amt
 		var/the_name = owner.name
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/H = owner.current
 			the_name = H.real_name
-		if(!amt)
+		if(!totaldonated)
 			to_chat(world, "[the_name] was a bandit.")
 		else
-			to_chat(world, "[the_name] was a bandit. He stole [amt] triumphs worth of loot.")
+			to_chat(world, "[the_name] was a bandit. Their band stole [totaldonated] mammons worth of loot!")
 	return
