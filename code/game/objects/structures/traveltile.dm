@@ -181,12 +181,14 @@
 			break
 
 /obj/structure/fluff/traveltile/bandit
+	required_trait = TRAIT_BANDITCAMP
 	can_gain_with_sight = TRUE
 	can_gain_by_walking = TRUE
 	check_other_side = TRUE
 	invis_without_trait = TRUE
 
 /obj/structure/fluff/traveltile/vampire
+	required_trait = TRAIT_VAMPMANSION
 	can_gain_with_sight = TRUE
 	can_gain_by_walking = TRUE
 	check_other_side = TRUE

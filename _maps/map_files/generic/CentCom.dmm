@@ -1479,6 +1479,10 @@
 "Ph" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"Qa" = (
+/obj/structure/roguemachine/Hoardmaster,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "Qv" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -4539,9 +4543,9 @@ Te
 Te
 Te
 bz
-bz
-bz
-bz
+Te
+Te
+Te
 bz
 bz
 bz
@@ -4669,9 +4673,9 @@ Te
 Te
 Te
 bz
-bz
-bz
-bz
+Te
+Te
+Te
 bz
 bz
 bz
@@ -4799,9 +4803,9 @@ Te
 Te
 Te
 bz
-bz
-bz
-bz
+Te
+Te
+Te
 bz
 bz
 bz
@@ -4929,9 +4933,9 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
+Te
+Te
+Te
 bz
 bz
 bz
@@ -5584,8 +5588,8 @@ Te
 Te
 Te
 Te
-Te
-Te
+bz
+bz
 Te
 Te
 Te
@@ -5710,12 +5714,12 @@ bz
 Te
 Te
 Te
+Qa
 Te
 Te
 Te
-Te
-Te
-Te
+bz
+bz
 Te
 Te
 Te
@@ -5844,8 +5848,8 @@ Te
 Te
 Te
 Te
-Te
-Te
+bz
+bz
 Te
 Te
 Te
@@ -5974,8 +5978,8 @@ Te
 Te
 Te
 Te
-Te
-Te
+bz
+bz
 Te
 Te
 Te
@@ -6104,7 +6108,7 @@ Te
 Te
 Te
 Te
-Te
+bz
 Te
 Te
 Te
