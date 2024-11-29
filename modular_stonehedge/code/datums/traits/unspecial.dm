@@ -176,6 +176,7 @@
 /datum/quirk/mtraining1/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.mind.special_items["Patch Kit"] = /obj/item/storage/fancy/ifak
 	H.mind.special_items["Surgery Kit"] = /obj/item/storage/fancy/skit
 
