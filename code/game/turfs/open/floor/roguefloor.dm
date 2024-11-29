@@ -154,9 +154,12 @@
 	neighborlay = "grassedge"
 
 /turf/open/floor/rogue/grass/get_slowdown(mob/user)
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		returned = 0
+	var returned = slowdown // Initialize 'returned' with a default value
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
+
+
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -214,25 +217,32 @@
 	var/dirt_amt = 3
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
-	//No tile slowdown for fairies
+	// No tile slowdown for fairies
 	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	if (isseelie(FM) && !(FM.resting)) // Add wingcheck
 		return 0
 
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
-	for(var/obj/item/I in user.held_items)
-		if(I.walking_stick)
-			if(!I.wielded)
+	// Define 'returned' with an initial value
+	var returned = slowdown
+	var negate_slowdown = FALSE
+
+	// Check for walking stick
+	for (var/obj/item/I in user.held_items)
+		if (I.walking_stick)
+			if (!I.wielded)
 				var/mob/living/L = user
-				if(!L.cmode)
+				if (!L.cmode)
 					negate_slowdown = TRUE
 
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-2.5, -1)
+	// Additional check for 'TRAIT_BOG_TREKKING'
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0
+	
+	if (negate_slowdown)
+		returned = 0
+
 	return returned
+
 
 
 
@@ -294,14 +304,11 @@
 	return TRUE
 
 /turf/open/floor/rogue/dirt/road/update_water()
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		returned = 0
-	return returned
 	if(muddy)
 		if(water_level <= 0)
 			water_level = 0
 			muddy = FALSE
-			slowdown = initial(slowdown)
+			slowdown = 0 // fuck you im tired of trying to clean this slop.
 			icon_state = initial(icon_state)
 			name = initial(name)
 			footstep = initial(footstep)
@@ -338,13 +345,11 @@
 	canSmoothWith = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
 	neighborlay = "roadedge"
 	slowdown = 0
+
 /turf/open/floor/rogue/dirt/road/get_slowdown(mob/user)
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-0.5, -1)
+	var returned = slowdown // Initialize 'returned' with a default value
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
 	return

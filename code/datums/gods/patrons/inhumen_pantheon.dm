@@ -15,9 +15,9 @@
 	worshippers = "Power-Hungry, Powerful, Charismatic, Liers."
 	mob_traits = list(TRAIT_NASTY_EATER, TRAIT_SNEK, TRAIT_ZOMBIE_IMMUNE) //had to add zombie immune so as not to double dip when making the infection immune
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
-	t1 = /obj/effect/proc_holder/spell/invoked/invisibility
-	t2 = /obj/effect/proc_holder/spell/invoked/eldritchhealing/any
-	t3 = /obj/effect/proc_holder/spell/invoked/projectile/sickness
+	t1 = /obj/effect/proc_holder/spell/invoked/eldritchhealing/any
+	t2 = /obj/effect/proc_holder/spell/invoked/raise_undead
+	t3 = /obj/effect/proc_holder/spell/invoked/strengthen_undead //wrong spell
 	t4 = /obj/effect/proc_holder/spell/invoked/revive_inhumen
 	confess_lines = list(
 		"Praisssse the Greatssssnake!!",
@@ -56,17 +56,17 @@
 	)
 
 /datum/patron/inhumen/baotha
-    name = "The Sacrifice"
-    domain = "Void, Loss, Absence, Nihility."
-    desc = "The Sacrifice wishes to take from you, and for you to give it willingly. You will never get it back if you go too far. But you will always have the sacrifice."
-    worshippers = "Nihilists, Gamblers, Warlocks, and Villains."
-    mob_traits = list(TRAIT_CRACKHEAD)
-    t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
-    confess_lines = list(
-        "I do not yearn for anything!!",
-        "I CANNOT LOSE WHAT I COULD NEVER HOPE TO HOLD!",
-        "THERE IS NO LOSS, THERE IS NO LIE! THERE IS ONLY SACRIFICE!",
-        "IT'S ALL OBLIVION IN THE END FOR ME!",
+	name = "The Sacrifice"
+	domain = "Void, Loss, Absence, Nihility."
+	desc = "The Sacrifice wishes to take from you, and for you to give it willingly. You will never get it back if you go too far. But you will always have the sacrifice."
+	worshippers = "Nihilists, Gamblers, Warlocks, and Villains."
+	mob_traits = list(TRAIT_CRACKHEAD)
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
+	confess_lines = list(
+		"I do not yearn for anything!!",
+		"I CANNOT LOSE WHAT I COULD NEVER HOPE TO HOLD!",
+		"THERE IS NO LOSS, THERE IS NO LIE! THERE IS ONLY SACRIFICE!",
+		"IT'S ALL OBLIVION IN THE END FOR ME!",
 )
 
 

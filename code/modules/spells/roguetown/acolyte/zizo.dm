@@ -7,7 +7,7 @@
 	range = 4
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	sound = 'sound/magic/heal.ogg'
+	sound = 'sound/vo/mobs/ghost/whisper (1).ogg'
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -82,12 +82,12 @@
 	warnie = "sydwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
-	chargedloop = /datum/looping_sound/invokeholy
+	chargedloop = /datum/looping_sound/unholy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/revive.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 2 MINUTES
+	charge_max = 1 MINUTES
 	miracle = TRUE
 	devotion_cost = 100
 	var/revive_pq = PQ_GAIN_REVIVE
@@ -114,7 +114,8 @@
 			ghost.mind.transfer_to(target, TRUE)
 		target.grab_ghost(force = TRUE)
 		target.remove_client_colour(/datum/client_colour/monochrome)
-		target.emote("breathgasp")
+		target.emote("scream")
+		target.emote("vomit")
 		target.Jitter(100)
 		if(isseelie(target))
 			var/mob/living/carbon/human/fairy_target = target

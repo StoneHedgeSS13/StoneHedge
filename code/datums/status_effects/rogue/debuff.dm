@@ -239,6 +239,19 @@
 	effectedstats = list("fortune" = -3)
 	duration = 20 MINUTES
 
+/datum/status_effect/debuff/shame
+	id = "Ashamed"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/shame
+	effectedstats = list("fortune" = -1, "intelligence" = -1)
+	duration = 5 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/shame
+	name = "Ashamed"
+	desc = "I feel really fucking stupid right now..."
+
+/datum/status_effect/debuff/shame/on_apply()
+	owner.add_stress(/datum/stressevent/shitself)
+
 /atom/movable/screen/alert/status_effect/debuff/devitalised
 	name = "Devitalised"
 	desc = "Something has been taken from me, and it will take time to recover."

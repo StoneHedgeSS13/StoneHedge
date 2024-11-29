@@ -304,9 +304,11 @@
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
 /turf/open/water/swamp/get_slowdown(mob/user)
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		returned = 0
+	var returned = slowdown // Initialize 'returned' with a default value
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
+
 
 /turf/open/water/swamp/deep
 	name = "murk"

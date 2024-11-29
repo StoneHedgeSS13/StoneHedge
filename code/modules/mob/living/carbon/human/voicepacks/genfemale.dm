@@ -7,7 +7,12 @@
 			used = getfsilenced(soundin)
 	if(!used)
 		switch(soundin)
-			if("deathgurgle")
+			if("fart")
+				if(prob(5))
+					used = 'sound/vo/vart (4).ogg'
+				else
+					used = 'sound/vo/vart (2).ogg'
+			else if("deathgurgle")
 				used = pick('sound/vo/female/gen/deathgurgle (1).ogg','sound/vo/female/gen/deathgurgle (2).ogg','sound/vo/female/gen/deathgurgle (3).ogg')
 			if("agony")
 				used = list('sound/vo/female/gen/agony (1).ogg','sound/vo/female/gen/agony (2).ogg','sound/vo/female/gen/agony (3).ogg')
