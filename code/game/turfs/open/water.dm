@@ -304,13 +304,10 @@
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
 /turf/open/water/swamp/get_slowdown(mob/user)
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
 	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-1.5, 0)
+		returned = 0
 	return returned
+
 /turf/open/water/swamp/deep
 	name = "murk"
 	desc = "Deep water with several weeds and algae on the surface."

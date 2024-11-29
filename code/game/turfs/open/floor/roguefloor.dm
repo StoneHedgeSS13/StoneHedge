@@ -152,18 +152,11 @@
 	slowdown = 0
 	smooth = SMOOTH_TRUE
 	neighborlay = "grassedge"
+
 /turf/open/floor/rogue/grass/get_slowdown(mob/user)
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
 	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-0.5, -1)
+		returned = 0
 	return returned
-// /turf/open/floor/rogue/grass/Initialize()
-//	dir = pick(GLOB.cardinals)
-//	GLOB.dirt_list += src
-//	. = ..()
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -301,19 +294,9 @@
 	return TRUE
 
 /turf/open/floor/rogue/dirt/road/update_water()
-	water_level = max(water_level-10,0)
-	for(var/D in GLOB.cardinals)
-		var/turf/TU = get_step(src, D)
-		if(istype(TU, /turf/open/water))
-			if(!muddy)
-				become_muddy()
-			return TRUE //stop processing
-/*	if(water_level > 10) //this would be a switch on normal tiles
-		if(!muddy)
-			become_muddy()*/
-//flood process goes here to spread to other turfs etc
-//	if(water_level > 250)
-//		return FALSE
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0
+	return returned
 	if(muddy)
 		if(water_level <= 0)
 			water_level = 0

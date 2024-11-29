@@ -445,13 +445,14 @@
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"
+	desc = "a nut with mild stimulant properties"
 	seed = /obj/item/seeds/nut
 	icon_state = "nut"
 	tastes = list("nutty" = 1)
 	filling_color = "#6b4d18"
 	bitesize = 1
 	foodtype = FRUIT
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
 	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 
 /obj/item/reagent_containers/food/snacks/grown/tomato
