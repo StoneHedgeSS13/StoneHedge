@@ -86,6 +86,7 @@
 	. = ..()
 
 /obj/structure/closet/crate/chest/refilling/proc/try_reset_chest()
+/* old system
 	//if its found before and area has no players when timer expire.
 	if(found && !players_nearby(src.loc, 12))
 		found = FALSE
@@ -100,7 +101,16 @@
 	else
 		//quarter the time to check again because we really want to reset this chest soon at this point.
 		var/fast_time = time_to_reset/4
-		reset_timer = addtimer(CALLBACK(src, PROC_REF(try_reset_chest)), fast_time, TIMER_STOPPABLE)
+		reset_timer = addtimer(CALLBACK(src, PROC_REF(try_reset_chest)), fast_time)
+*/
+	//it is time.
+	found = FALSE
+	icon_state = "dungeon_chest_1"
+	base_icon_state = "dungeon_chest_1"
+	close()
+	loot_num_to_spawn = rand(1, max_loot_num_to_spawn)
+	update_icon()
+	PopulateContents()
 
 /obj/structure/closet/crate/chest/refilling/proc/players_nearby(turf/T, distance)
 	for (var/mob/living/carbon/human/H in range(distance, T))
@@ -399,7 +409,7 @@
 		icon_state = "dungeon_chest_0"
 		base_icon_state = "dungeon_chest_0"
 		update_icon()
-		reset_timer = addtimer(CALLBACK(src, PROC_REF(try_reset_chest), time_to_reset), TIMER_STOPPABLE) //start a timer to reset this chest later.
+		addtimer(CALLBACK(src, PROC_REF(try_reset_chest)), time_to_reset) //start a timer to reset this chest later.
 
 /obj/structure/closet/crate/chest/refilling/mimic
 	icon_state = "dungeon_chest_1"

@@ -51,6 +51,7 @@
 	var/loop = null;  // Magic self-reference to stop the handler from being GC'd before user takes action.
 
 /datum/vore_look/Destroy()
+	. = ..()
 	loop = null
 	selected = null
 	. = ..()

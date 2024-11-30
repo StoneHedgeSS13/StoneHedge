@@ -37,6 +37,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/milk
 	list_reagents = list(/datum/reagent/consumable/milk = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/cum //for testing purposes, trust me.
+	list_reagents = list(/datum/reagent/consumable/cum = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/nourish
 	name = "NOURISH"
 	desc = "vim and vigor meal in a bottle"

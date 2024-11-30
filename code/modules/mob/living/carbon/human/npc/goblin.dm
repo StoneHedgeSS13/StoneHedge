@@ -55,8 +55,18 @@
 
 /mob/living/carbon/human/species/goblin/npc/hell
 	race = /datum/species/goblin/hell
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/hell
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/hell
+	ass_organ = /obj/item/organ/butt/goblin/hell
+	penis_organ = /obj/item/organ/penis/goblin/hell
+
 /mob/living/carbon/human/species/goblin/npc/ambush/hell
 	race = /datum/species/goblin/hell
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/hell
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/hell
+	ass_organ = /obj/item/organ/butt/goblin/hell
+	penis_organ = /obj/item/organ/penis/goblin/hell
+
 /datum/species/goblin/hell
 	name = "hell goblin"
 	raceicon = "goblin_hell"
@@ -71,8 +81,16 @@
 
 /mob/living/carbon/human/species/goblin/npc/cave
 	race = /datum/species/goblin/cave
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/cave
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/cave
+	ass_organ = /obj/item/organ/butt/goblin/cave
+	penis_organ = /obj/item/organ/penis/goblin/cave
 /mob/living/carbon/human/species/goblin/npc/ambush/cave
 	race = /datum/species/goblin/cave
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/cave
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/cave
+	ass_organ = /obj/item/organ/butt/goblin/cave
+	penis_organ = /obj/item/organ/penis/goblin/cave
 /datum/species/goblin/cave
 	raceicon = "goblin_cave"
 
@@ -86,8 +104,18 @@
 
 /mob/living/carbon/human/species/goblin/npc/sea
 	race = /datum/species/goblin/sea
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/sea
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/sea
+	ass_organ = /obj/item/organ/butt/goblin/sea
+	penis_organ = /obj/item/organ/penis/goblin/sea
+
 /mob/living/carbon/human/species/goblin/npc/ambush/sea
 	race = /datum/species/goblin/sea
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/sea
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/sea
+	ass_organ = /obj/item/organ/butt/goblin/sea
+	penis_organ = /obj/item/organ/penis/goblin/sea
+
 /datum/species/goblin/sea
 	raceicon = "goblin_sea"
 
@@ -101,8 +129,20 @@
 
 /mob/living/carbon/human/species/goblin/npc/moon
 	race = /datum/species/goblin/moon
+	race = /datum/species/goblin/moon
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/moon
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/moon
+	ass_organ = /obj/item/organ/butt/goblin/moon
+	penis_organ = /obj/item/organ/penis/goblin/moon
+
 /mob/living/carbon/human/species/goblin/npc/ambush/moon
 	race = /datum/species/goblin/moon
+	race = /datum/species/goblin/moon
+	ball_organ = /obj/item/organ/filling_organ/testicles/goblin/moon
+	breast_organ = /obj/item/organ/filling_organ/breasts/goblin/moon
+	ass_organ = /obj/item/organ/butt/goblin/moon
+	penis_organ = /obj/item/organ/penis/goblin/moon
+
 /datum/species/goblin/moon
 	id = "goblin_moon"
 	raceicon = "goblin_moon"
@@ -420,7 +460,7 @@
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/huntingknife/idagger
-			else	
+			else
 				if(prob(50))
 					l_hand = /obj/item/rogueweapon/shield/wood
 

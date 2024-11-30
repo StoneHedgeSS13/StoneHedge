@@ -58,6 +58,8 @@
 
 	var/next_seek
 
+	var/prevent_goto_target = FALSE // If true, prevent any kinds of movement.
+
 	cmode = TRUE
 	setparrytime = 30
 	dodgetime = 30
@@ -315,6 +317,8 @@
 		AttackingTarget()
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget(list/possible_targets)//Step 5, handle movement between us and our target
+	if(prevent_goto_target)
+		return FALSE
 	stop_automated_movement = 1
 	if(!target || !CanAttack(target))
 		LoseTarget()
@@ -356,6 +360,8 @@
 		return 1
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
+	if(prevent_goto_target)
+		return FALSE
 	if(target == src.target)
 		approaching_target = TRUE
 	else
@@ -472,7 +478,9 @@
 
 
 /mob/living/simple_animal/hostile/Move(atom/newloc, dir , step_x , step_y)
-	if(dodging && approaching_target && prob(dodge_prob) && moving_diagonally == 0 && isturf(loc) && isturf(newloc))
+	if(prevent_goto_target)
+		return FALSE
+	if(dodging && approaching_target && prob(dodge_prob) && moving_diagonally == 0 && isturf(loc) && isturf(newloc) && !incapacitated())
 		return dodge(newloc,dir)
 	else
 		return ..()

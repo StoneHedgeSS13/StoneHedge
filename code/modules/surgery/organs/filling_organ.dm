@@ -207,22 +207,18 @@
 				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
 		if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
 			pre_pregnancy_size = pregnantaltorgan.organ_size
-			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
 		else
 			pre_pregnancy_size = organ_size
-			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
-	var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
-
-	var/datum/sprite_accessory/acc = accessory_type
-	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
-		if(bellyussy.organ_size < 3)
-			bellyussy.organ_size = bellyussy.organ_size + 1
-			acc.get_icon_state()
+		if(organ_size < 3)
+			to_chat(owner, span_lovebold("I notice my [src.name] has grown due to pregnancy...")) //dont need to repeat this probably if size cant grow anyway.
+			organ_size = organ_size + 1
 			owner.update_body_parts(TRUE)
-			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
 		else
 			deltimer(preggotimer)
 
