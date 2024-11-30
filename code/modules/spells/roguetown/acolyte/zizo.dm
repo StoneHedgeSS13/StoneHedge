@@ -7,7 +7,7 @@
 	range = 4
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	sound = 'sound/vo/mobs/ghost/whisper (1).ogg'
+	sound = 'sound/magic/antimagic.ogg'
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
