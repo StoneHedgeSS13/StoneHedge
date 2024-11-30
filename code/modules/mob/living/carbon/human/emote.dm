@@ -19,6 +19,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
 			message = "makes a noise. Tears stream down their face."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/carbon/human/sexmoanlight
@@ -33,6 +35,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
 			message = "makes a noise."
+		else
+			message = initial(message)
 
 /datum/emote/living/carbon/human/sexmoanhvy
 	key = "sexmoanhvy"
@@ -46,6 +50,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
 			message = "makes a noise."
+		else
+			message = initial(message)
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
@@ -88,6 +94,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
 			message = "makes a muffled grumbling noise."
+		else
+			message = initial(message)
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"

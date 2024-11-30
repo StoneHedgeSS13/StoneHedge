@@ -17,7 +17,6 @@
 
 /datum/outfit/job/roguetown/tribalcook/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather/rope

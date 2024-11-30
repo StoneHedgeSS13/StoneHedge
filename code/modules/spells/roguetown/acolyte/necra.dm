@@ -156,10 +156,11 @@
 		to_chat(SS, "[user.real_name] has returned you to the underworld. If you are wrongfully denied your reward by your summoner, please open a ticket.")
 		for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
 			for(var/obj/item/I in SS.held_items)
-				if(!istype(I, /obj/item/roguecoin/silver) && !istype(I, /obj/item/flashlight/lantern/shrunken))
+				if(!istype(I, /obj/item/roguecoin/silver) && !istype(I, /obj/item/flashlight/lantern/shrunken) && !istype(I, /obj/item/underworld/coin))
 					. |= SS.dropItemToGround(I)
 				if(istype(I, /obj/item/roguecoin/silver))
 					to_chat(SS, "As you return across the veil to the underworld, the silver coin in your hand is transformed.")
+					qdel(I)
 					var/obj/item/underworld/coin/C = new
 					SS.put_in_hand(C)
 			SS.loc = A.loc
@@ -195,18 +196,21 @@
 */
 			break
 		to_chat(P, "[itemstorestore]")
-	if(capturedsoul)
+	if(summoned_spirit)
 		spawn(60 MINUTES)
+			if(!summoned_spirit)
+				return
 			to_chat(user, "The soul returns to the underworld as your spell expires.")
 			to_chat(capturedsoul, "You feel yourself being pulled to the underworld as your summoner's spell expires. The carriage awaits, if your summoner")
 			for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
 				capturedsoul.loc = A.loc
 				capturedsoul.invisibility = initial(capturedsoul.invisibility)
 				for(var/obj/item/I in capturedsoul.held_items)
-					if(!istype(I, /obj/item/roguecoin/silver) && !istype(I, /obj/item/flashlight/lantern/shrunken))
+					if(!istype(I, /obj/item/roguecoin/silver) && !istype(I, /obj/item/flashlight/lantern/shrunken) && !istype(I, /obj/item/underworld/coin))
 						. |= capturedsoul.dropItemToGround(I)
 					if(istype(I, /obj/item/roguecoin/silver))
 						to_chat(capturedsoul, "As you return across the veil to the underworld, the silver coin in your hand is transformed.")
+						qdel(I)
 						var/obj/item/underworld/coin/C = new
 						capturedsoul.put_in_hand(C)
 			summoned_spirit = null

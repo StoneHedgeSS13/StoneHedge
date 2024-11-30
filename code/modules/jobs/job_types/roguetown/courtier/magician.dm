@@ -9,7 +9,19 @@
 
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater, /obj/effect/proc_holder/spell/invoked/arcyne_storm, /obj/effect/proc_holder/spell/invoked/invisibility, /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe, /obj/effect/proc_holder/spell/targeted/ethereal_jaunt, /obj/effect/proc_holder/spell/aoe_turf/rogue_knock)
+	spells = list (
+		/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater,
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
+		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
+		/obj/effect/proc_holder/spell/invoked/arcyne_storm,
+		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,
+		/obj/effect/proc_holder/spell/invoked/invisibility,
+		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
+		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
+		/obj/effect/proc_holder/spell/targeted/forcewall,
+		/obj/effect/proc_holder/spell/targeted/ethereal_jaunt,
+		/obj/effect/proc_holder/spell/aoe_turf/rogue_knock)
 	display_order = JDO_MAGICIAN
 	tutorial = "Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. \
 		You are one of the Arch-Magicians of Dreamkeeps Magick Academy; Ravenloft. You help teach and manage the students of this Academy.\

@@ -412,6 +412,7 @@
 			eldritchhealing.targetnotification = "Maggots eat away my dead flesh!"
 			eldritchhealing.othernotification = "'s wounds are healed by... Maggots?"
 	H.mind.AddSpell(eldritchhealing)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular) // If you get healing, you get diagnose
 
 ///////////////////////////////
 //	Curse
