@@ -297,22 +297,31 @@ Will require a group to kill, recommend 5+ people.
 
 /mob/living/simple_animal/hostile/rogue/skeleton/guard/shield/lich
 	wander = FALSE
+	stat_attack = UNCONSCIOUS
+	attack_laying = TRUE
 	STAPER = 20
 	faction = list("lich")
 /mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow/lich
 	wander = FALSE
+	stat_attack = UNCONSCIOUS
+	attack_laying = TRUE
 	STAPER = 20
 	faction = list("lich")
 /mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard/lich
 	wander = FALSE
+	stat_attack = UNCONSCIOUS
+	attack_laying = TRUE
 	STAPER = 20
 	faction = list("lich")
 /mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard_spear/lich
 	wander = FALSE
+	stat_attack = UNCONSCIOUS
+	attack_laying = TRUE
 	STAPER = 20
 	faction = list("lich")
 
 /mob/living/carbon/human/species/skeleton/npc/dungeon/lich
+	skel_fragile = FALSE
 	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/dungeon/lich
 
 /datum/outfit/job/roguetown/npc/skeleton/dungeon/lich/pre_equip(mob/living/carbon/human/H)
