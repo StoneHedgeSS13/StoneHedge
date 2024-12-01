@@ -32,7 +32,6 @@ Will require a group to kill, recommend 5+ people.
 	base_intents = list(/datum/intent/simple/lich)
 	melee_damage_lower = 60
 	melee_damage_upper = 80
-	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	health = 5000
 	maxHealth = 5000
 	STASTR = 12
@@ -44,7 +43,7 @@ Will require a group to kill, recommend 5+ people.
 	STALUC = 15
 	loot = list(/obj/effect/temp_visual/lich_dying)
 	projectiletype = /obj/projectile/magic
-	allowed_projectile_types = list(/obj/projectile/magic/sickness/lich, /obj/projectile/magic/lightning, /obj/projectile/magic/arcane_barrage,
+	allowed_projectile_types = list(/obj/projectile/magic/sickness/lich, /obj/projectile/magic/lich/lightning, /obj/projectile/magic/arcane_barrage,
 	/obj/projectile/magic/eldritchblast5e/empowered, /obj/projectile/magic/rayoffrost5e, /obj/projectile/magic/acidsplash5e)
 	patron = /datum/patron/inhumen/zizo
 	footstep_type = FOOTSTEP_MOB_SHOE
@@ -181,8 +180,39 @@ Will require a group to kill, recommend 5+ people.
 /obj/projectile/magic/sickness/lich
 	speed = 15
 	damage = 20
+
 /obj/projectile/magic/aoe/fireball/rogue/great/lich
 	speed = 20
+
+/obj/projectile/magic/lich/lightning
+	name = "bolt of lightning"
+	tracer_type = /obj/effect/projectile/tracer/stun
+	muzzle_type = null
+	impact_type = null
+	hitscan = TRUE
+	movement_type = UNSTOPPABLE
+	light_color = LIGHT_COLOR_WHITE
+	damage = 25
+	damage_type = BURN
+	nodamage = FALSE
+	speed = 0.3
+	flag = "magic"
+	light_color = "#ffffff"
+	light_range = 7
+/obj/projectile/magic/lich/lightning/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			L.Immobilize(1, src)
+			playsound(get_turf(src), pick('sound/misc/elec (1).ogg', 'sound/misc/elec (2).ogg', 'sound/misc/elec (3).ogg'), 100, FALSE)
+	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/boss/lich/proc/spawn_minions()
 	var/spawn_chance = 100
@@ -378,6 +408,17 @@ Will require a group to kill, recommend 5+ people.
 		r_hand = /obj/item/rogueweapon/greatsword/zwei
 		l_hand = null
 
+/obj/effect/oneway/lich //one way barrier to the boss room. Despawns on boss death.
+	name = "magical barrier"
+	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended for 5+ people."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	invisibility = SEE_INVISIBLE_LIVING
+	anchored = TRUE
+
+/turf/open/floor/rogue/carpet/lord/center/no_teleport //sanity check to keep the Lich from blinking outside the combat arena
+	teleport_restricted = TRUE
+
 //Loot
 /obj/item/roguekey/mage/lich
 	name = "lich's key"
@@ -413,7 +454,7 @@ Will require a group to kill, recommend 5+ people.
 	associated_skill = /datum/skill/combat/maces
 	max_charges = 3
 	recharge_rate = 8
-	allowed_projectile_types = list(/obj/projectile/magic/sickness/lich, /obj/projectile/magic/lightning, /obj/projectile/magic/arcane_barrage,
+	allowed_projectile_types = list(/obj/projectile/magic/sickness/lich, /obj/projectile/magic/lich/lightning, /obj/projectile/magic/arcane_barrage,
 	/obj/projectile/magic/eldritchblast5e/empowered, /obj/projectile/magic/rayoffrost5e, /obj/projectile/magic/acidsplash5e)
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/lich //Improved spellslinger armor

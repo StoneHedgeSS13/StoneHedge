@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aan" = (
-/mob/living/carbon/human/species/skeleton/npc/dungeon/lich,
-/turf/open/floor/rogue/carpet/lord/right,
-/area/rogue/under/cavewet)
 "aaq" = (
 /obj/structure/handcart,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -1570,6 +1566,9 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
+"bdc" = (
+/turf/open/floor/rogue/carpet/lord/center/no_teleport,
+/area/rogue/under/cavewet)
 "bdi" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
@@ -11013,6 +11012,12 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
+"inA" = (
+/obj/effect/oneway/lich{
+	dir = 1
+	},
+/turf/closed/wall/mineral/rogue/decostone/long,
+/area/rogue/under/cavewet)
 "inD" = (
 /obj/effect/decal/border/wood/inverted{
 	dir = 1
@@ -18310,10 +18315,6 @@
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
 	})
-"nOh" = (
-/obj/structure/mineral_door/wood,
-/turf/open/floor/rogue/carpet/lord/center,
-/area/rogue/under/cavewet)
 "nOk" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -19518,7 +19519,7 @@
 /area/rogue/outdoors/river)
 "oPp" = (
 /mob/living/carbon/human/species/skeleton/npc/dungeon/lich,
-/turf/open/floor/rogue/carpet/lord/left,
+/turf/open/floor/rogue/carpet/lord/center/no_teleport,
 /area/rogue/under/cavewet)
 "oPy" = (
 /turf/open/floor/rogue/naturalstone,
@@ -22233,6 +22234,12 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/caves)
+"qLL" = (
+/obj/effect/oneway/lich{
+	dir = 1
+	},
+/turf/open/floor/rogue/carpet/lord/center/no_teleport,
+/area/rogue/under/cavewet)
 "qMs" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
@@ -24022,7 +24029,7 @@
 /area/rogue/indoors/town/bath)
 "sbE" = (
 /obj/structure/mineral_door/wood,
-/turf/open/floor/rogue/churchmarble,
+/turf/open/floor/rogue/carpet/lord/center/no_teleport,
 /area/rogue/under/cavewet)
 "sca" = (
 /turf/closed/wall/mineral/rogue/pipe{
@@ -36921,7 +36928,7 @@ nhM
 nhM
 nhM
 nhM
-qMz
+nhM
 gTO
 fDV
 fDV
@@ -37123,7 +37130,7 @@ aLK
 aLK
 aLK
 qUK
-gTO
+nhM
 fDV
 qMz
 fDV
@@ -37325,7 +37332,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 fDV
 qMz
 qMz
@@ -37527,7 +37534,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 fDV
 fDV
 fDV
@@ -37729,7 +37736,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 fDV
 fDV
 fDV
@@ -37931,7 +37938,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 fDV
 gTO
 gTO
@@ -38133,7 +38140,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 qMz
 fDV
 fDV
@@ -38335,7 +38342,7 @@ gWx
 gWx
 gWx
 bZA
-gTO
+nhM
 qMz
 fDV
 fDV
@@ -38537,7 +38544,7 @@ gWx
 gWx
 gWx
 bZA
-qMz
+nhM
 fDV
 fDV
 fDV
@@ -38737,9 +38744,9 @@ gWx
 gWx
 gWx
 gWx
-buA
+gWx
 bZA
-fDV
+nhM
 fDV
 fDV
 fDV
@@ -38939,12 +38946,12 @@ gWx
 gWx
 gWx
 gWx
-unQ
+gWx
 bZA
-qMz
-fDV
-fDV
-fDV
+nhM
+nhM
+nhM
+nhM
 fDV
 gTO
 qMz
@@ -39144,7 +39151,7 @@ sFg
 sFg
 qUK
 aLK
-aLK
+inA
 aLK
 aLK
 aLK
@@ -39344,15 +39351,15 @@ pTc
 pTc
 pTc
 pTc
-fOi
+bdc
+bdc
+qLL
+bdc
+bdc
 oPp
-sFg
-sFg
-sFg
-sFg
-sFg
-sFg
-sFg
+bdc
+bdc
+bdc
 oPp
 fOi
 jUE
@@ -39546,16 +39553,16 @@ pTc
 pTc
 pTc
 pTc
-nOh
-pTc
-pTc
-pTc
-pTc
-pTc
-pTc
-pTc
-pTc
-pTc
+fOi
+bdc
+qLL
+bdc
+bdc
+bdc
+bdc
+bdc
+bdc
+bdc
 sbE
 jUE
 jUE
@@ -39748,16 +39755,16 @@ pTc
 pTc
 pTc
 pTc
-fOi
-aan
-cTO
-cTO
-cTO
-cTO
-cTO
-cTO
-cTO
-aan
+bdc
+bdc
+qLL
+bdc
+bdc
+oPp
+bdc
+bdc
+bdc
+oPp
 fOi
 jUE
 jUE
@@ -39952,7 +39959,7 @@ cTO
 cTO
 qUK
 aLK
-aLK
+inA
 aLK
 aLK
 aLK
@@ -40151,12 +40158,12 @@ gWx
 gWx
 gWx
 gWx
-fQG
+gWx
 bZA
-fDV
-fDV
-qMz
-qMz
+nhM
+nhM
+nhM
+nhM
 gTO
 fDV
 fDV
@@ -40353,9 +40360,9 @@ gWx
 gWx
 gWx
 gWx
-buA
+gWx
 bZA
-fDV
+nhM
 fDV
 qMz
 gTO
@@ -40557,7 +40564,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 qMz
 qMz
 fDV
@@ -40759,7 +40766,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 qMz
 fDV
 gTO
@@ -40961,7 +40968,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 qMz
 fDV
 gTO
@@ -41163,7 +41170,7 @@ gWx
 gWx
 gWx
 bZA
-qMz
+nhM
 fDV
 fDV
 fDV
@@ -41365,7 +41372,7 @@ gWx
 gWx
 gWx
 bZA
-fDV
+nhM
 fDV
 gTO
 fDV
@@ -41567,7 +41574,7 @@ gWx
 gWx
 gWx
 bZA
-qMz
+nhM
 qMz
 qMz
 qMz
@@ -41769,7 +41776,7 @@ gWx
 gWx
 gWx
 bZA
-qMz
+nhM
 qMz
 gTO
 fDV
@@ -41971,7 +41978,7 @@ aLK
 aLK
 aLK
 qUK
-fDV
+nhM
 qMz
 fDV
 fDV
@@ -42173,7 +42180,7 @@ nhM
 nhM
 nhM
 nhM
-fDV
+nhM
 qMz
 fDV
 fDV
