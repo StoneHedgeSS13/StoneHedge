@@ -66,6 +66,7 @@
 			if(H.has_quirk(/datum/quirk/selfawaregeni))
 				to_chat(H, span_blue("My [pick(altnames)] may be able to hold a different amount now."))
 
+/* Unsure how to apply this without other forgans overriding it and removing etc.
 	//debuff checks
 	if(reagents.maximum_volume > 40 && bloatable) //if there is space to bloat to begin with, and its bloatable.
 		if(reagents.total_volume > ((reagents.maximum_volume/3) + storage_per_size)) //more than 1/3 full, light bloat.
@@ -84,6 +85,7 @@
 				owner.remove_status_effect(/datum/status_effect/debuff/bloattwo)
 			if(owner.has_status_effect(/datum/status_effect/debuff/bloatone))
 				owner.remove_status_effect(/datum/status_effect/debuff/bloatone)
+*/
 
 	if(reagents.total_volume > reagents.maximum_volume) //lil allowance
 		visible_message(span_info("[owner]'s [pick(altnames)] spill some of it's contents with the pressure on it!"),span_info("My [pick(altnames)] spill it's excesss contents with the pressure built up on it!"),span_unconscious("I hear a splash."))
