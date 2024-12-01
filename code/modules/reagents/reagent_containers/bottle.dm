@@ -54,7 +54,7 @@
 		reagents.flags = reagent_flags
 		desc = "A bottle with a cork."
 		spillable = FALSE
-		to_chat(usr, span_notice("You put a cork the bottle."))
+		to_chat(usr, span_notice("You put the cork back in."))
 	else
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
