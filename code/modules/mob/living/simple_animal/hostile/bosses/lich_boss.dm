@@ -408,13 +408,17 @@ Will require a group to kill, recommend 5+ people.
 		r_hand = /obj/item/rogueweapon/greatsword/zwei
 		l_hand = null
 
-/obj/effect/oneway/lich //one way barrier to the boss room. Despawns on boss death.
+/obj/effect/oneway/lich //one way barrier to the boss room. Can be despawned with the key the boss drops.
 	name = "magical barrier"
-	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended for 5+ people."
+	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended for 5+ people. Use the Key on this barrier to escape."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
 	anchored = TRUE
+
+/obj/effect/oneway/lich/attackby(/obj/item/roguekey/mage/lich)
+	visible_message(span_boldannounce("The magical barrier disperses!"))
+	qdel(src)
 
 /turf/open/floor/rogue/carpet/lord/center/no_teleport //sanity check to keep the Lich from blinking outside the combat arena
 	teleport_restricted = TRUE
