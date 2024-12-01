@@ -180,23 +180,42 @@
 			if(!move_failed)
 				return TRUE
 
-	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))
+	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M)) // Rebalance of charge code. Taken almost directly from Ratwood.
 		if(isliving(M))
+			var/sprint_distance = sprinted_tiles
+			toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
+
 			var/mob/living/L = M
-			var/charge_add = 0
+
+			var/self_points = FLOOR((STACON + STASTR + mind.get_skill_level(/datum/skill/misc/athletics))/2, 1)
+			var/target_points = FLOOR((L.STAEND + L.STASTR + L.mind.get_skill_level(/datum/skill/misc/athletics))/2, 1)
+
+			switch(sprint_distance)
+				// Point blank
+				if(0 to 1)
+					self_points -= 4
+				// One to two tiles between people - this is the main combat case.
+				if(2 to 3)
+					self_points -= 2
+				// Five or above tiles between people - 3-4, a viable combat ram with good planning, results in a modifier of 0.
+				if(6 to INFINITY)
+					self_points += 3 // This is basically impossible to use in combat unless the other guy's asleep, and I think accidentally knocking over someone is funny, so big bonus.
+
+			// If charging into the BACK of the enemy (facing away)
+			if(L.dir == get_dir(src, L))
+				self_points += 2
+
+			// Ratwood does not have artificer, but we do. Numbers are basically the same so I'm keeping the old bonus.
 			if(HAS_TRAIT(src, TRAIT_CHARGER))
-				charge_add = 3
-			if(STACON + charge_add > L.STACON)
-				if(STASTR + charge_add > L.STASTR)
-					L.Knockdown(1)
-					Immobilize(30)
-				else
-					Knockdown(1)
-					Immobilize(30)
-			if(STACON + charge_add < L.STACON)
+				self_points += 3
+
+			// Ratwood has RNG here. No thanks.
+
+			if(self_points > target_points)
+				L.Knockdown(1)
+			if(self_points < target_points)
 				Knockdown(30)
-				Immobilize(30)
-			if(STACON + charge_add == L.STACON)
+			if(self_points == target_points) // Exact match will be rare with athletics being fractional.
 				L.Knockdown(1)
 				Knockdown(30)
 			Immobilize(30)
@@ -913,6 +932,9 @@
 
 	var/old_direction = dir
 	var/turf/T = loc
+
+	if(m_intent == MOVE_INTENT_RUN)
+		sprinted_tiles++
 
 	if(wallpressed)
 		GetComponent(/datum/component/leaning).wallhug_check(T, newloc, direct)

@@ -961,16 +961,13 @@
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/consumable/Acoffee
 	required_temp = 374
-	results = list(/datum/reagent/consumable/Acoffee = 24)
-	required_reagents = list(/datum/reagent/consumable/acorn_powder = 4, /datum/reagent/water = 20)
+	results = list(/datum/reagent/consumable/Acoffee = 6)
+	required_reagents = list(/datum/reagent/consumable/acorn_powder = 1, /datum/reagent/water = 5)
 
-	/datum/chemical_reaction/alch/acoffee/on_reaction(var/mob/user, var/obj/item/reagent_containers/container, var/total_volume)
-		..()
-		if(container)
-			// Remove all leftover water
-			var/datum/reagent/R
-			for(R in container.reagents.reagent_list)
-				if(istype(R, /datum/reagent/water))
-					container.reagents.remove_reagent(/datum/reagent/water, R.volume)
+/datum/chemical_reaction/alch/acoffee/on_reaction(var/mob/user, var/obj/item/reagent_containers/container, var/total_volume)
+	. = ..()
+	if(container)
+		// Remove all leftover water
+		container.reagents.del_reagent(/datum/reagent/water)
 
 

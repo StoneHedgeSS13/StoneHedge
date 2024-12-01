@@ -1,7 +1,9 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration, penetrated_text, damage, blade_dulling)
 	var/armor = getarmor(def_zone, attack_flag, damage, armor_penetration, blade_dulling)
-	src.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after being hit. (Should work!)
+	if(alpha <= 100 || rogue_sneaking)
+		apply_status_effect(/datum/status_effect/debuff/stealthcd)
+		mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after being hit. (Should work!)
 	//the if "armor" check is because this is used for everything on /living, including humans
 	if(armor > 0 && armor_penetration)
 		armor = max(0, armor - armor_penetration)
@@ -424,54 +426,6 @@
 							span_danger("I avoid [M.name]'s bite!"), span_hear("I hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, M)
 			to_chat(M, span_warning("My bite misses [src]!"))
 	return FALSE
-
-/mob/living/attack_larva(mob/living/carbon/alien/larva/L)
-	switch(L.used_intent.type)
-		if(INTENT_HELP)
-			visible_message(span_notice("[L.name] rubs its head against [src]."), \
-							span_notice("[L.name] rubs its head against you."), null, null, L)
-			to_chat(L, span_notice("I rub my head against [src]."))
-			return FALSE
-
-		else
-			if(HAS_TRAIT(L, TRAIT_PACIFISM))
-				to_chat(L, span_warning("I don't want to hurt anyone!"))
-				return
-
-			L.do_attack_animation(src)
-			if(prob(90))
-				log_combat(L, src, "attacked")
-				visible_message(span_danger("[L.name] bites [src]!"), \
-								span_danger("[L.name] bites you!"), span_hear("I hear a chomp!"), COMBAT_MESSAGE_RANGE, L)
-				to_chat(L, span_danger("I bite [src]!"))
-				playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
-				return TRUE
-			else
-				visible_message(span_danger("[L.name]'s bite misses [src]!"), \
-								span_danger("I avoid [L.name]'s bite!"), span_hear("I hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, L)
-				to_chat(L, span_warning("My bite misses [src]!"))
-	return FALSE
-
-/mob/living/attack_alien(mob/living/carbon/alien/humanoid/M)
-	switch(M.used_intent.type)
-		if (INTENT_HELP)
-			visible_message(span_notice("[M] caresses [src] with its scythe-like arm."), \
-							span_notice("[M] caresses you with its scythe-like arm."), null, null, M)
-			to_chat(M, span_notice("I caress [src] with my scythe-like arm."))
-			return FALSE
-		if (INTENT_GRAB)
-			grabbedby(M)
-			return FALSE
-		if(INTENT_HARM)
-			if(HAS_TRAIT(M, TRAIT_PACIFISM))
-				to_chat(M, span_warning("I don't want to hurt anyone!"))
-				return FALSE
-			M.do_attack_animation(src)
-			return TRUE
-		if(INTENT_DISARM)
-			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
-			return TRUE
-
 /mob/living/attack_hulk(mob/living/carbon/human/user)
 	..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))

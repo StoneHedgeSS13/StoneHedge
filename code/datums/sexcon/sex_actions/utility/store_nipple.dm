@@ -52,25 +52,26 @@
 /datum/sex_action/store_nipple/on_start(mob/living/user, mob/living/target)
 	var/obj/item/organ/filling_organ/breasts/userbreasts = user.getorgan(/obj/item/organ/filling_organ/breasts)
 	var/obj/item/heldstuff = user.get_active_held_item()
-	if(userbreasts.organ_size < 4)
-		to_chat(user, span_info("Unfortunately, my breasts are not big enough to fit anything in them."))
-		user.dropItemToGround(heldstuff)
-		return
-	else 
-		if(userbreasts.organ_size < 6 && heldstuff.w_class > WEIGHT_CLASS_TINY)
-			to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit tiny things."))
+	if(heldstuff)
+		if(userbreasts.organ_size < 4)
+			to_chat(user, span_info("Unfortunately, my breasts are not big enough to fit anything in them."))
 			user.dropItemToGround(heldstuff)
 			return
 		else 
-			if(userbreasts.organ_size < 8 && heldstuff.w_class > WEIGHT_CLASS_SMALL)
-				to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit small things."))
+			if(userbreasts.organ_size < 6 && heldstuff.w_class > WEIGHT_CLASS_TINY)
+				to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit tiny things."))
 				user.dropItemToGround(heldstuff)
 				return
 			else 
-				if(userbreasts.organ_size < 10 && heldstuff.w_class > WEIGHT_CLASS_NORMAL)
-					to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit medium sized things."))
+				if(userbreasts.organ_size < 8 && heldstuff.w_class > WEIGHT_CLASS_SMALL)
+					to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit small things."))
 					user.dropItemToGround(heldstuff)
 					return
+				else 
+					if(userbreasts.organ_size < 10 && heldstuff.w_class > WEIGHT_CLASS_NORMAL)
+						to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit medium sized things."))
+						user.dropItemToGround(heldstuff)
+						return
 
 	if(istype(heldstuff, /obj/item/rogueweapon))
 		to_chat(user, span_userdanger("[heldstuff] may cut me while i put it in, depending on my precision of hand."))

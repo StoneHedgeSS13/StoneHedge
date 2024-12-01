@@ -50,7 +50,7 @@
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
 		user.visible_message(span_love("[user] cums into [target]'s ear!"))
-		user.sexcon.cum_into(oral = TRUE) //so they just get ingested direct
+		user.sexcon.cum_into()
 
 	var/datum/sex_controller/sc = user.sexcon
 

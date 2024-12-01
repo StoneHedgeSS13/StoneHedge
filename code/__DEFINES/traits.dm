@@ -102,6 +102,7 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Picky Sleeper"
 #define TRAIT_ENDOWMENT "Enchanted Endowment" // should apply +3 CON -2 END -1 SPD, restricts most armor and using bows/crossbows, slows getting up.
+#define TRAIT_ENDOWMENTLITE "Natural Endowment" // no drawback version.
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -119,6 +120,9 @@
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 #define TRAIT_NYMPHO_CURSE "Nympho Curse"
+
+//STONEHEDGE TRAITS
+#define TRAIT_USEMAGICITEM "Use Magic Item"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -205,6 +209,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SUPER_NV = span_info("My ability to see in the dark extends further than that of most others, and I can consciously control how bright my surroundings appear to me."),
 	TRAIT_BLINDFIGHTING = span_info("I have an incredible sense of awareness, allowing me to dodge and parry attacks even when I can't see them coming, If i am in high awareness, I can even prevent sneak attacks."),
 	TRAIT_SEESPIRITS = span_necrosis("My eyes peer beyond the veil of life and death, allowing me to perceive spirits."),
+	TRAIT_USEMAGICITEM = span_info("I know my way around magic items by legit means or trickery."),
 ))
 
 // trait accessor defines
@@ -289,7 +294,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
-#define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"

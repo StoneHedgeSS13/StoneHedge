@@ -1,5 +1,6 @@
 /datum/job/roguetown/priest
 	title = "Archpriest"
+	f_title = "Archpriestess"
 	flag = PRIEST
 	department_flag = CHURCHMEN
 	faction = "Station"

@@ -256,8 +256,6 @@
 	message = "gasps out their last breath."
 	message_robot = "shudders violently for a moment before falling still, its eyes slowly darkening."
 	message_AI = "screeches, its screen flickering as its systems slowly halt."
-	message_alien = "lets out a waning guttural screech, and collapses onto the floor..."
-	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
 	message_simple =  "falls limp."
 	stat_allowed = UNCONSCIOUS
@@ -949,6 +947,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled noise."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/clap
@@ -1224,6 +1224,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yawn."
+		else
+			message = initial(message)
 
 /datum/emote/living/warcry
 	key = "warcry"
@@ -1243,6 +1245,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled shout!"
+		else
+			message = initial(message)
 
 /datum/emote/living/custom
 	key = "me"
@@ -1409,6 +1413,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yip."
+		else
+			message = initial(message)
 
 /datum/emote/living/yap
 	key = "yap"
@@ -1428,6 +1434,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yap."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/coyhowl
@@ -1448,6 +1456,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled howl."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/snap
@@ -1494,6 +1504,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled bark."
+		else
+			message = initial(message)
 
 /datum/emote/living/whine
 	key = "whine"
@@ -1513,6 +1525,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled whine."
+		else
+			message = initial(message)
 /datum/emote/living/cackle
 	key = "cackle"
 	key_third_person = "cackles"
@@ -1531,6 +1545,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled cackle."
+		else
+			message = initial(message)
 
 /datum/emote/living/blink
 	key = "blink"
@@ -1563,6 +1579,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled meow."
+		else
+			message = initial(message)
 
 /datum/emote/living/hiss
 	key = "hiss"
@@ -1575,3 +1593,26 @@
 	set category = "Noises"
 
 	emote("hiss", intentional = TRUE)
+
+/datum/emote/living/fart
+	key = "fart"
+	key_third_person = "farts"
+	message = "lets rip a grand fart, holding a pose as if awaiting applause."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_fart()
+	set name = "fart"
+	set category = "Noises"
+
+	// Define the location based on user's turf
+	var/location = get_turf(src)
+
+	// 5% chance to shit yourself
+	if(prob(5))
+		emote("fart", intentional = TRUE)
+		new /obj/item/natural/poo(location) // Spawning the poo item
+		to_chat(src, "Wow. Did I really just shit myself? I'm a loser just like mom said. This isn't funny anymore....")
+		apply_status_effect(/datum/status_effect/debuff/bleeding)
+	else
+		emote("fart", intentional = TRUE)
+

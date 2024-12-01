@@ -225,6 +225,7 @@
 			else
 				user.used_intent.penfactor = initial(user.used_intent.penfactor)//Sanity check to make sure intent penfactor gets reset when the attack isn't a sneak attack.
 		apply_damage(statforce, I.damtype, affecting)
+		SEND_SIGNAL(I, COMSIG_APPLY_REAGENTS, user, affecting.owner)
 		if(I.damtype == BRUTE && affecting.status == BODYPART_ORGANIC)
 			if(prob(statforce))
 				I.add_mob_blood(src)

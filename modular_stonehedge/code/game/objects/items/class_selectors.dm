@@ -144,6 +144,10 @@
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/skull
 				if(/datum/patron/divine/noc)
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/noc
+					H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+					H.mind.adjust_spellpoints(2)
+					H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 				if(/datum/patron/divine/dendor)
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/dendor
 					H.mind.adjust_skillrank_up_to(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
@@ -153,10 +157,7 @@
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/pestra
 				if(/datum/patron/divine/eora) //Eora content from Stonekeep
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/eora
-			if(H.patron?.type == /datum/patron/divine/noc)
-				C.grant_spells_devout_noc(H)
-			else
-				C.grant_spells_devout(H)
+			C.grant_spells_cleric(H)
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
@@ -190,102 +191,3 @@
 		var/spawneditem = new invitem(H.loc)
 		H.pickup_and_wear(spawneditem)
 	qdel(src)
-
-/obj/item/class_selector/test/attack_self(mob/living/carbon/human/H) //test purposes not selectable.
-	. = ..()
-	classes = list("test")
-	var/classchoice = input("Choose your past", "Available archetypes") as anything in classes
-	switch(classchoice)
-		if("test")
-			inventory_items = list(
-				/obj/item/clothing/head/roguetown/helmet/footmanhelmet,
-				/obj/item/clothing/suit/roguetown/armor/plate/scale,
-				/obj/item/clothing/suit/roguetown/armor/chainmail,
-				/obj/item/clothing/under/roguetown/chainlegs,
-				/obj/item/clothing/shoes/roguetown/boots/armor,
-				/obj/item/storage/belt/rogue/leather/black,
-				/obj/item/rogueweapon/mace/pipe,
-				/obj/item/clothing/ring/lantern,
-				/obj/item/storage/belt/rogue/pouch/coins/rich,
-				/obj/item/storage/backpack/rogue/backpack/rucksack,
-				/obj/item/clothing/gloves/roguetown/chain,
-				/obj/item/clothing/wrists/roguetown/hiddenblade,
-				/obj/item/rogueweapon/huntingknife/skin,
-				/obj/item/lockpickring/mundane,
-				/obj/item/reagent_containers/glass/cup/silver.
-			)
-			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			switch(H.patron?.type)
-				if(/datum/patron/divine/astrata)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/astrata
-				if(/datum/patron/inhumen/zizo)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/silver
-				if(/datum/patron/divine/noc)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/noc
-				if(/datum/patron/divine/dendor)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/dendor
-					H.mind.adjust_skillrank_up_to(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
-				if(/datum/patron/divine/necra)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/necra
-				if(/datum/patron/divine/pestra)
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/pestra
-				if(/datum/patron/divine/eora) //Eora content from Stonekeep
-					inventory_items += /obj/item/clothing/neck/roguetown/psicross/eora
-			if(H.patron?.type == /datum/patron/divine/noc)
-				C.grant_spells_devout_noc(H)
-			else
-				C.grant_spells_devout(H)
-			if(H.mind)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 5, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 6, TRUE) // testing smith item qualities
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 6, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
-			H.change_stat("strength", 3)
-			H.change_stat("constitution", 3)
-			H.change_stat("endurance", 3) 
-			H.change_stat("intelligence", 3)
-			H.change_stat("speed", 3)
-			H.change_stat("fortune", 3)
-			ADD_TRAIT(H, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_POISONBITE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDICAL_HUD, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/targeted/churn)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bladeward5e/test)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e/test)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/encodethoughts5e/test)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/poisonspray5e/test)
-			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-			dressup(H, inventory_items)

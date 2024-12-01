@@ -250,6 +250,11 @@
 	volume = 100
 	extra_range = 3
 
+/datum/looping_sound/unholy
+	mid_sounds = list('sound/vo/mobs/ghost/whisper (1).ogg')
+	mid_length = 320
+	volume = 100
+	extra_range = 3
 
 /datum/looping_sound/invokeholy
 	mid_sounds = list('sound/magic/holycharging.ogg')

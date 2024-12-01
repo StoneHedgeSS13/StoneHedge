@@ -7,7 +7,7 @@
 		/datum/species/elf/wood,
 	)
 	maximum_possible_slots = 2
-	traits_applied = list(TRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_USEMAGICITEM)
 	category_tags = list(CTAG_ADVENTURER)
 
 	outfit = /datum/outfit/job/roguetown/adventurer/bladesinger

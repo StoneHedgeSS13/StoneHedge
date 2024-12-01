@@ -27,3 +27,8 @@
 	timer = 5 MINUTES
 	stressadd = -5
 	desc = "<span class='green'>Pain makes it better.</span>"
+
+datum/stressevent/shitself
+	timer = 10 MINUTES
+	stressadd = 10
+	desc =  span_danger("I shit myself, I really went too far...</span>")
