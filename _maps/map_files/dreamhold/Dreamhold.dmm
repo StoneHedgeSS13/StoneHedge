@@ -13998,6 +13998,7 @@
 	desc = "This looks like a good place to pertition adventurers and townsfolk..";
 	name = "Quest Board"
 	},
+/obj/item/paper/quest/lich,
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/garrison{
 	first_time_text = "Adventurers Guild";

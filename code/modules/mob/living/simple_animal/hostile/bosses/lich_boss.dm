@@ -421,3 +421,7 @@ Will require a group to kill, recommend 5+ people.
 	nodismemsleeves = TRUE
 	max_integrity = 600
 	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/paper/quest/lich
+	name = "paper- 'Quest - Challenging'"
+	info = "<strong><center>Group Quest - 5+</center></strong><BR><BR>Scouts have reported large numbers of hostile skeletons excavating a recently uncovered ruin beneath the town. This area can be accessed below the abandoned mines west of town, in the mushroom caves. It is strongly recommended to bring no less than five people to investigate this area."
