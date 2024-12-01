@@ -137,7 +137,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
@@ -160,13 +160,12 @@
 			beltl = /obj/item/rogueweapon/sword/rapier
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
 			H.change_stat("endurance", 1)
-			H.change_stat("speed", 2)
+			H.change_stat("speed", 3)
 			H.change_stat("intelligence", 2)
 			H.visible_message(span_info("I trained as a duelist, flair and precision is my weapon... I can fool people into underestimating me, their last mistake."))
 	pants = /obj/item/clothing/under/roguetown/tights/black
