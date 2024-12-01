@@ -66,6 +66,10 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			cloak = /obj/item/clothing/cloak/templar/abyssor
+		if ("Jayx")
+			H.mind.adjust_spellpoints(3)
+			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
