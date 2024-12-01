@@ -687,7 +687,6 @@
 /area/rogue)
 "il" = (
 /obj/structure/bookcase,
-/obj/item/book/granter/spell/blackstone/invisibility,
 /obj/item/book/granter/spell/spells5e/chilltouch5e,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor{
@@ -1944,14 +1943,6 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
-"wo" = (
-/obj/structure/bookcase,
-/obj/item/book/granter/spell/blackstone/greaterfireball,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
 "wq" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2126,10 +2117,6 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
-"xP" = (
-/mob/living/simple_animal/hostile/morph,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cavewet)
 "xQ" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/end,
 /area/rogue/indoors/town/manor{
@@ -7428,7 +7415,7 @@ BM
 BM
 EW
 EW
-xP
+EW
 Oq
 Oq
 EW
@@ -28391,7 +28378,7 @@ BI
 ky
 ky
 ky
-wo
+vW
 ky
 ky
 ky

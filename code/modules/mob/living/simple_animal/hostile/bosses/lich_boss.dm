@@ -16,8 +16,8 @@ Will require a group to kill, recommend 5+ people.
 	icon = 'icons/mob/evilpope.dmi'
 	icon_state = "EvilPope"
 	wander = 0
-	vision_range = 6 
-	aggro_vision_range = 18
+	vision_range = 8 
+	aggro_vision_range = 24
 	ranged = 1
 	rapid = 3
 	rapid_fire_delay = 8
@@ -25,13 +25,14 @@ Will require a group to kill, recommend 5+ people.
 	ranged_cooldown_time = 40
 	ranged_ignores_vision = TRUE
 	environment_smash = 0
-	minimum_distance = 12
+	minimum_distance = 8
 	retreat_distance = 0
 	move_to_delay = 10
 	obj_damage = 100
 	base_intents = list(/datum/intent/simple/lich)
 	melee_damage_lower = 60
 	melee_damage_upper = 80
+	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	health = 5000
 	maxHealth = 5000
 	STASTR = 12
