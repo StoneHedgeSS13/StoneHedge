@@ -596,3 +596,12 @@
 /datum/quirk/endowed/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent)
+
+/datum/quirk/endowedlite
+	name = "Naturally Endowed"
+	desc = "I have massive bits, they are natural and not emburdening like an enchanted endowment."
+	value = 0
+
+/datum/quirk/endowedlite/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent/lite)

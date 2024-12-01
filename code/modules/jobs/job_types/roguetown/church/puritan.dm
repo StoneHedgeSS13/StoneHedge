@@ -26,7 +26,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 36
-	min_pq = 0
+	min_pq = 10
 	max_pq = null
 
 /datum/outfit/job/roguetown/puritan
@@ -78,6 +78,7 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_clergy.ogg'
 
 /mob/living/carbon/human/proc/torture_victim()

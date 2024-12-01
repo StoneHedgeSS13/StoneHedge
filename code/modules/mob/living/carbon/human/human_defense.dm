@@ -203,6 +203,7 @@
 				L.add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 				emote("embed")
 				L.receive_damage(I.w_class*I.embedding.embedded_impact_pain_multiplier)
+				SEND_SIGNAL(I, COMSIG_APPLY_REAGENTS, I.thrownby, L)
 //					visible_message(span_danger("[I] embeds itself in [src]'s [L.name]!"),span_danger("[I] embeds itself in my [L.name]!"))
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "embedded", /datum/mood_event/embedded)
 				hitpush = FALSE

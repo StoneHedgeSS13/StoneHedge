@@ -88,6 +88,7 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
@@ -131,6 +132,7 @@
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) //they are killers
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
@@ -181,6 +183,7 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //if they got all the shield and parry stuff, might aswell.
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC) //extra damage to groin (dirty fighting)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC) //funny nose grab.
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.change_stat("strength", 1)
 	H.change_stat("speed", 3)
 	H.change_stat("perception", 1)
@@ -220,6 +223,7 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC) //extra damage to groin (dirty fighting)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.change_stat("strength", -1)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
@@ -267,6 +271,7 @@
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) //never queezy around death
 	ADD_TRAIT(H, TRAIT_SIXTHSENSE, TRAIT_GENERIC) //can hear ghosts
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC) //can determine if someone has their soul.
+	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", 2)

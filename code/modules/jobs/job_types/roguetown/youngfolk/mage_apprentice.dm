@@ -15,6 +15,7 @@
 
 	display_order = JDO_MAGEAPPRENTICE
 	give_bank_account = TRUE
+	traits_applied = list(TRAIT_USEMAGICITEM)
 
 	min_pq = 0
 	max_pq = null

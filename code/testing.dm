@@ -15,4 +15,3 @@
 #endif
 
 //#define WARTIME
-#define FASTLOAD

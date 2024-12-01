@@ -6,7 +6,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/warlock
-	//traits_applied = list(TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_bandit_mage.ogg'
 
@@ -90,6 +89,7 @@
 			H.change_stat("intelligence", 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/guidance5e)
+			ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
 		if("power") //empowered eldritch blast
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e/empowered)

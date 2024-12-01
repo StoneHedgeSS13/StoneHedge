@@ -31,7 +31,8 @@
 	if(L == src)
 		return FALSE
 
-	if(L.job in list("Hedge Knight", "Hedgemaster"))
+	//leaders arent shat on.
+	if(L.job in list("Hedge Knight", "Hedgemaster", "Guildmaster", "Guild Appraiser", "Grandmaster", "Archpriest", "Archpriestess", "Wytcher", "Wytcher Captain"))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_PACIFISM))
@@ -222,7 +223,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 
 /mob/living/carbon/human/species/human/smartnpc/townguard/retaliate(mob/living/L)
 	var/newtarg = target
-	if(L.job in list("Hedge Knight", "Hedgemaster"))
+	if(L.job in list("Hedge Knight", "Hedgemaster", "Guildmaster", "Guild Appraiser", "Grandmaster", "Archpriest", "Archpriestess", "Wytcher", "Wytcher Captain"))
 		return
 	if(lasthitter != target)
 		say(pick(aggromessages))

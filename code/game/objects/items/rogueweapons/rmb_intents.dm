@@ -10,7 +10,7 @@
 		return
 	if(user.incapacitated())
 		return
-	var/mob/living/carbon/human/L = target
+	var/mob/living/carbon/L = target
 	user.changeNext_move(CLICK_CD_RAPID)
 	playsound(user, 'sound/combat/feint.ogg', 100, TRUE)
 	user.visible_message(span_danger("[user] feints an attack at [target]!"))
@@ -39,8 +39,6 @@
 				L.Immobilize(30)
 				to_chat(user, span_notice("[L] is tripped up by my combat maneuver and momentarily stunned!"))
 				user.apply_status_effect(/datum/status_effect/debuff/feintcd)
-				L.target = user
-				L.retaliate(user)
 			else
 				to_chat(user, span_warning("[L] avoids my trip maneuver... 80%"))
 			return

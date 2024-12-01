@@ -9,6 +9,7 @@
 	var/reading = FALSE //sanity
 	var/oneuse = TRUE //default this is true, but admins can var this to 0 if we wanna all have a pass around of the rod form book
 	var/used = FALSE //only really matters if oneuse but it might be nice to know if someone's used it for admin investigations perhaps
+	var/required_trait = null
 
 /obj/item/book/granter/proc/turn_page(mob/user)
 	playsound(user, pick('sound/blank.ogg'), 30, TRUE)
@@ -54,6 +55,10 @@
 	if(user.STAINT < 8)
 		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 		return FALSE
+	if(required_trait)
+		if(!HAS_TRAIT(user, required_trait))
+			to_chat(user, span_warning("You can't figure out a way to use this!"))
+			return
 	if(used)
 		if(oneuse)
 			recoil(user)
@@ -255,6 +260,7 @@
 /obj/item/book/granter/spell
 	var/spell
 	var/spellname = "conjure bugs"
+	required_trait = TRAIT_USEMAGICITEM
 
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)

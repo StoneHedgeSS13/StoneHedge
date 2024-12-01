@@ -3632,6 +3632,7 @@
 #include "modular_stonehedge\code\datums\traits\unspecial.dm"
 #include "modular_stonehedge\code\game\area\roguetownareas.dm"
 #include "modular_stonehedge\code\game\objects\items\class_selectors.dm"
+#include "modular_stonehedge\code\game\objects\items\rogueweapons\reagent_coating.dm"
 #include "modular_stonehedge\code\game\objects\structures\dungeon\lewd_statues.dm"
 #include "modular_stonehedge\code\game\objects\structures\dungeon\loot_generators\dungeon_chest.dm"
 #include "modular_stonehedge\code\lewdai\lewdai.dm"

@@ -208,26 +208,6 @@
 	prayer_effectiveness = 2
 	to_chat(holder, span_boldnotice("I have been welcomed back to the Church. I am now able to gain devotion again."))
 
-/datum/devotion/proc/grant_spells_devout_noc(mob/living/carbon/human/H)
-	if(!H || !H.mind || !patron)
-		return
-
-	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2)
-	for(var/spell_type in spelllist)
-		if(!spell_type || H.mind.has_spell(spell_type))
-			continue
-		var/newspell = new spell_type
-		H.mind.AddSpell(newspell)
-		LAZYADD(granted_spells, newspell)
-	level = CLERIC_T0
-	max_progression = CLERIC_REQ_4
-	max_devotion = CLERIC_REQ_4
-	passive_devotion_gain = 1
-	passive_progression_gain = 1
-	update_devotion(100, CLERIC_REQ_4, silent = TRUE)
-	START_PROCESSING(SSobj, src)
-
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
 	set name = "(DEBUG)Change Devotion"

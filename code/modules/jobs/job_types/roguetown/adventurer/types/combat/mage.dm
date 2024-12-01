@@ -7,6 +7,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_bandit_mage.ogg'
+	traits_applied = list(TRAIT_USEMAGICITEM)
 
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)

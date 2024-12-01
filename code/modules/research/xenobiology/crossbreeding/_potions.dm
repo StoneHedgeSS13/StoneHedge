@@ -113,7 +113,7 @@ Slimecrossing Potions
 
 /obj/item/slimepotion/endowpotion/attack(mob/living/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
-		to_chat(user, span_warning("The love potion only works on living things, sicko!"))
+		to_chat(user, span_warning("The endowment potion only works on living things, sicko!"))
 		return ..()
 
 	if(M.has_status_effect(STATUS_EFFECT_ENDOWED))
@@ -127,7 +127,7 @@ Slimecrossing Potions
 	if(uses <= 0)
 		to_chat(M, span_notice("The potion is useless now."))
 		qdel(src)
-	to_chat(user, span_notice("I feed [M] the love potion!"))
+	to_chat(user, span_notice("I feed [M] the endowment potion!"))
 	if(M.has_status_effect(STATUS_EFFECT_ENDOWED))
 		M.remove_status_effect(STATUS_EFFECT_ENDOWED)
 	M.apply_status_effect(STATUS_EFFECT_ENDOWED)
