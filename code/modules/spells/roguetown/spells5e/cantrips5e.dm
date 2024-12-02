@@ -938,8 +938,8 @@
 /datum/status_effect/buff/infestation5e/tick()
 	var/mob/living/target = owner
 	var/mob/living/carbon/M = target
-	target.adjustToxLoss(3)
-	target.adjustBruteLoss(2)
+	target.adjustToxLoss(2)
+	target.adjustBruteLoss(1)
 	var/prompt = pick(1,2,3)
 	var/message = pick(
 		"Ticks on my skin start to engorge with blood!",
