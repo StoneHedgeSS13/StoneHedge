@@ -57,7 +57,7 @@
 	name = "poisoned bolt"
 	damage = 70
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/poison
-	poisontype = /datum/reagent/berrypoison
+	poisontype = /datum/reagent/toxin/berrypoison
 	poisonfeel = "burning" //Ditto
 	poisonamount = 7 //Can't spam crossbows as much as bows, and its a thiccer projectile so slight more poison in bolts.
 
@@ -167,7 +167,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
+	poisontype = /datum/reagent/toxin/berrypoison //Support for future variations of poison for arrow-crafting
 	poisonfeel = "burning" //Ditto
 	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
 

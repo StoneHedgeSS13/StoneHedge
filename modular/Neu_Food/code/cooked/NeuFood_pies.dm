@@ -498,7 +498,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison
 	name = "berry pie"
 	slices_num = 4
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD, /datum/reagent/berrypoison = 12)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD, /datum/reagent/toxin/berrypoison = 12)
 	tastes = list("crispy butterdough" = 1, "bitter berries" =1)
 	filling_color = "#4a62cf"
 
@@ -538,7 +538,7 @@
 	tastes = list("berry" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/poison
-	list_reagents = list(/datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 5)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | FRUIT
 	tastes = list("bitter berry" = 1)

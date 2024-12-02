@@ -41,7 +41,7 @@
 		backpack_contents = list(
 		/obj/item/reagent_containers/glass/alembic = 1,
 		/obj/item/storage/fancy/ifak = 1,
-		/obj/item/clothing/ring/lantern = 1,
+		/obj/item/flashlight/flare/torch/lantern/ring = 1,
 		/obj/item/storage/box/matches = 1,
 		)
 		H.change_stat("intelligence", 3)
@@ -57,7 +57,7 @@
 		backpack_contents = list(
 		/obj/item/reagent_containers/glass/alembic = 1,
 		/obj/item/storage/fancy/ifak = 1,
-		/obj/item/clothing/ring/lantern = 1,
+		/obj/item/flashlight/flare/torch/lantern/ring = 1,
 		/obj/item/storage/box/matches = 1,
 		)
 		H.change_stat("intelligence", 3) // bob I like your code work but you are a sexist prick and I hate wiping your ass of this lil subtle stab shit.

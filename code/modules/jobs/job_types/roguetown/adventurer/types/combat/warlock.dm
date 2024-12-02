@@ -486,6 +486,7 @@
 		return
 
 /obj/item/book/rogue/eldritch/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your intellect shrinks away"))
 		user.change_stat("intelligence", -1)
@@ -554,6 +555,7 @@
 		return
 
 /obj/item/clothing/ring/gold/signet/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("You feel like a peasant."))
 		REMOVE_TRAIT(user, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -588,6 +590,7 @@
 		return
 
 /obj/item/clothing/neck/roguetown/psicross/eldritch/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your stroke of luck has ended."))
 		user.change_stat("fortune", -3)
@@ -626,6 +629,7 @@
 		return
 
 /obj/item/rope/chain/constellation/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your purpose is scattered to the wind"))
 
@@ -666,5 +670,6 @@
 			soullink(/datum/soullink/oneway/delay, item_owner, user)
 
 /obj/item/clothing/ring/diamond/soulbond/dropped(mob/living/user)
+	. = ..()
 	qdel(user.GetComponent(/datum/soullink/oneway))
 	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)

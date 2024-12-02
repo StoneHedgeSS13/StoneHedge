@@ -211,7 +211,7 @@
 	seed = /obj/item/seeds/berryrogue/poison
 	icon_state = "berries"
 	tastes = list("berry" = 1)
-	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
 	color_index = "bad"
 	mill_result = /obj/item/reagent_containers/powder/alch/berryp
 	
@@ -224,7 +224,7 @@
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/berrypoison = 5)
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = 15 MINUTES
@@ -238,7 +238,7 @@
 	bitesize_mod = 1
 	foodtype = VEGETABLES
 	tastes = list("sweet" = 1,"bitterness" = 1)
-	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = 15 MINUTES

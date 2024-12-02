@@ -73,8 +73,8 @@
 	var/detail_color
 	var/boobed_detail = TRUE //Whether details have their own boobed sprite
 
-/obj/item/clothing/New()
-	..()
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
 	if(armor_class)
 		has_inspect_verb = TRUE
 
@@ -336,13 +336,14 @@
 	// Frankly just rewrite armor entirely. This system just sucks. This proc in particular should probably just set a broken flag,
 	// and code taking into account armor should check if an armor piece is not broken.
 
-	for(var/x in armor)
-		if(armor[x] > 0)
+	var/list/armorlist = armor.getList()
+	for(var/x in armorlist)
+		if(armorlist[x] > 0)
 			brokemessage = TRUE
-			armor[x] = 0
+			armorlist[x] = 0
 	if(ismob(loc) && brokemessage)
 		var/mob/M = loc
-		to_chat(M, "ARMOR BROKEN..!")
+		to_chat(M, "ARMOR BROKEN...!")
 	..()
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)

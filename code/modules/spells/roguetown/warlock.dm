@@ -216,11 +216,11 @@
 		if(valid_input_name)
 			fam.fully_replace_character_name(null, "[valid_input_name]")
 		user.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/findfamiliar)
-	else	
+	else
 		to_chat(user, span_notice("You could not find a familiar..."))
 		revert_cast()
 
-/obj/effect/proc_holder/spell/self/findfamiliar/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
+/obj/effect/proc_holder/spell/self/findfamiliar/proc/custom_name(mob/awakener, mob/chosen_one, iteration = 1)
 	if(iteration > 5)
 		return "indecision" // The spirit of indecision
 	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))

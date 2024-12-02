@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(treasury)
 		give_money_treasury(amt_to_generate, "wealth hoard")
 		send_ooc_note("Income from wealth hoard: +[amt_to_generate]", job = list("Monarch", "Steward", "Clerk"))
 
-/datum/controller/subsystem/treasury/proc/add_to_vault(var/obj/item/I)
+/datum/controller/subsystem/treasury/proc/add_to_vault(obj/item/I)
 	if(I.get_real_price() <= 0 || istype(I, /obj/item/roguecoin))
 		return
 	if(!I.submitted_to_stockpile)

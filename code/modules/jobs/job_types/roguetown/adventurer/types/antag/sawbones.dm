@@ -24,7 +24,7 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,
 		/obj/item/clothing/mask/rogue/physician = 1,
 		/obj/item/storage/box/matches = 1, /// for carterizer and lantern.
-		/obj/item/clothing/ring/lantern = 1,
+		/obj/item/flashlight/flare/torch/lantern/ring = 1,
 		/obj/item/storage/fancy/skit = 1,
 	)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)

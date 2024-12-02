@@ -71,7 +71,7 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 	if(.)
 		return
 	if(!iscultist(user))
-		to_chat(user, span_warning("I aren't able to understand the words of [src]."))
+		to_chat(user, span_warning("I'm not able to understand the words of [src]."))
 		return
 	var/list/invokers = can_invoke(user)
 	if(invokers.len >= req_cultists)

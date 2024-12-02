@@ -4863,6 +4863,7 @@
 "dDB" = (
 /obj/structure/bed/rogue/inn/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
+/obj/effect/landmark/start/magician,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -7610,6 +7611,7 @@
 "fDU" = (
 /obj/structure/bed/rogue/inn/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
+/obj/effect/landmark/start/magician,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -27559,10 +27561,6 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
-"uHl" = (
-/obj/effect/landmark/start/magician,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/library)
 "uHw" = (
 /obj/structure/spider/stickyweb{
 	dir = 4;
@@ -30336,11 +30334,11 @@
 	name = "Shores of the Emerald Coast"
 	})
 "xbi" = (
-/obj/effect/landmark/start/magician,
+/obj/effect/landmark/start/templar,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/outdoors/exposed/magiciantower{
-	first_time_text = "Ravenloft Academy";
-	name = "Schoolgrounds"
+/area/rogue/indoors/town/church/chapel{
+	first_time_text = "Shrine of Lune";
+	name = "Shrine of Lune"
 	})
 "xbp" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -31240,17 +31238,17 @@
 "xKI" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/hammer{
-	color = gold;
+	color = "gold"
 	desc = "A mastercrafted smith's hammer carrying the blessing of Malum.";
 	name = "Hammer of Malum"
 	},
 /obj/item/rogueweapon/hammer{
-	color = gold;
+	color = "gold"
 	desc = "A mastercrafted smith's hammer carrying the blessing of Malum.";
 	name = "Hammer of Malum"
 	},
 /obj/item/rogueweapon/hammer{
-	color = gold;
+	color = "gold"
 	desc = "A mastercrafted smith's hammer carrying the blessing of Malum.";
 	name = "Hammer of Malum"
 	},
@@ -114862,17 +114860,17 @@ mYC
 aUw
 cTS
 rLH
-ugK
+lwi
 iBM
 vLX
 ioM
 hfJ
-xbi
+fXQ
 fXQ
 ioM
 vLX
 iBM
-ugK
+lwi
 fCc
 hjD
 npG
@@ -120507,9 +120505,9 @@ xis
 sPq
 sPq
 vcN
-kan
+xbi
 pJt
-kan
+xbi
 cal
 kan
 cVO
@@ -120911,9 +120909,9 @@ xis
 nGq
 nfv
 lXw
-kan
+xbi
 eLJ
-kan
+xbi
 tax
 cVO
 kan
@@ -147790,7 +147788,7 @@ egl
 vLX
 tIR
 iqN
-uHl
+eFQ
 eFQ
 enc
 qDr
@@ -147798,7 +147796,7 @@ sOt
 sOt
 rlO
 eFQ
-uHl
+eFQ
 eFQ
 tIR
 vLX
@@ -183145,7 +183143,7 @@ vBX
 dDB
 vLX
 mpi
-lwi
+ugK
 lwi
 vLX
 dDB

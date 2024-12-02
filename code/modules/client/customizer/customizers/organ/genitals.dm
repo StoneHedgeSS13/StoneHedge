@@ -285,8 +285,8 @@
 					return
 				var/new_size = GLOB.named_ball_sizes[named_size]
 				testicles_entry.organ_size = sanitize_integer(new_size, MIN_TESTICLES_SIZE, MAX_TESTICLES_SIZE, DEFAULT_TESTICLES_SIZE)
-		if("virile")
-			testicles_entry.virility = !testicles_entry.virility
+			if("virile")
+				testicles_entry.virility = !testicles_entry.virility
 /datum/customizer/organ/testicles/external
 	customizer_choices = list(/datum/customizer_choice/organ/testicles/external)
 

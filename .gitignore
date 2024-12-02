@@ -221,3 +221,8 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 tgui/src/images/syndicate.svg
 tgui/src/images/nanotrasen.svg
 /data
+
+/prof.dll
+
+# OpenDream-compiled DME
+/roguetown.json

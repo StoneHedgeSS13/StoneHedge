@@ -404,9 +404,9 @@
 		if(!H?.check_armor_skill())
 			H.Knockdown(1)
 			return FALSE
-//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
-			if(H?.check_dodge_skill())
-				drained = drained - 5
+		//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
+		if(H?.check_dodge_skill())
+			drained = drained - 5
 
 		if(I) //the enemy attacked us with a weapon
 			if(!I.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack

@@ -313,7 +313,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow = 1,
-				/datum/reagent/berrypoison = 5
+				/datum/reagent/toxin/berrypoison = 5
 				)
 	req_table = FALSE
 
@@ -331,7 +331,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
-				/datum/reagent/berrypoison = 5
+				/datum/reagent/toxin/berrypoison = 5
 				)
 	req_table = FALSE
 
@@ -349,7 +349,7 @@
 	name = "poisoned bolt"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
-				/datum/reagent/berrypoison = 5)
+				/datum/reagent/toxin/berrypoison = 5)
 
 	req_table = TRUE
 
@@ -364,7 +364,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow = 5,
-				/datum/reagent/berrypoison = 25
+				/datum/reagent/toxin/berrypoison = 25
 				)
 
 	req_table = FALSE
@@ -415,7 +415,7 @@
 	name = "poisoned bolts (x5)"
 	result = list(/obj/item/ammo_casing/caseless/rogue/bolt/poison = 5)
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
-				/datum/reagent/berrypoison = 25)
+				/datum/reagent/toxin/berrypoison = 25)
 
 	req_table = TRUE
 
@@ -430,7 +430,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
-				/datum/reagent/berrypoison = 25
+				/datum/reagent/toxin/berrypoison = 25
 				)
 
 	req_table = FALSE

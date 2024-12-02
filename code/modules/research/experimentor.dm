@@ -589,7 +589,7 @@
 			call(src,realProc)(user)
 			addtimer(CALLBACK(src, PROC_REF(cd)), cooldownMax)
 	else
-		to_chat(user, span_notice("I aren't quite sure what to do with this yet."))
+		to_chat(user, span_notice("I'm not quite sure what to do with this yet."))
 
 /obj/item/relic/proc/cd()
 	cooldown = FALSE

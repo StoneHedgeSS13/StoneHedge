@@ -9,19 +9,32 @@
 	alpha = 173
 
 /datum/reagent/medicine/minorhealthpot/on_mob_life(mob/living/carbon/M) // Heals half as much as health potion, but not wounds.
-	M.adjustBruteLoss(-0.5*REM, 0) // 20u = 25 points of healing
-	M.adjustFireLoss(-0.5*REM, 0)
-	M.adjustOxyLoss(-1, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
-	M.adjustCloneLoss(-1*REM, 0)
+	var/list/wCount = M.get_wounds()
+	for(var/obj/item/organ/filling_organ/forgan in M.internal_organs) //auto detected heal of filling organs
+		M.adjustOrganLoss(forgan.slot, -1)
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL) //can not overfill
+		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0 && prob(50)) //half as effective as a normal health pot but still heals wounds.
+		M.heal_wounds(1)
+		M.update_damage_overlays()
+		to_chat(M, span_nicegreen("I feel one of my wounds mend."))
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,1)
+	M.adjustBruteLoss(-0.5, 0) // 20u = 25 points of healing
+	M.adjustFireLoss(-0.5, 0)
+	M.adjustToxLoss(-0.5, 0)
+	M.adjustOxyLoss(-1.5, 0)
+	M.adjustCloneLoss(-1, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_EARS, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1)
 	..()
 	. = 1
 
@@ -47,21 +60,25 @@
 		M.heal_wounds(1)
 		M.update_damage_overlays()
 		to_chat(M, span_nicegreen("I feel one of my wounds mend."))
-	M.adjustBruteLoss(-0.5*REM, 0) // 20u = 50 points of healing
-	M.adjustFireLoss(-0.5*REM, 0)
-	M.adjustOxyLoss(-1*REM, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
 	for(var/obj/item/organ/filling_organ/forgan in M.internal_organs) //auto detected heal of filling organs
-		M.adjustOrganLoss(forgan.slot, -1*REM)
-	M.adjustCloneLoss(-1*REM, 0)
+		M.adjustOrganLoss(forgan.slot, -2)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,2)
+	M.adjustBruteLoss(-1, 0) // 20u = 50 points of healing
+	M.adjustFireLoss(-1, 0)
+	M.adjustToxLoss(-1, 0)
+	M.adjustOxyLoss(-3, 0)
+	M.adjustCloneLoss(-2, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_EARS, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -2)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -2)
 	..()
 	. = 1
 
@@ -84,27 +101,31 @@
 	if(wCount.len > 0)
 		M.heal_wounds(4)
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-1.5*REM, 0) // 20u = 150 points of healing.
-	M.adjustFireLoss(-1.5*REM, 0)
-	M.adjustOxyLoss(-3, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -3*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3*REM)
 	for(var/obj/item/organ/filling_organ/forgan in M.internal_organs) //auto detected heal of filling organs
-		M.adjustOrganLoss(forgan.slot, -1*REM)
-	M.adjustCloneLoss(-3*REM, 0)
+		M.adjustOrganLoss(forgan.slot, -3)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,3)
+	M.adjustBruteLoss(-1.5, 0) // 20u = 150 points of healing.
+	M.adjustFireLoss(-1.5, 0)
+	M.adjustToxLoss(-1.5, 0)
+	M.adjustOxyLoss(-5, 0)
+	M.adjustCloneLoss(-3, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_EARS, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -3)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3)
 	..()
 	. = 1
 
 /datum/reagent/medicine/majorhealthpot/overdose_process(mob/living/carbon/M) // Savor your supreme healing, or else.
 	M.add_nausea(15)
-	M.adjustBruteLoss(1*REM, 0)
+	M.adjustBruteLoss(1, 0)
 	M.adjustToxLoss(3, 0)
 	M.blood_volume = min(M.blood_volume+100, BLOOD_VOLUME_MAXIMUM) // Full to bursting.
 
@@ -127,20 +148,23 @@
 	if(wCount.len > 0)
 		M.heal_wounds(6)
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-4.5*REM, 0)
-	M.adjustFireLoss(-4.5*REM, 0)
-	M.adjustToxLoss(-4.5*REM, 0)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,4)
+	M.adjustBruteLoss(-4.5, 0)
+	M.adjustFireLoss(-4.5, 0)
+	M.adjustToxLoss(-4.5, 0)
 	M.adjustOxyLoss(-9, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EARS, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -9*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9*REM)
-	M.adjustCloneLoss(-9*REM, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_EARS, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -9)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9)
+	M.adjustCloneLoss(-9, 0)
 	..()
 	. = 1
 
@@ -170,7 +194,7 @@
 
 /datum/reagent/medicine/sublimeambrosia/overdose_process(mob/living/carbon/M) // This is meant for the dead, or near dead. Imbibe at own risk.
 	M.add_nausea(25)
-	M.adjustBruteLoss(3*REM, 0)
+	M.adjustBruteLoss(3, 0)
 	M.dizziness += 2
 	M.confused += 2
 	M.adjustToxLoss(15, 0)
@@ -178,7 +202,7 @@
 
 /datum/reagent/medicine/shroomt
 	name = "Shroom Tea"
-	description = "Extremely slowly regenerates all types of damage. long lasting."
+	description = "Extremely slowly regenerates all types of damage. long lasting, and purges toxins slowly."
 	reagent_state = LIQUID
 	color = "#476e4d"
 	taste_description = "dirt"
@@ -195,9 +219,15 @@
 	if(wCount.len > 0)
 		M.heal_wounds(1)
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-0.2*REM, 0)
-	M.adjustToxLoss(-0.2*REM, 0)
-	M.adjustFireLoss(-0.2*REM, 0)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,1)
+	M.adjustToxLoss(-0.8, 0)
+	M.adjustBruteLoss(-0.4, 0)
+	M.adjustToxLoss(-0.4, 0)
+	M.adjustFireLoss(-0.4, 0)
+	M.adjustOxyLoss(-0.4, 0)
+	M.rogstam_add(25)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5)
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -5)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, -0.5)
@@ -207,10 +237,8 @@
 	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -0.5)
 	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -0.5)
 	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -0.5)
-	M.adjustOxyLoss(-1, 0)
-	M.rogstam_add(25)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
-	M.adjustCloneLoss(-1*REM, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1)
+	M.adjustCloneLoss(-1, 0)
 	..()
 	. = 1
 
@@ -243,9 +271,9 @@
 	alpha = 200
 
 /datum/reagent/medicine/antipregnancy/on_mob_life(mob/living/carbon/M)
-	if(istype(holder, /obj/item/organ/filling_organ))
-		var/obj/item/organ/filling_organ/forgan = holder
+	for(var/obj/item/organ/filling_organ/forgan in M)
 		if(forgan.pregnant)
+			to_chat(M, "I feel like I lost a part of me. The pregnancy is no more.")
 			forgan.undo_preggoness()
 	M.add_nausea(0.2)
 	..()
@@ -268,113 +296,14 @@
 /datum/reagent/medicine/antipoisonpot/on_mob_life(mob/living/carbon/M)
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
-			M.reagents.remove_reagent(R.type,0.5)
-	M.adjustToxLoss(-0.5*REM, 0)
-	if(M.has_status_effect(STATUS_EFFECT_ENDOWED))
-		M.remove_status_effect(STATUS_EFFECT_ENDOWED)
+			M.reagents.remove_reagent(R.type,5)
+	M.adjustToxLoss(-5, 0)
 	..()
 	. = 1
 
 /datum/reagent/medicine/antipoisonpot/overdose_process(mob/living/carbon/M)
 	M.add_nausea(9)
 	M.adjustToxLoss(3, 0)
-
-/datum/reagent/berrypoison
-	name = "Berry Poison"
-	description = "Contains a poisonous thick, dark purple liquid."
-	reagent_state = LIQUID
-	color = "#00B4FF"
-	metabolization_rate = 0.1
-
-/datum/reagent/berrypoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
-		M.add_nausea(9)
-		M.adjustToxLoss(3, 0)
-	return ..()
-
-/datum/reagent/organpoison
-	name = "Organ Poison"
-	description = "A viscous black liquid clings to the glass."
-	reagent_state = LIQUID
-	color = "#ff2f00"
-	metabolization_rate = 0.1
-
-/datum/reagent/organpoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER) && !HAS_TRAIT(M, TRAIT_WILD_EATER))
-		M.add_nausea(9)
-		M.adjustToxLoss(3, 0)
-	return ..()
-
-
-/datum/reagent/infection
-	name = "excess choleric humour"
-	description = "Red-yellow pustulence - the carrier of disease, the enemy of all Pestrans."
-	reagent_state = LIQUID
-	color = "#dfe36f"
-	metabolization_rate = 0.1
-	var/damage_tick = 0.3
-	var/lethal_fever = FALSE
-	var/fever_multiplier = 1
-
-/datum/reagent/infection/on_mob_life(mob/living/carbon/M)
-	var/heat = (BODYTEMP_AUTORECOVERY_MINIMUM + clamp(volume, 3, 15)) * fever_multiplier
-	if(HAS_TRAIT(M, TRAIT_SNEK))
-		M.apply_status_effect(/datum/status_effect/buff/healing)
-		if(holder.has_reagent(/datum/reagent/infection))
-			holder.remove_reagent(/datum/reagent/infection, 9999)
-			return
-	M.adjustToxLoss(damage_tick, 0)
-	if (lethal_fever)
-		M.adjust_bodytemperature(heat, 0)
-		if (prob(5))
-			to_chat(M, span_warning("A wicked heat settles within me... I feel ill. Very ill."))
-	else
-		M.adjust_bodytemperature(heat, 0, BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
-		if (prob(5))
-			to_chat(M, span_warning("I feel a horrible chill despite the sweat rolling from my brow..."))
-	return ..()
-
-/datum/reagent/infection/minor
-	name = "disrupted choleric humor"
-	description = "Symptomatic of disrupted humours."
-	damage_tick = 0.1
-	lethal_fever = FALSE
-
-/datum/reagent/infection/minor/on_mob_life(mob/living/carbon/M)
-	var/heat = (BODYTEMP_AUTORECOVERY_MINIMUM + clamp(volume, 3, 15)) * fever_multiplier
-	if(HAS_TRAIT(M, TRAIT_SNEK))
-		M.apply_status_effect(/datum/status_effect/buff/healing)
-		if(holder.has_reagent(/datum/reagent/infection/minor))
-			holder.remove_reagent(/datum/reagent/infection/minor, 9999)
-			return
-	M.adjustToxLoss(damage_tick, 0)
-	if (lethal_fever)
-		M.adjust_bodytemperature(heat, 0)
-		if (prob(5))
-			to_chat(M, span_warning("A wicked heat settles within me... I feel ill. Very ill."))
-	else
-		M.adjust_bodytemperature(heat, 0, BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
-		if (prob(5))
-			to_chat(M, span_warning("I feel a horrible chill despite the sweat rolling from my brow..."))
-	return ..()
-
-/datum/reagent/infection/major
-	name = "excess melancholic humour"
-	description = "Kingsfield's Bane. Excess melancholic has killed thousands, and even Pestra's greatest struggle against its insidious advance."
-	damage_tick = 1
-	lethal_fever = TRUE
-	fever_multiplier = 3
-
-/datum/reagent/infection/major/on_mob_life(mob/living/carbon/M)
-	if(HAS_TRAIT(M, TRAIT_SNEK))
-		M.apply_status_effect(/datum/status_effect/buff/healing)
-		if(holder.has_reagent(/datum/reagent/infection/major))
-			holder.remove_reagent(/datum/reagent/infection/major, 9999)
-			return
-	if (M.badluck(1))
-		M.reagents.add_reagent(src, rand(1,3))
-		to_chat(M, span_small("I feel even worse..."))
-	return ..()
 
 /datum/reagent/medicine/caffeine
 	name = "caffeine"
@@ -416,10 +345,10 @@
 		M.heal_wounds(2) //same as health pot only heal wounds while bleeding. technically.
 		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_NORMAL)
 	if(M.health <= M.crit_threshold)
-		M.adjustToxLoss(-0.5*REM, 0)
-		M.adjustBruteLoss(-0.5*REM, 0)
-		M.adjustFireLoss(-0.5*REM, 0)
-		M.adjustOxyLoss(-0.5*REM, 0)
+		M.adjustToxLoss(-0.5, 0)
+		M.adjustBruteLoss(-0.5, 0)
+		M.adjustFireLoss(-0.5, 0)
+		M.adjustOxyLoss(-0.5, 0)
 	if(M.losebreath >= 4)
 		M.losebreath -= 2
 	if(M.losebreath < 0)
@@ -435,9 +364,9 @@
 	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
 
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
-	M.adjustFireLoss(0.5*REM, 0)
+	M.adjustFireLoss(0.5, 0)
 	M.heal_wounds(3)
-	M.reagents.remove_reagent(/datum/reagent/infection, 9999)
+	M.reagents.remove_reagent(/datum/reagent/toxin/infection, 9999)
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
 		// Iterate through wounds on each body part
@@ -454,7 +383,7 @@
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
 
 			// Handle destruction of the wound
-			W.Destroy(0)
+			qdel(W)
 
 	M.update_damage_overlays()
 
@@ -472,14 +401,14 @@
 		M.blood_volume = min(M.blood_volume+200, BLOOD_VOLUME_MAXIMUM)
 	else
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
+	if(wCount.len > 0)
 		M.heal_wounds(6)
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-4.5*REM, 0)
-	M.adjustFireLoss(-4.5*REM, 0)
+	M.adjustBruteLoss(-4.5, 0)
+	M.adjustFireLoss(-4.5, 0)
 	M.adjustOxyLoss(-9, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9*REM)
-	M.adjustCloneLoss(-9*REM, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -9)
+	M.adjustCloneLoss(-9, 0)
 	..()
 	. = 1
 
@@ -513,10 +442,10 @@
 	M.dizziness += 2
 	M.confused += 2
 	M.adjustToxLoss(15, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART, 5*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_LIVER, 5*REM)
-	M.adjustOrganLoss(ORGAN_SLOT_EYES, 5*REM)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, 5)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, 5)
 
 ///////////////////////// alch BS
 
@@ -578,8 +507,8 @@
 	brew_reagent = /datum/reagent/alch/syrump
 	brew_amt = 24
 	can_brew = TRUE
-	list_reagents = list(/datum/reagent/berrypoison = 10)
-	grind_results = list(/datum/reagent/berrypoison = 10)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 10)
+	grind_results = list(/datum/reagent/toxin/berrypoison = 10)
 	volume = 10
 
 /obj/item/reagent_containers/powder/alch/mincem
@@ -647,8 +576,8 @@
 	overdose_threshold = null
 
 /datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
-	M.adjustToxLoss(-1*REM, 0)
-	M.adjustFireLoss(0.25*REM, 0)
+	M.adjustToxLoss(-1, 0)
+	M.adjustFireLoss(0.25, 0)
 	M.reagents.remove_all_type(/datum/reagent, 1)
 	M.emote(pick("gag"))
 
@@ -721,8 +650,8 @@
 	overdose_threshold = null
 
 /datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
-	M.adjustToxLoss(-1*REM, 0)
-	M.adjustFireLoss(0.25*REM, 0)
+	M.adjustToxLoss(-1, 0)
+	M.adjustFireLoss(0.25, 0)
 	M.reagents.remove_all_type(/datum/reagent, 1)
 	M.emote(pick("gag"))
 

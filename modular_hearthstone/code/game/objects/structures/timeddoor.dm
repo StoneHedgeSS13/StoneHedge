@@ -15,7 +15,7 @@
 
 /obj/structure/timeddoor/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/timeddeletedoor), deletion_time)
+	addtimer(CALLBACK(src, PROC_REF(timeddeletedoor)), deletion_time)
 
 /obj/structure/timeddoor/proc/timeddeletedoor()
 	playsound(loc, 'modular_hearthstone/sound/misc/timedoor.ogg', 50, TRUE, -1)

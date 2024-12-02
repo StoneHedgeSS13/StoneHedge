@@ -272,6 +272,7 @@
 		return
 
 /obj/item/rogueweapon/sword/long/vlord/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		user.attunement_points_used -= attunement_cost
 		user.check_attunement_points()

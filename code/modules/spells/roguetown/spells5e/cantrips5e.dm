@@ -1,10 +1,10 @@
-//		   _   _ Ham-Hole's                                __                      _                    
-//		  /_\ | |_ __ ___   __ _ _ __   __ _  ___    ___  / _|   /\/\   __ _ _   _| |__   ___ _ __ ___  
-//		 //_\\| | '_ ` _ \ / _` | '_ \ / _` |/ __|  / _ \| |_   /    \ / _` | | | | '_ \ / _ \ '_ ` _ \ 
-//		/  _  \ | | | | | | (_| | | | | (_| | (__  | (_) |  _| / /\/\ \ (_| | |_| | | | |  __/ | | | | |
-//		\_/ \_/_|_| |_| |_|\__,_|_| |_|\__,_|\___|  \___/|_|   \/    \/\__,_|\__, |_| |_|\___|_| |_| |_|
-//		                                                                     |___/                      
-
+/* 		   _   _ Ham-Hole's                                __                      _
+		  /_\ | |_ __ ___   __ _ _ __   __ _  ___    ___  / _|   /\/\   __ _ _   _| |__   ___ _ __ ___
+		 //_\\| | '_ ` _ \ / _` | '_ \ / _` |/ __|  / _ \| |_   /    \ / _` | | | | '_ \ / _ \ '_ ` _ \
+		/  _  \ | | | | | | (_| | | | | (_| | (__  | (_) |  _| / /\/\ \ (_| | |_| | | | |  __/ | | | | |
+		\_/ \_/_|_| |_| |_|\__,_|_| |_|\__,_|\___|  \___/|_|   \/    \/\__,_|\__, |_| |_|\___|_| |_| |_|
+		                                                                     |___/
+ */
 // Notes: When I was thinking about an ultimate magic update. I would have non-cantrip spells be refunded on sleep.
 // in DND a wizard must prepare his spells each day. I would also attempt to bring a per-day/per-sleep limit to spells that are of higher level.
 // With that in mind, since these spells are ones which are permanently attached to your character (in my head-code)
@@ -56,7 +56,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/self/acidsplash5e/cast(mob/user = usr)
 	var/mob/living/target = user
 	target.visible_message(span_warning("[target] hurls a caustic bubble!"), span_notice("You hurl a caustic bubble!"))
@@ -76,7 +76,7 @@
 	. = ..()
 	var/turf/T = get_turf(src)
 	playsound(src, 'sound/misc/nutriment.ogg', 100)
-	
+
 	for(var/mob/living/L in range(aoe_range, get_turf(src))) //apply damage over time to mobs
 		if(!L.anti_magic_check())
 			var/mob/living/carbon/M = L
@@ -117,7 +117,7 @@
 //==============================================
 //	BLADE WARD
 //==============================================
-// Notes: You extend your hand and trace a sigil of warding in the air. 
+// Notes: You extend your hand and trace a sigil of warding in the air.
 /obj/effect/proc_holder/spell/self/bladeward5e
 	name = "Blade Ward"
 	desc = ""
@@ -205,7 +205,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/boomingblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -246,7 +246,7 @@
 		//explosion
 		if(!owner.anti_magic_check())
 			boom()
-		Destroy(src)
+		qdel(src)
 
 /datum/status_effect/buff/boomingblade5e/proc/boom()
 	var/exp_heavy = 0
@@ -290,7 +290,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 // Notes: sorcerer, warlock, wizard
 /obj/effect/proc_holder/spell/invoked/chilltouch5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -306,7 +306,7 @@
 		target.visible_message(span_warning("A skeletal hand grips [target]'s [bodypart]!"), span_danger("A skeletal hand grips me [bodypart]!"))
 		if(user.zone_selected == BODY_ZONE_CHEST && !user.cmode && !target.cmode) //must be out of combat mode and have erp panel allowed for this prompt to appear
 			hand.pleasureaccepted = TRUE
-		else 
+		else
 			hand.pleasureaccepted = FALSE
 	return FALSE
 
@@ -315,7 +315,7 @@
 	desc = "A ghostly, skeletal hand which moves of it's own accord."
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bounty"
-	
+
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0.75
 	throwforce = 0
@@ -529,7 +529,7 @@
 //==============================================
 //	ELDRITCH BLAST
 //==============================================
-// Notes: 
+// Notes:
 /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e
 	name = "Eldritch Blast"
 	desc = ""
@@ -560,7 +560,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 
 /obj/projectile/magic/eldritchblast5e
 	name = "eldritch blast"
@@ -650,7 +650,7 @@
 //==============================================
 //	FIRE BOLT
 //==============================================
-// Notes: 
+// Notes:
 
 /obj/effect/proc_holder/spell/invoked/projectile/firebolt5e
 	name = "Fire Bolt"
@@ -719,7 +719,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/invoked/frostbite5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -782,7 +782,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/greenflameblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -907,7 +907,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-		
+
 /obj/effect/proc_holder/spell/invoked/infestation5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -933,7 +933,7 @@
 	var/mob/living/target = owner
 	target.cut_overlay(rotten)
 	target.update_vision_cone()
-	. = ..() 
+	. = ..()
 
 /datum/status_effect/buff/infestation5e/tick()
 	var/mob/living/target = owner
@@ -1088,7 +1088,7 @@
 		M.update_inv_hands()
 		M.update_inv_belt()
 	damtype = BRUTE
-	Destroy(src)
+	qdel(src)
 
 /obj/item/flashlight/flare/light5e/fire_act(added, maxstacks)
 	if(fuel)
@@ -1163,13 +1163,13 @@
 	var/sprite_changes = 10
 	var/datum/beam/current_beam = null
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/C in targets)
 		user.visible_message(span_warning("[C] is connected to [user] with a lightning lure!"), span_warning("You create a static link with [C]."))
 		playsound(user, 'sound/items/stunmace_gen (2).ogg', 100)
 
-		var/x 
+		var/x
 		for(x=1; x < sprite_changes; x++)
 			current_beam = new(user,C,time=30/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
 			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
@@ -1177,13 +1177,13 @@
 
 		var/dist = get_dist(user, C)
 		if (dist <= range)
-			C.electrocute_act(1, user) //just shock	
+			C.electrocute_act(1, user) //just shock
 			//var/atom/throw_target = get_step(user, get_dir(user, C))
 			//C.throw_at(throw_target, 100, 2) //from source material but kinda op.
 		else
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
-			
+
 //==============================================
 //	MAGE HAND
 //==============================================
@@ -1266,7 +1266,7 @@
 /obj/effect/proc_holder/spell/invoked/mending5e/cast(list/targets, mob/living/user)
 	if(istype(targets[1], /obj/item))
 		var/obj/item/I = targets[1]
-		if(I.obj_integrity < I.max_integrity)	
+		if(I.obj_integrity < I.max_integrity)
 			var/repair_percent = 0.25
 			repair_percent *= I.max_integrity
 			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
@@ -1312,7 +1312,7 @@
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	var/delay = 7
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/invoked/mindsliver5e/cast(list/targets, mob/user)
 	var/turf/T = get_turf(targets[1])
 	new /obj/effect/temp_visual/mindsliver5e_p1(T)
@@ -1337,7 +1337,7 @@
 /obj/effect/temp_visual/mindsliver5e_p2
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "rift"
-	
+
 	randomdir = FALSE
 	duration = 1 SECONDS
 	layer = ABOVE_ALL_MOB_LAYER
@@ -1384,7 +1384,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/poisonspray5e/cast(list/targets, mob/living/user)
 	var/turf/T = get_turf(targets[1]) //check for turf
 	if(T)
@@ -1505,7 +1505,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/projectile/magic/rayoffrost5e
 	name = "ray of frost"
 	icon = 'icons/obj/projectiles.dmi'
@@ -1556,12 +1556,12 @@
 //==============================================
 //	RESISTANCE
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SACRED FLAME
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SAPPING STING
@@ -1571,7 +1571,7 @@
 //==============================================
 //	SHAPE WATER
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SHILLELAGH

@@ -46,7 +46,7 @@
 			return
 	else
 		if(istype(attachment, /obj/item/cooking/pan))
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
+			if(istype(W, /obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(!food)
 					S.forceMove(src)
@@ -56,14 +56,14 @@
 					return
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot = attachment
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour) 
+			if(istype(W, /obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour)
 				if(pot.reagents.chem_temp < 374)
 					to_chat(user, span_warning("[pot] isn't boiling!"))
 					return
 				var/nutrimentamount = W.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-				if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
+				if(istype(W, /obj/item/reagent_containers/food/snacks))
 					var/obj/item/reagent_containers/food/snacks/snack = W
-					if(snack.type in subtypesof(/obj/item/reagent_containers/food/snacks/grown) || snack.eat_effect == /datum/status_effect/debuff/uncookedfood)
+					if(istype(snack, /obj/item/reagent_containers/food/snacks/grown) || snack.eat_effect == /datum/status_effect/debuff/uncookedfood)
 						nutrimentamount *= 1.25 //Boiling food makes more nutrients digestable.
 				if(istype(W, /obj/item/reagent_containers/food/snacks/grown/wheat) || istype(W, /obj/item/reagent_containers/food/snacks/grown/oat) || istype(W, /obj/item/reagent_containers/powder/flour))
 					nutrimentamount += 2 //Boiling is a way of cooking grain without baking
@@ -92,7 +92,7 @@
 				I.pixel_x = 0
 				I.pixel_y = 0
 				add_overlay(new /mutable_appearance(I))
-	
+
 /obj/machinery/light/rogue/forge/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -156,5 +156,5 @@
 		update_icon()
 
 /obj/machinery/light/rogue/forge/Destroy()
-	QDEL_NULL(boilloop)	
+	QDEL_NULL(boilloop)
 	. = ..()

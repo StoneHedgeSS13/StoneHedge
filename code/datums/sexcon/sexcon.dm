@@ -385,7 +385,7 @@
 
 	if(user.stat == DEAD)
 		if(prob(2)) //since there is no proper diseases....
-			target.reagents.add_reagent(/datum/reagent/organpoison, 1)
+			target.reagents.add_reagent(/datum/reagent/toxin/organpoison, 1)
 
 	var/sexhealrand = rand(0.2, 0.4)
 	//go go gadget sex healing.. magic?

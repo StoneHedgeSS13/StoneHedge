@@ -925,7 +925,7 @@
 	// Initialize the initial amount when first consumed
 	if(M.initial_acoffee_amount == 0)
 		M.initial_acoffee_amount = M.reagents.get_reagent_amount(src)
-	
+
 	// Calculate the current amount and the amount metabolized in this cycle
 	var current_amount = M.reagents.get_reagent_amount(src)
 	var metabolized_now = (M.initial_acoffee_amount - current_amount) * metabolization_rate
@@ -964,7 +964,7 @@
 	results = list(/datum/reagent/consumable/Acoffee = 6)
 	required_reagents = list(/datum/reagent/consumable/acorn_powder = 1, /datum/reagent/water = 5)
 
-/datum/chemical_reaction/alch/acoffee/on_reaction(var/mob/user, var/obj/item/reagent_containers/container, var/total_volume)
+/datum/chemical_reaction/alch/acoffee/on_reaction(mob/user, obj/item/reagent_containers/container, total_volume)
 	. = ..()
 	if(container)
 		// Remove all leftover water

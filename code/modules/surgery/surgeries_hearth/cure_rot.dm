@@ -47,8 +47,8 @@
 					has_rot = TRUE
 					break
 		if(!has_rot)
-			if (target.reagents.has_reagent(/datum/reagent/infection/major))
-				target.reagents.remove_reagent(/datum/reagent/infection/major, rand(5,10))
+			if (target.reagents.has_reagent(/datum/reagent/toxin/infection/major))
+				target.reagents.remove_reagent(/datum/reagent/toxin/infection/major, rand(5,10))
 				to_chat(user, span_notice("I settle some of [target]'s excess melancholic humour."))
 				return TRUE
 			else

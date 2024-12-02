@@ -70,11 +70,11 @@
 	timer = 3 MINUTES
 	stressadd = 5
 
-proc/generate_insult()
+/proc/generate_insult()
 	var temp = run_or_give_up() +", you "+generic_insult()+"!"
 	return temp
 
-proc/run_or_give_up()
+/proc/run_or_give_up()
 	var/list/bard_give_up_list = list(
 		"Abandon hope", 
 		"Accept your failure", 
@@ -136,11 +136,11 @@ proc/run_or_give_up()
 		)
 	return pick(bard_give_up_list)
 
-proc/generic_insult()
+/proc/generic_insult()
 	var temp = bard_insult_adjective1()+" "+bard_insult_adjective2()+" "+bard_insult_noun()
 	return temp
 
-proc/bard_insult_adjective1()
+/proc/bard_insult_adjective1()
 	var/list/bard_insult_adjective1_list = list(
 		"artless", 
 		"baffled", 
@@ -223,7 +223,7 @@ proc/bard_insult_adjective1()
 		)
 	return pick(bard_insult_adjective1_list)
 
-proc/bard_insult_adjective2()
+/proc/bard_insult_adjective2()
 	var/list/bard_insult_adjective2_list = list(
 		"base-court", 
 		"bat-fowling", 
@@ -298,7 +298,7 @@ proc/bard_insult_adjective2()
 		)
 	return pick(bard_insult_adjective2_list)
 
-proc/bard_insult_noun()
+/proc/bard_insult_noun()
 	var/list/bard_insult_noun_list = list(
 		"apple-john", 
 		"baggage", 

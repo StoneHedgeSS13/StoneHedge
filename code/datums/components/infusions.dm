@@ -624,7 +624,7 @@
 		/datum/reagent/consumable/lemonade, //lemonade: 
 		/datum/reagent/consumable/mayonnaise, // mayonaise (maybe change to just egg yolk)
 		/datum/reagent/fuel/oil, //oil
-		/datum/reagent/berrypoison, //basic poison
+		/datum/reagent/toxin/berrypoison, //basic poison
 		/datum/reagent/toxin/acid/fluacid //acid
 		)
 	var/reagent_change = input("Choose Contents", "Available Liquids") as anything in options
@@ -650,7 +650,7 @@
 			fill_per_minute = 7.5
 		if(/datum/reagent/fuel/oil)
 			fill_per_minute = 3.25
-		if(/datum/reagent/berrypoison)
+		if(/datum/reagent/toxin/berrypoison)
 			fill_per_minute = 3.25
 		if(/datum/reagent/toxin/acid/fluacid)
 			fill_per_minute = 1
