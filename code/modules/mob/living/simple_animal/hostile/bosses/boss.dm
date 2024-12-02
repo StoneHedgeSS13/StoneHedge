@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/boss
+/mob/living/simple_animal/hostile/retaliate/rogue/boss
 	name = "A Perfectly Generic Boss Placeholder"
 	desc = ""
 	robust_searching = 1
@@ -6,12 +6,14 @@
 	status_flags = 0
 	a_intent = INTENT_HARM
 	gender = NEUTER
+	aggressive = 1
 	var/list/boss_abilities = list() //list of /datum/action/boss
 	var/datum/boss_active_timed_battle/atb
 	var/point_regen_delay = 1
+	var/allowed_projectile_types = list()
 
 
-/mob/living/simple_animal/hostile/boss/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/boss/Initialize()
 	. = ..()
 
 	atb = new()
@@ -28,7 +30,7 @@
 	atb.assign_abilities(boss_abilities)
 
 
-/mob/living/simple_animal/hostile/boss/Destroy()
+/mob/living/simple_animal/hostile/retaliate/rogue/boss/Destroy()
 	qdel(atb)
 	atb = null
 	for(var/ab in boss_abilities)
@@ -46,8 +48,8 @@
 	check_flags = AB_CHECK_CONSCIOUS //Incase the boss is given a player
 	var/boss_cost = 100 //Cost of usage for the boss' AI 1-100
 	var/usage_probability = 100
-	var/mob/living/simple_animal/hostile/boss/boss
-	var/boss_type = /mob/living/simple_animal/hostile/boss
+	var/mob/living/simple_animal/hostile/retaliate/rogue/boss/boss
+	var/boss_type = /mob/living/simple_animal/hostile/retaliate/rogue/boss
 	var/needs_target = TRUE //Does the boss need to have a target? (Only matters for the AI)
 	var/say_when_triggered = "" //What does the boss Say() when the ability triggers?
 
@@ -85,7 +87,7 @@
 	var/next_point_time = 0
 	var/chance_to_hold_onto_points = 50
 	var/highest_cost = 0
-	var/mob/living/simple_animal/hostile/boss/boss
+	var/mob/living/simple_animal/hostile/retaliate/rogue/boss/boss
 
 
 /datum/boss_active_timed_battle/New()

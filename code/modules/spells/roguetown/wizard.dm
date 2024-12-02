@@ -229,7 +229,7 @@
 	exp_light = 0
 	exp_flash = 1
 	exp_fire = 1
-	damage = 10
+	damage = 20
 	damage_type = BURN
 	nodamage = FALSE
 	flag = "magic"
@@ -276,6 +276,8 @@
 	exp_light = 1
 	exp_flash = 2
 	exp_fire = 2
+	damage = 25
+	damage_type = BURN
 	flag = "magic"
 	speed = 4
 

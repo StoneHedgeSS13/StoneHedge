@@ -58,7 +58,7 @@
 	if(required_trait)
 		if(!HAS_TRAIT(user, required_trait))
 			to_chat(user, span_warning("You can't figure out a way to use this!"))
-			return
+			return FALSE
 	if(used)
 		if(oneuse)
 			recoil(user)
@@ -194,7 +194,7 @@
 	traitname = "the succubus"
 	remarks = list("<font color='#b028fffb'>They like what they see.", "<font color='#b028fffb'>I can't wait to hear you scream.", "<font color='#b028fffb'>So many hearts to break, so little time.","<font color='#b028fffb'>Without pain, how would they know pleasure?</font>",)
 	attunement_cost = 2
-	
+
 /obj/item/book/granter/trait/north
 	name = "Fragment of the North"
 	light_color = "#28d8fffb"

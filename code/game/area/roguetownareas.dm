@@ -60,6 +60,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	converted_type = /area/rogue/indoors/shelter
 	soundenv = 16
 
+/area/rogue/outdoors/vikingarea
+
 /area/rogue/indoors/shelter
 	icon_state = "shelter"
 	droning_sound = 'sound/music/area/townstreets.ogg'

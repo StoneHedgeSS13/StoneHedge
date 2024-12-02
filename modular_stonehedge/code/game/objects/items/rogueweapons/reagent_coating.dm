@@ -45,19 +45,18 @@
 		reagents.remove_all(reagents.maximum_volume) //buh bye reagents water washes it
 
 /obj/item/rogueweapon/attackby(obj/item/reagent_containers/I, mob/living/user, params)
-	if(!istype(I, /obj/item/reagent_containers))
-		return
 	if(reagents)
+		if(user.used_intent?.type == INTENT_SPLASH && I.spillable) //tries to add everything.
+			I.reagents.trans_to(src, I.reagents.maximum_volume)
+	. = ..()
+	if(reagents) //another cause this shit was borking up other attackbys on weapons like sharpening
 		var/waterbuse = 0
 		for(var/datum/reagent/water/waterussy in I.reagents.reagent_list)
 			waterbuse = waterussy.volume
 		reagents.remove_all(waterbuse) //buh bye reagents water washes it
 		I.reagents.remove_all_type(/datum/reagent/water, 100)
-		if(user.used_intent?.type == INTENT_SPLASH) //tries to add everything.
-			I.reagents.trans_to(src, I.reagents.maximum_volume)
 		//we dont want water coated weapons so last failsafe
 		reagents.remove_all_type(/datum/reagent/water, reagents.total_volume)
-	. = ..()
 
 //custom reagent examine
 /obj/item/rogueweapon/examine(mob/user)

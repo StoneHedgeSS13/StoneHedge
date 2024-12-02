@@ -3,7 +3,7 @@
 /// Incision
 /datum/surgery_step/incise
 	name = "Incise"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SHARP = 60,
@@ -146,7 +146,7 @@
 /// Saw bone
 /datum/surgery_step/saw
 	name = "Saw bone"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_SAW = 80,
 		TOOL_SHOVEL = 50,
@@ -205,7 +205,7 @@
 /// Drill bone
 /datum/surgery_step/drill
 	name = "Drill bone"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_DRILL = 80,
 		TOOL_SCREWDRIVER = 25,

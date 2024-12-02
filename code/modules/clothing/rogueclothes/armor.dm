@@ -942,7 +942,7 @@
 			user.change_stat("intelligence", 3) //Additional cooldown (scales with int)
 			return
 		else
-			to_chat(user, span_warning("The curiass feels cold and dead."))
+			to_chat(user, span_warning("The armor feels cold and dead."))
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/dropped(mob/living/user) //Remove some bugfixing stuff in exchange for stricter checks.
 	. = ..()
@@ -956,7 +956,7 @@
 				active_item = FALSE
 				return
 		else
-			to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
+			to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the armor be."))
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/psydonianknightarmor

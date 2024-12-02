@@ -65,11 +65,11 @@
 /obj/projectile/magic/acidsplash5e
 	name = "acid bubble"
 	icon_state = "green_laser"
-	damage = 15
+	damage = 25
 	damage_type = BURN
 	flag = "magic"
 	range = 15
-	speed = 30 //higher is slower
+	speed = 20 //higher is slower
 	var/aoe_range = 1
 
 /obj/projectile/magic/acidsplash5e/on_hit(atom/target, blocked = FALSE)
@@ -566,7 +566,7 @@
 	name = "eldritch blast"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "arcane_barrage"
-	damage = 20
+	damage = 25
 	damage_type = BRUTE
 	flag = "magic"
 	range = 15
@@ -583,7 +583,7 @@
 	projectile_type = /obj/projectile/magic/eldritchblast5e/empowered
 
 /obj/projectile/magic/eldritchblast5e/empowered
-	damage = 30
+	damage = 35
 	range = 25
 
 /obj/projectile/magic/eldritchblast5e/empowered/on_hit(atom/target, blocked = FALSE)
@@ -732,7 +732,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite5e
 	duration = 20 SECONDS
 	var/static/mutable_appearance/frost = mutable_appearance('icons/roguetown/mob/coldbreath.dmi', "breath_m", ABOVE_ALL_MOB_LAYER)
-	effectedstats = list("speed" = -2)
+	effectedstats = list("speed" = -4)
 
 /atom/movable/screen/alert/status_effect/buff/frostbite5e
 	name = "Frostbite"
@@ -850,8 +850,8 @@
 /datum/status_effect/buff/guidance5e
 	id = "guidance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance5e
-	duration = 30 SECONDS
-	effectedstats = list("intelligence" = 2)
+	duration = 60 SECONDS
+	effectedstats = list("intelligence" = 3)
 	var/static/mutable_appearance/guided = mutable_appearance('icons/effects/effects.dmi', "blessed")
 	var/mob/living/carbon/giver
 
@@ -1510,7 +1510,7 @@
 	name = "ray of frost"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ice_2"
-	damage = 10
+	damage = 25
 	damage_type = BRUTE
 	flag = "magic"
 	range = 15
