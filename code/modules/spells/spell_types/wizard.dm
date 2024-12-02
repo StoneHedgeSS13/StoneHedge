@@ -5,7 +5,7 @@
 	school = "evocation"
 	charge_max = 200
 	clothes_req = FALSE
-	invocation = "FORTI GY AMA!"
+	invocation = "MAGIC MISSILE!"
 	invocation_type = "shout"
 	range = 7
 	cooldown_min = 60 //35 deciseconds reduction per rank
@@ -21,8 +21,8 @@
 	speed = 5
 	trigger_range = 0
 	linger = TRUE
-	nodamage = FALSE
-	paralyze = 60
+	damage = 15
+	damage_type = BRUTE
 	hitsound = 'sound/blank.ogg'
 
 	trail = TRUE
