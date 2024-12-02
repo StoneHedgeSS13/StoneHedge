@@ -780,7 +780,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	name = "JoinLate"
 
 /obj/effect/landmark/latejoin/Initialize(mapload)
-	..()
+	. = ..()
 	SSjob.latejoin_trackers += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -801,7 +801,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "blob_start"
 
 /obj/effect/landmark/blobstart/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.blobstart += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -811,7 +811,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "secequipment"
 
 /obj/effect/landmark/secequipment/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.secequipment += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -821,7 +821,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "prisonwarp"
 
 /obj/effect/landmark/prisonwarp/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.prisonwarp += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -830,7 +830,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "ert_spawn"
 
 /obj/effect/landmark/ert_spawn/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.emergencyresponseteamspawn += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -840,7 +840,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "holding_facility"
 
 /obj/effect/landmark/holding_facility/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.holdingfacility += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -849,7 +849,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "tdome_observer"
 
 /obj/effect/landmark/thunderdome/observe/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.tdomeobserve += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -858,7 +858,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "tdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.tdome1	+= loc
 	return INITIALIZE_HINT_QDEL
 
@@ -867,7 +867,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "tdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.tdome2 += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -876,7 +876,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "tdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.tdomeadmin += loc
 	return INITIALIZE_HINT_QDEL
 
@@ -887,8 +887,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	layer = HIGH_LANDMARK_LAYER
 
 
-/obj/effect/landmark/event_spawn/New()
-	..()
+/obj/effect/landmark/event_spawn/Initialize()
+	. = ..()
 	GLOB.generic_event_spawns += src
 
 /obj/effect/landmark/event_spawn/Destroy()
@@ -898,9 +898,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/ruin
 	var/datum/map_template/ruin/ruin_template
 
-/obj/effect/landmark/ruin/New(loc, my_ruin_template)
+/obj/effect/landmark/ruin/Initialize(ml, my_ruin_template)
 	name = "ruin_[GLOB.ruin_landmarks.len + 1]"
-	..(loc)
+	. = ..()
 	ruin_template = my_ruin_template
 	GLOB.ruin_landmarks |= src
 
@@ -967,7 +967,7 @@ GLOBAL_LIST_EMPTY(travel_spawn_points)
 		return point.loc
 	return null
 
-/proc/create_travel_tiles(var/atom/location, travel_id, travel_goes_to_id, required_trait, tile_path)
+/proc/create_travel_tiles(atom/location, travel_id, travel_goes_to_id, required_trait, tile_path)
 	for(var/obj/effect/landmark/travel_tile_location/landmark as anything in GLOB.travel_tile_locations)
 		if(get_dist(location, landmark) > 5)
 			continue

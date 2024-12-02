@@ -1593,26 +1593,3 @@
 	set category = "Noises"
 
 	emote("hiss", intentional = TRUE)
-
-/datum/emote/living/fart
-	key = "fart"
-	key_third_person = "farts"
-	message = "lets rip a grand fart, holding a pose as if awaiting applause."
-	emote_type = EMOTE_AUDIBLE
-
-/mob/living/carbon/human/verb/emote_fart()
-	set name = "fart"
-	set category = "Noises"
-
-	// Define the location based on user's turf
-	var/location = get_turf(src)
-
-	// 5% chance to shit yourself
-	if(prob(5))
-		emote("fart", intentional = TRUE)
-		new /obj/item/natural/poo(location) // Spawning the poo item
-		to_chat(src, "Wow. Did I really just shit myself? I'm a loser just like mom said. This isn't funny anymore....")
-		apply_status_effect(/datum/status_effect/debuff/bleeding)
-	else
-		emote("fart", intentional = TRUE)
-

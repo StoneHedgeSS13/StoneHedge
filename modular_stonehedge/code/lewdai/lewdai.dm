@@ -141,9 +141,9 @@
 					var/current_action = /datum/sex_action/npc_rimming
 					if(gender == FEMALE && L.gender == MALE)
 						switch(rand(1,2))
-							if(2) //anal
+							if(1) //anal
 								current_action = /datum/sex_action/npc_anal_ride_sex
-							if(3) //vaginal
+							if(2) //vaginal
 								current_action = /datum/sex_action/npc_vaginal_ride_sex
 					if(gender == MALE && L.gender == MALE)
 						switch(rand(1,2))

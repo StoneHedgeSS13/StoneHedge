@@ -142,7 +142,7 @@
 /obj/structure/safeglowshroom/Destroy()
 	var/datum/reagents/R = new/datum/reagents(25)
 	R.my_atom = src
-	R.add_reagent(/datum/reagent/berrypoison, 25)
+	R.add_reagent(/datum/reagent/toxin/berrypoison, 25)
 	var/datum/effect_system/smoke_spread/chem/smoke = new
 	smoke.set_up(R, 6, get_turf(src), FALSE)
 	smoke.start()

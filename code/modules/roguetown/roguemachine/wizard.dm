@@ -233,7 +233,7 @@
 	. = ..()
 	update_icon()
 
-proc/wizard_vend_negative()
+/proc/wizard_vend_negative()
 	var/list/wizard_vend_negative = list(
 		//normal
 		"A shortage of inky sustenance has hindered my arcyne endeavors.",
@@ -257,7 +257,7 @@ proc/wizard_vend_negative()
 		"My inkwell is as parched as a desert wanderer. Fill me up.")
 	return pick(wizard_vend_negative)
 
-proc/wizard_vend_positive()
+/proc/wizard_vend_positive()
 	var/list/wizard_vend_positive = list(
 		//normal
 		"A spell born from the cosmic tapestry, woven with the threads of arcyne energy.",

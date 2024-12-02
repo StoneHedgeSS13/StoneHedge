@@ -6,20 +6,25 @@ import sys
 reading = False
 
 FORBID_INCLUDE = [
+    # Should not be included outside of local testing
+    r'code/testing.dm',
+
     # Included by _unit_test.dm
     r'code/modules/unit_tests/[!_]*.dm',
 
     # Included by tgs/includes.dm
     r'code/modules/tgs/**/*.dm',
 
-    # Included by _ndatabase/includes.dm
-    r'code/datums/_ndatabase/**/*.dm',
-
-    # Included by BSQL/includes.dm
-    r'code/__HELPERS/BSQL/**/*.dm',
-
     # Included as part of OD lints
-    r'code/__pragmas.dm'
+    r'code/__pragmas.dm',
+
+    # Not actually code
+    r'code/__DEFINES/_readme.dm',
+    r'code/modules/lighting/__lighting_docs.dm',
+
+    # Unfinished
+    r'code/modules/mob/dead/new_player/misc.dm', # mostly duplicate code, needs a pass over it
+    r'code/modules/cargo/packsrogue/rawmat.dm',
 ]
 
 lines = []

@@ -32,8 +32,8 @@
 	GLOB.sunlights -= src
 	. = ..()
 
-/obj/effect/sunlight/New()
-	..()
+/obj/effect/sunlight/Initialize(mapload)
+	. = ..()
 #ifdef TESTING
 	icon_state = "electricity2"
 #else
@@ -66,9 +66,9 @@
 	startTurfX = 1
 	startTurfY = 1
 
-/obj/effect/landmark/mapGenerator/sunlights/New()
+/obj/effect/landmark/mapGenerator/sunlights/Initialize(mapload)
 	GLOB.sky_z |= z
-	. = ..()
+	return ..()
 
 /datum/mapGenerator/sunlights
 	modules = list(/datum/mapGeneratorModule/sunlights)
@@ -223,7 +223,7 @@
 		GLOB.fires_list -= src
 
 /obj/machinery/light/rogue/Destroy()
-	QDEL_NULL(soundloop)	
+	QDEL_NULL(soundloop)
 	GLOB.fires_list -= src
 	. = ..()
 
@@ -331,7 +331,7 @@
 
 /obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
 	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
-		return	
+		return
 	if(!skip_sound_and_sparks)
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
 			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
@@ -474,7 +474,7 @@
 		if(WEST)
 			pixel_x = -32
 	. = ..()
-	
+
 /obj/machinery/light/rogue/wallfire/candle/attack_hand(mob/user)
 	if(isliving(user) && on)
 		user.visible_message(span_warning("[user] snuffs [src]."))
@@ -681,7 +681,7 @@
 			to_chat(user, "<span class='notice'>Remove the pot from the hearth first.</span>")
 			return
 		if(istype(attachment, /obj/item/cooking/pan))
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
+			if(istype(W, /obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
 					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
@@ -715,7 +715,7 @@
 					pot.reagents.remove_reagent(/datum/reagent/water, 1)
 				return
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
+			if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 33))
 					to_chat(user, "<span class='notice'>Not enough water.</span>")
 					return TRUE
@@ -746,7 +746,7 @@
 						pot.reagents.remove_reagent(/datum/reagent/water, 1)
 				return
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/meat))
+			if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 33))
 					to_chat(user, "<span class='notice'>Not enough water.</span>")
 					return TRUE
@@ -790,14 +790,14 @@
 
 /* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour) 
+			if(istype(W, /obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour)
 				if(pot.reagents.chem_temp < 374)
 					to_chat(user, span_warning("[pot] isn't boiling!"))
 					return
 				var/nutrimentamount = W.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-				if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
+				if(istype(W, /obj/item/reagent_containers/food/snacks))
 					var/obj/item/reagent_containers/food/snacks/snack = W
-					if(snack.type in subtypesof(/obj/item/reagent_containers/food/snacks/grown) || snack.eat_effect == /datum/status_effect/debuff/uncookedfood)
+					if(istype(snack, /obj/item/reagent_containers/food/snacks/grown) || snack.eat_effect == /datum/status_effect/debuff/uncookedfood)
 						nutrimentamount += 5 //fuck it extra yield so soups are worth a shit.
 						nutrimentamount *= 1.25 //Boiling food makes more nutrients digestable.
 				if(istype(W, /obj/item/reagent_containers/food/snacks/grown/wheat) || istype(W, /obj/item/reagent_containers/food/snacks/grown/oat) || istype(W, /obj/item/reagent_containers/powder/flour))
@@ -898,7 +898,7 @@
 		burn_out()
 
 /obj/machinery/light/rogue/hearth/Destroy()
-	QDEL_NULL(boilloop)	
+	QDEL_NULL(boilloop)
 	. = ..()
 
 /obj/machinery/light/rogue/campfire

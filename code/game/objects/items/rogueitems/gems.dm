@@ -189,10 +189,11 @@
 	icon_state = null
 
 /obj/item/roguegem/random/Initialize()
+	SHOULD_CALL_PARENT(FALSE)
 	var/newgem = list(/obj/item/roguegem/red = 10, /obj/item/roguegem/green = 25, /obj/item/roguegem/blue = 15, /obj/item/roguegem/yellow = 30, /obj/item/roguegem/violet = 20, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1, /obj/item/rogueore/silver = 3)
 	var/pickgem = pickweight(newgem)
 	new pickgem(get_turf(src))
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 
 /// riddle

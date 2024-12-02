@@ -125,10 +125,10 @@ Difficulty: Medium
 /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/sif/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/glory_kill, \
-		messages_unarmed = list("climbs atop the wolf's head as it dangles weakly near the ground, ripping its left eye off and jumping down before punching through it's cranium!", "goes around the wolf and rips off their tail, using it as whip on the fiend"), \
-		messages_crusher = list("chops off the wolf's head by it's neck!"), \
-		messages_pka = list("shoots at the wolf's eyes with their PKA, exploding them into giblets!"), \
-		messages_pka_bayonet = list("slides down below Sif, using their bayonet to rip it's stomach open!"))
+		list("climbs atop the wolf's head as it dangles weakly near the ground, ripping its left eye off and jumping down before punching through its cranium!", "goes around the wolf and rips off their tail, using it as whip on the fiend"), \
+		list("shoots at the wolf's eyes with their PKA, exploding them into giblets!"), \
+		list("slides down below Sif, using their bayonet to rip it's stomach open!"), \
+		list("chops off the wolf's head by it's neck!"))
 
 /*/obj/item/gps/internal/sif
 	icon_state = null
@@ -268,7 +268,7 @@ Difficulty: Medium
 	spin(5,2)// Spin me boi
 
 //Chance to dodge projectiles when angered or enraged
-/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/sif/bullet_act(obj/item/projectile/P)
+/mob/living/simple_animal/hostile/retaliate/rogue/megafauna/sif/bullet_act(obj/projectile/P)
 	var/passed = 0
 
 	if(angered)

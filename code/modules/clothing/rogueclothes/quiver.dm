@@ -30,7 +30,7 @@
 				break
 
 /obj/item/quiver/proc/eatarrow(obj/A)
-	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+	if(istype(A, /obj/item/ammo_casing/caseless/rogue))
 		if(arrows.len < max_storage)
 			A.forceMove(src)
 			arrows += A
@@ -40,7 +40,7 @@
 			return FALSE
 
 /obj/item/quiver/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+	if(istype(A, /obj/item/ammo_casing/caseless/rogue))
 		if(arrows.len < max_storage)
 			A.forceMove(src)
 			arrows += A

@@ -1,6 +1,3 @@
-var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
-var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-
 /*
  * A large number of misc global procs.
  */
@@ -10,11 +7,9 @@ var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAS
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -25,7 +20,6 @@ var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAS
 	textg = num2hex(255 - g, 2)
 	textb = num2hex(255 - b, 2)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 /proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
 	if(!start || !end)
@@ -328,12 +322,9 @@ Turf and target are separate in case you want to teleport some distance from a t
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortNames(GLOB.mob_list)
-	var/list/types = list()
+	var/list/list/mob/types = list()
 	for(var/mob/M in sortmob)
-		if(M.type in types)
-			types[M.type].Add(M)
-		else
-			types[M.type] = list(M)
+		LAZYADD(types[M.type], M)
 	var/types_sort = sortNames(types)
 	for(var/T in types_sort)
 		moblist.Add(types_sort[T])
@@ -415,6 +406,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 // note range is non-pythagorean
 // used for disposal system
 /proc/get_ranged_target_turf(atom/A, direction, range)
+	RETURN_TYPE(/turf)
 
 	var/x = A.x
 	var/y = A.y
@@ -1105,7 +1097,7 @@ B --><-- A
 	return closest_atom
 
 
-proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
+/proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if (value == FALSE) //nothing should be calling us with a number, so this is safe
 		value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
 		if (isnull(value))
@@ -1241,6 +1233,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
 	return INITIALIZE_HINT_NORMAL
 
 /mob/dview/Destroy(force = FALSE)

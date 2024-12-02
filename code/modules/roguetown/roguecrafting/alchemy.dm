@@ -28,13 +28,13 @@
 /datum/crafting_recipe/roguetown/alchemy/puremoon
 	name = "Purest Moondust"
 	result = list(/obj/item/reagent_containers/powder/moondust/purest)
-	reqs = list(/obj/item/reagent_containers/powder/moondust, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1, /datum/reagent/berrypoison = 5)
+	reqs = list(/obj/item/reagent_containers/powder/moondust, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1, /datum/reagent/toxin/berrypoison = 5)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/alchemy/spice
 	name = "Spice Melange"
 	result = list(/obj/item/reagent_containers/powder/spice)
-	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1, /datum/reagent/berrypoison = 5)
+	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1, /datum/reagent/toxin/berrypoison = 5)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/alchemy/salt
@@ -701,11 +701,11 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if (!affecting) return
-	if (affecting.bandage) 
+	if (affecting.bandage)
 		to_chat(user, "There is already a bandage.")
 		return
 	var/used_time = 100
-	if (H.mind) 
+	if (H.mind)
 		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
@@ -713,7 +713,7 @@
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
-	
+
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
@@ -721,7 +721,7 @@
 	else
 		user.visible_message("You bandage [M]'s [affecting].")
 
-/proc/heal_and_manage_pain_disabling(var/mob/living/carbon/human/H, var/obj/item/bodypart/affecting)
+/proc/heal_and_manage_pain_disabling(mob/living/carbon/human/H, obj/item/bodypart/affecting)
 	if (!affecting) return
 	affecting.heal_wounds(0.5)
 	for (var/datum/wound/W in affecting.wounds)

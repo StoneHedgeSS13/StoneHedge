@@ -86,7 +86,7 @@
 		//stonehedge mob decomposition
 		C.visible_message(span_smallgreen("[C] decomposes..."))
 		var/datum/reagents/R = new/datum/reagents(5)
-		R.add_reagent(/datum/reagent/organpoison, 5)
+		R.add_reagent(/datum/reagent/toxin/organpoison, 5)
 		var/datum/effect_system/smoke_spread/chem/smoke = new
 		smoke.set_up(R, 2, get_turf(C), FALSE)
 		smoke.start()
@@ -131,7 +131,7 @@
 		//stonehedge simple mob decomposition
 		L.visible_message(span_smallgreen("[L] decomposes..."))
 		var/datum/reagents/R = new/datum/reagents(5)
-		R.add_reagent(/datum/reagent/organpoison, 5)
+		R.add_reagent(/datum/reagent/toxin/organpoison, 5)
 		var/datum/effect_system/smoke_spread/chem/smoke = new
 		smoke.set_up(R, 2, get_turf(L), FALSE)
 		smoke.start()

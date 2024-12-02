@@ -37,119 +37,92 @@
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
 	testing("a1")
-	if(istype(M))
-		if(user.used_intent.type == INTENT_GENERIC)
-			return ..()
+	if(!istype(M))
+		return
+	if(user.used_intent.type == INTENT_GENERIC)
+		return ..()
+	if(!spillable)
+		return
+
+	if(ishuman(M) && user.used_intent.type == INTENT_FILL)
+		var/mob/living/carbon/human/humanized = M
+		var/obj/item/organ/filling_organ/breasts/tiddies = humanized.getorganslot(ORGAN_SLOT_BREASTS) // tiddy hehe
+		switch(user.zone_selected)
+			if(BODY_ZONE_CHEST) //chest
+				if(humanized.wear_shirt && (humanized.wear_shirt.flags_inv & HIDEBOOB || !humanized.wear_shirt.genitalaccess))
+					to_chat(user, span_warning("[humanized]'s chest must be exposed before I can milk [humanized.p_them()]!"))
+					return TRUE
+				if(!tiddies)
+					to_chat(user, span_warning("[humanized] cannot be milked!"))
+					return TRUE
+				if(tiddies.reagents.total_volume <= 0)
+					to_chat(user, span_warning("[humanized] is out of milk!"))
+					return TRUE
+				if(reagents.total_volume >= volume)
+					to_chat(user, span_warning("[src] is full."))
+					return TRUE
+				var/milk_to_take = CLAMP((tiddies.reagents.maximum_volume/6), 1, min(tiddies.reagents.total_volume, volume - reagents.total_volume))
+				if(do_after(user, 20, target = humanized))
+					tiddies.reagents.trans_to(src, milk_to_take, transfered_by = user)
+					user.visible_message(span_notice("[user] milks [humanized] into \the [src]."), span_notice("I milk [humanized] into \the [src]."))
+			if(BODY_ZONE_PRECISE_GROIN) //groin
+				if(humanized.wear_pants && (humanized.wear_pants.flags_inv & HIDECROTCH || !humanized.wear_pants.genitalaccess))
+					to_chat(user, span_warning("[humanized]'s groin must be exposed before I can milk [humanized.p_them()]!"))
+					return TRUE
+				var/obj/item/organ/filling_organ/testicles/testes = humanized.getorganslot(ORGAN_SLOT_TESTICLES)
+				if(!testes)
+					to_chat(user, span_warning("[humanized] cannot be milked!"))
+					return TRUE
+				if(testes.reagents.total_volume <= 0)
+					to_chat(user, span_warning("[humanized] is out of cum!"))
+					return TRUE
+				if(reagents.total_volume >= volume)
+					to_chat(user, span_warning("[src] is full."))
+					return TRUE
+				if(do_after(user, 40, target = humanized))
+					var/cum_to_take = CLAMP((testes.reagents.maximum_volume/2), 1, min(testes.reagents.total_volume, volume - reagents.total_volume))
+					testes.reagents.trans_to(src, cum_to_take, transfered_by = user)
+					user.visible_message(span_notice("[user] milks [humanized]'s cock into \the [src]."), span_notice("I milk [humanized]'s cock into \the [src]."))
+		return TRUE
+
+	if(!reagents || !reagents.total_volume)
+		to_chat(user, span_warning("[src] is empty!"))
+		return
+
+	if(user.used_intent.type == INTENT_SPLASH)
+		var/R
+		M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
+						span_danger("[user] splashes the contents of [src] onto you!"))
+		if(reagents)
+			for(var/datum/reagent/A in reagents.reagent_list)
+				R += "[A] ([num2text(A.volume)]),"
+
+		if(isturf(target) && reagents.reagent_list.len && thrownby)
+			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
+			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
+		reagents.reaction(M, TOUCH)
+		log_combat(user, M, "splashed", R)
+		reagents.clear_reagents()
+		return
+	else if(user.used_intent.type == INTENT_POUR)
+		if(!canconsume(M, user))
+			return
+		if(M != user)
+			M.visible_message(span_danger("[user] attempts to feed [M] something."), \
+						span_danger("[user] attempts to feed you something."))
+			if(!do_mob(user, M))
+				return
+			if(!reagents || !reagents.total_volume)
+				return // The drink might be empty after the delay, such as by spam-feeding
+			M.visible_message(span_danger("[user] feeds [M] something."), \
+						span_danger("[user] feeds you something."))
+			log_combat(user, M, "fed", reagents.log_list())
 		else
-			if(!spillable)
-				return
+			to_chat(user, span_notice("I swallow a gulp of [src]."))
+		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+		playsound(M.loc,pick(drinksounds), 100, TRUE)
+		return
 
-		if(user.used_intent.type == INTENT_FILL)
-			if(ishuman(M))
-				var/mob/living/carbon/human/humanized = M
-				var/obj/item/organ/filling_organ/breasts/tiddies = humanized.getorganslot(ORGAN_SLOT_BREASTS) // tiddy hehe
-				if(user.zone_selected == BODY_ZONE_CHEST) //chest
-					if(!humanized.wear_shirt || (!humanized.wear_shirt.flags_inv & HIDEBOOB || humanized.wear_shirt.genitalaccess))
-						if(tiddies)
-							if(tiddies.reagents.total_volume > 0)
-								if(reagents.total_volume < volume)
-									var/milk_to_take = CLAMP((tiddies.reagents.maximum_volume/6), 1, min(tiddies.reagents.total_volume, volume - reagents.total_volume))
-									if(do_after(user, 20, target = humanized))
-										tiddies.reagents.trans_to(src, milk_to_take, transfered_by = user)
-										user.visible_message(span_notice("[user] milks [humanized] into \the [src]."), span_notice("I milk [humanized] into \the [src]."))
-								else
-									to_chat(user, span_warning("[src] is full."))
-							else
-								to_chat(user, span_warning("[humanized] is out of milk!"))
-						else
-							to_chat(user, span_warning("[humanized] cannot be milked!"))
-					else
-						to_chat(user, span_warning("[humanized]'s chest must be exposed before I can milk them!"))
-				if(user.zone_selected == BODY_ZONE_PRECISE_GROIN) //groin
-					if(!humanized.wear_pants || (humanized.wear_pants.flags_inv & HIDECROTCH || humanized.wear_pants.genitalaccess))
-						var/obj/item/organ/filling_organ/testicles/testes = humanized.getorganslot(ORGAN_SLOT_TESTICLES)
-						if(testes)
-							if(testes.reagents.total_volume > 0)
-								if(reagents.total_volume < volume)
-									if(do_after(user, 40, target = humanized))
-										var/cum_to_take = CLAMP((testes.reagents.maximum_volume/2), 1, min(testes.reagents.total_volume, volume - reagents.total_volume))
-										testes.reagents.trans_to(src, cum_to_take, transfered_by = user)
-										user.visible_message(span_notice("[user] milks [humanized]'s cock into \the [src]."), span_notice("I milk [humanized]'s cock into \the [src]."))
-								else
-									to_chat(user, span_warning("[src] is full."))
-							else
-								to_chat(user, span_warning("[humanized] is out of cum!"))
-						else
-							to_chat(user, span_warning("[humanized] cannot be milked!"))
-					else
-						to_chat(user, span_warning("[humanized]'s groin must be exposed before I can milk them!"))
-				return 1
-
-		if(!reagents || !reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty!"))
-			return
-
-			if(user.used_intent.type == INTENT_SPLASH)
-				var/R
-				M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
-								span_danger("[user] splashes the contents of [src] onto you!"))
-				if(reagents)
-					for(var/datum/reagent/A in reagents.reagent_list)
-						R += "[A] ([num2text(A.volume)]),"
-
-				if(isturf(target) && reagents.reagent_list.len && thrownby)
-					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				reagents.reaction(M, TOUCH)
-				log_combat(user, M, "splashed", R)
-				reagents.clear_reagents()
-				return
-			else if(user.used_intent.type == INTENT_POUR)
-				if(!canconsume(M, user))
-					return
-				if(M != user)
-					M.visible_message(span_danger("[user] attempts to feed [M] something."), \
-								span_danger("[user] attempts to feed you something."))
-					if(!do_mob(user, M))
-						return
-					if(!reagents || !reagents.total_volume)
-						return // The drink might be empty after the delay, such as by spam-feeding
-					M.visible_message(span_danger("[user] feeds [M] something."), \
-								span_danger("[user] feeds you something."))
-					log_combat(user, M, "fed", reagents.log_list())
-
-		if(user.used_intent.type == INTENT_SPLASH)
-			var/R
-			M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
-							span_danger("[user] splashes the contents of [src] onto you!"))
-			if(reagents)
-				for(var/datum/reagent/A in reagents.reagent_list)
-					R += "[A] ([num2text(A.volume)]),"
-
-			if(isturf(target) && reagents.reagent_list.len && thrownby)
-				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
-			reagents.reaction(M, TOUCH)
-			log_combat(user, M, "splashed", R)
-			reagents.clear_reagents()
-			return
-		else if(user.used_intent.type == INTENT_POUR)
-			if(!canconsume(M, user))
-				return
-			if(M != user)
-				M.visible_message(span_danger("[user] attempts to feed [M] something."), \
-							span_danger("[user] attempts to feed you something."))
-				if(!do_mob(user, M))
-					return
-				if(!reagents || !reagents.total_volume)
-					return // The drink might be empty after the delay, such as by spam-feeding
-				M.visible_message(span_danger("[user] feeds [M] something."), \
-							span_danger("[user] feeds you something."))
-				log_combat(user, M, "fed", reagents.log_list())
-			else
-				to_chat(user, span_notice("I swallow a gulp of [src]."))
-			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
-			playsound(M.loc,pick(drinksounds), 100, TRUE)
-			return
 /obj/item/reagent_containers/glass/attack_obj(obj/target, mob/living/user)
 	if(user.used_intent.type == INTENT_GENERIC)
 		return ..()
@@ -608,7 +581,7 @@
 
 /obj/item/reagent_containers/glass/waterbottle/relic/Initialize()
 	var/datum/reagent/random_reagent = get_random_reagent_id()
-	list_reagents = list(random_reagent = 50)
+	list_reagents = list((random_reagent) = 50) // without parentheses, it's "random_reagent" the string
 	. = ..()
 	desc +=  span_notice("The writing reads '[random_reagent.name]'.")
 

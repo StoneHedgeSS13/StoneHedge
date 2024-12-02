@@ -128,7 +128,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	beltr = /obj/item/quiver/Pbolts
+	beltr = /obj/item/quiver/bolts
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) //they are killers
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

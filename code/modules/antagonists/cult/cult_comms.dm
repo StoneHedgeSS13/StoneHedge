@@ -342,7 +342,7 @@
 			to_chat(owner, span_cultbold("The cult has already designated a target!"))
 			return
 	if(cooldown>world.time)
-		to_chat(owner, span_cultbold("I aren't ready to place another blood mark yet!"))
+		to_chat(owner, span_cultbold("I'm not ready to place another blood mark yet!"))
 		return
 	target = owner.orbiting?.parent || get_turf(owner)
 	if(!target)

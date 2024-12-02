@@ -150,8 +150,6 @@
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t2
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-	switch(H.patron?.type)
-		if(/datum/patron/inhumen/graggar)
-			if(H.mind)
-				H.mind.adjust_spellpoints(1)
-				H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+	if(H.mind && H.patron?.type == /datum/patron/inhumen/graggar)
+		H.mind.adjust_spellpoints(1)
+		H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)

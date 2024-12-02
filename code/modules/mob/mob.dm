@@ -192,7 +192,7 @@ GLOBAL_VAR_INIT(mobids, 1)
   * * vision_distance (optional) define how many tiles away the message can be seen.
   * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
   */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null, mob/target = null, target_message = null)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -202,6 +202,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 	hearers -= ignored_mobs
 	if(self_message)
 		hearers -= src
+	if(target && target_message)
+		hearers -= target
+		target.show_message(target_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
 	for(var/mob/M in hearers)
 		if(!M.client)
 			continue
@@ -220,7 +223,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null, target = null, target_message = null)
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)

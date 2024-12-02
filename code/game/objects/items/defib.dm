@@ -432,7 +432,7 @@
 		if(req_defib)
 			to_chat(user, span_warning("The instructions on [defib] don't mention how to revive that..."))
 		else
-			to_chat(user, span_warning("I aren't sure how to revive that..."))
+			to_chat(user, span_warning("I'm not sure how to revive that..."))
 		return
 	var/mob/living/carbon/H = M
 

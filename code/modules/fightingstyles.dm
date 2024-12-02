@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/give_fightingstyle(var/two = FALSE)
+/mob/living/carbon/human/proc/give_fightingstyle(two = FALSE)
 	var/list/fightingstyles = list(
 		"Dirty Fighting",
 		"Shield Master",
@@ -17,7 +17,7 @@
 		var/stylechoice_two = input("Choose your second fighting style", "Available fighting styles") as anything in fightingstyles
 		trygivefightingstyle(stylechoice_two)
 
-/mob/living/carbon/human/proc/trygivefightingstyle(var/T)
+/mob/living/carbon/human/proc/trygivefightingstyle(T)
 	switch(T)
 		if("Dirty Fighting")
 			ADD_TRAIT(src, TRAIT_NUTCRACKER, TRAIT_GENERIC)
@@ -28,7 +28,7 @@
 
 		if("Tavern Brawler")
 			ADD_TRAIT(src, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-			
+
 		if("Unarmed Fighting")
 			ADD_TRAIT(src, TRAIT_PUGILIST, TRAIT_GENERIC)
 			src.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)

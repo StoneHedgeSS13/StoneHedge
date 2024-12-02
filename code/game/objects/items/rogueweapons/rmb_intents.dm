@@ -14,6 +14,11 @@
 	user.changeNext_move(CLICK_CD_RAPID)
 	playsound(user, 'sound/combat/feint.ogg', 100, TRUE)
 	user.visible_message(span_danger("[user] feints an attack at [target]!"))
+	SEND_SIGNAL(L, COMSIG_FEINT_REACT, user, target)
+	if(HAS_TRAIT(L, TRAIT_FEINT_IMMUNITY))
+		to_chat(user, span_warning("[L] seems completely unaffected by my maneuver!"))
+		user.apply_status_effect(/datum/status_effect/debuff/feintcd)
+		return
 	var/perc = 50
 	if(user.mind)
 		var/obj/item/I = user.get_active_held_item()
@@ -29,8 +34,6 @@
 		perc += (ourskill - theirskill)*20 	//skill is of the essence
 		perc += (user.STAINT - L.STAINT)*15	//but it's also a mindgame
 		perc += (user.STASPD - L.STASPD)*15 	//a swift feint can still fool a slow opponent
-
-
 
 	if(L.d_intent == INTENT_DODGE)
 		if(!L.mind && !user.has_status_effect(/datum/status_effect/debuff/feintcd))//Feinting an NPC will now perform a 'Trip' combat manuever. This feature is designed as a way to counter the AI's ability to dodge attacks that have a hit delay by constantly moving around..

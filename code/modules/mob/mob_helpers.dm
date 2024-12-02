@@ -128,6 +128,8 @@
 				newletter+="[newletter]"
 			if(20)
 				newletter+="[newletter][newletter]"
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -140,7 +142,7 @@
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,2)==2)
+		if(prob(50))
 			if(lowertext(newletter)=="o")
 				newletter="u"
 			if(lowertext(newletter)=="t")
@@ -153,7 +155,7 @@
 				newletter=" NAR "
 			if(lowertext(newletter)=="s")
 				newletter=" SIE "
-		if(rand(1,4)==4)
+		if(prob(25))
 			if(newletter==" ")
 				newletter=" no hope... "
 			if(newletter=="H")
@@ -170,6 +172,8 @@
 				newletter="nglu"
 			if(5)
 				newletter="glor"
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -591,7 +595,7 @@
 		if(hud_used.cmode_button)
 			hud_used.cmode_button.update_icon()
 
-/mob/proc/set_cmode(var/new_cmode)
+/mob/proc/set_cmode(new_cmode)
 	if(cmode == new_cmode)
 		return
 	cmode = new_cmode
@@ -798,7 +802,7 @@
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		if(!notify_suiciders && (O in GLOB.suicided_mob_list))
 			continue
-		if (ignore_key && O.ckey in GLOB.poll_ignore[ignore_key])
+		if (ignore_key && (O.ckey in GLOB.poll_ignore[ignore_key]))
 			continue
 		var/orbit_link
 		if (source && action == NOTIFY_ORBIT)

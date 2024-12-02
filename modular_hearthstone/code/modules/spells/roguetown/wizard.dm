@@ -12,7 +12,7 @@
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
+	var/list/obj/effect/proc_holder/spell/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
 		/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
@@ -47,11 +47,11 @@
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-		
+
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
 	if(!item)
-		return     // user canceled; 
+		return     // user canceled;
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == item.type)
 			to_chat(user,span_warning("You already know this one!"))
@@ -104,7 +104,7 @@
 			return TRUE
 	to_chat(user, span_warning("I seek a mental connection, but can't find [input]."))
 	revert_cast()
-	
+
 /obj/effect/proc_holder/spell/invoked/push_spell
 	name = "Repulse"
 	desc = "Conjure forth a wave of energy, repelling anyone directly in front of you"
@@ -122,7 +122,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "placeholder"
 
-/obj/effect/proc_holder/spell/invoked/push_spell/cast(list/targets, mob/user)	
+/obj/effect/proc_holder/spell/invoked/push_spell/cast(list/targets, mob/user)
 	var/turf/lower_left
 	var/turf/upper_right
 	switch(user.dir)
@@ -138,7 +138,7 @@
 		if(EAST)
 			lower_left = locate(user.x + 1, user.y - 1, user.z)
 			upper_right = locate(user.x + 1, user.y + 1, user.z)
-	
+
 	var/list/things_to_throw = list()
 	for(var/turf/affected_tile in block(lower_left, upper_right)) //everything in the 3x1 block is found.
 		affected_tile.Shake_turf(duration = 0.5 SECONDS)
@@ -235,7 +235,7 @@
 		addtimer(CALLBACK(src, PROC_REF(apply_damage), affected_turfs), wait = i * 1 SECONDS)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(var/list/affected_turfs)
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(list/affected_turfs)
 	for(var/turf/damage_turf in affected_turfs)
 		new /obj/effect/temp_visual/hierophant/squares(damage_turf)
 		for(var/mob/living/L in damage_turf.contents)

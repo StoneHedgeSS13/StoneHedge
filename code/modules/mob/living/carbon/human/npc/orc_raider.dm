@@ -47,9 +47,7 @@ GLOBAL_LIST_INIT(orcraider_aggro, world.file2list("strings/rt/orcraideraggroline
 	. = ..()
 	set_species(/datum/species/halforc)
 	skin_tone = SKIN_COLOR_GROONN
-	spawn(10)
-		after_creation()
-	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
+	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 
 /mob/living/carbon/human/species/halforc/orc_raider/after_creation()
