@@ -28,7 +28,7 @@
 		qdel(src)
 
 /obj/item/survivalcapsule/Destroy()
-	template = null 
+	template = null
 	. = ..()
 
 /obj/item/survivalcapsule/examine(mob/user)
@@ -85,6 +85,16 @@
 	name = "Modest home crystal."
 	desc = "A cozy wooden cottage at the flick of a wrist. a modest home and smithy for the starting homesteader. brought to you by Dr.V."
 	template_id = "shelter_smith"
+
+/obj/item/survivalcapsule/alchemy
+	name = "Alchemy shop crystal."
+	desc = "A cozy wooden cottage at the flick of a wrist. A modest home and alchemy shop for the aspiring alchemist. brought to you by Dr.V."
+	template_id = "shelter_alchemy"
+
+/obj/item/survivalcapsule/farm
+	name = "Modest farmhouse crystal."
+	desc = "A cozy wooden farmhouse at the flick of a wrist. A modest home for the aspiring farmer. brought to you by Dr.V."
+	template_id = "shelter_farm"
 
 /*/obj/item/survivalcapsule/bathroom
 	name = "emergency relief capsule"

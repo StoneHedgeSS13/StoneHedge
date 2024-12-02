@@ -89,11 +89,11 @@
 	banned_objects = typecacheof(/obj/structure/stone_tile)
 
 /datum/map_template/shelter/smith
-	name = "Crystal Modest"
+	name = "Crystal Smith Shop"
 	shelter_id = "shelter_smith"
-	description = "A cozy wooden cottage at the flick of a wrist has\
+	description = "A metal forge at the flick of a wrist has\
 		the amenities of home, a bed and table, cooking station \
-		and a nice lil smithy area for you to begin your buisness and noy break the SHY!. \
+		and a nice lil smithy area for you to begin your business and noy break the SHY!. \
 		-brought to you by V"
 	mappath = "_maps/templates/shelter_2.dmm"
 
@@ -112,6 +112,36 @@
 	mappath = "_maps/templates/shelter_3.dmm"
 
 /datum/map_template/shelter/elite/New()
+	. = ..()
+	blacklisted_turfs -= typesof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
+
+/datum/map_template/shelter/alchemy
+	name = "Crystal Alchemy Shop"
+	shelter_id = "shelter_alchemy"
+	description = "A cozy wooden cabin for the aspiring alchemist\
+		with a workstation, alchemy tools, bed, and even an\
+		indoor growing area for your herbs\
+		 -brought to you by V"
+	mappath = "_maps/templates/shelter_4.dmm"
+
+/datum/map_template/shelter/alchemy/New()
+	. = ..()
+	blacklisted_turfs -= typesof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
+
+/datum/map_template/shelter/farm
+	name = "Crystal Farmhouse"
+	shelter_id = "shelter_farm"
+	description = "A cozy farmhouse with all the tools\
+		you need to start your own farm. Comes with\
+		a large variety of seeds, interior living space,\
+		an oven to cook food in, and a stockpile to store all that produce in.\
+		Farming tools and utilities will be deployed on the western edge of the plot.\
+		-brought to you by V"
+	mappath = "_maps/templates/shelter_5.dmm"
+
+/datum/map_template/shelter/farm/New()
 	. = ..()
 	blacklisted_turfs -= typesof(/turf/closed/mineral)
 	banned_objects = typecacheof(/obj/structure/stone_tile)
