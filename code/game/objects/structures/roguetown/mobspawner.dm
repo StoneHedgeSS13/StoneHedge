@@ -32,6 +32,9 @@ GLOBAL_VAR_INIT(max_total_spawned_mobs, 100) // New global variable for the tota
 	if (GLOB.total_spawned_mobs < GLOB.max_total_spawned_mobs && current_spawned_mobs < max_spawned_mobs)
 		spawn_random_mobs(mobs_to_spawn)
 	start_spawning()
+	if (temporary)
+		QDEL_IN(src, 30)
+		return
 
 /obj/effect/mob_spawner/proc/spawn_random_mobs(num_to_spawn)
 	var/spawn_chance = 100 // 100% chance to spawn if conditions are met
@@ -50,30 +53,6 @@ GLOBAL_VAR_INIT(max_total_spawned_mobs, 100) // New global variable for the tota
 					GLOB.total_spawned_mobs++
 					RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, PROC_REF(on_mob_destroy))
 			i++
-	proc/spawn_and_continue()
-		if (total_spawned_mobs < max_total_spawned_mobs && current_spawned_mobs < max_spawned_mobs)
-			spawn_random_mobs(mobs_to_spawn)
-		start_spawning()
-		if (temporary)
-			QDEL_IN(src, 30)
-			return
-	proc/spawn_random_mobs(var/num_to_spawn)
-		var/spawn_chance = 100 // 100% chance to spawn if conditions are met
-		if (prob(spawn_chance) && total_spawned_mobs < max_total_spawned_mobs)
-			var/turf/spawn_turf
-			var/mob_type
-			var/mob/new_mob
-			var/i = 0
-			while (i < num_to_spawn && total_spawned_mobs < max_total_spawned_mobs)
-				spawn_turf = get_random_valid_turf()
-				if (spawn_turf)
-					mob_type = pickweight(ambush_mobs)
-					new_mob = new mob_type(spawn_turf)
-					if (new_mob)
-						current_spawned_mobs++
-						total_spawned_mobs++
-						RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, .proc/on_mob_destroy)
-				i++
 
 /obj/effect/mob_spawner/proc/get_random_valid_turf()
 	var/list/valid_turfs = list()
