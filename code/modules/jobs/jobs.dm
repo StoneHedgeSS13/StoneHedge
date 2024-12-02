@@ -98,6 +98,12 @@ GLOBAL_LIST_INIT(church_positions, list(
 	"Druid",
 ))
 
+GLOBAL_LIST_INIT(academy_positions, list(
+	"Academy Archmage",
+	"Academy Mage",
+	"Academy Apprentice",
+))
+
 GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant Prince",
 	"Innkeep",

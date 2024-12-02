@@ -125,7 +125,13 @@
 #define CONFESSOR	(1<<5)
 #define DRUID		(1<<6)
 
-#define COURTIERS	(1<<3)
+#define ACADEMY				(1<<3)
+
+#define ACADARCHMAGE 	(1<<0)
+#define ACADMAGE 	(1<<2)
+#define ACADAPP 	(1<<3)
+
+#define COURTIERS	(1<<4)
 
 #define JESTER		(1<<0)
 #define WIZARD		(1<<1)
@@ -133,7 +139,7 @@
 #define BUTLER		(1<<3)
 #define COUNCILLOR	(1<<4)
 
-#define YEOMEN		(1<<4)
+#define YEOMEN		(1<<5)
 
 #define BARKEEP		(1<<0)
 #define ARCHIVIST	(1<<1)
@@ -148,7 +154,7 @@
 #define ELDER		(1<<10)
 #define APOTHECARY	(1<<11)
 
-#define PEASANTS	(1<<5)
+#define PEASANTS	(1<<6)
 
 #define HUNTER		(1<<0)
 #define FARMER		(1<<1)
@@ -174,7 +180,7 @@
 #define PRISONERD	(1<<21)
 #define BANDIT		(1<<22)
 
-#define APPRENTICES	(1<<6)
+#define APPRENTICES	(1<<7)
 
 #define APPRENTICE	(1<<0)
 #define CHURCHLING	(1<<1)
@@ -220,6 +226,7 @@
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
+#define JCOLOR_ACADEMY "#785286"
 
 
 // job display orders //
@@ -263,11 +270,15 @@
 #define JDO_GRAVEMAN 15
 #define JDO_SHEPHERD 16
 
-#define JDO_MERCHANT 17
-#define JDO_SHOPHAND 17.1
-#define JDO_GRABBER 17.2
+#define JDO_ACADARCHMAGE 17
+#define JDO_ACADMAGE 17.1
+#define JDO_ACADAPP 17.2
 
-#define JDO_ARCHIVIST 18
+#define JDO_MERCHANT 18
+#define JDO_SHOPHAND 18.1
+#define JDO_GRABBER 18.2
+
+#define JDO_ARCHIVIST 18.3
 
 #define JDO_CHIEF 18.1
 #define JDO_ARMORER 19.1
@@ -357,6 +368,11 @@
 	/datum/job/roguetown/puritan,\
 	/datum/job/roguetown/grandmaster,\
 	/datum/job/roguetown/templar
+
+#define ACADEMY_ROLES \
+	/datum/job/roguetown/acadarchmage,\
+	/datum/job/roguetown/acadmage,\
+	/datum/job/roguetown/acadapp
 
 #define PEASANT_ROLES \
 	/datum/job/roguetown/villager,\

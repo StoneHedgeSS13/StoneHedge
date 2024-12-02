@@ -446,6 +446,16 @@
 	icon_state = "toothkey"
 	lockid = "blk"
 
+
+//academy keyring. used to trigger the lockdown, lock/unlock ARIEL, and open the door to the portal room.
+/obj/item/roguekey/acadkeystone
+	name = "academy keystone"
+	desc = "A silver-banded sapphire keystone used to activate and deactivate certain magical wards. This one is issued to Mages of the Ravenloft Academy."
+	icon = 'icons/roguetown/clothing/rings.dmi'
+	icon_state = "s_ring_sapphire"
+	lockid = "acadkeystone"
+	slot_flags = ITEM_SLOT_RING
+
 //custom key
 /obj/item/roguekey/custom
 	name = "custom key"
