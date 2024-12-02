@@ -1,5 +1,5 @@
-var/global/total_spawned_mobs = 0
-var/global/max_total_spawned_mobs = 100 // New global variable for the total limit
+GLOBAL_VAR_INIT(total_spawned_mobs, 0)
+GLOBAL_VAR_INIT(max_total_spawned_mobs, 100) // New global variable for the total limit
 
 /obj/effect/mob_spawner
 	icon = 'icons/effects/landmarks_static.dmi'
@@ -16,82 +16,82 @@ var/global/max_total_spawned_mobs = 100 // New global variable for the total lim
 	var/area/valid_area = /area/rogue //Useful for randomly generated maps, will delete spawners created outside this area.
 	var/turf/accepted_turf = /turf/open/floor/rogue
 
-	New()
-		..() // Call the parent constructor
-		adventurer_landmarks = get_all_adventurer_landmarks() //prevents spawners from being placed near player spawns
-		if (!is_in_valid_area(src))
-			del src  // Delete the spawner if it's not in the valid area
-		else
-			start_spawning()
-
-	proc/start_spawning()
-		spawn_timer = addtimer(CALLBACK(src, .proc/spawn_and_continue), spawn_interval, TIMER_STOPPABLE)
-
-	proc/spawn_and_continue()
-		if (total_spawned_mobs < max_total_spawned_mobs && current_spawned_mobs < max_spawned_mobs)
-			spawn_random_mobs(mobs_to_spawn)
+/obj/effect/mob_spawner/Initialize()
+	. = ..() // Call the parent constructor
+	adventurer_landmarks = get_all_adventurer_landmarks() //prevents spawners from being placed near player spawns
+	if (!is_in_valid_area(src))
+		return INITIALIZE_HINT_QDEL  // Delete the spawner if it's not in the valid area
+	else
 		start_spawning()
 
-	proc/spawn_random_mobs(var/num_to_spawn)
-		var/spawn_chance = 100 // 100% chance to spawn if conditions are met
-		if (prob(spawn_chance) && total_spawned_mobs < max_total_spawned_mobs)
-			var/turf/spawn_turf
-			var/mob_type
-			var/mob/new_mob
-			var/i = 0
-			while (i < num_to_spawn && total_spawned_mobs < max_total_spawned_mobs)
-				spawn_turf = get_random_valid_turf()
-				if (spawn_turf)
-					mob_type = pickweight(ambush_mobs)
-					new_mob = new mob_type(spawn_turf)
-					if (new_mob)
-						current_spawned_mobs++
-						total_spawned_mobs++
-						RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, .proc/on_mob_destroy)
-				i++
+/obj/effect/mob_spawner/proc/start_spawning()
+	spawn_timer = addtimer(CALLBACK(src, PROC_REF(spawn_and_continue)), spawn_interval, TIMER_STOPPABLE)
 
-	proc/get_random_valid_turf()
-		var/list/valid_turfs = list()
-		for (var/turf/T in range(spawn_range, src))
-			if (is_valid_spawn_turf(T))
-				valid_turfs += T
-		if (valid_turfs.len == 0)
-			return null
-		return pick(valid_turfs)
+/obj/effect/mob_spawner/proc/spawn_and_continue()
+	if (GLOB.total_spawned_mobs < GLOB.max_total_spawned_mobs && current_spawned_mobs < max_spawned_mobs)
+		spawn_random_mobs(mobs_to_spawn)
+	start_spawning()
 
-	proc/is_valid_spawn_turf(turf/T)
-		if (!(istype(T, accepted_turf)))
-			return FALSE
-		if (istype(T, /turf/closed))
-			return FALSE
-		if (!is_in_valid_area(T))
-			return FALSE
-		for (var/L in adventurer_landmarks)
-			if (get_dist(T, L) < 10)
-				return FALSE
-		if (players_nearby(T, player_range))
-			return FALSE
-		return TRUE
+/obj/effect/mob_spawner/proc/spawn_random_mobs(num_to_spawn)
+	var/spawn_chance = 100 // 100% chance to spawn if conditions are met
+	if (prob(spawn_chance) && GLOB.total_spawned_mobs < GLOB.max_total_spawned_mobs)
+		var/turf/spawn_turf
+		var/mob_type
+		var/mob/new_mob
+		var/i = 0
+		while (i < num_to_spawn && GLOB.total_spawned_mobs < GLOB.max_total_spawned_mobs)
+			spawn_turf = get_random_valid_turf()
+			if (spawn_turf)
+				mob_type = pickweight(ambush_mobs)
+				new_mob = new mob_type(spawn_turf)
+				if (new_mob)
+					current_spawned_mobs++
+					GLOB.total_spawned_mobs++
+					RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, PROC_REF(on_mob_destroy))
+			i++
 
-	proc/is_in_valid_area(atom/A)
-		var/area/area_check = get_area(A)
-		return istype(area_check, valid_area)
+/obj/effect/mob_spawner/proc/get_random_valid_turf()
+	var/list/valid_turfs = list()
+	for (var/turf/T in range(spawn_range, src))
+		if (is_valid_spawn_turf(T))
+			valid_turfs += T
+	if (valid_turfs.len == 0)
+		return null
+	return pick(valid_turfs)
 
-	proc/get_all_adventurer_landmarks()
-		var/list/landmarks = list()
-		for (var/obj/effect/landmark/start/adventurer/L in world)
-			landmarks += L
-		for (var/obj/effect/landmark/start/adventurerlate/L in world)
-			landmarks += L
-		return landmarks
-
-	proc/on_mob_destroy(mob/M)
-		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
-		current_spawned_mobs = max(0, current_spawned_mobs - 1)
-		total_spawned_mobs = max(0, total_spawned_mobs - 1)
-
-	proc/players_nearby(turf/T, distance)
-		for (var/mob/living/carbon/human/H in range(distance, T))
-			if (H.client)
-				return TRUE
+/obj/effect/mob_spawner/proc/is_valid_spawn_turf(turf/T)
+	if (!(istype(T, accepted_turf)))
 		return FALSE
+	if (istype(T, /turf/closed))
+		return FALSE
+	if (!is_in_valid_area(T))
+		return FALSE
+	for (var/L in adventurer_landmarks)
+		if (get_dist(T, L) < 10)
+			return FALSE
+	if (players_nearby(T, player_range))
+		return FALSE
+	return TRUE
+
+/obj/effect/mob_spawner/proc/is_in_valid_area(atom/A)
+	var/area/area_check = get_area(A)
+	return istype(area_check, valid_area)
+
+/obj/effect/mob_spawner/proc/get_all_adventurer_landmarks()
+	var/list/landmarks = list()
+	for (var/obj/effect/landmark/start/adventurer/L in world)
+		landmarks += L
+	for (var/obj/effect/landmark/start/adventurerlate/L in world)
+		landmarks += L
+	return landmarks
+
+/obj/effect/mob_spawner/proc/on_mob_destroy(mob/M)
+	UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+	current_spawned_mobs = max(0, current_spawned_mobs - 1)
+	GLOB.total_spawned_mobs = max(0, GLOB.total_spawned_mobs - 1)
+
+/obj/effect/mob_spawner/proc/players_nearby(turf/T, distance)
+	for (var/mob/living/carbon/human/H in range(distance, T))
+		if (H.client)
+			return TRUE
+	return FALSE

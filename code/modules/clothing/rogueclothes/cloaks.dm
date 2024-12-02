@@ -976,6 +976,7 @@
 	user.check_attunement_points()
 
 /obj/item/clothing/neck/roguetown/blkknight/dropped(mob/living/user)
+	..()
 	if(!active_item)
 		return
 	active_item = FALSE
@@ -988,7 +989,7 @@
 		user.change_stat("endurance", -2)
 		user.change_stat("speed", -2)
 	else
-		to_chat(user, span_notice("Strange, I don't feel that power anymore.."))
+		to_chat(user, span_notice("Strange, I don't feel that power anymore..."))
 		armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 	user.attunement_points_used -= attunement_cost
 	user.check_attunement_points()

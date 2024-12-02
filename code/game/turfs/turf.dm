@@ -61,6 +61,7 @@
 	. = ..()
 
 /turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 #ifdef TESTSERVER
 	if(!icon_state)
 		icon_state = "cantfind"

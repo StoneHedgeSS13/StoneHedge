@@ -30,7 +30,7 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,
 		/obj/item/clothing/mask/rogue/physician = 1,
 		/obj/item/storage/box/matches = 1, /// for carterizer and ring.
-		/obj/item/clothing/ring/lantern = 1, //lantern+
+		/obj/item/flashlight/flare/torch/lantern/ring = 1, //lantern+
 		/obj/item/storage/fancy/skit = 1,
 	)
 	if(H.gender == MALE)

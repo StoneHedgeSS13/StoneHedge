@@ -72,13 +72,13 @@
 	else
 		if(myrod)
 			playsound(src, "sound/items/sharpen_short1.ogg",  100)
-			to_chat(user, "<span class='warning'>I draw the ramrod from the [src]!</span>")
+			to_chat(user, "<span class='warning'>I draw the ramrod from \the [src]!</span>")
 			var/obj/item/ramrod/AM
 			for(AM in src)
 				user.put_in_hands(AM)
 				myrod = null
 		else
-			to_chat(user, "<span class='warning'>There is no rod stowed in the [src]!</span>")
+			to_chat(user, "<span class='warning'>There is no rod stowed in \the [src]!</span>")
 
 /obj/item/gun/ballistic/handgonne/shoot_with_empty_chamber()
 	playsound(src.loc, 'sound/foley/musketcock.ogg', 100, FALSE)
@@ -104,50 +104,51 @@
 
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		if(chambered)
-			to_chat(user, "<span class='warning'>There is already a [chambered] in the [src]!</span>")
+			to_chat(user, "<span class='warning'>There is already \a [chambered] in \the [src]!</span>")
 			return
 		if(!gunpowder)
-			to_chat(user, "<span class='warning'>You must fill the [src] with gunpowder first!</span>")
+			to_chat(user, "<span class='warning'>You must fill \the [src] with gunpowder first!</span>")
 			return
 		if((loc == user) && (user.get_inactive_held_item() != src))
 			return
-		playsound(src, "modular_helmsguard/sound/arquebus/insert.ogg",  100)
-		user.visible_message("<span class='notice'>[user] forces a [A] down the barrel of the [src].</span>")
+		playsound(src, "modular_helmsguard/sound/arquebus/insert.ogg", 100, channel = gunchannel)
+		user.visible_message("<span class='notice'>[user] forces \a [A] down the barrel of \the [src].</span>")
 		..()
 
 	if(istype(A, /obj/item/powderflask))
 		if(gunpowder)
-			user.visible_message("<span class='notice'>The [src] is already filled with gunpowder!</span>")
+			user.visible_message("<span class='notice'>\The [src] is already filled with gunpowder!</span>")
 			return
 		else
-			playsound(src, "modular_helmsguard/sound/arquebus/pour_powder.ogg",  100)
+			playsound(src, "modular_helmsguard/sound/arquebus/pour_powder.ogg", 100, channel = gunchannel)
 			if(do_after(user, load_time_skill, src))
-				user.visible_message("<span class='notice'>[user] fills the [src] with gunpowder.</span>")
+				user.visible_message("<span class='notice'>[user] fills \the [src] with gunpowder.</span>")
 				gunpowder = TRUE
+			else
+				user.stop_sound_channel(gunchannel)
 			return
-		user.stop_sound_channel(gunchannel)
 	if(istype(A, /obj/item/ramrod))
 		var/obj/item/ramrod/R=A
 		if(!reloaded)
 			if(chambered)
-				user.visible_message("<span class='notice'>[user] begins ramming the [R.name] down the barrel of the [src] .</span>")
+				user.visible_message("<span class='notice'>[user] begins ramming \the [R] down the barrel of \the [src] .</span>")
 				playsound(src, "modular_helmsguard/sound/arquebus/ramrod.ogg",  100)
 				if(do_after(user, load_time_skill, src))
-					user.visible_message("<span class='notice'>[user] has finished reloading the [src].</span>")
+					user.visible_message("<span class='notice'>[user] has finished reloading \the [src].</span>")
 					reloaded = TRUE
 				return
 		if(reloaded && !myrod)
 			user.transferItemToLoc(R, src)
 			myrod = R
 			playsound(src, "sound/foley/musketload.ogg",  100)
-			user.visible_message("<span class='notice'>[user] stows the [R.name] under the barrel of the [src].</span>")
+			user.visible_message("<span class='notice'>[user] stows \the [R] under the barrel of \the [src].</span>")
 		if(!chambered && !myrod)
 			user.transferItemToLoc(R, src)
 			myrod = R
 			playsound(src, "sound/foley/musketload.ogg",  100)
-			user.visible_message("<span class='notice'>[user] stows the [R.name] under the barrel of the [src] without chambering it.</span>")
+			user.visible_message("<span class='notice'>[user] stows \the [R] under the barrel of \the [src] without chambering it.</span>")
 		if(!myrod == null)
-			to_chat(user, span_warning("There's already a [R.name] inside of the [name]."))
+			to_chat(user, span_warning("There's already \a [R] inside of \the [src]."))
 			return
 		user.stop_sound_channel(gunchannel)
 
@@ -198,7 +199,7 @@
 		if(prob(accident_chance))
 			user.flash_fullscreen("whiteflash")
 			user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
-			user.visible_message("<span class='danger'>[user] accidentally burnt themselves while firing the [src].</span>")
+			user.visible_message("<span class='danger'>[user] accidentally burns [user.p_themselves()] while firing \the [src].</span>")
 			user.emote("painscream")
 			if(prob(60))
 				user.dropItemToGround(src)
@@ -215,7 +216,7 @@
 /obj/item/gun/ballistic/handgonne/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
 /*	if(!reloaded)
-		to_chat(user, span_warning("The [src] is not properly loaded yet!"))
+		to_chat(user, span_warning("\The [src] is not properly loaded yet!"))
 		return*/
 
 /obj/item/gun/ballistic/handgonne/can_shoot()

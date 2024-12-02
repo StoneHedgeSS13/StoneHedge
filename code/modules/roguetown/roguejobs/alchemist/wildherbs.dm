@@ -22,7 +22,7 @@
 		has_plod = FALSE
 		update_icon() //Won't update due to proc otherwise
 		timer = initial(timer)
-		addtimer(CALLBACK(src, .proc/regrow),timer) //Set up the timer properly
+		addtimer(CALLBACK(src, PROC_REF(regrow)),timer) //Set up the timer properly
 	update_icon()
 
 /obj/structure/flora/wildherb/proc/regrow()

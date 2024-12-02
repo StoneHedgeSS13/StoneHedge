@@ -327,12 +327,12 @@
 	name = "cooked sludgefish"
 	icon_state = "sludgefish_purple"
 	color = "#b6791e"
-	list_reagents = list(/datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 5)
 /obj/item/reagent_containers/food/snacks/rogue/fryfishfresh/ratfish
 	name = "cooked ratfish"
 	icon_state = "ratfish"
 	color = "#b6791e"
-	list_reagents = list(/datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 5)
 /obj/item/reagent_containers/food/snacks/rogue/fryfishfresh/pufferfish
 	name = "cooked pufferfish"
 	icon_state = "pufferfish"

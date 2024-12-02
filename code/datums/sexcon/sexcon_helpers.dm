@@ -59,33 +59,6 @@
 	else
 		playsound(src, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 35, TRUE, ignore_walls = FALSE)
 
-/* Obsolete now, cum reagent handles pregnancy mostly.
-/mob/living/proc/try_impregnate(mob/living/wife)
-	var/wiferoll = rand(20)+wife.STACON
-	var/husbroll = rand(20)+STACON
-	if(wiferoll < husbroll) //shitty d20 roll with +1 point per const, wife tries to roll more to not get pregnant.
-/mob/living/carbon/human/proc/try_impregnate(mob/living/carbon/human/wife)
-	var/obj/item/organ/testicles/testes = getorganslot(ORGAN_SLOT_TESTICLES)
-	if(!testes)
-		return
-	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
-	if(!vag)
-		return
-	if(prob(25) && wife.is_fertile() && is_virile())
-	//even more obsolete
-	//This is the correct one used by the game. There's another sexcon that's not included in the DME. I'm stupid. - Kyo
-		vag.be_impregnated(src)
-		if(client?.prefs.showrolls)
-			to_chat(src, span_info("My odds to impregnate... [husbroll] vs [wife]'s [wiferoll]."))
-		if(wife.client?.prefs.showrolls)
-			to_chat(wife, span_info("My odds to not be pregnant... [wiferoll] vs [src]'s [husbroll]."))
-	else
-		if(client?.prefs.showrolls)
-			to_chat(src, span_info("My odds to impregnate... [husbroll] vs [wife]'s [wiferoll]."))
-		if(wife.client?.prefs.showrolls)
-			to_chat(wife, span_info("My odds to not be pregnant... [wiferoll] vs [src]'s [husbroll]."))
-*/
-
 /mob/living/proc/get_highest_grab_state_on(mob/living/victim)
 	var/grabstate = null
 	if(r_grab && r_grab.grabbed == victim)

@@ -223,11 +223,11 @@
 
 	if(!check_rights())
 		return FALSE
-	
+
 	var/category = input("Category") as null|anything in list("Ten", "Inhuman", "Special")
 	if(!category)
 		return FALSE
-	
+
 	var/curse
 	switch(category)
 		if("Ten")
@@ -236,7 +236,7 @@
 			curse = input("Curse") as null|anything in INHUMEN_CURSES
 		if("Special")
 			curse = input("Curse") as null|anything in SPECIAL_CURSES
-		
+
 	if(!curse)
 		return FALSE
 
@@ -262,7 +262,7 @@
 
 	if(!check_rights())
 		return
-	
+
 	if(!M.ckey)
 		to_chat(src, span_warning("There is no ckey attached to this mob."))
 		return
@@ -276,7 +276,7 @@
 
 	if(!check_rights())
 		return
-	
+
 	var/S = M.IsSleeping()
 	if(S)
 		M.remove_status_effect(S)
@@ -310,7 +310,7 @@
 
 	if(!check_rights())
 		return
-	
+
 	if(!M.ckey)
 		to_chat(src, span_warning("There is no ckey attached to this mob."))
 		return
@@ -728,13 +728,13 @@
 	if(SSticker.current_state == GAME_STATE_PREGAME || SSticker.current_state == GAME_STATE_STARTUP)
 		if(alert("Enter Manual Gamemode Selection? Will disable random generation",,"Yes","No") == "Yes")
 			for(var/I in 1 to 10)
-				var/choice = input(usr, "Select Gamemodes", "Select Gamemodes") as anything in roguegamemodes|null
+				var/choice = input(usr, "Select Gamemodes", "Select Gamemodes") as anything in GLOB.roguegamemodes|null
 				if(!choice || choice == "CANCEL")
 					message_admins("<font color='blue'>\
 						[usr.key] has forced the gamemode.</font>")
 					return
 				SSticker.manualmodes |= choice
-				roguegamemodes -= choice		
+				GLOB.roguegamemodes -= choice
 	else
 		to_chat(usr, "<font color='red'>Error: Force Modes: Game has already started.</font>")
 

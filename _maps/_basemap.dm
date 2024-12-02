@@ -7,7 +7,7 @@
 		#include "map_files\Roguetown\roguetown.dmm"
 		#include "map_files\Rogueworld\Rogueworld.dmm"
 
-		#ifdef TRAVISBUILDING
+		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
 	#endif

@@ -44,25 +44,23 @@
 
 /datum/component/personal_crafting/proc/check_contents(datum/crafting_recipe/R, list/contents)
 	contents = contents["other"]
-	main_loop:
-		for(var/A in R.reqs)
-			var/needed_amount = R.reqs[A]
-			for(var/B in contents)
-				if(ispath(B, A))
-					if(!R.subtype_reqs && B in subtypesof(A))
-						continue
-					if (R.blacklist.Find(B))
-						testing("foundinblacklist")
-						continue
-					if(contents[B] >= R.reqs[A])
-						continue main_loop
-					else
-						testing("removecontent")
-						needed_amount -= contents[B]
-						if(needed_amount <= 0)
-							continue main_loop
-						else
-							continue
+	for(var/A in R.reqs)
+		var/needed_amount = R.reqs[A]
+		for(var/B in contents)
+			if(!ispath(B, A))
+				continue
+			if(!R.subtype_reqs && B != A)
+				continue
+			if (R.blacklist.Find(B))
+				testing("foundinblacklist")
+				continue
+			if(contents[B] >= R.reqs[A])
+				break
+			testing("removecontent")
+			needed_amount -= contents[B]
+			if(needed_amount <= 0)
+				break
+		if(needed_amount > 0)
 			return FALSE
 	for(var/A in R.chem_catalysts)
 		if(contents[A] < R.chem_catalysts[A])

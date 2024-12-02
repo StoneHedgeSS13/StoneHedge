@@ -481,7 +481,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		S["custom_race_name"]			>> custom_race_name
 	if(!valid_custom_race_name(null, custom_race_name, TRUE))
 		custom_race_name = null
-/* useless shit from hearthstone.	
+/* useless shit from hearthstone.
 	S["alias"]			>> alias
 	if(!valid_alias(null, alias, TRUE))
 		alias = null
@@ -704,7 +704,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 #endif
 
-/datum/preferences/proc/validate_job_prefs(var/list/job_prefs)
+/datum/preferences/proc/validate_job_prefs(list/job_prefs)
 	for(var/job in job_prefs)
 		if(!SSjob.GetJob(job))
 			job_prefs -= job

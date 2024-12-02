@@ -17,6 +17,7 @@
 	var/verbage_simple = "craft"
 	var/verbage = "crafts"
 	var/craftsound = 'sound/foley/bandage.ogg'
+	/// Whether or not subtypes of paths in reqs are acceptable.
 	var/subtype_reqs = FALSE
 	var/structurecraft = null
 	var/buildsame = FALSE //allows palisades to be built on top of each other just not the same dir

@@ -99,8 +99,9 @@ GLOBAL_VAR(restart_counter)
 
 	Master.Initialize(10, FALSE, TRUE)
 
-	if(TEST_RUN_PARAMETER in params)
-		HandleTestRun()
+#ifdef UNIT_TESTS
+	HandleTestRun()
+#endif
 
 	update_status()
 
@@ -208,7 +209,6 @@ GLOBAL_VAR(restart_counter)
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC //redirect to server tools if necessary
-	return // Disable topics altogether
 
 	var/static/list/topic_handlers = TopicHandlers()
 
@@ -290,9 +290,10 @@ GLOBAL_VAR(restart_counter)
 
 	TgsReboot()
 
-	if(TEST_RUN_PARAMETER in params)
-		FinishTestRun()
-		return
+#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+#endif
 
 	if(TgsAvailable())
 		send2chat(new /datum/tgs_message_content("Round ending!"), CONFIG_GET(string/channel_announce_new_game))

@@ -20921,7 +20921,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/ringP,
+/obj/item/clothing/neck/roguetown/psicross/ringP,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "mzk" = (
@@ -20939,8 +20939,8 @@
 /area/rogue/outdoors/bog)
 "mzx" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/ring/lantern,
-/obj/item/clothing/ring/lantern,
+/obj/item/flashlight/flare/torch/lantern/ring,
+/obj/item/flashlight/flare/torch/lantern/ring,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
 "mzE" = (

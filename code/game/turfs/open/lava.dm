@@ -226,6 +226,30 @@
 	light_range = 4
 	light_power = 1
 	light_color = "#56ff0d"
+	var/acid_reagent = /datum/reagent/toxin/acid
+
+/turf/open/lava/acid/attackby(obj/item/C, mob/user, params)
+	if(user.used_intent.type == INTENT_FILL)
+		if(C.reagents)
+			if(!istype(C, /obj/item/reagent_containers/glass/bottle)) //you cant collect this shit with a waterskin
+				var/mob/living/carbon/boi = user
+				to_chat(C, span_userdanger("WHY DID I THINK THIS WAS A GOOD IDEA???"))
+				boi.flash_fullscreen("redflash3")
+				boi.emote("agony", forced = TRUE)
+				boi.adjustFireLoss(50)
+				return
+			if(C.reagents.holder_full())
+				to_chat(user, span_warning("[C] is full."))
+				return
+			if(do_after(user, 8, target = src))
+				user.changeNext_move(CLICK_CD_MELEE)
+				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
+				var/list/L = list()
+				L[acid_reagent] = 100
+				C.reagents.add_reagent_list(L)
+				to_chat(user, span_notice("I fill [C] from [src]."))
+			return
+	. = ..()
 
 /turf/open/lava/acid/burn_stuff(AM)
 	. = 0

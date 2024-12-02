@@ -271,7 +271,7 @@
 
 //Fishnets
 
-datum/supply_pack/rogue/wardrobe/suits/stockings_white_fishnet
+/datum/supply_pack/rogue/wardrobe/suits/stockings_white_fishnet
 	name = "White Fishent Stockings"
 	cost = 5
 	contains = list(

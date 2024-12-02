@@ -89,7 +89,7 @@
 		if(/datum/patron/divine/pestra)
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
-		else if(/datum/patron/divine/ravox || /datum/patron/inhumen/graggar) //raises the pick(1,2) weapon skills to 2 if they weren't there already
+		if(/datum/patron/divine/ravox, /datum/patron/inhumen/graggar) //raises the pick(1,2) weapon skills to 2 if they weren't there already
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, max((2 - H.mind.get_skill_level(/datum/skill/combat/knives)), 0), TRUE) //basically, (2 - current skill) is added to the total skill value.
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, max((2 - H.mind.get_skill_level(/datum/skill/combat/swords)), 0), TRUE)

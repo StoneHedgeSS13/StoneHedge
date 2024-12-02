@@ -13,8 +13,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
 
-/obj/item/clothing/ringP  /////////////////////// cast focus ring for acolytes and shit.
-	parent_type = /obj/item/clothing/neck/roguetown/psicross
+/obj/item/clothing/neck/roguetown/psicross/ringP  /////////////////////// cast focus ring for acolytes and shit.
 	name = "psi ring"
 	desc = "a blessed psi ring, for the religious type"
 	w_class = WEIGHT_CLASS_TINY
@@ -27,7 +26,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-/obj/item/clothing/ring/lantern
+/obj/item/flashlight/flare/torch/lantern/ring
 	parent_type = /obj/item/flashlight/flare/torch/lantern // Inherits parents properties from lantern
 	name = "alchemist ring"
 	icon_state = "lanternR"
@@ -48,10 +47,10 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	fuel = 9999 
+	fuel = 9999
 	sellprice = 30
 
-/obj/item/clothing/ring/lantern/MiddleClick(mob/living/user, params)
+/obj/item/flashlight/flare/torch/lantern/ring/MiddleClick(mob/living/user, params)
 	if (!on)
 		on = TRUE
 		to_chat(user, "<span class='notice'>With a flick of the thumb, you strike a flame.</span>")
@@ -62,30 +61,13 @@
 	icon_state = "ring_s"
 	sellprice = 33
 
-/obj/item/clothing/ringP  /////////////////////// cast focus ring for acolytes and shit.
-	parent_type = /obj/item/clothing/neck/roguetown/psicross
-	name = "psi ring"
-	desc = "a blessed psi ring, for the religious type"
-	w_class = WEIGHT_CLASS_TINY
-	icon = 'icons/roguetown/clothing/rings.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/rings.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/rings.dmi'
-	sleevetype = "shirt"
-	icon_state = "castring"
-	slot_flags = ITEM_SLOT_RING
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/blacksmithing
-
-
-
 /obj/item/clothing/ring/gold
 	name = "gold ring"
 	icon_state = "ring_g"
 	sellprice = 45
 
 
-/obj/item/clothing/ring/lantern
-	parent_type = /obj/item/flashlight/flare/torch/lantern // Inherits parents properties from lantern
+/obj/item/flashlight/flare/torch/lantern/ring
 	name = "alchemist ring"
 	icon_state = "lanternR"
 	w_class = WEIGHT_CLASS_TINY
@@ -105,10 +87,10 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	fuel = 9999 
+	fuel = 9999
 	sellprice = 30
 
-/obj/item/clothing/ring/lantern/MiddleClick(mob/living/user, params)
+/obj/item/flashlight/flare/torch/lantern/ring/MiddleClick(mob/living/user, params)
 	if (!on)
 		on = TRUE
 		to_chat(user, "<span class='notice'>With a flick of the thumb, you strike a flame.</span>")
@@ -249,14 +231,14 @@
 	attunement_cost = 5
 	var/active_item
 	infusable = FALSE
-	
+
 /obj/item/clothing/ring/dragon_ring/equipped(mob/living/user)
 	. = ..()
 	if(active_item)
 		return
 	else
 		active_item = TRUE
-		to_chat(user, span_notice("Here be dragons"))
+		to_chat(user, span_notice("Here be dragons."))
 		user.change_stat("strength", 2)
 		user.change_stat("constitution", 2)
 		user.change_stat("endurance", 2)
@@ -265,8 +247,9 @@
 		return
 
 /obj/item/clothing/ring/dragon_ring/dropped(mob/living/user)
+	..()
 	if(active_item)
-		to_chat(user, span_notice("Gone is thy hoard"))
+		to_chat(user, span_notice("Gone is thy hoard."))
 		user.change_stat("strength", -2)
 		user.change_stat("constitution", -2)
 		user.change_stat("endurance", -2)

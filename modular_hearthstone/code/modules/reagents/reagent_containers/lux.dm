@@ -43,9 +43,11 @@
 	light_range = 1
 
 /obj/item/soul_fragment/pickup(mob/user)
+	. = ..()
 	icon_state = "soul"
 
 /obj/item/soul_fragment/dropped(mob/user)
+	. = ..()
 	icon_state = "soul_floor"
 
 /datum/crafting_recipe/roguetown/soul_fragment_lux

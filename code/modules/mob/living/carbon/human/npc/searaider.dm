@@ -40,9 +40,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 /mob/living/carbon/human/species/human/northern/searaider/Initialize()
 	. = ..()
 	set_species(/datum/species/human/northern)
-	spawn(10)
-		after_creation()
-	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
+	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 
 /mob/living/carbon/human/species/human/northern/searaider/after_creation()

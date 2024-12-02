@@ -424,14 +424,12 @@
 		if(length(info) > maxlen)
 			to_chat(user, span_warning("[src] is full of verba."))
 			return
-		if(user.can_read(src))
-			format_browse(info_links, user)
-			update_icon_state()
-			return
-		else
+		if(!user.can_read(src))
 			to_chat(user, span_warning("I can't write."))
 			return
-		return
+		format_browse(info_links, user)
+		update_icon_state()
+		return TRUE
 
 	if(istype(P, /obj/item/paper))
 		var/obj/item/paper/p = P

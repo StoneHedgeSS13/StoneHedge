@@ -94,7 +94,7 @@
 		if(wonder_id >= 4)
 			if(GLOB.maniac_highlander) // Has a Maniac already TRIUMPHED?
 				to_chat(user, span_danger("IT WAS ALL FOR NAUGHT! I CAN'T WAKE UP!"))
-			else	
+			else
 				to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
 				dream_master.agony(user)
 				for(var/mob/living/carbon/C in GLOB.carbon_list - user) // Notify any other maniacs
@@ -112,7 +112,7 @@
 		user.log_message("crafted [wonder_id_desc] Maniac Wonder [key_text].", LOG_GAME)
 		message_admins("[wonder_id_desc] Maniac Wonder [key_text] constructed. [ADMIN_JMP(src)]")
 	START_PROCESSING(SSobj, src)
-	
+
 /obj/structure/wonder/examine(mob/user)
 	. = ..()
 	if(!QDELETED(dream_master))
@@ -153,7 +153,7 @@
 				mark_victim(victim)
 				break
 
-/obj/structure/wonder/proc/mark_victim(var/mob/living/carbon/human/V)
+/obj/structure/wonder/proc/mark_victim(mob/living/carbon/human/V)
 	var/obj/item/organ/heart/H = V.getorganslot(ORGAN_SLOT_HEART)
 	if(H && !QDELETED(dream_master))
 		if(!length(H.maniacs))

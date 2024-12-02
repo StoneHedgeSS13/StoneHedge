@@ -945,6 +945,7 @@
 			to_chat(user, span_warning("The curiass feels cold and dead."))
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/dropped(mob/living/user) //Remove some bugfixing stuff in exchange for stricter checks.
+	. = ..()
 	if(active_item)
 		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
 			var/mob/living/carbon/human/H = user

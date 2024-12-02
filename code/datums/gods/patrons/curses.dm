@@ -56,13 +56,9 @@
 	
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
-			if(!silent)
-				curse.on_loss(src)
-			else
-				curse.on_loss(src, TRUE)
+			curse.on_loss(src, silent)
 			curses -= curse
 			return TRUE
-			break
 
 	return FALSE
 

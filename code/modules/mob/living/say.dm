@@ -441,7 +441,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(message_mode == MODE_HEADSET)
 			imp.radio.talk_into(src, message, , spans, language)
 			return ITALICS | REDUCE_RANGE
-		if(message_mode == MODE_DEPARTMENT || message_mode in imp.radio.channels)
+		if(message_mode == MODE_DEPARTMENT || (message_mode in imp.radio.channels))
 			imp.radio.talk_into(src, message, message_mode, spans, language)
 			return ITALICS | REDUCE_RANGE
 
@@ -485,6 +485,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	say("#[message]", bubble_type, spans, sanitize, language, ignore_spam, forced)
 
 /mob/living/get_language_holder(shadow=TRUE)
+	RETURN_TYPE(/datum/language_holder)
 	if(mind && shadow)
 		// Mind language holders shadow mob holders.
 		. = mind.get_language_holder()

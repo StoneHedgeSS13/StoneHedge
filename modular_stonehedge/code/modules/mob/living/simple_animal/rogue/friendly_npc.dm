@@ -11,6 +11,8 @@
 	possible_rmb_intents = list()
 	erpable = TRUE
 	wander = TRUE
+	d_intent = INTENT_DODGE
+	aggressive = 1
 	show_genitals = TRUE
 	var/list/friendlyfactions = list("Station", "neutral", "rogueanimal", "saiga", "chickens", "goats", "cows", "turtles", "rats", "crabs", "horse")
 	//using friendlyjobs will make this mob hostile to everyone not of those jobs, unless they are in friendlyfactions.
@@ -21,10 +23,148 @@
 	var/mob/living/lasthitter = null
 	var/punish_attacking = FALSE
 
-/mob/living/carbon/human/species/human/smartnpc/
+/mob/living/carbon/human/species/human/smartnpc/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //until someone adds self healing and stam regen
 
-//would be great if we could make them follow stone roads while idle.
 /mob/living/carbon/human/species/human/smartnpc/should_target(mob/living/L)
+	if(!L)
+		return FALSE
+
+	if(L == src)
+		return FALSE
+
+	if(HAS_TRAIT(src, TRAIT_PACIFISM))
+		return FALSE
+
+	if(!is_in_zweb(src.z,L.z))
+		return FALSE
+
+	if(L.alpha <= 100) //if mostly invisible dont see it, surely this wont go wrong.
+		return FALSE
+
+	if(L.InFullCritical())
+		return FALSE
+
+	if(L.name in friends)
+		return FALSE
+
+	if(L.stat != CONSCIOUS)
+		return FALSE
+
+	if(L.lying && !L.get_active_held_item())
+		if(ishuman(L) && L.mind)
+			var/mob/living/carbon/human/badboi = L
+			if(badboi == lasthitter && Adjacent(badboi) && !badboi.handcuffed)
+				var/obj/item/rope/ropey = new /obj/item/rope
+				ropey.apply_cuffs(badboi, src)
+				start_pulling(badboi)
+		return FALSE
+	if(L == lasthitter && L.alpha > 100)
+		return TRUE
+	if(ishuman(L))
+		var/mob/living/carbon/human/madafaka = L
+		if(madafaka.Adjacent(src) && mode != AI_HUNT && madafaka.mind && madafaka.alpha > 100)
+			if(prob(10))
+				face_atom(madafaka)
+				if(calmmessages.len)
+					say(pick(calmmessages))
+		if(friendlyfactions)
+			var/list/madafaction = madafaka.faction
+			if(find_match_in_list(madafaction, friendlyfactions) && lasthitter != target)
+				return FALSE
+			else
+				return TRUE
+		if(friendlyjobs)
+			var/list/madajob = madafaka.job
+			if((madajob in friendlyjobs) && lasthitter != target)
+				return FALSE
+			else
+				return TRUE
+
+	if(enemies[L])
+		return TRUE
+
+	return FALSE
+
+
+/mob/living/carbon/human/species/human/smartnpc/retaliate(mob/living/L)
+	var/newtarg = target
+	if(lasthitter != target)
+		if(aggromessages.len)
+			say(pick(aggromessages))
+	lasthitter = target
+	.=..()
+	if(target)
+		wander = TRUE
+		if(target == newtarg)
+			linepoint(target)
+			if(ishuman(target) && Adjacent(target))
+				//i really REALLY want to punish players who try to strip those guys for loot, also they can do those badass moves on goblins too ig.
+				if(prob(20) && !target.IsOffBalanced())
+					say(pick("Aha!", "Parry this!", "Ha-haa!"))
+					playsound(src, 'sound/combat/feint.ogg', 100, TRUE)
+					visible_message(span_emote("[src] feints an attack at [target]!"))
+					target.OffBalance(50) //since they cant defeat the parries might aswell give them a fat feint.
+				else if(prob(10))
+					say(pick("Sit the fuck down.", "Fuck away from me.", "Stay down."))
+					visible_message(span_emote("[src] bashes [target] away!"))
+					playsound(src,"punch_hard",100,TRUE)
+					target.throw_at(target, pick(1,3), 1, src, FALSE, TRUE)
+					target.Knockdown(25) //may end up getting you tied real fast.
+				else if(prob(5) && target.get_active_held_item() != null)
+					var/obj/item/activeitem = target.get_active_held_item()
+					if(!HAS_TRAIT(activeitem, TRAIT_NODROP))
+						say(pick("You are done.", "Ha! There goes your [activeitem.name]!", "You fucked up now!"))
+						visible_message(span_emote("[src] disarms [target]!"))
+						playsound(src,"bladedmedium",100,TRUE)
+						target.OffBalance(15)
+						activeitem.throw_at(get_step_away(target, src, 3), 3, 2, target, TRUE)
+				if(punish_attacking && target.mind)
+					var/bounty_exists = FALSE
+					for(var/datum/bounty/b in GLOB.head_bounties)
+						if(b.target == target.real_name)
+							bounty_exists = TRUE
+					if(!bounty_exists)
+						add_bounty(L.real_name, 150, FALSE, "Attacking [name].", "[name]'s [pick("widow","parents","daughter","son","friends","partner")] (NPC)")
+						var/bounty_announcement = "[target.real_name] is accused of attacking [name] at [get_area_name(get_area(src))], wanted with a bounty of 150 mammons."
+						scom_announce(bounty_announcement)
+						to_chat(L, span_notice("I got a bounty on my head now!"))
+
+//TOWN GUARDS
+/mob/living/carbon/human/species/human/smartnpc/townguard
+	friendlyfactions = list("Station", "neutral")
+	dodgetime = 12
+	calmmessages = list(
+		"What do you need?",
+		"Trouble?",
+		"What is it?",
+		"No lollygaggin'.",
+		"Everything's in order.",
+		"Staying safe I hope.",
+		"Everything all right?",
+		"Could sure use a warm bed right about now...",
+		"I fear the night. Because the werewolves and vampires don't.",
+		"Just a few more hours and I can crawl under some furs...",
+		)
+	aggromessages = list(
+		"Then let me speed your passage to Yamais' hands!",
+		"Then pay with your blood!",
+		"That can be arranged!",
+		"So be it!",
+		"You have sealed your fate!",
+		"You cannot escape the righteous!",
+		"Fool!",
+		"You will pay, with your blood!",
+		)
+	punish_attacking = TRUE
+	var/patrol = TRUE
+	var/lastpatroltime
+	var/last_report
+
+/mob/living/carbon/human/species/human/smartnpc/townguard/should_target(mob/living/L)
 	if(!L)
 		return FALSE
 
@@ -60,8 +200,11 @@
 				//untested but yeah.
 				say("I got you now, criminal scum.")
 				if(do_after_mob(src, badboi, 3 SECONDS, FALSE))
-					scom_announce("I caught the criminal scum [badboi.real_name] at [get_area_name(get_area(src))].")
+					if(world.time > (last_report + 5 MINUTES))
+						last_report = world.time
+						scom_announce("I caught the criminal scum [badboi.real_name] at [get_area_name(get_area(src))].")
 					var/obj/item/rope/ropey = new /obj/item/rope
+					ropey.item_flags = DROPDEL
 					ropey.apply_cuffs(badboi, src)
 					start_pulling(badboi)
 		return FALSE
@@ -72,8 +215,8 @@
 		if(madafaka.Adjacent(src) && mode != AI_HUNT && madafaka.mind && madafaka.alpha > 100)
 			if(prob(10))
 				face_atom(madafaka)
-				visible_message(span_emote(pick("[src] turns to [madafaka].", "[src] faces [madafaka].")))
-				say(pick(calmmessages))
+				if(calmmessages.len)
+					say(pick(calmmessages))
 		if(friendlyfactions)
 			var/list/madafaction = madafaka.faction
 			if(find_match_in_list(madafaction, friendlyfactions) && lasthitter != target)
@@ -92,7 +235,7 @@
 
 	return FALSE
 
-/mob/living/carbon/human/species/human/smartnpc/MobBump(mob/M)
+/mob/living/carbon/human/species/human/smartnpc/townguard/MobBump(mob/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/L = M
 		if(lasthitter == L)
@@ -103,39 +246,27 @@
 		else
 			face_atom(L)
 			visible_message(span_emote(pick("[src] turns to [L].", "[src] faces [L].")))
-			if(prob(10))
+			if(calmmessages.len && prob(10))
 				say(pick(calmmessages))
 	. = ..()
 
-/mob/living/carbon/human/species/human/smartnpc/townguard
-	friendlyfactions = list("Station", "neutral")
-	calmmessages = list(
-		"What do you need?", 
-		"Trouble?",
-		"What is it?",
-		"No lollygaggin'.",
-		"Everything's in order.",
-		"Staying safe I hope.",
-		"Everything all right?",
-		"Could sure use a warm bed right about now...",
-		"I fear the night. Because the werewolves and vampires don't.",
-		"Just a few more hours and I can crawl under some furs...",
-		)
-	aggromessages = list(
-		"Then let me speed your passage to Yamais' hands!",
-		"Then pay with your blood!",
-		"That can be arranged!",
-		"So be it!",
-		"You have sealed your fate!",
-		"You cannot escape the righteous!",
-		"Fool!",
-		"You will pay, with your blood!",
-		)
-	punish_attacking = TRUE
-	var/patrol = TRUE
-	var/lastpatroltime
-	var/last_report
+/mob/living/carbon/human/species/human/smartnpc/townguard/proc/__feint_react(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	SIGNAL_HANDLER
+	SHOULD_NOT_OVERRIDE(TRUE) // override feint_react instead
+	INVOKE_ASYNC(src, PROC_REF(feint_react), user, target)
 
+/mob/living/carbon/human/species/human/smartnpc/townguard/proc/feint_react(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	visible_message("[src], [user], [target]")
+	say(pick("Yeah right.", "You are no match for me.", "Siddown."))
+	visible_message(span_emote("[src] smacks [target] across the face!"))
+	playsound(src,"punch_hard",100,TRUE)
+	src.attack_hand(target)
+	target.throw_at(get_step_away(user, src, 3), 3, 1, spin = FALSE)
+	var/obj/item/activeitem = target.get_active_held_item()
+	if(activeitem && !HAS_TRAIT(activeitem, TRAIT_NODROP))
+		activeitem.throw_at(get_step_away(src, user, 3), 3, 2)
+	target.Knockdown(30) //may end up getting you tied real fast.
+	retaliate(target)
 
 // Custom idle behavior
 /mob/living/carbon/human/species/human/smartnpc/townguard/npc_idle()
@@ -220,13 +351,13 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 /mob/living/carbon/human/species/human/smartnpc/townguard/brute/after_creation()
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/smartnpc/townguard/brute)
 
-
 /mob/living/carbon/human/species/human/smartnpc/townguard/retaliate(mob/living/L)
 	var/newtarg = target
 	if(L.job in list("Hedge Knight", "Hedgemaster", "Guildmaster", "Guild Appraiser", "Grandmaster", "Archpriest", "Archpriestess", "Wytcher", "Wytcher Captain"))
 		return
 	if(lasthitter != target)
-		say(pick(aggromessages))
+		if(aggromessages.len)
+			say(pick(aggromessages))
 	lasthitter = target
 	.=..()
 	if(target)
@@ -235,25 +366,25 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 			linepoint(target)
 			if(ishuman(target) && Adjacent(target))
 				//i really REALLY want to punish players who try to strip those guys for loot, also they can do those badass moves on goblins too ig.
-				if(prob(20) && !target.IsOffBalanced())
+				if(prob(30) && !target.IsOffBalanced())
 					say(pick("Aha!", "Parry this!", "Ha-haa!"))
 					playsound(src, 'sound/combat/feint.ogg', 100, TRUE)
 					visible_message(span_emote("[src] feints an attack at [target]!"))
 					target.OffBalance(50) //since they cant defeat the parries might aswell give them a fat feint.
-				else if(prob(10))
+				else if(prob(20))
 					say(pick("Sit the fuck down.", "Fuck away from me.", "Stay down."))
 					visible_message(span_emote("[src] bashes [target] away!"))
 					playsound(src,"punch_hard",100,TRUE)
 					target.throw_at(target, pick(1,3), 1, src, FALSE, TRUE)
 					target.Knockdown(25) //may end up getting you tied real fast.
-				else if(prob(5) && target.get_active_held_item() != null)
+				else if(prob(10) && target.get_active_held_item() != null)
 					var/obj/item/activeitem = target.get_active_held_item()
 					if(!HAS_TRAIT(activeitem, TRAIT_NODROP))
 						say(pick("You are done.", "Ha! There goes your [activeitem.name]!", "You fucked up now!"))
 						visible_message(span_emote("[src] disarms [target]!"))
 						playsound(src,"bladedmedium",100,TRUE)
 						target.OffBalance(15)
-						target.throw_at(activeitem, get_step_away(activeitem, target, 3), 1, target, TRUE, FALSE)
+						activeitem.throw_at(get_step_away(target, src, 3), 3, 2, target, TRUE)
 				if(punish_attacking && target.mind)
 					var/bounty_exists = FALSE
 					for(var/datum/bounty/b in GLOB.head_bounties)
@@ -285,6 +416,14 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_FEINT_IMMUNITY, TRAIT_GENERIC)
+	//should fucking prevent people from feeding them poisonous shit.
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_ROT_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_WILD_EATER, TRAIT_GENERIC)
+	RegisterSignal(src, COMSIG_FEINT_REACT, PROC_REF(__feint_react))
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/smartnpc/townguard)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes/night_vision/full_darksight) //elf eyes
 	if(organ_eyes)
@@ -309,7 +448,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/tights
 	head = /obj/item/clothing/head/roguetown/helmet/foresterhelmet
-	H.STASPD = 8
+	H.STASPD = 12
 	H.STAPER = 10
 	H.STACON = 14
 	H.STAEND = 15
@@ -343,7 +482,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	if(prob(60))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	H.STASPD = 9
+	H.STASPD = 12
 	H.STAPER = 10
 	H.STACON = 16
 	H.STAEND = 16
@@ -391,7 +530,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	if(prob(60))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	H.STASPD = 9
+	H.STASPD = 12
 	H.STAPER = 10
 	H.STACON = 16
 	H.STAEND = 16

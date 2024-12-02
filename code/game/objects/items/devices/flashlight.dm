@@ -530,7 +530,7 @@
 
 //On exiting the lantern
 /obj/item/flashlight/flare/torch/lantern/Exited(atom/movable/occupant)
-	if(occupant in occupants && isliving(occupant))
+	if(isliving(occupant) && (occupant in occupants))
 		//var/mob/living/L = occupant
 		occupants -= occupant
 		//occupant_weight -= L.mob_size
@@ -645,7 +645,7 @@
 
 //Adds the seelie to the list of occupants
 /obj/item/flashlight/flare/torch/lantern/proc/add_occupant(mob/living/occupant)
-	if(occupant in occupants || !istype(occupant))
+	if((occupant in occupants) || !istype(occupant))
 		return
 	occupant.forceMove(src)
 	occupants += occupant
@@ -738,7 +738,7 @@
 	return TRUE
 
 /obj/item/flashlight/emp/attack(mob/living/M, mob/living/user)
-	if(on && user.zone_selected in list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_MOUTH)) // call original attack when examining organs
+	if(on && (user.zone_selected in list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_MOUTH))) // call original attack when examining organs
 		..()
 	return
 

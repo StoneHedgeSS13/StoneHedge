@@ -418,4 +418,5 @@
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
 
 //stonehedge slop
-#define COMSIG_APPLY_REAGENTS "item_apply_reagents" //used for reagent_coating component
+#define COMSIG_APPLY_REAGENTS "item_apply_reagents" //used for weapon coating
+#define COMSIG_FEINT_REACT "mob_feint_react" //used for reagent_coating component

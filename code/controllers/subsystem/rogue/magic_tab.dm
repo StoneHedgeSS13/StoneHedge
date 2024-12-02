@@ -39,7 +39,7 @@
 			if("Exit Spell Selection") // In case someone doesn't want to spend every point they have, for whatever reason
 				break // Unelegant, but I can't find a better way to stop this loop without losing spell points
 
-/mob/living/carbon/human/proc/choose_magic(list/category, mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/choose_magic(list/obj/effect/proc_holder/spell/category, mob/living/carbon/human/H)
 	var/list/choices = list()
 	for(var/i = 1, i <= category.len, i++)
 		choices["[category[i].name]: [category[i].cost]"] = category[i]
