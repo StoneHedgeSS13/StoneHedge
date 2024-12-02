@@ -938,7 +938,7 @@
 /datum/status_effect/buff/infestation5e/tick()
 	var/mob/living/target = owner
 	var/mob/living/carbon/M = target
-	target.adjustToxLoss(4)
+	target.adjustToxLoss(3)
 	target.adjustBruteLoss(2)
 	var/prompt = pick(1,2,3)
 	var/message = pick(
