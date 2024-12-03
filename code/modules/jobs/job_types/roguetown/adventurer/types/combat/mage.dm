@@ -94,7 +94,7 @@
 			H.change_stat("endurance", 2)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/magicstone5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/encodethoughts5e)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
+			//H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility) readd when fixed
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/featherfall)
 
 		if("Spellblade")
