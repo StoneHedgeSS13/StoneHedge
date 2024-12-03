@@ -18,13 +18,15 @@
 	H.update_sight()
 
 /datum/quirk/thickskin
-	name = "Tough"
-	desc = "I feel it. Thick Skin. Dense Flesh. Durable Bones. I'm a punch-taking machine."
-	value = 3
+	name = "Tough" //probably perfect for raw power classes, strange for unrelated ones but i guess.
+	desc = "I am like a dwarven war machine, untiring, unforgiving, unstoppable."
+	value = 6
 
 /datum/quirk/thickskin/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_BREADY, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_PUGILIST, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_CHARGER, QUIRK_TRAIT)
 	H.change_stat("constitution", 1)
 
 /datum/quirk/curseofcain
@@ -89,7 +91,7 @@
 /datum/quirk/fence
 	name = "Fencer"
 	desc = "I have trained in agile sword fighting. I dodge more easily and have stashed my rapier nearby"
-	value = 6
+	value = 4
 
 /datum/quirk/fence/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -191,7 +193,7 @@
 	H.mind.special_items["Fertilizer 1"] = /obj/item/fertilizer
 	H.mind.special_items["Fertilizer 2"] = /obj/item/fertilizer
 	H.mind.special_items["Fertilizer 3"] = /obj/item/fertilizer
-	H.mind.special_items["Whore"] = /obj/item/rogueweapon/hoe // I too respect a humble farmer. 
+	H.mind.special_items["Whore"] = /obj/item/rogueweapon/hoe // I too respect a humble farmer.
 
 /datum/quirk/eagle_eyed
 	name = "Eagle Eyed"
@@ -275,7 +277,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 3, TRUE)
 	H.mind.special_items["Lockpicks"] = /obj/item/lockpickring/mundane
-	
+
 
 /datum/quirk/languagesavant
 	name = "Polyglot"
@@ -421,7 +423,7 @@
 
 /datum/quirk/bounty
 	name = "Hunted Man"
-	desc = "Someone put a bounty on my head, whether for legitimate reasons or not. The local Adventurers' Guild might be able to protect me if I can make some friends there, but my life will always be in danger from those seeking to collect."
+	desc = "Someone put a bounty on my head, whether for legitimate reasons or not. The local Adventurers' Guild might be able to protect me if I can make some friends there, but my life will always be in danger from those seeking to collect. (I can get attacked by other people for bounty as justification, for capture or death.)"
 	value = -3
 
 /datum/quirk/bounty/on_spawn()

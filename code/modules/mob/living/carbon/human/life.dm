@@ -49,9 +49,10 @@
 
 		handle_vamp_dreams()
 		if(IsSleeping() && health > 0)
-			if(has_status_effect(/datum/status_effect/debuff/sleepytime))
+			if(has_status_effect(/datum/status_effect/debuff/sleepytime) || has_status_effect(/datum/status_effect/debuff/sleepytime/lune))
 				tiredness = 0
 				remove_status_effect(/datum/status_effect/debuff/sleepytime)
+				remove_status_effect(/datum/status_effect/debuff/sleepytime/lune)
 				if(mind)
 					mind.sleep_adv.advance_cycle()
 				var/datum/game_mode/chaosmode/C = SSticker.mode

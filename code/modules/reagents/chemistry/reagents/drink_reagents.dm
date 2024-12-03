@@ -949,8 +949,9 @@
 
 	// Remove the sleepytime status effect after 12u of Acorn Coffee has metabolized
 	if(M.metabolized_acoffee >= 12)
-		if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		if(M.has_status_effect(/datum/status_effect/debuff/sleepytime) || M.has_status_effect(/datum/status_effect/debuff/sleepytime/lune))
 			M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+			M.remove_status_effect(/datum/status_effect/debuff/sleepytime/lune)
 			M.remove_stress(/datum/stressevent/sleepytime)
 			M.mind.sleep_adv.advance_cycle()
 
