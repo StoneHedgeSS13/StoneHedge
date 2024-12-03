@@ -510,11 +510,6 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
-"auK" = (
-/obj/structure/closet/crate/chest/dungeon/mimic,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/money,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/town/vault)
 "auO" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt/road,
@@ -1676,8 +1671,8 @@
 	})
 "bhN" = (
 /obj/structure/closet/crate/chest/dungeon/treasure,
-/obj/effect/spawner/trap,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
+/obj/effect/spawner/trap,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/town/vault)
 "biE" = (
@@ -53497,7 +53492,7 @@ vFo
 vFo
 vFo
 vFo
-auK
+vFo
 rTO
 nhM
 nhM

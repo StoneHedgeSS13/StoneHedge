@@ -838,7 +838,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	include_user = FALSE
+	include_user = TRUE
 
 /obj/effect/proc_holder/spell/targeted/guidance5e/cast(list/targets, mob/living/user)
 	for(var/mob/living/carbon/C in targets)

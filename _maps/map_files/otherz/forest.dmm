@@ -1603,6 +1603,12 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
+"jy" = (
+/obj/structure/spacevine,
+/turf/closed/mineral/rogue/bedrock,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "jz" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -4334,6 +4340,12 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"zM" = (
+/obj/effect/mist,
+/turf/closed/mineral/rogue/bedrock,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "zQ" = (
 /obj/structure/flora/rogueshroom/happyrandom{
 	icon_state = "mush2"
@@ -5322,7 +5334,7 @@
 	endTurfX = 135;
 	endTurfY = 131
 	},
-/turf/open/transparent/openspace,
+/turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
@@ -44555,9 +44567,9 @@ vh
 Rw
 Rw
 Rw
-qQ
-qQ
-qQ
+Rw
+Rw
+Rw
 Rw
 Rw
 Rw
@@ -44685,58 +44697,6 @@ RP
 RP
 RP
 RP
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-IJ
-hF
-hF
-AN
-uB
-uB
-uB
-uB
-uB
-hF
-hF
-hF
-hF
 IJ
 IJ
 IJ
@@ -44775,43 +44735,95 @@ IJ
 IJ
 IJ
 IJ
-hF
-Hr
-Hr
-Hr
-Hr
-Hr
-uB
-uB
-uB
-hF
-hF
-uB
-uB
-uB
-uB
-uB
-uB
-uB
-uB
-hF
-hF
-uB
-uB
-hF
-hF
-uB
-hF
-hF
-hF
-uB
-hF
-hF
-uB
-hF
-hF
-eo
-eo
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+zM
+zM
+zM
+zM
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+jy
+jy
 sn
 "}
 (2,1,3) = {"
@@ -55851,7 +55863,7 @@ NI
 NI
 NI
 Ng
-tS
+IJ
 "}
 (85,1,3) = {"
 RP
@@ -55984,7 +55996,7 @@ NI
 NI
 NI
 NI
-tS
+IJ
 "}
 (86,1,3) = {"
 RP
@@ -56782,7 +56794,7 @@ NI
 NI
 Ng
 Ng
-tS
+IJ
 "}
 (92,1,3) = {"
 RP
@@ -56915,7 +56927,7 @@ Ng
 Ng
 Ng
 Ng
-tS
+IJ
 "}
 (93,1,3) = {"
 RP
@@ -57314,7 +57326,7 @@ Ng
 Ng
 NI
 tS
-tS
+IJ
 "}
 (96,1,3) = {"
 RP
@@ -57447,7 +57459,7 @@ Ng
 NI
 NI
 NI
-tS
+IJ
 "}
 (97,1,3) = {"
 RP
@@ -57580,7 +57592,7 @@ Ng
 NI
 NI
 NI
-tS
+IJ
 "}
 (98,1,3) = {"
 RP
@@ -57713,7 +57725,7 @@ Mx
 Ng
 NI
 NI
-tS
+IJ
 "}
 (99,1,3) = {"
 RP
@@ -57979,7 +57991,7 @@ Ng
 Ng
 NI
 NI
-tS
+IJ
 "}
 (101,1,3) = {"
 RP
@@ -58112,7 +58124,7 @@ Ng
 Ng
 iu
 tS
-tS
+IJ
 "}
 (102,1,3) = {"
 RP
@@ -58910,7 +58922,7 @@ NI
 NI
 Ng
 NI
-hF
+IJ
 "}
 (108,1,3) = {"
 RP
@@ -59043,7 +59055,7 @@ NI
 NI
 Ng
 NI
-hF
+IJ
 "}
 (109,1,3) = {"
 RP
@@ -59176,7 +59188,7 @@ NI
 NI
 Ng
 Ng
-hF
+IJ
 "}
 (110,1,3) = {"
 RP
@@ -59309,7 +59321,7 @@ NI
 NI
 DW
 NI
-hF
+IJ
 "}
 (111,1,3) = {"
 RP
@@ -59442,7 +59454,7 @@ NI
 dF
 Ng
 NI
-hF
+IJ
 "}
 (112,1,3) = {"
 RP
@@ -59575,7 +59587,7 @@ It
 Ng
 Mx
 mw
-hF
+IJ
 "}
 (113,1,3) = {"
 RP
@@ -59708,7 +59720,7 @@ NI
 dF
 Mx
 Ng
-hF
+IJ
 "}
 (114,1,3) = {"
 RP
@@ -59841,7 +59853,7 @@ dF
 Ng
 Mx
 NI
-Mj
+IJ
 "}
 (115,1,3) = {"
 RP
@@ -59974,7 +59986,7 @@ ZW
 uB
 ZW
 NI
-hF
+IJ
 "}
 (116,1,3) = {"
 RP
@@ -60107,7 +60119,7 @@ tz
 sZ
 NI
 NI
-hF
+IJ
 "}
 (117,1,3) = {"
 RP
@@ -60240,7 +60252,7 @@ Au
 Jj
 cw
 NI
-hF
+IJ
 "}
 (118,1,3) = {"
 RP
@@ -62641,133 +62653,133 @@ RP
 RP
 RP
 RP
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-AN
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
-Pc
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
 Fo
 "}
 (2,1,4) = {"
@@ -62901,7 +62913,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (3,1,4) = {"
 RP
@@ -63034,7 +63046,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (4,1,4) = {"
 RP
@@ -63167,7 +63179,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (5,1,4) = {"
 RP
@@ -63300,7 +63312,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (6,1,4) = {"
 RP
@@ -63433,7 +63445,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (7,1,4) = {"
 RP
@@ -63566,7 +63578,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (8,1,4) = {"
 RP
@@ -63699,7 +63711,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (9,1,4) = {"
 RP
@@ -63832,7 +63844,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (10,1,4) = {"
 RP
@@ -63965,7 +63977,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (11,1,4) = {"
 RP
@@ -64098,7 +64110,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (12,1,4) = {"
 RP
@@ -64231,7 +64243,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (13,1,4) = {"
 RP
@@ -64364,7 +64376,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (14,1,4) = {"
 RP
@@ -64497,7 +64509,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (15,1,4) = {"
 RP
@@ -64630,7 +64642,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (16,1,4) = {"
 RP
@@ -64763,7 +64775,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (17,1,4) = {"
 RP
@@ -64896,7 +64908,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (18,1,4) = {"
 RP
@@ -65029,7 +65041,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (19,1,4) = {"
 RP
@@ -65162,7 +65174,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (20,1,4) = {"
 RP
@@ -65295,7 +65307,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (21,1,4) = {"
 RP
@@ -65428,7 +65440,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (22,1,4) = {"
 RP
@@ -65561,7 +65573,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (23,1,4) = {"
 RP
@@ -65694,7 +65706,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (24,1,4) = {"
 RP
@@ -65827,7 +65839,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (25,1,4) = {"
 RP
@@ -65960,7 +65972,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (26,1,4) = {"
 RP
@@ -66093,7 +66105,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (27,1,4) = {"
 RP
@@ -66226,7 +66238,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (28,1,4) = {"
 RP
@@ -66359,7 +66371,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (29,1,4) = {"
 RP
@@ -66492,7 +66504,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (30,1,4) = {"
 RP
@@ -66625,7 +66637,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (31,1,4) = {"
 RP
@@ -66758,7 +66770,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (32,1,4) = {"
 RP
@@ -66891,7 +66903,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (33,1,4) = {"
 RP
@@ -67024,7 +67036,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (34,1,4) = {"
 RP
@@ -67157,7 +67169,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (35,1,4) = {"
 RP
@@ -67290,7 +67302,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (36,1,4) = {"
 RP
@@ -67423,7 +67435,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (37,1,4) = {"
 RP
@@ -67556,7 +67568,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (38,1,4) = {"
 RP
@@ -67689,7 +67701,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (39,1,4) = {"
 RP
@@ -67822,7 +67834,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (40,1,4) = {"
 RP
@@ -67955,7 +67967,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (41,1,4) = {"
 RP
@@ -68088,7 +68100,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (42,1,4) = {"
 RP
@@ -68221,7 +68233,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (43,1,4) = {"
 RP
@@ -68354,7 +68366,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (44,1,4) = {"
 RP
@@ -68487,7 +68499,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (45,1,4) = {"
 RP
@@ -68620,7 +68632,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (46,1,4) = {"
 RP
@@ -68753,7 +68765,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (47,1,4) = {"
 RP
@@ -68886,7 +68898,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (48,1,4) = {"
 RP
@@ -69019,7 +69031,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (49,1,4) = {"
 RP
@@ -69152,7 +69164,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (50,1,4) = {"
 RP
@@ -69285,7 +69297,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (51,1,4) = {"
 RP
@@ -69418,7 +69430,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (52,1,4) = {"
 RP
@@ -69551,7 +69563,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (53,1,4) = {"
 RP
@@ -69684,7 +69696,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (54,1,4) = {"
 RP
@@ -69817,7 +69829,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (55,1,4) = {"
 RP
@@ -69950,7 +69962,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (56,1,4) = {"
 RP
@@ -70083,7 +70095,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (57,1,4) = {"
 RP
@@ -70216,7 +70228,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (58,1,4) = {"
 RP
@@ -70349,7 +70361,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (59,1,4) = {"
 RP
@@ -70482,7 +70494,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (60,1,4) = {"
 IJ
@@ -70615,7 +70627,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (61,1,4) = {"
 IJ
@@ -70748,7 +70760,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (62,1,4) = {"
 IJ
@@ -70881,7 +70893,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (63,1,4) = {"
 IJ
@@ -71014,7 +71026,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (64,1,4) = {"
 IJ
@@ -71147,7 +71159,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (65,1,4) = {"
 IJ
@@ -71280,7 +71292,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (66,1,4) = {"
 Pc
@@ -71413,7 +71425,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (67,1,4) = {"
 Pc
@@ -71546,7 +71558,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (68,1,4) = {"
 Pc
@@ -71679,7 +71691,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (69,1,4) = {"
 Pc
@@ -71812,7 +71824,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (70,1,4) = {"
 Pc
@@ -71945,7 +71957,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (71,1,4) = {"
 Pc
@@ -72078,7 +72090,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (72,1,4) = {"
 Pc
@@ -72211,7 +72223,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (73,1,4) = {"
 Pc
@@ -72344,7 +72356,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (74,1,4) = {"
 Pc
@@ -72477,7 +72489,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (75,1,4) = {"
 Pc
@@ -72610,7 +72622,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (76,1,4) = {"
 Pc
@@ -72743,7 +72755,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (77,1,4) = {"
 Pc
@@ -72876,7 +72888,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (78,1,4) = {"
 Pc
@@ -73009,7 +73021,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (79,1,4) = {"
 Pc
@@ -73142,7 +73154,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (80,1,4) = {"
 Pc
@@ -73275,7 +73287,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (81,1,4) = {"
 Pc
@@ -73408,7 +73420,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (82,1,4) = {"
 IJ
@@ -73541,7 +73553,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (83,1,4) = {"
 IJ
@@ -73674,7 +73686,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (84,1,4) = {"
 IJ
@@ -73807,7 +73819,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (85,1,4) = {"
 RP
@@ -73940,7 +73952,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (86,1,4) = {"
 RP
@@ -74073,7 +74085,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (87,1,4) = {"
 RP
@@ -74206,7 +74218,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (88,1,4) = {"
 RP
@@ -74339,7 +74351,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (89,1,4) = {"
 RP
@@ -74472,7 +74484,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (90,1,4) = {"
 RP
@@ -74605,7 +74617,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (91,1,4) = {"
 RP
@@ -74738,7 +74750,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (92,1,4) = {"
 RP
@@ -74871,7 +74883,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (93,1,4) = {"
 RP
@@ -75004,7 +75016,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (94,1,4) = {"
 RP
@@ -75137,7 +75149,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (95,1,4) = {"
 RP
@@ -75270,7 +75282,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (96,1,4) = {"
 RP
@@ -75403,7 +75415,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (97,1,4) = {"
 RP
@@ -75536,7 +75548,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (98,1,4) = {"
 RP
@@ -75669,7 +75681,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (99,1,4) = {"
 RP
@@ -75802,7 +75814,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (100,1,4) = {"
 RP
@@ -75935,7 +75947,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (101,1,4) = {"
 RP
@@ -76068,7 +76080,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (102,1,4) = {"
 RP
@@ -76201,7 +76213,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (103,1,4) = {"
 RP
@@ -76334,7 +76346,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (104,1,4) = {"
 RP
@@ -76467,7 +76479,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (105,1,4) = {"
 RP
@@ -76600,7 +76612,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (106,1,4) = {"
 RP
@@ -76733,7 +76745,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (107,1,4) = {"
 RP
@@ -76866,7 +76878,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (108,1,4) = {"
 RP
@@ -76999,7 +77011,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (109,1,4) = {"
 RP
@@ -77132,7 +77144,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (110,1,4) = {"
 RP
@@ -77265,7 +77277,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (111,1,4) = {"
 RP
@@ -77398,7 +77410,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (112,1,4) = {"
 RP
@@ -77531,7 +77543,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (113,1,4) = {"
 RP
@@ -77664,7 +77676,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (114,1,4) = {"
 RP
@@ -77797,7 +77809,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (115,1,4) = {"
 RP
@@ -77930,7 +77942,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (116,1,4) = {"
 RP
@@ -78063,7 +78075,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (117,1,4) = {"
 RP
@@ -78196,7 +78208,7 @@ Pc
 Pc
 Pc
 Pc
-Pc
+IJ
 "}
 (118,1,4) = {"
 RP
