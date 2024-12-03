@@ -5,6 +5,7 @@
 	mob_overlay_icon = 'modular/icons/obj/items/clothes/on_mob/dress.dmi'
 	name = "strapless dress"
 	desc = "It barely covers anything at all!"
+	flags_inv = HIDEBOOB|HIDECROTCH
 	body_parts_covered = null
 	icon_state = "strapless"
 	sleevetype = null

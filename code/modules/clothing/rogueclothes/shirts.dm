@@ -143,7 +143,7 @@
 	item_state = "rags"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -156,7 +156,7 @@
 	sleevetype = "tunic"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -168,7 +168,6 @@
 	item_state = "tribalrag"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/green
 	color = CLOTHING_GREEN
@@ -201,7 +200,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -298,7 +297,7 @@
 	boobed = TRUE
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

@@ -10,6 +10,7 @@
 	sleevetype = "bdress"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBUTT
 
 
 //COLORS

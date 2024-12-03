@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_TOLERANT, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_ZOMBIE_IMMUNE, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]") 
+	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	if(!is_solo)
 		ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
 		ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
@@ -212,6 +212,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vrobe"
 	item_state = "vrobe"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/head/roguetown/vampire
 	name = "crown of darkness"
@@ -231,6 +232,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = CHEST|GROIN|VITALS
 	armor_class = 2
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
