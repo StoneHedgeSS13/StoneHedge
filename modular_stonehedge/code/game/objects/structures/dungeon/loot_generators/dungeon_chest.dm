@@ -314,7 +314,7 @@
 				/obj/item/book/granter/spell/blackstone/lightning = 3,
 				/obj/item/book/granter/spell/blackstone/fetch = 4,
 				/obj/item/book/granter/spell/blackstone/blindness = 1,
-				/obj/item/book/granter/spell/blackstone/invisibility = 3,
+				///obj/item/book/granter/spell/blackstone/invisibility = 3, readd when invisibility spells are fixed
 				/obj/item/book/granter/spell/blackstone/sicknessray = 2,
 				/obj/item/book/granter/spell/blackstone/strengthen_undead = 2
 			)

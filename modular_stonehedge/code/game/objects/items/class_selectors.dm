@@ -65,7 +65,7 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			dressup(H, inventory_items)
 		if("Rogue")
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish)
+			//H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish) readd when invisibility spells are fixed
 			inventory_items = list(
 				/obj/item/clothing/neck/roguetown/bervor,
 				/obj/item/clothing/shoes/roguetown/boots/armor,

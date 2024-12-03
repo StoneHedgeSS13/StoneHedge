@@ -26,7 +26,7 @@
 	worshippers = "Wizards, Scholars, Wisened Folk,"
 	mob_traits = list(TRAIT_NOCSNEAK, TRAIT_NIGHT_OWL)
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
-	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	//t2 = /obj/effect/proc_holder/spell/invoked/invisibility readd when invisibility spells are fixed
 	confess_lines = list(
 		"LUNE IS WISDOM!",
 		"LUNE'S PALE GLOWING EYES SEE ALL!",
@@ -96,7 +96,7 @@
 	worshippers = "Bards, Gamblers, Poets, Musicians, Diplomats and Artists."
 	mob_traits = list(TRAIT_BOG_TREKKING)
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
-	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	//t2 = /obj/effect/proc_holder/spell/invoked/invisibility readd when invisibility spells are fixed
 	confess_lines = list(
 		"Elysius, cut us a path!",
 		"Lune guide me gentle!",

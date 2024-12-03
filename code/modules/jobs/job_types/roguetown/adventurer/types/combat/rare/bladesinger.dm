@@ -53,5 +53,5 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/boomingblade5e)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/greenflameblade5e)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish)
+	//H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish) readd when invisibility spells are fixed
 	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)

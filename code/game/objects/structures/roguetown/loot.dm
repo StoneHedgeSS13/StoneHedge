@@ -47,7 +47,7 @@
 		/obj/item/book/granter/spell/blackstone/sicknessray = 5,
 		/obj/item/book/granter/spell/blackstone/strengthen_undead = 3,
 		/obj/item/book/granter/spell/blackstone/skeleton = 3,
-		/obj/item/book/granter/spell/blackstone/invisibility = 3,
+		///obj/item/book/granter/spell/blackstone/invisibility = 3, readd when invisibility spells are fixed
 		/obj/item/book/granter/spell/blackstone/greaterfireball = 2)))
 	return ..()
 

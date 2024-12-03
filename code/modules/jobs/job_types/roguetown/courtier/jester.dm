@@ -33,7 +33,7 @@
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	mask = /obj/item/clothing/mask/rogue/facemask/gold
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish, /obj/item/book/granter/spell/blackstone/invisibility)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish)
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)

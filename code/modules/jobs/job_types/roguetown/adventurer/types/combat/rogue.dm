@@ -45,7 +45,7 @@
 
 //Rogue, crafty and tricky.
 /datum/outfit/job/roguetown/adventurer/rogue/proc/roguearch(mob/living/carbon/human/H)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish)
+	//H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish) readd when invisibility spells are fixed
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
@@ -95,7 +95,7 @@
 
 //Assassin, nearly same as rogue but not versatile in weapon skills yet specialized in knives.
 /datum/outfit/job/roguetown/adventurer/rogue/proc/assassinarch(mob/living/carbon/human/H)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish)
+	//H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rogue_vanish) readd when invisibility spells are fixed
 	shoes = /obj/item/clothing/shoes/roguetown/boots/hidden/berrypoison
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
