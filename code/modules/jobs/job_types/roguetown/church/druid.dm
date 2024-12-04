@@ -27,8 +27,9 @@
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots/forestershoes
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/rogueweapon/sickle
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -36,18 +37,17 @@
 	head = /obj/item/clothing/head/roguetown/helmet/foresterhelmet
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 	gloves = /obj/item/clothing/gloves/roguetown/forestergauntlets
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
-	cloak = /obj/item/clothing/cloak/raincloak/green
+	cloak = /obj/item/clothing/cloak/templar/dendor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	backpack_contents = list(
-		/obj/item/seeds/wheat = 1,
-		/obj/item/seeds/apple = 1,
-		/obj/item/seeds/shroom = 1,
-		/obj/item/seeds/sweetleaf = 1,
+		/obj/item/rogueweapon/huntingknife/stoneknife = 1,
+		/obj/item/rogueweapon/whip = 1,
+		/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/majorhealthpot = 1,
 	)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

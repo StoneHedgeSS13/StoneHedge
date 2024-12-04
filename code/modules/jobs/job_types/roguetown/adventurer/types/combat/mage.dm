@@ -97,6 +97,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/featherfall)
 
+
 		if("Spellblade")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Unlike most of your kind, you weave the arts of the blade and magick into a dance."))
@@ -149,6 +150,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shoes = /obj/item/clothing/shoes/roguetown/shalal
 		neck = /obj/item/clothing/neck/roguetown/psicross/eora
+		ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
 	if(classchoice == "Arcanist")
 		head = /obj/item/clothing/head/roguetown/roguehood/shalal
 		r_hand = /obj/item/scrying
