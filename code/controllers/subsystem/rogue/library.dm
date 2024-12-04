@@ -1,4 +1,3 @@
-
 SUBSYSTEM_DEF(library)
 	name = "library"
 	wait = 1
@@ -20,19 +19,17 @@ SUBSYSTEM_DEF(library)
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/library]
 		var/amt_to_generate = 0
 
-		for(var/obj/item/I in A)
-			if(!isturf(I.loc))
-				continue
-			if(I.get_real_price() <= 0 || !istype(I, /obj/item/book/granter/spell))
-				continue
-			if(!I.submitted_to_stockpile)
-				I.submitted_to_stockpile = TRUE
-			if(I.type in stockpile_items)
-				stockpile_items[I.type] *= multiple_item_penalty
-			else
-				stockpile_items[I.type] = I.get_real_price()
-
-			amt_to_generate += (stockpile_items[I.type])
+		for(var/obj/structure/bookcase/B in A)
+			for(var/obj/item/I in B.contents)
+				if(I.get_real_price() <= 0 || !istype(I, /obj/item/book/granter/spell))
+					continue
+				if(!I.submitted_to_stockpile)
+					I.submitted_to_stockpile = TRUE
+				if(I.type in stockpile_items)
+					stockpile_items[I.type] *= multiple_item_penalty
+				else
+					stockpile_items[I.type] = I.get_real_price()
+				amt_to_generate += (stockpile_items[I.type])
 
 		amt_to_generate = round(amt_to_generate)
 

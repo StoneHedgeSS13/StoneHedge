@@ -7,6 +7,9 @@
 	remarks = list("Fascinating!", "Is that so...", "Like this?", "Really now...", "There's a little schmutz on this section...")
 	sellprice = 30
 
+/obj/item/book/granter/spell/spells5e/get_real_price()
+	return sellprice
+
 /obj/item/book/granter/spell/spells5e/onlearned(mob/living/carbon/user)
 	..()
 	if(oneuse == TRUE)
@@ -169,12 +172,17 @@
 
 // mapping only
 /obj/item/book/granter/spell/spells5e/random
-    name = "random spell scroll spawner"
-    desc = "This item spawns a random 5e spell scroll on roundstart. Mapping only!"
+	name = "random spell scroll spawner"
+	desc = "This item spawns a random 5e spell scroll on roundstart. Mapping only!"
+	icon_state = "scrollred"
 
 /obj/item/book/granter/spell/spells5e/random/Initialize()
     . = ..()
     var/list/scroll_types = subtypesof(/obj/item/book/granter/spell/spells5e) - list(/obj/item/book/granter/spell/spells5e/random)
     var/chosen_type = pick(scroll_types)
-    new chosen_type(get_turf(src))
+    var/obj/structure/bookcase/B = locate() in get_turf(src)
+    var/obj/item/spawned_scroll = new chosen_type(B ? B : get_turf(src))
+
+    if(B)
+        B.contents += spawned_scroll
     return INITIALIZE_HINT_QDEL

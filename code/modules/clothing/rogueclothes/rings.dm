@@ -273,6 +273,9 @@
 	playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
 	update_icon()
 
+/obj/item/clothing/ring/keystone/proc/can_unlock()
+	return active
+
 /obj/item/clothing/ring/keystone/archkey
 	name = "academy archkeystone"
 	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to Archmages of the Ravenloft Academy."

@@ -123,12 +123,14 @@
 
 	reactivating = TRUE
 	var/old_density = density
-	density = FALSE
 	var/old_alpha = alpha
+	density = FALSE
 	alpha = 0
 	invisibility = INVISIBILITY_MAXIMUM
 
-	if(!is_nullmagic)
+	if(is_nullmagic)
+		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 10 SECONDS)
+	else
 		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 5 SECONDS)
 
 /obj/structure/academyward/proc/reactivate(var/old_density, var/old_alpha)
@@ -140,35 +142,39 @@
 /obj/structure/academyward/perm
 	name = "permanent defensive ward"
 	desc = "A permanent defensive ward etched into reality itself by powerful magicks. You hear a distant tortured wailing when you go near it."
+	icon = 'icons/effects/effects.dmi'
 	density = TRUE
 	alpha = 125
 
 /obj/structure/academyward/perm/Initialize()
 	. = ..()
 	icon_state = "forcefield"
+	invisibility = 0
 
 /obj/structure/academyward/perm/Bumped(atom/movable/AM)
 	if(!istype(AM, /mob/living))
 		return
-	return ..()
+	..()
 
 /obj/structure/academyward/perm/temporary_deactivate(var/is_nullmagic = FALSE)
 	if(reactivating)
 		return
 
 	reactivating = TRUE
+	var/old_density = density
+	var/old_alpha = alpha
 	density = FALSE
 	alpha = 0
 	invisibility = INVISIBILITY_MAXIMUM
 
 	if(is_nullmagic)
-		addtimer(CALLBACK(src, .proc/reactivate), 10 SECONDS)
+		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 10 SECONDS)
 	else
-		addtimer(CALLBACK(src, .proc/reactivate), 5 SECONDS)
+		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 5 SECONDS)
 
-/obj/structure/academyward/perm/reactivate()
-	density = TRUE
-	alpha = 125
-	invisibility = null
+/obj/structure/academyward/perm/reactivate(var/old_density, var/old_alpha)
+	density = old_density
+	alpha = old_alpha
+	invisibility = (old_density && old_alpha > 0) ? 0 : INVISIBILITY_MAXIMUM
 	reactivating = FALSE
 
