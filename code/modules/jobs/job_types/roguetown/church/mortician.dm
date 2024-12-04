@@ -70,7 +70,7 @@
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SIXTHSENSE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEESPIRITS, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.update_sight()
 	H.cmode_music = 'sound/music/combat_clergy.ogg'
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
