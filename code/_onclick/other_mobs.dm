@@ -80,14 +80,7 @@
 		return
 
 
-	//TODO: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
-
-	var/obj/item/held_item = get_active_held_item()
-	if(held_item)
-		if(!held_item.pre_attack_right(A, src, params))
-			A.attack_right(src, params)
-	else
-		A.attack_right(src, params)
+	A.attack_right(src, params)
 
 /mob/living/attack_right(mob/user, params)
 	. = ..()
