@@ -40,6 +40,7 @@
 	beltl = /obj/item/storage/keyring/mage
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
+	id = /obj/item/clothing/ring/keystone
 
 
 	if(H.mind)

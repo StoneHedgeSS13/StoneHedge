@@ -258,3 +258,23 @@
 		active_item = FALSE
 		return
 
+//academy keystones
+/obj/item/clothing/ring/keystone
+	name = "academy keystone"
+	desc = "A silver-banded sapphire keystone used to allow passage through certain magical wards. This one is issued to Mages of the Ravenloft Academy."
+	icon_state = "s_ring_sapphire"
+	var/active = FALSE
+
+/obj/item/clothing/ring/keystone/attack_right(mob/user)
+	if(loc != user)
+		return
+	active = !active
+	user.visible_message(span_warning("[user] twists the [src], causing it to [active ? "glow" : "dim"]!"))
+	playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+	update_icon()
+
+/obj/item/clothing/ring/keystone/archkey
+	name = "academy archkeystone"
+	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to Archmages of the Ravenloft Academy."
+	icon_state = "g_ring_sapphire"
+
