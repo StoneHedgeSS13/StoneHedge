@@ -117,7 +117,7 @@
 			to_chat(L, span_cult("The ward shudders, its radiant glow flickering and warping like a fading star, before collapsing into nothingness with a final, mournful pulse of dissipating energy."))
 		return
 
-/obj/structure/academyward/proc/temporary_deactivate(var/is_nullmagic = FALSE)
+/obj/structure/academyward/proc/temporary_deactivate(is_nullmagic = FALSE)
 	if(reactivating)
 		return
 
@@ -129,11 +129,11 @@
 	invisibility = INVISIBILITY_MAXIMUM
 
 	if(is_nullmagic)
-		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reactivate), old_density, old_alpha), 10 SECONDS)
 	else
-		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reactivate), old_density, old_alpha), 5 SECONDS)
 
-/obj/structure/academyward/proc/reactivate(var/old_density, var/old_alpha)
+/obj/structure/academyward/proc/reactivate(old_density, old_alpha)
 	density = old_density
 	alpha = old_alpha
 	invisibility = (old_density && old_alpha > 0) ? 0 : INVISIBILITY_MAXIMUM
@@ -156,7 +156,7 @@
 		return
 	..()
 
-/obj/structure/academyward/perm/temporary_deactivate(var/is_nullmagic = FALSE)
+/obj/structure/academyward/perm/temporary_deactivate(is_nullmagic = FALSE)
 	if(reactivating)
 		return
 
@@ -168,11 +168,11 @@
 	invisibility = INVISIBILITY_MAXIMUM
 
 	if(is_nullmagic)
-		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reactivate), old_density, old_alpha), 10 SECONDS)
 	else
-		addtimer(CALLBACK(src, .proc/reactivate, old_density, old_alpha), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reactivate), old_density, old_alpha), 5 SECONDS)
 
-/obj/structure/academyward/perm/reactivate(var/old_density, var/old_alpha)
+/obj/structure/academyward/perm/reactivate(old_density, old_alpha)
 	density = old_density
 	alpha = old_alpha
 	invisibility = (old_density && old_alpha > 0) ? 0 : INVISIBILITY_MAXIMUM
