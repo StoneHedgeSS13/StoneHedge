@@ -247,6 +247,14 @@
 	craftdiff = 3
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/greataxe
+	name = "Great Axe (+1 Steel Ingot, +1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	aadditional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/greataxe
+	craftdiff = 3
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/zweihander
 	name = "Zweihander (+2 Iron)"
 	req_bar = /obj/item/ingot/iron
