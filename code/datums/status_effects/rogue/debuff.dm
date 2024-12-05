@@ -223,6 +223,17 @@
 	desc = "I should get some rest."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/sleepytime/lune
+	id = "sleepytimelune"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime/lune
+	effectedstats = list()
+
+/atom/movable/screen/alert/status_effect/debuff/sleepytime/lune
+	name = "Tired"
+	desc = "Night is beautiful, I should sleep however."
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "sleepylune"
+
 /datum/status_effect/debuff/trainsleep
 	id = "trainsleep"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/trainsleep
@@ -360,7 +371,6 @@
 /datum/status_effect/debuff/bigboobs/permanent/lite
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bigboobslite
 	examine_text = span_notice("They have massive GOODS!")
-	effectedstats = list("constitution" = 2,"endurance" = -1, "speed" = -1)
 	nodrawback = TRUE
 
 /atom/movable/screen/alert/status_effect/debuff/bigboobs

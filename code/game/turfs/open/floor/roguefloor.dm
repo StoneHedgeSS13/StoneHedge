@@ -237,7 +237,7 @@
 	// Additional check for 'TRAIT_BOG_TREKKING'
 	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
 		returned = 0
-	
+
 	if (negate_slowdown)
 		returned = 0
 
@@ -296,11 +296,7 @@
 //	update_water()
 
 /turf/open/floor/rogue/dirt/update_water()
-	water_level = max(water_level-10,0)
-	if(water_level > 10) //this would be a switch on normal tiles
-		color = "#95776a"
-	else
-		color = null
+	update_muddy()
 	return TRUE
 
 /turf/open/floor/rogue/dirt/road/update_water()
@@ -318,9 +314,9 @@
 			track_prob = initial(track_prob) //Hearthstone change.
 	return TRUE
 
-/turf/open/floor/rogue/dirt/proc/become_muddy()
-	if(!muddy)
-		water_level = max(water_level-100,0)
+/turf/open/floor/rogue/dirt/proc/update_muddy()
+	if(!muddy && water_level > 25)
+		color = "#95776a"
 		muddy = TRUE
 		icon_state = "mud[rand (1,3)]"
 		name = "mud"
@@ -330,6 +326,17 @@
 		heavyfootstep = FOOTSTEP_MUD
 		track_prob = 10 //Hearthstone change.
 		bloodiness = 20
+	else if(muddy && water_level <= 25)
+		color = null
+		muddy = FALSE
+		icon_state = initial(icon_state)
+		name = initial(name)
+		slowdown = initial(slowdown)
+		footstep = initial(footstep)
+		barefootstep = initial(barefootstep)
+		heavyfootstep = initial(heavyfootstep)
+		track_prob = initial(track_prob)
+		bloodiness = initial(bloodiness)
 
 /turf/open/floor/rogue/dirt/road
 	name = "dirt"

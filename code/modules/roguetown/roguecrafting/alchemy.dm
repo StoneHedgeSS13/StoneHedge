@@ -210,14 +210,14 @@
 /datum/crafting_recipe/roguetown/alchemy/glassbottles2
 	name = "3x glass bottles (Glass sheet)"
 	result = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
-	reqs = list(/obj/item/ingot/glass)
+	reqs = list(/obj/item/ingot/glass = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
 
 /datum/crafting_recipe/roguetown/alchemy/glasssyringe
 	name = "Glass syringe (x3)"
 	result = list(/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/syringe)
-	reqs = list(/obj/item/ingot/glass)
+	reqs = list(/obj/item/ingot/glass = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
 

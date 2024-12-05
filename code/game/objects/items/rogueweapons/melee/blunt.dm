@@ -16,7 +16,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/maces
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
@@ -49,7 +49,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	sharpness = IS_BLUNT
 	smeltresult = /obj/item/ingot/iron
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
 	minstr = 2

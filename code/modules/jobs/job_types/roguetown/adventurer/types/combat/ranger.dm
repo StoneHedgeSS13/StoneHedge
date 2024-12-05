@@ -31,20 +31,20 @@
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight = 1)
 			beltl = /obj/item/quiver/arrows
+			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, pick(4,5,5,6), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, rand(1,2), TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
@@ -68,6 +68,7 @@
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight = 1)
 			beltl = /obj/item/quiver/arrows
+			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
@@ -82,9 +83,9 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, rand(1,2), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 2, TRUE) //Hearthstone change.
@@ -96,15 +97,6 @@
 			if(!HAS_TRAIT(H, TRAIT_NIGHT_VISION))
 				ADD_TRAIT(H, TRAIT_NIGHT_VISION, "[type]")
 				H.update_sight()
-
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	else
-		pants = /obj/item/clothing/under/roguetown/tights
-		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/black
-			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

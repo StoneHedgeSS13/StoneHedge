@@ -14,7 +14,7 @@
 
 /datum/outfit/job/roguetown/adventurer/masterchef/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE) 
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE) // Beating meat.
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
@@ -22,7 +22,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) // Ancient cookbooks.
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 6, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 6, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 6, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)

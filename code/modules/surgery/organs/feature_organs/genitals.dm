@@ -175,7 +175,7 @@
 	refilling = TRUE
 	//hungerhelp = FALSE //balls dont be dry if you starve
 	reagent_generate_rate = 0.2
-	storage_per_size = 20 //2 times the normal since they have only 3 size options
+	storage_per_size = 15
 	organ_sizeable = TRUE
 	altnames = list("balls", "testicles", "testes", "orbs", "cum tanks", "seed tanks") //used in thought messages.
 	startsfilled = TRUE

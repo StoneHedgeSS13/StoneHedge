@@ -131,6 +131,16 @@
 	time = 40 MINUTES
 	needsate_text = "Time to pray."
 
+///NYMPHOMANIAC
+//why the fuck is it here, oh right modular, as if.
+
+/datum/charflaw/addiction/lovefiend
+	name = "Nymphomaniac"
+	desc = "I got one high maintenance genital..!"
+	time = 1 HOURS
+	needsate_text = "Time to get fuckin'!"
+
+
 /datum/outfit/job/roguetown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE) // added since the previous way it was implemented caused a bunch of runtimes
 	. = ..()
 	if(H.mind && (H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser) || H.mind.has_antag_datum(/datum/antagonist/vampirelord))) // dont stunlock
@@ -156,11 +166,3 @@
 				else
 					crosstype = /obj/item/clothing/neck/roguetown/psicross
 		H.equip_to_slot_or_del(new crosstype(H), SLOT_NECK)
-
-/// ALCOHOLIC
-
-/datum/charflaw/addiction/lovefiend
-	name = "Love-Fiend"
-	desc = "I must make love!"
-	time = 50 MINUTES
-	needsate_text = "Time to get happy."

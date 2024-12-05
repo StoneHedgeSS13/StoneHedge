@@ -38,7 +38,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 1, TRUE)

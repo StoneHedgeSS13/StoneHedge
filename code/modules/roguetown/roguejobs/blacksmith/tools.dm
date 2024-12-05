@@ -51,11 +51,13 @@
 				if(istype(attacked_item, /obj/item/clothing))
 					var/obj/item/clothing/C = attacked_item
 					C.update_clothes_damaged_state(FALSE)
+				attacked_item.update_overlays()
 			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(5, BRUTE, "blunt")
+			user.visible_message(span_info("[user] fumbles trying to repair [attacked_item]!"))
+			//attacked_item.take_damage(5, BRUTE, "blunt")
+			user.mind.add_sleep_experience(/datum/skill/craft/blacksmithing, (user.STAINT) / 2) // We learn a bit from our failures.
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)

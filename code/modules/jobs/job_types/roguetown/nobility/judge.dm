@@ -14,7 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/judge
 
 	give_bank_account = 1500
-	min_pq = 15
+	min_pq = 50
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_judge.ogg'

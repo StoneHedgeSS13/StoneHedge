@@ -14,7 +14,7 @@
 	mob = /mob/dead/new_player
 	// DO NOT set this to any turf type that has ANY on-new or on-initialize functionality
 	// doing that breaks hotloading zlevels!
-	turf = /turf/open/space/basic
+	turf = /turf/open/dark_filler
 	// Similarly, world.area MUST be outdoors or else things will
 	area = /area/rogue/outdoors
 	view = "15x15"

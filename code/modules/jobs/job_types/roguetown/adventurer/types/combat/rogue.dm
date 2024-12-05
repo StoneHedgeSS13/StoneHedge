@@ -64,10 +64,8 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -107,7 +105,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 6, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE) //anatomy training for lethality id assume.
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
@@ -205,7 +203,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -250,7 +248,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 3, TRUE)
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black

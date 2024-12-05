@@ -8,7 +8,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 	color = "#7c6d5c"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
@@ -192,7 +192,7 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL|HIDEBUTT
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -209,7 +209,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDECROTCH
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	var/fanatic_wear = FALSE
@@ -306,6 +306,6 @@
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL|HIDEBUTT
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL

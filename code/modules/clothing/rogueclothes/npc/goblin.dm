@@ -6,6 +6,7 @@
 	smeltresult = /obj/item/ingot/iron
 	allowed_race = list(/datum/species/goblin, /datum/species/goblin/hell, /datum/species/goblin/cave, /datum/species/goblin/sea, /datum/species/goblin/moon)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	flags_inv = HIDEBOOB
 	sellprice = 0
 
 /obj/item/clothing/suit/roguetown/armor/leather/goblin
@@ -14,6 +15,7 @@
 	item_state = "leather_armor"
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	flags_inv = HIDEBOOB
 	allowed_race = list(/datum/species/goblin, /datum/species/goblin/hell, /datum/species/goblin/cave, /datum/species/goblin/sea, /datum/species/goblin/moon)
 	sellprice = 0
 
@@ -33,6 +35,7 @@
 	mob_overlay_icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	icon_state = "cloth_armor"
 	item_state = "cloth_armor"
+	flags_inv = HIDECROTCH
 	allowed_race = list(/datum/species/goblin, /datum/species/goblin/hell, /datum/species/goblin/cave, /datum/species/goblin/sea, /datum/species/goblin/moon)
 	sellprice = 0
 

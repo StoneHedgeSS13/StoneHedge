@@ -18,7 +18,7 @@
 	cartridge_wording = "bolt"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2
 

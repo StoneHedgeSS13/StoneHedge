@@ -1,5 +1,5 @@
 /datum/advclass/cavalry
-	name = "Cavalry" // Medium armor fighter, melee-focused, expert at 1 weapon + some wrestling proefficiency, mediocre at rest. 
+	name = "Cavalry" // Medium armor fighter, melee-focused, expert at 1 weapon + some wrestling proefficiency, mediocre at rest.
 	tutorial = "You wandered off from your home seeking adventure, roaming to greener pastures for honor and chilvalry. You became an instrument of war, sitting atop a saiga, weapon and shield in hand! What will await here?"
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
@@ -19,7 +19,7 @@
 	var/classchoice = input("Choose your path", "Available archetypes","Who are you, really?") as anything in classes
 
 	switch(classchoice)
-	
+
 		if("Cataphract")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Some call you a madman. Others, an idiot. Yet you ride on, with your spear in one hand, and your shield in the other. When life itself seems lunatic, who knows where madness lies?"))
@@ -49,7 +49,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2 , TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
@@ -125,7 +125,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2 , TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 			H.change_stat("perception", 1)

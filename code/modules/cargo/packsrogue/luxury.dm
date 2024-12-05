@@ -164,3 +164,28 @@
 	name = "Tarot Deck"
 	cost = 5
 	contains = list(/obj/item/toy/cards/deck/tarot)
+
+/datum/supply_pack/rogue/luxury/tent
+	name = "Crystal Tent"
+	cost = 20
+	contains = list(/obj/item/survivalcapsule/tent)
+
+/datum/supply_pack/rogue/luxury/smith
+	name = "Crystal Smith Shop"
+	cost = 100
+	contains = list(/obj/item/survivalcapsule/smith)
+
+/datum/supply_pack/rogue/luxury/wiz
+	name = "Crystal Luxury Home"
+	cost = 700
+	contains = list(/obj/item/survivalcapsule/wiz)
+
+/datum/supply_pack/rogue/luxury/alchemist
+	name = "Crystal Alchemy Shop"
+	cost = 100
+	contains = list(/obj/item/survivalcapsule/alchemy)
+
+/datum/supply_pack/rogue/luxury/farmhouse
+	name = "Crystal Farmhouse"
+	cost = 100
+	contains = list(/obj/item/survivalcapsule/farm)

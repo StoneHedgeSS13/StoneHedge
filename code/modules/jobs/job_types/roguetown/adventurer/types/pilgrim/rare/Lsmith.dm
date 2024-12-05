@@ -36,15 +36,11 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)		//Legendary
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 1, TRUE)		//Legendary
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)		//Legendary
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 1, TRUE)			//Legendary 
+		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)		//Legendary
+		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)			//Legendary
 	H.change_stat("strength", 2)
 	H.change_stat("speed", -1)
 	H.change_stat("fortune", 2)

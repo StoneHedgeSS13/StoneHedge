@@ -27,7 +27,6 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather

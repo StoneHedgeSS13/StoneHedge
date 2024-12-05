@@ -88,8 +88,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			armor =	/obj/item/clothing/suit/roguetown/armor/leathervest
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 5, TRUE)
 		if(/datum/patron/divine/abyssor)
@@ -114,7 +113,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 4, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("intelligence", 4) // dedicated crafters
 		H.change_stat("endurance", 3)
 		H.change_stat("perception", 2)

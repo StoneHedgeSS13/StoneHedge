@@ -1902,8 +1902,8 @@
 				continue
 			//if(see_invisible < M.invisibility)
 				//continue
-			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
-				continue
+			// if(M.mob_timers[MT_INVISIBILITY] > world.time) Check if the mob is affected by the invisibility spell - commented out, this makes invis immune to active spotting, cringe
+				// continue
 			var/probby = 3 * STAPER
 			if(M.mind)
 				probby -= (M.mind.get_skill_level(/datum/skill/misc/sneaking) * 10)
@@ -1914,6 +1914,11 @@
 					emote("huh")
 					to_chat(M, span_danger("[src] sees me! I'm found!"))
 					M.apply_status_effect(/datum/status_effect/debuff/stealthcd)
+				if(M.mob_timers[MT_INVISIBILITY] > world.time)
+					if(prob(probby)) // first success will ping their location, but you need to succeed twice in a row to fully dispel magical invisibility with just your eyes - this should not be an easy thing to do
+						emote("huh")
+						to_chat(M, span_danger("[src]'s supernatural perception dispels my invisbility!"))
+						animate(M, alpha = 255, time = 1 SECONDS, easing = EASE_IN) // this will not remove the chat message when the invis spell actually wears off, slop code, but better than godmode invis
 			else
 				if(M.m_intent == MOVE_INTENT_SNEAK)
 					if(M.client?.prefs.showrolls)

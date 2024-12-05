@@ -177,7 +177,7 @@
 /turf/open
 	var/water_level = 0
 	var/last_water_update
-	var/max_water = 15
+	var/max_water = 50
 
 /turf/open/proc/add_water(amt)
 	if(!amt)
@@ -197,7 +197,7 @@
 	if(shouldupdate)
 		update_water()
 
-	if(amt > 101)
+	if(amt > 40)
 		for(var/obj/effect/decal/cleanable/blood/target in src)
 			qdel(target)
 
@@ -214,7 +214,7 @@
 	if(reac_volume >= 5)
 //		T.MakeSlippery(TURF_WET_WATER, reac_volume*1.5 SECONDS, reac_volume*1.5 SECONDS)
 		T.add_water(reac_volume * 3) //nuproc
-	
+
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
 	if(soil)
 		soil.adjust_water(reac_volume)
@@ -2058,7 +2058,7 @@
 
 // future food stuff and things
 
-/datum/chemical_reaction/simpleb   /// this will be the recipe 
+/datum/chemical_reaction/simpleb   /// this will be the recipe
 	name = "Simple Broth"
 	results = list(/datum/reagent/consumable/simpleb = 1)  /// the result. see below for reagent you are making
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/milk = 1) /// what it takes to make, trust me make life easier on people keep it 1/1 this example is just water and standard milk
@@ -2070,7 +2070,7 @@
 	color = "#203625" // rgb: 32, 54, 37         this is the color you want the liquid to be, goes off hex coloring.
 	taste_description = "earthy water"
 	hydration_factor = 10 /// does it hydrate too? 12 is water level of hydrate, less is less. otherwise leave out or write null
-	nutriment_factor = 10 //EVERY 1 NUTRIMENT RESTORES 35 NUTRITION             I belive if you use reagent/consumable path it will default to one if left out. 10 is same as sugar. so thats a singular meal. 
+	nutriment_factor = 10 //EVERY 1 NUTRIMENT RESTORES 35 NUTRITION             I belive if you use reagent/consumable path it will default to one if left out. 10 is same as sugar. so thats a singular meal.
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM /// how fast it runs thru the body, standard is 0.5. extremely slow is 0.2 or 0.1. instant is solid number 20
 	overdose_threshold = null /// you wont use this but I added it incase, if you set one for whatever reason you will have to make a overdose_process datum
 

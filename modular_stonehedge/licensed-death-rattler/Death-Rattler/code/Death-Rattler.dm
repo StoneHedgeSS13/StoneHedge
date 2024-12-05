@@ -62,8 +62,9 @@
 
 /datum/reagent/drug/snekbt/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/snekbt)
-	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime) || M.has_status_effect(/datum/status_effect/debuff/sleepytime/lune))
 		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime/lune)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	return ..()

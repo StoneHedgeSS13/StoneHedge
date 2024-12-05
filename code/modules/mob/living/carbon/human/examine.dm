@@ -135,7 +135,7 @@
 
 			if(H.hunters.Find(name))
 				. += span_userdanger("I'm a dead man!")
-					
+
 		var/commie_text
 		if(mind)
 			if(mind.special_role == "Bandit")
@@ -460,7 +460,7 @@
 				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
-			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
+			else if(has_status_effect(/datum/status_effect/debuff/sleepytime)) //lune worshippers still wont look tired.
 				msg += "[m1] looking a little tired."
 	else
 		msg += "[m1] unconscious."

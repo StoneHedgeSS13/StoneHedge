@@ -393,7 +393,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	sharpness = IS_SHARP
-	associated_skill = /datum/skill/combat/axes
+	associated_skill = /datum/skill/combat/polearms
 	//dropshrink = 0.8
 	wlength = 33
 	var/list/forked = list()

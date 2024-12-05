@@ -46,7 +46,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
-	id = /obj/item/clothing/ring/gold
+	id = /obj/item/clothing/ring/keystone/archkey
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/slimepotion/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)

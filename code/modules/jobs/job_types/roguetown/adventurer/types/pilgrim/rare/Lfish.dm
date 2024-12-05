@@ -33,6 +33,6 @@
 	beltl = /obj/item/flint
 	backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.change_stat("constitution", 2)

@@ -8,7 +8,7 @@
 	allowed_patrons = ALL_CLERIC_PATRONS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/grandmaster
-	min_pq = 5
+	min_pq = 15
 	max_pq = null
 	total_positions = 1
 	spawn_positions = 1

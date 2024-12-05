@@ -26,14 +26,14 @@
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backl = /obj/item/storage/backpack/rogue/backpack
 		backpack_contents = list(
-			/obj/item/roguegem/yellow, 
-			/obj/item/roguegem/yellow, 
-			/obj/item/roguegem/yellow, 
-			/obj/item/natural/stone, 
-			/obj/item/natural/stone, 
+			/obj/item/roguegem/yellow,
+			/obj/item/roguegem/yellow,
+			/obj/item/roguegem/yellow,
+			/obj/item/natural/stone,
+			/obj/item/natural/stone,
 			/obj/item/natural/stone,
 			/obj/item/seeds/pipeweed,
-			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though. 
+			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though.
 
 	else
 		switch(H.patron?.type)
@@ -48,14 +48,14 @@
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backl = /obj/item/storage/backpack/rogue/backpack
 		backpack_contents = list(
-			/obj/item/roguegem/yellow, 
-			/obj/item/roguegem/yellow, 
-			/obj/item/roguegem/yellow, 
-			/obj/item/natural/stone, 
-			/obj/item/natural/stone, 
+			/obj/item/roguegem/yellow,
+			/obj/item/roguegem/yellow,
+			/obj/item/roguegem/yellow,
+			/obj/item/natural/stone,
+			/obj/item/natural/stone,
 			/obj/item/natural/stone,
 			/obj/item/seeds/pipeweed,
-			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though. 
+			/obj/item/fertilizer) // Starting supplies for making a millstone and potions. No starting money, though.
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
@@ -67,11 +67,11 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
 		else
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, pick(5,5,6), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("constitution", 1)

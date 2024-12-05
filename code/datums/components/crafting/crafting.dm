@@ -326,7 +326,7 @@
 	var/amt
 	main_loop:
 		for(var/A in R.reqs)
-			amt = R.reqs[A]
+			amt = R.reqs[A] || 1 // if null (no key) assume 1
 			surroundings = get_environment(user)
 			surroundings -= Deletion
 			if(ispath(A, /datum/reagent))

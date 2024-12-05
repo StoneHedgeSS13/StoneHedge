@@ -11,7 +11,7 @@
 	icon_state = ""
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/psicross/ringP  /////////////////////// cast focus ring for acolytes and shit.
 	name = "psi ring"
@@ -257,4 +257,27 @@
 		user.check_attunement_points()
 		active_item = FALSE
 		return
+
+//academy keystones
+/obj/item/clothing/ring/keystone
+	name = "academy keystone"
+	desc = "A silver-banded sapphire keystone used to allow passage through certain magical wards. This one is issued to Mages of the Ravenloft Academy."
+	icon_state = "s_ring_sapphire"
+	var/active = FALSE
+
+/obj/item/clothing/ring/keystone/attack_right(mob/user)
+	if(loc != user)
+		return
+	active = !active
+	user.visible_message(span_warning("[user] twists the [src], causing it to [active ? "glow" : "dim"]!"))
+	playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+	update_icon()
+
+/obj/item/clothing/ring/keystone/proc/can_unlock()
+	return active
+
+/obj/item/clothing/ring/keystone/archkey
+	name = "academy archkeystone"
+	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to Archmages of the Ravenloft Academy."
+	icon_state = "g_ring_sapphire"
 

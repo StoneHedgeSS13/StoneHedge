@@ -84,10 +84,14 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "ar" = (
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/cave/minotaurcave)
 "at" = (
 /obj/structure/bed/rogue/inn/hay,
+/obj/effect/decal/cleanable/food/salt{
+	icon_state = "smashed_plant"
+	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
 "av" = (
@@ -150,8 +154,15 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "aQ" = (
-/turf/closed/wall/mineral/rogue/stone/window,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/fluff/psycross{
+	icon_state = "bstatue";
+	name = "Divine Effigy"
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "aS" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -192,6 +203,13 @@
 "aZ" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/shelter/woods/overgrownfort)
+"bb" = (
+/obj/structure/spider/stickyweb{
+	dir = 4;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "bf" = (
 /obj/item/natural/bundle/stick,
 /turf/open/floor/rogue/dirt,
@@ -219,6 +237,10 @@
 /obj/effect/decal/cleanable/blood/gibs/bubblegum,
 /turf/open/floor/grass,
 /area/rogue/indoors/cave/minotaurcave)
+"bt" = (
+/obj/structure/safeglowshroom,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "bu" = (
 /obj/structure/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -399,7 +421,7 @@
 /obj/item/bodypart/l_arm/rprosthetic/clock,
 /obj/item/bodypart/r_arm/rprosthetic/clock,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "cp" = (
 /obj/effect/wisp,
 /obj/effect/decal/cleanable/blood{
@@ -455,10 +477,9 @@
 	name = "Wood elf Tribes"
 	})
 "cF" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "cG" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/powder/salt,
@@ -655,7 +676,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
@@ -880,12 +901,11 @@
 /turf/open/water/swamp,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "fg" = (
-/obj/structure/rack/rogue/shelf/big,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
-	})
+/obj/structure/spider/stickyweb{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "fl" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -898,7 +918,7 @@
 	pixel_x = -32
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "fo" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -987,19 +1007,16 @@
 	first_time_text = "The Deepwoods"
 	})
 "fR" = (
-/obj/structure/rack/rogue,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/obj/item/ammo_casing/caseless/rogue/bullet,
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spider/stickyweb{
+	dir = 1;
+	icon_state = "stickyweb2"
+	},
+/obj/structure/spider/stickyweb{
+	dir = 4;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "fT" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/rooftop{
@@ -1166,6 +1183,17 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/cave/underdark)
+"hk" = (
+/obj/structure/spacevine,
+/obj/item/clothing/head/roguetown/helmet/carapacehelm,
+/obj/item/clothing/shoes/roguetown/boots/carapace,
+/obj/item/clothing/suit/roguetown/armor/carapace,
+/obj/structure/closet/crate/roguecloset,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "hm" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -1263,11 +1291,11 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "hJ" = (
-/turf/closed,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
-	})
+/obj/structure/safeglowshroom{
+	icon_state = "glowshroom3"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet)
 "hL" = (
 /obj/item/natural/stone,
 /turf/open/floor/rogue/dirt/road,
@@ -1349,6 +1377,7 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
 "ib" = (
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "ic" = (
@@ -1414,11 +1443,9 @@
 	first_time_text = "The Deepwoods"
 	})
 "iv" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
+/obj/structure/table/church{
+	icon_state = "churchtable_mid"
 	},
-/obj/item/clothing/neck/roguetown/psicross/eora,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
@@ -1494,7 +1521,7 @@
 /obj/item/clothing/head/peaceflower{
 	name = "Viriitran Bud"
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
@@ -1517,7 +1544,6 @@
 /obj/structure/fluff/railing/fence{
 	dir = 4
 	},
-/obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
@@ -1662,7 +1688,7 @@
 "jM" = (
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "jN" = (
 /obj/structure/spacevine,
 /mob/living/simple_animal/hostile/retaliate/rogue/spider,
@@ -1879,6 +1905,13 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"lh" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "li" = (
 /obj/structure/spacevine,
 /turf/open/transparent/openspace,
@@ -1944,6 +1977,15 @@
 "lz" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/cave)
+"lA" = (
+/obj/structure/closet/crate/chest,
+/obj/item/clothing/head/roguetown/helmet/leather/volfhead,
+/obj/item/clothing/head/roguetown/antlerhood,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "lB" = (
 /obj/machinery/light/rogue/wallfire{
 	pixel_y = 32
@@ -2204,6 +2246,13 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
+"mP" = (
+/obj/structure/spider/stickyweb{
+	dir = 1;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "mS" = (
 /obj/structure/flora/grass/jungle{
 	icon_state = "grassa2"
@@ -2242,10 +2291,8 @@
 	first_time_text = "The Deepwoods"
 	})
 "nc" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
-	},
 /obj/item/clothing/neck/roguetown/psicross/dendor,
+/obj/structure/table/church,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
@@ -2286,14 +2333,11 @@
 	},
 /area/rogue/outdoors/river)
 "no" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/structure/chair/stool/rogue,
-/obj/effect/landmark/start/tribalshaman,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
-	})
+/obj/structure/safeglowshroom{
+	icon_state = "glowshroom2"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet)
 "np" = (
 /obj/structure/table/church{
 	icon_state = "churchtable_end_alt"
@@ -2369,6 +2413,10 @@
 /obj/structure/glowshroom,
 /turf/open/water/swamp,
 /area/rogue/outdoors/river)
+"nM" = (
+/obj/structure/spawner/invisible/monster/troll,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors/cave/underdark)
 "nP" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -2461,7 +2509,7 @@
 	redstone_id = "dwarfinner2"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "ou" = (
 /obj/structure/glowshroom{
 	icon_state = "glowshroom2"
@@ -2496,6 +2544,14 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains)
+"oG" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/landmark/start/tribalshaman,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "oH" = (
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/rogue/grass,
@@ -2567,7 +2623,7 @@
 	redstone_id = "dwarfinner2"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "pb" = (
 /obj/machinery/light/rogue/smelter,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
@@ -2605,6 +2661,12 @@
 "pn" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
+"po" = (
+/obj/structure/spider/stickyweb{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "pp" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
@@ -2794,8 +2856,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "qr" = (
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/flora/rogueshroom/happyrandom{
+	icon_state = "mush2"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "qs" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt,
@@ -2805,7 +2870,13 @@
 /obj/item/bodypart/r_arm/rprosthetic/iron,
 /obj/item/bodypart/l_arm/rprosthetic/iron,
 /turf/open/floor/bronze,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
+"qw" = (
+/obj/structure/safeglowshroom{
+	icon_state = "glowshroom3"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "qy" = (
 /turf/open/floor/bronze,
 /area/rogue/indoors/shelter/town/dwarf)
@@ -2996,6 +3067,10 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"rR" = (
+/obj/structure/ladder,
+/turf/open/floor/rogue/twig,
+/area/rogue/under/cavewet)
 "rS" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/swamp/deep,
@@ -3085,6 +3160,16 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"si" = (
+/obj/structure/spider/stickyweb{
+	dir = 4;
+	icon_state = "stickyweb2"
+	},
+/obj/structure/spider/stickyweb{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "sj" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/indoors/cave/underdark)
@@ -3152,6 +3237,10 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"sD" = (
+/obj/structure/closet/crate/chest/dungeon/mimic,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "sG" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/grass/jungle/b,
@@ -3224,6 +3313,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"te" = (
+/obj/structure/spawner/invisible/ghost/wraiths,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "tg" = (
 /obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/rogue/dirt/road,
@@ -3272,9 +3365,6 @@
 "tq" = (
 /obj/effect/wisp,
 /obj/structure/flora/ausbushes/brflowers,
-/obj/item/clothing/head/peaceflower{
-	name = "Viriitran Bud"
-	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
@@ -3335,14 +3425,17 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"tL" = (
+/obj/structure/spawner/invisible/monster/troll,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "tP" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/structure/fluff/walldeco/chains{
 	icon_state = "chains4"
 	},
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "tR" = (
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/water/river,
@@ -3484,9 +3577,12 @@
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/outdoors/woods/wraithhouse)
 "uL" = (
-/obj/machinery/light/rogue/smelter/great,
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spider/stickyweb{
+	dir = 1;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "uM" = (
 /obj/structure/flora/rogueshroom/happyrandom{
 	icon_state = "mush4"
@@ -3504,11 +3600,11 @@
 	},
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "uQ" = (
-/obj/structure/fluff/walldeco/stone{
-	icon_state = "walldec6"
+/obj/structure/spider/stickyweb{
+	icon_state = "stickyweb2"
 	},
-/turf/closed/wall/mineral/rogue/stone/window,
-/area/rogue/indoors/cave/underdark)
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "uR" = (
 /obj/structure/flora/roguegrass/bush{
 	icon_state = "bush3"
@@ -3526,25 +3622,12 @@
 	name = "Wood elf Tribes"
 	})
 "uU" = (
-/obj/structure/rack/rogue,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/obj/item/ingot/silver,
-/obj/item/ingot/silver,
-/obj/item/ingot/silver,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/gold,
-/obj/item/ingot/gold,
-/obj/item/ingot/gold,
-/obj/item/ingot/copper,
-/obj/item/ingot/copper,
-/obj/item/ingot/copper,
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spider/stickyweb{
+	dir = 8;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "uV" = (
 /obj/structure/winch{
 	gid = "forestgate1";
@@ -3692,7 +3775,7 @@
 	redstone_id = "dwarfgate1"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "vQ" = (
 /obj/structure/flora/newtree,
 /turf/open/water/swamp,
@@ -3923,6 +4006,14 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"xf" = (
+/obj/structure/closet/crate/chest/reward,
+/obj/item/storage/roguebag,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "xh" = (
 /obj/item/natural/rock,
 /obj/structure/flora/grass/jungle/b{
@@ -4097,7 +4188,6 @@
 	first_time_text = "The Deepwoods"
 	})
 "yr" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/structure/fluff/walldeco/chains{
 	icon_state = "chains5"
 	},
@@ -4128,9 +4218,9 @@
 	first_time_text = "The Deepwoods"
 	})
 "yA" = (
-/obj/machinery/light/rogue/forge,
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "yC" = (
 /obj/structure/spider/stickyweb{
 	dir = 1;
@@ -4247,6 +4337,13 @@
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
+"zn" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/underworld/carriage_normal,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "zq" = (
 /obj/machinery/light/rogue/forge,
 /turf/open/floor/rogue/metal,
@@ -4358,6 +4455,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"zS" = (
+/obj/effect/mob_spawner/minotaur,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/indoors/cave/minotaurcave)
 "zU" = (
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/cave/minotaurcave)
@@ -4396,6 +4497,9 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"Ad" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/under/cavewet)
 "Aj" = (
 /turf/open/lava,
 /area/rogue/indoors/cave/underdark)
@@ -4468,7 +4572,7 @@
 /area/rogue/outdoors/river)
 "AH" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "AI" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/spacevine,
@@ -4760,14 +4864,9 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/shelter/town/dwarf)
 "Cj" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/item/clothing/head/peaceflower{
-	name = "Viriitran Bud"
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Deepwoods"
-	})
+/obj/structure/spawner/invisible/ghost/wraiths,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "Ck" = (
 /obj/structure/fluff/statue/femalestatue{
 	desc = "This statue depicts the flower maiden amidst the clearwater pool. She smiles at you, inviting you closer.";
@@ -4829,7 +4928,7 @@
 	redstone_id = "dwarfgate1"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Cy" = (
 /obj/structure/lever/wall{
 	gid = "dwarfinner1";
@@ -5003,13 +5102,12 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
 "Dq" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/structure/fluff/walldeco/chains{
 	icon_state = "chains7"
 	},
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Ds" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab,
 /turf/open/water/swamp/deep,
@@ -5035,6 +5133,12 @@
 "Dv" = (
 /turf/open/floor/grass,
 /area/rogue/indoors/cave/minotaurcave)
+"Dy" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "DD" = (
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
@@ -5083,7 +5187,7 @@
 /obj/item/clothing/neck/roguetown/psicross/malum,
 /obj/item/clothing/cloak/templar/malum,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "DO" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/indoors/cave/minotaurcave)
@@ -5163,6 +5267,12 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"En" = (
+/obj/effect/wisp,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Eo" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/dirt,
@@ -5218,7 +5328,7 @@
 	redstone_id = "dwarfinner1"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "EC" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -5329,6 +5439,12 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"Fn" = (
+/obj/machinery/light/rogue/campfire/densefire,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Fo" = (
 /obj/effect/landmark/mapGenerator/rogue/mountain{
 	endTurfX = 135;
@@ -5347,7 +5463,7 @@
 /obj/item/restraints/legcuffs/beartrap/crafted,
 /obj/item/restraints/legcuffs/beartrap/crafted,
 /turf/open/floor/bronze,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Ft" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -5511,6 +5627,13 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/river)
+"GC" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "GE" = (
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -5650,12 +5773,12 @@
 	},
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "Hu" = (
-/obj/structure/ladder,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
-	})
+/obj/structure/spider/stickyweb{
+	dir = 8;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "Hv" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grass,
@@ -5711,6 +5834,13 @@
 /obj/structure/fluff/statue/knight,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
+"HH" = (
+/obj/structure/spider/stickyweb{
+	dir = 4;
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "HK" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
@@ -5770,9 +5900,9 @@
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/outdoors/mountains)
 "HV" = (
-/obj/effect/mob_spawn/human/golem,
-/turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/closet/crate/chest/dungeon/mimic,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet)
 "HX" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/closet/crate/chest/refilling/weapon,
@@ -5812,6 +5942,12 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"If" = (
+/obj/structure/spider/stickyweb{
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "Ij" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/goat,
 /turf/open/floor/rogue/dirt,
@@ -6085,13 +6221,11 @@
 	first_time_text = "The Deepwoods"
 	})
 "JG" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/structure/spacevine,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
-	})
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors/cave/underdark)
 "JH" = (
 /obj/structure/glowshroom{
 	icon_state = "glowshroom3"
@@ -6213,11 +6347,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "Ko" = (
-/obj/structure/fluff/walldeco/stone{
-	icon_state = "walldec6"
-	},
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spawner/invisible/ghost/wraiths,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "Kp" = (
 /obj/structure/closet/crate/chest,
 /obj/item/rope/chain,
@@ -6363,6 +6495,12 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/woods/overgrownfort)
+"Lh" = (
+/obj/effect/wisp,
+/turf/open/floor/rogue/dirt/ambush,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Li" = (
 /obj/structure/loot/pile/coins,
 /turf/open/floor/rogue/dirt/road,
@@ -6421,7 +6559,7 @@
 /obj/item/bodypart/r_leg/rprosthetic/clock,
 /obj/item/bodypart/l_leg/rprosthetic/steel,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "LB" = (
 /obj/structure/fluff/railing/fence{
 	dir = 4
@@ -6474,13 +6612,13 @@
 	name = "Wood elf Tribes"
 	})
 "LQ" = (
-/obj/structure/closet/crate/drawer,
-/obj/item/candle/skull/lit,
-/obj/structure/spacevine,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa1"
+	},
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
 	})
 "LU" = (
 /obj/structure/fluff/railing/wood{
@@ -6744,6 +6882,12 @@
 "Nk" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/indoors/shelter/town/dwarf)
+"Nl" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor1-old"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "Nm" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/river)
@@ -6986,7 +7130,7 @@
 	pixel_x = -32
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "OO" = (
 /obj/structure/spider/stickyweb{
 	dir = 8;
@@ -7026,6 +7170,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"OY" = (
+/obj/effect/mob_spawner/minotaur,
+/turf/open/floor/grass,
+/area/rogue/indoors/cave/minotaurcave)
 "Pa" = (
 /obj/structure/spacevine,
 /obj/structure/flora/roguegrass/maneater/real,
@@ -7191,9 +7339,11 @@
 	first_time_text = "The Deepwoods"
 	})
 "PN" = (
-/obj/structure/fluff/clockwork/clockgolem_remains,
-/turf/open/floor/bronze,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/spider/stickyweb{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "PS" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/cobblerock,
@@ -7332,7 +7482,6 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/river)
 "QH" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/structure/fluff/walldeco/chains{
 	icon_state = "chains6"
 	},
@@ -7396,7 +7545,7 @@
 /obj/item/restraints/legcuffs/beartrap/crafted,
 /obj/item/restraints/legcuffs/beartrap/crafted,
 /turf/open/floor/bronze,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Rg" = (
 /obj/structure/closet/crate/chest/refilling/spells,
 /turf/open/floor/rogue/naturalstone,
@@ -7547,9 +7696,9 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "RY" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "Sb" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/grass,
@@ -7577,6 +7726,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
+"Sm" = (
+/obj/structure/spawner/invisible/ghost/wraiths,
+/turf/open/water/swamp,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "Sn" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/river,
@@ -7835,6 +7988,16 @@
 	})
 "TU" = (
 /turf/closed/wall/mineral/rogue/tent,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
+"TV" = (
+/obj/structure/table/church{
+	icon_state = "churchtable_end"
+	},
+/obj/item/clothing/neck/roguetown/psicross/eora,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
@@ -8175,8 +8338,11 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
 "Wk" = (
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
-/area/rogue/indoors/cave/underdark)
+/obj/structure/safeglowshroom{
+	icon_state = "glowshroom2"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "Wm" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/brflowers,
@@ -8210,6 +8376,11 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"Wu" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/newtree,
+/turf/open/water/river,
+/area/rogue/outdoors/river)
 "Wv" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/effect/decal/cleanable/blood/tracks{
@@ -8240,6 +8411,12 @@
 	},
 /turf/open/water/swamp/deep,
 /area/rogue/indoors/cave/underdark)
+"WE" = (
+/obj/structure/flora/rogueshroom/happyrandom{
+	icon_state = "mush2"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "WF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/dirt,
@@ -8504,7 +8681,7 @@
 /obj/item/rogueweapon/tongs,
 /obj/item/rogueweapon/hammer,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Yl" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab,
 /turf/open/water/swamp,
@@ -8631,10 +8808,9 @@
 	name = "Wood elf Tribes"
 	})
 "YY" = (
-/obj/effect/mob_spawn/human/golem,
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/metal,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "YZ" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/spacevine,
@@ -16800,13 +16976,13 @@ Aj
 Aj
 Aj
 Aj
-qr
-qr
-qr
-qr
-qr
-qr
-qr
+sp
+sp
+sp
+sp
+sp
+sp
+sp
 JQ
 JQ
 JQ
@@ -16932,21 +17108,21 @@ Aj
 Aj
 Aj
 JQ
-qr
-Bb
-Bb
-Bb
-Bb
-Bb
-Bb
-Bb
-qr
-qr
+sp
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sp
+sp
 JQ
-qr
-qr
-Bb
-Bb
+sp
+sp
+sJ
+sJ
 KZ
 KZ
 KZ
@@ -17057,26 +17233,26 @@ Aj
 Aj
 EI
 EI
-qr
-qr
-aQ
-qr
-aQ
-qr
-aQ
-Bb
-Bb
+sp
+sp
+Nk
+sp
+Nk
+sp
+Nk
+sJ
+sJ
 tP
 Rf
-Wk
+Bx
 ON
 fn
 ON
 Fq
-Bb
-qr
-qr
-qr
+sJ
+sp
+sp
+sp
 Bb
 Sd
 KZ
@@ -17190,26 +17366,26 @@ Aj
 Aj
 EI
 EI
-qr
-PN
-nD
-nD
-nD
-nD
+sp
+wQ
+KC
+KC
+KC
+KC
 co
 qt
-Bb
+sJ
 Dq
-nD
-nD
+KC
+KC
 jM
-Wk
-yA
-Wk
-Bb
-qr
+Bx
+zq
+Bx
+sJ
+sp
 AH
-Bb
+sJ
 fH
 KZ
 nD
@@ -17323,25 +17499,25 @@ Aj
 Aj
 Aj
 EI
-Bb
-uL
-ar
-uU
-nD
+sJ
+jb
+Rc
+VK
+KC
 YY
-fR
+Bu
 Lz
-Ko
-nD
-nD
-nD
+jI
+KC
+KC
+KC
 Yh
-nD
+KC
 DN
-Wk
-Wk
-uQ
-nD
+Bx
+Bx
+FI
+KC
 vP
 nD
 nD
@@ -17456,26 +17632,26 @@ EI
 Aj
 Aj
 EI
-uQ
-nD
-nD
-nD
-nD
-nD
-Wk
-nD
+FI
+KC
+KC
+KC
+KC
+KC
+Bx
+KC
 ot
-Wk
-Wk
-nD
-nD
-nD
-nD
-nD
-nD
+Bx
+Bx
+KC
+KC
+KC
+KC
+KC
+KC
 EB
-nD
-nD
+KC
+KC
 nD
 nD
 Aj
@@ -17495,7 +17671,7 @@ EI
 EI
 yQ
 ZA
-ZA
+nM
 ZA
 ZA
 HR
@@ -17589,26 +17765,26 @@ Rk
 Aj
 Aj
 Rk
-Bb
-uL
-ar
-uU
+sJ
+jb
+Rc
+VK
 oZ
-HV
-fR
-nD
-Ko
-nD
-Wk
-nD
+Rc
+Bu
+KC
+jI
+KC
+Bx
+KC
 jM
-nD
+KC
 DN
-Wk
-Wk
-uQ
-nD
-nD
+Bx
+Bx
+FI
+KC
+KC
 nD
 nD
 Vs
@@ -17722,26 +17898,26 @@ aH
 aH
 aH
 aH
-aQ
-RY
-nD
-nD
-nD
-nD
-nD
-nD
-Bb
+Nk
+Eh
+KC
+KC
+KC
+KC
+KC
+KC
+sJ
 cF
-nD
-nD
+KC
+KC
 Yh
-nD
-yA
+KC
+zq
 Cx
-Bb
-qr
+sJ
+sp
 AH
-Bb
+sJ
 KZ
 KZ
 nD
@@ -17872,10 +18048,10 @@ lu
 Cy
 qy
 sJ
-qr
-qr
-qr
-Bb
+sp
+sp
+sp
+sJ
 Sd
 KZ
 EI
@@ -18005,12 +18181,12 @@ sp
 sJ
 sJ
 sp
-qr
+sp
 sj
-qr
-qr
-Bb
-Bb
+sp
+sp
+sJ
+sJ
 sj
 sj
 Wn
@@ -19216,12 +19392,12 @@ KZ
 Aj
 KZ
 JQ
-JQ
-ZA
-pL
+ie
 ZA
 ZA
-pL
+ZA
+ZA
+ZA
 ZA
 pL
 ZA
@@ -19348,14 +19524,14 @@ Aj
 MA
 Aj
 Aj
-KZ
-JQ
-ZA
-pL
-ZA
-ZA
-pL
-ZA
+ie
+ie
+JG
+JG
+JG
+JG
+JG
+JG
 Gd
 No
 FZ
@@ -19481,16 +19657,16 @@ KZ
 JQ
 KZ
 Aj
-KZ
-kC
-wO
-wO
-No
-wO
-wO
-CF
-CF
-CF
+ie
+ie
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
 KZ
 KZ
 hQ
@@ -19614,16 +19790,16 @@ JQ
 JQ
 Aj
 Aj
-KZ
-KZ
-wO
+ie
+ie
+Ly
+Ly
 wO
 No
 No
-No
 wO
-wO
-wO
+Ly
+Ly
 kC
 KZ
 hQ
@@ -19747,16 +19923,16 @@ sj
 Aj
 Aj
 Aj
-EI
-KZ
-wO
+ie
+ie
+Ly
 wO
 No
 No
 No
 wO
 wO
-CF
+Ly
 sj
 Av
 KZ
@@ -19880,7 +20056,7 @@ Aj
 Aj
 Aj
 Aj
-EI
+ie
 KZ
 CF
 CF
@@ -20547,7 +20723,7 @@ wO
 CF
 CF
 CF
-No
+tL
 No
 No
 wO
@@ -21122,11 +21298,11 @@ JQ
 JQ
 wO
 wO
+Ly
 wO
 wO
 wO
-wO
-wO
+Ly
 OV
 OV
 OV
@@ -21255,11 +21431,11 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
+Ly
+zQ
+iY
+SP
+Ly
 wO
 wO
 wO
@@ -21388,11 +21564,11 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
+Ly
+sD
+SP
+SP
+Ly
 wO
 wO
 wO
@@ -21521,15 +21697,15 @@ Ly
 Ly
 Ly
 Ly
+Ly
+SP
+te
+SP
+Ly
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
 wO
 wO
 wO
@@ -21654,18 +21830,18 @@ Ly
 Ly
 Ly
 Ly
+Ly
+SP
+iY
+iY
+Ly
+Ly
+Ly
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+Ly
 wO
 wO
 wO
@@ -21787,18 +21963,18 @@ Ly
 Ly
 Ly
 Ly
+Ly
+Ly
+Ly
+SP
+Ly
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Hu
+fg
+uL
+SP
+Ly
 wO
 wO
 wO
@@ -21922,27 +22098,27 @@ Ly
 Ly
 wO
 wO
+Ly
+yA
+Ly
+SP
+po
+PN
+Ly
+Ly
+iY
+Ly
+Ly
 wO
 wO
 wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+Ly
+Ly
 wO
 Ly
 Ly
@@ -22045,7 +22221,7 @@ bK
 bK
 bK
 bK
-BJ
+Cj
 bK
 dL
 BJ
@@ -22055,28 +22231,28 @@ Ly
 Ly
 wO
 wO
+Ly
+uQ
+mP
+iY
+Ly
+SP
+iY
+Ly
+iY
+Ly
+Ly
+Ly
+Ly
 wO
 wO
 wO
+Ly
+Ly
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
 Ly
 Ly
 Ly
@@ -22188,28 +22364,28 @@ Ly
 Ly
 wO
 wO
+Ly
+Ly
+Ly
+SP
+Ly
+Ly
+Ly
+Ly
+SP
+SP
+SP
+iY
+iY
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+uU
+mP
+HH
+SP
+Ly
 Ly
 Ly
 Ly
@@ -22323,26 +22499,26 @@ wO
 wO
 wO
 wO
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+zQ
+SP
+Ly
+Ly
+Ly
+Ly
+SP
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+SP
+Ly
 Ly
 Ly
 Ly
@@ -22459,23 +22635,23 @@ wO
 wO
 wO
 wO
+Ly
+SP
+bb
+uQ
+SP
+Ly
 FN
+te
+SP
+SP
+Ly
 FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
+SP
+Ly
 wO
-wO
-wO
+iY
+Ly
 Ly
 Ly
 Ly
@@ -22592,23 +22768,23 @@ wO
 wO
 wO
 wO
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
-wO
+Ly
+iY
+Ly
+Ly
+iY
+Ly
+uL
+SP
+Ly
+bb
+Ly
+Ly
+SP
+Ly
+Ly
+iY
+Ly
 Ly
 Ly
 Ly
@@ -22721,26 +22897,26 @@ Ly
 FN
 FN
 wO
-wO
-wO
-wO
-wO
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
+Ly
+Ly
+Ly
+Ly
+iY
+iY
+Ly
+fg
+fg
+Ly
+HH
+Ly
+Hu
+uL
+uQ
+Ly
+SP
+SP
+Ly
+iY
 wO
 Ly
 Ly
@@ -22854,26 +23030,26 @@ Ly
 FN
 FN
 wO
-wO
-wO
-wO
-wO
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
+Ly
+iY
+iY
+SP
+iY
+SP
+Ly
+mP
+Ly
+If
+SP
+Ly
+uQ
+Ly
+SP
+Ly
+Ly
+SP
+Ly
+SP
 wO
 Ly
 Ly
@@ -22987,27 +23163,27 @@ Ly
 FN
 FN
 wO
-wO
-wO
-wO
-wO
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
-wO
+Ly
+SP
+SP
+Ly
+Ly
+SP
+Ly
+SP
+SP
+iY
+SP
+Ly
+SP
+Ly
+SP
+SP
+SP
+SP
+Ly
+uL
+Ly
 Ly
 Ly
 Ly
@@ -23120,27 +23296,27 @@ Ly
 FN
 FN
 wO
-wO
-wO
-wO
-wO
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
-wO
+Ly
+iY
+SP
+Ly
+Ly
+SP
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+SP
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+bb
+Ly
 Ly
 Ly
 Ly
@@ -23253,27 +23429,27 @@ Ly
 FN
 FN
 wO
-wO
-wO
-wO
-wO
+Ly
+WE
+SP
+Ly
+Ly
+SP
+SP
+SP
+SP
+SP
+iY
+iY
+SP
+Ly
 FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-FN
-wO
-wO
-wO
+Ly
+WE
+SP
+uQ
+SP
+Ly
 Ly
 Ly
 Ly
@@ -23386,27 +23562,27 @@ Ly
 FN
 FN
 wO
+Ly
+iY
+bb
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Hu
+Ly
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+sD
+SP
+iY
+SP
+Ly
 Ly
 Ly
 Ly
@@ -23518,28 +23694,28 @@ Ly
 Ly
 FN
 FN
+Ly
+Ly
+bb
+bb
+Ly
 wO
 wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+uL
+Ly
+Ly
+Ly
+Ly
+iY
+Ko
+SP
+SP
+Ly
 Ly
 Ly
 Ly
@@ -23651,28 +23827,28 @@ Ly
 Ly
 FN
 FN
+Ly
+wO
+fg
+fg
+Ly
+Ly
 wO
 wO
 wO
 wO
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+SP
+SP
+iY
+PN
+Ly
+iY
+SP
+zQ
+SP
+Ly
 Ly
 Ly
 Ly
@@ -23782,30 +23958,30 @@ aZ
 Ly
 Ly
 Ly
-FN
-FN
+Ly
+Ly
+Ly
+wO
+fg
+SP
+wO
+Ly
+Ly
 wO
 wO
 wO
+Ly
+Ly
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+SP
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
 Ly
 Ly
 Ly
@@ -23915,30 +24091,30 @@ aZ
 Ly
 Ly
 Ly
-FN
-FN
+zQ
+iY
+iY
+SP
+SP
+SP
+SP
+SP
+Ly
 wO
 wO
 wO
 wO
 wO
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+SP
+uL
+Hu
+SP
+SP
+iY
+WE
+Ly
 Ly
 Ly
 Ly
@@ -24045,33 +24221,33 @@ BJ
 BJ
 BJ
 aZ
+Ad
+Ly
+Ly
+HH
+iY
+SP
+SP
+SP
+SP
+SP
+zQ
+Ly
+wO
+wO
+wO
+wO
+wO
 Ly
 Ly
 Ly
-FN
-FN
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+Ly
+SP
+iY
+SP
+Ly
 Ly
 Ly
 Ly
@@ -24175,35 +24351,35 @@ bK
 bK
 aZ
 bK
+Cj
 BJ
 BJ
-aZ
+SP
+fg
+yA
+uL
+SP
+SP
+SP
+si
+te
+iY
+SP
 Ly
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
 Ly
-Ly
-FN
-FN
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+SP
+Ko
+SP
 wO
 Ly
 Ly
@@ -24300,7 +24476,7 @@ Ly
 Ly
 aZ
 wT
-iB
+Sm
 iB
 iB
 iB
@@ -24310,34 +24486,34 @@ Jt
 bK
 BJ
 BJ
-aZ
+BJ
+SP
+uL
+bb
+SP
+SP
+SP
+fR
+bb
+fg
+iY
+SP
 Ly
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
+wO
 Ly
+WE
+iY
+SP
 Ly
-FN
-FN
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
 Ly
 Ly
 Ly
@@ -24444,11 +24620,18 @@ BJ
 BJ
 BJ
 aZ
+Ad
 Ly
 Ly
+te
+SP
+SP
+SP
+uU
+iY
+SP
+HV
 Ly
-FN
-FN
 wO
 wO
 wO
@@ -24459,18 +24642,11 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+SP
+HV
+iY
+Ly
 Ly
 Ly
 Ly
@@ -24580,8 +24756,15 @@ aZ
 Ly
 Ly
 Ly
-FN
-FN
+SP
+zQ
+SP
+SP
+iY
+SP
+zQ
+SP
+Ly
 wO
 wO
 wO
@@ -24592,18 +24775,11 @@ wO
 wO
 wO
 wO
+Ly
+Ly
+Ly
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
 Ly
 Ly
 Ly
@@ -24713,8 +24889,15 @@ aZ
 Ly
 Ly
 Ly
-FN
-FN
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
 wO
 wO
 wO
@@ -24727,16 +24910,9 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Ly
+Ly
+Ly
 Ly
 Ly
 Ly
@@ -37304,7 +37480,7 @@ jH
 jH
 jH
 wO
-jH
+No
 No
 jH
 jH
@@ -37437,8 +37613,8 @@ Ly
 Ly
 Ly
 wO
-jH
-jH
+RY
+No
 SP
 SP
 No
@@ -37570,8 +37746,8 @@ wO
 wO
 Ly
 Ly
-jH
-jH
+No
+No
 No
 No
 No
@@ -37702,21 +37878,21 @@ wO
 wO
 wO
 wO
+qr
+No
+No
+No
+No
+SP
+No
+wO
+wO
 wO
 wO
 wO
 wO
 No
-SP
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+No
 wO
 wO
 wO
@@ -37834,28 +38010,28 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
+No
+No
+SP
+OV
+No
 SP
 SP
+No
+No
 wO
 wO
 wO
 wO
 wO
 wO
+No
+Wk
+no
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+No
+No
 wO
 wO
 wO
@@ -37964,14 +38140,14 @@ Ly
 Ly
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+No
+No
+RY
+No
+SP
+No
+OV
+No
 SP
 SP
 SP
@@ -37983,12 +38159,12 @@ wO
 wO
 wO
 wO
+No
+et
 wO
 wO
 wO
-wO
-wO
-wO
+no
 wO
 wO
 wO
@@ -38096,15 +38272,15 @@ Ly
 Ly
 wO
 wO
-wO
-wO
-wO
-wO
+No
+No
+SP
+SP
 OV
-wO
-wO
-wO
-wO
+SP
+OV
+OV
+No
 SP
 SP
 SP
@@ -38116,13 +38292,13 @@ No
 wO
 wO
 wO
+No
 wO
 wO
 wO
-wO
-wO
-wO
-wO
+et
+no
+Cw
 wO
 wO
 wO
@@ -38228,15 +38404,15 @@ Ly
 Ly
 Ly
 wO
-wO
-wO
+qr
+SP
 OV
 OV
 OV
 OV
 OV
-wO
-wO
+OV
+No
 No
 SP
 SP
@@ -38248,14 +38424,14 @@ SP
 SP
 PS
 wO
+No
+qw
 wO
+Cw
 wO
+Wk
 wO
-wO
-wO
-wO
-wO
-wO
+Cw
 wO
 wO
 wO
@@ -38361,14 +38537,14 @@ Ly
 Ly
 Ly
 wO
-wO
-wO
+No
+SP
 OV
 OV
 OV
 OV
-wO
-wO
+OV
+OV
 No
 SP
 SP
@@ -38380,15 +38556,15 @@ SP
 SP
 SP
 SP
+Cw
 wO
+No
+no
+Cw
+Cw
+Wk
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Cw
 wO
 wO
 wO
@@ -38494,14 +38670,14 @@ Ly
 Ly
 Ly
 wO
-wO
-wO
+No
+SP
 OV
 OV
 OV
 OV
-wO
-wO
+OV
+OV
 SP
 SP
 SP
@@ -38513,17 +38689,17 @@ SP
 SP
 SP
 SP
+Cw
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+et
+no
+Cw
+No
+No
+Cw
+Cw
+Cw
 wO
 wO
 wO
@@ -38627,14 +38803,14 @@ Ly
 Ly
 Ly
 wO
-wO
-wO
+No
+RY
 OV
 OV
 OV
-wO
-wO
-wO
+SP
+No
+No
 SP
 SP
 SP
@@ -38645,19 +38821,19 @@ SP
 SP
 SP
 SP
-SP
+Cw
+Cw
+Cw
 wO
+No
+No
+Cw
+Cw
+et
+et
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Cw
+Cw
 wO
 wO
 wO
@@ -38761,12 +38937,12 @@ Ly
 wO
 wO
 wO
-wO
+No
 OV
 OV
 OV
-wO
-wO
+SP
+No
 PS
 SP
 SP
@@ -38779,20 +38955,20 @@ SP
 SP
 SP
 No
+qr
+Cw
+wO
+No
 wO
 wO
+No
+et
+et
+no
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+et
+No
 wO
 wO
 wO
@@ -38894,11 +39070,11 @@ Ly
 wO
 wO
 wO
-wO
+No
 OV
 OV
-wO
-wO
+SP
+No
 wO
 SP
 SP
@@ -38912,21 +39088,21 @@ SP
 SP
 SP
 No
+et
+Cw
+Cw
+hJ
+No
+qr
+Cw
+Cw
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+No
+no
+no
+et
+No
+No
 wO
 wO
 wO
@@ -39027,10 +39203,10 @@ Ly
 wO
 wO
 wO
-wO
+qr
 OV
 OV
-wO
+No
 wO
 wO
 No
@@ -39040,20 +39216,20 @@ SP
 SP
 SP
 SP
-wO
+No
 No
 SP
 SP
+No
+hJ
+No
+No
+et
+no
+et
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Cw
+Cw
 wO
 wO
 wO
@@ -39161,8 +39337,8 @@ wO
 wO
 wO
 wO
-wO
-wO
+No
+No
 wO
 wO
 wO
@@ -39175,18 +39351,18 @@ OV
 OV
 wO
 wO
+Cw
+Cw
+bt
+no
+no
+Cw
+No
+No
+et
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+Cw
 wO
 wO
 wO
@@ -39307,20 +39483,20 @@ OV
 OV
 wO
 wO
+Cw
+Cw
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+qr
+No
+Wk
+Cw
+hJ
+rR
+No
+Wk
+No
 CF
-CF
-CF
-CF
-CF
-CF
+Cw
 CF
 wO
 wO
@@ -39439,22 +39615,22 @@ wO
 wO
 wO
 wO
+Cw
+Cw
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
+et
+bt
+No
+Wk
+Wk
+Wk
 CF
+et
 CF
-CF
-CF
-CF
-CF
-CF
+Cw
+Cw
 wO
 wO
 wO
@@ -39577,17 +39753,17 @@ wO
 wO
 wO
 wO
+et
 wO
-wO
-wO
-wO
+Cw
+Cw
+Wk
 CF
 CF
+et
+no
 CF
-CF
-CF
-CF
-CF
+Cw
 wO
 wO
 wO
@@ -39705,21 +39881,21 @@ wO
 wO
 wO
 wO
+No
+Wk
+Wk
 wO
 wO
+No
 wO
-wO
-wO
-wO
-wO
-wO
+Cw
 wO
 CF
 CF
-CF
-CF
-CF
-CF
+et
+et
+no
+Cw
 CF
 wO
 wO
@@ -39838,23 +40014,23 @@ wO
 wO
 wO
 wO
+No
+wO
+No
+wO
+wO
+No
 wO
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
+et
+No
+et
 CF
-CF
-CF
-CF
-CF
-CF
-CF
-wO
+No
+et
+Cw
+Cw
 wO
 wO
 Ly
@@ -39971,23 +40147,23 @@ wO
 wO
 wO
 wO
+No
+wO
+No
 wO
 wO
+Wk
 wO
 wO
-wO
-wO
-wO
-wO
-wO
+et
+et
 CF
 CF
-CF
-CF
-CF
-CF
-CF
-wO
+Cw
+Cw
+et
+no
+Cw
 wO
 wO
 Ly
@@ -40104,22 +40280,22 @@ wO
 wO
 wO
 wO
+No
+wO
+No
+No
+No
+Wk
 wO
 wO
-wO
-wO
-wO
-wO
-wO
-wO
-wO
+No
+CF
+Cw
+Cw
 CF
 CF
 CF
-CF
-CF
-CF
-CF
+no
 wO
 wO
 wO
@@ -40244,15 +40420,15 @@ wO
 wO
 wO
 wO
-wO
-wO
+Cw
+No
+No
+Cw
 CF
 CF
 CF
 CF
-CF
-CF
-CF
+et
 wO
 wO
 wO
@@ -40296,7 +40472,7 @@ fZ
 fZ
 pn
 pn
-pn
+zS
 pn
 wO
 Ly
@@ -40376,9 +40552,9 @@ wO
 wO
 wO
 wO
+Cw
 wO
-wO
-wO
+No
 wO
 wO
 wO
@@ -40509,9 +40685,9 @@ wO
 wO
 wO
 wO
-wO
-wO
-wO
+Cw
+No
+No
 wO
 wO
 wO
@@ -40681,7 +40857,7 @@ wO
 wO
 Xh
 Xh
-pn
+zS
 ut
 ut
 ut
@@ -41610,7 +41786,7 @@ dX
 xT
 pn
 pn
-fZ
+pn
 zI
 zU
 bE
@@ -41734,7 +41910,7 @@ BP
 BJ
 BJ
 BJ
-BJ
+Nl
 Ud
 Pg
 BJ
@@ -41742,9 +41918,9 @@ dX
 Pg
 zh
 zh
-zh
-fZ
-fZ
+ar
+pn
+pn
 fZ
 fZ
 fZ
@@ -42143,7 +42319,7 @@ wO
 fZ
 at
 pn
-pn
+zS
 fZ
 fZ
 fZ
@@ -42408,7 +42584,7 @@ FN
 wO
 fZ
 Om
-pn
+Vb
 pn
 pn
 xT
@@ -42542,7 +42718,7 @@ wO
 fZ
 SS
 at
-pn
+Vb
 pn
 pn
 pn
@@ -42823,7 +42999,7 @@ wO
 wO
 wO
 oA
-Dv
+OY
 Dv
 Dv
 oA
@@ -45938,7 +46114,7 @@ Ng
 Ng
 Ng
 NI
-Ng
+mw
 uB
 Ja
 Ja
@@ -48336,7 +48512,7 @@ hF
 Ja
 uB
 Ja
-Ng
+mw
 pC
 NI
 NI
@@ -49123,7 +49299,7 @@ NI
 Ng
 EA
 Ng
-NI
+Ng
 hF
 Ng
 Ng
@@ -49255,8 +49431,8 @@ dF
 NI
 Ng
 EA
-NI
-hF
+Ng
+uB
 Jj
 NI
 NI
@@ -49390,7 +49566,7 @@ NI
 NI
 hF
 uB
-NI
+Ng
 Mx
 xi
 NI
@@ -49524,7 +49700,7 @@ eo
 EA
 Ng
 NI
-NI
+Ng
 xi
 Mx
 eo
@@ -49928,7 +50104,7 @@ LB
 uB
 uB
 NI
-uB
+Qj
 Ja
 Ja
 Ja
@@ -50863,7 +51039,7 @@ Ng
 Ja
 Ja
 Ja
-uB
+Qj
 AN
 IJ
 iR
@@ -51138,7 +51314,7 @@ uB
 Ja
 uB
 uB
-Ng
+mw
 Ng
 NI
 Ja
@@ -51236,9 +51412,9 @@ aT
 EF
 JV
 JV
-cL
-Ww
-Hu
+xf
+GF
+rP
 li
 Ac
 tK
@@ -51370,8 +51546,8 @@ EF
 JV
 JV
 hw
-no
-mq
+Yq
+hx
 JV
 SN
 tK
@@ -51502,9 +51678,9 @@ aT
 EF
 JV
 JV
-GF
+Ww
+oG
 hx
-mq
 JV
 SN
 tK
@@ -51637,7 +51813,7 @@ JV
 JV
 Yq
 Yq
-mq
+hx
 SN
 SN
 tK
@@ -51676,7 +51852,7 @@ ob
 Ja
 uB
 Ja
-Ja
+En
 Hr
 Hr
 Jj
@@ -51769,7 +51945,7 @@ qZ
 TM
 nx
 MI
-JV
+hx
 dU
 KJ
 mq
@@ -51795,7 +51971,7 @@ NI
 uB
 uB
 hF
-ob
+Lh
 ob
 Ja
 Ja
@@ -52037,18 +52213,18 @@ SN
 Cp
 ov
 JV
-fg
+cc
 vC
 mq
 mq
 mq
-JV
+mq
 QN
 QW
 ep
 Gv
-hJ
-Cp
+mq
+cc
 iU
 mB
 ky
@@ -52174,15 +52350,15 @@ cc
 Ar
 hL
 mq
-JV
-JV
+cc
+mq
 cc
 kk
 ep
 Gv
 CZ
 CZ
-fa
+Wu
 lK
 lK
 lK
@@ -56609,7 +56785,7 @@ NI
 NI
 NI
 NI
-PU
+XM
 iO
 Xt
 NI
@@ -56740,10 +56916,10 @@ tq
 Hv
 kD
 dj
-uB
+Hr
 hF
-uB
-PU
+TS
+XM
 NI
 NI
 NI
@@ -56873,8 +57049,8 @@ Ng
 Ng
 Mx
 Mx
-Ng
-Ng
+mS
+wp
 OT
 Mx
 NI
@@ -56997,18 +57173,18 @@ iC
 cW
 Ng
 Mx
-Ng
+mS
 Hw
-Ng
+kD
 Mx
 Mx
 tS
 kD
 It
-Ng
+mS
 Mx
 tS
-Ng
+LQ
 Mx
 NI
 NI
@@ -57129,11 +57305,11 @@ Ng
 NI
 NI
 NI
+mS
 Ng
-Ng
-Ng
+kD
 Mx
-Mx
+GC
 kD
 tS
 kD
@@ -57267,13 +57443,13 @@ ty
 NI
 NI
 NI
-Ng
+Mx
 tS
 tS
 iC
 YT
 hy
-Ng
+wp
 kD
 kD
 NI
@@ -57401,8 +57577,8 @@ NI
 NI
 NI
 Mx
-dF
-dF
+Mx
+wp
 NI
 NI
 NI
@@ -57533,16 +57709,16 @@ NI
 NI
 NI
 hF
+zn
 Mx
 Mx
-Mx
-Mx
+GC
 tS
 tS
 tS
 kD
-Ng
-dF
+wp
+BB
 NI
 NI
 uB
@@ -57666,12 +57842,12 @@ NI
 NI
 NI
 PU
-dF
+Ng
 Ng
 Ng
 Jj
 Ng
-IH
+XM
 kD
 Mx
 gr
@@ -57799,13 +57975,13 @@ NI
 NI
 NI
 tS
-Cj
+PU
 yE
 yu
-yu
-Mx
-Ng
-Ng
+lh
+Fn
+Dy
+Hr
 di
 RQ
 NI
@@ -69192,8 +69368,8 @@ Pc
 Pc
 Ac
 Xq
-LQ
-hx
+SK
+lA
 rP
 Xq
 Ac
@@ -69460,7 +69636,7 @@ Ac
 Xq
 iv
 hx
-Xq
+aQ
 Xq
 SN
 Em
@@ -69591,9 +69767,9 @@ Pc
 Pc
 Xq
 Xq
-SK
+TV
 hx
-hx
+hk
 SN
 SN
 cU
@@ -69723,10 +69899,10 @@ Pc
 Pc
 Pc
 Ac
-Ac
-SN
 Xq
-JG
+SK
+hx
+Oo
 SN
 Ac
 Ac
@@ -69858,7 +70034,7 @@ Pc
 Ac
 SN
 SN
-Ac
+Xq
 Xq
 Xq
 Ac
@@ -70130,8 +70306,8 @@ Ac
 Ac
 Ac
 Ac
-Xq
-Xq
+Ac
+Ac
 Pc
 Pc
 Ka

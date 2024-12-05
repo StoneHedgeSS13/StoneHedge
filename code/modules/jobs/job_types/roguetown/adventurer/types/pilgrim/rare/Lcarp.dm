@@ -29,7 +29,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
 

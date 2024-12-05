@@ -163,9 +163,8 @@
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
 		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
-			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
-				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+			// Reset our sprint counter if we change direction
+			L.sprinted_tiles = 0
 
 	. = ..()
 
@@ -667,6 +666,24 @@
 					return FALSE
 	if(istype(src.wear_shirt, /obj/item/clothing))
 		var/obj/item/clothing/CL = src.wear_shirt
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+					return FALSE
+	if(istype(src.wear_pants, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_pants
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+					return FALSE
+	if(istype(src.head, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.head
 		if(CL.armor_class == ARMOR_CLASS_HEAVY)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				return FALSE

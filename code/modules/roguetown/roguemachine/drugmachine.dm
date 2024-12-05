@@ -238,9 +238,6 @@
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
 	held_items[/obj/item/storage/fancy/pilltinpink] = list("PRICE" = rand(25,35),"NAME" = "pink pill tin")
 	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(10,15),"NAME" = "roll of bandages")
-	held_items[/obj/item/survivalcapsule/tent] = list("PRICE" = rand(15,20),"NAME" = "tent crystal")
-	held_items[/obj/item/survivalcapsule/smith] = list("PRICE" = rand(90,100),"NAME" = "Modest home crystal")
-	held_items[/obj/item/survivalcapsule/wiz] = list("PRICE" = rand(600,800),"NAME" = "Luxury home crystal")
 	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(30,40),"NAME" = "alembic")
 
 #undef DRUGRADE_MONEYA

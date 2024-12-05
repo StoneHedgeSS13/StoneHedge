@@ -19,7 +19,7 @@
 	give_bank_account = TRUE
 	min_pq = -5 //squires aren't great but they can do some damage
 	max_pq = null
-	
+
 
 /datum/outfit/job/roguetown/squire
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
@@ -40,7 +40,7 @@
 	name = "Pikeman Squire"
 	tutorial = "History with riding, and a bit of practice with a spear have landed you in a promising mounted position."
 	outfit = /datum/outfit/job/roguetown/squire/lancer
-		
+
 	category_tags = list(CTAG_SQUIRE)
 
 /datum/outfit/job/roguetown/squire/lancer/pre_equip(mob/living/carbon/human/H)
@@ -63,8 +63,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
@@ -77,7 +76,7 @@
 	name = "Footman Squire"
 	tutorial = "Years of hitting dummies with a sword and chasing your friends around have finally paid off."
 	outfit = /datum/outfit/job/roguetown/squire/footman
-		
+
 	category_tags = list(CTAG_SQUIRE)
 
 /datum/outfit/job/roguetown/squire/footman/pre_equip(mob/living/carbon/human/H)
@@ -99,8 +98,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
@@ -113,7 +111,7 @@
 	name = "Bowman Squire"
 	tutorial = "Coming from a background of hunters, your practice with a bow has proven useful for the keep."
 	outfit = /datum/outfit/job/roguetown/squire/skirmisher
-		
+
 	category_tags = list(CTAG_SQUIRE)
 
 /datum/outfit/job/roguetown/squire/skirmisher/pre_equip(mob/living/carbon/human/H)
@@ -137,8 +135,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)  // For repairing your good Royal Guards equipment
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
 		H.change_stat("intelligence", 1)

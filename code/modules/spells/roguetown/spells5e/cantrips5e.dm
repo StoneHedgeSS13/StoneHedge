@@ -1273,6 +1273,10 @@
 			user.visible_message(span_info("[I] glows in a faint mending light."))
 			if(I.obj_broken == TRUE)
 				I.obj_broken = FALSE
+			if(istype(I, /obj/item/clothing))
+				var/obj/item/clothing/C = I
+				C.update_clothes_damaged_state(FALSE)
+			I.update_overlays()
 		else
 			user.visible_message(span_info("[I] appears to be in pefect condition."))
 			revert_cast()

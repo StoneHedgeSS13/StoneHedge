@@ -25,7 +25,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
@@ -37,9 +37,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 5, TRUE)
-		else
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

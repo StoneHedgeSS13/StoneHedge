@@ -11,10 +11,10 @@
 
 /datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE) 
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, pick(0,1,2), TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, pick(0,1,2), TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE) 
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, pick(0,1,1), TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
@@ -24,7 +24,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
@@ -46,4 +46,4 @@
 /datum/advclass/cheesemaker/boost_by_plus_power(plus_factor, mob/living/carbon/human/H)
 	// ha ha yeah, fuck you cheesemaker playin retards!
 	return
-	
+

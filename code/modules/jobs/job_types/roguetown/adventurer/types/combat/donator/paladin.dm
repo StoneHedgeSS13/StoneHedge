@@ -54,7 +54,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2) // Classic paladin is smurter then the battle master.
@@ -103,7 +103,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)

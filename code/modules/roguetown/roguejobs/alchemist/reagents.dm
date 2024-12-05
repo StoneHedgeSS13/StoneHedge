@@ -317,8 +317,9 @@
 	M.rogstam_add(800)
 	..()
 	. = 1
-	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime) || M.has_status_effect(/datum/status_effect/debuff/sleepytime/lune))
 		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime/lune)
 		M.remove_stress(/datum/stressevent/sleepytime)
 		M.mind.sleep_adv.advance_cycle()
 

@@ -1,0 +1,46 @@
+"a" = (/turf/closed/wall/mineral/rogue/decowood,/area/rogue/indoors)
+"b" = (/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"c" = (/obj/structure/table/wood/fancy/black,/obj/item/candle/magic/lit,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"e" = (/obj/structure/bed/rogue/inn/wool,/obj/item/bedsheet/rogue/wool,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"g" = (/obj/structure/closet/crate/roguecloset/dark,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"h" = (/obj/structure/sink/copper/crafted{pixel_y = 22},/turf/open/floor/rogue/dirt/nrich,/area/rogue/indoors)
+"i" = (/obj/structure/bars/passage/shutter/open,/obj/structure/mineral_door/wood/fancywood,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"j" = (/turf/open/transparent/glass,/area/rogue)
+"k" = (/obj/item/customblank,/obj/item/customlock,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"l" = (/obj/structure/bars{icon_state = "barsbent"},/obj/structure/bars/passage/shutter/open,/obj/structure/roguemachine/vendor{keycontrol = "house"},/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"q" = (/obj/structure/roguemachine/drugmachine,/turf/closed/wall/mineral/rogue/decowood,/area/rogue/indoors)
+"r" = (/obj/structure/table/wood/fancy/black,/obj/item/candle/magic/lit,/obj/item/thermometer,/obj/item/reagent_containers/glass/alembic,/obj/item/flint,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"u" = (/obj/effect/decal/cobbleedge{dir = 1; icon_state = "borderfall"},/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"w" = (/turf/open/floor/rogue/wood,/area/rogue)
+"A" = (/obj/item/roguekey/farm{lockid = "house"; name = "peddler key"},/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"B" = (/obj/structure/roguewindow/openclose{dir = 1},/obj/structure/bars/passage/shutter/open,/turf/closed/wall/mineral/rogue/decowood,/area/rogue/indoors)
+"D" = (/obj/machinery/light/rogue/wallfire/candle/blue/r,/obj/item/roguegear,/obj/structure/lever/wall{dir = 4; pixel_x = 9},/obj/effect/decal/cobbleedge{dir = 1; icon_state = "borderfall"},/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"E" = (/obj/structure/roguewindow/openclose{dir = 4},/obj/structure/bars/passage/shutter/open,/turf/closed/wall/mineral/rogue/decowood,/area/rogue/indoors)
+"G" = (/obj/machinery/light/rogue/hearth,/obj/item/reagent_containers/glass/bucket/pot,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"H" = (/obj/effect/decal/cobbleedge{dir = 4; icon_state = "borderfall"},/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"K" = (/turf/open/floor/rogue/dirt/nrich,/area/rogue/indoors)
+"L" = (/obj/structure/fluff/alch,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"N" = (/obj/structure/roguemachine/atm,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"R" = (/obj/structure/roguemachine/stockpile,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"S" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"W" = (/obj/structure/fluff/millstone,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+"Z" = (/obj/structure/closet/crate/roguecloset/inn/chest,/obj/item/rogueweapon/hoe,/obj/item/reagent_containers/glass/bucket/wooden,/obj/item/rogueweapon/sickle,/obj/item/seeds/berryrogue,/obj/item/seeds/apple,/obj/item/seeds/poppy,/obj/item/seeds/herbs,/obj/item/reagent_containers/glass/bucket/wooden,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/bottle,/turf/open/floor/rogue/hexstone,/area/rogue/indoors)
+
+(1,1,1) = {"
+aaaaaBa
+qNRHhKE
+acZHKKa
+aLSbuDa
+arbbbga
+aGWkAea
+aaailaa
+"}
+(1,1,2) = {"
+wwwwwww
+wwwwjjw
+wwwwjjw
+wwwwwww
+wwwwwww
+wwwwwww
+wwwwwww
+"}

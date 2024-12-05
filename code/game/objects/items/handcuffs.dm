@@ -264,7 +264,7 @@
 	max_integrity = 100
 
 /obj/item/restraints/legcuffs/beartrap/attack_hand(mob/user)
-	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
+	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/hunting)
 	if(iscarbon(user) && armed && isturf(loc))
 		var/mob/living/carbon/C = user
 		var/def_zone = "[(C.active_hand_index == 2) ? "r" : "l" ]_arm"
@@ -289,14 +289,14 @@
 		else
 			var/used_time = 10 SECONDS
 			if(C.mind)
-				used_time -= max((C.mind.get_skill_level(/datum/skill/craft/traps) * 2 SECONDS), 2 SECONDS)
+				used_time -= max((C.mind.get_skill_level(/datum/skill/craft/hunting) * 2 SECONDS), 2 SECONDS)
 			if(do_after(user, used_time, target = src))
 				armed = FALSE
 				update_icon()
 				alpha = 255
 				C.visible_message(span_notice("[C] disarms \the [src]."), \
 						span_notice("I disarm \the [src]."))
-				C.mind?.adjust_experience(/datum/skill/craft/traps, C.STAINT * boon, FALSE)
+				C.mind?.adjust_experience(/datum/skill/craft/hunting, C.STAINT * boon, FALSE)
 				return FALSE
 			else
 				add_mob_blood(C)
@@ -351,10 +351,10 @@
 
 /obj/item/restraints/legcuffs/beartrap/attack_self(mob/user)
 	..()
-	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
+	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/hunting)
 	if(ishuman(user) && !user.stat && !user.restrained())
 		var/mob/living/L = user
-		if(prob(50 + (L.mind.get_skill_level(/datum/skill/craft/traps) * 10)))		//Used to be strength check, fuck off.
+		if(prob(50 + (L.mind.get_skill_level(/datum/skill/craft/hunting) * 10)))		//Used to be strength check, fuck off.
 			if(prob(50))
 				armed = !armed
 				if(!armed)
@@ -363,7 +363,7 @@
 					w_class = WEIGHT_CLASS_BULKY
 				update_icon()
 				to_chat(user, span_notice("[src] is now [armed ? "armed" : "disarmed"]"))
-				L.mind?.adjust_experience(/datum/skill/craft/traps, L.STAINT * boon, FALSE)
+				L.mind?.adjust_experience(/datum/skill/craft/hunting, L.STAINT * boon, FALSE)
 			else
 				if(rusty)
 					user.visible_message("<span class='warning'>The rusty [src.name] breaks under stress!</span>")
