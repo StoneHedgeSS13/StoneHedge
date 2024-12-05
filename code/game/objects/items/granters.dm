@@ -54,7 +54,7 @@
 //	if(!user.can_read(src))
 //		return FALSE
 	if(user.STAINT < 8)
-		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
+		to_chat(user, span_warning("You can't make sense of the sprawling runes, you are just too dumb!"))
 		return FALSE
 	if(required_learn_trait)
 		if(!HAS_TRAIT(user, required_learn_trait))
