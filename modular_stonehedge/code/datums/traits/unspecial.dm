@@ -159,7 +159,7 @@
 
 /datum/quirk/training9
 	name = "Unarmed Training"
-	desc = "I have journeyman unarmed training and stashed some dusters."
+	desc = "I have journeyman unarmed training and stashed some dusters. My punches also hit harder."
 	value = 4
 
 /datum/quirk/training9/on_spawn()
