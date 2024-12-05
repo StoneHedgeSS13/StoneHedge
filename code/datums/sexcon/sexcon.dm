@@ -407,7 +407,7 @@
 					to_chat(user, span_green("I feel Viiritri's miracle upon me."))
 					sexhealrand *= 2
 	if(!user.cmode && prob(1)) //surprise heal burst at 1% chance
-		to_chat(user, span_greentextbig("I feel Viiritri smile at me."))
+		to_chat(user, span_greentextbig("I suddenly feel much better thanks to this act..."))
 		sexhealrand *= 5
 	user.heal_wounds(sexhealrand)
 	user.heal_overall_damage(sexhealrand, sexhealrand/2, updating_health = TRUE)

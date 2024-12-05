@@ -776,14 +776,9 @@
 	first_time_text = "The Deepwoods"
 	})
 "es" = (
-/obj/structure/fluff/railing/border{
-	dir = 4
-	},
-/obj/structure/fluff/dryingrack,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Deepwoods"
-	})
+/obj/structure/spawner/invisible/skeleton,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cavewet)
 "et" = (
 /turf/open/water/cleanshallow,
 /area/rogue/under/cavewet)
@@ -4471,7 +4466,6 @@
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/cavewet/spidermines)
 "zZ" = (
-/obj/structure/fluff/dryingrack,
 /obj/item/rogueweapon/huntingknife/idagger/steel/special,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/wraithhouse)
@@ -4744,7 +4738,6 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/structure/fluff/dryingrack,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
@@ -4864,9 +4857,9 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/shelter/town/dwarf)
 "Cj" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/woods/overgrownfort)
+/area/rogue/under/cavewet)
 "Ck" = (
 /obj/structure/fluff/statue/femalestatue{
 	desc = "This statue depicts the flower maiden amidst the clearwater pool. She smiles at you, inviting you closer.";
@@ -7726,10 +7719,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
-"Sm" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
-/turf/open/water/swamp,
-/area/rogue/indoors/shelter/woods/overgrownfort)
 "Sn" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/river,
@@ -8472,7 +8461,6 @@
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "WR" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/structure/fluff/dryingrack,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
 "WV" = (
@@ -22221,7 +22209,7 @@ bK
 bK
 bK
 bK
-Cj
+hI
 bK
 dL
 BJ
@@ -22642,7 +22630,7 @@ uQ
 SP
 Ly
 FN
-te
+Cj
 SP
 SP
 Ly
@@ -24351,7 +24339,7 @@ bK
 bK
 aZ
 bK
-Cj
+hI
 BJ
 BJ
 SP
@@ -24362,7 +24350,7 @@ SP
 SP
 SP
 si
-te
+Cj
 iY
 SP
 Ly
@@ -24378,7 +24366,7 @@ wO
 wO
 Ly
 SP
-Ko
+es
 SP
 wO
 Ly
@@ -24476,7 +24464,7 @@ Ly
 Ly
 aZ
 wT
-Sm
+iB
 iB
 iB
 iB
@@ -24623,7 +24611,7 @@ aZ
 Ad
 Ly
 Ly
-te
+Cj
 SP
 SP
 SP
@@ -93890,9 +93878,9 @@ Pc
 Pc
 Pc
 by
-es
 zJ
-es
+zJ
+zJ
 zJ
 Ft
 Pc

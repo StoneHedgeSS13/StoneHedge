@@ -37,6 +37,18 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+		if(isseelie(H))
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_ALCOHOL_TOLERANCE, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -46,10 +58,6 @@
 		neck = /obj/item/storage/keyring/innkeep
 		cloak = /obj/item/clothing/cloak/apron/waist
 		id = /obj/item/scomstone
-		H.change_stat("intelligence", 2)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 1)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -57,15 +65,7 @@
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/storage/keyring/innkeep
 		id = /obj/item/scomstone
-		H.change_stat("intelligence", 2)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 1)
-	if(isseelie(H))
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+	H.change_stat("intelligence", 2)
+	H.change_stat("strength", 3)
+	H.change_stat("endurance", 2)
+	H.change_stat("constitution", 2)

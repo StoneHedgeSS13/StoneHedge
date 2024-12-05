@@ -4,8 +4,8 @@
 	flag = ARCHIVIST
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_ages = ALL_AGES_LIST
@@ -38,17 +38,18 @@
 	H.virginity = TRUE
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/storage/keyring/mage
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	id = /obj/item/clothing/ring/keystone
-
+	ADD_TRAIT(H, TRAIT_MAGICLEARN, TRAIT_GENERIC)
 
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, rand(2,3), TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE) //this shit may rival the academy with that intelligence already.
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 		H.change_stat("strength", -2)
 		H.change_stat("intelligence", 8)
 		H.change_stat("constitution", -2)

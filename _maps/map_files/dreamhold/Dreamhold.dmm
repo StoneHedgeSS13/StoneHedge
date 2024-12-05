@@ -5783,7 +5783,7 @@
 	first_time_text = "Stonehedge"
 	})
 "edR" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "edX" = (
@@ -7752,7 +7752,7 @@
 	name = "Grove"
 	})
 "fuL" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
 "fuN" = (
@@ -12373,12 +12373,8 @@
 /area/rogue/outdoors/river)
 "iXM" = (
 /obj/structure/bookcase,
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
+/obj/item/book/granter/spell/spells5e/random,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -16652,9 +16648,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "mdn" = (
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase{
 	opacity = 0
 	},
@@ -16888,7 +16882,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "mmk" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/caves)
 "mmt" = (
@@ -18700,9 +18694,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase{
 	opacity = 0
 	},
@@ -22643,9 +22635,7 @@
 /obj/structure/bookcase{
 	opacity = 0
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
 "qlp" = (
@@ -23332,7 +23322,7 @@
 	name = "Schoolgrounds"
 	})
 "qHT" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet/bogcaves)
 "qIX" = (
@@ -25268,9 +25258,7 @@
 /obj/structure/bookcase{
 	opacity = 0
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
 "saY" = (
@@ -26787,9 +26775,7 @@
 	first_time_text = "The Mountain Passe"
 	})
 "thA" = (
-/obj/structure/table/church{
-	icon_state = "churchtable"
-	},
+/obj/structure/table/church,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -27455,9 +27441,7 @@
 	})
 "tIt" = (
 /obj/structure/bookcase,
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
 "tIJ" = (
@@ -27853,10 +27837,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
-"tVi" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/outdoors/caves)
 "tVj" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -31633,7 +31613,7 @@
 	},
 /area/rogue/indoors/shelter/town)
 "wPs" = (
-/obj/structure/spawner/invisible/ghost/wraiths,
+/obj/structure/spawner/invisible/skeleton,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
 "wPt" = (
@@ -96682,7 +96662,7 @@ rxm
 nVt
 aoy
 aoy
-tVi
+xWr
 aoy
 aoy
 lyF
