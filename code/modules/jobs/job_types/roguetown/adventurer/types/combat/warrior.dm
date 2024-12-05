@@ -24,17 +24,52 @@
 		) // To Do - knight errant unique archetype(5 percent chance)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
+	var/weapons = list( //what did you primarily train with?
+		"Swords",
+		"Axes",
+		"Maces",
+		"Polearms"
+	)
+
+	var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+		if("Swords")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/sword/long
+		if("Axes")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+		if("Maces")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/mace
+		if("Polearms")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/spear/billhook
+
 	switch(classchoice)
 
 		if("Warrior")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path."))
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, rand(2,3), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 2, TRUE)	//Bit strong but Cleric and Barb get 1 so, let him have something nice.
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, rand(2,3), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
@@ -66,22 +101,6 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood
 			beltl = /obj/item/rogueweapon/huntingknife
-			if(prob(40))
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-				r_hand = /obj/item/rogueweapon/sword/long
-			else if(prob(60))
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-				r_hand = /obj/item/rogueweapon/spear/billhook
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-				r_hand = /obj/item/rogueweapon/mace
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Monster Hunter")
@@ -112,36 +131,22 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			if(prob(40))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-				backr = /obj/item/rogueweapon/sword/long
 			else if(prob(60))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-				r_hand = /obj/item/rogueweapon/spear/billhook
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-				backr = /obj/item/rogueweapon/stoneaxe/battle
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Duelist")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE)
@@ -157,7 +162,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 			cloak = /obj/item/clothing/cloak/half
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltl = /obj/item/rogueweapon/sword/rapier
+			// beltl = /obj/item/rogueweapon/sword/rapier
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
@@ -169,6 +174,7 @@
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 2)
 			H.visible_message(span_info("I trained as a duelist, flair and precision is my weapon... I can fool people into underestimating me, their last mistake."))
+
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	H.give_fightingstyle(TRUE)
 
