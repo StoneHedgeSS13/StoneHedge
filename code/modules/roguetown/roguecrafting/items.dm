@@ -894,6 +894,11 @@
 	result = list(/obj/item/ammo_casing/caseless/rogue/bullet, /obj/item/ammo_casing/caseless/rogue/bullet, /obj/item/ammo_casing/caseless/rogue/bullet, /obj/item/ammo_casing/caseless/rogue/bullet, /obj/item/ammo_casing/caseless/rogue/bullet)
 	skillcraft = /datum/skill/craft/engineering
 
+/datum/crafting_recipe/roguetown/steelbullet
+	name = "steel bullets (x5)"
+	reqs = list(/obj/item/ingot/steel = 1)
+	result = list(/obj/item/ammo_casing/caseless/rogue/bullet/steel, /obj/item/ammo_casing/caseless/rogue/bullet/steel, /obj/item/ammo_casing/caseless/rogue/bullet/steel, /obj/item/ammo_casing/caseless/rogue/bullet/steel, /obj/item/ammo_casing/caseless/rogue/bullet/steel)
+	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/tarot_deck
 	name = "tarot deck"

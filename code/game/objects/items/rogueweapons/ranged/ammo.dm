@@ -206,7 +206,7 @@
 /obj/projectile/bullet/reusable/bullet
 	name = "iron ball"
 	desc = "I got balls of iron."
-	damage = 50		//Arrow-tier damage, so less than crossbow.
+	damage = 75
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -219,6 +219,11 @@
 	armor_penetration = 75	//Crossbow-on-crack AP. Armor only goes up to 100 protection normally; so this ignores most of it but not all. Wear good armor!
 	speed = 0.1		//ZOOM!!!!!
 
+/obj/projectile/bullet/reusable/bullet/steel
+	name = "steel ball"
+	desc = "I got balls of steel."
+	damage = 100 //cock and ball torture from wikipedia the free online encylopedia
+
 /obj/item/ammo_casing/caseless/rogue/bullet
 	name = "iron sphere"
 	desc = "A small iron sphere. This should go well with firepowder."
@@ -226,6 +231,14 @@
 	caliber = "musketball"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
+	dropshrink = 0.5
+	possible_item_intents = list(/datum/intent/use)
+	max_integrity = 0
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/ammo_casing/caseless/rogue/bullet/steel
+	name = "steel sphere"
+	desc = "A small iron sphere. This should go well with firepowder."
 	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0
