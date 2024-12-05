@@ -1276,3 +1276,35 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	nodismemsleeves = TRUE
+/obj/item/clothing/cloak/fauld
+	name = "fauld"
+	desc = "A piece of cloth usually worn to cover the hips and part of the legs."
+	color = null
+	icon_state = "faulds"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = LEGS|GROIN
+	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_BELT|ITEM_SLOT_PANTS
+	flags_inv = HIDECROTCH
+	detail_tag = "_belt"
+
+/obj/item/clothing/cloak/fauld/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/cloak/fauld/battleskirt
+	name = "battle skirt"
+	desc = "A skirt usually worn on battle with the colors of the wearer."
+	icon_state = "battleskirt"
+
+/obj/item/clothing/cloak/fauld/battleskirt/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
