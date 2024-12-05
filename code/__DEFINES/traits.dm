@@ -122,7 +122,8 @@
 #define TRAIT_NYMPHO_CURSE "Nympho Curse"
 
 //STONEHEDGE TRAITS
-#define TRAIT_USEMAGICITEM "Use Magic Item"
+#define TRAIT_USEMAGIC "Use Magic"
+#define TRAIT_LEARNMAGIC "Learn Magic" //You dont need usemagic if you have learnmagic.
 #define TRAIT_FEINT_IMMUNITY "Unfeintable"
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -210,8 +211,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SUPER_NV = span_info("My ability to see in the dark extends further than that of most others, and I can consciously control how bright my surroundings appear to me."),
 	TRAIT_BLINDFIGHTING = span_info("I have an incredible sense of awareness, allowing me to dodge and parry attacks even when I can't see them coming, If i am in high awareness, I can even prevent sneak attacks."),
 	TRAIT_SEESPIRITS = span_necrosis("My eyes peer beyond the veil of life and death, allowing me to perceive spirits."),
-	TRAIT_USEMAGICITEM = span_info("I know my way around magic items by legit means or trickery."),
+	TRAIT_USEMAGIC = span_info("I know my way around magic items by legit means or trickery."),
 	TRAIT_FEINT_IMMUNITY = span_info("Those fools can not feint me."),
+	TRAIT_LEARNMAGIC = span_info("I can memorize spells long as my intellect allow me."),
 ))
 
 // trait accessor defines

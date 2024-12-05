@@ -37,7 +37,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
-		H.mind.adjust_spellpoints(3)
+		H.mind.adjust_spellpoints(6) //better than adventurer mages for academy affiliance
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
@@ -55,7 +55,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
-	H.change_stat("intelligence", 2)
+	H.change_stat("intelligence", 3)
 	H.change_stat("speed", -1)
 	if(isseelie(H))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
@@ -65,6 +65,6 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, "[type]")
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, "[type]")
 
 	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)

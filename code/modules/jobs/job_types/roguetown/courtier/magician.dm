@@ -51,7 +51,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/slimepotion/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, "[type]")
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 5, TRUE)
@@ -71,7 +71,7 @@
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
-		H.mind.adjust_spellpoints(5)
+		H.mind.adjust_spellpoints(6)
 //		H.faction += "summoner" //can use this to enable summons to attack players. Probably better to keep the mobs for pve purposes for now.
 	if(H.age == AGE_OLD)
 		if(H.mind)

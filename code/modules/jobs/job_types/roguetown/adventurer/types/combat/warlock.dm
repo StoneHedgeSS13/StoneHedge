@@ -89,7 +89,7 @@
 			H.change_stat("intelligence", 1)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/guidance5e)
-			ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 		if("power") //empowered eldritch blast
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e/empowered)

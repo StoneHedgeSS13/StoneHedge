@@ -4,6 +4,7 @@
 /datum/surgery_step/incise
 	name = "Incise"
 	ignore_clothes = FALSE
+	lying_required = TRUE
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SHARP = 60,

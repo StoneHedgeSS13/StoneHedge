@@ -86,7 +86,7 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
@@ -130,7 +130,7 @@
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) //they are killers
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("intelligence", 2)
@@ -181,7 +181,7 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //if they got all the shield and parry stuff, might aswell.
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC) //extra damage to groin (dirty fighting)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC) //funny nose grab.
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	H.change_stat("strength", 1)
 	H.change_stat("speed", 3)
 	H.change_stat("perception", 1)
@@ -221,17 +221,15 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC) //extra damage to groin (dirty fighting)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC) //this is totally balanced.
+	//Far less sum of stats due having crazy magic.
 	H.change_stat("strength", -1)
-	H.change_stat("perception", 2)
-	H.change_stat("speed", 3)
+	H.change_stat("speed", 2)
 	H.change_stat("intelligence", 3)
 	H.visible_message(span_info("I’m not just a thief. I'm a master of illusion and deception. One moment, I'm a harmless vagabond. The next, I'm a blur of motion, leaving my pursuers bewildered and outwitted."))
 	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
-	/*
 	if(H.mind)
-		H.mind.adjust_spellpoints(3)
-	*/ // Brings them down to arcanist bard levels of spell-points. Lets not have them be better spellcasters than warlocks
+		H.mind.adjust_spellpoints(1)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/rogue_knock)
@@ -269,7 +267,7 @@
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) //never queezy around death
 	ADD_TRAIT(H, TRAIT_SIXTHSENSE, TRAIT_GENERIC) //can hear ghosts
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC) //can determine if someone has their soul.
-	ADD_TRAIT(H, TRAIT_USEMAGICITEM, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
 	H.change_stat("speed", 2)

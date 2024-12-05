@@ -10,6 +10,7 @@
 	var/oneuse = TRUE //default this is true, but admins can var this to 0 if we wanna all have a pass around of the rod form book
 	var/used = FALSE //only really matters if oneuse but it might be nice to know if someone's used it for admin investigations perhaps
 	var/required_trait = null
+	var/required_learn_trait = null
 
 /obj/item/book/granter/proc/turn_page(mob/user)
 	playsound(user, pick('sound/blank.ogg'), 30, TRUE)
@@ -55,8 +56,8 @@
 	if(user.STAINT < 8)
 		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 		return FALSE
-	if(required_trait)
-		if(!HAS_TRAIT(user, required_trait))
+	if(required_learn_trait)
+		if(!HAS_TRAIT(user, required_learn_trait))
 			to_chat(user, span_warning("You can't figure out a way to use this!"))
 			return FALSE
 	if(used)
@@ -98,7 +99,7 @@
 /obj/item/book/granter/trait/already_known(mob/user)
 	if(!granted_trait)
 		return TRUE
-	if(HAS_TRAIT(user, granted_trait))
+	if(HAS_TRAIT(user, granted_trait) && HAS_TRAIT(user, granted_trait2))
 		to_chat(user, "<span class ='notice'>You already have all the insight you need from [traitname].")
 		return TRUE
 	return FALSE
@@ -106,27 +107,34 @@
 /obj/item/book/granter/trait/on_reading_start(mob/user)
 	to_chat(user, "<span class='notice'>Voices fill your head, imbuing you with the power of [traitname].</span>")
 	playsound(user, pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 30, TRUE)
-/obj/item/book/granter/trait/on_reading_finished(mob/user)
-	. = ..()
-	var/mob/living/L = user
-	to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
-	ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
-	ADD_TRAIT(user, granted_trait2, SHARD_TRAIT)
-	name = "drained crystal shard"
-	desc = "The essence of this crystal is completely drained."
-	color = null
-	light_range = 0
-	light_power = 0
-	icon_state ="Crystal2"
-	if(!user.mind)
+
+/obj/item/book/granter/trait/on_reading_finished(mob/living/user)
+	if((user.attunement_points_max - user.attunement_points_used) + attunement_cost < 0)
+		. = ..()
+		var/mob/living/L = user
+		to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
+		if(!HAS_TRAIT(user, granted_trait))
+			ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
+		if(!HAS_TRAIT(user, granted_trait2))
+			ADD_TRAIT(user, granted_trait2, SHARD_TRAIT)
+		name = "drained crystal shard"
+		desc = "The essence of this crystal is completely drained."
+		color = null
+		light_range = 0
+		light_power = 0
+		icon_state ="Crystal2"
+		if(!user.mind)
+			return
+		for(var/crafting_recipe_type in crafting_recipe_types)
+			var/datum/crafting_recipe/R = crafting_recipe_type
+			user.mind.teach_crafting_recipe(crafting_recipe_type)
+			to_chat(user,"<span class='notice'>You learned how to make [initial(R.name)].</span>")
+		user.attunement_points_used += attunement_cost
+		user.check_attunement_points()
+		onlearned(user)
+	else
+		to_chat(user, "<span class='notice'>The shard refuses me, I can not attune to more..</span>")
 		return
-	for(var/crafting_recipe_type in crafting_recipe_types)
-		var/datum/crafting_recipe/R = crafting_recipe_type
-		user.mind.teach_crafting_recipe(crafting_recipe_type)
-		to_chat(user,"<span class='notice'>You learned how to make [initial(R.name)].</span>")
-	L.attunement_points_used += attunement_cost
-	L.check_attunement_points()
-	onlearned(user)
 
 /obj/item/book/granter/trait/mobility
 	light_color = "#32CD32"
@@ -260,11 +268,32 @@
 /obj/item/book/granter/spell
 	var/spell
 	var/spellname = "conjure bugs"
-	required_trait = TRAIT_USEMAGICITEM
+	var/spell_slot_cost = 1
+	//Can this be one-casted by non learnables?
+	var/castable = TRUE
+	required_trait = TRAIT_USEMAGIC
+	required_learn_trait = TRAIT_LEARNMAGIC
+
+/obj/item/book/granter/spell/equipped(mob/user, slot, initial)
+	. = ..()
+	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.mind)
+				H.mind.AddSpell(new spell)
+
+/obj/item/book/granter/spell/dropped(mob/user, silent)
+	. = ..()
+	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.mind)
+				H.mind.RemoveSpell(spell)
 
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)
 		return TRUE
+	/* This prevents learn traited people from learning the spell.
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == spell)
 			if(user.mind)
@@ -273,17 +302,23 @@
 				else
 					to_chat(user,span_warning("You've already read this one!"))
 			return TRUE
+	*/
 	return FALSE
 
 /obj/item/book/granter/spell/on_reading_start(mob/user)
 	to_chat(user, span_notice("I start reading about casting [spellname]..."))
 
-/obj/item/book/granter/spell/on_reading_finished(mob/user)
-	to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
-	var/obj/effect/proc_holder/spell/S = new spell
-	user.mind.AddSpell(S)
-	user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
-	onlearned(user)
+/obj/item/book/granter/spell/on_reading_finished(mob/living/user)
+	if(user.spell_slots - spell_slot_cost < 0)
+		to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
+		var/obj/effect/proc_holder/spell/S = new spell
+		user.spell_slots_used += 1
+		user.calculate_spell_slots()
+		user.mind.AddSpell(S)
+		user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
+		onlearned(user)
+	else
+		to_chat(user, span_notice("I can't memorize any more spells looks like..."))
 
 /obj/item/book/granter/spell/recoil(mob/user)
 	user.visible_message(span_warning("[src] glows in a black light!"))

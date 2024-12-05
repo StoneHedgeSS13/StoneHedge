@@ -443,19 +443,26 @@
 					var/thiefskill = src.mind.get_skill_level(/datum/skill/misc/stealing)
 					var/stealroll = roll("[thiefskill]d6")
 					var/targetperception = (V.STAPER)
-					var/list/stealablezones = list("chest", "neck", "groin", "r_hand", "l_hand")
+					var/list/stealablezones = list("neck", "groin", "r_hand", "l_hand")
 					var/list/stealpos = list()
 					var/list/mobsbehind = list()
 					var/exp_to_gain = STAINT
+					if(V.stat != CONSCIOUS || !(V.mobility_flags & MOBILITY_STAND)) //sleeping or dead cant stop you.
+						targetperception = 0
+						stealroll = 20
+						stealablezones += list("chest", "head", "l_foot", "r_foot") //you should be able to pull those off from someone laying or unconscious
 					to_chat(src, span_notice("I try to steal from [V]..."))
 					if(do_after(src, 5, target = V, progress = 0))
 						if(stealroll > targetperception)
 						//TODO add exp here
 							// RATWOOD MODULAR START
-							if(V.cmode)
+							if(V.cmode && V.stat == CONSCIOUS && (V.mobility_flags & MOBILITY_STAND))
 								to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
 								return
 							// RATWOOD MODULAR END
+							if(!V.key && V.mind && V.stat != DEAD)
+								to_chat(src, "<span class='warning'>[V] is protected by the fog. I can't pickpocket them like this.</span>")
+								return
 							if(U.get_active_held_item())
 								to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
 								return
@@ -465,6 +472,11 @@
 							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
 							if(mobsbehind.Find(src))
 								switch(U.zone_selected)
+									if("head")
+										if (V.get_item_by_slot(SLOT_HEAD))
+											stealpos.Add(V.get_item_by_slot(SLOT_HEAD))
+										else if (V.get_item_by_slot(SLOT_WEAR_MASK)) //can only steal mask if no helmet, in case of closed helms.
+											stealpos.Add(V.get_item_by_slot(SLOT_WEAR_MASK))
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
 											stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
@@ -481,6 +493,9 @@
 									if("r_hand", "l_hand")
 										if (V.get_item_by_slot(SLOT_RING))
 											stealpos.Add(V.get_item_by_slot(SLOT_RING))
+									if("l_foot", "r_foot")
+										if (V.get_item_by_slot(SLOT_SHOES))
+											stealpos.Add(V.get_item_by_slot(SLOT_SHOES))
 								if (length(stealpos) > 0)
 									var/obj/item/picked = pick(stealpos)
 									V.dropItemToGround(picked)

@@ -67,6 +67,7 @@
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			cloak = /obj/item/clothing/cloak/templar/abyssor
 		if ("Jayx")
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 			H.mind.adjust_spellpoints(3)
 			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 

@@ -487,6 +487,14 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		var/obj/effect/proc_holder/spell/invoked/projectile/firebolt5e/kiss = new /obj/effect/proc_holder/spell/invoked/projectile/firebolt5e
 		kiss.perform(targets, FALSE, user)
 
+	if(!HAS_TRAIT(user, TRAIT_LEARNMAGIC)) //if we cant learn magic, like a mage or some shit, scrolls are disintegrated after use.
+		for(var/obj/item/book/granter/spell/spellscroll in user.held_items)
+			if(spellscroll.castable && type == spellscroll.spell)
+				user.dropItemToGround(spellscroll) //to fix potential intent problems
+				spellscroll.Destroy() //buh bye scroll
+				to_chat(user, span_warning("The scroll disintegrates in my hands!"))
+				return
+
 /obj/effect/proc_holder/spell/proc/view_or_range(distance = world.view, center=usr, type="view")
 	switch(type)
 		if("view")

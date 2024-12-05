@@ -30,11 +30,14 @@
 	var/attunement_points_used = 0 //adjusted when equipping magic items
 	var/attunement_points_bonus = 0 //adjusted based on special roles, an artificer or antagonist should have this bonus, NOBODY ELSE...
 	var/magic_sickness = FALSE
+	var/spell_slots = 0
+	var/spell_slots_used = 0
+	var/spell_slots_bonus = 0
 
 /mob/living/proc/calculate_attunement_points()
 	if(!mind)
 		return
-	attunement_points_max = STAINT - 4 + mind.get_skill_level(/datum/skill/magic/arcane) + attunement_points_bonus
+	attunement_points_max = max(STAINT - 4 + mind.get_skill_level(/datum/skill/magic/arcane) + attunement_points_bonus, 0) //never less than 0
 
 /mob/living/proc/check_attunement_points()
 	if(attunement_points_used > attunement_points_max)
@@ -327,3 +330,9 @@
 /mob/living/proc/goodluck(multi = 3)
 	if(STALUC > 10)
 		return prob((STALUC - 10) * multi)
+
+/mob/living/proc/calculate_spell_slots()
+	if(!mind)
+		return
+	//the amount of spells you can memorize out of scrolls, seperate from spellpoints learnt ones.
+	spell_slots = max(((STAINT/4) + mind.get_skill_level(/datum/skill/magic/arcane) + spell_slots_bonus) - spell_slots_used, 0)

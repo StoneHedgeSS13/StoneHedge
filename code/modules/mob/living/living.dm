@@ -1257,6 +1257,9 @@
 		if(L.cmode && L.mobility_flags & MOBILITY_STAND)
 			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
 			return
+		if(!L.key && mind && L.stat != DEAD) //basically ssd probably
+			to_chat(src, span_warning("The fog prevents me from taking \the [what]..."))
+			return
 		if(L.surrendering)
 			surrender_mod = 0.5
 
