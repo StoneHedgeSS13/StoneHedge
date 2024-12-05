@@ -42,7 +42,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 5, TRUE)//So that they can be extra menacing with their scythe.
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)//So that they can be extra menacing with their scythe.
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)

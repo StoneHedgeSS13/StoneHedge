@@ -1,8 +1,8 @@
 /obj/item/rogueweapon/greataxe
 	force = 13
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop,  SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle,  SPEAR_BASH)
 	name = "greataxe"
 	desc = "Might be able to chop anything in half!"
 	icon_state = "greataxe"
@@ -17,7 +17,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 10
 	smeltresult = /obj/item/ingot/steel
-	associated_skill = /datum/skill/combat/swords
+	associated_skill = /datum/skill/combat/axes
 	max_blade_int = 300
 	wdefense = 3
 
@@ -35,7 +35,7 @@
 /obj/item/rogueweapon/greataxe/bearded
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop,  SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle,  SPEAR_BASH)
 	name = "bearded axe"
 	icon_state = "beardedaxe"

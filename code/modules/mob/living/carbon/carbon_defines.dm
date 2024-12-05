@@ -27,6 +27,7 @@
 	var/obj/item/backr = null
 	var/obj/item/backl = null
 	var/obj/item/clothing/mask/wear_mask = null
+	var/obj/item/clothing/cloak/wear_cloak = null
 	var/obj/item/mouth = null
 	var/obj/item/clothing/neck/wear_neck = null
 	var/obj/item/tank/internal = null
@@ -92,3 +93,4 @@
 
 	var/tiredness = 0
 	var/aura = TRUE //Used to switch between good luck and bad luck auras
+	var/next_smell = 0

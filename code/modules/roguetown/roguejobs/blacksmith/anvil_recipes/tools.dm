@@ -20,6 +20,12 @@
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
+
 /datum/anvil_recipe/tools/pan
 	name = "Frypan"
 	req_bar = /obj/item/ingot/iron
@@ -183,11 +189,10 @@
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgery tools set (+1 Steel)"
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = list(/obj/item/rogueweapon/surgery/scalpel, /obj/item/rogueweapon/surgery/saw, /obj/item/rogueweapon/surgery/hemostat, /obj/item/rogueweapon/surgery/retractor, /obj/item/rogueweapon/surgery/bonesetter, /obj/item/rogueweapon/surgery/cautery, /obj/item/reagent_containers/syringe/steel)
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/surgery/syringes

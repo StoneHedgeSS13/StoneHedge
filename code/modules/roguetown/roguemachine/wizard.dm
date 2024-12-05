@@ -14,7 +14,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = FALSE
+	var/locked = TRUE
 	var/upgrade_flags
 	var/current_cat = "1"
 
@@ -32,24 +32,19 @@
 
 
 /obj/structure/roguemachine/wizardvend/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
-		if(K.lockid == "mage")
+	if(istype(P, /obj/item/clothing/ring/keystone))
+		var/obj/item/clothing/ring/keystone/K = P
+		if(K.can_unlock())
 			locked = !locked
-			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			update_icon()
-			return attack_hand(user)
-		else
-			to_chat(user, span_warning("Wrong key."))
-			return
-	if(istype(P, /obj/item/storage/keyring))
-		var/obj/item/storage/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
-			if(KE.lockid == "mage")
-				locked = !locked
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-				update_icon()
+			playsound(loc, 'sound/magic/timestop.ogg', 100, FALSE, -1)
+			to_chat(user, span_notice("The [src] [locked ? "locks" : "unlocks"] with a soft chime."))
+			if(!locked)
 				return attack_hand(user)
+			return
+		else
+			to_chat(user, span_warning("The keystone needs to be activated first."))
+			return
+
 	if(istype(P, /obj/item/reagent_containers/glass/bottle))
 		var/obj/item/reagent_containers/con = P
 		var/datum/reagents/R = con.reagents
@@ -106,7 +101,7 @@
 		if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
 			options += "Learn Level 2 Spells (400)"
 		if(!(upgrade_flags & UPGRADE_LEVEL_THREE))
-			options += "Learn Level 3 Spells (800)"	
+			options += "Learn Level 3 Spells (800)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -157,7 +152,7 @@
 				SSlibrary.remove_ink_library(800, "Learn Level 3 Spells")
 				upgrade_flags |= UPGRADE_LEVEL_THREE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-	
+
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/wizardvend/attack_hand(mob/living/user)
@@ -167,7 +162,7 @@
 	if(!ishuman(user))
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("Alas, the arcane forces demand a keystone to unlock my full potential; without it, my power remains sealed."))
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)

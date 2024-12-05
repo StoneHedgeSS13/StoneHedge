@@ -60,7 +60,7 @@
 #define TRAIT_PUGILIST "Pugilist" //more punch damage
 #define TRAIT_WILDMAGIC "Wild Magic" //low chance for insane stuff to happen when casting
 #define TRAIT_FIENDKISS "Kiss of the Fiend" //after casting some spells, hurl a firebolt at the same location
-#define TRAIT_CHARGER "Charger" //after casting some spells, hurl a firebolt at the same location
+#define TRAIT_CHARGER "Charger" //advantage on running into people.
 #define TRAIT_ARTIFICER "Artificer" //after casting some spells, hurl a firebolt at the same location
 #define TRAIT_NODETECT "Nondetection" //You can not be scryed on
 //Hearthstone end.

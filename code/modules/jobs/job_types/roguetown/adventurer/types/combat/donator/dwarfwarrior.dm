@@ -26,7 +26,7 @@
 	if(prob(25))
 		gloves = /obj/item/clothing/gloves/roguetown/chain
 	else
-		gloves = /obj/item/clothing/gloves/roguetown/angle
+		gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	if(prob(50))
 		beltl = /obj/item/rogueweapon/mace/steel
 	else if(prob(50))
@@ -42,7 +42,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 3, TRUE)
 
 	H.change_stat("constitution", 3) // Eight points just like Warrior. They already get a debuff racial to speed. Please do not stack it God please.

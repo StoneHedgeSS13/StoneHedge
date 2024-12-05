@@ -611,7 +611,6 @@
 				/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
 	req_table = TRUE
-	skillcraft = /datum/skill/craft/traps
 	craftdiff = 1
 	verbage_simple = "put together"
 	verbage = "puts together"
@@ -626,9 +625,23 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 50)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/parchment
+	name = "paper parchment (x8)"
+	result = list(/obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper,
+				  /obj/item/paper)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+	/datum/reagent/water = 30)
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+	structurecraft = /obj/machinery/tanningrack
 /datum/crafting_recipe/roguetown/tribalrags
 	name = "tribal rags"
 	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag

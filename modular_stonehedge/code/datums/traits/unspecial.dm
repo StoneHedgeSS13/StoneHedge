@@ -19,13 +19,21 @@
 
 /datum/quirk/thickskin
 	name = "Tough" //probably perfect for raw power classes, strange for unrelated ones but i guess.
-	desc = "I am like a dwarven war machine, untiring, unforgiving, unstoppable."
-	value = 6
+	desc = "I can take more beatings than others and being on high alert does not tire me."
+	value = 4
 
 /datum/quirk/thickskin/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_BREADY, QUIRK_TRAIT)
-	ADD_TRAIT(H, TRAIT_PUGILIST, QUIRK_TRAIT)
+	H.change_stat("constitution", 2)
+
+/datum/quirk/charger
+	name = "Charger"
+	desc = "I am like a raging bull, whoever gets in my way will fall."
+	value = 3
+
+/datum/quirk/charger/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_CHARGER, QUIRK_TRAIT)
 	H.change_stat("constitution", 1)
 
@@ -170,6 +178,17 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.special_items["Dusters"] = /obj/item/rogueweapon/duster
 
+/datum/quirk/pugilist
+	name = "Fists of iron"
+	desc = "I have journeyman unarmed training and my punches are hard as iron."
+	value = 4
+
+/datum/quirk/training9/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	ADD_TRAIT(H, TRAIT_PUGILIST, QUIRK_TRAIT)
+
 /datum/quirk/mtraining1
 	name = "Medical Training"
 	desc = "I have journeyman medical training and stashed some med supplies."
@@ -312,15 +331,12 @@
 /datum/quirk/mastercraftsmen/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 3, TRUE) //lets be real you are taking this for smithing only.

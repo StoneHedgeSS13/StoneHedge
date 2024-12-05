@@ -22,18 +22,18 @@
 
 /datum/outfit/job/roguetown/highking/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/vikinghelmet
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/dwarfhelm
 	backr = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
-	r_hand = /obj/item/rogueweapon/stoneaxe/battle
+	beltl = /obj/item/rogueweapon/stoneaxe/battle
+	r_hand = /obj/item/rogueweapon/pick/steel
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	pants = /obj/item/clothing/under/roguetown/platelegs
-	gloves = /obj/item/clothing/gloves/roguetown/plate
+	gloves = /obj/item/clothing/gloves/roguetown/dwarfgauntlets
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	shoes = /obj/item/storage/belt/rogue/leather
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
+	shoes = /obj/item/clothing/shoes/roguetown/boots/dwarfboots
+	cloak = /obj/item/clothing/cloak/templar/malum
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
@@ -56,10 +56,8 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/firearms, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 2, TRUE)
 

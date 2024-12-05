@@ -13,6 +13,11 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	var/heldz_items = 3
+	sewrepair = TRUE
+	fiber_salvage = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+	var/datum/wound/artery/artery_wound
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
 	. = ..()
@@ -36,7 +41,6 @@
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
 	heldz_items = 3
-	sewrepair = TRUE
 
 /*/obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
 	..()
@@ -52,7 +56,7 @@
 	icon_state = "goldplaque"
 	sellprice = 50
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/shalal
 	name = "shalal belt"
@@ -75,7 +79,7 @@
 	icon_state = "silverplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/hand
 	name = "steel belt"
@@ -83,7 +87,7 @@
 	icon_state = "steelplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/rope
 	name = "rope belt"
@@ -92,12 +96,14 @@
 	item_state = "rope"
 	color = "#b9a286"
 	heldz_items = 1
+	salvage_result = /obj/item/rope
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
 	heldz_items = 1
+	salvage_result = /obj/item/natural/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -121,7 +127,7 @@
 	equip_sound = 'sound/blank.ogg'
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
+	fiber_salvage = FALSE
 
 /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
 	. = ..()
@@ -174,6 +180,12 @@
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
 
+/obj/item/storage/backpack/rogue //holding salvage vars for children
+	sewrepair = TRUE
+	fiber_salvage = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"
 	desc = "A bulky bag worn over the shoulder which can be used to hold many things."
@@ -189,7 +201,6 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
-	sewrepair = TRUE
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
@@ -596,7 +607,6 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
 
 /obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
 	. = ..()
@@ -628,7 +638,7 @@
 	icon_state = "ornate_belt"
 	sellprice = 50
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/blackleather
 	name = "black leather belt"
@@ -646,6 +656,7 @@
 	max_integrity = 100
 	content_overlays = FALSE
 	heldz_items = 4
+	sewrepair = FALSE
 
 /obj/item/storage/belt/rogue/pickles/ComponentInitialize()
 	. = ..()

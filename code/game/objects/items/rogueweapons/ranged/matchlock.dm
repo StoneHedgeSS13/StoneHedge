@@ -19,7 +19,7 @@
 	cartridge_wording = "musketball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = 'sound/combat/Ranged/musketfire.ogg'
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2.5
 	var/cocktime = 50

@@ -27,6 +27,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
+	id = /obj/item/clothing/ring/keystone
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)

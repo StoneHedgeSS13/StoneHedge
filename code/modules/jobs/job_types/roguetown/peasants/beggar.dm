@@ -42,6 +42,7 @@
 
 /datum/outfit/job/roguetown/vagrant/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.faction += "bums"
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	// wise beggar!!!
@@ -57,7 +58,7 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		pants = /obj/item/clothing/under/roguetown/tights/vagrant
-		shoes = /obj/item/clothing/shoes/roguetown/shalal // wise boots
+		shoes = /obj/item/clothing/shoes/roguetown/armor/shalal // wise boots
 		r_hand = /obj/item/rogueweapon/woodstaff/wise // dog beating staff
 		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/special // dog butchering knife
 		if(H.mind)

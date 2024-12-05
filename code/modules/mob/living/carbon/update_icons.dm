@@ -308,6 +308,18 @@
 
 	apply_overlay(HEAD_LAYER)
 
+/mob/living/carbon/update_inv_cloak()
+	remove_overlay(CLOAK_LAYER)
+
+	if(client && hud_used && hud_used.inv_slots[SLOT_CLOAK])
+		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
+		inv.update_icon()
+
+	if(wear_cloak)
+		overlays_standing[CLOAK_LAYER] = wear_cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/cloaks.dmi')
+		update_hud_head(wear_cloak)
+
+	apply_overlay(CLOAK_LAYER)
 
 /mob/living/carbon/update_inv_handcuffed()
 	remove_overlay(HANDCUFF_LAYER)

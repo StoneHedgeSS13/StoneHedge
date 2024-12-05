@@ -28,13 +28,11 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -90,13 +88,11 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -152,13 +148,9 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random

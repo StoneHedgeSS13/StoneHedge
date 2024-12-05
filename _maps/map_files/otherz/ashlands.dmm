@@ -163,6 +163,13 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
+"bK" = (
+/obj/effect/landmark/start/vampirespawn,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "bP" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -236,6 +243,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
+/obj/structure/bookcase,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -420,14 +428,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
 "fI" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_x = -32
+/obj/structure/table/church{
+	icon_state = "churchtable_end"
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "fQ" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
@@ -536,7 +541,9 @@
 	name = "Underkeep"
 	})
 "gQ" = (
-/obj/structure/table/church,
+/obj/structure/table/wood{
+	icon_state = "longtable"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/chapel/main)
 "gZ" = (
@@ -907,10 +914,8 @@
 	name = "Underkeep"
 	})
 "lF" = (
-/obj/structure/roguemachine/wizardvend{
-	icon_state = "camera"
-	},
-/turf/closed/wall/mineral/rogue/stone,
+/obj/structure/bookcase,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
 	name = "Underkeep"
@@ -1249,6 +1254,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
+/obj/structure/bookcase,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -1360,8 +1366,10 @@
 	name = "Underkeep"
 	})
 "pX" = (
-/obj/structure/table/wood,
-/obj/item/dmusicbox,
+/obj/structure/fluff/psycross{
+	name = "Divine Conduit";
+	icon_state = "saint"
+	},
 /turf/open/floor/carpet/inn,
 /area/chapel/main)
 "qb" = (
@@ -1405,15 +1413,11 @@
 /turf/closed/mineral/rogue,
 /area/rogue)
 "qt" = (
-/obj/effect/decal/remains/human/grave{
-	icon_state = "remainslarva"
+/obj/structure/table/church{
+	icon_state = "churchtable_mid"
 	},
-/obj/effect/spawner/lootdrop/roguetown/refilling_chest/randomspawner,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "qw" = (
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town/manor{
@@ -1625,7 +1629,6 @@
 /area/rogue/under/cavewet)
 "sD" = (
 /obj/structure/fluff/wallclock/vampire,
-/obj/effect/landmark/start/vampirespawn,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -2038,6 +2041,7 @@
 	})
 "xl" = (
 /obj/structure/fluff/railing/border,
+/obj/structure/bookcase,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -2188,19 +2192,13 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cavewet)
 "yU" = (
-/obj/effect/decal/cleanable/blood/tracks,
-/obj/structure/spawner/invisible,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/obj/structure/bars/cemetery,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "yZ" = (
-/obj/structure/table/church{
-	icon_state = "churchtable_mid"
-	},
-/obj/structure/fluff/psycross{
-	name = "Divine Conduit"
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "longtable_mid"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/chapel/main)
@@ -2212,8 +2210,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
 "zj" = (
-/obj/structure/table/church{
-	icon_state = "churchtable_end"
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/chapel/main)
@@ -2235,9 +2234,14 @@
 /obj/structure/fluff/walldeco/chains{
 	icon_state = "chains6"
 	},
-/obj/effect/spawner/lootdrop/roguetown/dungeon_chest,
-/obj/item/book/granter/trait/war/undying,
 /turf/open/floor/rogue/dirt,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
+"zw" = (
+/obj/structure/closet/crate/drawer,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
 	name = "Underkeep"
@@ -2249,7 +2253,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet)
 "zK" = (
-/obj/structure/closet/crate/drawer,
+/obj/structure/bearpelt,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -2266,6 +2270,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
+/obj/structure/bookcase,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -2471,8 +2476,10 @@
 	name = "Underkeep"
 	})
 "Co" = (
-/obj/structure/bookcase,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/machinery/light/rogue/wallfire{
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
 	name = "Underkeep"
@@ -2568,13 +2575,11 @@
 	name = "Underkeep"
 	})
 "Da" = (
-/obj/structure/bed/rogue/inn/wooldouble,
-/obj/item/bedsheet/rogue/double_pelt,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/obj/structure/fluff/walldeco/chains{
+	icon_state = "chains8"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "Dc" = (
 /obj/effect/decal/stone/blockedge,
 /turf/open/floor/rogue/naturalstone,
@@ -2879,6 +2884,14 @@
 "Hd" = (
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue)
+"Hi" = (
+/obj/structure/bed/rogue/inn/wooldouble,
+/obj/item/bedsheet/rogue/double_pelt,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "Hn" = (
 /obj/structure/bookcase,
 /obj/item/book/granter/spell_points,
@@ -3103,6 +3116,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
+/obj/structure/bookcase,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -3230,6 +3244,10 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
+"Li" = (
+/obj/structure/table/church,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "Ll" = (
 /obj/item/roguecoin/gold/pile,
 /obj/item/roguecoin/gold/pile,
@@ -3323,13 +3341,11 @@
 	name = "Underkeep"
 	})
 "LY" = (
-/obj/structure/chair/wood/rogue/throne,
-/obj/item/rogueweapon/sword/long/vlord,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/obj/structure/fluff/walldeco/chains{
+	icon_state = "chains4"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "Ma" = (
 /obj/machinery/light/rogue/chand,
 /turf/open/transparent/openspace,
@@ -3413,15 +3429,11 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "Ni" = (
-/obj/structure/bearpelt,
-/obj/structure/fluff/railing/border{
-	dir = 8
+/obj/structure/table/church{
+	icon_state = "churchtable_mid_alt"
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "No" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/end{
 	dir = 4
@@ -3672,6 +3684,10 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
+"Rl" = (
+/obj/structure/fluff/walldeco/chains,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "Ro" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/powder/gemerald,
@@ -3737,13 +3753,9 @@
 	name = "Underkeep"
 	})
 "RO" = (
-/obj/effect/spawner/lootdrop/roguetown/dungeon_chest,
-/obj/item/book/granter/trait/war/undying,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/obj/structure/closet/crate/coffin,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "RP" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue)
@@ -3912,6 +3924,33 @@
 	},
 /turf/open/water/swamp/deep,
 /area/rogue/under/cavewet)
+"Uj" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "Um" = (
 /obj/machinery/light/roguestreet{
 	dir = 1
@@ -3928,9 +3967,12 @@
 	name = "Underkeep"
 	})
 "Uu" = (
-/obj/structure/fluff/dryingrack,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cavewet)
+/obj/structure/mineral_door/wood,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "UC" = (
 /obj/structure/bookcase,
 /obj/item/book/granter/spell/blackstone/sicknessray,
@@ -4090,32 +4132,11 @@
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/cavewet)
 "Wo" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/manor{
-	first_time_text = "Underkeep";
-	name = "Underkeep"
-	})
+/obj/structure/fluff/walldeco/chains{
+	icon_state = "chains7"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "Wq" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried,
@@ -4213,6 +4234,12 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
+"XI" = (
+/obj/structure/fluff/walldeco/chains{
+	icon_state = "chains6"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet)
 "XJ" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue)
@@ -6802,7 +6829,7 @@ yR
 yR
 yR
 qR
-Uu
+yR
 Qm
 Qm
 Qm
@@ -10938,11 +10965,11 @@ Gr
 vM
 vM
 vM
-im
-im
-im
-im
-im
+yU
+yU
+RO
+Rl
+Wo
 vM
 vM
 Gr
@@ -11069,13 +11096,13 @@ Gr
 Gr
 vM
 vM
+Ni
+Ni
+Ni
+yU
 im
 im
-im
-im
-im
-im
-im
+RO
 vM
 Qm
 Qm
@@ -11200,11 +11227,11 @@ Gr
 Gr
 Ay
 vM
+LY
 im
 im
 im
-im
-im
+yU
 im
 im
 im
@@ -11332,7 +11359,7 @@ Gr
 Gr
 Ay
 vM
-im
+Li
 im
 im
 im
@@ -11342,12 +11369,12 @@ im
 im
 im
 wR
-RO
+jI
 BS
 pO
 tt
 pO
-nX
+jI
 pC
 PF
 wj
@@ -11464,6 +11491,7 @@ Gr
 Gr
 Ay
 vM
+qt
 im
 im
 im
@@ -11472,11 +11500,10 @@ im
 im
 im
 im
-im
-aE
-LY
+Uu
+jI
 tK
-yU
+tK
 tK
 tK
 tK
@@ -11596,7 +11623,7 @@ Gr
 Gr
 Ay
 vM
-im
+fI
 im
 im
 im
@@ -11608,9 +11635,9 @@ im
 wR
 zv
 ow
-qt
+ih
 pO
-Av
+jI
 ow
 pC
 wj
@@ -11728,11 +11755,11 @@ Gr
 Gr
 Ay
 vM
+Wo
 im
+XI
 im
-im
-im
-im
+yU
 im
 im
 im
@@ -11861,13 +11888,13 @@ Gr
 Gr
 vM
 vM
+Ni
+Ni
+Ni
+yU
 im
 im
-im
-im
-im
-im
-im
+RO
 vM
 tG
 tG
@@ -11994,10 +12021,10 @@ Gr
 vM
 vM
 vM
-im
-im
-im
-im
+yU
+yU
+RO
+Da
 im
 vM
 vM
@@ -16504,7 +16531,7 @@ fg
 yR
 ew
 yR
-Uu
+yR
 yR
 yR
 gB
@@ -27047,7 +27074,7 @@ sl
 CT
 aE
 sD
-sl
+bK
 sl
 sv
 qw
@@ -41827,11 +41854,11 @@ MZ
 MZ
 MZ
 MZ
-MZ
 Vi
-Vi
-Vi
-Vi
+RP
+KR
+KR
+RP
 Vi
 MZ
 MZ
@@ -41958,12 +41985,12 @@ MZ
 MZ
 MZ
 MZ
-MZ
 Vi
-Vi
-Vi
-Vi
-Vi
+aE
+qw
+Co
+Co
+qw
 Vi
 Vi
 MZ
@@ -42089,13 +42116,13 @@ MZ
 MZ
 MZ
 MZ
-Vi
-Vi
 KR
 KR
-bJ
-KR
-KR
+Uj
+EH
+EH
+EH
+EH
 KR
 Vi
 Vi
@@ -42220,14 +42247,14 @@ MZ
 MZ
 MZ
 MZ
-MZ
 Vi
-KR
 bJ
-Wo
-fI
+lF
 EH
-qw
+EH
+EH
+EH
+EH
 Ro
 KR
 Vi
@@ -42353,9 +42380,9 @@ MZ
 MZ
 MZ
 Vi
-Vi
-bJ
-Co
+lF
+EH
+EH
 EH
 EH
 EH
@@ -42484,9 +42511,9 @@ MZ
 MZ
 MZ
 MZ
-Vi
-KR
-Co
+RP
+qw
+EH
 EH
 JK
 cD
@@ -42616,7 +42643,7 @@ MZ
 MZ
 MZ
 MZ
-Vi
+KR
 lF
 EH
 EH
@@ -42748,13 +42775,13 @@ MZ
 MZ
 MZ
 MZ
-Vi
-KR
-Co
+RP
+qw
+EH
 EH
 oX
 zT
-Ni
+zT
 uT
 EH
 KR
@@ -42881,9 +42908,9 @@ MZ
 MZ
 MZ
 Vi
-Vi
-KR
-Co
+lF
+EH
+EH
 EH
 EH
 EH
@@ -43012,14 +43039,14 @@ MZ
 MZ
 MZ
 MZ
-MZ
 Vi
-KR
-KR
+bJ
+lF
+EH
+EH
+EH
 zK
-Da
-zK
-qw
+EH
 rh
 KR
 Vi
@@ -43145,13 +43172,13 @@ MZ
 MZ
 MZ
 MZ
-MZ
-Vi
 KR
 KR
-KR
-KR
-KR
+qw
+EH
+EH
+EH
+EH
 KR
 Vi
 Vi
@@ -43278,12 +43305,12 @@ MZ
 MZ
 MZ
 MZ
-MZ
 Vi
-Vi
-Vi
-Vi
-Vi
+aE
+zw
+Hi
+Hi
+zw
 Vi
 Vi
 qo
@@ -43411,11 +43438,11 @@ MZ
 MZ
 MZ
 MZ
-MZ
+Vi
+RP
 Vi
 Vi
-Vi
-Vi
+RP
 Vi
 MZ
 qo

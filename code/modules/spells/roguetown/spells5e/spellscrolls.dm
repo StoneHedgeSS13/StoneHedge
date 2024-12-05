@@ -7,6 +7,9 @@
 	remarks = list("Fascinating!", "Is that so...", "Like this?", "Really now...", "There's a little schmutz on this section...")
 	sellprice = 30
 
+/obj/item/book/granter/spell/spells5e/get_real_price()
+	return sellprice
+
 /obj/item/book/granter/spell/spells5e/onlearned(mob/living/carbon/user)
 	..()
 	if(oneuse == TRUE)
@@ -28,7 +31,7 @@
 
 //I present to you the freak bag. Getting requests for lewd items? Give them the bag and make them leave you alone for hours
 //why is this here in particular? cause it's minorly dependant on the scrolls existing in game.
-/obj/item/storage/backpack/rogue/backpack/shame/PopulateContents() 
+/obj/item/storage/backpack/rogue/backpack/shame/PopulateContents()
 	new /obj/item/book/granter/spell/spells5e/encodethoughts5e(src)
 	new /obj/item/natural/bundle/cloth(src)
 	new /obj/item/rogueweapon/whip(src)
@@ -39,7 +42,7 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/virilitypot(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/virilitypot(src)
-	
+
 //cantrips
 /obj/item/book/granter/spell/spells5e/acidsplash5e
 	name = "Scroll of Acid Splash"
@@ -166,3 +169,20 @@
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
 	spellname = "ray of frost"
 	icon_state ="scrollred"
+
+// mapping only
+/obj/item/book/granter/spell/spells5e/random
+	name = "random spell scroll spawner"
+	desc = "This item spawns a random 5e spell scroll on roundstart. Mapping only!"
+	icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/random/Initialize()
+    . = ..()
+    var/list/scroll_types = subtypesof(/obj/item/book/granter/spell/spells5e) - list(/obj/item/book/granter/spell/spells5e/random)
+    var/chosen_type = pick(scroll_types)
+    var/obj/structure/bookcase/B = locate() in get_turf(src)
+    var/obj/item/spawned_scroll = new chosen_type(B ? B : get_turf(src))
+
+    if(B)
+        B.contents += spawned_scroll
+    return INITIALIZE_HINT_QDEL

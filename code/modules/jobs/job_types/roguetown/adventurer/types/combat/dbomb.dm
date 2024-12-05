@@ -34,7 +34,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 	H.change_stat("strength", 2)

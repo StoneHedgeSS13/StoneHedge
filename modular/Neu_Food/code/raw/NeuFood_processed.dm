@@ -266,7 +266,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	req_table = FALSE
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
@@ -277,7 +277,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	req_table = FALSE
 	craftdiff = 0
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
 	name = "salo"
@@ -286,7 +286,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/fat/salo
 	craftdiff = 0
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 
 /datum/crafting_recipe/roguetown/cooking/saltfish
@@ -300,7 +300,7 @@
 	req_table = FALSE
 	craftdiff = 0
 	subtype_reqs = TRUE
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/raisins
 	name = "raisins"
@@ -308,7 +308,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 	craftdiff = 0
 	subtype_reqs = TRUE

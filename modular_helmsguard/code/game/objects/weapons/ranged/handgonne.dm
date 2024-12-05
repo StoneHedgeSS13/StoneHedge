@@ -31,7 +31,7 @@
 	cartridge_wording = "musketball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = "modular_helmsguard/sound/arquebus/arquefire.ogg"
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	bolt_type = BOLT_TYPE_NO_BOLT
 	casing_ejector = FALSE

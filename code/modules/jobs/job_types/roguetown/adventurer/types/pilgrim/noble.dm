@@ -47,7 +47,7 @@
 		cloak = /obj/item/clothing/cloak/half
 		head = /obj/item/clothing/head/roguetown/fancyhat
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		r_hand = /obj/item/rogueweapon/woodstaff
 
 

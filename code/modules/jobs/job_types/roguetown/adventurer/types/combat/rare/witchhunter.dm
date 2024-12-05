@@ -39,7 +39,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 4, TRUE) //Hearthstone change.
 		H.change_stat("intelligence", 1)

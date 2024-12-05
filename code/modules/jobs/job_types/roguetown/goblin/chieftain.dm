@@ -15,7 +15,7 @@
 	outfit = /datum/outfit/job/roguetown/chieftain
 
 	display_order = JDO_CHIEFTAIN
-	min_pq = 2
+	min_pq = 15
 	max_pq = null
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
@@ -58,8 +58,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 6, TRUE) //Hearthstone change.
 		H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)

@@ -27,6 +27,7 @@
 
 /datum/outfit/job/roguetown/vagabond/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.faction += "bums"
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	else

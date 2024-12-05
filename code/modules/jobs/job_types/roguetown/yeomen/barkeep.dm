@@ -13,7 +13,7 @@
 	outfit = /datum/outfit/job/roguetown/barkeep
 	display_order = JDO_BARKEEP
 	give_bank_account = 500
-	min_pq = 0
+	min_pq = 5
 	max_pq = null
 
 /datum/outfit/job/roguetown/barkeep/pre_equip(mob/living/carbon/human/H)
@@ -45,6 +45,7 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
 		neck = /obj/item/storage/keyring/innkeep
 		cloak = /obj/item/clothing/cloak/apron/waist
+		id = /obj/item/scomstone
 		H.change_stat("intelligence", 2)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 1)
@@ -55,6 +56,7 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/storage/keyring/innkeep
+		id = /obj/item/scomstone
 		H.change_stat("intelligence", 2)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 1)

@@ -66,14 +66,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_TOLERANT, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_ZOMBIE_IMMUNE, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]") 
+	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	if(!is_solo)
 		ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
 		ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 		ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
 		ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 		ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
-		owner.current.faction = list("undead")
+		owner.current.faction += list("undead")
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
@@ -185,6 +185,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel/black
+	r_hand = /obj/item/rogueweapon/sword/long/vlord
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.ambushable = FALSE
 
@@ -201,7 +202,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	blocksound = PLATEHIT
 	do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/roguetown/shirt/vampire
@@ -212,6 +213,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vrobe"
 	item_state = "vrobe"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/head/roguetown/vampire
 	name = "crown of darkness"
@@ -231,6 +233,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	body_parts_covered = CHEST|GROIN|VITALS
 	armor_class = 2
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
@@ -245,7 +248,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
 	do_sound = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = 3

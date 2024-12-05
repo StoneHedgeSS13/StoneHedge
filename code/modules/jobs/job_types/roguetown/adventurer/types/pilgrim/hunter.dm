@@ -35,11 +35,9 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE) //Hearthstone change.

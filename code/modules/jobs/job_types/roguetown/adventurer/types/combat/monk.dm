@@ -41,7 +41,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE) //builders
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE) // builders
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE) //builders
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/butchering, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)

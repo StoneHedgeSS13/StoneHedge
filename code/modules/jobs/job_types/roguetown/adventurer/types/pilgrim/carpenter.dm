@@ -25,7 +25,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 	head = /obj/item/clothing/head/roguetown/hatfur

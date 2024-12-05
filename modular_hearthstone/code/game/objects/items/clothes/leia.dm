@@ -10,6 +10,7 @@
 	sleevetype = "leia"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDEBOOB|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/slave/red
 	color = "#6F0000"
