@@ -429,6 +429,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if(action)
 			action.UpdateButtonIcon()
 		return TRUE
+	revert_cast(user) //Failed. Don't consume the spell.
 	return FALSE
 
 /obj/effect/proc_holder/spell/proc/before_cast(list/targets, mob/user = usr)
