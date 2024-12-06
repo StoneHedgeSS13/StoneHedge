@@ -276,6 +276,10 @@
 	//should help us not remove spells from people that have em memorized.
 	var/user_has_spell_already = FALSE
 
+/obj/item/book/granter/spell/Initialize()
+	. = ..()
+	desc = "The arcyne ink on it is at pristine condition and may be cast off of [usable_times]."
+
 /obj/item/book/granter/spell/equipped(mob/user, slot, initial)
 	. = ..()
 	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
