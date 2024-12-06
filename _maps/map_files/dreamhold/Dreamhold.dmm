@@ -17042,7 +17042,7 @@
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_y = -32
 	},
-/obj/structure/roguemachine/wizardvend/academy,
+/obj/structure/roguemachine/wizardvend,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
 "msJ" = (
