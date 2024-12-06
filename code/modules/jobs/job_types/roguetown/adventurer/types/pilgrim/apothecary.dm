@@ -1,5 +1,5 @@
 /datum/advclass/apothecary
-	name = "Apothecary"
+	name = "Alchemist"
 	tutorial = "You are an Alchemist, with your tools and knowledge you are the most capable of making remedies for your fellow townsfolk's ailments, or creating drugs to help withstand the gloom this town carries."
 	allowed_sexes = list(MALE, FEMALE)
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
@@ -24,7 +24,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)

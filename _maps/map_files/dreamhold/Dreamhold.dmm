@@ -1679,6 +1679,10 @@
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
 	})
+"bgL" = (
+/obj/effect/landmark/events/haunts,
+/turf/open/floor/rogue/twig/platform,
+/area/rogue/outdoors/river)
 "bgT" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -2027,6 +2031,7 @@
 /area/rogue/under/cavewet)
 "buH" = (
 /obj/machinery/light/rogue/torchholder/l,
+/obj/effect/landmark/start/bogguardlate,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/bog)
 "buM" = (
@@ -3540,7 +3545,6 @@
 	})
 "cFD" = (
 /obj/structure/bed/rogue/inn/double,
-/obj/effect/landmark/start/bogguardlate,
 /obj/item/bedsheet/rogue/double_pelt,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
@@ -4905,8 +4909,15 @@
 	first_time_text = "Stonehedge"
 	})
 "dxT" = (
-/obj/structure/chair/bench/coucha/r,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/garrison{
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
@@ -6262,6 +6273,16 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"eyp" = (
+/obj/structure/mineral_door/wood/fancywood{
+	name = "The Abyss Eye";
+	lockid = "merc"
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/beach{
+	first_time_text = "Emerald Shores";
+	name = "Shores of the Emerald Coast"
+	})
 "eyt" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1
@@ -6386,8 +6407,12 @@
 	name = "Shores of the Emerald Coast"
 	})
 "eBv" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_x = -32
+/obj/structure/table/wood{
+	dir = 4;
+	icon_state = "longtable"
+	},
+/obj/structure/table/wood{
+	icon_state = "longtable_mid"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison{
@@ -6965,9 +6990,6 @@
 "eTV" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/item/rogueweapon/woodstaff,
-/obj/item/rogueweapon/woodstaff,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield{
 	first_time_text = null
@@ -9902,12 +9924,11 @@
 	name = "Shores of the Emerald Coast"
 	})
 "hhE" = (
-/obj/effect/landmark/events/haunts,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/exposed/magiciantower{
-	first_time_text = "Ravenloft Academy";
-	name = "Schoolgrounds"
-	})
+/obj/structure/bars/passage{
+	redstone_id = "frontmain"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/shelter/bog)
 "hhG" = (
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods{
@@ -10162,6 +10183,10 @@
 /area/rogue/outdoors/exposed/bath)
 "hoF" = (
 /obj/structure/fluff/walldeco/wantedposter,
+/obj/structure/lever/wall{
+	dir = 8;
+	redstone_id = "frontmain"
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/shelter/bog)
 "hoU" = (
@@ -10867,7 +10892,10 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/indoors/cave/minotaurcave)
 "hRq" = (
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	name = "The Abyss Eye";
+	lockid = "merc"
+	},
 /turf/open/floor/rogue/wood/herringbone,
 /area/rogue/outdoors/beach{
 	first_time_text = "Emerald Shores";
@@ -13845,7 +13873,9 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "jZo" = (
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	lockid = "merc"
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach{
 	first_time_text = "Emerald Shores";
@@ -15360,11 +15390,9 @@
 	name = "Shores of the Emerald Coast"
 	})
 "laG" = (
-/obj/structure/fluff/statue/tdummy2,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/outdoors/rtfield{
-	first_time_text = null
-	})
+/obj/effect/landmark/start/bogguardlate,
+/turf/open/floor/rogue/blocks/green,
+/area/rogue/indoors/shelter/bog)
 "laR" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/rogue/grass,
@@ -20152,7 +20180,10 @@
 	first_time_text = "Stonehedge"
 	})
 "oCM" = (
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	name = "Hedgeknight Order";
+	lockid = "tower"
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "oCS" = (
@@ -20940,6 +20971,14 @@
 /obj/machinery/light/rogue/lanternpost,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
+"pdf" = (
+/obj/structure/bars/cemetery,
+/obj/structure/academyward,
+/turf/open/dark_filler,
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "pdF" = (
 /obj/structure/bars/passage{
 	redstone_id = "rangerback"
@@ -20956,6 +20995,11 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
+"peo" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/effect/landmark/start/bogguardlate,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/shelter/bog)
 "peQ" = (
 /obj/machinery/light/rogue/torchholder/c,
 /obj/structure/chair/wood/rogue/throne,
@@ -22316,6 +22360,10 @@
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town)
+"pZV" = (
+/obj/effect/landmark/events/haunts,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "qao" = (
 /obj/effect/spawner/roguemap/treeorbush,
 /obj/effect/spawner/roguemap/treeorbush,
@@ -22442,6 +22490,10 @@
 /obj/machinery/anvil,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/town)
+"qeo" = (
+/obj/structure/academyward,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/river)
 "qeA" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -22642,6 +22694,12 @@
 /obj/structure/flora/roguetree/stump/log,
 /turf/closed/mineral/random/rogue,
 /area/rogue/outdoors/caves)
+"qlz" = (
+/obj/structure/bars/passage{
+	redstone_id = "frontmain"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/shelter/bog)
 "qlB" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4;
@@ -28542,8 +28600,8 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/mountains)
 "uwa" = (
-/obj/effect/landmark/events/haunts,
-/turf/open/floor/rogue/hexstone,
+/obj/structure/academyward,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
 	name = "Schoolgrounds"
@@ -29045,7 +29103,9 @@
 	name = "Ravenloft Academy"
 	})
 "uLN" = (
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	lockid = "merc"
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/beach{
 	first_time_text = "Emerald Shores";
@@ -30512,6 +30572,7 @@
 /area/rogue/outdoors/river)
 "vSU" = (
 /obj/structure/roguemachine/scomm/l,
+/obj/effect/landmark/start/adventurerlate,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison{
 	first_time_text = "Adventurers Guild";
@@ -31592,11 +31653,12 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/caves)
 "wOd" = (
-/obj/structure/fluff/statue/tdummy2,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield{
-	first_time_text = null
-	})
+/obj/structure/mineral_door/wood/fancywood{
+	name = "Armory";
+	lockid = "tower"
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/indoors/shelter/bog)
 "wOm" = (
 /turf/closed/wall/mineral/rogue/decowood{
 	icon_state = "wooddark-k"
@@ -32169,6 +32231,18 @@
 	icon_state = "wooddark-k"
 	},
 /area/rogue/indoors/shelter/town)
+"xkz" = (
+/obj/structure/roguewindow/openclose,
+/obj/structure/projected_forcefield{
+	desc = "It glistens and humswith arcane energy. Powerful Magicks, this.";
+	icon_state = "purplesparkles";
+	name = "Magick Barrier"
+	},
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "xkJ" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
@@ -32446,6 +32520,22 @@
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
+	})
+"xve" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors/town/garrison{
+	first_time_text = "Adventurers Guild";
+	name = "Adventurers Guild"
 	})
 "xwg" = (
 /obj/structure/fermenting_barrel/beer,
@@ -99978,7 +100068,7 @@ hgJ
 kzQ
 gFw
 hgJ
-hgJ
+qKP
 hgJ
 gFw
 rxm
@@ -100355,7 +100445,7 @@ fVN
 fVN
 fVN
 fVN
-uLN
+eyp
 dQI
 iKA
 bkK
@@ -101204,7 +101294,7 @@ gFw
 gFw
 hgJ
 hgJ
-qKP
+hgJ
 hgJ
 nhM
 nhM
@@ -103012,7 +103102,7 @@ hgJ
 nhM
 nhM
 nhM
-hgJ
+qKP
 hgJ
 hgJ
 hgJ
@@ -113096,7 +113186,7 @@ ycO
 ycO
 ijB
 ucF
-mYC
+vbP
 ddS
 vLX
 mZs
@@ -113298,7 +113388,7 @@ ycO
 kfa
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 qlk
@@ -113500,7 +113590,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 oBc
@@ -113702,8 +113792,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-npG
+vbP
+ddS
 vLX
 saG
 szy
@@ -113721,7 +113811,7 @@ oBc
 vLX
 npG
 cTS
-kqH
+qeo
 fbr
 fbr
 prw
@@ -113904,7 +113994,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 fwm
@@ -114106,8 +114196,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-ddS
+vbP
+npG
 vLX
 uRB
 szy
@@ -114308,8 +114398,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-npG
+vbP
+ddS
 vLX
 qlk
 szy
@@ -114510,7 +114600,7 @@ ijB
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 qlk
@@ -114712,8 +114802,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-ddS
+vbP
+npG
 vLX
 vLX
 vLX
@@ -114914,7 +115004,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 mMS
@@ -115116,8 +115206,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-npG
+vbP
+ddS
 vLX
 pmJ
 mMS
@@ -115318,7 +115408,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 tjV
@@ -115520,8 +115610,8 @@ ycO
 ycO
 nYf
 haD
-mYC
-ddS
+vbP
+npG
 vLX
 hbz
 mMS
@@ -115722,7 +115812,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 tjV
@@ -115924,7 +116014,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 vLX
 pfg
@@ -116126,7 +116216,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 rZk
 vLX
 qGd
@@ -116328,7 +116418,7 @@ ycO
 ijB
 ycO
 haD
-mYC
+vbP
 rZk
 fHZ
 nTZ
@@ -116530,8 +116620,8 @@ ycO
 ycO
 ycO
 haD
-mYC
-rZk
+vbP
+xkz
 agN
 nTZ
 nTZ
@@ -116732,7 +116822,7 @@ ijB
 ycO
 ycO
 haD
-mYC
+vbP
 rZk
 pAt
 nTZ
@@ -116934,7 +117024,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+vbP
 rZk
 vLX
 wMm
@@ -117136,7 +117226,7 @@ ycO
 ycO
 ycO
 haD
-mYC
+uwa
 cTS
 qJy
 eOm
@@ -117338,7 +117428,7 @@ beK
 ycO
 ycO
 haD
-mYC
+vbP
 rLJ
 lRd
 vZW
@@ -117540,7 +117630,7 @@ vIa
 ycO
 ycO
 haD
-mYC
+vbP
 npG
 lRd
 vZW
@@ -117555,7 +117645,7 @@ vZW
 vZW
 vZW
 vZW
-uwa
+vZW
 ceg
 npG
 aUw
@@ -117742,7 +117832,7 @@ ycO
 ycO
 nFS
 haD
-mYC
+vbP
 ddS
 lRd
 vZW
@@ -117944,9 +118034,9 @@ ycO
 ycO
 beK
 haD
-mYC
+vbP
 kgp
-hhE
+npG
 ajG
 qzD
 auZ
@@ -118146,7 +118236,7 @@ ycO
 nYf
 ycO
 haD
-mYC
+vbP
 npG
 npG
 ddS
@@ -118348,7 +118438,7 @@ ycO
 vIa
 ycO
 haD
-mYC
+vbP
 xzq
 npG
 jKf
@@ -118550,8 +118640,8 @@ beK
 beK
 ycO
 ucF
-mYC
-mYC
+pdf
+pdf
 vbP
 vbP
 vbP
@@ -118974,7 +119064,7 @@ beK
 beK
 ocW
 ocW
-ocW
+bgL
 ocW
 ocW
 ulE
@@ -126236,10 +126326,10 @@ beK
 nFS
 xhh
 xKV
-laG
 kXp
 kXp
-wOd
+kXp
+elJ
 xKV
 xKV
 nfU
@@ -129828,7 +129918,7 @@ rps
 reQ
 rps
 rth
-buM
+pZV
 buM
 vwh
 foY
@@ -133089,7 +133179,7 @@ tHV
 cns
 hBs
 ycO
-ycO
+nYf
 ycO
 ijB
 ijB
@@ -148043,7 +148133,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 taL
 taL
@@ -148245,7 +148335,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 taL
 taL
@@ -148447,7 +148537,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 taL
 taL
@@ -148649,7 +148739,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 taL
 lbr
@@ -148851,7 +148941,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 vLX
 vLX
@@ -149053,7 +149143,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 vLX
 pNw
@@ -149255,7 +149345,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 uLE
 hYR
@@ -149457,7 +149547,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 guv
 tIR
@@ -149659,7 +149749,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 uLE
 rHo
@@ -149861,7 +149951,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 vLX
 wbs
@@ -150063,7 +150153,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 egl
 vLX
 vLX
@@ -150265,7 +150355,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+egl
 vLX
 vLX
 vLX
@@ -150284,7 +150374,7 @@ vLX
 vLX
 vLX
 vLX
-egl
+mYC
 sib
 sib
 bmw
@@ -150467,10 +150557,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 ugy
-kdu
+nTZ
+nRe
 mCw
 vLX
 vLX
@@ -150669,10 +150759,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 uvq
 nTZ
+lwi
 ciD
 dTX
 vLX
@@ -150871,10 +150961,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 hZF
 nTZ
+lwi
 ogX
 qAk
 vLX
@@ -151073,10 +151163,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 nrS
 nTZ
+lwi
 ogX
 fnP
 vLX
@@ -151275,10 +151365,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 ugy
 nTZ
+lwi
 ogX
 lwf
 vLX
@@ -151477,10 +151567,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 fjc
 nTZ
+lwi
 lHX
 cLF
 vLX
@@ -151679,10 +151769,10 @@ aZy
 aZy
 aZy
 aZy
-mYC
-vLX
+rZk
 xRn
 nTZ
+lwi
 wQM
 jID
 vLX
@@ -154721,7 +154811,7 @@ aZy
 hiA
 hiA
 hiA
-hiA
+aPc
 aPc
 aPc
 hiA
@@ -154921,12 +155011,12 @@ aZy
 aZy
 aZy
 ffo
-eBv
 dYB
-hiA
-hTp
-hTp
 oUe
+hTp
+dxT
+xve
+hiA
 dYB
 pFc
 aZy
@@ -155123,9 +155213,9 @@ aZy
 aZy
 aZy
 nWu
-geQ
-dYB
+cZz
 jfL
+hTp
 hTp
 hTp
 jfL
@@ -155325,9 +155415,9 @@ aZy
 aZy
 aZy
 nWu
-dxT
-dYB
+cZz
 gYK
+hTp
 fYb
 hTp
 gYK
@@ -155528,9 +155618,9 @@ aZy
 aZy
 ffo
 dYB
-dYB
 cZz
 cav
+eBv
 pRE
 cZz
 dYB
@@ -163866,8 +163956,8 @@ hcX
 hKD
 hcX
 hKD
-aZN
-aZN
+wOd
+wOd
 hcX
 hcX
 hcX
@@ -164266,7 +164356,7 @@ sib
 sib
 sib
 uYJ
-onM
+hhE
 fMr
 fMr
 fMr
@@ -167289,7 +167379,7 @@ hcX
 cFD
 hcX
 xKi
-rDb
+laG
 rDb
 hcX
 hcX
@@ -168113,7 +168203,7 @@ pzU
 wSW
 hKD
 rDb
-rDb
+laG
 rDb
 qqb
 hcX
@@ -168297,7 +168387,7 @@ oCM
 oPy
 oPy
 oPy
-sIp
+qlz
 rDb
 rDb
 rDb
@@ -168708,7 +168798,7 @@ hcX
 hcX
 hcX
 hKD
-qqy
+peo
 wSW
 qqy
 wSW
@@ -190682,7 +190772,7 @@ hiA
 hiA
 hiA
 dYB
-cZz
+aYh
 nMr
 aZy
 aZy
@@ -191892,7 +191982,7 @@ hiA
 hiA
 hiA
 efY
-qpQ
+dYB
 hiA
 hiA
 hiA
@@ -192498,7 +192588,7 @@ hiA
 hiA
 hiA
 dYB
-qpQ
+dYB
 hiA
 hiA
 hiA
@@ -193104,7 +193194,7 @@ hiA
 hiA
 hiA
 dYB
-qpQ
+dYB
 hiA
 hiA
 hiA
@@ -193504,7 +193594,7 @@ aZy
 aZy
 aZy
 nWu
-dYB
+qpQ
 dYB
 yaN
 yaN

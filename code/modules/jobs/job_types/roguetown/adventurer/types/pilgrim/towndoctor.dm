@@ -16,8 +16,6 @@
 	mask = /obj/item/clothing/mask/rogue/feldmask
 	head = /obj/item/clothing/head/roguetown/roguehood/feldhood
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich /// they are a fine dressed doctor. no one else gonna pay em. psycross removed since it was a hold over for secular
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/surgrobe
-	shirt = /obj/item/clothing/suit/roguetown/shirt/vest
 	gloves = /obj/item/clothing/gloves/roguetown/feldgloves
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
@@ -27,7 +25,7 @@
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/alembic = 1,
 		/obj/item/storage/fancy/ifak = 1,
-		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,
+		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, // tempted to make this ambrosia, but docs dont need to be able to do EVERYTHING...
 		/obj/item/clothing/mask/rogue/physician = 1,
 		/obj/item/storage/box/matches = 1, /// for carterizer and ring.
 		/obj/item/flashlight/flare/torch/lantern/ring = 1, //lantern+
@@ -36,11 +34,11 @@
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/surgrobe
 		pants = /obj/item/clothing/under/roguetown/trou
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson // for the unruly zombies. won't protect neck or head, but loadout item a coif for that.
 		head = /obj/item/clothing/head/roguetown/nightman
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shirt = /obj/item/clothing/suit/roguetown/armor/armordress // see above.
 		head = /obj/item/clothing/head/roguetown/armingcap
 
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
@@ -54,12 +52,13 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 5, TRUE) // 5 is minimum for head attaching, i think... should be able to do all medical tasks
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
 		H.change_stat("intelligence", 2) /// bumped these up by one and added some con. I cant rework everyclass but this one made me sad.
 		H.change_stat("fortune", 2)
-		H.change_stat("constitution", 2) ///regular health checks to self. I dunno man give em something. miricles already shits all over surgery healin.
+		H.change_stat("constitution", 2) // regular health checks to self. I dunno man give em something. miricles already shits all over surgery healin.
+		H.change_stat("speed", 2) // to get to the scene of injuries faster
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
