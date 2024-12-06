@@ -115,7 +115,7 @@
 	domain = "Medicine, Progress, Advancement, Healing, Exploration."
 	desc = "Hermeir is known as the Messenger; said to have a staff of entwined serpents in a figure eight, one white, the other black. Which their magick staff they are able to discern all things. To know all truths and observations with time in their immortal knowledgeable gaze. The followers of Hermeir are able to utilize magic as much as the mundane to assist the wounded,or departed. Hermeir believes whatever the means - we must swear an oath to perpetual foward progress and divine good.."
 	worshippers = "The Sick, Phyicians, Apothecaries, Healers, Scientists, Alchemists."
-	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
+	mob_traits = list(TRAIT_SELF_AWARE, TRAIT_ROT_EATER)
 	t1 = /obj/effect/proc_holder/spell/invoked/heal
 	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot

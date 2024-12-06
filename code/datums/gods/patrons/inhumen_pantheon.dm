@@ -30,7 +30,7 @@
 	domain = "God of Twilight and Change. Magic. Transformation. Dusk/Dawn. Crisis/Resolution."
 	desc = "Jayx is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
 	worshippers = "Mages, Alchemists, Soul-Searchers, Fateweavers, Supernatural Creatures, Soothsayers."
-	mob_traits = list(TRAIT_ANTISCRYING)
+	mob_traits = list(TRAIT_USEMAGIC)
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
 	confess_lines = list(
 		"THE PHOENIX BURNS BRIGHT AND PURE!",
