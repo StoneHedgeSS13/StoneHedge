@@ -466,26 +466,23 @@
 	visible_message(stupid_msg)
 	to_chat(src, span_notice("I [cuff_break ? "break" : "slip"] out of [I]!"))
 
-	if(cuff_break)
-		. = !((I == handcuffed) || (I == legcuffed))
-		qdel(I)
-		return TRUE
+	if(I == handcuffed)
+		handcuffed.forceMove(drop_location())
+		handcuffed.dropped(src)
+		handcuffed = null
+		if(buckled && buckled.buckle_requires_restraints)
+			buckled.unbuckle_mob(src)
+		update_handcuffed()
+	else if(I == legcuffed)
+		legcuffed.forceMove(drop_location())
+		legcuffed.dropped()
+		legcuffed = null
+		update_inv_legcuffed()
 
-	else
-		if(I == handcuffed)
-			handcuffed.forceMove(drop_location())
-			handcuffed.dropped(src)
-			handcuffed = null
-			if(buckled && buckled.buckle_requires_restraints)
-				buckled.unbuckle_mob(src)
-			update_handcuffed()
-			return TRUE
-		if(I == legcuffed)
-			legcuffed.forceMove(drop_location())
-			legcuffed.dropped()
-			legcuffed = null
-			update_inv_legcuffed()
-			return TRUE
+	if(cuff_break)
+		qdel(I)
+
+	return TRUE
 
 /mob/living/carbon/get_standard_pixel_y_offset(lying = 0)
 	. = ..()
