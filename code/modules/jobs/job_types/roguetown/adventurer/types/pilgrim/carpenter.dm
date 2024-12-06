@@ -19,7 +19,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE) // They work at great heights.
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 5, TRUE) // They work at great heights. Even Rogues would be impressed.
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)

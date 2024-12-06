@@ -1,6 +1,6 @@
 /datum/advclass/apothecarian
 	name = "Apothecary"
-	tutorial = "Not everyone who brews are witches and mages, although make a bad pill and you'll get accused of the former! You're not only an alchemist, but a passable healer as well... in theory. You don't have the education of a proper doctor, but anything you can't figure out can be solved by a tincture of an eye of an eel and a liver of a goat. Probably."
+	tutorial = "Not everyone who brews are witches and mages, although make a bad pill and you'll get accused of the former! You're not only an alchemist, but a passable healer as well... in theory. You don't have the education of a proper doctor, but anything you can't stitch up can be solved by a tincture of an eye of an eel and a liver of a goat. Probably."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/apothecarian
@@ -64,7 +64,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE) // Can patch you up, but not a "real" doctor.
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
@@ -72,6 +72,6 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
 		else
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 6, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("constitution", 1)

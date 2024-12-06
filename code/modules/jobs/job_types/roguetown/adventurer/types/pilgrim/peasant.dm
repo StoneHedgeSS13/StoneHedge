@@ -23,9 +23,8 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	head = /obj/item/clothing/head/roguetown/armingcap
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	backr = /obj/item/storage/backpack/rogue/satchel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	mouth = /obj/item/rogueweapon/huntingknife
@@ -35,14 +34,9 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
 	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
-	if(prob(23))
-		beltl = /obj/item/rogueweapon/sickle
-	else if(prob(23))
-		backr = /obj/item/rogueweapon/thresher
-	else if(prob(23))
-		backr = /obj/item/rogueweapon/hoe
-	else
-		backr = /obj/item/rogueweapon/pitchfork
+	beltl = /obj/item/rogueweapon/sickle
+	backr = /obj/item/rogueweapon/thresher
+	r_hand = /obj/item/rogueweapon/hoe
 	H.change_stat("strength", 1)
 	H.change_stat("endurance", 1)
 	H.change_stat("intelligence", -2)
