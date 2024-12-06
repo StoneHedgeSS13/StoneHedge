@@ -33,19 +33,19 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE) // okish fists now(used to be four when the last note was written lmao)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 5, TRUE) //hammer time
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE) // okish fists now(used to be four when the last note was written lmao)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 3, TRUE)//Foxen was here. UwU
-		H.change_stat("strength", 2) //takes a point from end and con to give to str and int(smiths are meant to be smart and strong not tough as nails ??? and as fit as an olympic athelete ????)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 4, TRUE)//Foxen was here. UwU
+		H.change_stat("strength", 3)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", 1)
-		H.change_stat("constitution", 1)
+		H.change_stat("constitution", 2)
 		H.change_stat("speed", -1)
 		H.change_stat("fortune", 1)

@@ -9,8 +9,6 @@
 		/datum/species/elf/wood,
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
-	maximum_possible_slots = 5
-	pickprob = 100
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT, TRAIT_BOG_TREKKING, TRAIT_PERFECT_TRACKER)
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -46,7 +44,8 @@
 	beltr = /obj/item/rogueweapon/sword/silver/sabre/elf
 	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 	beltl = /obj/item/quiver/arrows
-	H.change_stat("perception", 5)
+	H.change_stat("perception", 5) //thats fucking insane
 	H.change_stat("endurance", 2)
+	H.change_stat("strength", -1)
 	H.change_stat("speed", 1)
 	H.ambushable = FALSE

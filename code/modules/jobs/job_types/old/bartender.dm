@@ -1,4 +1,4 @@
-/datum/job/bartender
+B/datum/job/bartender
 	title = "Bartender"
 	flag = BARTENDER
 	department_head = list("Head of Personnel")

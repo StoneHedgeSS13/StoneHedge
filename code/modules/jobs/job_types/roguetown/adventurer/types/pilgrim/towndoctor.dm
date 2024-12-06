@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
-	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)
+	traits_applied = list(TRAIT_EMPATH, TRAIT_SELF_AWARE, TRAIT_NOSTINK)
 	cmode_music = 'sound/music/combat_physician.ogg'
 
 /datum/outfit/job/roguetown/adventurer/doctor
@@ -43,20 +43,20 @@
 
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, "[type]")
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 5, TRUE) // 5 is minimum for head attaching, i think... should be able to do all medical tasks
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 5, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
 		H.change_stat("intelligence", 2) /// bumped these up by one and added some con. I cant rework everyclass but this one made me sad.
-		H.change_stat("fortune", 2)
+		H.change_stat("fortune", 1)
 		H.change_stat("constitution", 2) // regular health checks to self. I dunno man give em something. miricles already shits all over surgery healin.
 		H.change_stat("speed", 2) // to get to the scene of injuries faster
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)

@@ -27,22 +27,22 @@
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2,)
-	
+
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODRUNNER, TRAIT_GENERIC)
 
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE) 
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 4, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE) 
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
-	H.change_stat("strength", -2)
-	H.change_stat("perception", 1)
+	H.change_stat("perception", 2)
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", 3)
+	H.grant_language(/datum/language/thievescant)

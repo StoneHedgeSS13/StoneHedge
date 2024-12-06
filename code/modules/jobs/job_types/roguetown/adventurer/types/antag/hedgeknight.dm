@@ -4,11 +4,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/bandit/hedgeknight
-	category_tags = list(CTAG_BANDIT)
+	category_tags = list(CTAG_DISABLED) //No confusion with real hedgeknights, maybe someone can rework this later.
 	cmode_music = 'sound/music/combat_bandit2.ogg'
 	maximum_possible_slots = 1
 	min_pq = 30
-	pickprob = 25
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
