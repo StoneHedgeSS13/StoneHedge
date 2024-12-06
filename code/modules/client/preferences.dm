@@ -781,7 +781,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Watchmen Captain", "Archpriest", "Merchant Prince", "Archivist", "Nightmaster", "Towner", "Grenzelhoft Mercenary", "Low Life", "Prisoner", "Chieftain"), widthPerColumn = 295, height = 620) //295 620
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Watchmen Captain", "Archpriest", "Merchant Prince", "Academy Archmage", "Blacksmith", "Nightmaster", "Towner", "Grenzelhoft Mercenary", "Low Life", "Prisoner", "Chieftain"), widthPerColumn = 295, height = 620) //295 620
 	if(!SSjob)
 		return
 

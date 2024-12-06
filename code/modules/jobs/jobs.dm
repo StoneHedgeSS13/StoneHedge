@@ -72,7 +72,6 @@ GLOBAL_LIST_INIT(noble_positions, list(
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Magician",
 	"Physician",
 	"Harlequin",
 	"Head Butler",
@@ -107,7 +106,6 @@ GLOBAL_LIST_INIT(academy_positions, list(
 GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant Prince",
 	"Innkeep",
-	"Archivist",
 	"Armorer",
 	"Weaponsmith",
 	"Blacksmith",
@@ -152,7 +150,6 @@ GLOBAL_LIST_INIT(apprentices_positions, list(
 	"Squire",
 	"Clerk",
 	"Smithy Apprentice",
-	"Magicians Apprentice",
 	"Churchling",
 	"Servant",
 	"Shophand",
@@ -214,6 +211,7 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.courtier_positions
 	sorting_order += GLOB.garrison_positions
 	sorting_order += GLOB.church_positions
+	sorting_order += GLOB.academy_positions
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.apprentices_positions

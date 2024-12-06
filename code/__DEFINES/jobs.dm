@@ -134,25 +134,23 @@
 #define COURTIERS	(1<<4)
 
 #define JESTER		(1<<0)
-#define WIZARD		(1<<1)
-#define PHYSICIAN 	(1<<2)
-#define BUTLER		(1<<3)
-#define COUNCILLOR	(1<<4)
+#define PHYSICIAN 	(1<<1)
+#define BUTLER		(1<<2)
+#define COUNCILLOR	(1<<3)
 
 #define YEOMEN		(1<<5)
 
 #define BARKEEP		(1<<0)
-#define ARCHIVIST	(1<<1)
-#define ARMORSMITH	(1<<2)
-#define WEAPONSMITH (1<<3)
-#define BLACKSMITH  (1<<4)
-#define ALCHEMIST	(1<<5)
-#define MASON		(1<<6)
-#define TAILOR		(1<<7)
-#define MERCHANT	(1<<8)
-#define SCRIBE		(1<<9)
-#define ELDER		(1<<10)
-#define APOTHECARY	(1<<11)
+#define ARMORSMITH	(1<<1)
+#define WEAPONSMITH (1<<2)
+#define BLACKSMITH  (1<<3)
+#define ALCHEMIST	(1<<4)
+#define MASON		(1<<5)
+#define TAILOR		(1<<6)
+#define MERCHANT	(1<<7)
+#define SCRIBE		(1<<8)
+#define ELDER		(1<<9)
+#define APOTHECARY	(1<<10)
 
 #define PEASANTS	(1<<6)
 
@@ -189,7 +187,6 @@
 #define PRINCE		(1<<4)
 #define SHOPHAND	(1<<5)
 #define CLERK 		(1<<6)
-#define MAGEAPPRENTICE	(1<<7)
 
 #define MERCENARIES		(1<<0)
 #define VETERAN		(1<<1)
@@ -243,8 +240,6 @@
 #define JDO_NOBLE 5
 
 // Courtiers
-#define JDO_MAGICIAN 5
-#define JDO_MAGEAPPRENTICE 5.1
 #define JDO_PHYSICIAN 6
 #define JDO_JESTER 7
 #define JDO_BUTLER 7.1
@@ -270,17 +265,15 @@
 #define JDO_GRAVEMAN 15
 #define JDO_SHEPHERD 16
 
-#define JDO_ACADARCHMAGE 17
-#define JDO_ACADMAGE 17.1
-#define JDO_ACADAPP 17.2
+#define JDO_MERCHANT 17
+#define JDO_SHOPHAND 17.1
+#define JDO_GRABBER 17.2
 
-#define JDO_MERCHANT 18
-#define JDO_SHOPHAND 18.1
-#define JDO_GRABBER 18.2
+#define JDO_ACADARCHMAGE 18
+#define JDO_ACADMAGE 18.1
+#define JDO_ACADAPP 18.2
 
-#define JDO_ARCHIVIST 18.3
-
-#define JDO_CHIEF 18.1
+#define JDO_CHIEF 19
 #define JDO_ARMORER 19.1
 #define JDO_WEAPONSMITH 19.2
 #define JDO_BLACKSMITH 20
@@ -336,11 +329,9 @@
 	/datum/job/roguetown/jester,\
 	/datum/job/roguetown/veteran,\
 	/datum/job/roguetown/clerk,\
-	/datum/job/roguetown/wapprentice,\
 	/datum/job/roguetown/servant,\
 	/datum/job/roguetown/squire,\
-	/datum/job/roguetown/butler,\
-	/datum/job/roguetown/magician
+	/datum/job/roguetown/butler
 
 #define NOBLE_ROLES \
 	/datum/job/roguetown/prince,\
@@ -392,7 +383,6 @@
 
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/woodsman,\
-	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/armorsmith,\
 	/datum/job/roguetown/mason,\

@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(library)
 		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			switch(X.job)
-				if("Magician", "Magicians Apprentice")
+				if("Academy Archmage", "Academy Mage", "Academy Apprentice")
 					people_told += 1
 					send_ooc_note("Arcyne ink from library: +[amt_to_generate]", name = X.real_name)
 					if(people_told > 3)

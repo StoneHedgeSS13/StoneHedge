@@ -10,9 +10,15 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Your Teacher still see's much potential in you, something you are uncertain they always do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
-
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/projectile/spitfire, /obj/effect/proc_holder/spell/targeted/forcewall, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf)
+	tutorial = "You are one of the Apprentices of Dreamkeep's Magick Academy; Ravenloft. Your priority is to learn the magical arts and listen to the Mages and Archmages of the Academy. \
+		Your first responsibility is to the Academy. Do not ruin your reputation by misusing your gifts or shirking your responsibilities."
+	spells = list(
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,
+		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
+		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
+		/obj/effect/proc_holder/spell/targeted/forcewall,
+		/obj/effect/proc_holder/spell/invoked/message)
 	outfit = /datum/outfit/job/roguetown/acadapp
 
 	display_order = JDO_ACADAPP
@@ -23,40 +29,27 @@
 
 /datum/outfit/job/roguetown/acadapp/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/keyring/mage
+	shoes = /obj/item/clothing/shoes/roguetown/boots
 	r_hand = /obj/item/rogueweapon/woodstaff
+	backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_spellpoints(3)
-	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
-		backr = /obj/item/storage/backpack/rogue/satchel
-	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
-		shoes = /obj/item/clothing/shoes/roguetown/sandals
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
-		backr = /obj/item/storage/backpack/rogue/satchel
-	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
+	H.change_stat("strength", -1)
+	H.change_stat("constitution", -1)
 	H.change_stat("intelligence", 2)
-	H.change_stat("speed", -1)
+	H.change_stat("perception", 1)
 	if(isseelie(H))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
