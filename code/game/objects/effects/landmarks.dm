@@ -182,10 +182,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Clerk"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/magician
-	name = "Magician"
-	icon_state = "arrow"
-
 /obj/effect/landmark/start/physician
 	name = "Physician"
 	icon_state = "arrow"
@@ -290,13 +286,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Grabber"
 	icon_state = "arrow"
 
-
 /obj/effect/landmark/start/innkeep
 	name = "Innkeep"
-	icon_state = "arrow"
-
-/obj/effect/landmark/start/archivist
-	name = "Archivist"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/weaponsmith
@@ -426,10 +417,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Squire"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/wapprentice
-	name = "Magicians Apprentice"
-	icon_state = "arrow"
-
 /obj/effect/landmark/start/servant
 	name = "Servant"
 	icon_state = "arrow"
@@ -545,6 +532,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	jobspawn_override = list("Underdark Smithy")
 	delete_after_roundstart = FALSE
+
+//academy
+/obj/effect/landmark/start/acadarchmage
+	name = "Academy Archmage"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/acadmage
+	name = "Academy Mage"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/acadapp
+	name = "Academy Apprentice"
+	icon_state = "arrow"
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.

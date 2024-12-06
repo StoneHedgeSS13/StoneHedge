@@ -164,11 +164,11 @@
 		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
 			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
 			target.cursed_freak_out()
-			return FALSE
+			return TRUE
 		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
 			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
 			target.cursed_freak_out()
-			return FALSE
+			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -253,7 +253,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -268,7 +268,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]

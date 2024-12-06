@@ -577,15 +577,16 @@
 	for(var/line in lines)
 		. += span_info(line)
 
-	if(!obscure_name && headshot_link)
+	var/see_masked = client?.prefs.masked_examine
+	if(headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View face closely</a>"
 	if(nudeshot_link && !wear_shirt && !wear_armor)
 		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
-	if(!obscure_name && flavor_text && !headshot_link)
+	if(flavor_text && !headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_flavor;'>View Description</a>"
-	if(!obscure_name && ooc_notes && !headshot_link)
+	if(ooc_notes && !headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_ooc_notes;'>View OOC Notes</a>"
-	if(!obscure_name && nsfw_info && !headshot_link)
+	if(nsfw_info && !headshot_link && (!obscure_name  || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_nsfw_notes;'>View NSFW Notes</a>"
 
 	var/perpname = get_face_name(get_id_name(""))
