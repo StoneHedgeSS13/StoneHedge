@@ -459,6 +459,7 @@
                 H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 4, TRUE)
                 H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
                 H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+                H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
                 H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
                 H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
                 H.change_stat("strength", 3)
