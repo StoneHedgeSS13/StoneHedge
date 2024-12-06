@@ -140,13 +140,14 @@
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Duelist")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE)
@@ -162,7 +163,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 			cloak = /obj/item/clothing/cloak/half
 			backl = /obj/item/storage/backpack/rogue/satchel
-			// beltl = /obj/item/rogueweapon/sword/rapier
+			beltl = /obj/item/rogueweapon/sword/rapier
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
