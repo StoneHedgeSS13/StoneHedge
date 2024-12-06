@@ -118,6 +118,7 @@
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 
 	var/colleges = list(
@@ -166,7 +167,8 @@
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)	//You have speed, use it. What musucian plays with cumbersome armor anyway?
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
+	if(!HAS_TRAIT(H, TRAIT_LEARNMAGIC))
+		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	if(isseelie(H))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
