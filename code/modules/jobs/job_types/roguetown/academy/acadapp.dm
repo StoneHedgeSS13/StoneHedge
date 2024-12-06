@@ -35,14 +35,15 @@
 	beltr = /obj/item/storage/keyring/mage
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	r_hand = /obj/item/rogueweapon/woodstaff
+	id = /obj/item/clothing/ring/keystone
 	backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_spellpoints(3)

@@ -7,8 +7,9 @@
 	department_flag = ACADEMY
 	selection_color = JCOLOR_ACADEMY
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 5
+	spawn_positions = 5
+
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_ages = ALL_AGES_LIST
 

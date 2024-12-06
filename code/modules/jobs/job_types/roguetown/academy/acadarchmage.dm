@@ -4,8 +4,8 @@
 	department_flag = ACADEMY
 	selection_color = JCOLOR_ACADEMY
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
