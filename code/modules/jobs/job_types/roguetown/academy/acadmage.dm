@@ -34,3 +34,4 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/clothing/ring/keystone
 	l_hand = /obj/item/class_selector/acadmage
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)

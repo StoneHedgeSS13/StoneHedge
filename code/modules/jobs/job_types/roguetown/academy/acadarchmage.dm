@@ -44,6 +44,7 @@
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 	ADD_TRAIT(H, TRAIT_ANTISCRYING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 //		H.faction += "summoner" //can use this to enable summons to attack players. Probably better to keep the mobs for pve purposes for now.
 	if(H.age == AGE_OLD)
 		if(H.mind)
