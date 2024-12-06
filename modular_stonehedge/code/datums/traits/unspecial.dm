@@ -196,7 +196,7 @@
 
 /datum/quirk/mtraining1/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE) // formerly 3, good enough for "real" surgery. now you need to grind a bit to get to that point. the tools are the main thing anyway.
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.mind.special_items["Patch Kit"] = /obj/item/storage/fancy/ifak
 	H.mind.special_items["Surgery Kit"] = /obj/item/storage/fancy/skit
