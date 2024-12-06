@@ -41,7 +41,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	id = /obj/item/clothing/ring/keystone
-	ADD_TRAIT(H, TRAIT_MAGICLEARN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)

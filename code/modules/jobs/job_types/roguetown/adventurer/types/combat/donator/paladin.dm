@@ -153,4 +153,5 @@
 	if(H.mind && H.patron?.type == /datum/patron/inhumen/graggar)
 		H.mind.adjust_spellpoints(1)
 		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC) //can get magic from spellpoints but no more
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)

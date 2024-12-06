@@ -18,10 +18,13 @@
 //guildmaster
 /obj/item/class_selector/veteran/attack_self(mob/living/carbon/human/H)
 	. = ..()
+	//basicest classes basically
 	classes = list(
 	"Warrior",
 	"Rogue",
-	"Cleric"
+	"Cleric",
+	"Mage",
+	"Ranger"
 	)
 	//todo add more classes.
 	var/classchoice = input("Choose your past", "Available archetypes") as anything in classes
@@ -114,6 +117,7 @@
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 4)
@@ -121,9 +125,8 @@
 			dressup(H, inventory_items)
 		if("Cleric")
 			inventory_items = list(
+				/obj/item/clothing/neck/roguetown/bervor,
 				/obj/item/clothing/suit/roguetown/armor/plate/scale,
-				/obj/item/clothing/suit/roguetown/armor/chainmail,
-				/obj/item/clothing/under/roguetown/chainlegs,
 				/obj/item/clothing/gloves/roguetown/chain,
 				/obj/item/clothing/shoes/roguetown/boots/armor,
 				/obj/item/storage/belt/rogue/leather/black,
@@ -134,6 +137,12 @@
 				/obj/item/rogueweapon/huntingknife/idagger/steel/parrying,
 				/obj/item/storage/keyring/veteran,
 			)
+			if(H.gender == FEMALE) //funny
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs/fishnet
+			else
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			switch(H.patron?.type)
 				if(/datum/patron/divine/astrata)
@@ -176,11 +185,118 @@
 			H.change_stat("endurance", 2) // Stronger but less intelligent/quick compared to life clerics.
 			H.change_stat("intelligence", 2)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/targeted/churn)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bladeward5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e)
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+			dressup(H, inventory_items)
+		if("Mage")
+			inventory_items = list(
+				/obj/item/clothing/neck/roguetown/bervor,
+				/obj/item/clothing/head/roguetown/roguehood/mage,
+				/obj/item/clothing/suit/roguetown/shirt/robe/mageblue,
+				/obj/item/clothing/gloves/roguetown/chain,
+				/obj/item/clothing/shoes/roguetown/boots/armor,
+				/obj/item/storage/belt/rogue/leather/black,
+				/obj/item/rogueweapon/woodstaff,
+				/obj/item/storage/belt/rogue/pouch/coins/rich,
+				/obj/item/storage/backpack/rogue/satchel,
+				/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+				/obj/item/rogueweapon/huntingknife/idagger/steel/parrying,
+				/obj/item/storage/keyring/veteran,
+			)
+			if(H.gender == FEMALE) //funny
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs/fishnet
+			else
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs
+			H.mind.adjust_spellpoints(5)
+			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+			H.set_blindness(0)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 5, TRUE)
+			H.change_stat("intelligence", 3)
+			H.change_stat("constitution", 2)
+			H.change_stat("endurance", 2)
+			//cant really give him much legendaries in this point cause mf is a magician, cant teach arcane. So he will get artificer instead
+			ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e)
+			dressup(H, inventory_items)
+		if("Ranger")
+			inventory_items = list(
+				/obj/item/clothing/neck/roguetown/bervor,
+				/obj/item/quiver/arrows,
+				/obj/item/clothing/under/roguetown/trou/leather/advanced,
+				/obj/item/reagent_containers/glass/bottle/waterskin,
+				/obj/item/clothing/wrists/roguetown/bracers/leather,
+				/obj/item/clothing/gloves/roguetown/chain,
+				/obj/item/clothing/shoes/roguetown/boots/armor,
+				/obj/item/storage/belt/rogue/leather/black,
+				/obj/item/storage/belt/rogue/pouch/coins/rich,
+				/obj/item/storage/backpack/rogue/satchel,
+				/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow,
+				/obj/item/rogueweapon/huntingknife/idagger/steel/parrying,
+				/obj/item/flashlight/flare/torch/lantern,
+				/obj/item/reagent_containers/glass/bottle/rogue/trekkersdelight,
+				/obj/item/storage/keyring/veteran,
+			)
+			if(H.gender == FEMALE) //funny
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs/fishnet
+			else
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/leather/studded
+				inventory_items += /obj/item/clothing/suit/roguetown/armor/chainmail
+				inventory_items += /obj/item/clothing/under/roguetown/chainlegs
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 6, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 6, TRUE) //cant teach bows either, grim.
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 5, TRUE)
+			H.change_stat("perception", 4)
+			H.change_stat("endurance", 2)
+			H.change_stat("speed", 2)
+			ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)
+			if(!HAS_TRAIT(H, TRAIT_NIGHT_VISION))
+				ADD_TRAIT(H, TRAIT_NIGHT_VISION, "[type]")
+				H.update_sight()
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+			if(!H.has_language(/datum/language/elvish))
+				H.grant_language(/datum/language/elvish)
+				to_chat(H, span_info("I can speak Elvish with ,e before my speech."))
 			dressup(H, inventory_items)
 
 /obj/item/class_selector/proc/dressup(mob/living/carbon/human/H, list/inventory_items)

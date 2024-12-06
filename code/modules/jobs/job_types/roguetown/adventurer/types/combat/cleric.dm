@@ -209,4 +209,6 @@
 	else
 		C.grant_spells_cleric(H)
 	// HEARTHSTONE ADDITION END
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray, /mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	if(H.mind?.get_skill_level(/datum/skill/magic/arcane))
+		H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)

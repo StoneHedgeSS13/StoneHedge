@@ -111,7 +111,6 @@
 /obj/item/book/granter/trait/on_reading_finished(mob/living/user)
 	if((user.attunement_points_max - user.attunement_points_used) + attunement_cost < 0)
 		. = ..()
-		var/mob/living/L = user
 		to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
 		if(!HAS_TRAIT(user, granted_trait))
 			ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
@@ -271,24 +270,32 @@
 	var/spell_slot_cost = 1
 	//Can this be one-casted by non learnables?
 	var/castable = TRUE
+	var/usable_times = 3
 	required_trait = TRAIT_USEMAGIC
 	required_learn_trait = TRAIT_LEARNMAGIC
+	//should help us not remove spells from people that have em memorized.
+	var/user_has_spell_already = FALSE
 
 /obj/item/book/granter/spell/equipped(mob/user, slot, initial)
 	. = ..()
 	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
+			for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+				if(knownspell.type == spell)
+					user_has_spell_already = TRUE
+					return
 			if(H.mind)
 				H.mind.AddSpell(new spell)
 
 /obj/item/book/granter/spell/dropped(mob/user, silent)
 	. = ..()
-	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
+	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)) && !user_has_spell_already)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.mind)
 				H.mind.RemoveSpell(spell)
+	user_has_spell_already = FALSE //reset
 
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)

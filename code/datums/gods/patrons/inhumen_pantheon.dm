@@ -31,7 +31,11 @@
 	desc = "Jayx is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
 	worshippers = "Mages, Alchemists, Soul-Searchers, Fateweavers, Supernatural Creatures, Soothsayers."
 	mob_traits = list(TRAIT_USEMAGIC)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen //inhumen for now until foxyn moves this shit to divine
+	t1 = /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
+	t2 = /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
+	t3 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t4 = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	confess_lines = list(
 		"THE PHOENIX BURNS BRIGHT AND PURE!",
 		"IN HIS FLAMES I AM REBORN!",
