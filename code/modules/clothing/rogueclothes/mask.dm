@@ -120,7 +120,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/leper
 	name = "steel leper mask"
-	desc = "A gem-dust enchanted steel mask, Those are used to suppress the spasms of leprosy... But can hardly see in it.."
+	desc = "A gem-dust enchanted steel mask, Those are used to suppress the spasms of leprosy... But it'd make me pretty much blind when worn..."
 	icon = 'modular_stonehedge/icons/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/masks.dmi'
 	icon_state = "steelmaskleper"
@@ -145,7 +145,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/leper/gold
 	name = "gold leper mask"
-	desc = "A gem-dust enchanted gold mask, Those are used to suppress the spasms of leprosy... But can hardly see in it.."
+	desc = "A gem-dust enchanted gold mask, Those are used to suppress the spasms of leprosy... But it'd make me pretty much blind when worn..."
 	icon_state = "goldmaskleper"
 	max_integrity = 100
 	smeltresult = /obj/item/ingot/gold
