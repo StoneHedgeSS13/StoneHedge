@@ -71,8 +71,8 @@
 
 	if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
 		user.sexcon.try_pelvis_crush(target)
-		
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+
+	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))

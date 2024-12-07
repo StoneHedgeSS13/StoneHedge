@@ -20,7 +20,7 @@
 	do_thrust_animate(user, target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rides [target]."))
 
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, ignore_walls = FALSE)
 
 	target.heal_overall_damage(3,3,0, updating_health = TRUE)
 	if(target.sexcon.considered_limp())
