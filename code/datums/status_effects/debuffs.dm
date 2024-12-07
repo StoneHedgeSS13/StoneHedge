@@ -120,7 +120,7 @@
 		if(locate(/obj/structure/bed/rogue/sleepingbag) in owner.loc)
 			sleptonground = TRUE
 		for(var/obj/item/bedsheet/bedsheet in range(owner.loc,0))
-			if(bedsheet.loc != owner.loc) //bedsheets in my backpack/neck don't give i comfort
+			if(bedsheet.loc != owner.loc) //bedsheets in my backpack/neck don't give you comfort
 				continue
 			healing -= 0.1
 			break //Only count the first bedsheet
@@ -279,7 +279,7 @@
 
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"
-	duration = 300 //if i leave for 30 seconds i lose the mark, deal with it
+	duration = 300 //if you leave for 30 seconds you lose the mark, deal with it
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = null
 	var/mutable_appearance/marked_underlay
@@ -584,7 +584,7 @@
 	duration = 600
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = /atom/movable/screen/alert/status_effect/dna_melt
-	var/kill_either_way = FALSE //no amount of removing mutations is gonna save i now
+	var/kill_either_way = FALSE //no amount of removing mutations is gonna save you now
 
 /datum/status_effect/dna_melt/on_creation(mob/living/new_owner, set_duration, updating_canmove)
 	. = ..()
@@ -592,7 +592,7 @@
 
 /datum/status_effect/dna_melt/on_remove()
 	if(!ishuman(owner))
-		owner.gib() //fuck i in particular
+		owner.gib() //fuck you in particular
 		return
 	var/mob/living/carbon/human/H = owner
 	H.something_horrible(kill_either_way)
