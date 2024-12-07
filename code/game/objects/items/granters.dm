@@ -294,7 +294,7 @@
 
 /obj/item/book/granter/spell/dropped(mob/user, silent)
 	. = ..()
-	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC)) && !user_has_spell_already)
+	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC) && !user_has_spell_already)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.mind)
