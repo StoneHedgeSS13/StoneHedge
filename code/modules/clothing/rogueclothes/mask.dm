@@ -133,7 +133,7 @@
 	if(user.wear_mask)
 		user.apply_status_effect(/datum/status_effect/debuff/lepermask)
 
-/obj/item/clothing/mask/rogue/facemask/leper/attackby(obj/item/I, mob/user, params) //for removing into hand check
+/obj/item/clothing/mask/rogue/facemask/leper/attackby(obj/item/I, mob/living/carbon/human/user, params) //for removing into hand check
 	. = ..()
 	if(!user.wear_mask)
 		user.remove_status_effect(/datum/status_effect/debuff/lepermask)
