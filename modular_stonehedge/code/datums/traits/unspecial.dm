@@ -183,7 +183,7 @@
 	desc = "I have journeyman unarmed training and my punches are hard as iron."
 	value = 4
 
-/datum/quirk/training9/on_spawn()
+/datum/quirk/pugilist/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
