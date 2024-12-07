@@ -25,8 +25,8 @@
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH)
-				if(!pantsies.genitalaccess)
+			if(pantsies.flags_inv & HIDECROTCH) 
+				if(!pantsies.genitalaccess) 
 					return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_EARS))
 		if(issimple(target) && target.sexcon)
@@ -45,7 +45,7 @@
 
 /datum/sex_action/ear_sex/on_perform(mob/living/user, mob/living/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s ear."))
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, ignore_walls = FALSE)
+	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())

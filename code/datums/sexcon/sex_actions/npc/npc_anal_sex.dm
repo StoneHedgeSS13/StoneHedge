@@ -18,8 +18,8 @@
 
 /datum/sex_action/npc_anal_sex/on_perform(mob/living/user, mob/living/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s cunt."))
-
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, ignore_walls = FALSE)
+		
+	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 	if(user.sexcon.check_active_ejaculation())
 		user.visible_message(span_lovebold("[user] cums into [target]'s cunt!"))
