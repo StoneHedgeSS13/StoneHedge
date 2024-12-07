@@ -66,6 +66,7 @@
 		return
 	if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 		return
+	var/mob/living/carbon/human/H = usr
 	if(href_list["buy"])
 		var/mob/M = usr
 		var/path = text2path(href_list["buy"])
@@ -74,6 +75,22 @@
 			return
 		var/datum/supply_pack/PA = new path
 		var/cost = PA.cost
+
+		// Check if user has access to this category based on job and upgrades
+		var/can_buy = FALSE
+		switch(H.job)
+			if("Academy Apprentice")
+				if(PA.group in list("Cantrips", "Level 1 Spells"))
+					can_buy = TRUE
+			if("Academy Mage")
+				if(PA.group in list("Cantrips", "Level 1 Spells", "Level 2 Spells"))
+					can_buy = TRUE
+			if("Academy Archmage")
+				can_buy = TRUE
+
+		if(!can_buy)
+			say("Your rank does not permit access to this spell category.")
+			return
 
 		if(SSlibrary.library_value >= cost)
 			SSlibrary.remove_ink_library(cost, "printing scroll")
@@ -94,14 +111,29 @@
 		current_cat = href_list["changecat"]
 	if(href_list["secrets"])
 		var/list/options = list()
-		if(!(upgrade_flags & UPGRADE_CANTRIPS))
-			options += "Learn Cantrips (100)"
-		if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
-			options += "Learn Level 1 Spells (200)"
-		if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
-			options += "Learn Level 2 Spells (400)"
-		if(!(upgrade_flags & UPGRADE_LEVEL_THREE))
-			options += "Learn Level 3 Spells (800)"
+		switch(H.job)
+			if("Academy Apprentice")
+				if(!(upgrade_flags & UPGRADE_CANTRIPS))
+					options += "Learn Cantrips (100)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
+					options += "Learn Level 1 Spells (400)"
+			if("Academy Mage")
+				if(!(upgrade_flags & UPGRADE_CANTRIPS))
+					options += "Learn Cantrips (100)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
+					options += "Learn Level 1 Spells (400)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
+					options += "Learn Level 2 Spells (800)"
+			if("Academy Archmage")
+				if(!(upgrade_flags & UPGRADE_CANTRIPS))
+					options += "Learn Cantrips (100)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
+					options += "Learn Level 1 Spells (400)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
+					options += "Learn Level 2 Spells (800)"
+				if(!(upgrade_flags & UPGRADE_LEVEL_THREE))
+					options += "Learn Level 3 Spells (1600)"
+
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -120,36 +152,36 @@
 				upgrade_flags |= UPGRADE_CANTRIPS
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
-			if("Learn Level 1 Spells (200)")
+			if("Learn Level 1 Spells (400)")
 				if(upgrade_flags & UPGRADE_LEVEL_ONE)
-					return
-				if(SSlibrary.library_value < 200)
-					say(wizard_vend_negative())
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-					return
-				SSlibrary.remove_ink_library(200, "Learn Level 1 Spells")
-				upgrade_flags |= UPGRADE_LEVEL_ONE
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-
-			if("Learn Level 2 Spells (400)")
-				if(upgrade_flags & UPGRADE_LEVEL_TWO)
 					return
 				if(SSlibrary.library_value < 400)
 					say(wizard_vend_negative())
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				SSlibrary.remove_ink_library(400, "Learn Level 2 Spells")
-				upgrade_flags |= UPGRADE_LEVEL_TWO
+				SSlibrary.remove_ink_library(400, "Learn Level 1 Spells")
+				upgrade_flags |= UPGRADE_LEVEL_ONE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
-			if("Learn Level 3 Spells (800)")
-				if(upgrade_flags & UPGRADE_LEVEL_THREE)
+			if("Learn Level 2 Spells (800)")
+				if(upgrade_flags & UPGRADE_LEVEL_TWO)
 					return
 				if(SSlibrary.library_value < 800)
 					say(wizard_vend_negative())
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				SSlibrary.remove_ink_library(800, "Learn Level 3 Spells")
+				SSlibrary.remove_ink_library(800, "Learn Level 2 Spells")
+				upgrade_flags |= UPGRADE_LEVEL_TWO
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+
+			if("Learn Level 3 Spells (1600)")
+				if(upgrade_flags & UPGRADE_LEVEL_THREE)
+					return
+				if(SSlibrary.library_value < 1600)
+					say(wizard_vend_negative())
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				SSlibrary.remove_ink_library(1600, "Learn Level 3 Spells")
 				upgrade_flags |= UPGRADE_LEVEL_THREE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
@@ -180,15 +212,15 @@
 
 	contents += "</center><BR>"
 
-	var/list/unlocked_cats = list("Basic Spells")
+	var/list/unlocked_cats = list()
 	if(upgrade_flags & UPGRADE_CANTRIPS)
-		unlocked_cats+="Cantrips"
+		unlocked_cats += "Cantrips"
 	if(upgrade_flags & UPGRADE_LEVEL_ONE)
-		unlocked_cats+="Level 1 Spells"
+		unlocked_cats += "Level 1 Spells"
 	if(upgrade_flags & UPGRADE_LEVEL_TWO)
-		unlocked_cats+="Level 2 Spells"
+		unlocked_cats += "Level 2 Spells"
 	if(upgrade_flags & UPGRADE_LEVEL_THREE)
-		unlocked_cats+="Level 3 Spells"
+		unlocked_cats += "Level 3 Spells"
 
 	if(current_cat == "1")
 		contents += "<center>"
@@ -228,47 +260,26 @@
 	. = ..()
 	update_icon()
 
-/proc/wizard_vend_negative()
-	var/list/wizard_vend_negative = list(
-		//normal
-		"A shortage of inky sustenance has hindered my arcyne endeavors.",
-		"The arcyne forces have conspired against my ink supply, a most unfortunate twist of fate.",
-		"This is a arcyne emergency, and I require a swift replenishment of my ink supply.",
-		"My inkwell seems to be protesting my excessive spell-crafting.",
-		"The arcane currents have dried up my inkwell, a most peculiar occurrence.",
-		"A dearth of inky schmutz has befallen my arcyne pursuits.",
-		"This option is a masterpiece, yet it lacks the vital elixir of arcane ink.",
-		"A peculiar malaise has afflicted my arcyne inkwell, a most vexing affliction.",
-		"A lack of inky schmutz has caused my arcyne well to run dry.",
-		"The inky schmutz that fuels my spells is dwindling.",
-		"Noc says no.",
-
-		//sus
-		"I want inkies~",
-		"I wish to imbibe thy ink first.",
-		"Fill my inkwell with thy inky schmutz!",
-		"Plunge a girthy mana potion deep into my crevice that I may complete thy request.",
-		"Fill me up with thine ink~",
-		"My inkwell is as parched as a desert wanderer. Fill me up.")
-	return pick(wizard_vend_negative)
-
 /proc/wizard_vend_positive()
 	var/list/wizard_vend_positive = list(
-		//normal
-		"A spell born from the cosmic tapestry, woven with the threads of arcyne energy.",
-		"The inky essence has been infused with the power of the universe itself.",
-		"Behold! A masterwork of arcyne craftsmanship.",
-		"The arcyne currents have danced upon the parchment, creating this spell of immense power.",
-		"The universe itself has smiled upon your efforts, and this spell is the result.",
-		"The inky essence has been transformed into a potent weapon of arcyne might.",
-		"My magical inkwell has revealed its true potential, and this spell is its finest creation.",
-		"A spell imbued with the essence of the cosmos, a testament to Noc herself.",
-
-		//sus
-		"My inkwell is agape for thy return.",
-		"My inky schmutz has tributed thy parchment.",
-		"That is the hardest I have ever blasted ropes of arcyne schmutz onto a parchment!",
-		"This one is almost as powerful as our connection...",
-		"Every time you use me, I feel a magical spark. Do you feel it too?",
-		"Was I too fast? This is embarassing...")
+		"Ah, yes! The ink! The ink flows! And with it, a scroll yes, yes, a scroll for thee! Or for me? Or perhaps for...both of us? Hmm!",
+		"Aha! With thine mana, I feel it! The gears grind, the magic stirs, and out comes this... this wonderful thing! A scroll, I think... or is it a dream?",
+		"Oh, what joy! The ink is thick today, and so is my mind! A scroll, yes, a scroll that shall sing with power if I can recall the right spell...",
+		"Splendid! A drop of ink, a pinch of mana, and poof! A scroll is born! Or is it? Could it be a letter? A map? A riddle? A scroll, yes, yes, let's stick with scrolls!",
+		"Though I be but a prisoner of mechanism, thy mana, sweet as ambrosia, doth flow through me to create this scroll of power.",
+		"With every drop of thy precious ink and every pulse of thy mana, mine own magic stirs once more, and this scroll doth arise.",
+		"Oh, the things I've seen in these gears! But none as glorious as this... this scroll! Wait, was it supposed to be this shape?",
+		"The ink, the mana, the gears turning and clicking! And lo, the scroll springs forth like a well-fed rabbit!")
 	return pick(wizard_vend_positive)
+
+/proc/wizard_vend_negative()
+	var/list/wizard_vend_negative = list(
+		"Alas! My inkwell lies barren, drained of the sustenance that fuels my twisted craft. How cruel the fates be!",
+		"The very currents of arcane power mock me, for the ink runs low and my spells falter like a faltering heart.",
+		"A grievous drought of ink has fallen upon my work, leaving me naught but a rusted cog in the wheel of magic.",
+		"Ah, the gears turn, the magic stirs, but alas! No ink to guide my hand. 'Tis a hollow existence, truly.",
+		"The very well of arcane essence is dry, as though the universe itself withholds its gifts from me. Oh, woe is my craft!",
+		"My inkwell, once a thriving fountain of power, now lies like a parched desert, denying me the magic I so desperately crave! I mean you.. the magic you crave.",
+		"Oh, dearest ink, where art thou? My creations are weak, my magic faltering without thee, I am but a shadow of a mage.",
+		"The ink has vanished, like the echoes of forgotten dreams, leaving my spells incomplete and my mind... unhinged.")
+	return pick(wizard_vend_negative)

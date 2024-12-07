@@ -1873,7 +1873,6 @@
 #include "code\modules\cargo\packsrogue\tools.dm"
 #include "code\modules\cargo\packsrogue\wardrobe.dm"
 #include "code\modules\cargo\packsrogue\weapons.dm"
-#include "code\modules\cargo\packsrogue\wizardvend\basics.dm"
 #include "code\modules\cargo\packsrogue\wizardvend\cantrips.dm"
 #include "code\modules\chatter\chatter.dm"
 #include "code\modules\client\asset_cache.dm"
