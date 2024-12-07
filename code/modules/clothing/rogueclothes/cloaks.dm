@@ -1276,3 +1276,17 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	nodismemsleeves = TRUE
+	hoodtype = /obj/item/clothing/head/hooded/rainhood/blue
+
+/obj/item/clothing/head/hooded/rainhood/blue
+	icon = 'modular_stonehedge/icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/head.dmi'
+	icon_state = "combattante_blue"
+	item_state = "combattante_blue"
+
+//used for leper
+/obj/item/clothing/cloak/cape/ripped
+	name = "\improper ripped cloak"
+	icon_state = "cape"
+	desc = "An old worn cloak"
+	hoodtype = /obj/item/clothing/head/hooded/rainhood

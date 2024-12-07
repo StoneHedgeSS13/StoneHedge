@@ -90,6 +90,9 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
 
+/obj/item/clothing/head/roguetown/roguehood/white
+	color = CLOTHING_WHITE
+
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
 	desc = "A protective covering worn by those native to the desert."
@@ -161,6 +164,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
+				H.update_inv_wear_mask()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)

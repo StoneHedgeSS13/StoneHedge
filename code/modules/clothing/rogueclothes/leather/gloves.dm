@@ -47,3 +47,6 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	salvage_result = /obj/item/natural/fur
+
+/obj/item/clothing/gloves/roguetown/leather/angle/leper
+	color = "#cf9100"

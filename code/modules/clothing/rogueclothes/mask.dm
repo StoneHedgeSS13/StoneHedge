@@ -118,6 +118,32 @@
 	max_integrity = 75
 	smeltresult = /obj/item/ingot/gold
 
+//steel one is currently uncraftable for balance reasons.
+/obj/item/clothing/mask/rogue/facemask/leper
+	name = "steel leper mask"
+	desc = "An gem-dust enchanted steel mask, Those are used to suppress the spasms of leprosy... But can hardly see in it.."
+	icon = 'modular_stonehedge/icons/roguetown/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/masks.dmi'
+	icon_state = "steelmaskleper"
+	block2add = FOV_BEHIND
+	max_integrity = 200 //same as steel mask
+
+//Cant see a fucking thing.
+/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user)
+	. = ..()
+	user.apply_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/dropped(mob/living/carbon/human/user)
+	..()
+	user.remove_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/gold
+	name = "gold leper mask"
+	desc = "An gem-dust enchanted gold mask, Those are used to suppress the spasms of leprosy... But can hardly see in it.."
+	icon_state = "goldmaskleper"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/gold
+
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"
 	desc = "A mask of steel which protects the eyes, nose and mouth while also obscuring the face."

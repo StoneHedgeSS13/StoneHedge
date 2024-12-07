@@ -23,7 +23,7 @@
 		head = /obj/item/clothing/head/roguetown/hatblu
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 5, TRUE) //its hammer time
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE) //its hammer time
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)

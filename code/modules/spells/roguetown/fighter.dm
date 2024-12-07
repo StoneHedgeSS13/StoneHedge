@@ -17,7 +17,7 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
-	antimagic_allowed = FALSE //can you use it if you are antimagicked?
+	antimagic_allowed = TRUE //This is a physical skill.
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
@@ -27,7 +27,7 @@
 	miracle = FALSE
 
 	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation_type = "none" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/self/secondwind/cast(mob/user = usr)
 	var/mob/living/target = user

@@ -366,25 +366,6 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 
-/obj/item/rogueweapon/greatsword
-	force = 12
-	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for less-lethal takedowns, only targets limbs.
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
-	name = "greatsword"
-	desc = "Might be able to chop anything in half!"
-	icon_state = "gsw"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	smeltresult = null
-
 /obj/item/rogueweapon/spear/banner/attack_hand(mob/user)
 	if(!overlays.len)
 		var/icon/J = new('icons/roguetown/weapons/banner_heraldry.dmi')

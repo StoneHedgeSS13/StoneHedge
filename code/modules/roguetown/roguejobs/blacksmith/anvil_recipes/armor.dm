@@ -145,6 +145,13 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/gold
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/goldmaskleper
+	name = "Leper Mask (+1 Sapphire)"
+	req_bar = /obj/item/ingot/gold
+	additional_items = list(/obj/item/roguegem/violet)
+	created_item = /obj/item/clothing/mask/rogue/facemask/leper
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/goldarmor
 	name = "Gold Chestplate (+1 Gold)"
 	req_bar = /obj/item/ingot/gold
@@ -276,7 +283,7 @@
 	name = "Half-Plate Bikini (+2 Steel +1 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/bikini
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	craftdiff = 3
 	i_type = "Armor"
 

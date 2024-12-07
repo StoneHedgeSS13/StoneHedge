@@ -451,3 +451,9 @@
 			continue
 		continue
 	user.update_body_parts(TRUE)
+
+/datum/status_effect/debuff/lepermask
+	id = "lepermask"
+	alert_type = null
+	effectedstats = list("perception" = -7) //should make you pretty blind.
+	duration = -1

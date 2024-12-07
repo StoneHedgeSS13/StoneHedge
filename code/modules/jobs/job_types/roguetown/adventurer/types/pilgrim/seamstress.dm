@@ -10,7 +10,7 @@
 	..()
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)

@@ -18,7 +18,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)

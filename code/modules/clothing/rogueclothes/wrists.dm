@@ -99,7 +99,7 @@
 	filters = list(list("type" = "drop_shadow", "x" = 0, "y" = 0, "size" = 0.5, "offset" = 1, "color" = "#daa520"))
 
 /obj/item/clothing/wrists/roguetown/wrappings
-	name = "solar wrappings"
+	name = "wrappings"
 	icon_state = "wrappings"
 	item_state = "wrappings"
 

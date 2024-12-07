@@ -315,3 +315,9 @@
 	stressadd = 6
 	desc = "I slept on the floor! What am I?! An animal?!"
 	timer = 3 MINUTES
+
+
+/datum/stressevent/lepermaskedpain
+	timer = 10 SECONDS
+	stressadd = 1
+	desc = span_red("Everything hurts, atleast my body is still under my control...")

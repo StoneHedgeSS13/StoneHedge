@@ -19,7 +19,7 @@
 /datum/outfit/job/roguetown/barkeep/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE) //these stats reflect that the tavernkeeper is a retired adventurer with a few different weapon prowesses.
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //these stats reflect that the tavernkeeper is a retired adventurer who can use that big ass sword displayed there normally.
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
@@ -27,10 +27,9 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)

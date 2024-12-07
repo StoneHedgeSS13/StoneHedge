@@ -49,8 +49,8 @@
 
 /datum/stressevent/barbarian_rage
 	timer = 10 MINUTES
-	stressadd = 8
-	max_stacks = 10 //don't rage spam or you WILL have a heart attack
+	stressadd = 3 //reduced from 8 since we use less stress caps in stonehedge.
+	max_stacks = 8 //don't rage spam or you WILL have a heart attack
 
 //claws for the ravager
 /obj/effect/proc_holder/spell/self/rav_claws
@@ -85,7 +85,7 @@
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
 		user.visible_message("<span class='info'>[user]'s claws extend.</span>", "<span class='notice'>Claws extend from my hands.</span>")
 		extended = TRUE
-	
+
 /obj/item/rogueweapon/rav_claw //this is essentially a hunting knife that uses unarmed. Not that op
 	name = "Claw"
 	desc = ""

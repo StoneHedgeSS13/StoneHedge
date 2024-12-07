@@ -761,6 +761,22 @@
 	max_blade_int = 200
 	wdefense = 4
 
+//leper sword, unique
+/obj/item/rogueweapon/greatsword/brokensword
+	name = "broken sword"
+	desc = "A massive, heavy broken blade, it is a little more than a hunk of metal."
+	icon_state = "brokensword"
+	icon = 'modular_stonehedge/icons/roguetown/weapons/64.dmi'
+	item_state = "brokensword"
+	possible_item_intents = list(/datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //destroy. them. all.
+	gripsprite = FALSE
+	minstr = 14
+	force = 16
+	max_blade_int = 150 //fragile
+	force_wielded = 34
+	wdefense = 2 //take the punishment.
+
 /datum/intent/sword/cut/zwei
 	reach = 2
 

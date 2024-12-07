@@ -111,19 +111,6 @@
 	salvage_result = /obj/item/natural/hide/cured
 	can_hold_endowed = TRUE
 
-/obj/item/clothing/under/roguetown/trou/leather
-	name = "leather trousers"
-	desc = "Trousers made of fine leather."
-	icon_state = "leathertrou"
-
-/obj/item/clothing/under/roguetown/trou/skirt
-	name = "leather skirt"
-	icon = 'modular_stonehedge/icons/armor/pants.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
-	desc = "Short skirt made of fine leather."
-	icon_state = "leatherskirt"
-	genitalaccess = TRUE
-
 /obj/item/clothing/under/roguetown/chainlegs/iron/studdedskirt
 	name = "studded skirt"
 	icon = 'modular_stonehedge/icons/armor/pants.dmi'

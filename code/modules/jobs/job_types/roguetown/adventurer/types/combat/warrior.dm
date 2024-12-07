@@ -18,10 +18,12 @@
 		"Duelist",
 		"Warrior",
 		"Monster Hunter",
+		"Knight-Errant",
+		"Leper"
 		//"Eldritch Knight", //give eldritch blast, that's it
 		//"Champion", //higher crit rate
 		//"Battle Master", //give three combat manuevers
-		) // To Do - knight errant unique archetype(5 percent chance)
+		)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	var/weapons = list( //what did you primarily train with?
@@ -31,33 +33,44 @@
 		"Polearms"
 	)
 
-	var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
+	if(classchoice != "Leper") //lepers get big sword chungus.
+		var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
 
-	switch(weaponschoice)
-		if("Swords")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/sword/long
-		if("Axes")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-			r_hand = /obj/item/rogueweapon/stoneaxe/battle
-		if("Maces")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-			r_hand = /obj/item/rogueweapon/mace
-		if("Polearms")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/spear/billhook
+		switch(weaponschoice)
+			if("Swords")
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				if(H.age == AGE_OLD)
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/long
+				if(classchoice == "Duelist")
+					r_hand =  /obj/item/rogueweapon/sword/rapier
+			if("Axes")
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
+				if(H.age == AGE_OLD)
+					H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+				r_hand = /obj/item/rogueweapon/stoneaxe/battle
+			if("Maces")
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
+				if(H.age == AGE_OLD)
+					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				r_hand = /obj/item/rogueweapon/mace
+			if("Polearms")
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				if(H.age == AGE_OLD)
+					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+				r_hand = /obj/item/rogueweapon/spear/billhook
 
 	switch(classchoice)
 
@@ -102,7 +115,6 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			beltl = /obj/item/rogueweapon/huntingknife
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
@@ -118,6 +130,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE) //duh monster HUNTER
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE) //Hearthstone change.
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1) // Weaker endurance compared to a traditional warrior/soldier. Smarter due to study of rare magical beasts.
@@ -166,16 +179,84 @@
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 2)
-			H.visible_message(span_info("I trained as a duelist, flair and precision is my weapon... I can fool people into underestimating me, their last mistake."))
-
-	pants = /obj/item/clothing/under/roguetown/tights/black
+			H.visible_message(span_info("I trained as a duelist, flair and precision is my weapon."))
+		if("Knight-Errant")
+			H.set_blindness(0)
+			to_chat(H, span_warning("Once part of a noble family, you were cast away. A path closes, yet a thousand open up, brimming with the opportunity of new victories. When a warrior is gone, that will be his best and only bulwark."))
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
+			//not as fast or perceptive but more bulky and enduring in general, i suppose, one less sum of stats than rest for making up to other advantages.
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 3)
+			H.change_stat("constitution", 4)
+			H.change_stat("speed", -2)
+			//has some good armor and more coins so spawns with no shield and knife etc
+			gloves = /obj/item/clothing/gloves/roguetown/brigandinegauntlets
+			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
+			cloak = /obj/item/clothing/cloak/tabard
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/noblecuirass
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
+			belt = /obj/item/storage/belt/rogue/leather/black
+			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+		//leper, darkest dungeon based. Sick, blind and rotting away but has massive strength if he can land it.
+		if("Leper")
+			H.set_blindness(0)
+			to_chat(H, span_warning("A noble, or a king of lands far away and now forgotten, broken and discarded. You roam the lands, strengthening your mind to find peace with your rotting husk, while taking punishments others can not."))
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) //poetry
+			//This is going to be crazy.
+			H.change_stat("strength", 4)
+			H.change_stat("perception", -4) //you are going blind.
+			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 4)
+			H.change_stat("speed", -4)
+			//You are not gonna be able to fight without your mask, keep it from breaking..
+			mask = /obj/item/clothing/mask/rogue/facemask/leper
+			gloves = /obj/item/clothing/gloves/roguetown/leather/angle/leper
+			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced
+			wrists = /obj/item/clothing/wrists/roguetown/wrappings
+			cloak = /obj/item/clothing/cloak/cape/ripped
+			head = /obj/item/clothing/head/roguetown/roguehood/white
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/leper
+			shoes = /obj/item/clothing/shoes/roguetown/gladiator
+			belt = /obj/item/storage/belt/rogue/leather
+			l_pocket = /obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot //you are going to need it.
+			r_hand = /obj/item/rogueweapon/greatsword/brokensword
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			//leprosy
+			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
+				H.apply_status_effect(STATUS_EFFECT_SPASMS)
+			if(!H.has_status_effect(STATUS_EFFECT_FAKE_VIRUS))
+				H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.give_fightingstyle(TRUE)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)

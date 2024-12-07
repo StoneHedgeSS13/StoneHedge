@@ -6,7 +6,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	outfit = /datum/outfit/job/roguetown/adventurer/knighterrant
 	maximum_possible_slots = 3		//For testing!
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_DISABLED) //its a warrior subclass now
 
 
 /datum/outfit/job/roguetown/adventurer/knighterrant/pre_equip(mob/living/carbon/human/H)

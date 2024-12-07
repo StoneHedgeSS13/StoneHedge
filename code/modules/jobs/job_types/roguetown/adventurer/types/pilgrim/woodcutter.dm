@@ -9,7 +9,7 @@
 
 /datum/outfit/job/roguetown/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 5, TRUE) // AXE MEN! GIVE ME SPLINTERS!
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE) // AXE MEN! GIVE ME SPLINTERS!
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)

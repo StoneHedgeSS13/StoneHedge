@@ -7,6 +7,14 @@
 	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
 
+/obj/item/clothing/under/roguetown/trou/skirt
+	name = "leather skirt"
+	icon = 'modular_stonehedge/icons/armor/pants.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	desc = "Short skirt made of fine leather."
+	icon_state = "leatherskirt"
+	genitalaccess = TRUE
+
 /obj/item/clothing/under/roguetown/trou/leather/advanced
 	name = "hardened leather chausses"
 	desc = "Sturdy, durable, flexible. The finest leather to protect your nether regions."
