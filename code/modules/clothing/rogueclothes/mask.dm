@@ -118,7 +118,6 @@
 	max_integrity = 75
 	smeltresult = /obj/item/ingot/gold
 
-//steel one is currently uncraftable for balance reasons.
 /obj/item/clothing/mask/rogue/facemask/leper
 	name = "steel leper mask"
 	desc = "An gem-dust enchanted steel mask, Those are used to suppress the spasms of leprosy... But can hardly see in it.."
@@ -129,7 +128,7 @@
 	max_integrity = 200 //same as steel mask
 
 //Cant see a fucking thing.
-/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user)
+/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user, ITEM_SLOT_MASK)
 	. = ..()
 	user.apply_status_effect(/datum/status_effect/debuff/lepermask)
 

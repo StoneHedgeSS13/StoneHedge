@@ -763,6 +763,7 @@
 
 //leper sword, unique
 /obj/item/rogueweapon/greatsword/brokensword
+	slot_flags = ITEM_SLOT_BACK
 	name = "broken sword"
 	desc = "A massive, heavy broken blade, it is a little more than a hunk of metal."
 	icon_state = "brokensword"

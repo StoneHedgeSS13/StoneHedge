@@ -230,27 +230,27 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) //poetry
-			//This is going to be crazy.
-			H.change_stat("strength", 4)
+			//This is going to be crazy, horrible drawbacks, massive strength. Totally a bad idea.
+			H.change_stat("strength", 5)
 			H.change_stat("perception", -4) //you are going blind.
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 4)
 			H.change_stat("speed", -4)
 			//You are not gonna be able to fight without your mask, keep it from breaking..
-			mask = /obj/item/clothing/mask/rogue/facemask/leper
+			mask = /obj/item/clothing/mask/rogue/facemask/leper/gold
 			gloves = /obj/item/clothing/gloves/roguetown/leather/angle/leper
 			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
-			cloak = /obj/item/clothing/cloak/cape/ripped
+			cloak = /obj/item/clothing/cloak/cape
 			head = /obj/item/clothing/head/roguetown/roguehood/white
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/leper
 			shoes = /obj/item/clothing/shoes/roguetown/gladiator
 			belt = /obj/item/storage/belt/rogue/leather
-			l_pocket = /obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot //you are going to need it.
 			r_hand = /obj/item/rogueweapon/greatsword/brokensword
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MISSING_NOSE, TRAIT_GENERIC) //nose gone, halved stamina regen.
 			//leprosy
 			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
 				H.apply_status_effect(STATUS_EFFECT_SPASMS)

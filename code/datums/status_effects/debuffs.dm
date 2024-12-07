@@ -523,9 +523,10 @@
 			if(istype(humanboi.wear_mask, /obj/item/clothing/mask/rogue/facemask/leper))
 				if(humanboi.wear_mask.obj_integrity > 0) //we dont use the lepermask effect for this reason.
 					to_chat(owner, span_warning("Agh, I feel my mask stop my muscle spasms, but it hurts all the same."))
-					humanboi.Stun(10)
-					humanboi.flash_fullscreen("redflash3")
+					humanboi.flash_fullscreen("redflash1")
 					humanboi.add_stress(/datum/stressevent/lepermaskedpain)
+				else
+					to_chat(owner, span_warning("Ggh- My mask is broken, it can't do anything in this state!"))
 					return
 		switch(rand(1,5))
 			if(1)

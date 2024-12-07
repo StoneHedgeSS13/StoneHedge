@@ -262,6 +262,8 @@
 //gold cuirass for leper, unique and cant be crafted.
 /obj/item/clothing/suit/roguetown/armor/plate/half/leper
 	color = "#ffee00"
+	name = "golden cuirass"
+	desc = "A cuirass of gold."
 	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/suit/roguetown/armor/plate/graggaritearmorleader

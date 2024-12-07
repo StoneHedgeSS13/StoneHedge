@@ -145,11 +145,18 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/gold
 	i_type = "Armor"
 
-/datum/anvil_recipe/armor/goldmaskleper
-	name = "Leper Mask (+1 Sapphire)"
-	req_bar = /obj/item/ingot/gold
+/datum/anvil_recipe/armor/steelmaskleper
+	name = "Steel Leper Mask (+1 Sapphire)"
+	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/roguegem/violet)
 	created_item = /obj/item/clothing/mask/rogue/facemask/leper
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/goldmaskleper
+	name = "Gold Leper Mask (+1 Sapphire)"
+	req_bar = /obj/item/ingot/gold
+	additional_items = list(/obj/item/roguegem/violet)
+	created_item = /obj/item/clothing/mask/rogue/facemask/leper/gold
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/goldarmor
