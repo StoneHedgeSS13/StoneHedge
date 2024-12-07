@@ -415,8 +415,8 @@
                 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
                 /obj/item/clothing/under/roguetown/tights/black,
                 /obj/item/clothing/shoes/roguetown/boots,
-                /obj/item/rogueweapon/pick/steel,
-				/obj/item/clothing/cloak/apron/blacksmith
+				/obj/item/rogueweapon/tongs,
+				/obj/item/rogueweapon/hammer
             ))
 
         if("Alchemist")
@@ -440,8 +440,7 @@
                 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
                 /obj/item/clothing/under/roguetown/tights/black,
                 /obj/item/clothing/shoes/roguetown/boots,
-                /obj/item/reagent_containers/glass/alembic,
-                /obj/item/clothing/cloak/apron/brown
+                /obj/item/reagent_containers/glass/alembic
             ))
 
 /obj/item/class_selector/acadarchmage
