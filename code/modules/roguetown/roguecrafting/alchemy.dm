@@ -723,7 +723,8 @@
 
 /proc/heal_and_manage_pain_disabling(mob/living/carbon/human/H, obj/item/bodypart/affecting)
 	if (!affecting) return
-	affecting.heal_wounds(0.5)
+	if(prob(50))
+		affecting.heal_wounds(1)
 	for (var/datum/wound/W in affecting.wounds)
 		if (W.woundpain > 30)
 			W.woundpain = 30
