@@ -104,7 +104,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)

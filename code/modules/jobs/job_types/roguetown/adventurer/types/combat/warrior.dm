@@ -232,10 +232,10 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) //poetry
 			//This is going to be crazy, horrible drawbacks, massive strength. Totally a bad idea.
 			H.change_stat("strength", 4)
-			H.change_stat("perception", -4) //you are going blind.
+			H.change_stat("perception", -2) //you are going blind, but your mask will finish off the blindness for you.
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 4)
-			H.change_stat("speed", -4)
+			H.change_stat("speed", -3)
 			//You are not gonna be able to fight without your mask, keep it from breaking..
 			mask = /obj/item/clothing/mask/rogue/facemask/leper/gold
 			gloves = /obj/item/clothing/gloves/roguetown/leather/angle/leper
@@ -249,7 +249,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			r_hand = /obj/item/rogueweapon/greatsword/brokensword
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MISSING_NOSE, TRAIT_GENERIC) //nose gone, halved stamina regen.
 			//leprosy
 			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
