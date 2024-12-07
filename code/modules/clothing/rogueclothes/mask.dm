@@ -128,10 +128,15 @@
 	max_integrity = 200 //same as steel mask
 
 //Cant see a fucking thing.
-/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user)
 	. = ..()
-	if(slot == ITEM_SLOT_MASK)
+	if(user.wear_mask)
 		user.apply_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/attackby(obj/item/I, mob/user, params) //for removing into hand check
+	. = ..()
+	if(!user.wear_mask)
+		user.remove_status_effect(/datum/status_effect/debuff/lepermask)
 
 /obj/item/clothing/mask/rogue/facemask/leper/dropped(mob/living/carbon/human/user)
 	..()
