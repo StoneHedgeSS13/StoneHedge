@@ -271,7 +271,7 @@
 	//Can this be one-casted by non learnables?
 	var/castable = TRUE
 	var/usable_times = 3
-	required_trait = TRAIT_USEMAGIC
+	required_trait = TRAIT_
 	required_learn_trait = TRAIT_LEARNMAGIC
 	//should help us not remove spells from people that have em memorized.
 	var/user_has_spell_already = FALSE
