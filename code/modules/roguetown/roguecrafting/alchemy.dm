@@ -760,14 +760,14 @@
 	amount = 3
 	firefuel = 60 MINUTES
 
-/datum/crafting_recipe/roguetown/bandage
+/datum/crafting_recipe/roguetown/puress
 	name = "essence of purity"
 	result = /obj/item/reagent_containers/powder/alch/pur
 	reqs = list(/obj/item/reagent_containers/powder/salt = 1, /obj/item/reagent_containers/powder/alch/pipe = 1,)
 	craftdiff = 5
 	skillcraft = /datum/skill/misc/alchemy
 
-/datum/crafting_recipe/roguetown/bandage
+/datum/crafting_recipe/roguetown/lifeess
 	name = "essence of life"
 	result = /obj/item/reagent_containers/powder/alch/life
 	reqs = list(/obj/item/reagent_containers/powder/salt = 1, /datum/reagent/medicine/healthpot = 45, /obj/item/reagent_containers/powder/alch/mincem = 1,)
