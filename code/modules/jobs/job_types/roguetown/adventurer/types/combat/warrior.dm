@@ -46,6 +46,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long
 				if(classchoice == "Duelist")
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 					r_hand =  /obj/item/rogueweapon/sword/rapier
 			if("Axes")
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
