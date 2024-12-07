@@ -231,7 +231,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) //poetry
 			//This is going to be crazy, horrible drawbacks, massive strength. Totally a bad idea.
-			H.change_stat("strength", 5)
+			H.change_stat("strength", 4)
 			H.change_stat("perception", -4) //you are going blind.
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 4)

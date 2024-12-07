@@ -774,7 +774,7 @@
 	gripsprite = FALSE
 	minstr = 14
 	force = 16
-	max_blade_int = 150 //fragile
+	max_blade_int = 100 //fragile
 	force_wielded = 34
 	wdefense = 2 //take the punishment.
 
