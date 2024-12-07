@@ -282,7 +282,7 @@
 
 /obj/item/book/granter/spell/equipped(mob/user, slot, initial)
 	. = ..()
-	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)))
+	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
@@ -294,7 +294,7 @@
 
 /obj/item/book/granter/spell/dropped(mob/user, silent)
 	. = ..()
-	if(spell && castable && (HAS_TRAIT(user, TRAIT_USEMAGIC) || HAS_TRAIT(user, TRAIT_LEARNMAGIC)) && !user_has_spell_already)
+	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC)) && !user_has_spell_already)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.mind)
