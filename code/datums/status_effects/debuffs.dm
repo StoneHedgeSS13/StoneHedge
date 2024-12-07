@@ -517,17 +517,20 @@
 	alert_type = null
 
 /datum/status_effect/spasms/tick()
-	if(prob(5))
-		if(ishuman(owner)) //leper slop to prevent involuntary movements
-			var/mob/living/carbon/human/humanboi = owner
-			if(istype(humanboi.wear_mask, /obj/item/clothing/mask/rogue/facemask/leper))
-				if(humanboi.wear_mask.obj_integrity > 0) //we dont use the lepermask effect for this reason.
-					to_chat(owner, span_warning("Agh, my mask stop my muscle spasms, but it hurts all the same."))
-					humanboi.flash_fullscreen("redflash1")
-					humanboi.add_stress(/datum/stressevent/lepermaskedpain)
-				else
-					to_chat(owner, span_warning("Ggh- My mask is broken, it can't do anything in this state!"))
-					return
+	if(prob(3)) //shit is spammy even like this.
+		if(prob(1))
+			if(ishuman(owner)) //leper slop to prevent involuntary movements
+				var/mob/living/carbon/human/humanboi = owner
+				if(istype(humanboi.wear_mask, /obj/item/clothing/mask/rogue/facemask/leper))
+					if(humanboi.wear_mask.obj_integrity > 0) //we dont use the lepermask effect for this reason.
+						to_chat(owner, span_warning("Agh, my mask stop my muscle spasms, but it hurts all the same."))
+						humanboi.flash_fullscreen("redflash1")
+						humanboi.add_stress(/datum/stressevent/lepermaskedpain)
+						return
+					else
+						to_chat(owner, span_warning("Ggh- My mask is broken, it can't do anything in this state!"))
+						humanboi.flash_fullscreen("redflash1")
+		humanboi.add_stress(/datum/stressevent/leprosypain)
 		switch(rand(1,5))
 			if(1)
 				if((owner.mobility_flags & MOBILITY_MOVE) && isturf(owner.loc))

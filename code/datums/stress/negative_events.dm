@@ -320,4 +320,11 @@
 /datum/stressevent/lepermaskedpain
 	timer = 10 SECONDS
 	stressadd = 1
+	max_stacks = 1
 	desc = span_red("Everything hurts, atleast my body is still under my control...")
+
+/datum/stressevent/leprosypain
+	timer = 10 SECONDS
+	stressadd = 1
+	max_stacks = 1
+	desc = span_red("My rotting body hurts...")
