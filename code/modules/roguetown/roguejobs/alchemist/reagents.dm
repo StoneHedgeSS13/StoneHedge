@@ -642,20 +642,6 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syruma
-	name = "syrum of fire"
-	description = "refined viscous ash"
-	reagent_state = LIQUID
-	color = "#808080"
-	metabolization_rate = 1 * REAGENTS_METABOLISM
-	overdose_threshold = null
-
-/datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
-	M.adjustToxLoss(-1, 0)
-	M.adjustFireLoss(0.25, 0)
-	M.reagents.remove_all_type(/datum/reagent, 1)
-	M.emote(pick("gag"))
-
 /datum/reagent/alch/syrumpur
 	name = "purity syrum"
 	description = "refined viscous gunk"
@@ -679,7 +665,7 @@
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumm = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrumm = 24, /datum/reagent/alch/syrumb = 24)
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
