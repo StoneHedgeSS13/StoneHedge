@@ -4058,7 +4058,8 @@
 "cXn" = (
 /obj/structure/fluff/traveltile/vampire{
 	aportalgoesto = "ashlandsin1";
-	aportalid = "ashlandsout1"
+	aportalid = "ashlandsout1";
+	required_trait = null
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
@@ -12387,12 +12388,8 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/river)
 "iXM" = (
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
+/obj/item/book/granter/spell/spells5e/random,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /obj/structure/bookcase/academy{
 	opacity = 0
@@ -15501,9 +15498,7 @@
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/library)
 "lfC" = (
@@ -16716,9 +16711,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "mdn" = (
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
@@ -18762,9 +18755,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
@@ -22724,9 +22715,7 @@
 	name = "far stonehedge"
 	})
 "qlk" = (
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
@@ -22983,14 +22972,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/shelter/town)
-"qtf" = (
-/obj/machinery/light/rogue/hearth,
-/obj/item/reagent_containers/glass/bucket/pot/stone,
-/turf/open/floor/rogue/twig/platform,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
 "qtq" = (
 /turf/open/floor/rogue/rooftop{
 	dir = 4;
@@ -25361,9 +25342,7 @@
 /obj/effect/decal/stone/hex{
 	dir = 4
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
@@ -26877,9 +26856,7 @@
 	first_time_text = "The Mountain Passe"
 	})
 "thA" = (
-/obj/structure/table/church{
-	icon_state = "churchtable"
-	},
+/obj/structure/table/church,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -27559,9 +27536,7 @@
 	first_time_text = null
 	})
 "tIt" = (
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /obj/structure/bookcase/academy,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
@@ -27928,9 +27903,7 @@
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
-/obj/item/book/granter/spell/spells5e/random{
-	icon_state = "scrollred"
-	},
+/obj/item/book/granter/spell/spells5e/random,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/library)
 "tUj" = (
@@ -29940,7 +29913,8 @@
 "vrX" = (
 /obj/structure/fluff/traveltile/vampire{
 	aportalgoesto = "ashlandsin2";
-	aportalid = "ashlandsout2"
+	aportalid = "ashlandsout2";
+	required_trait = null
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
@@ -189962,7 +189936,7 @@ aZy
 aZy
 aZy
 hYN
-qtf
+uGB
 fed
 tNT
 aZy
