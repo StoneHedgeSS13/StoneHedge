@@ -95,9 +95,10 @@
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wheart))
+	var/mob/living/carbon/human/targetboi = targets[1]
+	if(isliving(targetboi) && targetboi.has_status_effect(/datum/status_effect/debuff/wheart))
 		testing("revived1")
-		var/mob/living/target = targets[1]
+		var/mob/living/target = targetboi
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)
@@ -150,9 +151,10 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/debride/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+	var/mob/living/carbon/human/targetboi = targets[1]
+	if(isliving(targetboi) && targetboi.has_status_effect(/datum/status_effect/debuff/wliver))
 		testing("curerot1")
-		var/mob/living/target = targets[1]
+		var/mob/living/target = targetboi
 		if(target == user)
 			return FALSE
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
