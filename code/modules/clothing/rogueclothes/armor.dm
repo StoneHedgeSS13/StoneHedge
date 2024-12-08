@@ -713,7 +713,7 @@
 	is_bra = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest
-	name = "leather vest"
+	name = "thick leather vest"
 	desc = "A leather vest. Not very protective, but fashion."
 	icon_state = "vest"
 	item_state = "vest"
