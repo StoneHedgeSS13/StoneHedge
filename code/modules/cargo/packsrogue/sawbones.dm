@@ -12,12 +12,12 @@
 
 /datum/supply_pack/rogue/Sawbones/leather
 	name = "Leather Armor"
-	cost = 50
+	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/Sawbones/leather/studded
 	name = "Studded Leather Armor"
-	cost = 10
+	cost = 65
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lhelmet
