@@ -56,6 +56,7 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
+	miscast_recharge = TRUE
 	miracle = TRUE
 	devotion_cost = 100
 	/// Amount of PQ gained for reviving people
