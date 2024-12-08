@@ -966,7 +966,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "spellslinger cuirass"
-	desc = "Armor of a spellslinger. Studded with a variety of sapphiras and other prized gizaels; this is truly the armor of a magician. Known to cause a heavy toll on the user..."
+	desc = "Armor of a spellslinger. Studded with a variety of sapphires and other prized jewels; this is truly the armor of a magician. Known to cause a heavy toll on the user..."
 	body_parts_covered = CHEST|VITALS|GROIN|NECK
 	icon_state = "spellslingerarmor" // No gendered/dwarf sprites
 	item_state = "spellslingerarmor"
