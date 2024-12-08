@@ -41,27 +41,29 @@
 	H.change_stat("speed", 2) //It's all about speed and perception
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
 	H.adjust_blindness(-3)
-	var/weapons = list("2x Dagger", "Bow & Sword")
+	var/weapons = list("Crossbow & Dagger", "Bow & Sword")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("2x Dagger") //Rogue
-			cloak = /obj/item/clothing/cloak/raincloak
+		if("Crossbow & Dagger") //Rogue
+			cloak = /obj/item/clothing/cloak/raincloak/rogue
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 1, TRUE)
 			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
-			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every adventurer gets
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+			beltr = /obj/item/rogueweapon/sword
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/quiver/arrows
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 1, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("perception", 1)
 	H.verbs |= /mob/proc/haltyell

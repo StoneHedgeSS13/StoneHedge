@@ -253,7 +253,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -268,7 +268,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
