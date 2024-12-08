@@ -8,7 +8,7 @@
 /datum/supply_pack/rogue/Knight/sbelt
 	name = "Steel Belt"
 	cost = 24
-	contains = list(/obj/item/storage/belt/rogue/leather/steel)
+	contains = list(/obj/item/storage/belt/rogue/leather/hand)
 
 /datum/supply_pack/rogue/Knight/pigface
 	name = "Pigface Bascinet"

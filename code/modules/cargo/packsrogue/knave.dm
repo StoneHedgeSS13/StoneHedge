@@ -45,11 +45,6 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
-/datum/supply_pack/rogue/Knave/leather/elfdagger
-	name = "Elven Dagger"
-	cost = 200
-	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
-
 /datum/supply_pack/rogue/Knave/sword
 	name = "Iron Sword"
 	cost = 50
@@ -60,20 +55,10 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/sword)
 
-/datum/supply_pack/rogue/Knave/sword/gladius
-	name = "Gladius"
-	cost = 150
-	contains = list(/obj/item/rogueweapon/sword/gladius)
-
 /datum/supply_pack/rogue/Knave/sword/sabre
 	name = "Sabre"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/sword/sabre)
-
-/datum/supply_pack/rogue/Knave/heater
-	name = "Heater Shield"
-	cost = 150
-	contains = list(/obj/item/rogueweapon/shield/heater)
 
 /datum/supply_pack/rogue/Knave/crossbow
 	name = "Crossbow"
@@ -88,19 +73,17 @@
 /datum/supply_pack/rogue/Knave/quiver
 	name = "Empty Quiver"
 	cost = 24
-	contains = list(/obj/item/ammo_holder/quiver)
-
+	contains = list(/obj/item/quiver)
 
 /datum/supply_pack/rogue/Knave/quivers/arrows
 	name = "Quiver of Arrows"
 	cost = 50
-	contains = list(/obj/item/ammo_holder/quiver/arrows)
+	contains = list(/obj/item/quiver/arrows)
 
 /datum/supply_pack/rogue/Knave/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 100
-	contains = list(/obj/item/ammo_holder/quiver/bolts)
-
+	contains = list(/obj/item/quiver/bolts)
 
 /datum/supply_pack/rogue/Knave/Parrows
 	name = "Poisoned Arrow"
