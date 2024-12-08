@@ -257,7 +257,7 @@
 
 /obj/item/reagent_containers/powder/sublimate // Gotten through alchemy, combine milled gemstone with moondust. Higher value dust, more sublimate.
 	name = "arcyne sublimate"
-	desc = "The stuff of gizaels and magic."
+	desc = "The stuff of jewels and magic."
 	gender = PLURAL
 	icon = 'icons/roguetown/items/gems.dmi'
 	icon_state = "sublimate"

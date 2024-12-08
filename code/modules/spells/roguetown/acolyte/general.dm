@@ -12,6 +12,7 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
+	miscast_recharge = TRUE
 	miracle = TRUE
 	devotion_cost = 10
 
@@ -149,6 +150,7 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
+	miscast_recharge = TRUE
 	miracle = TRUE
 	devotion_cost = 20
 
@@ -164,11 +166,11 @@
 		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
 			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
 			target.cursed_freak_out()
-			return FALSE
+			return TRUE
 		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
 			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
 			target.cursed_freak_out()
-			return FALSE
+			return TRUE
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -202,6 +204,7 @@
 	associated_skill = /datum/skill/misc/medicine
 	antimagic_allowed = TRUE
 	charge_max = 60 SECONDS
+	miscast_recharge = TRUE
 	miracle = FALSE
 	devotion_cost = 0
 
@@ -215,6 +218,7 @@
 	antimagic_allowed = TRUE
 	include_user = TRUE
 	charge_max = 5 MINUTES
+	miscast_recharge = TRUE
 	miracle = FALSE
 	devotion_cost = 0
 
@@ -228,6 +232,7 @@
 	associated_skill = /datum/skill/misc/medicine
 	antimagic_allowed = TRUE
 	charge_max = 5 MINUTES
+	miscast_recharge = TRUE
 	miracle = FALSE
 	devotion_cost = 0
 

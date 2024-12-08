@@ -18,6 +18,7 @@
 	var/releasedrain = 0
 	var/chargedrain = 0
 	var/chargetime = 0
+	var/miscast_recharge = FALSE //Failing to cast successfully bypasses the cooldown.
 	var/vitaedrain = 0 //for vamp spells
 	var/warnie = "mobwarning"
 	var/list/charge_invocation
@@ -429,6 +430,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if(action)
 			action.UpdateButtonIcon()
 		return TRUE
+	if(miscast_recharge)
+		revert_cast(user) //Failed. Don't consume the spell.
 	return FALSE
 
 /obj/effect/proc_holder/spell/proc/before_cast(list/targets, mob/user = usr)
