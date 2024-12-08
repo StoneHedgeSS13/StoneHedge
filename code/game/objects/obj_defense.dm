@@ -235,6 +235,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(resistance_flags & ON_FIRE)
 		resistance_flags &= ~ON_FIRE
 		cut_overlay(GLOB.fire_overlay, TRUE)
+		cut_overlays() //doesnt fix the stuck fire overlay no other way idk.
 		SSfire_burning.processing -= src
 		if(fire_burn_start)
 			fire_burn_start = null
