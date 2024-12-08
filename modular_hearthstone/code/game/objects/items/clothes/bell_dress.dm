@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/roguetown/shirt/belldress
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
 	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/belldress.dmi'
 	name = "bell dress"

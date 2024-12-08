@@ -30,7 +30,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
@@ -42,7 +42,7 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bread
 	cooked_smell = /datum/pollutant/food/bread
 	w_class = WEIGHT_CLASS_NORMAL
-	slice_sound = TRUE 
+	slice_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/dough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -93,7 +93,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to roll it out!</span>")
 	else
-		return ..()	
+		return ..()
 
 /*	.................   Smalldough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/doughslice
@@ -144,7 +144,7 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	w_class = WEIGHT_CLASS_NORMAL
-	slice_sound = TRUE 
+	slice_sound = TRUE
 
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
@@ -165,7 +165,7 @@
 		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)	
+			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
 			to_chat(user, "<span class='notice'>Flattening [src]...</span>")
 			if(do_after(user,short_cooktime, target = src))
 				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
@@ -296,7 +296,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	slice_batch = FALSE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/rogue/bread/update_icon()
@@ -610,7 +610,7 @@
 		return ..()
 
 // -------------- PUMPKIN PIE --------------- // Can likely be modified to the pie system, but its annoying to read and its almost october
-/obj/item/reagent_containers/food/snacks/rogue/rawpumpkinpie 
+/obj/item/reagent_containers/food/snacks/rogue/rawpumpkinpie
 	name = "raw pumpkin pie"
 	desc = ""
 	icon = 'icons/roguetown/items/food.dmi'
@@ -683,7 +683,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /*	.................   Biscuit   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
@@ -752,7 +752,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
 	name = "loaf of raisins"
@@ -773,7 +773,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	slice_batch = FALSE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/foodbuff
 
@@ -847,7 +847,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work it.</span>")
 	else
-		return ..()	
+		return ..()
 
 // -------------- SPIDER-HONEY CAKE (Zybantu) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
@@ -872,7 +872,7 @@
 	tastes = list("cake"=1, "delicious honeyfrosting"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	slice_batch = TRUE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 16
@@ -918,7 +918,7 @@
 	tastes = list("cake"=1, "creamy cheese"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	slice_batch = TRUE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 16
@@ -935,7 +935,7 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_LONG
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
-	icon_state = "cheesecakeslice_plated"
+	icon_state = "cheesecake_slice_plated"
 	rotprocess = SHELFLIFE_EXTREME
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	trash = /obj/item/cooking/platter
