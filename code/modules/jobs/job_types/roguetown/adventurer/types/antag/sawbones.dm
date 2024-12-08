@@ -41,7 +41,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 5, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE) //so they can use alembic and do more shit.
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistency sake as the idol still provides scalemail.
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
