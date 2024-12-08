@@ -53,13 +53,6 @@
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
-
-/datum/supply_pack/rogue/Brigand/blksteelcuirass
-	name = "Blacksteel Cuirass"
-	cost = 250
-	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
-
-
 /datum/supply_pack/rogue/Brigand/Bevor
 	name = "Bevor"
 	cost = 100
@@ -118,11 +111,6 @@
 	name = "Grand Mace"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
-
-/datum/supply_pack/rogue/Brigand/warhammer
-	name = "steel warhammer"
-	cost = 200
-	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
 
 /datum/supply_pack/rogue/Brigand/axe
 	name = "Iron Axe"

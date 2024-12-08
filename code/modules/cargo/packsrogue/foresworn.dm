@@ -28,9 +28,9 @@
 	contains = list(/obj/item/clothing/under/roguetown/grenzelpants)
 
 /datum/supply_pack/rogue/foresworn/Grenzelshoes
-	name = "Grenzel Shoes"
+	name = "Grenzel Boots"
 	cost = 24
-	contains = list(/obj/item/clothing/shoes/roguetown/armor/grenzelhoft)
+	contains = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
 
 /datum/supply_pack/rogue/foresworn/coif/steel
 	name = "Steel Coif"
@@ -83,13 +83,6 @@
 	name = "hardened leather coat"
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced)
-
-
-/datum/supply_pack/rogue/foresworn/steelcuirass
-	name = "Blacksteel Cuirass"
-	cost = 250
-	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
-
 
 /datum/supply_pack/rogue/foresworn/Bevor
 	name = "Bevor"
@@ -169,7 +162,7 @@
 /datum/supply_pack/rogue/weapons/foresworn/bolts
 	name = "Quiver of Bolts"
 	cost = 100
-	contains = list(/obj/item/ammo_holder/quiver/bolts)
+	contains = list(/obj/item/quiver/bolts)
 
 /datum/supply_pack/rogue/foresworn/crossbow
 	name = "Crossbow"

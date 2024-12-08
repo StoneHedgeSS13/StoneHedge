@@ -19,11 +19,6 @@
 	cost = 10
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
-/datum/supply_pack/rogue/Things/pinkpill
-	name = "Pink Pills"
-	cost = 24
-	contains = list(/obj/item/storage/fancy/pilltin/pink)
-
 /datum/supply_pack/rogue/Things/chain
 	name = "Chain"
 	cost = 50
