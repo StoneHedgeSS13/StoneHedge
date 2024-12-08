@@ -25,20 +25,6 @@
 				/obj/item/natural/fibers = 2)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/leather/satchel
-	name = "leather satchel"
-	result = /obj/item/storage/backpack/rogue/satchel
-	reqs = list(/obj/item/natural/hide = 2,
-				/obj/item/natural/fibers = 1)
-	sellprice = 17	//Costs about ~13 to make
-
-/datum/crafting_recipe/roguetown/leather/backpack
-	name = "leather backpack"
-	result = /obj/item/storage/backpack/rogue/backpack
-	reqs = list(/obj/item/natural/hide = 2,
-				/obj/item/natural/fibers = 1)
-	sellprice = 17	//Costs about ~13 to make. Same cost as satchel, so same sale price. Don't @ me.
-
 /datum/crafting_recipe/roguetown/leather/waterskin
 	name = "waterskin"
 	result = /obj/item/reagent_containers/glass/bottle/waterskin
