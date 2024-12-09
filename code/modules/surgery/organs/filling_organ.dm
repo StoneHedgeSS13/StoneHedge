@@ -27,7 +27,7 @@
 	var/pregnant = FALSE // is it pregnant
 	var/preggotimer //dumbass timer
 	var/pre_pregnancy_size = 0
-	var/obj/item/organ/pregnantaltorgan = null //change to switch which organ grows from pregnancy of this one. 
+	var/obj/item/organ/pregnantaltorgan = null //change to switch which organ grows from pregnancy of this one.
 
 	//misc
 	var/list/altnames = list("bugged place", "bugged organ") //used in thought messages.
@@ -208,7 +208,7 @@
 	if(owner.stat == DEAD)
 		return
 	if(owner.has_quirk(/datum/quirk/selfawaregeni))
-		to_chat(owner, span_love("I feel a surge of warmth in my [src], I’m definitely pregnant!"))
+		to_chat(owner, span_lovebold("I feel a surge of warmth in my [src], I’m definitely pregnant!"))
 	reagents.maximum_volume *= 0.5 //ick ock, should make the thing recalculate on next life tick.
 	pregnant = TRUE
 	if(owner.getorganslot(ORGAN_SLOT_BREASTS)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
@@ -216,7 +216,7 @@
 		if(!breasties.refilling)
 			breasties.refilling = TRUE
 			if(owner.has_quirk(/datum/quirk/selfawaregeni))
-				to_chat(owner, span_love("My breasts should start lactating soon..."))
+				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
 		if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
 			pre_pregnancy_size = pregnantaltorgan.organ_size
 			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 2 HOURS, TIMER_STOPPABLE)
@@ -226,7 +226,7 @@
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
 	var/datum/sprite_accessory/acc = accessory_type
-	to_chat(owner, span_love("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
+	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
 		if(organ_size < 3)
 			organ_size += 1
