@@ -557,6 +557,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 */
 
 	SSquirks.AssignQuirks(humanc, humanc.client, TRUE)
+	character.assign_family() // STONEKEEP CHANGE add families
 	if(humanc)
 		var/fakekey = character.ckey
 		if(ckey in GLOB.anonymize)

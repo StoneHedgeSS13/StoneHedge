@@ -1,59 +1,19 @@
 
-#define FAMILY_FILE "data/families.json"
-
-GLOBAL_DATUM_INIT(families, /datum/family, new)
-
-/datum/preferences/proc/create_family_datum()
-	family_datum = new()
-
-// mob proc and not a client one because we need a reference(name) to the character
-/// Add a family member from a player character's family, requires the target character and the relation, IE, "sister", only applies family for the mob that you call this proc on, not the target in the arugment
-/mob/proc/add_family(mob/target, relation)
-	return GLOB.add_family(src, target, relation)
-
-/// Remove a family member from a player character's family
-/mob/proc/remove_family(mob/target, relation)
-	return GLOB.remove_family(src, target, relation)
-
-/mob/proc/get_spouse_relation()
-	if(FEMALE)
-		return "wife"
-	if(MALE)
-		return "husband"
-	return "spouse"
-
-/mob/proc/get_child_relation()
-	if(FEMALE)
-		return "daughter"
-	if(MALE)
-		return "son"
-	return "son"
-
-/mob/proc/get_parent_relation()
-	switch(gender)
-		if(FEMALE)
-			return "mother"
-		if(MALE)
-			return "father"
-	return "parent"
-
-/mob/proc/get_sibling_relation()
-	if(FEMALE)
-		return "sister"
-	if(MALE)
-		return "brother"
-	return "sibling"
-
 /datum/family
 	var/list/families
 
-/// read persistent family data on datum creation
 /datum/family/New()
+	. = ..()
+	if(!length(families))
+		load_families()
+
+/datum/family/proc/load_families()
 	if(!fexists(FAMILY_FILE))
 		families = list()
+		text2file(json_encode(families), FAMILY_FILE)
 		return
 
-	var/file = file(filename)
+	var/file = file(FAMILY_FILE)
 	if(!file)
 		failed_parsing("get file")
 		return
@@ -63,81 +23,140 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 		failed_parsing("get text from file from")
 		return
 	
-	var/json = json_decode(file_text)
-	if(!json)
+	var/parse_family_list = json_decode(file_text)
+	if(!parse_family_list)
 		failed_parsing("parse json from")
 		return
-	
-	var/list/parse_family_list = json_decode(json)
-	if(!length(parse_family_list))
-		failed_parsing("failed to decode json from")
-		return
+
 	families = parse_family_list
+
+/datum/family/proc/save_families()
+	text2file(json_encode(families), FAMILY_FILE)
 
 /datum/family/proc/failed_parsing(fail_verb = "parse")
 	families = list()
 	stack_trace("Failed to [fail_verb] [FAMILY_FILE]")
 
 /datum/family/proc/can_modify_family(mob/source, mob/target, relation)
-	if(!target || !relation || relation == "")
-		stack_trace("invalid args passed to /mob/proc/add_family")
+	if(!ismob(source) || !ismob(target))
+		stack_trace("[source] and [target] must be mobs!")
 		return FALSE
-	if(!source.client || !target.client || !target.ckey) // expected fails, so no logging
+	if(!source.client || !source.ckey || !target.client || !target.ckey) // expected fails, so no logging
 		return FALSE
 	if(!source.client.prefs || !target.client.prefs)
-		stack_trace("[client] or [target.client] are somehow missing their prefs datum?")
+		stack_trace("[source.client] or [target.client] are somehow missing their prefs datum?")
 		return FALSE
-	if(!source.client.prefs.family_datum || !target.client.prefs.family_datum)
-		stack_trace("[client] or [target.client] are somehow missing their family datum?")
+	if(!length(families))
+		load_families()
+	if(!is_valid_id(source.client.prefs.family_id) || !is_valid_id(target.client.prefs.family_id))
+		stack_trace("[source.client] or [target.client] are somehow missing their unique family id?")
 		return FALSE
 	return TRUE
+
+/datum/family/proc/error_if_null(nullcheck, owner, error_message)
+	if(!nullcheck)
+		stack_trace("[owner] [error_message]")
+		return FALSE
+	return TRUE
+
+/datum/family/proc/is_valid_id(string)
+	if(string && string != "")
+		return TRUE
+	return FALSE
 
 /// Find the family that target is in, no sanity since it assumes target to be already checked
-/datum/family/proc/find_family(ckey, name)
+/datum/family/proc/find_player_info(family_id)
 	// json format for families.json
-	// [ckey: {
-	//	charnames: {
+	//	[family_id: {
+	// 		ckey, character, gender, motherhood_stage
 	//		relations: [
-	//			{ckey, char, relation}
+	//			{id, relation}
+	//			{id, relation}, 
 	// 		]
-	// }}]
-	if(!families[ckey])
-		families[ckey] = list()
-	if(!families[ckey][name])
-		families[ckey][name] = list()
-	return families[ckey][name]
+	// }]
+	if(!families[family_id])
+		families[family_id] = list()
+	return families[family_id]
 
-/datum/family/proc/get_relations(ckey, name)
-	var/list/family = find_family(ckey, name)
-	if(!family["relations"])
-		family["relations"] = list()
-	return family["relations"]
+/datum/family/proc/get_family_info(family_id)
+	if(!length(families))
+		load_families()
+	return find_player_info(family_id)
 
-/datum/family/proc/find_relation_family(list/relation)
-	return find_family(relation["ckey"], relation["character"])
-
-/datum/family/proc/add_family(mob/source, mob/target, relation_source)
+/datum/family/proc/add_family(mob/source, mob/target, relation)
 	if(!can_modify_family(source, target, relation))
 		return FALSE
-	
-	var/list/source_relations = get_relations(source.ckey, source.real_name)
-	source_relations += list(generate_relation(target, relation))
+	var/source_id = source.client.prefs.family_id
+	var/list/source_info = find_player_info(source_id)
+	if(!source_info)
+		source_info[source_id] = generate_player_info(source)
+
+	for(var/list/relationship as anything in source_info["relations"])
+		if(relation_matches(target, relationship, relationship["relation"])) // please no duplicates of the same relation type
+			return FALSE
+
+	source_info["relations"] += generate_relation(target, relation)
 	return TRUE
 
-/datum/family/proc/generate_relation(mob/target, relation)
-	return list("ckey" = target.ckey, "character" = target.real_name, "gender" = target.gender)
+/datum/family/proc/generate_player_info(mob/target)
+	return list(
+		"ckey" = target.ckey,
+		"character" = target.real_name,
+		"gender" = target.gender,
+	)
 
+/datum/family/proc/generate_relation(mob/target, relation)
+	return list(
+		"id" = target.client.prefs.family_id,
+		"relation" = relation,
+	)
+
+/// Remove family relatiopn from source of target with the relation string
 /datum/family/proc/remove_family(mob/source, mob/target, relation)
 	if(!can_modify_family(target, relation))
 		return FALSE
-	
-	for(var/list_entry in client.prefs.family)
-		if(list_entry["ckey"] != target.ckey)
-			continue
-		if(list_entry["character"] != target.real_name)
-			continue
-		if(list_entry["relation"] != relation)
-			continue
-		// client.prefs.family -= list_entry
-		return TRUE
+	if(!remove_from_relations(source, target, relation))
+		return FALSE
+	CallAsync(src, save_families())
 	return FALSE
+
+/datum/family/proc/remove_from_relations(mob/source, mob/target, relation)
+	var/list/source_relations = get_family_info(target.client.prefs.family_id)
+	var/found_relation = FALSE // even though there should be only one identical relation, we remove all matching relations here because I have trust issues
+	for(var/list/list_entry as anything in source_relations)
+		if(relation_matches(target, list_entry, relation))
+			continue
+		source_relations -= list_entry
+		found_relation = TRUE
+	return found_relation
+
+/datum/family/proc/relation_matches(mob/target, list/family, relation)
+	if(family["id"] != target.client.prefs.family_id || family["relation"] != relation)
+		return FALSE
+	return TRUE
+
+/datum/family/proc/assign_family(mob/target)
+	if(!target?.client?.prefs?.family_id)
+		return
+	var/family_id = target.client.prefs.family_id
+	if(!ishuman(target))
+		CRASH("tried to assign family properties to a non-human mob!")
+	var/mob/living/carbon/human/human_target = target
+	var/list/relations = get_family_info(family_id)
+	if(!length(relations))
+		return
+	var/list/relatives = list()
+	for(var/mob/player as anything in GLOB.player_list)
+		// track down any mobs that match relatives
+		var/family_id = target?.client?.prefs?.family_id 
+		if(!family_id && family_id == "")
+			continue
+		for(var/list/relation in relations)
+			if(family_id != relation["id"])
+				continue
+			relatives[player] += relation["relation"]
+	human_target.relatives = relatives
+	check_motherhood(family_id)
+	// update_family_hud(target, relatives)
+
+

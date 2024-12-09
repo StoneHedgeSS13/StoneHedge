@@ -1249,7 +1249,7 @@
 						SecondPerson.marriedto = FirstPerson.real_name
 						FirstPerson.adjust_triumphs(1)
 						SecondPerson.adjust_triumphs(1)
-						priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+						priority_announce("[FirstPerson.real_name] has married [SecondPerson.real_name]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 						marriage = TRUE
 						// STONEKEEP EDIT START add family
 						FirstPerson.add_family(SecondPerson, SecondPerson.get_spouse_relation())

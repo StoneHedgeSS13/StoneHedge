@@ -182,6 +182,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/datum/loadout_item/loadout
 
+	// a unique ID to identify this character even if the name changes
+	var/family_id = ""
+
 /datum/preferences/New(client/C)
 	parent = C
 	migrant  = new /datum/migrant_pref(src)
@@ -425,7 +428,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
 				// DREAMKEEP EDIT: Add family
-				var/list/families = GLOB.families.get_relations(client.ckey, real_name)
+				var/list/families = GLOB.families.get_family_info(user.client.ckey, real_name)
 				if(length(families))
 					dat += "<b>Family: <b>[english_list(families)]"
 				else
