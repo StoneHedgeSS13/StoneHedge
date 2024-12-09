@@ -236,7 +236,7 @@
 
 /obj/item/clothing/head/roguetown/dendormask
 	name = "briarmask"
-	desc = "A mask of wood worn by druids in service to Dendor."
+	desc = "A mask of wood worn by druids in service to Sylvan Lords."
 	color = null
 	icon_state = "dendormask"
 	item_state = "dendormask"
@@ -662,8 +662,8 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	name = "Yamaian helmet"
+	desc = "Headwear commonly worn by Templars in service to Yamais. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
 	emote_environment = 3
@@ -673,8 +673,8 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	name = "Sylvan helmet"
+	desc = "Headwear commonly worn by Templars in service to Sylvarhn. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
@@ -960,8 +960,8 @@
 	item_state = "topfhelm_gold"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-	name = "astrata helmet"
-	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
+	name = "Elysian helmet"
+	desc = "Headwear commonly worn by Templars in service to Elysius. The solar dragons light will forever shine on within its crest."
 	icon_state = "astratahelm"
 	item_state = "astratahelm"
 	emote_environment = 3
@@ -970,8 +970,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psyhelm
-	name = "psydon helmet"
-	desc = "A helmet formerly worn by those who were templars in service to Psydon. The time where Psydon once had templars is long passed now, but these relics still remain."
+	name = "Cultist helmet"
+	desc = "A helmet formerly worn by those who were templars in service to Dragon Cults."
 	icon_state = "psydonhelm"
 	item_state = "psydonhelm"
 	emote_environment = 3
@@ -979,8 +979,8 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
-    name = "eora helmet"
-    desc = "Headwear commonly worn by Templars in service to Eora. The chained heart on its front demonstrates its wearer's commitment to protect unbound love, even at ones own expense."
+    name = "Viriitran helmet"
+    desc = "Headwear commonly worn by Templars in service to Viriitri. The chained heart on its front demonstrates its wearer's commitment to protect unbound love, even at ones own expense."
     icon_state = "eorahelm"
     item_state = "eorahelm"
     emote_environment = 3
@@ -989,8 +989,8 @@
     smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-	name = "noc helmet"
-	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
+	name = "Luneite helmet"
+	desc = "Hearwear commonly worn by Templars in service to Lune. Without the night there can be no day, without Noc there can be no light in the dark hours."
 	icon_state = "nochelm"
 	item_state = "nochelm"
 	emote_environment = 3
@@ -998,8 +998,8 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	name = "Yamain helmet"
+	desc = "Headwear commonly worn by Templars in service to Yamais. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
 	emote_environment = 3
@@ -1007,8 +1007,8 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	name = "Sylvan helmet"
+	desc = "Headwear commonly worn by Templars in service to Sylvarhn. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
@@ -1679,8 +1679,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
-	name = "malum fullmask"
-	desc = "Headwear commonly worn by acolytes in service to Malum. Like Malum, they are shackled to this world with not a care for how they suffer. Such is the way of the children of the opinionless god."
+	name = "Svaeryhog fullmask"
+	desc = "Headwear commonly worn by acolytes in service to Svaeryhog."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEHAIR
@@ -1765,8 +1765,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/malumhelmet
-	name = "malum helmet"
-	desc = "Headwear commonly worn by Templars in service to Malum. It resembles the helmet worn by slaves sent to death in gladiatorial bouts."
+	name = "Svaeryhog helmet"
+	desc = "Headwear commonly worn by Templars in service to Svaeryhog. It resembles the helmet worn by slaves sent to death in gladiatorial bouts."
 	block2add = FOV_BEHIND
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEFACIALHAIR
 	icon_state = "slavehelm"

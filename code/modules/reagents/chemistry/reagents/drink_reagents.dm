@@ -209,7 +209,7 @@
 	glass_desc = ""
 	var/virile = TRUE
 
-//may need to go back on this autistic fluid based pregnancy to old one where its based on vaginal sex since it may not be working.
+
 /datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
 	. = ..()
 	if(istype(A, /obj/item/organ/filling_organ) && virile)

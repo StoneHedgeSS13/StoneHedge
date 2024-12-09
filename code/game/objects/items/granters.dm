@@ -144,10 +144,10 @@
 	traitname = "the swamp"
 	remarks = list("<font color='#32CD32'>The forest will guide you.", "<font color='#32CD32'>March with haste, there is no fear.", "<font color='#32CD32'>Be one with your surroundings.", "<font color='#32CD32'>What are you doing in my swamp?", "<font color='#32CD32'>Step light, step quick.</font>",)
 /obj/item/book/granter/trait/mobility/kneestinger
-	name = "Fragment of Dendor"
+	name = "Fragment of Sylvarhn"
 	granted_trait = TRAIT_KNEESTINGER_IMMUNITY
 	traitname = "Dendor"
-	remarks = list("<font color='#32CD32'>Dendor guides me.", "<font color='#32CD32'>You feel a shiver up your spine.", "<font color='#32CD32'>Your feet go numb.", "<font color='#32CD32'>Dendor watches my path.", "<font color='#32CD32'>I walk without fear...</font>",)
+	remarks = list("<font color='#32CD32'>Nature guides me.", "<font color='#32CD32'>You feel a shiver up your spine.", "<font color='#32CD32'>Your feet go numb.", "<font color='#32CD32'>Dendor watches my path.", "<font color='#32CD32'>I walk without fear...</font>",)
 
 /obj/item/book/granter/trait/defense
 	light_color = "#4f83ff"
@@ -320,7 +320,8 @@
 	to_chat(user, span_notice("I start reading about casting [spellname]..."))
 
 /obj/item/book/granter/spell/on_reading_finished(mob/living/user)
-	if(user.spell_slots - spell_slot_cost < 0)
+	user.calculate_spell_slots()
+	if(user.spell_slots - spell_slot_cost >= 0)
 		to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
 		var/obj/effect/proc_holder/spell/S = new spell
 		user.spell_slots_used += 1

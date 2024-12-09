@@ -50,8 +50,8 @@
 
 //Hearthstone change
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //! Will always find any tracks and analyzes them perfectly.
-#define TRAIT_NOCSNEAK "Blessing of Noc" // I can hide in dim light.
-#define TRAIT_MALUMSGRACE "Malum's Grace" // For now, just means you dont combust when snorting malum's fire.
+#define TRAIT_NOCSNEAK "Blessing of Shadow" // I can hide in dim light.
+#define TRAIT_MALUMSGRACE "Fire's Grace" // For now, just means you dont combust when snorting malum's fire.
 #define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 #define TRAIT_STRONGTHROW "Strong Throw" // 1.5x throw distance and force
@@ -66,7 +66,7 @@
 //Hearthstone end.
 
 // PATRON GOD TRAITS
-#define TRAIT_ROT_EATER "Blessing of Rot" //can eat rotten food
+#define TRAIT_ROT_EATER "Eldritch gut" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Hunger" //can eat organs
 #define TRAIT_VINE_WALKER "Blessing of Nature"
 #define TRAIT_SOUL_EXAMINE "Blessing of Hermeir" //can check bodies to see if they have departed
@@ -75,7 +75,7 @@
 #define TRAIT_CHOSEN "Sunherald's Chosen"
 #define TRAIT_SEXDEVO "Blessing of Love" //sex devotion gain and extra healing.
 #define TRAIT_ABYSSOR_SWIM "Blessing of Tides" //less base fatigue drain when swimming
-#define TRAIT_NORTHMAN "Worshipper of the Norse" //recognized by vikings and allies
+#define TRAIT_NORTHMAN "Worshipper of the Fey" //recognized by the fae courts as another loyalist.
 #define TRAIT_FAITHLESS "Ignorant" //being faithless means gods won't really help you, will they
 #define TRAIT_SNEK "Levishth's Resolve" //immune to infections of all types
 
@@ -110,16 +110,16 @@
 #define TRAIT_PSYDON_CURSE "Psydon's Curse"
 #define TRAIT_ASTRATA_CURSE "Astrata's Curse"
 #define TRAIT_NOC_CURSE "Noc's Curse"
-#define TRAIT_RAVOX_CURSE "Ravox's Curse"
-#define TRAIT_NECRA_CURSE "Necra's Curse"
-#define TRAIT_XYLIX_CURSE "Xylix's Curse"
-#define TRAIT_PESTRA_CURSE "Pestra's Curse"
-#define TRAIT_EORA_CURSE "Eora's Curse"
-#define TRAIT_ZIZO_CURSE "Zizo's Curse"
+#define TRAIT_RAVOX_CURSE "Minhur's Curse"
+#define TRAIT_NECRA_CURSE "Yamais Curse"
+#define TRAIT_XYLIX_CURSE "Tricksters Curse"
+#define TRAIT_PESTRA_CURSE "Hermeirs Curse"
+#define TRAIT_EORA_CURSE "Viriitri's Curse"
+#define TRAIT_ZIZO_CURSE "Levishth's Mark"
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
-#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
-#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
-#define TRAIT_NYMPHO_CURSE "Nympho Curse"
+#define TRAIT_MATTHIOS_CURSE "Shadowlord Touched"
+#define TRAIT_BAOTHA_CURSE "The Sacrifice"
+#define TRAIT_NYMPHO_CURSE "Nymphs Curse"
 
 //STONEHEDGE TRAITS
 #define TRAIT_USEMAGIC "Use Magic"

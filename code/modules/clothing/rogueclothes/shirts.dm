@@ -429,7 +429,7 @@
 	body_parts_covered = CHEST|VITALS
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe
-	name = "ravox robe"
+	name = "Minhur robes"
 	desc = ""
 	icon_state = "ravoxrobe"
 	sleeved = null

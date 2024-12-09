@@ -457,7 +457,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "Dr V's personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded. (close/open mmb)"
+	desc = "A personal treatment pouch; has all you need to stop you or someone else from their souls reincarnation - at least this time. Even comes with a little guide scroll for the learning. (close/open mmb)"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL

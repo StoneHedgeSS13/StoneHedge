@@ -246,7 +246,7 @@
 		if(oral)
 			playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 			var/cum_to_take = CLAMP((testes.reagents.maximum_volume/2), 1, testes.reagents.total_volume)
-			testes.reagents.trans_to(target, cum_to_take, transfered_by = user)
+			testes.reagents.trans_to(target, cum_to_take, transfered_by = user, method = INGEST)
 		else
 			var/obj/item/organ/filling_organ/cameloc
 			if(vaginal)
@@ -257,10 +257,10 @@
 				cameloc = target.getorganslot(ORGAN_SLOT_BREASTS)
 			if(vaginal || anal || nipple)
 				var/cum_to_take = CLAMP((testes.reagents.maximum_volume/4), 1, min(testes.reagents.total_volume, cameloc.reagents.maximum_volume - cameloc.reagents.total_volume))
-				testes.reagents.trans_to(cameloc, cum_to_take, transfered_by = user)
+				testes.reagents.trans_to(cameloc, cum_to_take, transfered_by = user, method = INGEST)
 			else
 				var/cum_to_take = CLAMP((testes.reagents.maximum_volume/4), 1, testes.reagents.total_volume)
-				testes.reagents.trans_to(target,  cum_to_take, transfered_by = user) //digest anyway if none of those.
+				testes.reagents.trans_to(target,  cum_to_take, transfered_by = user, method = INGEST) //digest anyway if none of those.
 
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	if(testes && testes.reagents.total_volume <= testes.reagents.maximum_volume / 4)

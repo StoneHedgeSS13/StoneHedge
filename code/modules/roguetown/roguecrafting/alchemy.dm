@@ -632,7 +632,7 @@
 
 /obj/item/reagent_containers/pill/caffpill
 	name = "WAKE-UP"
-	desc = "a handful of Dr V's pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	desc = "a handful of Alchemized Pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? Dreamers?"
 	icon_state = "pillg"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
@@ -641,7 +641,7 @@
 
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
-	desc = "a handful of Dr V's pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	desc = "a handful of pink little ball-shaped medicines. It says they restore vitality. You are pretty certain this is watered down red mixed with ash to help stabilize a variety of issues."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
@@ -657,7 +657,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
-	desc = "Dr V's special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
+	desc = "A special formulated body revitalizer said to have been made by Shamans of seraph-Iros; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive, caffeinated snake venom formula derived analgesic. Single dose."
 	icon_state = "THEbottle"
 	volume = 16
 	amount_per_transfer_from_this = 16
@@ -665,15 +665,15 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
 	name = "purifying elixer"
-	desc = "Dr V's special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	desc = "A specially formulated body purifier; A powerful concoction that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
 	icon_state = "THEbottle"
 	volume = 30
 	amount_per_transfer_from_this = 30
 	list_reagents = list(/datum/reagent/medicine/purify = 20, /datum/reagent/ozium = 5, /datum/reagent/consumable/ethanol/hooch = 5) // lil laudanum for your troubles
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/mori
-	name = "MORIBUND"
-	desc = "Dr. V's elixer of life, because sometimes even necra needs a second opinion. WARNING: absolutely do not drink more than a bottle. mend corpse prior to imbide."
+	name = "cruxis"
+	desc = "An elixir of life with potent effects. WARNING: absolutely do not drink more than a bottle. Mend corpse prior to imbibing it or face dire consequence."
 	volume = 5
 	amount_per_transfer_from_this = 5
 	list_reagents = list(/datum/reagent/medicine/mori = 5,)

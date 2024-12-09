@@ -269,10 +269,10 @@
 	if(plant && plant_dead)
 		plant_dead = FALSE
 		plant_health = 10.0
-	// If low on nutrition, Dendor provides
+	// If low on nutrition, Sylvarhn provides
 	if(nutrition < 30)
 		adjust_nutrition(max(30 - nutrition, 0))
-	// If low on water, Dendor provides
+	// If low on water, Sylvarhn provides
 	if(water < 30)
 		adjust_water(max(30 - water, 0))
 	// And it grows a little!

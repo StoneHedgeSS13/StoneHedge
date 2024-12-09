@@ -10,7 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	spells = list (/obj/effect/proc_holder/spell/targeted/shapeshift,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/invoked/infestation5e,/obj/effect/proc_holder/spell/self/primalsavagery5e,)
 	allowed_races = RACES_ALL_KINDSPLUS
-	allowed_patrons = ALL_DIVINE_PATRONS //gets set to dendor on the outfit anyways lol
+	allowed_patrons = ALL_DIVINE_PATRONS //gets set to natureboi on the outfit anyways lol
 	outfit = /datum/outfit/job/roguetown/druid
 	tutorial = "You have always been drawn to the wild, and the wild drawn to you. When your calling came, it was from Nature and it's deities. You act as a medium between the natural and magickal worlds, often caught between it and the changing pace of society. The people still depend on you for wisdom and balance in this city; and it is often up to you and the various orders who survey the woodland realm to maintain any form of law: be it the lands or the peoples."
 

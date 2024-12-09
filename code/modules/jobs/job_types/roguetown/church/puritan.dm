@@ -20,7 +20,7 @@
 		/datum/patron/divine/pestra,
 		/datum/patron/divine/malum,
 	) //gets set to old god anyways
-	tutorial = "As an Witcher, you have been tasked with hunting the various monsters that haunt the dream dales. Using Magick, Faith and your Arsenal of Tools; you are the stuff of legends which must fight the forces of darkness."
+	tutorial = "As a Witcher, you have been tasked with hunting the various monsters that haunt the dream dales. Using Magick; Divine Powers and your Arsenal of Tools; you are the stuff of legends which must fight the forces of darkness and deceipt."
 	whitelist_req = FALSE
 
 	outfit = /datum/outfit/job/roguetown/puritan
@@ -131,14 +131,14 @@
 		to_chat(src, span_warning ("My victim needs to be restrained in order to do this!"))
 		return
 	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/silver))
-		to_chat(src, span_warning("I need to be holding a silver psycross to extract this divination!"))
+		to_chat(src, span_warning("I need to be holding a silver divine focus to extract this divination!"))
 		return
 	if(!H.stat)
 		var/static/list/faith_lines = list(
-			"DO YOU DENY THE TEN?",
+			"DO YOU LIE?",
 			"WHO IS YOUR GOD?",
-			"ARE YOU FAITHFUL?",
-			"WHO IS YOUR SHEPHERD?",
+			"WHO DO YOU SERVE?",
+			"WHO IS YOUR GOD?",
 		)
 		say(pick(faith_lines), spans = list("torture"))
 		H.confess_sins("patron")
@@ -151,7 +151,7 @@
 		"I AM NO SINNER!",
 		"I'M INNOCENT!",
 		"I HAVE NOTHING TO CONFESS!",
-		"I AM FAITHFUL!",
+		"I AM INNOCENT!",
 	)
 	var/list/confessions = list()
 	switch(confession_type)

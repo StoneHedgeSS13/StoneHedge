@@ -259,7 +259,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/puritan
-	name = "Witcher"
+	name = "Wytcher Captain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/shepherd

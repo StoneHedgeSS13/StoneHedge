@@ -948,21 +948,21 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/nochood
-	name = "hood (moon/Noc) - (2 cloths, silk; LOOM, JOURNEYMAN)"
+	name = "hood (moon/Lune) - (2 cloths, silk; LOOM, JOURNEYMAN)"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/nochood)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/necrahood
-	name = "hood (Necra) - (2 cloths, silk; LOOM, JOURNEYMAN)"
+	name = "hood (Yamais) - (2 cloths, silk; LOOM, JOURNEYMAN)"
 	result = list(/obj/item/clothing/head/roguetown/necrahood)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/astratahood
-	name = "hood (solar/Astrata) - (2 cloths, silk; LOOM, JOURNEYMAN)"
+	name = "hood (solar/elysian) - (2 cloths, silk; LOOM, JOURNEYMAN)"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/astrata)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
@@ -977,28 +977,28 @@
 /* craftdif of 4 = EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/astratarobe
-	name = "robes (Astrata) - (3 cloths, silk; LOOM, EXPERT)"
+	name = "robes (Elysius) - (3 cloths, silk; LOOM, EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/astrata)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/dendorrobe
-	name = "robes (Dendor) - (3 cloths, silk; LOOM, EXPERT)"
+	name = "robes (Sylvarhn) - (3 cloths, silk; LOOM, EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/dendor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/necrarobe
-	name = "robes (Necra) - (3 cloths, silk; LOOM, EXPERT)"
+	name = "robes (Yamais) - (3 cloths, silk; LOOM, EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/necra)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/nocrobe
-	name = "robes (Noc) - (3 cloths, silk; LOOM, EXPERT)"
+	name = "robes (Lune) - (3 cloths, silk; LOOM, EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)

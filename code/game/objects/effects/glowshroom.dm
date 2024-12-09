@@ -32,7 +32,7 @@
 //		var/throwdir = get_dir(src, mover)
 		var/mob/living/L = mover
 
-		if(HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY)) //Dendor kneestinger immunity
+		if(HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY)) //Sylvarhn kneestinger immunity
 			return TRUE
 
 		if(L.electrocute_act(10, src))

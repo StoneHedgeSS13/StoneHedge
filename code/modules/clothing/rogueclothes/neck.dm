@@ -95,7 +95,6 @@
 	blocksound = CHAINHIT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
