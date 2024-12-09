@@ -1,4 +1,4 @@
-/datum/anvil_recipe/valuables/special/ringf/obj/item/clothing/neck/roguetown/psicross
+/datum/anvil_recipe/valuables/special/ringf
 	name = "flame ring (+1 Fat, +1 Ftone, +1 Fiber)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern/ring
@@ -41,13 +41,6 @@
 	name = "Statue"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/roguestatue/iron
-	i_type = "Valuables"
-
-/datum/anvil_recipe/valuables/special/ringf/obj/item/clothing/neck/roguetown/psicross
-	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/flashlight/flare/torch/lantern/ring
-	additional_items = list(/obj/item/reagent_containers/food/snacks/fat, /obj/item/natural/stone, /obj/item/natural/fibers)
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/special/ringp

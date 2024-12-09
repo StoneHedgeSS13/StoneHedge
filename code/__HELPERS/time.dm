@@ -69,7 +69,7 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 				for(var/datum/weather/fog/R in SSweather.curweathers)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/fog, 1) 
+					SSweather.run_weather(/datum/weather/fog, 1)
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")
@@ -140,6 +140,18 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 	client.screen += D
 	animate(D, alpha = 255, time = 20, easing = EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(clear_time_icon), D), 30)
+	//fookin recalc bandit slots available
+	var/num_players = 0
+	var/num_bandits = 0
+	for(var/i in GLOB.player_list)
+		num_players ++
+	if(num_players >= 10)
+		// 1 bandit per 10 players,
+		num_bandits = round(num_players / 10)
+		if(num_bandits >= 8)	//caps bandits at 8
+			num_bandits = 8
+		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
+		bandit_job.total_positions = num_bandits
 
 /proc/station_time_debug(force_set)
 	if(isnum(force_set))

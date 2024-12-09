@@ -396,7 +396,6 @@
 		icon_state = "skit"
 
 /obj/item/storage/fancy/skit/examine(mob/user)
-	. = ..()
 	if(fancy_open)
 		if(length(contents) == 1)
 			. += "There is one item left."

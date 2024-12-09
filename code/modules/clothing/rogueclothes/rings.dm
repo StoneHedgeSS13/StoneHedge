@@ -26,36 +26,6 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-/obj/item/flashlight/flare/torch/lantern/ring
-	parent_type = /obj/item/flashlight/flare/torch/lantern // Inherits parents properties from lantern
-	name = "alchemist ring"
-	icon_state = "lanternR"
-	w_class = WEIGHT_CLASS_TINY
-	icon = 'icons/roguetown/clothing/rings.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/rings.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/rings.dmi'
-	sleevetype = "shirt"
-	desc = "flick of the thumb portable flame"
-	light_range = 4 // standard torch range
-	on = FALSE
-	flags_1 = CONDUCT_1
-	slot_flags = ITEM_SLOT_HIP
-	force = 5
-	on_damage = 5
-	produce_heat = 1500
-	heat = 1000
-	slot_flags = ITEM_SLOT_RING
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/blacksmithing
-	fuel = 9999
-	sellprice = 30
-
-/obj/item/flashlight/flare/torch/lantern/ring/MiddleClick(mob/living/user, params)
-	if (!on)
-		on = TRUE
-		to_chat(user, "<span class='notice'>With a flick of the thumb, you strike a flame.</span>")
-	..()
-
 /obj/item/clothing/ring/silver
 	name = "silver ring"
 	icon_state = "ring_s"
@@ -91,9 +61,8 @@
 	sellprice = 30
 
 /obj/item/flashlight/flare/torch/lantern/ring/MiddleClick(mob/living/user, params)
-	if (!on)
-		on = TRUE
-		to_chat(user, "<span class='notice'>With a flick of the thumb, you strike a flame.</span>")
+	on = !on
+	to_chat(user, span_notice("With a flick of the thumb, you [on ? "strike a" : "snuff the"] flame."))
 	..()
 
 /obj/item/clothing/ring/active
