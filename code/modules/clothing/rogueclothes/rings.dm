@@ -230,23 +230,105 @@
 //academy keystones
 /obj/item/clothing/ring/keystone
 	name = "academy keystone"
-	desc = "A silver-banded sapphire keystone used to allow passage through certain magical wards. This one is issued to Mages of the Ravenloft Academy."
+	desc = "A silver-banded sapphire keystone used to allow passage through certain magical wards. This one is issued to Mages of the Ravenloft Academy. It must be bound to a mage before it can be activated."
 	icon_state = "s_ring_sapphire"
 	var/active = FALSE
+	var/bound = FALSE
+	var/mob/living/bound_user = null
+	var/active_timer = 30 SECONDS
+
+/obj/item/clothing/ring/keystone/examine(mob/user)
+	. = ..()
+	if(bound)
+		. += span_smallnotice("This keystone is bound to [bound_user].")
+	else
+		. += span_smallnotice("This keystone needs to be bound to a mage. (Use in hand to bind)")
+
+/obj/item/clothing/ring/keystone/attack_self(mob/user)
+	if(!bound && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		for(var/obj/structure/academy_binder/binder in world)
+			if(binder.revoked_users[H.real_name])
+				to_chat(user, span_danger("The keystone violently rejects your attempt to bind it - your Academy privileges have been revoked!"))
+				if(isliving(user))
+					var/mob/living/L = user
+					L.electrocute_act(15, src)
+				playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+				return
+		bound_user = user
+		bound = TRUE
+		to_chat(user, span_green("You feel the keystone attune to your magical signature."))
+		playsound(src, 'sound/magic/charged.ogg', 50, TRUE)
+		return
+	return ..()
 
 /obj/item/clothing/ring/keystone/attack_right(mob/user)
 	if(loc != user)
 		return
+
+	if(!bound)
+		to_chat(user, span_warning("The keystone must be bound to a mage first!"))
+		return
+
+	if(user != bound_user)
+		user.visible_message(span_danger("The keystone violently rejects [user]!"))
+		if(isliving(user))
+			var/mob/living/L = user
+			if(L.electrocute_act(15, src))
+				user.dropItemToGround(src)
+				playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		return
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		for(var/obj/structure/academy_binder/binder in world)
+			if(binder.revoked_users[H.real_name])
+				to_chat(user, span_danger("The keystone refuses to activate - your Academy privileges have been revoked!"))
+				if(isliving(user))
+					var/mob/living/L = user
+					L.electrocute_act(15, src)
+				playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+				return
+
 	active = !active
 	user.visible_message(span_warning("[user] twists the [src], causing it to [active ? "glow" : "dim"]!"))
 	playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
 	update_icon()
 
+	if(active)
+		addtimer(CALLBACK(src, PROC_REF(deactivate), user), active_timer)
+
+/obj/item/clothing/ring/keystone/proc/deactivate(mob/user)
+	if(!active)
+		return
+	active = FALSE
+	update_icon()
+	if(ismob(user))
+		to_chat(user, span_warning("The keystone's power fades, requiring reactivation."))
+		playsound(user, 'sound/magic/timestop.ogg', 50, TRUE)
+
+/obj/item/clothing/ring/keystone/update_icon()
+	..()
+	icon_state = active ? "acadactive" : "s_ring_sapphire"
+
 /obj/item/clothing/ring/keystone/proc/can_unlock()
 	return active
 
+/obj/item/clothing/ring/keystone/proc/update_specialization_name(specialization)
+	name = "academy [lowertext(specialization)]'s keystone"
+	desc = "A silver-banded sapphire keystone used to allow passage through certain magical wards. This one is issued to [specialization]'s of the Ravenloft Academy. It must be bound to a mage before it can be activated."
+
 /obj/item/clothing/ring/keystone/archkey
-	name = "academy archkeystone"
-	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to Archmages of the Ravenloft Academy."
+	name = "academy arch-keystone"
+	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to Archmages of the Ravenloft Academy. It must be bound to a mage before it can be activated."
 	icon_state = "g_ring_sapphire"
+
+/obj/item/clothing/ring/keystone/archkey/update_icon()
+	..()
+	icon_state = active ? "acadarchactive" : "g_ring_sapphire"
+
+/obj/item/clothing/ring/keystone/archkey/update_specialization_name(specialization)
+	name = "academy [lowertext(specialization)]'s arch-keystone"
+	desc = "A gold-banded sapphire keystone used to activate, deactivate, and allow passage through certain magical wards. This one is issued to [specialization]'s of the Ravenloft Academy. It must be bound to a mage before it can be activated."
+
 
