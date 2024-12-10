@@ -253,7 +253,7 @@
             if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
                 to_chat(M, span_cultbold("The wards on a scrollcase at [get_area(src)] have been nullified!"))
 
-        addtimer(CALLBACK(src, .proc/reactivate_wards), reactivate_time)
+        addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
         return TRUE
 
     if(disabled_by_nullmagic)
