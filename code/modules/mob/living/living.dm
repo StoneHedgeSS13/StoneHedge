@@ -333,6 +333,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if(HAS_TRAIT(L, TRAIT_MARTIALARTIST))
 		acceptable.Add(BODY_ZONE_HEAD)

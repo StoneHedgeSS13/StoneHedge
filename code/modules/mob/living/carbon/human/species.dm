@@ -154,20 +154,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	)
 
 	var/list/specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	var/list/specstats_m = list(
-		"constitution" = 1, 
+		"constitution" = 1,
 		"intelligence" = -1,
 	)
 	var/list/specstats_f = list(
-		"strength" = -1, 
+		"strength" = -1,
 		"speed" = 1,
 	)
 	var/list/specskills
@@ -1184,6 +1184,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.visible_message(span_warning("[user] stole [target]'s [I.name]!"),
 								span_notice("I stole [target]'s [I.name]!"), null, null, target)
 				to_chat(target, span_danger("[user] stole my [I.name]!"))*/
+		var/def_zone = check_zone(user.zone_selected)
+		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+		for(var/obj/item/embedded in affecting?.embedded_objects)
+			target.grabbedby(user, 1, item_override = embedded)
+			return TRUE
 		target.grabbedby(user)
 		return TRUE
 
