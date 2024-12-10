@@ -33,6 +33,9 @@
 	var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 	if(changeling)
 		changeling.regain_powers()
+	
+	if((vore_flags & VORE_INIT) && !(vore_flags & VOREPREF_INIT)) //Vore's been initialized, voreprefs haven't. If this triggers then that means that voreprefs failed to load due to the client being missing.
+		copy_from_prefs_vr()
 
 	set_ssd_indicator(FALSE) //Hearthstone apple change - ssd indicator
 

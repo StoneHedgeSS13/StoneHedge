@@ -146,10 +146,6 @@
 	maxHealth = 200
 	erpable = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/horny
-	erpable = TRUE
-	seeksfuck = TRUE
-
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/safe
 	aggressive = FALSE
 	tame = TRUE

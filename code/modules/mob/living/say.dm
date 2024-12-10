@@ -311,27 +311,31 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			eavesdrop_range += 1
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
-	// fun fact: roguetown broke this which broke eavesdropping on whispers lmao
-	if(client) //client is so that ghosts don't have to listen to mice
-		// check this beforehand to make it so simplemobs don't lag us at highpop
-		for(var/_M in GLOB.player_list)
-			var/mob/M = _M
-			if(M.stat != DEAD) //not dead, not important
-				continue
-			if(!M?.client)
-				continue
-			if(!M.client)
-				continue
-			if(get_dist(M, src) > message_range) //they're out of range of normal hearing
-				if(M.client.prefs)
-					if(is_eavesdroppable && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
-						continue
-					if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
-						continue
-			if(!is_in_zweb(src.z, M.z))
-				continue
-			listening |= M
-			the_dead[M] = TRUE
+//	var/list/yellareas	//CIT CHANGE - adds the ability for yelling to penetrate walls and echo throughout areas
+	for(var/_M in GLOB.player_list)
+		var/mob/M = _M
+//		if(M.stat != DEAD) //not dead, not important
+//			if(yellareas)	//CIT CHANGE - see above. makes yelling penetrate walls
+//				var/area/A = get_area(M)	//CIT CHANGE - ditto
+//				if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))	//CIT CHANGE - ditto
+//					listening |= M	//CIT CHANGE - ditto
+//			continue
+		if(!client) //client is so that ghosts don't have to listen to mice
+			continue
+		if(!M)
+			continue
+		if(!M.client)
+			continue
+		if(get_dist(M, src) > message_range) //they're out of range of normal hearing
+			if(M.client.prefs)
+				if(eavesdropping_modes[message_mode] && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
+					continue
+				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
+					continue
+		if(!is_in_zweb(src, M))
+			continue
+		listening |= M
+		the_dead[M] = TRUE
 
 	log_seen(src, null, listening, original_message, SEEN_LOG_SAY)
 

@@ -122,6 +122,7 @@
 	QDEL_NULL(sexcon)
 	STOP_PROCESSING(SShumannpc, src)
 	QDEL_NULL(physiology)
+	QDEL_NULL_LIST(vore_organs) // CITADEL EDIT belly stuff
 	GLOB.human_list -= src
 	return ..()
 
@@ -852,6 +853,11 @@
 
 	if(user == target)
 		return FALSE
+	//normal vore check.
+	if(user.pulling == target && user.grab_state && user.voremode)
+		if(ismob(user.pulling))
+			user.vore_attack(user, target, src) // User, Pulled, Predator target (which can be user, pulling, or src)
+			return TRUE
 	if(pulling == target && stat == CONSCIOUS)
 		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
 		if(user == target && can_piggyback(target))
