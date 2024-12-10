@@ -775,6 +775,8 @@
 #include "code\datums\sexcon\sex_actions\utility\object_anal_other.dm"
 #include "code\datums\sexcon\sex_actions\utility\object_vaginal.dm"
 #include "code\datums\sexcon\sex_actions\utility\object_vaginal_other.dm"
+#include "code\datums\sexcon\sex_actions\utility\object_nipple.dm"
+#include "code\datums\sexcon\sex_actions\utility\object_nipple_other.dm"
 #include "code\datums\sexcon\sex_actions\utility\sexcon_utility_helpers.dm"
 #include "code\datums\sexcon\sex_actions\utility\store_anal.dm"
 #include "code\datums\sexcon\sex_actions\utility\store_anal_other.dm"
