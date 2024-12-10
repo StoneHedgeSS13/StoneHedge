@@ -2,7 +2,7 @@
 	name = "self filling organ"
 
 	//self generating liquid stuff, dont use with absorbing stuff
-	var/storage_per_size = 5 //added per organ size
+	var/storage_per_size = 10 //added per organ size
 	var/datum/reagent/reagent_to_make = /datum/reagent/consumable/nutriment //naturally generated reagent
 	var/refilling = FALSE //slowly refills when not hungry
 	var/reagent_generate_rate = HUNGER_FACTOR //with refilling
@@ -37,7 +37,7 @@
 /obj/item/organ/filling_organ/Insert(mob/living/carbon/M, special, drop_if_replaced) //update size cap n shit on insert
 	. = ..()
 	if(organ_sizeable)
-		max_reagents = storage_per_size + (storage_per_size * organ_size)
+		max_reagents = 5 + storage_per_size + (storage_per_size * organ_size)
 	create_reagents(max_reagents)
 	if(!refilling)
 		startsfilled = FALSE
@@ -52,7 +52,7 @@
 	//updates size caps
 	if(!issimple(H) && H.mind && organ_sizeable)
 		var/athletics = H.mind?.get_skill_level(/datum/skill/misc/athletics)
-		var/captarget = storage_per_size + (athletics * 4) + (storage_per_size * organ_size) // Updates the max_reagents in case the organ size changes
+		var/captarget = max_reagents + (athletics * 4) + (5 + storage_per_size + (storage_per_size * organ_size)) // Updates the max_reagents in case the organ size changes
 		if(damage)
 			captarget -= damage
 		if(contents.len)
