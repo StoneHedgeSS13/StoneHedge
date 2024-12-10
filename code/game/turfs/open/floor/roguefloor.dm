@@ -299,21 +299,6 @@
 	update_muddy()
 	return TRUE
 
-/turf/open/floor/rogue/dirt/road/update_water()
-	if(muddy)
-		if(water_level <= 0)
-			water_level = 0
-			muddy = FALSE
-			slowdown = 0 // fuck you im tired of trying to clean this slop.
-			icon_state = initial(icon_state)
-			name = initial(name)
-			footstep = initial(footstep)
-			barefootstep = initial(barefootstep)
-			clawfootstep = initial(clawfootstep)
-			heavyfootstep = initial(heavyfootstep)
-			track_prob = initial(track_prob) //Hearthstone change.
-	return TRUE
-
 /turf/open/floor/rogue/dirt/proc/update_muddy()
 	if(!muddy && water_level > 25)
 		color = "#95776a"
@@ -337,6 +322,15 @@
 		heavyfootstep = initial(heavyfootstep)
 		track_prob = initial(track_prob)
 		bloodiness = initial(bloodiness)
+	drying()
+
+/turf/open/floor/rogue/dirt/proc/drying()
+	if(water_level > 0) //self drying, hopefully not performance impactful.
+		water_level -= 5
+		water_level = max(water_level, 0) //should keep it above minus.
+		if(water_level <= 25 && muddy)
+			update_muddy()
+		addtimer(CALLBACK(src, PROC_REF(update_muddy)), pick(1 MINUTES, 2 MINUTES)) //not all tiles at once to hopefully spread out the processing required.
 
 /turf/open/floor/rogue/dirt/road
 	name = "dirt"

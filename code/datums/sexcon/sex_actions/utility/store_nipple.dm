@@ -57,21 +57,16 @@
 			to_chat(user, span_info("Unfortunately, my breasts are not big enough to fit anything in them."))
 			user.dropItemToGround(heldstuff)
 			return
-		else 
+		else
 			if(userbreasts.organ_size < 6 && heldstuff.w_class > WEIGHT_CLASS_TINY)
 				to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit tiny things."))
 				user.dropItemToGround(heldstuff)
 				return
-			else 
+			else
 				if(userbreasts.organ_size < 8 && heldstuff.w_class > WEIGHT_CLASS_SMALL)
 					to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit small things."))
 					user.dropItemToGround(heldstuff)
 					return
-				else 
-					if(userbreasts.organ_size < 10 && heldstuff.w_class > WEIGHT_CLASS_NORMAL)
-						to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit medium sized things."))
-						user.dropItemToGround(heldstuff)
-						return
 
 	if(istype(heldstuff, /obj/item/rogueweapon))
 		to_chat(user, span_userdanger("[heldstuff] may cut me while i put it in, depending on my precision of hand."))
@@ -124,7 +119,7 @@
 				nipplecontents.doMove(get_turf(user))
 				userbreasts.contents -= nipplecontents
 				user.put_in_active_hand(nipplecontents)
-			to_chat(user, span_info("There is now nothing in my nipples."))			
+			to_chat(user, span_info("There is now nothing in my nipples."))
 		else
 			playsound(user, 'sound/misc/mat/insert (1).ogg', 8, TRUE, -2, ignore_walls = FALSE)
 			for(var/obj/item/nipplecontents as anything in userbreasts.contents)

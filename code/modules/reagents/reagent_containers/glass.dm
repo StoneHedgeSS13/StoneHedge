@@ -420,14 +420,14 @@
 
 	cut_overlays()
 
-	if(reagents.total_volume > 0) 
-		if(reagents.total_volume <= 50) 
+	if(reagents.total_volume > 0)
+		if(reagents.total_volume <= 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50) 
+		if(reagents.total_volume > 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
@@ -614,6 +614,12 @@
 		grinded = null
 		icon_state = "mortar_empty"
 		to_chat(user, "I eject the item inside.")
+		return TRUE
+	if(reagents.total_volume)
+		icon_state = "mortar_empty"
+		to_chat(user, "I pour out the liquids.")
+		reagents.remove_all(reagents.total_volume)
+		return TRUE
 
 /obj/item/reagent_containers/glass/mortar/MiddleClick(mob/user, params)
 	if(grinded)

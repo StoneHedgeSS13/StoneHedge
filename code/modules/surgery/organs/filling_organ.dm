@@ -2,7 +2,7 @@
 	name = "self filling organ"
 
 	//self generating liquid stuff, dont use with absorbing stuff
-	var/storage_per_size = 10 //added per organ size
+	var/storage_per_size = 5 //added per organ size
 	var/datum/reagent/reagent_to_make = /datum/reagent/consumable/nutriment //naturally generated reagent
 	var/refilling = FALSE //slowly refills when not hungry
 	var/reagent_generate_rate = HUNGER_FACTOR //with refilling
@@ -37,7 +37,7 @@
 /obj/item/organ/filling_organ/Insert(mob/living/carbon/M, special, drop_if_replaced) //update size cap n shit on insert
 	. = ..()
 	if(organ_sizeable)
-		max_reagents = rand(1,5) + storage_per_size + storage_per_size * organ_size
+		max_reagents = storage_per_size + (storage_per_size * organ_size)
 	create_reagents(max_reagents)
 	if(!refilling)
 		startsfilled = FALSE
@@ -50,9 +50,9 @@
 	..()
 
 	//updates size caps
-	if(!issimple(H) && H.mind)
+	if(!issimple(H) && H.mind && organ_sizeable)
 		var/athletics = H.mind?.get_skill_level(/datum/skill/misc/athletics)
-		var/captarget = max_reagents+(athletics*4)+(5+storage_per_size+(storage_per_size*organ_size)) // Updates the max_reagents in case the organ size changes
+		var/captarget = storage_per_size + (athletics * 4) + (storage_per_size * organ_size) // Updates the max_reagents in case the organ size changes
 		if(damage)
 			captarget -= damage
 		if(contents.len)
@@ -66,29 +66,18 @@
 			if(H.has_quirk(/datum/quirk/selfawaregeni))
 				to_chat(H, span_blue("My [pick(altnames)] may be able to hold a different amount now."))
 
-/* Unsure how to apply this without other forgans overriding it and removing etc.
 	//debuff checks
 	if(reagents.maximum_volume > 40 && bloatable) //if there is space to bloat to begin with, and its bloatable.
-		if(reagents.total_volume > ((reagents.maximum_volume/3) + storage_per_size)) //more than 1/3 full, light bloat.
-			if(!reagents.total_volume > ((reagents.maximum_volume/2) + (storage_per_size*2))) //more than half full, heavy bloat.
-				if(!owner.has_status_effect(/datum/status_effect/debuff/bloatone))
+		if(reagents.total_volume > (reagents.maximum_volume/3)) //more than 1/3 full, light bloat.
+			if(!reagents.total_volume > (reagents.maximum_volume/2)) //more than half full, heavy bloat.
+				if(!owner.has_status_effect(/datum/status_effect/debuff/bloatone) && !owner.has_status_effect(/datum/status_effect/debuff/bloattwo))
 					owner.apply_status_effect(/datum/status_effect/debuff/bloatone)
-				if(owner.has_status_effect(/datum/status_effect/debuff/bloattwo))
-					owner.remove_status_effect(/datum/status_effect/debuff/bloattwo)
 			else
-				if(owner.has_status_effect(/datum/status_effect/debuff/bloatone))
-					owner.remove_status_effect(/datum/status_effect/debuff/bloatone)
 				if(!owner.has_status_effect(/datum/status_effect/debuff/bloattwo))
 					owner.apply_status_effect(/datum/status_effect/debuff/bloattwo)
-		else //im free madafakaaa
-			if(owner.has_status_effect(/datum/status_effect/debuff/bloattwo))
-				owner.remove_status_effect(/datum/status_effect/debuff/bloattwo)
-			if(owner.has_status_effect(/datum/status_effect/debuff/bloatone))
-				owner.remove_status_effect(/datum/status_effect/debuff/bloatone)
-*/
 
 	if(reagents.total_volume > reagents.maximum_volume) //lil allowance
-		visible_message(span_info("[owner]'s [pick(altnames)] spill some of it's contents with the pressure on it!"),span_info("My [pick(altnames)] spill it's excesss contents with the pressure built up on it!"),span_unconscious("I hear a splash."))
+		owner.visible_message(span_info("[owner]'s [pick(altnames)] spill some of it's contents with the pressure on it!"),span_info("My [pick(altnames)] spill it's excesss contents with the pressure built up on it!"),span_unconscious("I hear a splash."))
 		reagents.remove_all(reagents.total_volume - reagents.maximum_volume)
 		playsound(owner, 'sound/foley/waterenter.ogg', 15)
 
@@ -125,7 +114,7 @@
 		if((reagents.total_volume && spiller) || (reagents.total_volume > reagents.maximum_volume)) //spiller or above it's capacity to leak.
 			var/obj/item/clothing/blockingitem = H.mob_slot_wearing(blocker)
 			if(blockingitem && !blockingitem.genitalaccess) //we aint dripping a drop.
-				
+
 			/*
 				tempdriprate = 0.1 //if worn slot cover it, drip nearly nothing.
 				if(owner.has_quirk(/datum/quirk/selfawaregeni))
@@ -166,7 +155,7 @@
 	var/stealth = H.mind?.get_skill_level(/datum/skill/misc/sneaking)
 	var/keepinsidechance = CLAMP((rand(25,100) - (stealth * 20)),0,100) //basically cant lose your item if you have 5 stealth.
 	if(reagents.total_volume > reagents.maximum_volume / 2 && spiller && prob(keepinsidechance)) //if you have more than half full spiller organ.
-		visible_message(span_info("[owner]'s [pick(altnames)] spill some of it's contents with the pressure on it!"),span_info("My [pick(altnames)] spill some of it's contents with the pressure on it! [keepinsidechance]%"),span_unconscious("I hear a splash."))
+		owner.visible_message(span_info("[owner]'s [pick(altnames)] spill some of it's contents with the pressure on it!"),span_info("My [pick(altnames)] spill some of it's contents with the pressure on it! [keepinsidechance]%"),span_unconscious("I hear a splash."))
 		reagents.remove_all(keepinsidechance)
 		playsound(owner, 'sound/foley/waterenter.ogg', 15)
 
@@ -198,7 +187,7 @@
 									to_chat(H, span_blue("I easily maintain my [pick(altnames)]'s grip on [english_list(contents)]."))
 								else
 									to_chat(H, span_info("Phew, I maintain my [pick(altnames)]'s grip on [english_list(contents)]."))
-				break		
+				break
 
 /obj/item/organ/filling_organ/proc/be_impregnated()
 	if(pregnant)
