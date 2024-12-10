@@ -26,21 +26,31 @@
 /// A cache of stringified z-level zweb checks.
 /// GLOB.zweb_cache[num2text(my_z)][num2text(compare_z)] = TRUE/FALSE
 GLOBAL_LIST_EMPTY(zweb_cache)
-/proc/is_in_zweb(my_z, compare_z)
+/proc/is_in_zweb(atom/my_atom, atom/compare_atom)
+	var/turf/my_turf = get_turf(my_atom)
+	var/turf/compare_turf = get_turf(compare_atom)
+	var/my_z = my_turf.z
+	var/compare_z = compare_turf.z
 	if(!my_z || !compare_z)
-		return FALSE
+		return
 	if(my_z == compare_z)
 		return TRUE
-	var/my_text = num2text(my_z)
-	var/comp_text = num2text(compare_z)
-	if(isnull(GLOB.zweb_cache[my_text]?[comp_text]))
-		LAZYINITLIST(GLOB.zweb_cache[my_text])
-		for(var/zlevel in get_multiz_accessible_levels(my_z))
-			var/ztext = num2text(zlevel)
-			GLOB.zweb_cache[my_text][ztext] = TRUE
-			LAZYINITLIST(GLOB.zweb_cache[ztext])
-			LAZYADD(GLOB.zweb_cache[ztext], my_text)
-	return GLOB.zweb_cache[my_text][comp_text]
+	if(my_z > compare_z)
+		for(var/i in my_z to compare_z)
+			if(!i || i<0)
+				return FALSE
+			if(i == compare_z)
+				return TRUE
+			if(!SSmapping.level_trait(i, ZTRAIT_DOWN))
+				return FALSE
+	if(my_z < compare_z)
+		for(var/i in my_z to compare_z)
+			if(!i || i<0)
+				return FALSE
+			if(i == compare_z)
+				return TRUE
+			if(!SSmapping.level_trait(i, ZTRAIT_UP))
+				return FALSE
 
 /proc/get_dir_multiz(turf/us, turf/them)
 	us = get_turf(us)

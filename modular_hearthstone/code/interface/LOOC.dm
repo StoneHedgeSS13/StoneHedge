@@ -55,8 +55,10 @@
 	mob.log_talk(msg, LOG_LOOC)
 
 	var/prefix = "LOOC"
-	for(var/mob/M in range(7,src))
+	for(var/mob/M in get_hearers_in_view(7, mob))
 		var/client/C = M.client
+		if(M == mob)
+			continue
 		if(!M.client)
 			continue
 		if (isobserver(M))

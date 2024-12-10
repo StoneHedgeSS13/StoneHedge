@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
 
 	if(prob(80))
-		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	else//Stole some shoes!
 		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 

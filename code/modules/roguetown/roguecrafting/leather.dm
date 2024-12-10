@@ -225,7 +225,7 @@
 
 /datum/crafting_recipe/roguetown/hunting/boots
 	name = "leather boots"
-	result = /obj/item/clothing/shoes/roguetown/armor/leather
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/hunting/helmet

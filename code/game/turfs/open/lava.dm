@@ -313,7 +313,11 @@
 //			if("lava" in L.weather_immunities)
 //				continue
 
-			L.dust(drop_items = TRUE)
+			L.adjustFireLoss(10) //would have higher, but I wanted to give prey their fanservice
+			playsound(src, 'modular_causticcove/sound/misc/bigmelt.ogg', 100, FALSE)
+			if(L.health <= 0) //melt away once dead
+				L.dust(drop_items = TRUE)
+				playsound(src, 'modular_causticcove/sound/misc/deathdigest.ogg', 100, FALSE) //caustic cove edit end
 
 /turf/open/lava/acid/onbite(mob/user)
 	if(isliving(user))
@@ -332,3 +336,4 @@
 			C.flash_fullscreen("redflash3")
 			C.emote("agony", forced = TRUE)
 			C.adjustFireLoss(250)
+

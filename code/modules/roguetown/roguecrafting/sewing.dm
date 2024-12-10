@@ -823,7 +823,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/leather/boots
 	name = "hardened leather boots"
-	result = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather/advanced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -843,7 +843,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/leather/hood
-	name = "hardened leather hooded helmet"
+	name = "hardened leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
@@ -867,8 +867,8 @@
 
 /datum/crafting_recipe/roguetown/sewing/leather/boots/masterwork
 	name = "masterwork leather boots"
-	result = /obj/item/clothing/shoes/roguetown/armor/leather/masterwork
-	reqs = list(/obj/item/clothing/shoes/roguetown/armor/leather = 1,
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather/masterwork
+	reqs = list(/obj/item/clothing/shoes/roguetown/boots/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
