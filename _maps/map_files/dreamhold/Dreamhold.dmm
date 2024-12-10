@@ -4929,11 +4929,9 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/caves)
 "dyx" = (
-/obj/structure/chair/wood{
-	dir = 1
-	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/effect/landmark/start/acadmage,
+/obj/structure/chair/wood,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -5082,10 +5080,15 @@
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/indoors/shelter/mountains)
 "dFg" = (
+/obj/item/book/granter/spell/spells5e/random,
+/obj/item/book/granter/spell/spells5e/random,
+/obj/machinery/light/rogue/wallfire/candle/blue/l{
+	pixel_x = -33
+	},
 /obj/structure/bookcase/academy{
 	opacity = 0
 	},
-/turf/open/floor/carpet/stellar,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -6593,6 +6596,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
+/obj/structure/fluff/railing/border,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -6639,6 +6643,7 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
+/obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -7029,14 +7034,15 @@
 	first_time_text = "The Twilight Woods"
 	})
 "eUp" = (
-/obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard,
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard,
-/obj/item/clothing/head/roguetown/wizhat,
-/obj/item/clothing/head/roguetown/wizhat,
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard,
-/obj/item/clothing/head/roguetown/wizhat,
-/turf/open/floor/rogue/hexstone,
+/obj/structure/academy_binder{
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/obj/effect/decal/stone/hex,
+/obj/effect/decal/stone/hex{
+	dir = 4
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -10040,10 +10046,10 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/caves)
 "hkr" = (
-/obj/structure/chair/wood/rogue{
+/obj/effect/decal/stone/hex,
+/obj/structure/chair/wood{
 	dir = 1
 	},
-/obj/effect/decal/stone/hex,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -11118,13 +11124,9 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cavewet/bogcaves)
 "hYR" = (
-/obj/effect/decal/stone/hex{
-	dir = 4
+/turf/open/floor/rogue/rooftop{
+	dir = 1
 	},
-/obj/structure/chair/bench/couch/r{
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -11958,10 +11960,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/structure/bookcase/academy{
-	opacity = 0
-	},
-/turf/open/floor/carpet/stellar,
+/turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -14198,7 +14197,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
 "kho" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood{
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -16225,11 +16224,11 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/caves)
 "lHX" = (
-/obj/structure/chair/wood/rogue/chair3{
-	icon_state = "2,1"
-	},
 /obj/effect/decal/stone/hex{
 	dir = 1
+	},
+/obj/structure/chair/wood{
+	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
@@ -16743,11 +16742,8 @@
 	first_time_text = "The Twilight Woods"
 	})
 "mdn" = (
-/obj/item/book/granter/spell/spells5e/random,
-/obj/structure/bookcase/academy{
-	opacity = 0
-	},
-/turf/open/floor/carpet/stellar,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -18788,11 +18784,8 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/item/book/granter/spell/spells5e/random,
-/obj/structure/bookcase/academy{
-	opacity = 0
-	},
-/turf/open/floor/carpet/stellar,
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -19952,10 +19945,14 @@
 	name = "far stonehedge"
 	})
 "opo" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Twilight Woods"
+/obj/effect/decal/stone/hex,
+/obj/structure/bookcase/academy{
+	opacity = 0
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/magician{
+	first_time_text = "Ravenloft Academy";
+	name = "Ravenloft Academy"
 	})
 "ops" = (
 /obj/structure/flora/grass/jungle/b,
@@ -21554,12 +21551,6 @@
 /obj/structure/fluff/littlebanners/bluewhite,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
-"pyb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Twilight Woods"
-	})
 "pym" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga,
 /turf/open/floor/rogue/dirt,
@@ -22008,10 +21999,12 @@
 	name = "Silver Dragon"
 	})
 "pNw" = (
-/obj/structure/chair/bench/couch{
-	pixel_y = 10
+/obj/effect/decal/stone/hex,
+/obj/structure/bookcase/academy{
+	opacity = 0
 	},
-/turf/open/floor/rogue/hexstone,
+/obj/item/book/granter/spell/spells5e/random,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -24879,13 +24872,13 @@
 	name = "Silver Dragon"
 	})
 "rHo" = (
-/obj/effect/decal/stone/hex{
-	dir = 8
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/obj/structure/chair/bench/couch{
-	pixel_y = 10
+/obj/structure/academy_orb{
+	pixel_y = 4
 	},
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
@@ -27468,6 +27461,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -27590,15 +27586,11 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/bog)
 "tIR" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/reagent_containers/glass/bottle/rogue/water,
-/obj/item/reagent_containers/glass/bottle/rogue/water,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/magician{
+/obj/structure/academyward,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
+	name = "Schoolgrounds"
 	})
 "tJb" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -30049,7 +30041,7 @@
 /turf/closed,
 /area/rogue)
 "vwV" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -30846,15 +30838,6 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
-	})
-"wbs" = (
-/obj/structure/chair/bench/couch/r{
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
 	})
 "wbH" = (
 /obj/structure/chair/wood,
@@ -33419,10 +33402,10 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/river)
 "xZt" = (
-/obj/structure/chair/wood/rogue{
+/obj/effect/landmark/start/acadapp,
+/obj/structure/chair/wood{
 	dir = 1
 	},
-/obj/effect/landmark/start/acadapp,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -104407,7 +104390,7 @@ hhG
 hsV
 mVp
 kHM
-pyb
+syT
 eHG
 eHG
 tyj
@@ -105216,7 +105199,7 @@ rJW
 miB
 fmt
 eHG
-opo
+kSW
 pSY
 rJW
 tNE
@@ -148182,7 +148165,7 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 taL
 taL
@@ -148384,7 +148367,7 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 taL
 taL
@@ -148586,7 +148569,7 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 taL
 taL
@@ -148788,7 +148771,7 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 taL
 lbr
@@ -148990,9 +148973,9 @@ aZy
 aZy
 aZy
 aZy
+tIR
 egl
-egl
-vLX
+hYR
 vLX
 vLX
 ogX
@@ -149192,10 +149175,10 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 vLX
-pNw
+vLX
 kdu
 ogX
 vwV
@@ -149394,10 +149377,10 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 uLE
-hYR
+xQn
 nTZ
 ogX
 lwi
@@ -149409,7 +149392,7 @@ lwi
 lwi
 lwi
 iqN
-xQn
+pNw
 uLE
 egl
 egl
@@ -149596,10 +149579,10 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 guv
-tIR
+ugK
 nTZ
 eFQ
 dko
@@ -149611,7 +149594,7 @@ sOt
 kRw
 lwi
 iqN
-ugK
+rHo
 vLX
 egl
 egl
@@ -149798,10 +149781,10 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 uLE
-rHo
+oll
 nTZ
 ogX
 aUk
@@ -149813,7 +149796,7 @@ qhr
 bCD
 lwi
 iqN
-oll
+opo
 uLE
 egl
 egl
@@ -150000,10 +149983,10 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 egl
 vLX
-wbs
+vLX
 nTZ
 ogX
 oep
@@ -150202,17 +150185,17 @@ aZy
 aZy
 aZy
 aZy
+tIR
 egl
-egl
-vLX
+hYR
 vLX
 gKs
 lwi
 vLX
-dFg
+pqh
+izx
 szy
-szy
-szy
+bpe
 mdn
 vLX
 lwi
@@ -150404,7 +150387,7 @@ aZy
 aZy
 aZy
 aZy
-egl
+tIR
 vLX
 vLX
 vLX
@@ -150614,7 +150597,7 @@ mCw
 vLX
 vLX
 vLX
-xgr
+eUp
 nTZ
 kdu
 vLX
@@ -150815,7 +150798,7 @@ lwi
 ciD
 dTX
 vLX
-iXM
+dFg
 nTZ
 nTZ
 nTZ
@@ -151021,7 +151004,7 @@ eVn
 nTZ
 nTZ
 nTZ
-eUp
+xgr
 vLX
 nMZ
 mik
@@ -152020,7 +152003,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 vLX
 vLX
 rJu
@@ -152222,7 +152205,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
@@ -152424,7 +152407,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
@@ -152626,7 +152609,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
@@ -152828,7 +152811,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
@@ -153030,7 +153013,7 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
@@ -153232,18 +153215,18 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
 egl
 egl
 egl
-egl
-egl
-egl
-egl
-egl
+tIR
+tIR
+tIR
+tIR
+tIR
 egl
 egl
 egl
@@ -153434,18 +153417,18 @@ aZy
 aZy
 aZy
 aZy
-mYC
+tIR
 egl
 egl
 egl
 egl
 egl
 egl
+tIR
 egl
 egl
 egl
-egl
-egl
+tIR
 egl
 egl
 egl
@@ -153636,23 +153619,23 @@ aZy
 aZy
 aZy
 aZy
-mYC
-mYC
+tIR
+tIR
+tIR
+tIR
+tIR
+tIR
+tIR
+tIR
 egl
 egl
 egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
-egl
+tIR
+tIR
+tIR
+tIR
+tIR
+tIR
 mYC
 mYC
 sib
@@ -183950,7 +183933,7 @@ vLX
 sLW
 vLX
 vLX
-fSn
+azG
 vLX
 vLX
 lbr
@@ -184558,7 +184541,7 @@ aXd
 lwi
 iqN
 ePk
-aEn
+azG
 lbr
 egl
 egl
@@ -185162,7 +185145,7 @@ lAB
 vLX
 vLX
 vLX
-sjm
+azG
 vLX
 vLX
 lbr
