@@ -721,24 +721,6 @@
 	message_admins("<font color='blue'>\
 		[usr.key] has reloaded the whitelist.</font>")
 
-/datum/admins/proc/add_whitelist()
-	set name ="Add Whitelist"
-	set category = "Admins"
-	var/adding_ckey = input(src, "Enter the ckey to add to the whitelist", "DREAMKEEP")
-	if(adding_ckey)
-		add_whitelist(adding_ckey)
-	message_admins("<font color='blue'>\
-		[usr.key] has added [adding_ckey] the whitelist.</font>")
-
-/datum/admins/proc/remove_whitelist()
-	set name ="Remove Whitelist"
-	set category = "Admins"
-	var/removing_ckey = input(src, "Enter the ckey to remove from the whitelist", "DREAMKEEP")
-	if(removing_ckey)
-		remove_whitelist(removing_ckey)
-	message_admins("<font color='blue'>\
-		[usr.key] has remove [removing_ckey] from the whitelist.</font>")
-
 /datum/admins/proc/forcemode()
 	set category = "Server"
 	set name = "Force Gamemode"
