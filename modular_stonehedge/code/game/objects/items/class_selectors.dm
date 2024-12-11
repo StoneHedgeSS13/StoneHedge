@@ -151,10 +151,6 @@
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/skull
 				if(/datum/patron/divine/noc)
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/noc
-					H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
-					H.mind.adjust_spellpoints(2)
-					H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
-					H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 				if(/datum/patron/divine/dendor)
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/dendor
 					H.mind.adjust_skillrank_up_to(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
@@ -164,6 +160,12 @@
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/pestra
 				if(/datum/patron/divine/eora) //Eora content from Stonekeep
 					inventory_items += /obj/item/clothing/neck/roguetown/psicross/eora
+				if(/datum/patron/divine/jayx)
+					inventory_items += /obj/item/clothing/neck/roguetown/psicross
+					H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+					H.mind.adjust_spellpoints(2)
+					H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			C.grant_spells_cleric(H)
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)

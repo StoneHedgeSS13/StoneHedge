@@ -517,7 +517,7 @@
 	req_table = FALSE
 
 /datum/crafting_recipe/roguetown/psydonhood
-	name = "psydon hood"
+	name = "seraph-iros hood"
 	result = /obj/item/clothing/head/roguetown/psydonhood
 	reqs = list(/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
@@ -525,7 +525,7 @@
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/psydonrobe
-	name = "psydon robe"
+	name = "seraph-iros robe"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/psydonrobe
 	reqs = list(/obj/item/natural/cloth = 2)
 	tools = list(/obj/item/needle)

@@ -936,7 +936,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/one/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/churchjobs = list("Archpriest", "Archpriestess", "Cleric", "Wytcher Captain", "Paladin", "Churchling", "Crusader", "Grandmaster", "Wytcher")
+	var/list/churchjobs = list("Archpriest", "Archpriestess", "Cleric", "Wytcher Captain", "Temple Paladin", "Churchling", "Crusader", "Grandmaster", "Wytcher")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in churchjobs)
 			return TRUE

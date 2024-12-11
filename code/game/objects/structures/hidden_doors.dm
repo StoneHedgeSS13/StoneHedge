@@ -252,7 +252,7 @@
 		"lust",
 		"necra",
 		"noc",
-		"psydon",
+		"seraph-iros",
 		"levishth"
 		)
 	return pick(magic_word)

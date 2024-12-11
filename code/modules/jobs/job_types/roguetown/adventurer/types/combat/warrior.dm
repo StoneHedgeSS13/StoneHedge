@@ -202,9 +202,9 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 			//not as fast or perceptive but more bulky and enduring in general, i suppose, one less sum of stats than rest for making up to other advantages.
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 3)
-			H.change_stat("constitution", 4)
-			H.change_stat("speed", -2)
+			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 3)
+			H.change_stat("speed", -1)
 			//has some good armor and more coins so spawns with no shield and knife etc
 			gloves = /obj/item/clothing/gloves/roguetown/brigandinegauntlets
 			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
@@ -233,10 +233,9 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE) //poetry
 			//This is going to be crazy, horrible drawbacks, massive strength. Totally a bad idea.
 			H.change_stat("strength", 4)
-			H.change_stat("perception", -2) //you are going blind, but your mask will finish off the blindness for you.
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 4)
-			H.change_stat("speed", -3)
+			H.change_stat("perception", -1) //you are going blind, but your mask will finish off the blindness for you.
+			H.change_stat("constitution", 3)
+			H.change_stat("speed", -1)
 			//You are not gonna be able to fight without your mask, keep it from breaking..
 			mask = /obj/item/clothing/mask/rogue/facemask/leper/gold
 			gloves = /obj/item/clothing/gloves/roguetown/leather/angle/leper
@@ -251,14 +250,12 @@
 			r_hand = /obj/item/rogueweapon/greatsword/brokensword
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MISSING_NOSE, TRAIT_GENERIC) //nose gone, halved stamina regen.
 			//leprosy
 			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
 				H.apply_status_effect(STATUS_EFFECT_SPASMS)
 			if(!H.has_status_effect(STATUS_EFFECT_FAKE_VIRUS))
 				H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	if(classchoice != "Leper") //those are busted enough they should not get fighting styles.
-		H.give_fightingstyle(TRUE)
+	H.give_fightingstyle(TRUE)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)

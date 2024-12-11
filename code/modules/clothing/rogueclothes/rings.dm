@@ -158,7 +158,7 @@
     sellprice = 270
 
 /obj/item/clothing/ring/psydon
-	name = "psydon ring"
+	name = "seraph-iros ring"
 	icon_state = "g_ring_psydon"
 	sellprice = 250
 

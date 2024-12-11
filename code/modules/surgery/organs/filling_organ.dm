@@ -2,7 +2,7 @@
 	name = "self filling organ"
 
 	//self generating liquid stuff, dont use with absorbing stuff
-	var/storage_per_size = 5 //added per organ size
+	var/storage_per_size = 10 //added per organ size
 	var/datum/reagent/reagent_to_make = /datum/reagent/consumable/nutriment //naturally generated reagent
 	var/refilling = FALSE //slowly refills when not hungry
 	var/reagent_generate_rate = HUNGER_FACTOR //with refilling
@@ -15,8 +15,8 @@
 	//absorbing etc content liquid stuff, non self generated.
 	var/absorbing = FALSE //absorbs liquids within slowly. Wont absorb reagent_to_make type, refilling and hungerhelp are irrelevant to this.
 	var/absorbrate = 1 //refilling and hungerhelp are irrelevant to this, each life tick. NO LESS THAN 1 DIGESTS RIGHT.
-	var/absorbmult = 1.25 //for a longer absorbtion time it's probably fine to have more out of each.
-	var/driprate = 0.3
+	var/absorbmult = 1 //free gains
+	var/driprate = 0.1
 	var/spiller = FALSE //toggles if it will spill its contents when not plugged.
 	var/blocker = ITEM_SLOT_SHIRT //pick an item slot
 	var/processspeed = 5 SECONDS//will apply the said seconds cooldown each time before any spill or absorb happens.
@@ -39,7 +39,7 @@
 	if(organ_sizeable)
 		max_reagents = storage_per_size + (storage_per_size * organ_size)
 	create_reagents(max_reagents)
-	if(!refilling)
+	if(!refilling && M.mind) //mind check so goblins etc have milk on spawn.
 		startsfilled = FALSE
 	if(special && startsfilled) // won't fill the organ if you insert this organ via surgery
 		reagents.add_reagent(reagent_to_make, reagents.maximum_volume)
@@ -48,11 +48,10 @@
 	var/mob/living/carbon/human/H = owner
 
 	..()
-
 	//updates size caps
 	if(!issimple(H) && H.mind && organ_sizeable)
 		var/athletics = H.mind?.get_skill_level(/datum/skill/misc/athletics)
-		var/captarget = storage_per_size + (athletics * 4) + (storage_per_size * organ_size) // Updates the max_reagents in case the organ size changes
+		var/captarget = storage_per_size + (athletics * 6) + (storage_per_size * organ_size) // Updates the max_reagents in case the organ size changes
 		if(damage)
 			captarget -= damage
 		if(contents.len)
@@ -91,7 +90,7 @@
 			var/remove_amount = min(reagent_generate_rate, reagents.total_volume)
 			if(uses_nutrient) //add nutrient
 				owner.adjust_nutrition(remove_amount) //since hunger factor is so tiny compared to the nutrition levels it has to fill
-			reagents.remove_reagent(reagent_to_make, remove_amount)
+			reagents.remove_reagent(reagent_to_make, (remove_amount*4)) //we consume our own reagents for food less efficently, allowing running out (may undo this multiplier later.)
 		else
 			if((reagents.total_volume < reagents.maximum_volume) && refilling) //if organ is not full.
 				var/max_restore = owner.nutrition > (NUTRITION_LEVEL_WELL_FED) ? reagent_generate_rate * 2 : reagent_generate_rate

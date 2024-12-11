@@ -36,6 +36,14 @@
 	craftdiff = 3
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/lgorget
+	name = "Studded Leather Gorget (Hardened Leather Gorget)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/neck/roguetown/gorget)
+	created_item = /obj/item/clothing/neck/roguetown/gorget/studdedleather
+	craftdiff = 3
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/ibreastplate
 	name = "Breastplate (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -183,6 +191,13 @@
 	name = "Katefractoii Helmet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/head/roguetown/helmet/katefractoiihelmet
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/studdedhood
+	name = "Studded Leather Hood (+Leather Helmet)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/head/roguetown/helmet/leather)
+	created_item = /obj/item/clothing/head/roguetown/helmet/leather/armorhood
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/studded
@@ -687,7 +702,7 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/nochelm
-	name = "Noc Helmet (+1 Steel)"
+	name = "Jayx Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm

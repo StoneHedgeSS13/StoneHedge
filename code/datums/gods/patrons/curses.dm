@@ -12,10 +12,10 @@
 	var/trait
 
 /datum/curse/proc/on_life()
-	return 
+	return
 
 /datum/curse/proc/on_death()
-	return 
+	return
 
 /datum/curse/proc/on_gain(mob/living/carbon/human/owner, silent)
 	ADD_TRAIT(owner, trait, TRAIT_CURSE)
@@ -53,7 +53,7 @@
 /mob/living/carbon/human/proc/remove_curse(datum/curse/C, silent)
 	if(!is_cursed(C))
 		return FALSE
-	
+
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
 			curse.on_loss(src, silent)
@@ -69,7 +69,7 @@
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
 			return TRUE
-	
+
 	return FALSE
 
 //////////////////////
@@ -92,7 +92,7 @@
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc
-	name = "Noc's Curse"
+	name = "Jayx's Curse"
 	description = "Magical knowledge is now beyond my grasp."
 	trait = TRAIT_NOC_CURSE
 
@@ -126,7 +126,7 @@
 //////////////////////
 
 /datum/curse/zizo
-	name = "Zizo's Curse"
+	name = "Levishth's Curse"
 	description = "I can no longer distinguish reality from delusion."
 	trait = TRAIT_ZIZO_CURSE
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
@@ -137,12 +137,12 @@
 	trait = TRAIT_GRAGGAR_CURSE
 
 /datum/curse/matthios
-	name = "Matthios' Curse"
+	name = "Thief's Curse"
 	description = "I hate the sight of wealth, and I cannot have anything to do with mammons."
-	trait = TRAIT_MATTHIOS_CURSE	
+	trait = TRAIT_MATTHIOS_CURSE
 
 /datum/curse/baotha
-	name = "Baotha's Curse"
+	name = "Viivitri's Curse"
 	description = "I'm in a constant state of arousal, and I cannot control my urges."
 	trait = TRAIT_BAOTHA_CURSE
 
@@ -188,7 +188,7 @@
 //////////////////////
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["pestra_curse"])
 		if(world.time < owner.mob_timers["pestra_curse"] + rand(30,60)SECONDS)
 			return
@@ -240,7 +240,7 @@
 			owner.sexcon.arousal += rand(5,50)
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["graggar_curse"])
 		if(world.time < owner.mob_timers["graggar_curse"] + rand(15,60)SECONDS)
 			return
@@ -285,11 +285,11 @@
 	if(hud_used)
 		var/matrix/skew = matrix()
 		skew.Scale(2)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)
 				continue
 			animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
 			animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
-	
+

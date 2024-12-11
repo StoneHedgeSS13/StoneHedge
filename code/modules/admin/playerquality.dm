@@ -219,6 +219,8 @@
 	if(curcomm == 1)
 //	if(get_playerquality(key) < 29)
 		adjust_playerquality(1, ckey(key))
+	else
+		adjust_playerquality(0.3, ckey(key)) //less commend if repeat commend.
 
 /proc/get_commends(key)
 	if(!key)

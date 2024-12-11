@@ -26,9 +26,9 @@
 	)
 
 /datum/patron/inhumen/graggar
-	name = "Jayx"
+	name = "Graggar" //temporary rename until we get a replacement
 	domain = "God of Twilight and Change. Magic. Transformation. Dusk/Dawn. Crisis/Resolution."
-	desc = "Jayx is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
+	desc = "Graggar is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
 	worshippers = "Mages, Alchemists, Soul-Searchers, Fateweavers, Supernatural Creatures, Soothsayers."
 	mob_traits = list(TRAIT_USEMAGIC)
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen //inhumen for now until foxyn moves this shit to divine
@@ -39,7 +39,7 @@
 	confess_lines = list(
 		"THE PHOENIX BURNS BRIGHT AND PURE!",
 		"IN HIS FLAMES I AM REBORN!",
-		"JAYX, LET THE TWILIGHT BE RECKONED!",
+		"GRAGGAR, LET THE TWILIGHT BE RECKONED!",
 	)
 
 /datum/patron/inhumen/matthios		// Removing 'class warfare' language in favor of 'uncivilized v civilized' language.

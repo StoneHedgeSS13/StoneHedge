@@ -439,7 +439,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/psydon
-	name = "psydon tabard"
+	name = "seraph-iros tabard"
 	result = list(/obj/item/clothing/cloak/templar/psydon)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
@@ -453,7 +453,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/noc
-	name = "noc tabard"
+	name = "jayx tabard"
 	result = list(/obj/item/clothing/cloak/templar/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
@@ -851,7 +851,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/leather/neck
 	name = "hardened leather gorget"
-	result = /obj/item/clothing/neck/roguetown/leather
+	result = /obj/item/clothing/neck/roguetown/gorget/leather
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -868,7 +868,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/boots/masterwork
 	name = "masterwork leather boots"
 	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather/masterwork
-	reqs = list(/obj/item/clothing/shoes/roguetown/boots/armor/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -876,7 +876,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/gloves/masterwork
 	name = "masterwork leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/leather/masterwork
-	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -884,7 +884,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/bracers/masterwork
 	name = "masterwork leather bracers"
 	result = /obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
-	reqs = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -892,7 +892,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/coat/masterwork
 	name = "masterwork leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork
-	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -900,7 +900,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/helmet/masterwork
 	name = "masterwork leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/masterwork
-	reqs = list(/obj/item/clothing/head/roguetown/helmet/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -908,7 +908,7 @@
 /datum/crafting_recipe/roguetown/sewing/leather/chausses/masterwork
 	name = "masterwork leather chausses"
 	result = /obj/item/clothing/under/roguetown/trou/leather/masterwork
-	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1,
+	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

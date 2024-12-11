@@ -225,7 +225,7 @@
 	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/roguetown/psydonhood
-	name = "psydon hood"
+	name = "seraph-iros hood"
 	desc = "Blood of Psydon preserve me."
 	color = null
 	icon_state = "psydonhood"
@@ -651,7 +651,7 @@
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/nochelm
-	name = "noc helmet"
+	name = "jayx helmet"
 	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
 	icon_state = "nochelm"
 	item_state = "nochelm"
@@ -1627,8 +1627,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonianknighthelm
-	name = "psydonian knight helmet"
-	desc = "PSYDON lives."
+	name = "seraph-irosian knight helmet"
+	desc = "SERAPH-IROS lives."
 	icon_state = "psydonianknighthelm"
 	item_state = "psydonianknighthelm"
 	emote_environment = 3
@@ -1957,7 +1957,7 @@
 		"Stripes"="stripes_decoration",
 		"Red Castle"="castle_red_decoration",
 		"White Castle"="castle_white_decoration",
-		"Jayx"="graggar_decoration",
+		"Graggar"="graggar_decoration",
 		"Efreet"="efreet_decoration",
 		"Sun"="sun_decoration",
 		"Feathers"="feathers_decoration",
@@ -2011,7 +2011,7 @@
 		"Stripes"="stripes_houndecoration",
 		"Red Castle"="castle_red_houndecoration",
 		"White Castle"="castle_white_houndecoration",
-		"Jayx"="graggar_houndecoration",
+		"Graggar"="graggar_houndecoration",
 		"Efreet"="efreet_houndecoration",
 		"Sun"="sun_houndecoration",
 		"Feathers"="feathers_houndecoration",
@@ -2065,7 +2065,7 @@
 		"Stripes"="stripes_bucket",
 		"Red Castle"="castle_red_bucket",
 		"White Castle"="castle_white_bucket",
-		"Jayx"="graggar_bucket",
+		"Graggar"="graggar_bucket",
 		"Efreet"="efreet_bucket",
 		"Sun"="sun_bucket",
 		"Feathers"="feathers_bucket",
@@ -2119,7 +2119,7 @@
 		"Stripes"="stripes_gbucket",
 		"Red Castle"="castle_red_gbucket",
 		"White Castle"="castle_white_gbucket",
-		"Jayx"="graggar_gbucket",
+		"Graggar"="graggar_gbucket",
 		"Efreet"="efreet_gbucket",
 		"Sun"="sun_gbucket",
 		"Feathers"="feathers_gbucket",

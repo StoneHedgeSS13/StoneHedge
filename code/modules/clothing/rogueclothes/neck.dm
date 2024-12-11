@@ -154,7 +154,7 @@
 	blocksound = PLATEHIT
 	clothing_flags = CANT_SLEEP_IN|CURSED
 
-/obj/item/clothing/neck/roguetown/leather
+/obj/item/clothing/neck/roguetown/gorget/leather
 	name = "hardened leather gorget"
 	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
 	icon_state = "lgorget"
@@ -165,6 +165,22 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //This one will help against chopping
 	blocksound = SOFTHIT
 	sewrepair = TRUE
+	smeltresult = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/neck/roguetown/gorget/studdedleather
+	name = "studded leather gorget"
+	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering and stabs."
+	icon_state = "lgorget"
+	armor = list("blunt" = 100, "slash" = 80, "stab" = 70, "bullet" = 80, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 200
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //being stabbed in the neck sucks.
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	smeltresult = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 

@@ -195,7 +195,7 @@
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/psydonring
-	name = "Psydon Ring"
+	name = "Seraph-Iros Ring"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/clothing/ring/psydon
 	i_type = "Valuables"
