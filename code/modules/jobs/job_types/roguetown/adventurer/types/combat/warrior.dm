@@ -256,7 +256,6 @@
 			if(!H.has_status_effect(STATUS_EFFECT_FAKE_VIRUS))
 				H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	if(classchoice != "Leper") //those are busted enough they should not get fighting styles.
-		H.give_fightingstyle(TRUE)
+	H.give_fightingstyle(TRUE)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)

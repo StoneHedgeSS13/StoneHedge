@@ -5,7 +5,7 @@
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	icon_state = "leatherhelm"
 	armor = list("blunt" = 57, "slash" = 37, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	smeltresult = null
 	sewrepair = TRUE
@@ -20,7 +20,7 @@
 	icon_state = "alhelmet"
 	max_integrity = 250
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 	armor = list("blunt" = 70, "slash" = 70, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/leather/masterwork
@@ -29,13 +29,14 @@
 	icon_state = "alhelmet"
 	max_integrity = 300
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST) //like carapace armors.
 	armor = list("blunt" = 100, "slash" = 80, "stab" = 50, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	filters = list(list("type" = "drop_shadow", "x" = 0, "y" = 0, "size" = 0.5, "offset" = 1, "color" = "#daa520"))
 
 //Better than hardened leather, worse than masterwork, it requires a coif and blacksmithing, like studded armor.
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood
-	name = "studded hood"
+	name = "padded leather hood"
+	desc = "A padded leather hood with buckles."
 	icon = 'modular_stonehedge/icons/armor/head.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/head.dmi'
 	icon_state = "studhood"
@@ -43,10 +44,31 @@
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH|NECK
-	armor = list("blunt" = 85, "slash" = 70, "stab" = 45, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST) //no chop like masterwork, yet.
+	armor = list("blunt" = 70, "slash" = 45, "stab" = 40, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
+
+/obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
+
+	name = "studded leather hood"
+	desc = "A thick studded leather hood with buckles."
+	icon_state = "studhood" //make into new sprite
+	item_state = "studhood"
+	max_integrity = 280
+	armor = list("blunt" = 85, "slash" = 70, "stab" = 45, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
+
+//the top dog of leather shiet also looks good.
+/obj/item/clothing/head/roguetown/helmet/leather/armorhood/masterwork
+	name = "plate-reinforced leather hood"
+	desc = "A thick plate reinforced leather hood with buckles designed for battle."
+	icon_state = "studhood"
+	item_state = "studhood"
+	max_integrity = 320
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
+	armor = list("blunt" = 100, "slash" = 90, "stab" = 60, "bullet" = 40, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	filters = list(list("type" = "drop_shadow", "x" = 0, "y" = 0, "size" = 0.5, "offset" = 1, "color" = "#daa520"))
 
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/AdjustClothes(mob/user)
 	if(loc == user)

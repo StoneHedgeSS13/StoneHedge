@@ -1,7 +1,7 @@
 //shield flail or longsword, tief can be this with red cross
 
 /datum/job/roguetown/templar
-	title = "Paladin"
+	title = "Temple Paladin"
 	department_flag = CHURCHMEN
 	faction = "Station"
 	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to their god, swearing oaths in their service to the divine. They guard the temples and uphold their sense of divine order - while keeping a watchful eye against evil's ploy and dangerous nite-creechers. Within troubled dreams, they seek divine guidance.."
@@ -21,7 +21,56 @@
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
+
+	var/weapons = list( //what did you primarily train with?
+		"Swords",
+		"Axes",
+		"Maces",
+		"Polearms"
+	)
+
+	var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+		if("Swords")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/sword/long
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
+		if("Axes")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
+		if("Maces & Flails")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/mace
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
+		if("Polearms")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			r_hand = /obj/item/rogueweapon/spear/billhook
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
+
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	cloak = /obj/item/clothing/cloak/templar/psydon
@@ -77,10 +126,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/roguekey/church = 1)
-	backr = /obj/item/rogueweapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltr = /obj/item/rogueweapon/sword/long
 	id = /obj/item/clothing/ring/silver
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif

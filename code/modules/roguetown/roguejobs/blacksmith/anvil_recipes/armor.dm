@@ -36,6 +36,14 @@
 	craftdiff = 3
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/lgorget
+	name = "Studded Leather Gorget (Hardened Leather Gorget)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/neck/roguetown/gorget)
+	created_item = /obj/item/clothing/neck/roguetown/gorget/studdedleather
+	craftdiff = 3
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/ibreastplate
 	name = "Breastplate (+1 Iron)"
 	req_bar = /obj/item/ingot/iron

@@ -367,8 +367,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/shoes/roguetown/boots/psydonianknightboots
-	name = "psydonian knight greaves"
-	desc = "PSYDON walks."
+	name = "seraph-irosian knight greaves"
+	desc = "SERAPH-IROS walks."
 	body_parts_covered = FEET
 	icon_state = "psydonianknightgreaves"
 	item_state = "psydonianknightgreaves"

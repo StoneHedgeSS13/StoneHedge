@@ -166,7 +166,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
 
 /datum/special_trait/psydons_rider
-	name = "Psydon's Drunkest Rider"
+	name = "Seraph-Iros's Drunkest Rider"
 	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
 	allowed_patrons = list(/datum/patron/old_god)

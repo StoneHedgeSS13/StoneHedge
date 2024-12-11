@@ -1071,7 +1071,7 @@
 	return ..()
 
 /obj/item/clothing/cloak/templar/psydon
-	name = "psydon tabard"
+	name = "seraph-iros tabard"
 	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Psydon on it."
 	icon_state = "tabard_weeping"
 	alternate_worn_layer = TABARD_LAYER

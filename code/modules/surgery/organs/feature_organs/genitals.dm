@@ -174,7 +174,7 @@
 	reagent_to_make = /datum/reagent/consumable/cum
 	refilling = TRUE
 	reagent_generate_rate = 0.2
-	storage_per_size = 10 //double size cause they only go up to size 3
+	storage_per_size = 20 //more size since they have so little size selections.
 	organ_sizeable = TRUE
 	altnames = list("balls", "testicles", "testes", "orbs", "cum tanks", "seed tanks") //used in thought messages.
 	startsfilled = TRUE

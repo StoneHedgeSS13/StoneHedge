@@ -29,7 +29,6 @@
 	var/attunement_points_max = 0 //how many magic items can you wear, magic items cost 1 to 5
 	var/attunement_points_used = 0 //adjusted when equipping magic items
 	var/attunement_points_bonus = 0 //adjusted based on special roles, an artificer or antagonist should have this bonus, NOBODY ELSE...
-	var/magic_sickness = FALSE
 	var/spell_slots = 0
 	var/spell_slots_used = 0
 	var/spell_slots_bonus = 0
@@ -42,25 +41,17 @@
 /mob/living/proc/check_attunement_points()
 	if(attunement_points_used > attunement_points_max)
 		//debuff
-		apply_status_effect(/datum/status_effect/buff/magic_sickness/)
+		apply_status_effect(/datum/status_effect/buff/magic_sickness)
 		visible_message(span_info("[src] begins to look sick."), span_warning("I feel sick all of the sudden."))
-		magic_sickness = TRUE
-	else
-		if(magic_sickness)
-			magic_sickness = FALSE
-			remove_status_effect(/datum/status_effect/buff/magic_sickness/)
-			visible_message(span_info("[src] looks like they feel a bit better."), span_info("My nausea fades away."))
+	else if(has_status_effect(/datum/status_effect/buff/magic_sickness))
+		remove_status_effect(/datum/status_effect/buff/magic_sickness)
+		visible_message(span_info("[src] looks like they feel a bit better."), span_info("My nausea fades away."))
 
 /datum/status_effect/buff/magic_sickness
 	id = "arcyne sickness"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/magic_sickness
 	effectedstats = list("strength" = -2, "constitution" = -2, "endurance" = -2) //int is not effected because int effects attunement points themselves, that could trap you with arcyne sickness
 	duration = -1
-
-/datum/status_effect/buff/magic_sickness/tick()
-	var/mob/living/target = owner
-	var/mob/living/carbon/M = target
-	M.add_nausea(5) //it's a lot, but get the fucking items off. That's the point.
 
 /atom/movable/screen/alert/status_effect/buff/magic_sickness
 	name = "Arcyne Sickness"

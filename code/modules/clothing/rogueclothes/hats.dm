@@ -225,7 +225,7 @@
 	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/roguetown/psydonhood
-	name = "psydon hood"
+	name = "seraph-iros hood"
 	desc = "Blood of Psydon preserve me."
 	color = null
 	icon_state = "psydonhood"
@@ -1627,8 +1627,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonianknighthelm
-	name = "psydonian knight helmet"
-	desc = "PSYDON lives."
+	name = "seraph-irosian knight helmet"
+	desc = "SERAPH-IROS lives."
 	icon_state = "psydonianknighthelm"
 	item_state = "psydonianknighthelm"
 	emote_environment = 3
