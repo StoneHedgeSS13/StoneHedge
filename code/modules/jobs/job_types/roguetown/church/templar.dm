@@ -83,7 +83,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	backr = /obj/item/rogueweapon/shield/tower/metal
-	l_hand = /obj/item/class_selector/paladin
+	r_hand = /obj/item/class_selector/paladin
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)

@@ -3652,8 +3652,8 @@
 /area/rogue/under/cavewet)
 "QO" = (
 /obj/structure/fluff/traveltile{
-	aportalgoesto = "ashlandsout1";
-	aportalid = "ashlandsin1";
+	aportalgoesto = "ashlandsout";
+	aportalid = "ashlandsin";
 	name = "Travel to Stone Hedge"
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -25573,7 +25573,7 @@ jX
 jX
 "}
 (43,1,2) = {"
-Va
+Qm
 Qm
 jX
 Qm
@@ -26101,7 +26101,7 @@ jX
 jX
 "}
 (47,1,2) = {"
-Va
+Qm
 jX
 VG
 jX

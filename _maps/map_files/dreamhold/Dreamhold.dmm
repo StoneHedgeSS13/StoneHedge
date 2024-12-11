@@ -29937,10 +29937,9 @@
 	name = "Ravenloft Academy"
 	})
 "vrX" = (
-/obj/structure/fluff/traveltile/vampire{
-	aportalgoesto = "ashlandsin2";
-	aportalid = "ashlandsout2";
-	required_trait = null;
+/obj/structure/fluff/traveltile{
+	aportalgoesto = "ashlandsin";
+	aportalid = "ashlandsout";
 	name = "Travel to Underkeep"
 	},
 /turf/open/floor/rogue/cobblerock,

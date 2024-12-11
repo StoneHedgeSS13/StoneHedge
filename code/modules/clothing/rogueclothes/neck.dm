@@ -187,13 +187,15 @@
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()
 	name = "cursed collar"
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 	clothing_flags = null
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/canStrip(mob/stripper, mob/living/carbon/human/owner)
-	if(stripper.job in list("Hedgemaster", "Hedge Knight"))
-		return TRUE
-	else if(src in owner.held_items)
+/obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(!(src in user.held_items))
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/neck/roguetown/gorget/prisoner/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
+	if(usr.job == "Hedgemaster" || usr.job == "Hedge Knight")
 		return TRUE
 	else
 		return ..()
@@ -205,6 +207,7 @@
 /obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!(src in user.held_items))
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		to_chat(user, span_warning("This collar makes me heed to orders of others, unless it includes self harm or orders that will indirectly or directly harm to town and its population... And also it prevents me from running away..."))
 		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
 

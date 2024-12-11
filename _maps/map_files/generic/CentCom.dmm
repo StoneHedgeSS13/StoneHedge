@@ -782,7 +782,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "dv" = (
-/obj/structure/fluff/traveltile/bandit{
+/obj/structure/fluff/traveltile{
 	aportalgoesto = "banditexit";
 	aportalid = "banditin"
 	},
