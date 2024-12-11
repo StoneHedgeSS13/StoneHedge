@@ -237,20 +237,17 @@
 	if(!(ishuman(M)))
 		return
 
+	playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
+	M.Paralyze(3 SECONDS)
+
 	var/correct_head = FALSE
 
 	var/reward_amount = 0
 	for(var/datum/bounty/b in GLOB.head_bounties)
 		if(b.target == M.real_name)
 			correct_head = TRUE
-			say("A bounty has been sated.")
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
-
-	if(!correct_head)// No valid bounty for this head?
-		say("This skull carries no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		return
 
 	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
 
@@ -268,10 +265,16 @@
 	sleep(2 SECONDS)
 
 	if(correct_head)
+		say("A bounty has been sated.")
 		budget2change((reward_amount*2)) //double reward for alive
 		var/newcollar = new /obj/item/clothing/neck/roguetown/gorget/prisoner/servant(M.loc)
 		playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
 		M.equip_to_slot(newcollar, ITEM_SLOT_NECK)
+	else
+		say("This skull carries no reward, you fool.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	M.Stun(2 SECONDS)
+
 
 	// Head has been "analyzed". Return it.
 	sleep(2 SECONDS)
@@ -327,5 +330,5 @@
 				new /obj/item/roguecoin/copper(T, budget)
 	if(!type_to_put || zenars_to_put < 1)
 		return
-	var/obj/item/roguecoin/G = new type_to_put(T, floor(zenars_to_put))
+	new type_to_put(T, floor(zenars_to_put))
 	playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)

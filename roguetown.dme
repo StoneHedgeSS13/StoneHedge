@@ -3679,6 +3679,7 @@
 #include "modular_stonehedge\code\modules\datums\accents.dm"
 #include "modular_stonehedge\code\modules\mob\living\overhead_effects.dm"
 #include "modular_stonehedge\code\modules\mob\living\simple_animal\rogue\friendly_npc.dm"
+#include "modular_stonehedge\code\modules\reagents\machinery\electrolyzer.dm"
 #include "modular_stonehedge\code\modules\roguetown\roguejobs\alchemist\toxins.dm"
 #include "modular_stonehedge\licensed-death-rattler\Death-Rattler\code\Death-Rattler.dm"
 // END_INCLUDE

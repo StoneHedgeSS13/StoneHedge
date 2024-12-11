@@ -6,7 +6,7 @@
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_BREADY, TRAIT_STEELHEARTED)
 	// oh god oh fuck this dont seem very safe to do
 	// this looks kinda op so imma just leave it at patreon level 1 until someone puts this behind a different lock
-	maximum_possible_slots = 1
+	maximum_possible_slots = 0
 
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	category_tags = list(CTAG_DISABLED)

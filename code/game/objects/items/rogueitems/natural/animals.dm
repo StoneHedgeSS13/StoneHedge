@@ -30,7 +30,7 @@
 /obj/item/natural/cured/essence
 	name = "essense of wilderness"
 	icon_state = "wessence"
-	desc = "A mystical essense embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	desc = "A mystical essense embued with the power of Sylvan. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20

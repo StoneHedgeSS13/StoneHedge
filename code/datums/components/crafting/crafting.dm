@@ -271,6 +271,52 @@
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
+
+							//item qualities
+							if(user.mind && R.can_be_qualitied)
+								var/skill_quality = user.mind?.get_skill_level(R.skillcraft)
+								var/modifier
+								switch(skill_quality)
+									if(0)
+										I.name = "awful [I.name]"
+										modifier = 0.5
+									if(1)
+										I.name = "crude [I.name]"
+										modifier = 0.8
+									if(2)
+										I.name = "rough [I.name]"
+										modifier = 0.9
+									if(3)
+										I.desc = "[I.desc] It is competently made."
+									if(4)
+										I.name = "fine [I.name]"
+										modifier = 1.1
+									if(5)
+										I.name = "flawless [I.name]"
+										modifier = 1.2
+									if(6)
+										I.name = "legendary [I.name]"
+										modifier = 1.3
+
+								if(istype(I, /obj/item))
+									var/obj/item/it = I
+									it.obj_integrity *= modifier
+									it.max_integrity  *= modifier
+									it.sellprice *= modifier
+								if(istype(I, /obj/item/rogueweapon))
+									var/obj/item/rogueweapon/W = I
+									W.force *= modifier
+									W.throwforce *= modifier
+									W.block_chance *= modifier
+									W.armor_penetration *= modifier
+									W.wdefense *= modifier
+								if(istype(I, /obj/item/clothing))
+									var/obj/item/clothing/C = I
+									C.damage_deflection *= modifier
+									C.integrity_failure /= modifier
+									C.armor = C.armor.multiplymodifyAllRatings(modifier)
+									C.equip_delay_self *= modifier
+
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
 										span_notice("I [R.verbage_simple] \a [R.name]!"))

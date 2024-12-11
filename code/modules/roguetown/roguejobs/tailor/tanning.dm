@@ -55,7 +55,7 @@
 					new /obj/item/natural/cured/essence(get_turf(user))
 					if(!sound_played)
 						sound_played = TRUE
-						to_chat(user, span_warning("Dendor provides..."))
+						to_chat(user, span_warning("Sylvian provides..."))
 						playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 				else
 					new /obj/item/natural/hide/cured(get_turf(user))

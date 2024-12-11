@@ -214,7 +214,7 @@
 	list_reagents = list(/datum/reagent/toxin/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
 	color_index = "bad"
 	mill_result = /obj/item/reagent_containers/powder/alch/berryp
-	
+
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
