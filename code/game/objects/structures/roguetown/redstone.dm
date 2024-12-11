@@ -25,6 +25,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	anchored = TRUE
 	max_integrity = 3000
 	var/toggled = FALSE
+	var/lockid = null
 
 /obj/structure/lever/attack_hand(mob/user)
 	if(isliving(user))

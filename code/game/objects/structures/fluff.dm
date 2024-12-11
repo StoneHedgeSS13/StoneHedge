@@ -424,6 +424,7 @@
 	icon_state = "passage0"
 	density = TRUE
 	max_integrity = 1500
+	var/lockid = null
 
 /obj/structure/bars/passage/steel
 	name = "steel bars"
