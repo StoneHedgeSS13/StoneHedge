@@ -31485,6 +31485,10 @@
 /area/rogue/outdoors/rtfield{
 	first_time_text = null
 	})
+"wDO" = (
+/obj/structure/chair/arrestchair,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/bog)
 "wDP" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/water/river{
@@ -129471,7 +129475,7 @@ aaM
 fxW
 hcX
 kuV
-iRs
+xWI
 bDX
 xWI
 oxU
@@ -129672,7 +129676,7 @@ gXN
 pBr
 oCe
 hcX
-xWI
+wDO
 iRs
 iRs
 iRs
