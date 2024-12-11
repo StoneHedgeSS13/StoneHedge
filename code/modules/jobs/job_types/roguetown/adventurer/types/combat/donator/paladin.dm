@@ -208,7 +208,7 @@
 	//Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t2
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-	if(H.mind && H.patron?.type == /datum/patron/inhumen/graggar)
+	if(H.mind && H.patron?.type == /datum/patron/divine/jayx)
 		H.mind.adjust_spellpoints(1)
 		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC) //can get magic from spellpoints but no more
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

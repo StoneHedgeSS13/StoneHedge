@@ -453,7 +453,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/noc
-	name = "noc tabard"
+	name = "jayx tabard"
 	result = list(/obj/item/clothing/cloak/templar/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)

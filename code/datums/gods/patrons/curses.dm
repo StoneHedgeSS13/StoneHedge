@@ -92,7 +92,7 @@
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc
-	name = "Noc's Curse"
+	name = "Jayx's Curse"
 	description = "Magical knowledge is now beyond my grasp."
 	trait = TRAIT_NOC_CURSE
 

@@ -100,7 +100,7 @@
 			pants = /obj/item/clothing/under/roguetown/loincloth
 			shoes = shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt =	/obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe
-		if(/datum/patron/inhumen/graggar)
+		if(/datum/patron/divine/jayx)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			neck = /obj/item/clothing/neck/roguetown/psicross
 			wrists = /obj/item/clothing/wrists/roguetown

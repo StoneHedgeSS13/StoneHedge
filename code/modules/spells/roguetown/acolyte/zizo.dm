@@ -31,7 +31,7 @@
 				if (situational_bonus > 0)
 					conditional_buff = TRUE
 					situational_bonus = min(situational_bonus, 5)
-			if(/datum/patron/inhumen/graggar)
+			if(/datum/patron/divine/jayx)
 				target.visible_message(span_info("Blue Phoenix-Fires Envelop [target]!"), span_notice("The life around me pales as manna and the phoenix roar fills me. I am restored!"))
 				// if you've got lingering toxin damage, you get healed more, but your bonus healing doesn't affect toxin
 				var/toxloss = target.getToxLoss()
