@@ -2,7 +2,7 @@
 	//oh no vore time
 	var/voremode = FALSE
 
-//idk why it was defined so these verbs are automatically on everyone, including NPCS, but in order to avoid changing 900 lines of code, all vore verbs are deleted from mob @ roundstart. voracious quirk readds them.
+//idk why it was defined so these verbs are automatically on everyone, including NPCS, but in order to avoid changing 900 lines of code, all vore verbs are deleted from mob @ roundstart. vore quirk readds them.
 /mob/living/Initialize()
     . = ..()
     verbs -= list(

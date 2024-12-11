@@ -624,13 +624,13 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent/lite)
 
-/datum/quirk/voracious
-    name = "Voracious"
+/datum/quirk/vore
+    name = "Vore"
     desc = "You can engage in Vore."
     value = 0
-    mob_trait = TRAIT_VORACIOUS
+    mob_trait = TRAIT_VORE
 
-/datum/quirk/voracious/add()
+/datum/quirk/vore/add()
     var/mob/living/carbon/human/H = quirk_holder
     var/list/vore_verbs = list(
         /mob/living/carbon/verb/toggle_vore_mode_verb,
@@ -642,7 +642,7 @@
     H.verbs |= vore_verbs
     H.vore_flags |= SHOW_VORE_PREFS
 
-/datum/quirk/voracious/remove()
+/datum/quirk/vore/remove()
     var/mob/living/carbon/human/H = quirk_holder
     var/list/vore_verbs = list(
         /mob/living/carbon/verb/toggle_vore_mode_verb,
