@@ -645,7 +645,7 @@
 /datum/controller/subsystem/ticker/proc/give_show_playerlist_button(client/C)
 	set waitfor = 0
 	to_chat(C,"")
-	C.commendsomeone(forced = TRUE)
+	C.commendsomeone(silent = TRUE)
 
 /datum/action/report
 	name = "Show roundend report"

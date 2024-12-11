@@ -60,7 +60,7 @@
 			say("A bounty has been sated.")
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
-		
+
 	if(correct_head)
 		qdel(P)
 	else // No valid bounty for this head?
@@ -145,7 +145,7 @@
 		say("No reason given.")
 		return
 
-	var/confirm = input(user, "Do you dare unleash this darkness upon the world? Your name will be known.", src) as null|anything in list("Yes", "No")	
+	var/confirm = input(user, "Do you dare unleash this darkness upon the world? Your name will be known.", src) as null|anything in list("Yes", "No")
 	if(isnull(confirm) || confirm == "No") return
 
 	// Deduct money from user
@@ -183,7 +183,7 @@
 		say("No target selected.")
 		return
 
-	var/confirm = input(user, "Do you dare release this one?", src) as null|anything in list("Yes", "No")	
+	var/confirm = input(user, "Do you dare release this one?", src) as null|anything in list("Yes", "No")
 	if(isnull(confirm) || confirm == "No") return
 	for(var/datum/bounty/b in GLOB.head_bounties)
 		if(b.target == target.real_name)
@@ -213,7 +213,7 @@
 	switch(rand(1, 3))
 		if(1)
 			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
-			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
+			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"
 		if(2)
 			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
 			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
@@ -221,3 +221,111 @@
 			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
 			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
 	new_bounty.banner += "--------------<BR>"
+
+
+
+/obj/structure/chair/arrestchair
+	name = "SLAVEMASTER"
+	desc = "A chairesque machine that collects bounties through enslavement rather than death, for a much greater reward."
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "brass_chair"
+	blade_dulling = DULLING_BASH
+	anchored = TRUE
+
+/obj/structure/chair/arrestchair/buckle_mob(mob/living/carbon/human/M, force, check_loc)
+	. = ..()
+	if(!(ishuman(M)))
+		return
+
+	var/correct_head = FALSE
+
+	var/reward_amount = 0
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == M.real_name)
+			correct_head = TRUE
+			say("A bounty has been sated.")
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+
+	if(!correct_head)// No valid bounty for this head?
+		say("This skull carries no reward.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		return
+
+	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
+
+	sleep(1 SECONDS)
+
+	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
+	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
+	M.emote("scream")
+	M.apply_damage(50, BRUTE, BODY_ZONE_HEAD, FALSE)
+	sleep(1 SECONDS)
+	playsound(src, pick(headcrush), 100, FALSE, -1)
+	M.emote("agony")
+	M.apply_damage(50, BRUTE, BODY_ZONE_HEAD, FALSE)
+
+	sleep(2 SECONDS)
+
+	if(correct_head)
+		budget2change((reward_amount*2)) //double reward for alive
+		var/newcollar = new /obj/item/clothing/neck/roguetown/gorget/prisoner/servant(M.loc)
+		playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
+		M.equip_to_slot(newcollar, ITEM_SLOT_NECK)
+
+	// Head has been "analyzed". Return it.
+	sleep(2 SECONDS)
+	playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
+	unbuckle_all_mobs()
+	M.Paralyze(50, TRUE)
+
+
+/obj/structure/chair/arrestchair/proc/budget2change(budget, mob/user, specify)
+	var/turf/T
+	if(!user || (!ismob(user)))
+		T = get_turf(src)
+	else
+		T = get_turf(user)
+	if(!budget || budget <= 0)
+		return
+	budget = floor(budget)
+	var/type_to_put
+	var/zenars_to_put
+	if(specify)
+		switch(specify)
+			if("GOLD")
+				zenars_to_put = budget/10
+				type_to_put = /obj/item/roguecoin/gold
+			if("SILVER")
+				zenars_to_put = budget/5
+				type_to_put = /obj/item/roguecoin/silver
+			if("BRONZE")
+				zenars_to_put = budget
+				type_to_put = /obj/item/roguecoin/copper
+	else
+		var/highest_found = FALSE
+		var/zenars = floor(budget/10)
+		if(zenars)
+			budget -= zenars * 10
+			highest_found = TRUE
+			type_to_put = /obj/item/roguecoin/gold
+			zenars_to_put = zenars
+		zenars = floor(budget/5)
+		if(zenars)
+			budget -= zenars * 5
+			if(!highest_found)
+				highest_found = TRUE
+				type_to_put = /obj/item/roguecoin/silver
+				zenars_to_put = zenars
+			else
+				new /obj/item/roguecoin/silver(T, zenars)
+		if(budget >= 1)
+			if(!highest_found)
+				type_to_put = /obj/item/roguecoin/copper
+				zenars_to_put = budget
+			else
+				new /obj/item/roguecoin/copper(T, budget)
+	if(!type_to_put || zenars_to_put < 1)
+		return
+	var/obj/item/roguecoin/G = new type_to_put(T, floor(zenars_to_put))
+	playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)

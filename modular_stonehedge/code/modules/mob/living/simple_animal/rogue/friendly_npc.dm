@@ -39,7 +39,7 @@
 	if(HAS_TRAIT(src, TRAIT_PACIFISM))
 		return FALSE
 
-	if(!is_in_zweb(src.z,L.z))
+	if(!is_in_zweb(src,L))
 		return FALSE
 
 	if(L.alpha <= 100) //if mostly invisible dont see it, surely this wont go wrong.
@@ -180,7 +180,7 @@
 	if(HAS_TRAIT(src, TRAIT_PACIFISM))
 		return FALSE
 
-	if(!is_in_zweb(src.z,L.z))
+	if(!is_in_zweb(src,L))
 		return FALSE
 
 	if(L.alpha <= 100) //if mostly invisible dont see it, surely this wont go wrong.
