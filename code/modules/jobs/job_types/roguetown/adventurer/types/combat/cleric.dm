@@ -194,6 +194,7 @@
 			if(/datum/patron/divine/eora)
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 			if(/datum/patron/divine/jayx)
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 1, TRUE)
 					H.mind.adjust_spellpoints(1)

@@ -9,6 +9,7 @@
 		/datum/patron/old_god,
 		/datum/patron/divine/astrata,
 		/datum/patron/divine/noc,
+		/datum/patron/divine/jayx,
 		/datum/patron/divine/dendor,
 		/datum/patron/divine/abyssor,
 		/datum/patron/divine/ravox,
