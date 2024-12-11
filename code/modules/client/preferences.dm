@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/enable_tips = TRUE
 	var/tip_delay = 500 //tip delay in milliseconds
 	// Commend variable on prefs instead of client to prevent reconnect abuse (is persistant on prefs, opposed to not on client)
-	var/commendedsomeone = FALSE
+	var/commendedtimes = 0
 
 	//Antag preferences
 	var/list/be_special = list()		//Special role selection
