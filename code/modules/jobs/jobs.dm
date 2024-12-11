@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(church_positions, list(
 	"Wytcher Captain",
 	"Confessor",
 	"Gravesinger",
-	"Paladin",
+	"Temple Paladin",
 	"Grandmaster",
 	"Druid",
 ))

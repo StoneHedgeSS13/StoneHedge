@@ -141,7 +141,7 @@
 
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
-	desc = "An iron gorget to protect the neck. 'You are my bitch now.'"
+	desc = "An iron gorget to protect the neck."
 	icon_state = "gorget"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
@@ -190,20 +190,23 @@
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 	clothing_flags = null
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
+/obj/item/clothing/neck/roguetown/gorget/prisoner/canStrip(mob/stripper, mob/living/carbon/human/owner)
+	if(stripper.job in list("Hedgemaster", "Hedge Knight"))
+		return TRUE
+	else if(src in owner.held_items)
+		return TRUE
+	else
+		return ..()
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/servant
 	name = "cursed obedience collar"
 	desc = "This collar makes me obligated to heed to orders of others. And prevents me from running away..."
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/user, slot)
+/obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	to_chat(user, span_warning("This collar makes me heed to orders of others, unless it includes self harm or orders that will indirectly or directly harm to town and its population... And also it prevents me from running away..."))
-	to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
+	if(!(src in user.held_items))
+		to_chat(user, span_warning("This collar makes me heed to orders of others, unless it includes self harm or orders that will indirectly or directly harm to town and its population... And also it prevents me from running away..."))
+		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "divine Symbol"

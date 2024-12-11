@@ -9,7 +9,7 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_patrons = ALL_CLERIC_PATRONS
 	outfit = /datum/outfit/job/roguetown/templar
-	min_pq = 1
+	min_pq = 0
 	max_pq = null
 	total_positions = 5
 	spawn_positions = 5
@@ -21,55 +21,6 @@
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-
-	var/weapons = list( //what did you primarily train with?
-		"Swords",
-		"Axes",
-		"Maces",
-		"Polearms"
-	)
-
-	var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
-
-	switch(weaponschoice)
-		if("Swords")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/sword/long
-			l_hand = /obj/item/rogueweapon/shield/tower/metal
-		if("Axes")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/stoneaxe/battle
-			l_hand = /obj/item/rogueweapon/shield/tower/metal
-		if("Maces & Flails")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/mace
-			l_hand = /obj/item/rogueweapon/shield/tower/metal
-		if("Polearms")
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			r_hand = /obj/item/rogueweapon/spear/billhook
-			l_hand = /obj/item/rogueweapon/shield/tower/metal
 
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
@@ -131,11 +82,12 @@
 	id = /obj/item/clothing/ring/silver
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	backr = /obj/item/rogueweapon/shield/tower/metal
+	l_hand = /obj/item/class_selector/paladin
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)

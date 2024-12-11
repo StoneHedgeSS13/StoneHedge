@@ -3,7 +3,7 @@
 /obj/structure/mineral_door/wood{
 	icon_state = "wcr";
 	locked = 1;
-	lockid = "tribo"
+	lockid = "tribe"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
@@ -7006,30 +7006,10 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
-/obj/item/roguekey/custom{
-	lockid = "tribo"
-	},
+/obj/item/roguekey/tribe,
+/obj/item/roguekey/tribe,
+/obj/item/roguekey/tribe,
+/obj/item/roguekey/tribe,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";

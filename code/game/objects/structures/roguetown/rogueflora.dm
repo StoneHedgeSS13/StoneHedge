@@ -82,7 +82,7 @@
 
 /obj/structure/flora/roguetree/Initialize()
 	. = ..()
-	icon_state = "t[rand(1,16)]"
+	icon_state = "t[rand(1,14)]"
 
 /obj/structure/flora/roguetree/evil/Initialize()
 	. = ..()

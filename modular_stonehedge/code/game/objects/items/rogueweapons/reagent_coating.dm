@@ -28,12 +28,12 @@
 	INVOKE_ASYNC(src, PROC_REF(apply_reagents), I, user, H)
 
 /obj/item/rogueweapon/proc/apply_reagents(obj/item/I, mob/living/user, mob/living/H)
-	if(!H)
+	if(!H || user == H)
 		return
 	if(reagents.total_volume)
 		reagents.trans_to(user, reagent_apply_amt, 1, no_react = FALSE)
 		user.visible_message(span_green("[user] shudders with pain!"),span_boldgreen("I feel a burning pain on my wound!"))
-		log_admin("[user] was struck with [english_list(reagents.reagent_list)] using a poisoned weapon by [H].")
+		log_attack("[user] was struck with [english_list(reagents.reagent_list)] using a poisoned weapon by [H].")
 
 /obj/item/rogueweapon/proc/__clean_react()
 	SIGNAL_HANDLER

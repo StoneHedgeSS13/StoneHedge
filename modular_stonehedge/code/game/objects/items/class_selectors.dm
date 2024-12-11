@@ -576,3 +576,55 @@
         var/spawneditem = new invitem(H.loc)
         H.pickup_and_wear(spawneditem)
     qdel(src)
+
+
+//TEMPLE PALADIN
+/obj/item/class_selector/paladin/attack_self(mob/living/carbon/human/H)
+	classes = list( //what did you primarily train with?
+		"Swords",
+		"Axes",
+		"Maces",
+		"Polearms"
+	)
+
+	var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in classes
+
+	switch(weaponschoice)
+		if("Swords")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			inventory_items  += /obj/item/rogueweapon/sword/long
+			dressup(H, inventory_items)
+		if("Axes")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 5, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+			inventory_items  += /obj/item/rogueweapon/stoneaxe/battle
+			dressup(H, inventory_items)
+		if("Maces & Flails")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+			inventory_items  += /obj/item/rogueweapon/mace
+			dressup(H, inventory_items)
+		if("Polearms")
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			inventory_items  += /obj/item/rogueweapon/spear/billhook
+			dressup(H, inventory_items)

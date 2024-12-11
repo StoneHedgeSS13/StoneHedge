@@ -8,7 +8,7 @@
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
-	max_integrity = 100
+	max_integrity = 25
 	integrity_failure = 0.1
 	var/base_state = "window-solid"
 	var/lockdir = 0
