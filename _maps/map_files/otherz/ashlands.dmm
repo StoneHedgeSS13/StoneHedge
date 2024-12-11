@@ -282,14 +282,6 @@
 /obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/blocks/stone,
 /area/rogue)
-"dv" = (
-/obj/structure/fluff/traveltile{
-	aportalgoesto = "ashlandsout2";
-	aportalid = "ashlandsin2";
-	name = "travel to Ashlands"
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet)
 "dy" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -3232,7 +3224,7 @@
 	endTurfX = 118;
 	endTurfY = 130
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/open/lava,
 /area/rogue/under/cavewet)
 "La" = (
 /obj/structure/stairs/stone{
@@ -3662,7 +3654,7 @@
 /obj/structure/fluff/traveltile{
 	aportalgoesto = "ashlandsout1";
 	aportalid = "ashlandsin1";
-	name = "travel to Ashlands"
+	name = "Travel to Stone Hedge"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
@@ -4023,7 +4015,8 @@
 "Va" = (
 /obj/structure/fluff/traveltile/bandit{
 	aportalgoesto = "banditin";
-	aportalid = "banditexit"
+	aportalid = "banditexit";
+	name = "Travel to Suspicious Camp"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
@@ -4585,9 +4578,9 @@ Gr
 Gr
 Gr
 Gr
-tG
-tG
-tG
+Gr
+Gr
+Gr
 KY
 "}
 (2,1,1) = {"
@@ -4717,10 +4710,10 @@ Gr
 Gr
 Gr
 Gr
-tG
-tG
-tG
-tG
+Gr
+Gr
+Gr
+Gr
 "}
 (3,1,1) = {"
 tG
@@ -4856,7 +4849,7 @@ Gr
 "}
 (4,1,1) = {"
 tG
-dv
+QO
 Qm
 Qm
 Qm

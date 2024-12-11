@@ -63,6 +63,7 @@
 #define TRAIT_CHARGER "Charger" //advantage on running into people.
 #define TRAIT_ARTIFICER "Artificer" //after casting some spells, hurl a firebolt at the same location
 #define TRAIT_NODETECT "Nondetection" //You can not be scryed on
+#define TRAIT_VORE "Vore" //can access vore
 //Hearthstone end.
 
 // PATRON GOD TRAITS

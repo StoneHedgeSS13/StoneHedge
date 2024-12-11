@@ -2828,6 +2828,17 @@
 "cbR" = (
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/indoors/shelter/town)
+"cbU" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/academyward,
+/turf/open/floor/rogue/rooftop{
+	dir = 4;
+	icon_state = "roof"
+	},
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "cbX" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/cobble/mossy,
@@ -4056,13 +4067,15 @@
 	name = "Adventurers Guild"
 	})
 "cXn" = (
-/obj/structure/fluff/traveltile/vampire{
-	aportalgoesto = "ashlandsin1";
-	aportalid = "ashlandsout1";
-	required_trait = null
+/obj/structure/academyward,
+/turf/open/floor/rogue/rooftop{
+	dir = 4;
+	icon_state = "roof"
 	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/caves)
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "cXr" = (
 /obj/structure/closet/crate/chest/refilling/trait,
 /turf/open/water/cleanshallow,
@@ -13854,6 +13867,17 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
+"jWz" = (
+/obj/item/reagent_containers/food/snacks/crow,
+/obj/structure/academyward,
+/turf/open/floor/rogue/rooftop{
+	dir = 4;
+	icon_state = "roof"
+	},
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "jWJ" = (
 /turf/closed/mineral/rogue,
 /area/rogue/outdoors{
@@ -15248,12 +15272,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/exposed/tavern)
-"kSW" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Twilight Woods"
-	})
 "kSX" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/shelter/town)
@@ -16109,7 +16127,6 @@
 	lockid = "mage";
 	name = "Ravenloft Balcony"
 	},
-/obj/structure/academyward,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -16672,7 +16689,7 @@
 "lZX" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
-	lockid = "vtavern";
+	lockid = "roomv";
 	name = "Room V - Nobility"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -18002,6 +18019,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
+"mSd" = (
+/obj/structure/academyward,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/exposed/magiciantower{
+	first_time_text = "Ravenloft Academy";
+	name = "Schoolgrounds"
+	})
 "mSm" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1;
@@ -21554,12 +21578,6 @@
 /obj/structure/fluff/littlebanners/bluewhite,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
-"pyb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/woods{
-	first_time_text = "The Twilight Woods"
-	})
 "pym" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga,
 /turf/open/floor/rogue/dirt,
@@ -29960,7 +29978,8 @@
 /obj/structure/fluff/traveltile/vampire{
 	aportalgoesto = "ashlandsin2";
 	aportalid = "ashlandsout2";
-	required_trait = null
+	required_trait = null;
+	name = "Travel to Underkeep"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
@@ -31951,8 +31970,8 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavewet/bogcaves)
 "wZi" = (
-/obj/effect/landmark/start/monk,
-/turf/open/floor/rogue/cobble,
+/obj/effect/landmark/start/grandtemplar,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -32335,14 +32354,6 @@
 /obj/item/seeds/berryrogue/poison,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/exposed/bath)
-"xlt" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/landmark/start/monk,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/indoors/town/church/chapel{
-	first_time_text = "Shrine of Lune";
-	name = "Shrine of Lune"
-	})
 "xlC" = (
 /obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -79744,7 +79755,7 @@ ifi
 ifi
 ifi
 ifi
-mmk
+ifi
 jlJ
 nVt
 nVt
@@ -79931,13 +79942,13 @@ rxm
 rxm
 rxm
 nVt
+ifi
+ifi
+ifi
+ifi
+ifi
+ifi
 mmk
-ifi
-ifi
-ifi
-ifi
-ifi
-ifi
 ifi
 wgD
 ifi
@@ -82577,7 +82588,7 @@ nVt
 nVt
 ifi
 nVt
-mmk
+ifi
 urX
 nVt
 rxm
@@ -83169,7 +83180,7 @@ nVt
 nVt
 nVt
 ifi
-mmk
+ifi
 ifi
 jlJ
 jlJ
@@ -83983,7 +83994,7 @@ nVt
 rxm
 rxm
 nVt
-mmk
+ifi
 ifi
 ifi
 jlJ
@@ -85203,7 +85214,7 @@ nVt
 ifi
 nVt
 ifi
-ifi
+mmk
 nVt
 rxm
 nVt
@@ -86011,7 +86022,7 @@ ifi
 ifi
 nVt
 ifi
-mmk
+ifi
 nVt
 ifi
 nVt
@@ -99577,7 +99588,7 @@ vGv
 bIN
 sNy
 sNy
-cXn
+vrX
 rxm
 rxm
 iMU
@@ -104407,7 +104418,7 @@ hhG
 hsV
 mVp
 kHM
-pyb
+syT
 eHG
 eHG
 tyj
@@ -104814,8 +104825,8 @@ ilr
 eyG
 miB
 oZS
-eHG
-kSW
+qyw
+ilr
 tyj
 sDr
 oCe
@@ -157263,8 +157274,8 @@ kan
 iYC
 kan
 dAL
-wZi
-wZi
+rsg
+rsg
 sfZ
 kan
 qgd
@@ -157466,7 +157477,7 @@ adc
 dAL
 kan
 kan
-kan
+wZi
 kan
 dAL
 kan
@@ -157667,8 +157678,8 @@ kan
 ghn
 kan
 dAL
-xlt
-xlt
+sfZ
+sfZ
 kan
 rsg
 dAL
@@ -185357,13 +185368,13 @@ lbr
 lbr
 lbr
 lbr
-lbr
+cXn
 nAt
 nRe
 lwi
 lwi
 gVp
-teF
+cbU
 lbr
 lbr
 lbr
@@ -185559,13 +185570,13 @@ lbr
 lbr
 lbr
 lbr
-lbr
+cXn
 eJQ
 lwi
 xLv
 lwi
 lVD
-lbr
+cXn
 kcS
 fJT
 teF
@@ -185761,13 +185772,13 @@ teF
 teF
 lbr
 lbr
-lbr
+cXn
 eJQ
 lwi
 lwi
 lwi
 gHR
-lbr
+cXn
 fJT
 teF
 kcS
@@ -185963,13 +185974,13 @@ lbr
 tVW
 kcS
 phu
-lbr
+cXn
 oUr
 lwi
 fDU
 lwi
 qZc
-lbr
+cXn
 lbr
 phu
 lbr
@@ -186165,13 +186176,13 @@ lbr
 teF
 teF
 aHD
-lbr
+cXn
 uGs
 lwi
 lwi
 lwi
 oCd
-lbr
+cXn
 lbr
 cdR
 phu
@@ -186367,13 +186378,13 @@ lbr
 aHD
 teF
 teF
-lbr
+cXn
 qGz
 lwi
 xLv
 lwi
 nTG
-lbr
+cXn
 lbr
 phu
 lbr
@@ -186569,13 +186580,13 @@ lbr
 lbr
 phu
 teF
-teF
+cbU
 pEF
 lwi
 lwi
 lwi
 onP
-lbr
+cXn
 lbr
 lbr
 lbr
@@ -186771,13 +186782,13 @@ lbr
 lbr
 lbr
 lbr
-lbr
+cXn
 cDW
 pFU
 vLt
 uQJ
 oHC
-lbr
+cXn
 lbr
 lbr
 lbr
@@ -186973,13 +186984,13 @@ lbr
 lbr
 yhY
 lbr
-phu
-egl
-egl
-egl
-egl
-egl
-lbr
+jWz
+mSd
+mSd
+mSd
+mSd
+mSd
+cXn
 lbr
 yhY
 lbr

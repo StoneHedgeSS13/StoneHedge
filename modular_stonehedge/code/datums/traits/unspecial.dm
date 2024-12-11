@@ -623,3 +623,34 @@
 /datum/quirk/endowedlite/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent/lite)
+
+/datum/quirk/vore
+    name = "Vore"
+    desc = "You can engage in Vore."
+    value = 0
+    mob_trait = TRAIT_VORE
+
+/datum/quirk/vore/add()
+    var/mob/living/carbon/human/H = quirk_holder
+    var/list/vore_verbs = list(
+        /mob/living/carbon/verb/toggle_vore_mode_verb,
+        /mob/living/verb/insidePanel,
+        /mob/living/verb/escapeOOC,
+        /mob/living/verb/lick,
+        /mob/living/verb/preyloop_refresh
+    )
+    H.verbs |= vore_verbs
+    H.vore_flags |= SHOW_VORE_PREFS
+
+/datum/quirk/vore/remove()
+    var/mob/living/carbon/human/H = quirk_holder
+    var/list/vore_verbs = list(
+        /mob/living/carbon/verb/toggle_vore_mode_verb,
+        /mob/living/verb/insidePanel,
+        /mob/living/verb/escapeOOC,
+        /mob/living/verb/lick,
+        /mob/living/verb/preyloop_refresh
+    )
+    H.verbs -= vore_verbs
+    H.vore_flags &= ~SHOW_VORE_PREFS
+    H.disable_vore_mode()
