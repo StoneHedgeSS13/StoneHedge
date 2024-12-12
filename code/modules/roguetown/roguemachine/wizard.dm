@@ -80,16 +80,16 @@
 		var/can_buy = FALSE
 		switch(H.job)
 			if("Academy Apprentice")
-				if(PA.group in list("Cantrips", "Level 1 Spells"))
+				if(PA.group in list("Cantrips", "Level One Spells"))
 					can_buy = TRUE
 			if("Academy Mage")
-				if(PA.group in list("Cantrips", "Level 1 Spells", "Level 2 Spells"))
+				if(PA.group in list("Cantrips", "Level One Spells", "Level Two Spells"))
 					can_buy = TRUE
 			if("Academy Archmage")
 				can_buy = TRUE
 
 		if(!can_buy)
-			say("Your rank does not permit access to this spell category.")
+			say("Alas, thy rank befits not such arcane mysteries! The scrolls remain sealed to those of lesser station.")
 			return
 
 		if(SSlibrary.library_value >= cost)
@@ -116,23 +116,23 @@
 				if(!(upgrade_flags & UPGRADE_CANTRIPS))
 					options += "Learn Cantrips (100)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
-					options += "Learn Level 1 Spells (400)"
+					options += "Learn Level One Spells (400)"
 			if("Academy Mage")
 				if(!(upgrade_flags & UPGRADE_CANTRIPS))
 					options += "Learn Cantrips (100)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
-					options += "Learn Level 1 Spells (400)"
+					options += "Learn Level One Spells (400)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
-					options += "Learn Level 2 Spells (800)"
+					options += "Learn Level Two Spells (800)"
 			if("Academy Archmage")
 				if(!(upgrade_flags & UPGRADE_CANTRIPS))
 					options += "Learn Cantrips (100)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_ONE))
-					options += "Learn Level 1 Spells (400)"
+					options += "Learn Level One Spells (400)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_TWO))
-					options += "Learn Level 2 Spells (800)"
+					options += "Learn Level Two Spells (800)"
 				if(!(upgrade_flags & UPGRADE_LEVEL_THREE))
-					options += "Learn Level 3 Spells (1600)"
+					options += "Learn Level Three Spells (1600)"
 
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
@@ -152,36 +152,36 @@
 				upgrade_flags |= UPGRADE_CANTRIPS
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
-			if("Learn Level 1 Spells (400)")
+			if("Learn Level One Spells (400)")
 				if(upgrade_flags & UPGRADE_LEVEL_ONE)
 					return
 				if(SSlibrary.library_value < 400)
 					say(wizard_vend_negative())
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				SSlibrary.remove_ink_library(400, "Learn Level 1 Spells")
+				SSlibrary.remove_ink_library(400, "Learn Level One Spells")
 				upgrade_flags |= UPGRADE_LEVEL_ONE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
-			if("Learn Level 2 Spells (800)")
+			if("Learn Level Two Spells (800)")
 				if(upgrade_flags & UPGRADE_LEVEL_TWO)
 					return
 				if(SSlibrary.library_value < 800)
 					say(wizard_vend_negative())
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				SSlibrary.remove_ink_library(800, "Learn Level 2 Spells")
+				SSlibrary.remove_ink_library(800, "Learn Level Two Spells")
 				upgrade_flags |= UPGRADE_LEVEL_TWO
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
-			if("Learn Level 3 Spells (1600)")
+			if("Learn Level Three Spells (1600)")
 				if(upgrade_flags & UPGRADE_LEVEL_THREE)
 					return
 				if(SSlibrary.library_value < 1600)
 					say(wizard_vend_negative())
 					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 					return
-				SSlibrary.remove_ink_library(1600, "Learn Level 3 Spells")
+				SSlibrary.remove_ink_library(1600, "Learn Level Three Spells")
 				upgrade_flags |= UPGRADE_LEVEL_THREE
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
@@ -216,11 +216,11 @@
 	if(upgrade_flags & UPGRADE_CANTRIPS)
 		unlocked_cats += "Cantrips"
 	if(upgrade_flags & UPGRADE_LEVEL_ONE)
-		unlocked_cats += "Level 1 Spells"
+		unlocked_cats += "Level One Spells"
 	if(upgrade_flags & UPGRADE_LEVEL_TWO)
-		unlocked_cats += "Level 2 Spells"
+		unlocked_cats += "Level Two Spells"
 	if(upgrade_flags & UPGRADE_LEVEL_THREE)
-		unlocked_cats += "Level 3 Spells"
+		unlocked_cats += "Level Three Spells"
 
 	if(current_cat == "1")
 		contents += "<center>"

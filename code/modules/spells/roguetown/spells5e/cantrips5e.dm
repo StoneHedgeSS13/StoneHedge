@@ -1558,6 +1558,241 @@
 	. = ..()
 
 //==============================================
+//  THORN WHIP
+//==============================================
+
+/obj/effect/proc_holder/spell/targeted/thornwhip5e
+    name = "Thorn Whip"
+    overlay_state = "null"
+    releasedrain = 50
+    chargetime = 1
+    charge_max = 20 SECONDS
+    range = 3
+    warnie = "spellwarning"
+    movement_interrupt = FALSE
+    no_early_release = FALSE
+    chargedloop = null
+    sound = 'sound/magic/whiteflame.ogg'
+    chargedloop = /datum/looping_sound/invokegen
+    associated_skill = /datum/skill/magic/arcane
+    cost = 2
+
+    xp_gain = TRUE
+    miracle = FALSE
+
+    invocation = ""
+    invocation_type = "shout"
+    include_user = FALSE
+
+    var/delay = 3 SECONDS
+    var/sprite_changes = 10
+    var/datum/beam/current_beam = null
+    ignore_fiendkiss = FALSE
+
+/obj/effect/proc_holder/spell/targeted/thornwhip5e/cast(list/targets, mob/user = usr)
+    for(var/mob/living/carbon/C in targets)
+        user.visible_message(span_warning("[C] is snagged by [user]'s thorny vine!"), span_warning("You lash out at [C] with a thorny vine!"))
+        playsound(user, 'sound/combat/hits/whipgrab.ogg', 100)
+
+        var/x
+        for(x = 1; x < sprite_changes; x++)
+            current_beam = new(user, C, time=30/sprite_changes, beam_icon_state="vine[rand(1,3)]", btype=/obj/effect/ebeam, maxdistance=10)
+            INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
+            sleep(delay/sprite_changes)
+
+        var/dist = get_dist(user, C)
+        if(dist <= range)
+            C.apply_damage(10, BRUTE) // Base piercing damage
+            var/atom/throw_target = get_step(user, get_dir(C, user))
+            C.throw_at(throw_target, 1, 1) // Gentle pull, not as strong as Lightning Lure
+        else
+            playsound(user, 'sound/combat/hits/whip.ogg', 100)
+            user.visible_message(span_warning("The thorny vine falls short!"), span_warning("[C] is too far away!"))
+
+
+//==============================================
+//  THUNDERCLAP
+//==============================================
+
+/obj/effect/proc_holder/spell/self/thunderclap5e
+    name = "Thunderclap"
+    desc = "Create a burst of thunderous sound"
+    overlay_state = "null"
+    releasedrain = 30
+    chargetime = 0
+    charge_max = 15 SECONDS
+    range = 1
+    warnie = "spellwarning"
+    movement_interrupt = FALSE
+    no_early_release = FALSE
+    chargedloop = null
+    sound = 'sound/magic/whiteflame.ogg'
+    chargedloop = /datum/looping_sound/invokegen
+    associated_skill = /datum/skill/magic/arcane
+    cost = 1
+
+    xp_gain = TRUE
+    miracle = FALSE
+
+    invocation = ""
+    invocation_type = "shout"
+
+/obj/effect/proc_holder/spell/self/thunderclap5e/cast(mob/living/user)
+    playsound(user, 'sound/magic/lightning.ogg', 90, TRUE)
+    user.visible_message(span_warning("[user] claps their hands together with a thunderous boom!"))
+
+    for(var/mob/living/L in orange(1, user))
+        if(L == user)
+            continue
+        L.apply_damage(10, BRUTE) // Sonic damage
+        L.Knockdown(2 SECONDS)
+        L.Shake(duration = 0.5 SECONDS)
+        shake_camera(L, 1, 1)
+
+    var/obj/effect/temp_visual/thunderclap/visual = new(get_turf(user))
+    visual.duration = 5
+
+/obj/effect/temp_visual/thunderclap
+    icon = 'icons/effects/effects.dmi'
+    icon_state = "shield-flash"
+    duration = 5
+
+/obj/effect/temp_visual/thunderclap
+    name = "thunderous force"
+    desc = "BOOM!"
+    icon = 'icons/effects/effects.dmi'
+    icon_state = "shield-flash"
+    duration = 5
+    randomdir = TRUE
+
+//==============================================
+//  TOLL THE DEAD
+//==============================================
+
+/obj/effect/proc_holder/spell/targeted/tollthedead5e
+    name = "Toll the Dead"
+    desc = "You point at a creature you can see, and the sound of a dolorous bell fills the air."
+    overlay_state = "null"
+    releasedrain = 30
+    chargetime = 3
+    charge_max = 15 SECONDS
+    range = 6
+    warnie = "spellwarning"
+    movement_interrupt = FALSE
+    no_early_release = FALSE
+    chargedloop = null
+    sound = 'sound/magic/whiteflame.ogg'
+    chargedloop = /datum/looping_sound/invokegen
+    associated_skill = /datum/skill/magic/arcane
+    cost = 1
+
+    xp_gain = TRUE
+    miracle = FALSE
+
+    invocation = ""
+    invocation_type = "shout"
+
+/obj/effect/proc_holder/spell/targeted/tollthedead5e/cast(list/targets, mob/user = usr)
+    for(var/mob/living/L in targets)
+        playsound(L, 'sound/misc/deadbell.ogg', 100, TRUE)
+        new /obj/effect/temp_visual/tollthedead(get_turf(L))
+
+        var/damage = 8 // Base damage
+        if(L.health < L.maxHealth * 0.5)
+            damage = 13 // Increased damage
+
+        L.apply_damage(damage, BRUTE)
+        L.Shake(duration = 0.5 SECONDS)
+        to_chat(L, span_userdanger("The sound of a funeral bell echoes through your mind!"))
+
+/obj/effect/temp_visual/tollthedead
+    icon = 'icons/effects/effects.dmi'
+    icon_state = "bell"
+    duration = 5
+
+//==============================================
+//  SPARE THE DYING
+//==============================================
+
+/obj/effect/proc_holder/spell/targeted/touch/sparethedying5e
+    name = "Spare the Dying"
+    desc = "Through necromantic magic, your touch can temporarily halt death's advance"
+    overlay_state = "null"
+    releasedrain = 20
+    chargetime = 1
+    charge_max = 10 SECONDS
+    range = 1
+    warnie = "spellwarning"
+    movement_interrupt = FALSE
+    no_early_release = FALSE
+    chargedloop = null
+    sound = 'sound/magic/whiteflame.ogg'
+    chargedloop = /datum/looping_sound/invokegen
+    associated_skill = /datum/skill/magic/arcane
+    cost = 1
+
+    xp_gain = TRUE
+    miracle = FALSE
+
+    invocation = ""
+    invocation_type = "whisper"
+
+/obj/effect/proc_holder/spell/targeted/touch/sparethedying5e/cast(list/targets, mob/user = usr)
+    for(var/mob/living/carbon/C in targets)
+        if(C.health <= 0)
+            // Necromantic stabilization - temporarily suspends dying
+            C.adjustOxyLoss(-C.getOxyLoss()) // Suspend oxygen loss
+            C.setStaminaLoss(0) // Reset exhaustion
+
+            // Temporarily stop blood loss through necromantic stasis
+            if(C.blood_volume < BLOOD_VOLUME_SURVIVE)
+                C.blood_volume = BLOOD_VOLUME_SURVIVE
+
+            // Apply visual effects
+            playsound(C, 'sound/gore/flesh_eat_04.ogg', 50, TRUE)
+            new /obj/effect/temp_visual/necro_heal(get_turf(C))
+
+            // Apply necro stabilization status effect
+            C.apply_status_effect(/datum/status_effect/necro_stabilized)
+
+            user.visible_message(span_warning("[user]'s dark magic temporarily halts [C]'s death!"),
+                               span_notice("Your necromancy suspends [C]'s dying state!"))
+        else
+            to_chat(user, span_warning("[C] is not at Yamais's door!"))
+            revert_cast()
+
+/obj/effect/temp_visual/necro_heal
+    icon = 'icons/effects/effects.dmi'
+    icon_state = "cursehand0"
+    duration = 5
+    randomdir = FALSE
+
+/datum/status_effect/necro_stabilized
+    id = "necro_stabilized"
+    duration = 30 SECONDS
+    alert_type = /atom/movable/screen/alert/status_effect/necro_stabilized
+
+    var/static/mutable_appearance/necro_overlay = mutable_appearance('icons/effects/effects.dmi', "necro_stasis", ABOVE_MOB_LAYER)
+
+/datum/status_effect/necro_stabilized/on_apply()
+    . = ..()
+    var/mob/living/target = owner
+    target.add_overlay(necro_overlay)
+    target.update_vision_cone()
+
+/datum/status_effect/necro_stabilized/on_remove()
+    var/mob/living/target = owner
+    target.cut_overlay(necro_overlay)
+    target.update_vision_cone()
+    to_chat(target, span_warning("The necromantic energy stabilizing you fades!"))
+    . = ..()
+
+/atom/movable/screen/alert/status_effect/necro_stabilized
+    name = "Necromantic Stabilization"
+    desc = "Dark magic temporarily suspends your dying state."
+    icon_state = "necro_stasis"
+
+//==============================================
 //	RESISTANCE
 //==============================================
 //Notes:
