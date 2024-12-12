@@ -24,7 +24,7 @@
 	armor = list("blunt" = 70, "slash" = 70, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/leather/masterwork
-	name = "masterwork leather helmet"
+	name = "enhanced leather helmet"
 	desc = "This helmet is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	icon_state = "alhelmet"
 	max_integrity = 300
@@ -59,9 +59,9 @@
 	armor = list("blunt" = 85, "slash" = 70, "stab" = 45, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 
-//the top dog of leather shiet also looks good.
+//the top dog of leather shiet also looks good, you needed to visit a blacksmith for the previous step, and you are back to needing a master seamster.
 /obj/item/clothing/head/roguetown/helmet/leather/armorhood/masterwork
-	name = "plate-reinforced leather hood"
+	name = "enhanced studded leather hood"
 	desc = "A thick plate reinforced leather hood with buckles designed for battle."
 	icon_state = "studhood"
 	item_state = "studhood"
@@ -84,7 +84,7 @@
 				H.update_inv_neck()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEHAIR
+			flags_inv = HIDEHAIR|HIDEEARS|HIDEFACE
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user

@@ -27,6 +27,7 @@
 	ADD_TRAIT(H, TRAIT_BREADY, QUIRK_TRAIT)
 	H.change_stat("constitution", 2)
 
+/*
 /datum/quirk/charger
 	name = "Charger"
 	desc = "I am like a raging bull, whoever gets in my way will fall."
@@ -36,18 +37,18 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_CHARGER, QUIRK_TRAIT)
 	H.change_stat("constitution", 1)
+*/
 
 /datum/quirk/curseofcain
 	name = "Flawed Immortality"
-	desc = "I don't need to eat, sleep or breathe anymore... Is this normal?"
-	value = 5
+	desc = "I don't need to eat or sleep anymore... Is this normal?"
+	value = 4
 
 /datum/quirk/curseofcain/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_NOHUNGER, QUIRK_TRAIT)
-	ADD_TRAIT(H, TRAIT_NOBREATH, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_NOSLEEP, QUIRK_TRAIT)
-	H.change_stat("endurance", 1)
+	H.change_stat("endurance", -1)
 
 /datum/quirk/deadened
 	name = "Deadened"
@@ -289,18 +290,18 @@
 /datum/quirk/thief
 	name = "Thief"
 	desc = "Life's not easy around here, but I've made mine a little easier by taking things of others. I am a great at picking pockets and locks. Istashed some picks nearby."
-	value = 4
+	value = 3
 
 /datum/quirk/thief/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 3, TRUE)
 	H.mind.special_items["Lockpicks"] = /obj/item/lockpickring/mundane
 
 
 /datum/quirk/languagesavant
 	name = "Polyglot"
-	desc = "I have always picked up on languages easily, even those that are forbidden to mortals."
+	desc = "I have always picked up on languages easily, I know many languages."
 	value = 3
 
 /datum/quirk/languagesavant/on_spawn()
@@ -543,8 +544,6 @@
 
 /datum/quirk/nude_sleeper/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.change_stat("endurance", 1) //since sleeping naked will probably get you sick or some shit.
-	H.change_stat("constitution", 1)
 	ADD_TRAIT(H, TRAIT_NUDE_SLEEPER, QUIRK_TRAIT)
 
 // disgustingly hooking into quirks to provide a convenient way to become a vampire

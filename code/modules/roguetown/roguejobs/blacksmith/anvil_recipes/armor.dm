@@ -194,10 +194,10 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/studdedhood
-	name = "Studded Leather Hood (+Leather Helmet)"
+	name = "Studded Leather Hood (+Padded Hood)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/clothing/head/roguetown/helmet/leather)
-	created_item = /obj/item/clothing/head/roguetown/helmet/leather/armorhood
+	additional_items = list(/obj/item/clothing/head/roguetown/helmet/leather/armorhood)
+	created_item = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/studded

@@ -27,7 +27,7 @@
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/gloves/roguetown/leather/masterwork
-	name = "masterwork leather gloves"
+	name = "enhanced leather gloves"
 	desc = "These gloves are a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	icon_state = "leathergloves_masterwork"
 	max_integrity = 300

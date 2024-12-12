@@ -231,9 +231,11 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/woods/overgrownfort)
 "bp" = (
-/obj/structure/flora/roguegrass/fungus_bush,
+/obj/structure/stairs/stone{
+	dir = 4
+	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/under/cavewet)
 "bq" = (
 /obj/effect/decal/cleanable/blood/gibs/bubblegum,
 /turf/open/floor/grass,
@@ -999,6 +1001,12 @@
 /obj/structure/fermenting_barrel/random/beer,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
+"fL" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "fO" = (
 /turf/open/floor/rogue/shroud,
 /area/rogue/outdoors/woods{
@@ -6674,13 +6682,6 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
-"ML" = (
-/obj/effect/landmark/mapGenerator/rogue/cave/lava{
-	endTurfX = 135;
-	endTurfY = 131
-	},
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue)
 "MM" = (
 /obj/structure/spider/stickyweb{
 	dir = 8;
@@ -8019,7 +8020,7 @@
 	})
 "Va" = (
 /obj/structure/long_sleep/mushroom,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/cave/underdark)
 "Vb" = (
 /obj/effect/decal/cleanable/food/salt{
@@ -8966,7 +8967,7 @@ RP
 RP
 RP
 RP
-ML
+RP
 "}
 (2,1,1) = {"
 RP
@@ -16195,7 +16196,7 @@ Aj
 Aj
 Aj
 Aj
-JQ
+Aj
 JQ
 JQ
 JQ
@@ -16464,7 +16465,7 @@ Aj
 Aj
 Aj
 Aj
-sj
+Aj
 sj
 JQ
 JQ
@@ -16599,7 +16600,7 @@ Aj
 Aj
 Aj
 Aj
-sj
+Aj
 JQ
 KZ
 KZ
@@ -16738,9 +16739,9 @@ Aj
 Aj
 Aj
 Aj
-bp
-EI
-pL
+MA
+xP
+ZA
 HR
 HR
 ZA
@@ -16870,7 +16871,7 @@ Aj
 Aj
 Aj
 Aj
-KZ
+Va
 KZ
 EI
 ZA
@@ -17006,8 +17007,8 @@ KZ
 KZ
 EI
 ZA
-pL
 ZA
+pL
 ZA
 ZA
 ZA
@@ -17138,7 +17139,7 @@ KZ
 KZ
 KZ
 EI
-Va
+ZA
 ZA
 ZA
 ZA
@@ -18065,7 +18066,7 @@ sp
 sp
 sJ
 sJ
-sj
+Aj
 sj
 Wn
 ZA
@@ -18194,12 +18195,12 @@ KZ
 nd
 JQ
 JQ
-sj
-JQ
-JQ
-JQ
-JQ
-JQ
+KZ
+Aj
+Aj
+Aj
+Aj
+Aj
 EI
 pL
 ZA
@@ -18326,14 +18327,14 @@ KZ
 Aj
 Aj
 KZ
-JQ
-JQ
-sj
-JQ
-JQ
-JQ
-JQ
-EI
+KZ
+Aj
+Aj
+Aj
+Aj
+Aj
+Aj
+KZ
 EI
 ZA
 ZA
@@ -18459,12 +18460,12 @@ Aj
 Aj
 Aj
 Aj
-sj
-JQ
-sj
-JQ
-JQ
-JQ
+Aj
+Aj
+Aj
+KZ
+EI
+KZ
 JQ
 Wn
 xP
@@ -18593,9 +18594,9 @@ Aj
 Aj
 Aj
 Aj
-MA
-sj
-JQ
+Aj
+KZ
+EI
 nd
 KZ
 JQ
@@ -18727,7 +18728,7 @@ Aj
 Aj
 Aj
 Aj
-KZ
+Wn
 KZ
 Aj
 Aj
@@ -19404,12 +19405,12 @@ Aj
 Aj
 ie
 ie
+ZA
 JG
 JG
 JG
-JG
-JG
-JG
+ZA
+ZA
 Gd
 No
 FZ
@@ -22050,9 +22051,9 @@ QJ
 OV
 OV
 SP
-SP
 OV
-CF
+OV
+OV
 CF
 CF
 FN
@@ -22185,7 +22186,7 @@ OV
 OV
 OV
 OV
-wO
+OV
 CF
 FN
 FN
@@ -22317,7 +22318,7 @@ OV
 SP
 OV
 OV
-wO
+OV
 wO
 CF
 CF
@@ -22584,7 +22585,7 @@ wO
 wO
 OV
 OV
-FN
+OV
 FN
 FN
 FN
@@ -23114,7 +23115,7 @@ hj
 sj
 CF
 FN
-FN
+OV
 OV
 FN
 FN
@@ -23517,7 +23518,7 @@ FN
 FN
 FN
 OV
-FN
+OV
 FN
 FN
 FN
@@ -23915,7 +23916,7 @@ FN
 FN
 OV
 OV
-FN
+OV
 FN
 FN
 FN
@@ -24179,10 +24180,10 @@ wO
 CF
 wO
 wO
-CF
 OV
 OV
-CF
+OV
+OV
 FN
 FN
 FN
@@ -24311,10 +24312,10 @@ wO
 wO
 wO
 wO
-wO
 OV
 OV
-FN
+OV
+OV
 CF
 FN
 FN
@@ -37494,9 +37495,9 @@ wO
 RY
 No
 SP
-SP
-No
-SP
+bp
+fL
+bp
 SP
 No
 SP
@@ -37629,7 +37630,7 @@ No
 No
 No
 No
-wO
+No
 wO
 wO
 wO

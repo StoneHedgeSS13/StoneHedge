@@ -30,7 +30,7 @@
 	armor = list("blunt" = 75, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/suit/roguetown/armor/leather/masterwork
-	name = "masterwork leather coat"
+	name = "enhanced leather coat"
 	desc = "This coat is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	icon_state = "leather_masterwork"
 	max_integrity = 400

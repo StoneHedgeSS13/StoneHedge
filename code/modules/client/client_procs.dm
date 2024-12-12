@@ -1142,7 +1142,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return
 	if(theykey)
 		prefs.commendedtimes ++
-		if(prefs.commendedtimes < 2)
+		if(prefs.commendedtimes < 3)
 			commendsomeone(silent = TRUE)
 		add_commend(theykey, ckey)
 		to_chat(src,"[selection] commended.")

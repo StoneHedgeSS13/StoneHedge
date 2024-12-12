@@ -3219,13 +3219,6 @@
 "KR" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue)
-"KY" = (
-/obj/effect/landmark/mapGenerator/rogue/cave/lava{
-	endTurfX = 118;
-	endTurfY = 130
-	},
-/turf/open/lava,
-/area/rogue/under/cavewet)
 "La" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -3247,6 +3240,10 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
+"Lg" = (
+/obj/effect/mist,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet)
 "Li" = (
 /obj/structure/table/church,
 /turf/open/floor/rogue/cobble,
@@ -4581,7 +4578,7 @@ Gr
 Gr
 Gr
 Gr
-KY
+Gr
 "}
 (2,1,1) = {"
 tG
@@ -9732,8 +9729,8 @@ Gr
 Gr
 "}
 (41,1,1) = {"
-Gr
-Gr
+VG
+VG
 Gr
 Gr
 Gr
@@ -9864,9 +9861,9 @@ Gr
 Gr
 "}
 (42,1,1) = {"
+Ay
+Ay
 VG
-VG
-Gr
 VG
 Qm
 Qm
@@ -9998,7 +9995,7 @@ Gr
 (43,1,1) = {"
 Ay
 Ay
-Qm
+Ay
 Ay
 Ay
 Ay
@@ -10525,9 +10522,9 @@ Gr
 "}
 (47,1,1) = {"
 Ay
-VG
 Ay
-Qm
+Ay
+VG
 Gr
 Ay
 Ay
@@ -10656,9 +10653,9 @@ Gr
 Gr
 "}
 (48,1,1) = {"
+Ay
+Ay
 VG
-VG
-Gr
 Gr
 Gr
 Gr
@@ -10788,8 +10785,8 @@ Gr
 Gr
 "}
 (49,1,1) = {"
-Gr
-Gr
+VG
+VG
 Gr
 Gr
 Gr
@@ -20155,10 +20152,10 @@ jX
 jX
 jX
 jX
-Qm
-Qm
-tG
-tG
+jX
+jX
+jX
+jX
 "}
 (2,1,2) = {"
 tG
@@ -20287,10 +20284,10 @@ jX
 jX
 jX
 jX
-Qm
-Qm
-Qm
-Qm
+jX
+jX
+jX
+jX
 "}
 (3,1,2) = {"
 tG
@@ -25441,8 +25438,8 @@ jX
 jX
 "}
 (42,1,2) = {"
-jX
-jX
+Ay
+Ay
 jX
 jX
 jX
@@ -25573,9 +25570,9 @@ jX
 jX
 "}
 (43,1,2) = {"
+Ay
+VG
 Qm
-Qm
-jX
 Qm
 VG
 Qm
@@ -25705,8 +25702,8 @@ jX
 jX
 "}
 (44,1,2) = {"
+Lg
 Va
-Qm
 Qm
 Qm
 Qm
@@ -25837,8 +25834,8 @@ jX
 jX
 "}
 (45,1,2) = {"
+Lg
 Va
-Qm
 Qm
 Qm
 Qm
@@ -25969,8 +25966,8 @@ jX
 jX
 "}
 (46,1,2) = {"
+Lg
 Va
-Qm
 Qm
 Qm
 Qm
@@ -26101,8 +26098,8 @@ jX
 jX
 "}
 (47,1,2) = {"
-Qm
-jX
+Ay
+VG
 VG
 jX
 jX
@@ -26233,8 +26230,8 @@ jX
 jX
 "}
 (48,1,2) = {"
-jX
-jX
+Ay
+Ay
 jX
 jX
 jX

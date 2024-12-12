@@ -230,6 +230,7 @@
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "brass_chair"
 	blade_dulling = DULLING_BASH
+	item_chair = null
 	anchored = TRUE
 
 /obj/structure/chair/arrestchair/buckle_mob(mob/living/carbon/human/M, force, check_loc)
@@ -267,9 +268,10 @@
 	if(correct_head)
 		say("A bounty has been sated.")
 		budget2change((reward_amount*2)) //double reward for alive
-		var/newcollar = new /obj/item/clothing/neck/roguetown/gorget/prisoner/servant(M.loc)
+		var/newcollar = new /obj/item/clothing/neck/roguetown/gorget/prisoner/servant(get_turf(M))
 		playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
-		M.equip_to_slot(newcollar, ITEM_SLOT_NECK)
+		M.doUnEquip(M.wear_neck, TRUE, invdrop = TRUE)
+		M.equip_item(newcollar)
 	else
 		say("This skull carries no reward, you fool.")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
