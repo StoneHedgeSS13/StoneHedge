@@ -170,6 +170,192 @@
 	spellname = "ray of frost"
 	icon_state ="scrollred"
 
+/obj/item/book/granter/spell/spells5e/lightningbolt5e
+    name = "Scroll of Lightning Bolt"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
+    spellname = "lightning bolt"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/bloodsteal5e
+    name = "Scroll of Blood Steal"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal
+    spellname = "blood steal"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/forcewall5e
+    name = "Scroll of Force Wall"
+    spell = /obj/effect/proc_holder/spell/invoked/forcewall_weak
+    spellname = "force wall"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/slowdown5e
+    name = "Scroll of Slowdown"
+    spell = /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
+    spellname = "slowdown"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/haste5e
+    name = "Scroll of Haste"
+    spell = /obj/effect/proc_holder/spell/invoked/haste
+    spellname = "haste"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/push5e
+    name = "Scroll of Repulse"
+    spell = /obj/effect/proc_holder/spell/invoked/push_spell
+    spellname = "repulse"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/bladeburst5e
+    name = "Scroll of Blade Burst"
+    spell = /obj/effect/proc_holder/spell/invoked/blade_burst
+    spellname = "blade burst"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/fetch5e
+    name = "Scroll of Fetch"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
+    spellname = "fetch"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/disappear5e
+    name = "Scroll of Disappear"
+    spell = /obj/effect/proc_holder/spell/invoked/Disappear
+    spellname = "disappear"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/prestidigitation5e
+    name = "Scroll of Prestidigitation"
+    spell = /obj/effect/proc_holder/spell/targeted/touch/prestidigitation
+    spellname = "prestidigitation"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/strengthenundead5e
+    name = "Scroll of Infuse Unlife"
+    spell = /obj/effect/proc_holder/spell/invoked/strengthen_undead
+    spellname = "infuse unlife"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/eyebite5e
+    name = "Scroll of Eyebite"
+    spell = /obj/effect/proc_holder/spell/invoked/eyebite
+    spellname = "eyebite"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/raiseundead5e
+    name = "Scroll of Raise Undead"
+    spell = /obj/effect/proc_holder/spell/invoked/raise_undead
+    spellname = "raise undead"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/rayofsickness5e
+    name = "Scroll of Ray of Sickness"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/sickness
+    spellname = "ray of sickness"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/commandundead5e
+    name = "Scroll of Command Undead"
+    spell = /obj/effect/proc_holder/spell/self/command_undead
+    spellname = "command undead"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/lifesteal5e
+    name = "Scroll of Life Steal"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/lifesteal
+    spellname = "life steal"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/seeliedust5e
+    name = "Scroll of Seelie Dust"
+    spell = /obj/effect/proc_holder/spell/invoked/seelie_dust
+    spellname = "seelie dust"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/summonrat5e
+    name = "Scroll of Call Beast"
+    spell = /obj/effect/proc_holder/spell/invoked/summon_rat
+    spellname = "call beast"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/stripclothes5e
+    name = "Scroll of Strip Clothes"
+    spell = /obj/effect/proc_holder/spell/invoked/strip
+    spellname = "strip clothes"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/drainstamina5e
+    name = "Scroll of Drain"
+    spell = /obj/effect/proc_holder/spell/invoked/drain_stam
+    spellname = "drain"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/replenishnature5e
+    name = "Scroll of Replenish Nature"
+    spell = /obj/effect/proc_holder/spell/invoked/replenish
+    spellname = "replenish nature"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/animateobject5e
+    name = "Scroll of Animate Object"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/animate_object
+    spellname = "animate object"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/tamerous5e
+    name = "Scroll of Tame Rous"
+    spell = /obj/effect/proc_holder/spell/targeted/roustame
+    spellname = "tame rous"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/seeliekiss5e
+    name = "Scroll of Regenerative Kiss"
+    spell = /obj/effect/proc_holder/spell/targeted/seelie_kiss
+    spellname = "regenerative kiss"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/watersplash5e
+    name = "Scroll of Water Splash"
+    spell = /obj/effect/proc_holder/spell/invoked/projectile/splash
+    spellname = "water splash"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/eldritchhealing5e
+    name = "Scroll of Eldritch Healing"
+    spell = /obj/effect/proc_holder/spell/invoked/eldritchhealing
+    spellname = "eldritch healing"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/eldritchcurse5e
+    name = "Scroll of Eldritch Curse"
+    spell = /obj/effect/proc_holder/spell/invoked/eldritchcurse
+    spellname = "eldritch curse"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/cloakofflies5e
+    name = "Scroll of Cloak of Flies"
+    spell = /obj/effect/proc_holder/spell/self/cloakofflies
+    spellname = "cloak of flies"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/findfamiliar5e
+    name = "Scroll of Find Familiar"
+    spell = /obj/effect/proc_holder/spell/self/findfamiliar
+    spellname = "find familiar"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/mistystep5e
+    name = "Scroll of Misty Step"
+    spell = /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
+    spellname = "misty step"
+    icon_state = "scrollred"
+
+/obj/item/book/granter/spell/spells5e/instantsummons5e
+    name = "Scroll of Instant Summons"
+    spell = /obj/effect/proc_holder/spell/targeted/summonitem
+    spellname = "instant summons"
+    icon_state = "scrollred"
+
 // mapping only
 /obj/item/book/granter/spell/spells5e/random
 	name = "random spell scroll spawner"
@@ -186,3 +372,4 @@
     if(B)
         B.contents += spawned_scroll
     return INITIALIZE_HINT_QDEL
+

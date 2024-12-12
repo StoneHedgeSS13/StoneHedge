@@ -1,5 +1,9 @@
 //all the stuff used for ravenloft academy
 
+
+//==============================================
+//	Warding Crystal
+//==============================================
 /obj/structure/wardingcrystal
 	name = "ravenloft warding crystal"
 	desc = "A crystal that shimmers with a warding glow, its surface veined with crackles of arcane energy, while faint, shadowy shapes swirl within, accompanied by an eerie hum and distant whispers."
@@ -81,6 +85,10 @@
         return TRUE
 
     return ..()
+
+//==============================================
+//	Defensive Wards
+//==============================================
 
 /obj/structure/academyward
 	name = "defensive ward"
@@ -185,7 +193,9 @@
 	invisibility = (old_density && old_alpha > 0) ? 0 : INVISIBILITY_MAXIMUM
 	reactivating = FALSE
 
-//watched bookcase
+//==============================================
+//	Warded Bookcases
+//==============================================
 /obj/structure/bookcase/academy
     name = "warded bookcase"
     desc = "A bookcase that hums with arcane energy. The items within should only be handled by authorized mages."
@@ -281,7 +291,9 @@
         return TRUE
     return ..()
 
-// academy summoing orb
+//==============================================
+//	Communication Orb
+//==============================================
 /obj/structure/academy_orb
 	name = "academy communication orb"
 	desc = "A crystalline orb humming with arcane energy. When activated with an Arch-Keystone, it can send magical messages to all Academy mages."
@@ -330,7 +342,9 @@
 	else
 		. += span_notice("The orb is ready to transmit messages.")
 
-//disciplinary nexus, an IC way to prevent griefers
+//==============================================
+//	Disciplinary Nexus
+//==============================================
 /obj/structure/academy_binder
 	name = "keystone binding nexus"
 	desc = "An ornate crystalline nexus humming with arcane energy. Ancient runes of binding and revocation are carved into its surface. When activated with an Arch-Keystone, it can revoke or restore an Academy Mage's privileges."
@@ -379,8 +393,8 @@
 
         for(var/mob/living/carbon/human/M in GLOB.player_list)
             if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_danger("<b>Academy Binding Alert:</b> [input] has had their Academy privileges revoked by order of [user]."))
-                to_chat(M, span_danger("<b>Reason:</b> [revoked_users[input]]"))
+                to_chat(M, span_redtext("<b>Academy Binding Alert:</b> [input] has had their Academy privileges revoked by order of [user]."))
+                to_chat(M, span_redtext("<b>Reason:</b> [revoked_users[input]]"))
                 playsound(M, 'sound/magic/churn.ogg', 50, TRUE)
 
         for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -421,3 +435,107 @@
             . += span_notice("Currently suspended users:")
             for(var/name in revoked_users)
                 . += span_warning("- [name] ([revoked_users[name]])")
+
+//==============================================
+//	Academy Portal Statue (vault, archmage quarters, other stuff)
+//==============================================
+
+/obj/structure/statue/academy_portal
+    name = "Gateway to Vermyra"
+    desc = "An ornate statue depicting a solemn stone face. Ancient runes of transportation are carved into its base, pulsing with a deep violet energy. The figure's eyes seem to glow with an otherworldly wisdom, hinting at the magical realm that lies beyond."
+    icon = 'icons/roguetown/topadd/statue1.dmi'
+    icon_state = "baldguy"
+    anchored = TRUE
+    density = TRUE
+    resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+    var/obj/effect/portal/linked_portal
+    var/portal_active = FALSE
+    var/portal_cooldown = 3 MINUTES
+    var/last_activation = 0
+
+/obj/structure/statue/academy_portal/examine(mob/user)
+    . = ..()
+    if(ishuman(user))
+        var/mob/living/carbon/human/H = user
+        if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+            . += "<span style='color: #7246ff'>The runes read: 'Through this gate lies Vermyra, the Violet Isles, where the very air crackles with arcane power. Let those who bear the Academy's mark pass freely between realms.'</span>"
+            if(world.time < last_activation + portal_cooldown)
+                . += span_warning("The statue's energies are still regenerating. It will be ready in [round((last_activation + portal_cooldown - world.time)/600)] minutes.")
+            else
+                . += "<span style='color: #7246ff'>The statue hums with ready power.</span>"
+        else
+            . += span_warning("The runes are written in an ancient magical script you cannot decipher.")
+
+/obj/structure/statue/academy_portal/attackby(obj/item/I, mob/user, params)
+    if(!istype(I, /obj/item/clothing/ring/keystone))
+        return ..()
+
+    var/obj/item/clothing/ring/keystone/key = I
+    if(!key.active)
+        to_chat(user, span_warning("The Keystone must first be activated. (Right-click to activate)"))
+        return
+
+    if(!linked_portal)
+        to_chat(user, span_warning("The statue's connection to Vermyra seems unstable, it would be unwise to activate it."))
+        return
+
+    if(world.time < last_activation + portal_cooldown)
+        to_chat(user, span_warning("The statue's energies are still regenerating."))
+        return
+
+    user.visible_message("<span style='color: #7246ff'>[user] holds up [I], causing the statue's runes to pulse with violet light!</span>")
+    playsound(src, 'sound/misc/portalactivate.ogg', 50, TRUE)
+
+    if(do_after(user, 3 SECONDS, target = src))
+        create_portal(user)
+
+/obj/structure/statue/academy_portal/proc/create_portal(mob/user)
+    var/turf/portal_turf = get_step(src, SOUTH)
+
+    if(portal_active)
+        to_chat(user, span_warning("A portal is already active!"))
+        return
+
+    last_activation = world.time
+    portal_active = TRUE
+
+    var/obj/effect/portal/P = new /obj/effect/portal(portal_turf, linked_portal, null, 30 SECONDS)
+    P.name = "shimmering portal to Vermyra"
+    P.desc = "A swirling gateway of violet energy, through which you can glimpse floating towers and purple seas."
+    P.icon = 'icons/effects/effects.dmi'
+    P.icon_state = "bluestream_fade"
+
+    visible_message("<span style='color: #7246ff'>The air splits apart with a crack of thunder, revealing a portal to a realm of floating towers and violet seas!</span>")
+    playsound(src, 'sound/misc/portal_op.ogg', 100, FALSE)
+    playsound(src, 'sound/misc/portal_loop.ogg', 50, TRUE)
+
+    addtimer(CALLBACK(src, PROC_REF(deactivate_portal)), 30 SECONDS)
+
+/obj/structure/statue/academy_portal/proc/deactivate_portal()
+    portal_active = FALSE
+
+/obj/effect/portal/permanent/academy
+    name = "portal to the material realm"
+    desc = "A permanent magical gateway connecting Vermyra to the material realm."
+    icon = 'icons/effects/effects.dmi'
+    icon_state = "bluestream_fade"
+    anchored = TRUE
+    density = TRUE
+    var/failchance = 0
+    resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+    var/static/list/return_destinations = list()
+
+/obj/effect/portal/permanent/academy/Initialize()
+    . = ..()
+    for(var/obj/structure/statue/academy_portal/P in world)
+        var/turf/T = get_step(P, SOUTH)
+        return_destinations += T
+
+/obj/effect/portal/permanent/academy/Crossed(atom/movable/AM)
+    . = ..()
+    if(isliving(AM))
+        if(length(return_destinations))
+            var/turf/destination = pick(return_destinations)
+            AM.forceMove(destination)
+            to_chat(AM, "<span style='color: #7246ff'>You step through the portal, feeling arcane energies wash over you...</span>")
+            playsound(src, 'sound/misc/portal_enter.ogg', 100, FALSE)
