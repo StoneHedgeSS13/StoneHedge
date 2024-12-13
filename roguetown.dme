@@ -3385,6 +3385,7 @@
 #include "code\modules\spells\roguetown\acolyte\necra.dm"
 #include "code\modules\spells\roguetown\acolyte\noc.dm"
 #include "code\modules\spells\roguetown\acolyte\pestra.dm"
+#include "code\modules\spells\roguetown\acolyte\svaeryogh.dm"
 #include "code\modules\spells\roguetown\acolyte\xylix.dm"
 #include "code\modules\spells\roguetown\acolyte\zizo.dm"
 #include "code\modules\spells\roguetown\spells5e\cantrips5e.dm"

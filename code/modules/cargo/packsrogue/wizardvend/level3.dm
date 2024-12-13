@@ -46,12 +46,14 @@
 					/obj/item/book/granter/spell/spells5e/findfamiliar5e
 				)
 
+/*
 /datum/supply_pack/rogue/l3/lichdom5e
 	name = "Lichdom"
 	cost = 200
 	contains = list(
 					/obj/item/book/granter/spell/spells5e/lichdom5e
 				)
+*/
 
 /datum/supply_pack/rogue/l3/lifesteal5e
 	name = "Life Steal"
@@ -81,23 +83,9 @@
 					/obj/item/book/granter/spell/spells5e/rayofsickness5e
 				)
 
-/datum/supply_pack/rogue/l3/sparethedying5e
-	name = "Spare the Dying"
-	cost = 200
-	contains = list(
-					/obj/item/book/granter/spell/spells5e/sparethedying5e
-				)
-
 /datum/supply_pack/rogue/l3/strengthenundead5e
 	name = "Infuse Unlife"
 	cost = 200
 	contains = list(
 					/obj/item/book/granter/spell/spells5e/strengthenundead5e
-				)
-
-/datum/supply_pack/rogue/l3/tollthedead5e
-	name = "Toll the Dead"
-	cost = 200
-	contains = list(
-					/obj/item/book/granter/spell/spells5e/tollthedead5e
 				)

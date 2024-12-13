@@ -990,7 +990,7 @@
 	name = "DWARVEN KEEP"
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "fI" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt,
@@ -4579,9 +4579,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
-"Bb" = (
-/turf/closed/wall/mineral/rogue/pipe,
-/area/rogue/indoors/cave/underdark)
 "Bc" = (
 /obj/structure/stairs,
 /turf/closed/wall/mineral/rogue/stone/moss,
@@ -7597,7 +7594,7 @@
 "Sd" = (
 /obj/structure/fluff/statue/myth,
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Se" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
 /turf/open/floor/rogue/cobblerock,
@@ -8039,7 +8036,7 @@
 	icon_state = "walldec6"
 	},
 /turf/closed/wall/mineral/rogue/pipe,
-/area/rogue/indoors/cave/underdark)
+/area/rogue/indoors/shelter/town/dwarf)
 "Vi" = (
 /obj/structure/closet/crate/chest/refilling/treasure,
 /turf/open/floor/rogue/grass,
@@ -8079,9 +8076,8 @@
 /turf/open/floor/bronze,
 /area/rogue/indoors/shelter/town/dwarf)
 "Vs" = (
-/obj/machinery/light/rogue/firebowl/church,
-/turf/open/floor/bronze,
-/area/rogue/indoors/cave/underdark)
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/indoors/shelter/town/dwarf)
 "Vt" = (
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/rogue/dirt/road,
@@ -17002,8 +16998,8 @@ sp
 sp
 sJ
 sJ
-KZ
-KZ
+OE
+OE
 KZ
 EI
 ZA
@@ -17132,11 +17128,11 @@ sJ
 sp
 sp
 sp
-Bb
+sJ
 Sd
-KZ
-KZ
-KZ
+OE
+OE
+OE
 KZ
 EI
 ZA
@@ -17266,10 +17262,10 @@ sp
 AH
 sJ
 fH
-KZ
-nD
-nD
-nD
+OE
+KC
+KC
+KC
 KZ
 EI
 KZ
@@ -17398,11 +17394,11 @@ Bx
 FI
 KC
 vP
-nD
-nD
-Vs
-Aj
-Vs
+KC
+KC
+jT
+Td
+jT
 nD
 KZ
 ZA
@@ -17531,11 +17527,11 @@ KC
 EB
 KC
 KC
-nD
-nD
-Aj
+KC
+KC
+Td
 Ve
-Aj
+Td
 nD
 ZA
 ZA
@@ -17664,11 +17660,11 @@ Bx
 FI
 KC
 KC
-nD
-nD
-Vs
-Aj
-Vs
+KC
+KC
+jT
+Td
+jT
 nD
 KZ
 HR
@@ -17797,11 +17793,11 @@ sJ
 sp
 AH
 sJ
-KZ
-KZ
-nD
-nD
-nD
+OE
+OE
+KC
+KC
+KC
 KZ
 KZ
 ZA
@@ -17932,9 +17928,9 @@ sp
 sp
 sJ
 Sd
-KZ
-EI
-KZ
+OE
+Vs
+OE
 EI
 ZA
 ZA

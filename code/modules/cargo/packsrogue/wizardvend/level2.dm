@@ -102,20 +102,6 @@
 					/obj/item/book/granter/spell/spells5e/tamerous5e
 				)
 
-/datum/supply_pack/rogue/l2/thornwhip5e
-	name = "Thorn Whip"
-	cost = 150
-	contains = list(
-					/obj/item/book/granter/spell/spells5e/thornwhip5e
-				)
-
-/datum/supply_pack/rogue/l2/thunderclap5e
-	name = "Thunderclap"
-	cost = 150
-	contains = list(
-					/obj/item/book/granter/spell/spells5e/thunderclap5e
-				)
-
 /datum/supply_pack/rogue/l2/watersplash5e
 	name = "Water Splash"
 	cost = 150

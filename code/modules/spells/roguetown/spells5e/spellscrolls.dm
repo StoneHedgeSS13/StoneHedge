@@ -310,18 +310,6 @@
 	spellname = "tame rous"
 	icon_state = "scrollgreen"
 
-/obj/item/book/granter/spell/spells5e/thornwhip5e
-	name = "Scroll of Thorn Whip"
-	spell = /obj/effect/proc_holder/spell/targeted/thornwhip5e
-	spellname = "thorn whip"
-	icon_state = "scrollgreen"
-
-/obj/item/book/granter/spell/spells5e/thunderclap5e
-	name = "Scroll of Thunderclap"
-	spell = /obj/effect/proc_holder/spell/self/thunderclap5e
-	spellname = "thunderclap"
-	icon_state = "scrollgreen"
-
 /obj/item/book/granter/spell/spells5e/watersplash5e
 	name = "Scroll of Water Splash"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/splash
@@ -365,13 +353,15 @@
 	spellname = "find familiar"
 	icon_state = "scrollpurple"
 
+/* it's broken but i'll fix it later.
 /obj/item/book/granter/spell/spells5e/lichdom5e
-	name = "Scroll of Lichdom"
+	name = "Scroll of Lesser Lichdom"
 	desc = "A dark necromantic scroll that seems to pulse with an otherworldly energy. The parchment is made of an unusual material that feels cold to the touch, and the ink seems to writhe and move of its own accord."
 	spell = /obj/effect/proc_holder/spell/targeted/lichdom
-	spellname = "bind soul"
+	spellname = "lesser lichdom"
 	icon_state = "scrollpurple"
-
+	remarks = list("The pursuit of immortality through lichdom is a dangerous path, one that strips away not only your mortal form but your very soul.", "A soul bound to a phylactery is never truly free. The price of eternal life is a curse, for the lich will never know rest again.", "To achieve lichdom, one must master the deepest secrets of necromancy—those that most would call abominable. But is it worth the cost?", "In the pursuit of godlike power, a lich sacrifices all that is left of their humanity. The question remains—what is the point of eternal life if you lose what makes you truly alive?")
+*/
 /obj/item/book/granter/spell/spells5e/lifesteal5e
 	name = "Scroll of Life Steal"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/lifesteal
@@ -396,22 +386,10 @@
 	spellname = "ray of sickness"
 	icon_state = "scrollpurple"
 
-/obj/item/book/granter/spell/spells5e/sparethedying5e
-	name = "Scroll of Spare the Dying"
-	spell = /obj/effect/proc_holder/spell/targeted/touch/sparethedying5e
-	spellname = "spare the dying"
-	icon_state = "scrollpurple"
-
 /obj/item/book/granter/spell/spells5e/strengthenundead5e
 	name = "Scroll of Infuse Unlife"
 	spell = /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	spellname = "infuse unlife"
-	icon_state = "scrollpurple"
-
-/obj/item/book/granter/spell/spells5e/tollthedead5e
-	name = "Scroll of Toll the Dead"
-	spell = /obj/effect/proc_holder/spell/targeted/tollthedead5e
-	spellname = "toll the dead"
 	icon_state = "scrollpurple"
 
 // Mapping only
