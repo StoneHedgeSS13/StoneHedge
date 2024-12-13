@@ -25,21 +25,21 @@
 		"HISSSSSSS!!!",
 	)
 
-/datum/patron/inhumen/nyrnhe
-	name = "Nyrnhe" //Here she comes. It's her. Goddess of pain-fliction. It's Nyrnhe!
-	domain = "God of Pain and Suffering."
-	desc = "Nyrnhe, Goddess of many dark elves - mistress of pain, suffering and venoms. Nyrnhe revels in pain-giving, pain-receiving and suffering. Contrary to belief; to kill is against her creed in comparison to the struggle and entropy."
-	worshippers = "Assasins, Alchemists, Torturers, Dark Elves, Cruel folk, Masochists."
+/datum/patron/inhumen/graggar
+	name = "Graggar" //temporary rename until we get a replacement
+	domain = "God of Twilight and Change. Magic. Transformation. Dusk/Dawn. Crisis/Resolution."
+	desc = "Graggar is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
+	worshippers = "Mages, Alchemists, Soul-Searchers, Fateweavers, Supernatural Creatures, Soothsayers."
 	mob_traits = list(TRAIT_USEMAGIC)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
-	t1 = /obj/effect/proc_holder/spell/invoked/eldritchhealing/any
-	t2 = /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e
-	t3 = /obj/effect/proc_holder/spell/targeted/lightninglure5e
-	t4 = /obj/effect/proc_holder/spell/invoked/revive_inhumen
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen //inhumen for now until foxyn moves this shit to divine
+	t1 = /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
+	t2 = /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
+	t3 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t4 = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	confess_lines = list(
-		"YES, YES!!!",
-		"MORE, MORE!!",
-		"Nyrnhe, witness my anguish! Witness my wounds!",
+		"THE PHOENIX BURNS BRIGHT AND PURE!",
+		"IN HIS FLAMES I AM REBORN!",
+		"GRAGGAR, LET THE TWILIGHT BE RECKONED!",
 	)
 
 /datum/patron/inhumen/thief		// Removing 'class warfare' language in favor of 'uncivilized v civilized' language.
@@ -55,8 +55,8 @@
 	t4 = /obj/effect/proc_holder/spell/invoked/revive_inhumen/thief
 	confess_lines = list(
 		"I TAKE WITH SKILLED AND NIMBLE HANDS!",
-		"MY NAME IS WITHOUT BEARING!",
-		"FACELESS LORD, STEAL AWAY MY SORROWS!",
+		"THIEFLORD'S GIFT CONSUME YOU!",
+		"THE GIVER IS OWED HIS SACRIFICE!",
 	)
 
 /datum/patron/inhumen/sacrifice
