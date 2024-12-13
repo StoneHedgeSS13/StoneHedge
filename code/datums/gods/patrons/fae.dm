@@ -1,4 +1,4 @@
-/datum/patron/fae/lathrandyr
+/datum/patron/norse/lathrandyr
 	name = "Lathrandyr"
 	domain = "The Spring King, Court of Life and Light."
 	desc = "Spring and it's personifactions flow through him. Those who follow him are said to be ever-young. They dance in the life all around them."
@@ -13,7 +13,7 @@
 		"lathrandyr, GUIDE ME!",
 	)
 
-/datum/patron/fae/tashari
+/datum/patron/norse/tashari
 	name = "Tashari"
 	domain = "The Winter Queen, Court of Ice and Shadows."
 	desc = "Winter and it's personifications flow through her. Those who follow her are often said to be cold and deeply emotive. They form icicles in their hearts and wield them as daggers."
