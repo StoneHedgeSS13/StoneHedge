@@ -432,17 +432,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				var/datum/patron/P = GLOB.patronlist[p_type]
 				if(P?.name == "FUCK!")
 					selected_patron = GLOB.patronlist[default_patron]
-					save_character()
 					break
 				selected_patron = P
 				break
 
 		if(!selected_patron)
 			selected_patron = GLOB.patronlist[default_patron]
-			save_character()
 	else
 		selected_patron = GLOB.patronlist[default_patron]
-		save_character()
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
