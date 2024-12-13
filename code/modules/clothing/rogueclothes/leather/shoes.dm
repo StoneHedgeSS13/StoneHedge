@@ -8,6 +8,7 @@
 	icon_state = "leatherboots"
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+	clothing_flags = null
 
 /obj/item/clothing/shoes/roguetown/boots/armor/leather/advanced
 	name = "hardened leather boots"
