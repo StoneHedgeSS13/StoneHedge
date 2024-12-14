@@ -1538,6 +1538,7 @@
 /obj/item/rogueweapon/spear/bonespear,
 /obj/item/rogueweapon/spear/bonespear,
 /obj/item/rogueweapon/shield/wood,
+/obj/item/rogueweapon/stoneaxe/boneaxe,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
@@ -6376,8 +6377,8 @@
 /obj/structure/rack/rogue/shelf/big,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow,
-/obj/item/quiver,
-/obj/item/quiver,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
