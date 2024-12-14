@@ -6,7 +6,7 @@
 	icon_living = "broodmother"
 	icon_dead = "wendigo_dead"
 	gender = MALE
-	emote_hear = null	
+	emote_hear = null
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 2
@@ -18,7 +18,7 @@
 						/obj/item/natural/hide = 4,
 						/obj/item/natural/fur = 4,
 						/obj/item/natural/bone = 4,
-						/obj/item/natural/alchemy/antler = 2)
+						/obj/item/natural/antler = 2)
 	faction = list("wendigo")
 	//Undead trait due to supernatural so miracles can burn them.
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST|MOB_EPIC|MOB_UNDEAD
@@ -85,7 +85,7 @@
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-	
+
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/enter_stage_two()
 	src.move_to_delay = 2
 	src.turns_per_move = 1

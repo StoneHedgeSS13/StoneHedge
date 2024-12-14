@@ -5,7 +5,7 @@
 	icon_living = "broodmother"
 	icon_dead = "egg_sac"
 	gender = FEMALE
-	emote_hear = null	
+	emote_hear = null
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 3
@@ -66,7 +66,7 @@
 	var/icon_crying = "goliath_baby_cry"
 	var/icon_enraged = "goliath_baby_enraged"
 	gender = FEMALE
-	emote_hear = null	
+	emote_hear = null
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 2
@@ -145,12 +145,11 @@
 					icon_state = icon_enraged
 					name = "Enraged Beastie"
 					desc = "It's a beautiful day outside. Birds are screeching, flowers are wilting... on days like these, adventurers like you... Should be burning in hell."
-	else
 
 //Spawn the beasties around the mother, make sure it's not in a wall
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother/death(gibbed)
 	var/list/turfs = list()
-	var/spawn_location 
+	var/spawn_location
 	for(var/turf/T in dview(1, get_turf(src)))
 		if(isfloorturf(T))
 			turfs += T
@@ -163,5 +162,5 @@
 				new /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab(pick(spawn_location))
 	. = ..()
 	playsound(src, 'modular_causticcove/sound/mobs/eldritch/beast_mother_death_shedding.ogg', 100, FALSE)
-	
+
 

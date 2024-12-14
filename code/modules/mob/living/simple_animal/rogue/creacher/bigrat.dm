@@ -84,7 +84,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/find_food()
 	. = ..()
 	if(!.)
-		return eat_bodies()
+		return rend_bodies()
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/death(gibbed)

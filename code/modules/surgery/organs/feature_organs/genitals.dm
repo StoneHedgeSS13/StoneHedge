@@ -119,11 +119,43 @@
 	max_reagents = 40 //big cap, ordinary absorbtion.
 	absorbing = TRUE
 	fertility = TRUE
-	pregnantaltorgan = /obj/item/organ/belly
 	altnames = list("vagina", "cunt", "womb", "pussy", "slit", "kitty", "snatch") //used in thought messages.
 	spiller = TRUE
 	blocker = ITEM_SLOT_PANTS
 	bloatable = TRUE
+
+/obj/item/organ/filling_organ/vagina/proc/be_impregnated()
+	if(!owner)
+		return
+	if(owner.stat == DEAD)
+		return
+	if(owner.has_quirk(/datum/quirk/selfawaregeni))
+		to_chat(owner, span_lovebold("I feel a surge of warmth in my [src.name], I’m definitely pregnant!"))
+	reagents.maximum_volume *= 0.5 //ick ock, should make the thing recalculate on next life tick.
+	pregnant = TRUE
+	if(owner.getorganslot(ORGAN_SLOT_BREASTS)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
+		var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
+		if(!breasties.refilling)
+			breasties.refilling = TRUE
+			if(owner.has_quirk(/datum/quirk/selfawaregeni))
+				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
+	if(owner.getorganslot(ORGAN_SLOT_BELLY)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
+		var/obj/item/organ/belly/belly = owner.getorganslot(ORGAN_SLOT_BELLY)
+		pre_pregnancy_size = belly.organ_size
+		addtimer(CALLBACK(belly, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
+
+/obj/item/organ/filling_organ/vagina/proc/undo_preggoness()
+	if(!pregnant)
+		return
+	deltimer(preggotimer)
+	pregnant = FALSE
+	to_chat(owner, span_love("I feel my [src] shrink to how it was before. Pregnancy is no more."))
+	if(owner.getorganslot(ORGAN_SLOT_BELLY))
+		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+		var/datum/sprite_accessory/belly/bellyacc = bellyussy.accessory_type
+		bellyussy.organ_size = pre_pregnancy_size
+		bellyacc.get_icon_state()
+	owner.update_body_parts(TRUE)
 
 /obj/item/organ/filling_organ/breasts
 	name = "breasts"
@@ -159,6 +191,16 @@
 	organ_dna_type = /datum/organ_dna/belly
 	accessory_type = /datum/sprite_accessory/belly
 	organ_size = DEFAULT_BELLY_SIZE
+
+/obj/item/organ/belly/proc/handle_preggoness()
+	if(organ_sizeable)
+		if(organ_size < 3)
+			to_chat(owner, span_lovebold("I notice my [src.name] has grown due to pregnancy...")) //dont need to repeat this probably if size cant grow anyway.
+			organ_size = organ_size + 1
+			owner.update_body_parts(TRUE)
+			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
+		else
+			deltimer(preggotimer)
 
 /obj/item/organ/filling_organ/testicles
 	name = "testicles"
