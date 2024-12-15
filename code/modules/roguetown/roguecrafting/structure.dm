@@ -114,6 +114,16 @@
 /obj/structure/fermenting_barrel/crafted
 	sellprice = 6
 
+/datum/crafting_recipe/roguetown/structure/meathook
+	name = "meat hook"
+	result = /obj/structure/meathook
+	reqs = list(/obj/item/grown/log/tree/large = 2,
+				/obj/item/rope = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/armor/barrelarmor
 	name = "barrel armor"
 	result = /obj/item/clothing/suit/roguetown/armor/barrelarmor
