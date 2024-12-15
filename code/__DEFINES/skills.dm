@@ -11,9 +11,9 @@
 #define SKILL_EXP_NOVICE 50
 #define SKILL_EXP_APPRENTICE 150
 #define SKILL_EXP_JOURNEYMAN 275
-#define SKILL_EXP_EXPERT 625
-#define SKILL_EXP_MASTER 1200
-#define SKILL_EXP_LEGENDARY 2200
+#define SKILL_EXP_EXPERT 1250
+#define SKILL_EXP_MASTER 3600
+#define SKILL_EXP_LEGENDARY 8800
 
 // Gets the reference for the skill type that was given
 #define GetSkillRef(A) (SSskills.all_skills[A])
