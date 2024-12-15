@@ -270,7 +270,7 @@
 	var/spell_slot_cost = 1
 	//Can this be one-casted by non learnables?
 	var/castable = TRUE
-	var/usable_times = 3
+	var/usable_times = 10
 	required_trait = TRAIT_USEMAGIC
 	required_learn_trait = TRAIT_LEARNMAGIC
 	//should help us not remove spells from people that have em memorized.

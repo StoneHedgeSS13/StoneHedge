@@ -70,6 +70,16 @@
 	gain_text = span_notice("I want to feel a monster inside.. or inside a monster.")
 	lose_text = span_notice("I no longer am a degenerate.")
 
+/datum/quirk/monsterhuntermale
+	name = "Monster \"Hunter\" (Male only)"
+	desc = "Only male monsters lust for me... (Optionally pick on top of monster hunter.)"
+	value = 0
+
+/datum/quirk/monsterhunterfemale
+	name = "Monster \"Hunter\" (Female only)"
+	desc = "Only female monsters lust for me... (Optionally pick on top of monster hunter.)"
+	value = 0
+
 /datum/quirk/selfawaregeni
 	name = "Sensitiveness"
 	desc = "I can tell more about my private bits (may be spammy, exact liquid information and alerts etc.)"

@@ -51,6 +51,10 @@
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
 			if(fucktarg.has_quirk(/datum/quirk/monsterhunter) && CanAttack(fucktarg, TRUE))
+				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
+					continue
+				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
+					continue
 				chasesfuck = TRUE
 				if(gender == MALE)
 					visible_message(span_boldwarning("[src] has his eyes on [fucktarg], cock throbbing!"))
@@ -233,6 +237,10 @@
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
 			if(fucktarg.has_quirk(/datum/quirk/monsterhunter) && should_target(fucktarg, TRUE)) //normally checks !sexcon.beingfucked but carbon mobs arent directly on top of the mob to fuck so its probably fine to get ganged.
+				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
+					continue
+				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
+					continue
 				chasesfuck = TRUE
 				if(lewd_talk)
 					if(gender == MALE)
