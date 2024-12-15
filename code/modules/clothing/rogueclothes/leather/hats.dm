@@ -3,6 +3,8 @@
 	name = "leather helmet"
 	desc = "A helmet made of leather."
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	icon = 'modular_stonehedge/icons/armor/head.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/head.dmi'
 	icon_state = "leatherhelm"
 	armor = list("blunt" = 57, "slash" = 37, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)

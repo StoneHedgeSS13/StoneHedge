@@ -1118,6 +1118,8 @@ Slots: [job.spawn_positions]</span>
 
 /datum/preferences/proc/GetQuirkBalance()
 	var/bal = 0
+	bal += 2 //vice
+	bal += max(0, round(get_playerquality(parent.ckey)/10))
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)

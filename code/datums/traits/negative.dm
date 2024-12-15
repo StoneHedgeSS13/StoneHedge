@@ -1,20 +1,4 @@
 //predominantly negative traits
-
-
-/datum/quirk/myvice
-	name = "MY VICE (Free points)"
-	desc = "Free points for I carry my vice with me."
-	value = -2
-
-/datum/quirk/goodness
-	name = "MY REPUTATION (PQ Scaling Free points)"
-	desc = "Free points for I made a world a better place, so have i become better."
-	value = -1
-
-/datum/quirk/goodness/New(mob/living/quirk_mob, spawn_effects)
-	. = ..()
-	value = get_playerquality(round(min(0, quirk_mob/10)))
-
 /datum/quirk/monochromatic
 	name = "Monochromacy"
 	desc = "I see things all gray."
