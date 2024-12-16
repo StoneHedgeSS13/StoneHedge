@@ -15,7 +15,8 @@
 	user.visible_message(span_warning("[user] starts rimming [target]'s butt..."))
 
 /datum/sex_action/npc_rimming/on_perform(mob/living/user, mob/living/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rims [target]'s butt..."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rims [target]'s butt..."))
 	user.make_sucking_noise()
 
 	target.heal_overall_damage(3,3,0, updating_health = TRUE)

@@ -34,7 +34,8 @@
 	user.visible_message(span_warning("[user] begins to tickle [target]'s nipples with a feather..."))
 
 /datum/sex_action/feather_nipples/on_perform(mob/living/user, mob/living/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tickles [target]'s nipples with a feather..."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tickles [target]'s nipples with a feather..."))
 
 	user.sexcon.perform_sex_action(target, 1, 3, TRUE)
 	target.sexcon.handle_passive_ejaculation()

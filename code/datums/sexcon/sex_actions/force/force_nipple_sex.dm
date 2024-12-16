@@ -28,8 +28,8 @@
 		var/mob/living/carbon/human/targethuman = target
 		if(targethuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = targethuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	if(ishuman(user))
 		var/mob/living/carbon/human/userhuman = user
@@ -51,7 +51,8 @@
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/force_nipple_sex/on_perform(mob/living/user, mob/living/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks their nipple against [target]'s cock forcibly."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks their nipple against [target]'s cock forcibly."))
 	target.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)

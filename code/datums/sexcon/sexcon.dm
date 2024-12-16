@@ -21,8 +21,8 @@
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
 	var/last_pain = 0
-//	var/msg_signature = ""
-//	var/last_msg_signature = 0
+	var/msg_signature = ""
+	var/last_msg_signature = 0
 
 /datum/sex_controller/New(mob/living/owner)
 	user = owner
@@ -54,13 +54,13 @@
 	animate(pixel_x = oldx, pixel_y = oldy, time = time)
 
 /datum/sex_controller/proc/do_message_signature(sigkey)
-/* fuck that -vide
 	var/properkey = "[speed][force][sigkey]"
-	if(properkey == msg_signature && last_msg_signature + 4.0 SECONDS >= world.time)
+	if(properkey == msg_signature && last_msg_signature + 5 SECONDS >= world.time)
+		if(prob(25))
+			user.balloon_alert_to_viewers(pick("*plap*","*plop*","*slap*","*pap*","*slick*"))
 		return FALSE
 	msg_signature = properkey
 	last_msg_signature = world.time
-*/
 	return TRUE
 
 /datum/sex_controller/proc/finished_check()

@@ -2,7 +2,7 @@
 	name = "NPC Suck their cunt off"
 	stamina_cost = 0
 	check_same_tile = FALSE
-	
+
 
 /datum/sex_action/npc_cunnilingus/shows_on_menu(mob/living/user, mob/living/target)
 	return FALSE
@@ -16,7 +16,8 @@
 	user.visible_message(span_warning("[user] starts licking [target]'s cunt..."))
 
 /datum/sex_action/npc_cunnilingus/on_perform(mob/living/user, mob/living/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licking [target]'s cunt..."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licking [target]'s cunt..."))
 	user.make_sucking_noise()
 
 	target.heal_overall_damage(3,3,0, updating_health = TRUE)
