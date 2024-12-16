@@ -13,7 +13,7 @@
 	display_order = JDO_MIGRANT
 	show_in_credits = FALSE
 	max_pq = null
-	min_pq = -20
+	min_pq = -5
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
 
