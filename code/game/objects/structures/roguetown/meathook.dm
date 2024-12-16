@@ -82,14 +82,14 @@
 		release_mob(M)
 
 /obj/structure/meathook/proc/release_mob(mob/living/M)
-	if(L.butcher_results)
-		for(var/item in L.butcher_results)
+	if(M.butcher_results)
+		for(var/item in M.butcher_results)
 			if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
-				L.butcher_results[item] -= 1
-	if(L.guaranteed_butcher_results)
-		for(var/item in L.guaranteed_butcher_results)
+				M.butcher_results[item] -= 1
+	if(M.guaranteed_butcher_results)
+		for(var/item in M.guaranteed_butcher_results)
 			if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
-				L.guaranteed_butcher_results[item] -= 1
+				M.guaranteed_butcher_results[item] -= 1
 	var/matrix/m270 = matrix(M.transform)
 	m270.Turn(270)
 	m270.Translate(-12,-12)
