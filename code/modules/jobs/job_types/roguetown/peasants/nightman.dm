@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/job/roguetown/nightman
 	display_order = JDO_NIGHTMASTER
 	give_bank_account = TRUE
-	min_pq = -10
+	min_pq = 5
 	max_pq = null
 
 /datum/outfit/job/roguetown/nightman/pre_equip(mob/living/carbon/human/H)
@@ -49,7 +49,7 @@
 		if(H.dna?.species)
 			if(iself(H) || ishalfelf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
-			else if(ishumannorthern(H))
+			if(H.gender == MALE)
 				H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 			else if(isdwarf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
@@ -65,3 +65,4 @@
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
 
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
+			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
