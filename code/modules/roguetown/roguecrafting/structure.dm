@@ -755,7 +755,7 @@
 /datum/crafting_recipe/roguetown/structure/catapult
 	name = "Catapult"
 	result = /obj/structure/catapult
-	reqs = list(/obj/item/grown/log/tree = 2,
+	reqs = list(/obj/item/grown/log/tree/large = 2,
 				/obj/item/grown/log/tree/small = 2,
 				/obj/item/rope = 2,
 				/obj/item/ingot/steel = 2,
@@ -768,7 +768,7 @@
 /datum/crafting_recipe/roguetown/structure/woodspike
 	name = "spike barrier"
 	result = /obj/structure/barricade/wood_spike
-	reqs = list(/obj/item/grown/log/tree = 1)
+	reqs = list(/obj/item/grown/log/tree/large = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
