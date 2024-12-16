@@ -896,7 +896,6 @@
 	if((istype(I, /obj/item/lockpick) || istype(I, /obj/item/crowbar) || I.force > 0) && !disabled_by_nullmagic)
 		visible_message(span_userdanger("[src]'s wards flare with violent energy as [user] attempts to breach them!"))
 		playsound(src, 'sound/magic/fireball.ogg', 100, TRUE)
-
 		user.adjust_fire_stacks(5)
 		user.IgniteMob()
 		to_chat(user, span_danger("Arcane flames engulf you as the door's wards activate!"))
