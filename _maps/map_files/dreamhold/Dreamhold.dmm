@@ -673,14 +673,6 @@
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
 	})
-"azG" = (
-/obj/structure/academyward,
-/obj/structure/roguewindow,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
-	})
 "azR" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -837,10 +829,8 @@
 	name = "Tavern Stables"
 	})
 "aEn" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1
-	},
 /obj/structure/academyward,
+/obj/structure/roguewindow/academy,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -1402,12 +1392,10 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/shelter/town)
 "aXd" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
+/obj/structure/academyward,
+/obj/structure/mineral_door/wood/fancywood/academy{
 	name = "Ravenloft Armory"
 	},
-/obj/structure/academyward,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -6886,7 +6874,7 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/river)
 "ePk" = (
-/obj/structure/bookcase,
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -8414,16 +8402,6 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/shelter/town)
-"fSn" = (
-/obj/structure/roguewindow/openclose{
-	dir = 4
-	},
-/obj/structure/academyward,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
-	})
 "fSC" = (
 /obj/effect/decal/dirt{
 	dir = 8
@@ -8868,9 +8846,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "ggX" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
+/obj/structure/mineral_door/wood/fancywood/academy{
 	name = "Ravenloft Archive"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -11752,6 +11728,7 @@
 "ivP" = (
 /obj/structure/table/vtable,
 /obj/item/natural/feather,
+/obj/effect/landmark/academy_records,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/library)
 "ivX" = (
@@ -13630,10 +13607,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "jOm" = (
-/obj/structure/roguewindow/openclose{
-	dir = 1
-	},
-/obj/structure/academyward,
+/obj/structure/roguewindow/academy,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -16149,9 +16123,7 @@
 	first_time_text = "Stonehedge"
 	})
 "lAB" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
+/obj/structure/mineral_door/wood/fancywood/academy{
 	name = "Ravenloft Balcony"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -20467,9 +20439,7 @@
 	name = "Silver Dragon"
 	})
 "oHv" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
+/obj/structure/mineral_door/wood/fancywood/academy{
 	name = "Ravenloft Junction"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -24993,12 +24963,11 @@
 	name = "Shores of the Emerald Coast"
 	})
 "rJu" = (
-/obj/structure/roguewindow,
-/obj/structure/academyward,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
+/obj/effect/landmark/academy_gate,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "rJG" = (
 /obj/effect/decal/stone/blockedge,
@@ -25127,8 +25096,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/caves)
 "rND" = (
-/obj/structure/roguewindow/openclose,
 /obj/structure/academyward,
+/obj/structure/roguewindow/academy{
+	opacity = 1
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -25493,14 +25464,6 @@
 	icon_state = "wooddark-k"
 	},
 /area/rogue/indoors/town/bath)
-"sdh" = (
-/obj/structure/roguewindow,
-/obj/structure/academyward,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
-	})
 "sdp" = (
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -25679,16 +25642,6 @@
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
-"sjm" = (
-/obj/structure/roguewindow/openclose{
-	dir = 8
-	},
-/obj/structure/academyward,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/magician{
-	first_time_text = "Ravenloft Academy";
-	name = "Ravenloft Academy"
-	})
 "sjK" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -26637,10 +26590,8 @@
 	first_time_text = "Stonehedge"
 	})
 "sUe" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
-	name = "Archmage's Chambers"
+/obj/structure/mineral_door/wood/fancywood/academy{
+	name = "Archmage Quarters"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -29241,7 +29192,7 @@
 /area/rogue/under/cavewet)
 "uLE" = (
 /obj/structure/academyward,
-/obj/structure/roguewindow,
+/obj/structure/roguewindow/academy,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
@@ -31347,10 +31298,8 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
 "wvO" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "mage";
-	name = "Ravenloft Dormitory"
+/obj/structure/mineral_door/wood/fancywood/academy{
+	name = "Ravenloft Dormitories"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/magician{
@@ -32356,8 +32305,8 @@
 	},
 /area/rogue/indoors/shelter/town)
 "xkz" = (
-/obj/structure/roguewindow/openclose,
 /obj/structure/academyward,
+/obj/structure/roguewindow/academy,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
@@ -33049,7 +32998,7 @@
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/indoors/shelter/bog)
 "xKk" = (
-/obj/structure/mineral_door/wood/violet{
+/obj/structure/mineral_door/wood/fancywood/academy{
 	name = "Ravenloft Apothecarium"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -113314,11 +113263,11 @@ vbP
 ddS
 vLX
 mZs
-fSn
+aEn
 vLX
 vLX
 vLX
-fSn
+aEn
 vLX
 vLX
 npG
@@ -113525,7 +113474,7 @@ uHR
 vLX
 rUO
 vLX
-fSn
+aEn
 vLX
 vLX
 pqh
@@ -114120,7 +114069,7 @@ ycO
 auZ
 vbP
 npG
-vLX
+jOm
 fwm
 szy
 szy
@@ -116548,7 +116497,7 @@ fHZ
 nTZ
 nTZ
 xQh
-jOm
+uLE
 ftm
 vZW
 vZW
@@ -117151,8 +117100,8 @@ auZ
 vbP
 rZk
 vLX
-sjm
-sjm
+aEn
+aEn
 vLX
 vLX
 wXL
@@ -117162,7 +117111,7 @@ vZW
 hfJ
 vLX
 vLX
-sjm
+rND
 vLX
 vLX
 ddS
@@ -118975,7 +118924,7 @@ nFS
 vIa
 beK
 beK
-beK
+rJu
 beK
 beK
 beK
@@ -148055,26 +148004,26 @@ aZy
 aZy
 aZy
 aZy
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
-mYC
+egl
+egl
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+egl
+egl
+egl
 sib
 sib
 sib
@@ -148275,7 +148224,7 @@ taL
 taL
 taL
 egl
-mYC
+egl
 egl
 sib
 sib
@@ -148477,7 +148426,7 @@ taL
 taL
 taL
 egl
-mYC
+egl
 egl
 sib
 sib
@@ -148679,7 +148628,7 @@ lbr
 taL
 taL
 egl
-mYC
+egl
 egl
 sib
 sib
@@ -148868,21 +148817,21 @@ egl
 taL
 lbr
 vLX
-azG
+aEn
 vLX
 vLX
 vLX
-azG
+aEn
 vLX
 vLX
 vLX
-azG
+aEn
 vLX
 lbr
 pCl
 egl
-mYC
-mYC
+egl
+egl
 sib
 sib
 bmw
@@ -149084,7 +149033,7 @@ vLX
 pCl
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -149286,7 +149235,7 @@ vLX
 rZk
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -149488,7 +149437,7 @@ rHo
 uLE
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -149690,7 +149639,7 @@ pNw
 vLX
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -149892,7 +149841,7 @@ eUp
 uLE
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -150077,7 +150026,7 @@ aZy
 aZy
 mSd
 egl
-flR
+vLX
 vLX
 nTZ
 ogX
@@ -150094,7 +150043,7 @@ vLX
 vLX
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -150279,7 +150228,7 @@ aZy
 aZy
 mSd
 egl
-vLX
+flR
 vLX
 gKs
 lwi
@@ -150296,7 +150245,7 @@ vLX
 pCl
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -150498,7 +150447,7 @@ vLX
 vLX
 vLX
 vLX
-mYC
+egl
 sib
 sib
 bmw
@@ -150902,7 +150851,7 @@ ogX
 xZt
 lwi
 xZt
-sdh
+aEn
 sib
 sib
 bmw
@@ -151306,7 +151255,7 @@ ogX
 lwi
 lwi
 oLd
-sdh
+aEn
 sib
 sib
 bmw
@@ -151710,7 +151659,7 @@ ogX
 xZt
 lwi
 xZt
-sdh
+aEn
 sib
 sib
 bmw
@@ -151901,9 +151850,9 @@ wQM
 jID
 vLX
 vLX
-rJu
-rJu
-rJu
+uLE
+uLE
+uLE
 vLX
 vLX
 vLX
@@ -152098,8 +152047,8 @@ aZy
 mSd
 vLX
 vLX
-rJu
-rJu
+uLE
+uLE
 vLX
 vLX
 egl
@@ -152110,8 +152059,8 @@ egl
 vLX
 vLX
 vLX
-sdh
-sdh
+aEn
+aEn
 vLX
 vLX
 egl
@@ -152316,7 +152265,7 @@ egl
 egl
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -152922,7 +152871,7 @@ egl
 egl
 egl
 egl
-mYC
+egl
 sib
 sib
 bmw
@@ -153124,7 +153073,7 @@ egl
 egl
 egl
 mYC
-mYC
+egl
 sib
 sib
 bmw
@@ -184018,14 +183967,14 @@ lbr
 sLW
 sLW
 vLX
-azG
-azG
-azG
+aEn
+aEn
+aEn
 vLX
 sLW
 vLX
 vLX
-azG
+aEn
 vLX
 vLX
 lbr
@@ -184621,7 +184570,7 @@ aZy
 sib
 egl
 lbr
-azG
+aEn
 uij
 nTZ
 vBX
@@ -184633,7 +184582,7 @@ aXd
 lwi
 iqN
 ePk
-azG
+aEn
 lbr
 egl
 egl
@@ -185229,7 +185178,7 @@ egl
 lbr
 xiC
 vLX
-azG
+aEn
 vLX
 vLX
 vLX
@@ -185237,7 +185186,7 @@ lAB
 vLX
 vLX
 vLX
-azG
+aEn
 vLX
 vLX
 lbr

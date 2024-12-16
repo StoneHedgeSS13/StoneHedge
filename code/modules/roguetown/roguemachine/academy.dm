@@ -1,6 +1,5 @@
 //all the stuff used for ravenloft academy
 
-
 //==============================================
 //	Warding Crystal
 //==============================================
@@ -197,99 +196,99 @@
 //	Warded Bookcases
 //==============================================
 /obj/structure/bookcase/academy
-    name = "warded bookcase"
-    desc = "A bookcase that hums with arcane energy. The items within should only be handled by authorized mages."
-    allowed_books = list(/obj/item/book, /obj/item/spellbook, /obj/item/storage/book, /obj/item/book/granter/spell/spells5e)
-    var/disabled_by_nullmagic = FALSE
-    var/reactivate_time = 300 // 30 seconds
+	name = "warded bookcase"
+	desc = "A bookcase that hums with arcane energy. The items within should only be handled by authorized mages."
+	allowed_books = list(/obj/item/book, /obj/item/spellbook, /obj/item/storage/book, /obj/item/book/granter/spell/spells5e)
+	var/disabled_by_nullmagic = FALSE
+	var/reactivate_time = 300 // 30 seconds
 
 /obj/structure/bookcase/academy/proc/reactivate_wards()
-    if(!disabled_by_nullmagic)
-        return
-    disabled_by_nullmagic = FALSE
-    playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
-    visible_message(span_warning("[src]'s magical wards crackle back to life!"))
-    for(var/mob/living/carbon/human/M in GLOB.player_list)
-        if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-            to_chat(M, span_cultbold("The wards on a scrollcase at [get_area(src)] have reactivated."))
+	if(!disabled_by_nullmagic)
+		return
+	disabled_by_nullmagic = FALSE
+	playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+	visible_message(span_warning("[src]'s magical wards crackle back to life!"))
+	for(var/mob/living/carbon/human/M in GLOB.player_list)
+		if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+			to_chat(M, span_cultbold("The wards on a scrollcase at [get_area(src)] have reactivated."))
 
 /obj/structure/bookcase/academy/proc/check_mage_access(mob/living/carbon/human/H)
-    if(!ishuman(H))
-        return FALSE
-    if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
-        for(var/obj/structure/academy_binder/binder in world)
-            if(binder.revoked_users[H.real_name])
-                return FALSE
-        return TRUE
-    return FALSE
+	if(!ishuman(H))
+		return FALSE
+	if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+		for(var/obj/structure/academy_binder/binder in world)
+			if(binder.revoked_users[H.real_name])
+				return FALSE
+		return TRUE
+	return FALSE
 
 /obj/structure/bookcase/academy/attack_hand(mob/living/user)
-    if(!ishuman(user))
-        return ..()
+	if(!ishuman(user))
+		return ..()
 
-    var/mob/living/carbon/human/H = user
-    if(disabled_by_nullmagic)
-        return ..()
+	var/mob/living/carbon/human/H = user
+	if(disabled_by_nullmagic)
+		return ..()
 
-    if(!check_mage_access(H))
-        user.visible_message(
-            span_warning("As [user] reaches toward the bookcase, arcane energy pulses!"),
-            span_danger("As you reach toward the bookcase, magical wards shock you with crackling energy!")
-        )
-        H.electrocute_act(20, src)
-        H.apply_effects(2 SECONDS, 2 SECONDS)
-        shake_camera(H, 2, 1)
-        playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
-        var/throwlocation = get_turf(user)
-        user.throw_at(throwlocation, 2, 1)
+	if(!check_mage_access(H))
+		user.visible_message(
+			span_warning("As [user] reaches toward the bookcase, arcane energy pulses!"),
+			span_danger("As you reach toward the bookcase, magical wards shock you with crackling energy!")
+		)
+		H.electrocute_act(20, src)
+		H.apply_effects(2 SECONDS, 2 SECONDS)
+		shake_camera(H, 2, 1)
+		playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+		var/throwlocation = get_turf(user)
+		user.throw_at(throwlocation, 2, 1)
 
-        for(var/mob/living/carbon/human/M in GLOB.player_list)
-            if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_redtext("[user] attempted to access the warded case at [get_area(src)]!"))
-        return TRUE
-    return ..()
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("[user] attempted to access the warded case at [get_area(src)]!"))
+		return TRUE
+	return ..()
 
 /obj/structure/bookcase/academy/attackby(obj/item/I, mob/user, params)
-    if(istype(I, /obj/item/clothing/ring/active/nomag))
-        var/obj/item/clothing/ring/active/nomag/ring = I
-        if(!ring.active)
-            return ..()
+	if(istype(I, /obj/item/clothing/ring/active/nomag))
+		var/obj/item/clothing/ring/active/nomag/ring = I
+		if(!ring.active)
+			return ..()
 
-        disabled_by_nullmagic = TRUE
-        playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
-        visible_message(span_warning("[src]'s magical wards flicker and fade as they're disrupted by anti-magic!"))
+		disabled_by_nullmagic = TRUE
+		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		visible_message(span_redtext("[src]'s magical wards flicker and fade as they're disrupted by anti-magic!"))
 
-        for(var/mob/living/carbon/human/M in GLOB.player_list)
-            if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_cultbold("The wards on a scrollcase at [get_area(src)] have been nullified!"))
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on a scrollcase at [get_area(src)] have been nullified!"))
 
-        addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
-        return TRUE
+		addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
+		return TRUE
 
-    if(disabled_by_nullmagic)
-        return ..()
+	if(disabled_by_nullmagic)
+		return ..()
 
-    if(!ishuman(user))
-        return ..()
+	if(!ishuman(user))
+		return ..()
 
-    var/mob/living/carbon/human/H = user
-    if(!check_mage_access(H))
-        user.visible_message(
-            span_warning("As [user] tries to place [I] in the case, arcane energy pulses!"),
-            span_danger("As you try to place [I] in the case, magical wards shock you with crackling energy!")
-        )
-        H.electrocute_act(20, src)
-        H.apply_effects(2 SECONDS, 2 SECONDS)
-        shake_camera(H, 2, 1)
-        playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
-        var/throwlocation = get_turf(user)
-        user.throw_at(throwlocation, 2, 1)
+	var/mob/living/carbon/human/H = user
+	if(!check_mage_access(H))
+		user.visible_message(
+			span_warning("As [user] tries to place [I] in the case, arcane energy pulses!"),
+			span_danger("As you try to place [I] in the case, magical wards shock you with crackling energy!")
+		)
+		H.electrocute_act(20, src)
+		H.apply_effects(2 SECONDS, 2 SECONDS)
+		shake_camera(H, 2, 1)
+		playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+		var/throwlocation = get_turf(user)
+		user.throw_at(throwlocation, 2, 1)
 
-        for(var/mob/living/carbon/human/M in GLOB.player_list)
-            if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_cultbold("[user] attempted to place [I] into the warded case at [get_area(src)]!"))
-        return TRUE
-    return ..()
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("[user] attempted to place [I] into the warded case at [get_area(src)]!"))
+		return TRUE
+	return ..()
 
 //==============================================
 //	Communication Orb
@@ -357,185 +356,584 @@
 	var/static/list/revoked_users = list()
 
 /obj/structure/academy_binder/attackby(obj/item/I, mob/user, params)
-    if(!istype(I, /obj/item/clothing/ring/keystone/archkey))
-        return ..()
+	if(!istype(I, /obj/item/clothing/ring/keystone/archkey))
+		return ..()
 
-    var/obj/item/clothing/ring/keystone/archkey/K = I
-    if(!K.active)
-        to_chat(user, span_warning("The Arch-Keystone must first be activated. (Right-click to activate)"))
-        return
+	var/obj/item/clothing/ring/keystone/archkey/K = I
+	if(!K.active)
+		to_chat(user, span_warning("The Arch-Keystone must first be activated. (Right-click to activate)"))
+		return
 
-    var/choice = alert(user, "Would you like to revoke or restore Academy privileges?", "Keystone Nexus", "Revoke", "Restore", "Cancel")
-    if(choice == "Cancel")
-        return
+	var/choice = alert(user, "Would you like to revoke or restore Academy privileges?", "Keystone Nexus", "Revoke", "Restore", "Cancel")
+	if(choice == "Cancel")
+		return
 
-    var/input = stripped_input(user, "Enter the full name of the person to [choice == "Revoke" ? "revoke Academy privileges from" : "restore Academy privileges to"]:", "Academy Binding")
-    if(!input)
-        return
+	var/input = stripped_input(user, "Enter the full name of the person to [choice == "Revoke" ? "revoke Academy privileges from" : "restore Academy privileges to"]:", "Academy Binding")
+	if(!input)
+		return
 
-    for(var/mob/living/carbon/human/H in GLOB.player_list)
-        if(H.real_name == input && H.job == "Academy Archmage")
-            to_chat(user, span_boldwarning("The Altar refuses to bind an Archmage's powers!"))
-            playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
-            return
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(H.real_name == input && H.job == "Academy Archmage")
+			to_chat(user, span_boldwarning("The Altar refuses to bind an Archmage's powers!"))
+			playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+			return
 
-    if(choice == "Revoke")
-        if(revoked_users[input])
-            to_chat(user, span_warning("This person's Academy privileges have already been revoked."))
-            return
+	if(choice == "Revoke")
+		if(revoked_users[input])
+			to_chat(user, span_warning("This person's Academy privileges have already been revoked."))
+			return
 
-        var/reason = stripped_multiline_input(user, "Enter the reason for revoking privileges:", "Revocation Reason")
+		var/reason = stripped_multiline_input(user, "Enter the reason for revoking privileges:", "Revocation Reason")
 
-        visible_message(span_danger("The altar pulses with dark energy as [user] channels power through the Arch-Keystone!"))
-        playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE, -1)
+		visible_message(span_danger("The altar pulses with dark energy as [user] channels power through the Arch-Keystone!"))
+		playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE, -1)
 
-        revoked_users[input] = reason || "No reason provided"
+		revoked_users[input] = reason || "No reason provided"
 
-        for(var/mob/living/carbon/human/M in GLOB.player_list)
-            if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_redtext("<b>Academy Binding Alert:</b> [input] has had their Academy privileges revoked by order of [user]."))
-                to_chat(M, span_redtext("<b>Reason:</b> [revoked_users[input]]"))
-                playsound(M, 'sound/magic/churn.ogg', 50, TRUE)
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("<b>Academy Binding Alert:</b> [input] has had their Academy privileges revoked by order of [user]."))
+				to_chat(M, span_redtext("<b>Reason:</b> [revoked_users[input]]"))
+				playsound(M, 'sound/magic/churn.ogg', 50, TRUE)
 
-        for(var/mob/living/carbon/human/H in GLOB.player_list)
-            if(H.real_name == input)
-                for(var/obj/item/clothing/ring/keystone/stone in H.GetAllContents())
-                    stone.bound = FALSE
-                    stone.bound_user = null
-                    stone.active = FALSE
-                    stone.update_icon()
-                    to_chat(H, span_userdanger("You feel your connection to the Academy's magic suddenly severed!"))
-                    playsound(H, 'sound/magic/antimagic.ogg', 50, TRUE)
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.real_name == input)
+				for(var/obj/item/clothing/ring/keystone/stone in H.GetAllContents())
+					stone.bound = FALSE
+					stone.bound_user = null
+					stone.active = FALSE
+					stone.update_icon()
+					to_chat(H, span_userdanger("You feel your connection to the Academy's magic suddenly severed!"))
+					playsound(H, 'sound/magic/antimagic.ogg', 50, TRUE)
 
-    else if(choice == "Restore")
-        if(!revoked_users[input])
-            to_chat(user, span_warning("This person's Academy privileges are not currently revoked."))
-            return
+	else if(choice == "Restore")
+		if(!revoked_users[input])
+			to_chat(user, span_warning("This person's Academy privileges are not currently revoked."))
+			return
 
-        visible_message(span_blue("The altar hums with restorative energy as [user] channels power through the Arch-Keystone!"))
-        playsound(src, 'sound/magic/churn.ogg', 100, FALSE, -1)
+		visible_message(span_blue("The altar hums with restorative energy as [user] channels power through the Arch-Keystone!"))
+		playsound(src, 'sound/magic/churn.ogg', 100, FALSE, -1)
 
-        revoked_users -= input
+		revoked_users -= input
 
-        for(var/mob/living/carbon/human/M in GLOB.player_list)
-            if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-                to_chat(M, span_blue("<b>Academy Binding Alert:</b> [input] has had their Academy privileges restored by order of [user]."))
-                playsound(M, 'sound/magic/churn.ogg', 50, TRUE)
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_blue("<b>Academy Binding Alert:</b> [input] has had their Academy privileges restored by order of [user]."))
+				playsound(M, 'sound/magic/churn.ogg', 50, TRUE)
 
-        for(var/mob/living/carbon/human/H in GLOB.player_list)
-            if(H.real_name == input)
-                to_chat(H, span_blue("You feel your connection to the Academy's magic return!"))
-                playsound(H, 'sound/magic/churn.ogg', 50, TRUE)
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.real_name == input)
+				to_chat(H, span_blue("You feel your connection to the Academy's magic return!"))
+				playsound(H, 'sound/magic/churn.ogg', 50, TRUE)
 
 /obj/structure/academy_binder/examine(mob/user)
-    . = ..()
-    if(ishuman(user))
-        var/mob/living/carbon/human/H = user
-        if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
-            . += span_notice("Currently suspended users:")
-            for(var/name in revoked_users)
-                . += span_warning("- [name] ([revoked_users[name]])")
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+			. += span_notice("Currently suspended users:")
+			for(var/name in revoked_users)
+				. += span_warning("- [name] ([revoked_users[name]])")
 
 //==============================================
-//	Academy Portal Statue (vault, archmage quarters, other stuff)
+//	Windows + test of a confiscation system that will be expanded on later
 //==============================================
 
-/obj/structure/statue/academy_portal
-    name = "Gateway to Vermyra"
-    desc = "An ornate statue depicting a solemn stone face. Ancient runes of transportation are carved into its base, pulsing with a deep violet energy. The figure's eyes seem to glow with an otherworldly wisdom, hinting at the magical realm that lies beyond."
-    icon = 'icons/roguetown/topadd/statue1.dmi'
-    icon_state = "baldguy"
-    anchored = TRUE
-    density = TRUE
-    resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-    var/obj/effect/portal/linked_portal
-    var/portal_active = FALSE
-    var/portal_cooldown = 3 MINUTES
-    var/last_activation = 0
+/obj/structure/roguewindow/academy
+	name = "enchanted window"
+	desc = "A reinforced window humming with arcane energy. Faint runes of protection shimmer across its surface."
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "window-solid"
+	base_state = "window-solid"
+	max_integrity = 800
+	integrity_failure = 0.1
+	var/disabled_by_nullmagic = FALSE
+	var/reactivate_time = 30 SECONDS
+	var/list/warned_users = list()
+	night_variants = FALSE
+	openable = FALSE
 
-/obj/structure/statue/academy_portal/examine(mob/user)
-    . = ..()
-    if(ishuman(user))
-        var/mob/living/carbon/human/H = user
-        if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
-            . += "<span style='color: #7246ff'>The runes read: 'Through this gate lies Vermyra, the Violet Isles, where the very air crackles with arcane power. Let those who bear the Academy's mark pass freely between realms.'</span>"
-            if(world.time < last_activation + portal_cooldown)
-                . += span_warning("The statue's energies are still regenerating. It will be ready in [round((last_activation + portal_cooldown - world.time)/600)] minutes.")
-            else
-                . += "<span style='color: #7246ff'>The statue hums with ready power.</span>"
-        else
-            . += span_warning("The runes are written in an ancient magical script you cannot decipher.")
+/obj/structure/roguewindow/academy/Initialize()
+	. = ..()
+	update_icon()
 
-/obj/structure/statue/academy_portal/attackby(obj/item/I, mob/user, params)
-    if(!istype(I, /obj/item/clothing/ring/keystone))
-        return ..()
+/obj/structure/roguewindow/academy/examine(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+			if(disabled_by_nullmagic)
+				. += span_redtext("The window's wards have been nullified and will reactivate in [round((reactivate_time)/10)] seconds.")
+			else
+				. += span_notice("The window's wards are active and ready to defend against intruders.")
 
-    var/obj/item/clothing/ring/keystone/key = I
-    if(!key.active)
-        to_chat(user, span_warning("The Keystone must first be activated. (Right-click to activate)"))
-        return
+/obj/structure/roguewindow/academy/proc/handle_confiscation(mob/living/carbon/human/H)
+	visible_message(span_danger("The window's wards surge with retributive energy as reality warps around [H]!"), \
+		span_userdanger("Reality warps around you as the window's wards activate!"), \
+		target = H)
+	playsound(H, 'sound/magic/timestop.ogg', 100, TRUE)
+	new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+	H.Stun(10)
+	H.Paralyze(10)
 
-    if(!linked_portal)
-        to_chat(user, span_warning("The statue's connection to Vermyra seems unstable, it would be unwise to activate it."))
-        return
+	var/obj/item/confiscated_pouch/P = new(get_turf(H))
+	P.name = "[H.real_name]'s confiscated belongings"
+	P.desc = "A magically sealed pouch containing items confiscated from [H.real_name] for attempting to violently breach the Academy's Wards."
 
-    if(world.time < last_activation + portal_cooldown)
-        to_chat(user, span_warning("The statue's energies are still regenerating."))
-        return
+	var/list/stripped_items = list()
+	stripped_items += H.get_active_held_item()
+	stripped_items += H.get_inactive_held_item()
+	H.dropItemToGround(H.get_active_held_item())
+	H.dropItemToGround(H.get_inactive_held_item())
 
-    user.visible_message("<span style='color: #7246ff'>[user] holds up [I], causing the statue's runes to pulse with violet light!</span>")
-    playsound(src, 'sound/misc/portalactivate.ogg', 50, TRUE)
+	for(var/obj/item/I in H.GetAllContents())
+		stripped_items += I
+		H.dropItemToGround(I)
 
-    if(do_after(user, 3 SECONDS, target = src))
-        create_portal(user)
+	var/list/item_list = list()
+	for(var/obj/item/I in stripped_items)
+		if(I)
+			item_list += "[I.name]"
+			P.add_item(I)
 
-/obj/structure/statue/academy_portal/proc/create_portal(mob/user)
-    var/turf/portal_turf = get_step(src, SOUTH)
+	var/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/C = locate() in world
+	if(C)
+		P.forceMove(C)
+		playsound(C, 'sound/misc/portalopen.ogg', 50, TRUE)
 
-    if(portal_active)
-        to_chat(user, span_warning("A portal is already active!"))
-        return
+	var/obj/effect/landmark/academy_records/R = locate() in GLOB.landmarks_list
+	if(R)
+		var/obj/item/paper/scroll/confiscation_record/record = new(get_turf(R))
+		record.record_name = "Confiscation Record - [H.real_name]"
+		record.name = record.record_name
+		record.info = {"
+			<center><b>Academy Confiscation Record</b></center><br>
+			<b>Subject:</b> [H.real_name]<br>
+			<b>Time:</b> [station_time_timestamp()]<br>
+			<b>Location:</b> [get_area(src)]<br>
+			<b>Reason:</b> Attempted to violently breach the Academy's Wards<br>
+			<b>Action Taken:</b> Items confiscated and subject teleported to front gate<br>
+			<br>
+			<b>Confiscated Items:</b><br>
+			[item_list.Join("<br>")]
+			<br>
+			<b><i>By order of the Council of Archmages</i></b>
+		"}
 
-    last_activation = world.time
-    portal_active = TRUE
+	var/list/academy_staff = list()
+	for(var/mob/living/carbon/human/M in GLOB.player_list)
+		if(M.job == "Academy Archmage")
+			academy_staff += "<b>Archmage [M.real_name]</b>"
+		else if(M.job == "Academy Mage")
+			academy_staff += "Mage [M.real_name]"
+		else if(M.job == "Academy Apprentice")
+			academy_staff += "Apprentice [M.real_name]"
 
-    var/obj/effect/portal/P = new /obj/effect/portal(portal_turf, linked_portal, null, 30 SECONDS)
-    P.name = "shimmering portal to Vermyra"
-    P.desc = "A swirling gateway of violet energy, through which you can glimpse floating towers and purple seas."
-    P.icon = 'icons/effects/effects.dmi'
-    P.icon_state = "bluestream_fade"
+	var/obj/effect/landmark/academy_gate/G = locate() in GLOB.landmarks_list
+	if(G)
+		playsound(H, 'sound/misc/portalopen.ogg', 100, TRUE)
+		new /obj/effect/temp_visual/dir_setting/ninja/phase/out(get_turf(H))
+		H.forceMove(get_turf(G))
+		new /obj/effect/temp_visual/dir_setting/ninja/phase/out(get_turf(H))
+		playsound(H, 'sound/misc/portalopen.ogg', 100, TRUE)
+		visible_message(span_warning("[H] is banished to the Academy gates!"))
+	else
+		var/turf/T = find_safe_turf()
+		playsound(H, 'sound/misc/portalopen.ogg', 100, TRUE)
+		new /obj/effect/temp_visual/dir_setting/ninja/phase/out(get_turf(H))
+		H.forceMove(T)
+		new /obj/effect/temp_visual/dir_setting/ninja/phase/out(get_turf(H))
+		playsound(H, 'sound/misc/portalopen.ogg', 100, TRUE)
+		visible_message(span_warning("[H] is banished to a distant location!"))
 
-    visible_message("<span style='color: #7246ff'>The air splits apart with a crack of thunder, revealing a portal to a realm of floating towers and violet seas!</span>")
-    playsound(src, 'sound/misc/portal_op.ogg', 100, FALSE)
-    playsound(src, 'sound/misc/portal_loop.ogg', 50, TRUE)
+	var/obj/item/paper/notice = new(get_turf(H))
+	notice.name = "Notice of Confiscation"
+	notice.info = {"
+		<center><b>NOTICE OF CONFISCATION</b></center><br>
+		<br>
+		Your items have been confiscated by the Ravenloft Academy for attempting to violently breach Academy property.<br>
+		<br>
+		<b>Items Confiscated:</b><br>
+		[item_list.Join("<br>")]<br>
+		<br>
+		<b>Current Academy Staff:</b><br>
+		[academy_staff.Join("<br>")]<br>
+		<br>
+		<b>Steps to Retrieve Your Items:</b><br>
+		1. Locate a member of the Academy Staff listed above<br>
+		2. Request access to your confiscated items<br>
+		3. The Academy Staff will retrieve your items from the confiscation cabinet.<br>
+		4. Your items will be returned at the Academy Staff's discretion and you may never get them back.<br>
+		<br>
+		<i>Note: Attempting to breach Academy property again will result in more severe consequences, including full body incineration.</i><br>
+		<br>
+		<center><i>By order of the Council of Archmages</i></center>
+	"}
+	H.put_in_hands(notice)
 
-    addtimer(CALLBACK(src, PROC_REF(deactivate_portal)), 30 SECONDS)
+/obj/structure/roguewindow/academy/proc/handle_ward_activation(mob/living/user)
+	if(!warned_users[user.ckey])
+		visible_message(span_warning("The window's wards flare ominously as [user] attempts to break it!"))
+		playsound(src, 'sound/magic/holyshield.ogg', 100, TRUE)
+		to_chat(user, span_redtext("The window's magical wards pulse with magical energy. Another attempt to break it while the enchantments are active might be unwise!"))
+		warned_users[user.ckey] = TRUE
+		return TRUE
+	else
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			to_chat(H, span_userdanger("Reality warps around you as the window's wards activate!"))
+			handle_confiscation(H)
 
-/obj/structure/statue/academy_portal/proc/deactivate_portal()
-    portal_active = FALSE
+			var/obj/effect/landmark/academy_gate/G = locate() in GLOB.landmarks_list
+			if(G)
+				playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+				H.forceMove(get_turf(G))
+				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+			else
+				var/turf/T = find_safe_turf()
+				playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+				H.forceMove(T)
+				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
 
-/obj/effect/portal/permanent/academy
-    name = "portal to the material realm"
-    desc = "A permanent magical gateway connecting Vermyra to the material realm."
-    icon = 'icons/effects/effects.dmi'
-    icon_state = "bluestream_fade"
-    anchored = TRUE
-    density = TRUE
-    var/failchance = 0
-    resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-    var/static/list/return_destinations = list()
+			for(var/mob/living/carbon/human/M in GLOB.player_list)
+				if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+					to_chat(M, span_warning("The wards on a window at [get_area(src)] have teleported an intruder to the front gate! Their items have been confiscated."))
 
-/obj/effect/portal/permanent/academy/Initialize()
-    . = ..()
-    for(var/obj/structure/statue/academy_portal/P in world)
-        var/turf/T = get_step(P, SOUTH)
-        return_destinations += T
+		warned_users -= user.ckey
+		return TRUE
+	return FALSE
 
-/obj/effect/portal/permanent/academy/Crossed(atom/movable/AM)
-    . = ..()
-    if(isliving(AM))
-        if(length(return_destinations))
-            var/turf/destination = pick(return_destinations)
-            AM.forceMove(destination)
-            to_chat(AM, "<span style='color: #7246ff'>You step through the portal, feeling arcane energies wash over you...</span>")
-            playsound(src, 'sound/misc/portal_enter.ogg', 100, FALSE)
+/obj/structure/roguewindow/academy/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/clothing/ring/active/nomag))
+		var/obj/item/clothing/ring/active/nomag/ring = I
+		if(!ring.active)
+			return ..()
+
+		visible_message(span_warning("[src]'s wards flicker and fade as they're disrupted by anti-magic!"))
+		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		disabled_by_nullmagic = TRUE
+
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on a window at [get_area(src)] have been nullified!"))
+
+		addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
+		return TRUE
+
+	if(disabled_by_nullmagic)
+		return ..()
+
+	if(I.force > 0 || istype(I, /obj/item/crowbar))
+		return handle_ward_activation(user)
+
+	return ..()
+
+/obj/structure/roguewindow/academy/attack_hand(mob/user, params)
+	return
+
+/obj/structure/roguewindow/academy/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir)
+	if(disabled_by_nullmagic)
+		return ..()
+
+	if(damage_amount > 0 && isliving(usr))
+		return handle_ward_activation(usr)
+	return 0
+
+/obj/structure/roguewindow/academy/obj_break(damage_flag)
+	if(disabled_by_nullmagic)
+		return ..()
+	return FALSE
+
+/obj/structure/roguewindow/academy/proc/reactivate_wards()
+	if(!disabled_by_nullmagic)
+		return
+	disabled_by_nullmagic = FALSE
+	playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+	visible_message(span_warning("[src]'s magical wards crackle back to life!"))
+	warned_users.Cut()
+
+	for(var/mob/living/carbon/human/M in GLOB.player_list)
+		if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+			to_chat(M, span_cultbold("The wards on a window at [get_area(src)] have reactivated."))
+
+//==============================================
+//	Confiscation System Misc.
+//==============================================
+/obj/effect/landmark/academy_gate
+	name = "academy front gate"
+	icon = 'icons/effects/landmarks_static.dmi'
+	icon_state = "x"
+
+/obj/effect/landmark/academy_records
+	name = "academy records"
+	icon = 'icons/effects/landmarks_static.dmi'
+	icon_state = "x"
+
+/obj/item/paper/scroll/confiscation_record
+	name = "confiscation record"
+	desc = "An official Ravenloft Academy scroll detailing confiscated items from a would-be intruder."
+	icon_state = "scroll"
+	textper = 108
+	maxlen = 2000
+	var/record_name = null
+
+/obj/item/paper/scroll/confiscation_record/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/paper/scroll/confiscation_record/update_icon()
+	. = ..()
+	if(record_name)
+		name = record_name
+
+/obj/item/confiscated_pouch
+	name = "confiscated items pouch"
+	desc = "A magically sealed pouch containing confiscated items from those who attempted to violently breach the Academy's Wards. Upon opening, the pouch will unravel and dump its contents."
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	icon_state = "pouch"
+	item_state = "pouch"
+	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/list/stored_items = list()
+
+/obj/item/confiscated_pouch/examine(mob/user)
+	. = ..()
+	. += span_notice("The pouch is magically sealed. Opening it will unravel the magic and scatter its contents.")
+
+/obj/item/confiscated_pouch/attack_self(mob/user)
+	switch(alert(user, "Do you really want to unravel this pouch? All contents will be scattered!", "Unravel Pouch", "Yes", "No"))
+		if("Yes")
+			playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+			visible_message(span_warning("[src] unravels as its magical seal breaks!"))
+
+			var/turf/T = get_turf(src)
+			for(var/obj/item/I in stored_items)
+				I.forceMove(T)
+				var/randomx = rand(-1, 1)
+				var/randomy = rand(-1, 1)
+				var/turf/target = locate(T.x + randomx, T.y + randomy, T.z)
+				if(target)
+					I.throw_at(target, 1, 1)
+			stored_items.Cut()
+			qdel(src)
+		if("No")
+			return
+
+/obj/item/confiscated_pouch/proc/add_item(obj/item/I)
+	stored_items += I
+	I.forceMove(src)
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated
+	name = "magically sealed cabinet"
+	desc = "A sealed cabinet containing items confiscated from those who attempted to violently bypass the Academy's Wards."
+	base_icon_state = "closetlord"
+	icon_state = "closetlord"
+	anchored = TRUE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	keylock = TRUE
+	lockid = "academy_confiscated"
+	masterkey = TRUE
+	var/magically_sealed = TRUE
+	var/disabled_by_nullmagic = FALSE
+	var/reactivate_time = 30 SECONDS
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/Initialize()
+	. = ..()
+	locked = TRUE
+	update_icon()
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/examine(mob/user)
+	. = ..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+		if(disabled_by_nullmagic)
+			. += span_redtext("The cabinet's wards have been nullified and will reactivate in [round((reactivate_time)/10)] seconds.")
+		else if(magically_sealed)
+			. += span_notice("The cabinet is magically sealed. Use an activated Keystone to unseal it.")
+		else
+			. += span_notice("The cabinet is unsealed and can be opened normally.")
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/clothing/ring/active/nomag))
+		var/obj/item/clothing/ring/active/nomag/ring = W
+		if(!ring.active)
+			return ..()
+
+		visible_message(span_redtext("[src]'s wards flicker and fade as they're disrupted by anti-magic!"))
+		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		disabled_by_nullmagic = TRUE
+		magically_sealed = FALSE
+		locked = FALSE
+
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on the confiscation cabinet at [get_area(src)] have been nullified!"))
+
+		addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
+		return TRUE
+
+	if(istype(W, /obj/item/clothing/ring/keystone))
+		if(!ishuman(user))
+			return ..()
+
+		var/mob/living/carbon/human/H = user
+		if(!(H.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice")))
+			to_chat(user, span_warning("Only Academy Mages can unlock this Cabinet."))
+			return TRUE
+
+		var/obj/item/clothing/ring/keystone/key = W
+		if(!key.active)
+			to_chat(user, span_warning("The Keystone must first be activated. (Right-click to activate)"))
+			return
+
+		if(disabled_by_nullmagic)
+			to_chat(user, span_warning("The cabinet's wards have been nullified by anti-magic. You must wait for them to reactivate."))
+			return
+
+		magically_sealed = !magically_sealed
+		locked = magically_sealed
+		playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+		to_chat(user, span_notice("You [magically_sealed ? "magically seal" : "unseal"] the Confiscation Cabinet."))
+		return
+
+	if(magically_sealed && !disabled_by_nullmagic)
+		to_chat(user, span_warning("The cabinet is magically sealed. An activated Keystone is required to unseal it."))
+		return TRUE
+
+	return ..()
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/attack_hand(mob/user)
+	if(magically_sealed && !disabled_by_nullmagic)
+		to_chat(user, span_warning("The cabinet is magically sealed. An activated Keystone is required to unseal it."))
+		return TRUE
+	return ..()
+
+/obj/structure/closet/crate/roguecloset/lord/academy_confiscated/proc/reactivate_wards()
+	if(!disabled_by_nullmagic)
+		return
+	disabled_by_nullmagic = FALSE
+	magically_sealed = TRUE
+	locked = TRUE
+	playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+	visible_message(span_warning("[src]'s magical wards crackle back to life!"))
+
+	for(var/mob/living/carbon/human/M in GLOB.player_list)
+		if(M.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice"))
+			to_chat(M, span_green("The wards on the confiscation cabinet at [get_area(src)] have reactivated."))
+
+//==============================================
+//	Doors
+//==============================================
+
+/obj/structure/mineral_door/wood/fancywood/academy
+	name = "enchanted door"
+	desc = "A heavy wooden door inscribed with runes of warding. Flames dance within the etchings, promising a fiery fate to would-be intruders."
+	icon = 'icons/roguetown/misc/doors.dmi'
+	icon_state = "fancy_wood"
+	resistance_flags = ACID_PROOF | FIRE_PROOF
+	var/disabled_by_nullmagic = FALSE
+	var/reactivate_time = 30 SECONDS
+	keylock = TRUE
+	locked = TRUE
+	lockid = "mage"
+
+/obj/structure/mineral_door/wood/fancywood/academy/Initialize()
+	. = ..()
+	Close()
+	locked = TRUE
+
+/obj/structure/mineral_door/wood/fancywood/academy/examine(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+			if(disabled_by_nullmagic)
+				. += span_redtext("The door's wards have been nullified and will reactivate in [round((reactivate_time)/10)] seconds.")
+			else
+				. += span_notice("The door's wards are active and ready to incinerate intruders.")
+
+/obj/structure/mineral_door/wood/fancywood/academy/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/clothing/ring/active/nomag))
+		var/obj/item/clothing/ring/active/nomag/ring = I
+		if(!ring.active)
+			return ..()
+
+		visible_message(span_redtext("[src]'s wards flicker and fade as they're disrupted by anti-magic!"))
+		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		disabled_by_nullmagic = TRUE
+		locked = FALSE
+
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on a door at [get_area(src)] have been nullified!"))
+
+		addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
+		return TRUE
+
+	if(istype(I, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = I
+		for(var/obj/item/roguekey/key in K.contents)
+			if(key.lockhash == lockhash)
+				if(locked)
+					locked = FALSE
+					playsound(src, unlocksound, 50, TRUE)
+					to_chat(user, span_notice("You unlock [src] with [I]."))
+					return TRUE
+				locked = TRUE
+				playsound(src, locksound, 50, TRUE)
+				to_chat(user, span_notice("You lock [src] with [I]."))
+				return TRUE
+		playsound(src, rattlesound, 50, TRUE)
+		to_chat(user, span_warning("[I] doesn't have the right key!"))
+		return TRUE
+
+	if((istype(I, /obj/item/lockpick) || istype(I, /obj/item/crowbar) || I.force > 0) && !disabled_by_nullmagic)
+		visible_message(span_userdanger("[src]'s wards flare with violent energy as [user] attempts to breach them!"))
+		playsound(src, 'sound/magic/fireball.ogg', 100, TRUE)
+
+		user.adjust_fire_stacks(5)
+		user.IgniteMob()
+		to_chat(user, span_danger("Arcane flames engulf you as the door's wards activate!"))
+
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on a door at [get_area(src)] have incinerated an intruder!"))
+		return TRUE
+
+	return ..()
+
+/obj/structure/mineral_door/wood/fancywood/academy/TryToSwitchState(atom/user)
+	if(locked)
+		return FALSE
+	return ..()
+
+/obj/structure/mineral_door/wood/fancywood/academy/Open()
+	. = ..()
+	if(!isSwitchingStates)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 10 SECONDS)
+
+/obj/structure/mineral_door/wood/fancywood/academy/proc/autoclose()
+	if(isSwitchingStates)
+		return
+	if(!density)
+		Close()
+		if(!disabled_by_nullmagic)
+			locked = TRUE
+
+/obj/structure/mineral_door/wood/fancywood/academy/proc/reactivate_wards()
+	if(!disabled_by_nullmagic)
+		return
+	disabled_by_nullmagic = FALSE
+	locked = TRUE
+	playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+	visible_message(span_warning("[src]'s magical wards crackle back to life!"))
+
+	for(var/mob/living/carbon/human/M in GLOB.player_list)
+		if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+			to_chat(M, span_green("The wards on a door at [get_area(src)] have reactivated."))
