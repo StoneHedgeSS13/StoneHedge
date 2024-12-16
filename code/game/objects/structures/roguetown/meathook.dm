@@ -3,7 +3,7 @@
 
 /obj/structure/meathook
 	name = "meathook"
-	icon = 'icons/roguetown/misc/64x64.dmi'
+	icon = 'modular_stonehedge/icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "meathook"
 	desc = "A hook used to secure livestock for butchering."
 	density = TRUE
@@ -26,6 +26,14 @@
 				return
 			if(user.pulling != L)
 				return
+			if(L.butcher_results)
+				for(var/item in L.butcher_results)
+					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+						L.butcher_results[item] += 1
+			if(L.guaranteed_butcher_results)
+				for(var/item in L.guaranteed_butcher_results)
+					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+						L.guaranteed_butcher_results[item] += 1
 			playsound(src.loc, 'sound/foley/butcher.ogg', 25, TRUE)
 			L.visible_message(span_danger("[user] hangs [L] on [src]!"), span_danger("[user] hangs you on [src]]!"))
 			L.forceMove(drop_location())
@@ -43,7 +51,7 @@
 		for(var/mob/living/L in buckled_mobs)
 			user_unbuckle_mob(L, user)
 	else
-		to_chat(user, span_notice("I cannot buckle"))
+		..()
 
 /obj/structure/meathook/user_buckle_mob(mob/living/M, mob/user, check_loc)
 	return
@@ -74,6 +82,14 @@
 		release_mob(M)
 
 /obj/structure/meathook/proc/release_mob(mob/living/M)
+	if(L.butcher_results)
+				for(var/item in L.butcher_results)
+					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+						L.butcher_results[item] -= 1
+			if(L.guaranteed_butcher_results)
+				for(var/item in L.guaranteed_butcher_results)
+					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+						L.guaranteed_butcher_results[item] -= 1
 	var/matrix/m270 = matrix(M.transform)
 	m270.Turn(270)
 	m270.Translate(-12,-12)

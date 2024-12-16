@@ -426,9 +426,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				var/used_time = 210
 				if(src.buckled && istype(src.buckled, /obj/structure/meathook))
 					used_time -= 30
-					visible_message("[user] begins to efficiently butcher [src] thanks to the meathook.")
+					visible_message("[user] begins to efficiently butcher [src]...")
 				else
-					visible_message("[user] begins to butcher [src].")
+					visible_message("[user] begins to butcher [src]...")
 				if(user.mind)
 					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
