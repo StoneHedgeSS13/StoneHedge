@@ -18,6 +18,7 @@
 /obj/structure/meathook/attack_hand(mob/user)
 	if(VIABLE_MOB_CHECK(user.pulling) && !has_buckled_mobs())
 		var/mob/living/L = user.pulling
+		L.visible_message(span_danger("[user] starts hanging [L] on [src]!"), span_danger("[user] starts hanging you on [src]]!"), span_hear("I hear the sound of clanging chains..."))
 		if(do_mob(user, src, 120))
 			if(has_buckled_mobs())
 				return
@@ -26,7 +27,7 @@
 			if(user.pulling != L)
 				return
 			playsound(src.loc, 'sound/foley/butcher.ogg', 25, TRUE)
-			L.visible_message(span_danger("[user] starts hanging [L] on [src]!"), span_danger("[user] starts hanging you on [src]]!"), span_hear("I hear the sound of clanging chains."))
+			L.visible_message(span_danger("[user] hangs [L] on [src]!"), span_danger("[user] hangs you on [src]]!"))
 			L.forceMove(drop_location())
 			L.emote("scream")
 			L.add_splatter_floor()
@@ -42,7 +43,7 @@
 		for(var/mob/living/L in buckled_mobs)
 			user_unbuckle_mob(L, user)
 	else
-		..()
+		to_chat(user, span_notice("I cannot buckle"))
 
 /obj/structure/meathook/user_buckle_mob(mob/living/M, mob/user, check_loc)
 	return

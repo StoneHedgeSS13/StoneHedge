@@ -424,9 +424,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(held_item)
 			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 				var/used_time = 210
+				if(src.buckled && istype(src.buckled, /obj/structure/meathook))
+					used_time -= 30
+					visible_message("[user] begins to efficiently butcher [src] thanks to the meathook.")
+				else
+					visible_message("[user] begins to butcher [src].")
 				if(user.mind)
 					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
-				visible_message("[user] begins to butcher [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
