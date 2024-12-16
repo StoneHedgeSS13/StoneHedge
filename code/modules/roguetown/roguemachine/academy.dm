@@ -578,32 +578,31 @@
 		to_chat(user, span_redtext("The window's magical wards pulse with magical energy. Another attempt to break it while the enchantments are active might be unwise!"))
 		warned_users[user.ckey] = TRUE
 		return TRUE
-	else
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			to_chat(H, span_userdanger("Reality warps around you as the window's wards activate!"))
-			handle_confiscation(H)
 
-			var/obj/effect/landmark/academy_gate/G = locate() in GLOB.landmarks_list
-			if(G)
-				playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
-				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
-				H.forceMove(get_turf(G))
-				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
-			else
-				var/turf/T = find_safe_turf()
-				playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
-				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
-				H.forceMove(T)
-				new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, span_userdanger("Reality warps around you as the window's wards activate!"))
+		handle_confiscation(H)
 
-			for(var/mob/living/carbon/human/M in GLOB.player_list)
-				if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
-					to_chat(M, span_warning("The wards on a window at [get_area(src)] have teleported an intruder to the front gate! Their items have been confiscated."))
+		var/obj/effect/landmark/academy_gate/G = locate() in GLOB.landmarks_list
+		if(G)
+			playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+			H.forceMove(get_turf(G))
+			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+		else
+			var/turf/T = find_safe_turf()
+			playsound(src, 'sound/magic/timestop.ogg', 50, TRUE)
+			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
+			H.forceMove(T)
+			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(H))
 
-		warned_users -= user.ckey
-		return TRUE
-	return FALSE
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+				to_chat(M, span_redtext("The wards on a window at [get_area(src)] have teleported an intruder to the front gate! Their items have been confiscated."))
+
+	warned_users -= user.ckey
+	return TRUE
 
 /obj/structure/roguewindow/academy/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/clothing/ring/active/nomag))
