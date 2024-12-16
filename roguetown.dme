@@ -3681,11 +3681,11 @@
 #include "modular_stonehedge\code\game\objects\structures\dungeon\lewd_statues.dm"
 #include "modular_stonehedge\code\game\objects\structures\dungeon\loot_generators\dungeon_chest.dm"
 #include "modular_stonehedge\code\lewdai\lewdai.dm"
+#include "modular_stonehedge\code\modules\balloon_alert\balloon_alert.dm"
 #include "modular_stonehedge\code\modules\datums\accents.dm"
 #include "modular_stonehedge\code\modules\mob\living\overhead_effects.dm"
 #include "modular_stonehedge\code\modules\mob\living\simple_animal\rogue\friendly_npc.dm"
 #include "modular_stonehedge\code\modules\reagents\machinery\electrolyzer.dm"
 #include "modular_stonehedge\code\modules\roguetown\roguejobs\alchemist\toxins.dm"
 #include "modular_stonehedge\licensed-death-rattler\Death-Rattler\code\Death-Rattler.dm"
-#include "modular_stonehedge\code\modules\balloon_alert\balloon_alert.dm"
 // END_INCLUDE
