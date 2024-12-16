@@ -282,11 +282,11 @@
 
 /obj/item/book/granter/spell/equipped(mob/user, slot, initial)
 	. = ..()
-	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC))
+	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC) && !HAS_TRAIT(user, TRAIT_LEARNMAGIC))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
-				if(knownspell.type == spell)
+				if(knownspell == spell)
 					user_has_spell_already = TRUE
 					return
 			if(H.mind)
@@ -294,7 +294,7 @@
 
 /obj/item/book/granter/spell/dropped(mob/user, silent)
 	. = ..()
-	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC) && !user_has_spell_already)
+	if(spell && castable && HAS_TRAIT(user, TRAIT_USEMAGIC) && !user_has_spell_already && !HAS_TRAIT(user, TRAIT_LEARNMAGIC))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.mind)
@@ -304,7 +304,6 @@
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)
 		return TRUE
-	/* This prevents learn traited people from learning the spell.
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == spell)
 			if(user.mind)
@@ -313,7 +312,6 @@
 				else
 					to_chat(user,span_warning("You've already read this one!"))
 			return TRUE
-	*/
 	return FALSE
 
 /obj/item/book/granter/spell/on_reading_start(mob/user)
