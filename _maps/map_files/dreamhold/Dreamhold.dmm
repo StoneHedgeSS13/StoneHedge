@@ -610,9 +610,7 @@
 /area/rogue/outdoors/river)
 "awD" = (
 /obj/structure/fluff/walldeco/maidensigil,
-/obj/item/roguebin/water/gross{
-	pixel_x = 5
-	},
+/obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -12610,6 +12608,16 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
+"iUy" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/chair/arrestchair,
+/turf/open/floor/rogue/dirt/nrich{
+	icon_state = "road"
+	},
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "iUE" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/tongs,
@@ -17299,6 +17307,16 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
+"mjm" = (
+/obj/structure/flora/roguegrass,
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/dirt/nrich{
+	icon_state = "road"
+	},
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "mjn" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/greenstone,
@@ -19185,6 +19203,15 @@
 /area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
 	name = "Schoolgrounds"
+	})
+"ntu" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/dirt/nrich{
+	icon_state = "road"
+	},
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "nty" = (
 /obj/structure/flora/grass/jungle/b,
@@ -21102,7 +21129,6 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/reagent_containers/glass/bucket,
-/obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -21307,7 +21333,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "oSV" = (
-/obj/structure/meathook,
+/obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -28090,10 +28116,6 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
-"tsy" = (
-/obj/structure/grove_wanted,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/woods/grove)
 "tsB" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/head/roguetown/helmet/sallet/visored,
@@ -29498,6 +29520,10 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
+"usN" = (
+/obj/structure/grove_wanted,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/outdoors/woods/grove)
 "utn" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -129013,8 +129039,8 @@ wmn
 nWn
 nWn
 fsI
-vyR
-njz
+mjm
+iUy
 khZ
 vmN
 qMs
@@ -129216,7 +129242,7 @@ kOv
 nWn
 nWn
 xgK
-khZ
+ntu
 khZ
 vyR
 qMs
@@ -200313,7 +200339,7 @@ nWn
 nTk
 nTk
 wjh
-tsy
+usN
 kOv
 qgC
 jrc
