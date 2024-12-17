@@ -28,11 +28,11 @@
 				return
 			if(L.butcher_results)
 				for(var/item in L.butcher_results)
-					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+					if(ispath(item, /obj/item/reagent_containers/food/snacks))
 						L.butcher_results[item] += 1
 			if(L.guaranteed_butcher_results)
 				for(var/item in L.guaranteed_butcher_results)
-					if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+					if(ispath(item, /obj/item/reagent_containers/food/snacks))
 						L.guaranteed_butcher_results[item] += 1
 			playsound(src.loc, 'sound/foley/butcher.ogg', 25, TRUE)
 			L.visible_message(span_danger("[user] hangs [L] on [src]!"), span_danger("[user] hangs you on [src]]!"))
@@ -42,11 +42,15 @@
 			L.adjustBruteLoss(30)
 			L.setDir(2)
 			buckle_mob(L, force=1)
-			var/matrix/m90 = matrix(L.transform)
-			m90.Turn(90)
-			m90.Translate(12,12)
-			animate(L, transform = m90, time = 3)
-			L.pixel_y = L.get_standard_pixel_x_offset(180)
+			var/matrix/rot = matrix(L.transform)
+			if(ispath(L, /mob/living/simple_animal))
+				rot.Turn(90)
+				animate(L, transform = rot, time = 3)
+			else
+				rot.Turn(180)
+				animate(L, transform = rot, time = 3)
+			L.pixel_y = 12
+			L.pixel_x = 9
 	else if (has_buckled_mobs())
 		for(var/mob/living/L in buckled_mobs)
 			user_unbuckle_mob(L, user)
@@ -84,17 +88,21 @@
 /obj/structure/meathook/proc/release_mob(mob/living/M)
 	if(M.butcher_results)
 		for(var/item in M.butcher_results)
-			if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+			if(ispath(item, /obj/item/reagent_containers/food/snacks))
 				M.butcher_results[item] -= 1
 	if(M.guaranteed_butcher_results)
 		for(var/item in M.guaranteed_butcher_results)
-			if(istype(item, /obj/item/reagent_containers/food/snacks/meat) || istype(item, /obj/item/reagent_containers/food/snacks/fat))
+			if(ispath(item, /obj/item/reagent_containers/food/snacks))
 				M.guaranteed_butcher_results[item] -= 1
-	var/matrix/m270 = matrix(M.transform)
-	m270.Turn(270)
-	m270.Translate(-12,-12)
-	animate(M, transform = m270, time = 3)
-	M.pixel_y = M.get_standard_pixel_y_offset(180)
+	var/matrix/rot = matrix(M.transform)
+	if(ispath(M, /mob/living/simple_animal))
+		rot.Turn(270)
+		animate(M, transform = rot, time = 3)
+	else
+		rot.Turn(180)
+		animate(M, transform = rot, time = 3)
+	M.pixel_y = 0
+	M.pixel_x = 0
 	M.adjustBruteLoss(30)
 	src.visible_message(span_danger("[M] falls free of [src]!"))
 	unbuckle_mob(M,force=1)
@@ -107,7 +115,7 @@
 			release_mob(L)
 	return ..()
 
-/obj/structure/kitchenspike/deconstruct()
+/obj/structure/meathook/deconstruct()
 	new /obj/item/grown/log/tree/small(loc, 1)
 	new /obj/item/rope(loc, 1)
 	qdel(src)
