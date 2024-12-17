@@ -197,23 +197,23 @@
 		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
-	if(usr.job == "Hedgemaster" || usr.job == "Hedge Knight")
-		to_chat(usr, span_warning("I disable the collar's unremovableness curse... It will only reactivate when worn again."))
+	if(usr.job == "Great Druid" || usr.job == "Druid" || usr.job == "Hedge Warden" || usr.job == "Hedge Knight" || usr.job == "Ovate")
+		to_chat(usr, span_warning("I disable the collar's enchanted locking mechanism. It will only reactivate when worn again."))
 		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		return TRUE
 	else
 		return ..()
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/servant
-	name = "cursed obedience collar"
-	desc = "This collar makes me obligated to heed to orders of others. And prevents me from running away..."
+	name = "enchanted bounty-collar"
+	desc = "This collar makes me obligated to heed to orders from the citizens of the Town, and restricts my movements..."
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == SLOT_NECK)
 		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		ADD_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
-		to_chat(user, span_warning("This collar makes me heed to orders of others, unless it includes self harm or orders that will indirectly or directly harm to town and its population... And also it prevents me from running away..."))
+		to_chat(user, span_warning("This collar makes me heed to orders from the citizens of the Town, unless those orders will result in self harm, forced sexual interactions, or orders that will indirectly or directly harm the town or its population. It also restricts my movement."))
 		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/user)

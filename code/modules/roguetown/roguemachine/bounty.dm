@@ -225,8 +225,8 @@
 
 
 /obj/structure/chair/arrestchair
-	name = "SLAVEMASTER"
-	desc = "A chairesque machine that collects bounties through enslavement rather than death, for a much greater reward."
+	name = "BOUNTYMASTER"
+	desc = "A chairesque machine that collects bounties through enslavement to the Town rather than death, for a much greater reward."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "brass_chair"
 	blade_dulling = DULLING_BASH
@@ -277,11 +277,13 @@
 
 	if(correct_head)
 		say("A bounty has been sated.")
-		budget2change((reward_amount*2)) //double reward for alive
-		var/newcollar = new /obj/item/clothing/neck/roguetown/gorget/prisoner/servant(get_turf(M))
+		budget2change((reward_amount*2))
+		var/obj/item/clothing/neck/old_neck = M.get_item_by_slot(SLOT_NECK)
+		if(old_neck)
+			qdel(old_neck)
+		var/obj/item/clothing/neck/roguetown/gorget/prisoner/servant = new(get_turf(M))
+		M.equip_to_slot_or_del(servant, SLOT_NECK, TRUE)
 		playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
-		M.wear_neck.forceMove(loc)
-		M.equip_to_slot_if_possible(newcollar, SLOT_NECK, FALSE, TRUE, TRUE, TRUE)
 	else
 		say("This skull carries no reward, you fool.")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
