@@ -312,7 +312,7 @@
 /datum/crafting_recipe/roguetown/alchemy/coa2s
 	name = "transmute coal to stones"
 
-	result = list(/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone)
+	result = list(/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone)
 	reqs = list(/obj/item/rogueore/coal = 1)
 	craftdiff = 2
 
