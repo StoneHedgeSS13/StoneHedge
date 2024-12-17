@@ -503,31 +503,32 @@
 	var/amount = rand(150,300)
 	switch(rand(1,8))
 		if(1)
-			reason = "murder"
+			reason = "insulting a noble's crest"
 		if(2)
-			reason = "kinslaying"
+			reason = "spilling wine on a noble's cloak"
 		if(3)
 			reason = "besmirching a noble's name"
 		if(4)
-			reason = "treason"
+			reason = "refusing to bow"
 		if(5)
-			reason = "arson"
+			reason = "painting an unflattering portrait"
 		if(6)
-			reason = "heresy"
+			reason = "gossip"
 		if(7)
-			reason = "robbing a noble"
+			reason = "upstaging a harlequin"
 		if(8)
-			reason = "burglary"
+			reason = "fluffery"
 	add_bounty(H.real_name, amount, FALSE, reason, employer)
 	to_chat(H, span_notice("Whether I done it or not, I have been accused of [reason], and a [employer] put a bounty on my head!"))
 
 /datum/quirk/outlaw
-	name = "Ex-Criminal"
-	desc = "I was once on the wrong side of the law, decided that life wasn't for me, and managed to avoid capture. I came to Stonehedge on a rumor that the Adventurers' Guild could offer me its protection while I learn how to make something better of myself."
-	value = -1
+	name = "Outlaw"
+	desc = "I'm on the wrong side of the law, I've managed to avoid capture so far but the law is coming for me, it's only a matter of time."
+	value = -2
 
 /datum/quirk/outlaw/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
+	H.apply_status_effect(/datum/status_effect/grove_outlaw, "Wanted Fugitive")
 	make_outlaw(H.real_name, TRUE)
 
 /datum/quirk/sillyvoice

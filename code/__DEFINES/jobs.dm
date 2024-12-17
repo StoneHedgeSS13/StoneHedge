@@ -99,12 +99,11 @@
 #define LORD		(1<<0)
 #define LADY		(1<<1)
 #define HAND		(1<<2)
-#define STEWARD		(1<<3)
-#define KNIGHT		(1<<4)
-#define GUARD_CAPTAIN		(1<<5)
-#define JUDGE		(1<<6)
-#define HOSTAGE		(1<<7)
-#define NOBLE		(1<<8)
+#define KNIGHT		(1<<3)
+#define GUARD_CAPTAIN		(1<<4)
+#define JUDGE		(1<<5)
+#define HOSTAGE		(1<<6)
+#define NOBLE		(1<<7)
 
 #define GROVE			(1<<1)
 
@@ -116,11 +115,11 @@
 
 #define GARRISON		(1<<2)
 
-#define GUARDSMAN	(1<<0)
-#define ROYALGUARD	(1<<1)
-#define DUNGEONEER	(1<<2)
-#define GATEMASTER	(1<<3)
-#define SHERIFF		(1<<4)
+#define GUARDSMAN	(1<<1)
+#define ROYALGUARD	(1<<2)
+#define DUNGEONEER	(1<<3)
+#define GATEMASTER	(1<<4)
+#define SHERIFF		(1<<5)
 
 #define CHURCHMEN		(1<<3)
 
@@ -195,7 +194,8 @@
 
 #define MERCENARIES		(1<<0)
 #define VETERAN		(1<<1)
-#define SELLSWORD		(1<<2)
+#define STEWARD		(1<<2)
+#define SELLSWORD		(1<<3)
 
 #define TRIBAL		(1<<9)
 
@@ -239,11 +239,10 @@
 #define JDO_LADY 1.1
 #define JDO_PRINCE 1.2
 #define JDO_HAND 1.3
-#define JDO_STEWARD 1.4
-#define JDO_CLERK 1.5
-#define JDO_JUDGE 1.6
-#define JDO_COUNCILLOR 1.7
-#define JDO_NOBLE 1.8
+#define JDO_CLERK 1.4
+#define JDO_JUDGE 1.5
+#define JDO_COUNCILLOR 1.6
+#define JDO_NOBLE 1.7
 
 // Grove
 #define JDO_GREATDRUID 2
@@ -309,9 +308,10 @@
 
 #define JDO_MERCENARY 31
 #define JDO_VET 31.3
-#define JDO_SEELIE 31.4
-#define JDO_SELLSWORD 31.5
-#define JDO_BANDIT 31.6
+#define JDO_STEWARD 31.4
+#define JDO_SEELIE 31.5
+#define JDO_SELLSWORD 31.6
+#define JDO_BANDIT 31.7
 
 #define JDO_VAGRANT 33
 #define JDO_VAGABOND 34
@@ -340,6 +340,7 @@
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
 	/datum/job/roguetown/veteran,\
+	/datum/job/roguetown/steward,\
 	/datum/job/roguetown/clerk,\
 	/datum/job/roguetown/servant,\
 	/datum/job/roguetown/squire,\
@@ -361,8 +362,7 @@
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\
 	/datum/job/roguetown/lady,\
-	/datum/job/roguetown/lord,\
-	/datum/job/roguetown/steward
+	/datum/job/roguetown/lord
 
 #define KING_QUEEN_ROLES \
 	/datum/job/roguetown/lady,\

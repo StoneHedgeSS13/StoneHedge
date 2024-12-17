@@ -44,4 +44,5 @@
 	..()
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
+	H.apply_status_effect(/datum/status_effect/grove_outlaw, "Banditry")
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)

@@ -117,6 +117,9 @@
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
 
+		if(HAS_TRAIT(src, TRAIT_GROVE_MARKED))
+			. += span_userdanger("MARKED BY THE GROVE!")
+
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
 		if(iszizocultist(user) || iszizolackey(user))

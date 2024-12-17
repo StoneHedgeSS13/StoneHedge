@@ -328,21 +328,24 @@
 	var/cuffing = FALSE
 
 /obj/item/rogueweapon/woodstaff/thornlash/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
-	if(isliving(target))
+	. = ..()
+	if(!nodmg && isliving(target))
 		var/mob/living/L = target
-		var/stamina_damage = wielded ? 35 : 15
-		L.adjustStaminaLoss(stamina_damage)
-		if(L.getStaminaLoss() >= 100)
-			L.Paralyze(10 SECONDS)
+		var/stamina_damage = wielded ? 45 : 25
+		L.rogfat_add(stamina_damage)
+
+		if(L.rogfat >= L.maxrogfat)
+			L.Paralyze(6 SECONDS)
+			to_chat(L, span_danger("The thorns sap my strength, making it impossible to move!"))
 
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
-			if(C.IsParalyzed() && !C.handcuffed && !cuffing)
+			if((C.IsParalyzed() || C.rogfat >= C.maxrogfat) && !C.handcuffed && !cuffing)
 				cuffing = TRUE
 				user.visible_message(span_green("[user] begins wrapping [C]'s wrists with vines!"))
 				to_chat(C, span_userdanger("[user] begins wrapping my wrists with vines!"))
 				if(do_after(user, 5 SECONDS, C))
-					if(C.handcuffed || !C.IsParalyzed())
+					if(C.handcuffed || (!C.IsParalyzed() && C.rogfat < C.maxrogfat))
 						cuffing = FALSE
 						return
 					var/obj/item/rope/vine_cuffs = new(C)
@@ -356,5 +359,3 @@
 					playsound(C, 'sound/foley/dropsound/cloth_drop.ogg', 30, TRUE)
 					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 				cuffing = FALSE
-				return
-	. = ..()

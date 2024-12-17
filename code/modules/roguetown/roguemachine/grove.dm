@@ -141,8 +141,8 @@
 /obj/effect/landmark/waygate_destination/greattree
 	name = "Great Tree"
 
-/obj/effect/landmark/waygate_destination/grove
-	name = "Grove"
+/obj/effect/landmark/waygate_destination/hfort
+	name = "Hedge Fortress"
 
 /obj/effect/landmark/waygate_destination/northgate
 	name = "North Gate"
@@ -161,6 +161,9 @@
 
 /obj/effect/landmark/waygate_destination/inn
 	name = "Sylver Dragonne Inn"
+
+/obj/effect/landmark/waygate_destination/sshrine
+	name = "Sylvaran's Shrine"
 
 //==============================================
 // grove shrine
@@ -192,9 +195,13 @@
 	if(choice != "Yes")
 		return
 
+	if(world.time < last_used + cooldown_time)
+		to_chat(user, "<span class='warning'>The shrine's energy hasn't yet recovered. Please wait a moment.</span>")
+		return
+
 	last_used = world.time
 
-	var/message = "<span class='boldannounce'>GROVE SHRINE ALERT: [user.name] seeks assistance! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Emergency Waygate</a>)</span>"
+	var/message = "<span class='boldannounce'>GROVE SHRINE ALERT: [user.name] seeks assistance! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Waygate</a>)</span>"
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
@@ -250,7 +257,7 @@
 		playsound(target_tree, 'sound/misc/treefall.ogg', 50, TRUE)
 		new /obj/effect/temp_visual/grove_portal_transit(get_turf(target_tree))
 		responder.visible_message("<span class='green'>A mystical portal springs forth from the twisted roots!</span>", \
-								"<span class='green'>You successfully create an emergency waygate!</span>")
+								"<span class='green'>You successfully create a waygate!</span>")
 	else
 		to_chat(responder, "<span class='warning'>Your druidic channeling was interrupted!</span>")
 
@@ -310,3 +317,137 @@
 	icon_state = "shield-flash"
 	duration = 15
 	color = "#45b726"
+
+
+//==============================================
+// grove marking totem
+//==============================================
+
+/obj/structure/grove_wanted
+	name = "druidic marking totem"
+	desc = "A tall wooden totem pole covered in druidic runes and wrapped in sacred vines. The Great Druid and Druids use this to mark those who have wronged nature as criminals."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "psycrosscrafted"
+	anchored = TRUE
+	density = TRUE
+	var/list/marked_individuals = list()
+
+/obj/structure/grove_wanted/Initialize()
+	. = ..()
+	add_overlay("vines")
+
+/obj/structure/grove_wanted/attack_hand(mob/living/user)
+	. = ..()
+	if(.)
+		return
+
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/H = user
+	if(!(H.job in list("Great Druid", "Druid")))
+		to_chat(user, span_warning("The totem only responds to Druids attuned to the Grove's magic."))
+		return
+
+	var/choice = alert(user, "What would you like to do?", "Grove's Judgment", "Mark Individual", "Remove Mark")
+
+	switch(choice)
+		if("Mark Individual")
+			var/mark_target = stripped_input(user, "Enter the name of the individual:", "Mark Individual")
+			if(!mark_target)
+				return
+
+			if(marked_individuals[mark_target])
+				to_chat(user, span_warning("[mark_target] is already marked by the Grove!"))
+				return
+
+			var/reason = stripped_input(user, "Enter the reason for marking [mark_target]:", "Reason")
+			if(!reason)
+				return
+
+			marked_individuals[mark_target] = reason
+
+			log_admin("[key_name(user)] has marked [mark_target] using the grove marking totem. Reason: [reason]")
+			message_admins("[key_name_admin(user)] has marked [mark_target] using the grove marking totem. Reason: [reason]")
+
+			priority_announce("By decree of the Grove, [mark_target] has been marked for [reason]. They are a wanted criminal and all who show quarter to them shall face nature's fury.", "Breuddwyd Grove", 'sound/misc/notice.ogg')
+
+			for(var/mob/living/carbon/human/M in GLOB.player_list)
+				if(M.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight"))
+					to_chat(M, span_green("<b>Grove's Judgment Alert:</b> [mark_target] has been marked for [reason] by [user.real_name]."))
+					playsound(M, 'sound/misc/treefall.ogg', 50, TRUE)
+
+			for(var/mob/living/carbon/human/C in GLOB.player_list)
+				if(C.real_name == mark_target)
+					C.apply_status_effect(/datum/status_effect/grove_outlaw, reason)
+					playsound(C, 'sound/misc/treefall.ogg', 50, TRUE)
+
+		if("Remove Mark")
+			if(!length(marked_individuals))
+				to_chat(user, span_notice("There are currently no individuals marked by the Grove."))
+				return
+
+			var/mark_target = input(user, "Select individual to unmark:", "Remove Mark") as null|anything in marked_individuals
+			if(!mark_target)
+				return
+
+			var/reason = marked_individuals[mark_target]
+			marked_individuals -= mark_target
+
+			log_admin("[key_name(user)] has removed the mark from [mark_target] using the grove marking totem. They were previously marked for: [reason]")
+			message_admins("[key_name_admin(user)] has removed the mark from [mark_target] using the grove marking totem. They were previously marked for: [reason]")
+
+			priority_announce("[mark_target] has been pardoned by the Grove and no longer suffer the mark of nature's judgment.", "Breuddwyd Grove", 'sound/misc/notice.ogg')
+
+			for(var/mob/living/carbon/human/M in GLOB.player_list)
+				if(M.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight"))
+					to_chat(M, span_green("<b>Grove's Judgment Alert:</b> [mark_target] has been pardoned by [user.real_name]."))
+					playsound(M, 'sound/misc/treefall.ogg', 50, TRUE)
+
+			for(var/mob/living/carbon/human/C in GLOB.player_list)
+				if(C.real_name == mark_target)
+					C.remove_status_effect(/datum/status_effect/grove_outlaw)
+					playsound(C, 'sound/misc/treefall.ogg', 50, TRUE)
+
+/obj/structure/grove_wanted/examine(mob/user)
+	. = ..()
+	if(!length(marked_individuals))
+		. += span_notice("There are currently no individuals marked by the Grove.")
+		return
+
+	. += span_notice("The following individuals are marked by the Grove:")
+	for(var/marked in marked_individuals)
+		. += span_warning("- [marked]: [marked_individuals[marked]]")
+
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.real_name == marked)
+				user.visible_message(span_warning("[user] bears the mark of nature's judgment: [marked_individuals[marked]]"), \
+								span_warning("You bear the mark of nature's judgment: [marked_individuals[marked]]"))
+
+/datum/status_effect/grove_outlaw
+	id = "grove_outlaw"
+	duration = -1
+	alert_type = /atom/movable/screen/alert/status_effect/grove_outlaw
+	var/crime
+
+/atom/movable/screen/alert/status_effect/grove_outlaw
+	name = "Nature's Judgment"
+	desc = "You have been marked as an enemy of nature and the town."
+	icon_state = "his_grace"
+
+/datum/status_effect/grove_outlaw/on_creation(mob/living/new_owner, crime_reason)
+	. = ..()
+	if(.)
+		crime = crime_reason
+
+/datum/status_effect/grove_outlaw/on_apply()
+	ADD_TRAIT(owner, TRAIT_GROVE_MARKED, "grove_mark")
+	to_chat(owner, span_warning("You feel nature's judgment fall upon you for your crimes: [crime]"))
+	return TRUE
+
+/datum/status_effect/grove_outlaw/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_GROVE_MARKED, "grove_mark")
+	to_chat(owner, span_green("You feel nature's judgment lift from you."))
+	playsound(owner, 'sound/misc/treefall.ogg', 50, TRUE)
+	return ..()

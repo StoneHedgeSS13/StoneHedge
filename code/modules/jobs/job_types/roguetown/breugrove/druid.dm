@@ -8,7 +8,12 @@
 	spawn_positions = 5
 
 	allowed_sexes = list(MALE, FEMALE)
-	spells = list (/obj/effect/proc_holder/spell/targeted/shapeshift,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/invoked/infestation5e,/obj/effect/proc_holder/spell/self/primalsavagery5e,)
+	spells = list (
+		/obj/effect/proc_holder/spell/invoked/diagnose/secular,
+		/obj/effect/proc_holder/spell/targeted/shapeshift,
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,
+		/obj/effect/proc_holder/spell/invoked/infestation5e,
+		/obj/effect/proc_holder/spell/self/primalsavagery5e,)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/druid
 	tutorial = "You are a Druid of the Breuddwyd Grove, a sacred keeper of both natural and traditional law. Drawing power from the ancient spirits of the land, you maintain harmony between civilization and wilderness. As one of the Grove's spiritual authorities and Town's legal authorities, you interpret the wisdom written in both legal scrolls and forest leaves. Your judgments flow from the eternal laws of nature - as a stream shapes the stones, so too does justice shape society. While wielding primal magic and communing with beasts, your paramount duty is to preserve balance: mediating between town and wild, settling disputes through ancient rites, and ensuring both human law and nature's code are respected. Like the great oak that bridges earth and sky, you stand between the ordered realm of civilization and the raw power of the wilderness, drawing wisdom from both to maintain the sacred harmony."
@@ -28,7 +33,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/forestershoes
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/sickle
+	beltl = /obj/item/rogueweapon/whip
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff/aries
@@ -36,25 +41,30 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor/grove
 	gloves = null
 	cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
-	armor = null
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	backpack_contents = list(
 		/obj/item/rogueweapon/sickle = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/majorhealthpot = 1,
 		/obj/item/roguekey/grove = 1,
-		/obj/item/seeds/random = 3,
+		/obj/item/rogueweapon/huntingknife/skin = 1,
 	)
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/magic/druidic, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
+
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
 		if(H.age == AGE_OLD)

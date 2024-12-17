@@ -84,6 +84,7 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 	gripped_intents = null
+	sharpness = IS_BLUNT
 
 /obj/item/rogueweapon/woodstaff/aries/getonmobprop(tag)
 	. = ..()

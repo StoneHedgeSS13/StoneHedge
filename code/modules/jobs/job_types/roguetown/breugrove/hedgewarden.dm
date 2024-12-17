@@ -13,7 +13,6 @@
 	display_order = JDO_HEDGEWARDEN
 	selection_color = JCOLOR_GROVE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/bog)
 	outfit = /datum/outfit/job/roguetown/hedgewarden
 
 	give_bank_account = 2500
@@ -32,7 +31,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "Hedge Warden tabard ([index])"
+			S.name = "Breuddwyd Grove Tabard ([index])"
 
 /datum/outfit/job/roguetown/hedgewarden/pre_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -52,50 +51,34 @@
 	l_hand = /obj/item/rogueweapon/woodstaff/thornlash
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1, /obj/item/roguekey/grove = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 6, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 6, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)
+
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 2, TRUE)
-		H.change_stat("constitution", 4)
-		H.change_stat("perception", 3)
-		H.change_stat("endurance", 4)
-		H.change_stat("speed", 2)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
+		H.change_stat("constitution", 5)
+		H.change_stat("perception", 4)
+		H.change_stat("endurance", 5)
+		H.change_stat("speed", 3)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.verbs |= /mob/proc/haltyell
+	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)
-
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-/obj/effect/proc_holder/spell/self/convertrole/bog
-	name = "Recruit Hedgeknight"
-	new_role = "Hedge Knight"
-	recruitment_faction = "Hedge Knight"
-	recruitment_message = "Serve the Forest, %RECRUIT!"
-	accept_message = "FOR THE HEDGE!"
-	refuse_message = "I refuse."
-
-/obj/effect/proc_holder/spell/self/convertrole/bog/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
-	. = ..()
-	if(!.)
-		return
-	recruit.verbs |= /mob/proc/haltyell

@@ -851,25 +851,22 @@
 	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
-			if(disabled_by_nullmagic)
-				. += span_redtext("The door's wards have been nullified and will reactivate in [round((reactivate_time)/10)] seconds.")
-			else
-				. += span_notice("The door's wards are active and ready to incinerate intruders.")
+		if(H.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice"))
+			. += span_notice("The door's wards are [disabled_by_nullmagic ? "temporarily disabled" : "active"].")
 
 /obj/structure/mineral_door/wood/fancywood/academy/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/clothing/ring/active/nomag))
 		var/obj/item/clothing/ring/active/nomag/ring = I
-		if(!ring.active)
+		if(!ring.active || disabled_by_nullmagic)
 			return ..()
 
-		visible_message(span_redtext("[src]'s wards flicker and fade as they're disrupted by anti-magic!"))
-		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
 		disabled_by_nullmagic = TRUE
 		locked = FALSE
+		playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+		visible_message(span_warning("[src]'s wards flicker and fade as they're disrupted by anti-magic!"))
 
 		for(var/mob/living/carbon/human/M in GLOB.player_list)
-			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+			if(M.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice"))
 				to_chat(M, span_redtext("The wards on a door at [get_area(src)] have been nullified!"))
 
 		addtimer(CALLBACK(src, PROC_REF(reactivate_wards)), reactivate_time)
@@ -879,47 +876,37 @@
 		var/obj/item/storage/keyring/K = I
 		for(var/obj/item/roguekey/key in K.contents)
 			if(key.lockhash == lockhash)
-				if(locked)
-					locked = FALSE
-					playsound(src, unlocksound, 50, TRUE)
-					to_chat(user, span_notice("You unlock [src] with [I]."))
-					return TRUE
-				locked = TRUE
-				playsound(src, locksound, 50, TRUE)
-				to_chat(user, span_notice("You lock [src] with [I]."))
+				locked = !locked
+				playsound(src, locked ? locksound : unlocksound, 50, TRUE)
+				to_chat(user, span_notice("You [locked ? "lock" : "unlock"] [src] with [I]."))
 				return TRUE
 		playsound(src, rattlesound, 50, TRUE)
 		to_chat(user, span_warning("[I] doesn't have the right key!"))
 		return TRUE
 
-	if((istype(I, /obj/item/lockpick) || istype(I, /obj/item/crowbar) || I.force > 0) && !disabled_by_nullmagic)
-		visible_message(span_userdanger("[src]'s wards flare with violent energy as [user] attempts to breach them!"))
-		playsound(src, 'sound/magic/fireball.ogg', 100, TRUE)
+	if(!disabled_by_nullmagic && (istype(I, /obj/item/lockpick) || istype(I, /obj/item/crowbar) || I.force > 0))
 		user.adjust_fire_stacks(5)
 		user.IgniteMob()
-		to_chat(user, span_danger("Arcane flames engulf you as the door's wards activate!"))
+		playsound(src, 'sound/magic/fireball.ogg', 100, TRUE)
+		visible_message(span_danger("[src]'s wards flare with violent energy as [user] attempts to breach them!"))
 
 		for(var/mob/living/carbon/human/M in GLOB.player_list)
-			if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+			if(M.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice"))
 				to_chat(M, span_redtext("The wards on a door at [get_area(src)] have incinerated an intruder!"))
 		return TRUE
 
 	return ..()
 
 /obj/structure/mineral_door/wood/fancywood/academy/TryToSwitchState(atom/user)
-	if(locked)
-		return FALSE
-	return ..()
+	return !locked && ..()
 
 /obj/structure/mineral_door/wood/fancywood/academy/Open()
 	. = ..()
-	if(!isSwitchingStates)
+	if(!isSwitchingStates && !disabled_by_nullmagic)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), 10 SECONDS)
 
 /obj/structure/mineral_door/wood/fancywood/academy/proc/autoclose()
-	if(isSwitchingStates)
-		return
-	if(!density)
+	if(!isSwitchingStates && !density)
 		Close()
 		if(!disabled_by_nullmagic)
 			locked = TRUE
@@ -933,5 +920,5 @@
 	visible_message(span_warning("[src]'s magical wards crackle back to life!"))
 
 	for(var/mob/living/carbon/human/M in GLOB.player_list)
-		if(M.job == "Academy Archmage" || M.job == "Academy Mage" || M.job == "Academy Apprentice")
+		if(M.job in list("Academy Archmage", "Academy Mage", "Academy Apprentice"))
 			to_chat(M, span_green("The wards on a door at [get_area(src)] have reactivated."))

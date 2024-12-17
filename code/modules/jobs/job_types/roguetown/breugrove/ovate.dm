@@ -45,7 +45,7 @@
 	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport)
+	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 /datum/outfit/job/roguetown/ovate/proc/assign_skills(mob/living/carbon/human/H)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)

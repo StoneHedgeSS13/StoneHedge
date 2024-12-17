@@ -12,11 +12,12 @@
 	tutorial = "You serve as a martial part of the Grove's Hedgeguard, patrolling the streets of the Town under the Breuddwyd Grove's authority. While your order began as forest rangers devoted to Sylvarn, the Hedge Knights now focus on keeping the peace within the town walls. Armed with stunmace and longbow, you enforce the Five Laws against troublemakers - whether they're rowdy adventurers, local miscreants, or dangerous creatures. Your tabard marks you as an officer of the Grove's justice. Remember: you're trusted to protect the townspeople and maintain order, so don't abuse your authority or abandon your post."
 	display_order = JDO_HEDGEKNIGHT
 	selection_color = JCOLOR_GROVE
+
 	outfit = /datum/outfit/job/roguetown/hedgeknight
-	give_bank_account = 60
+
+	give_bank_account = 1500
 	min_pq = 10
 	max_pq = null
-
 	cmode_music = 'sound/music/combat_bog.ogg'
 
 /datum/job/roguetown/hedgeknight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -30,7 +31,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "Hedge Knight tabard ([index])"
+			S.name = "Breuddwyd Grove Tabard ([index])"
 
 /datum/outfit/job/roguetown/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -48,42 +49,34 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	l_hand = /obj/item/rogueweapon/woodstaff/thornlash
-	id = /obj/item/scomstone
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/signal_horn = 1, /obj/item/roguekey/grove = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/signal_horn = 1)
+
+	if(H.mind)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 2, TRUE)
+
+		H.change_stat("constitution", 4)
+		H.change_stat("perception", 3)
+		H.change_stat("endurance", 4)
+		H.change_stat("speed", 2)
+
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.verbs |= /mob/proc/haltyell
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)
-
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-/datum/outfit/job/roguetown/hedgeknight/proc/assign_skills(mob/living/carbon/human/H)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 6, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 4, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 4, TRUE)
-	H.change_stat("perception", 2)
-	H.change_stat("constitution", 4)
-	H.change_stat("endurance", 4)
-	H.change_stat("speed", 2)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)

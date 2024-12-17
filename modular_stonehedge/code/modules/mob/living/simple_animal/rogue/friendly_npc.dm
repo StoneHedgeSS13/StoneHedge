@@ -58,8 +58,24 @@
 		if(ishuman(L) && L.mind)
 			var/mob/living/carbon/human/badboi = L
 			if(badboi == lasthitter && Adjacent(badboi) && !badboi.handcuffed)
-				var/obj/item/rope/ropey = new /obj/item/rope
-				ropey.apply_cuffs(badboi, src)
+				var/obj/item/grabbing/G = new()
+				var/used_limb = badboi.find_used_grab_limb(src)
+				G.name = "[badboi]'s [parse_zone(used_limb)]"
+				var/obj/item/bodypart/BP = badboi.get_bodypart(check_zone(used_limb))
+				G.grabbed = badboi
+				G.grabbee = src
+				G.limb_grabbed = BP
+				G.sublimb_grabbed = used_limb
+				G.icon_state = zone_selected
+				START_PROCESSING(SSfastprocess, G)
+				badboi.grabbedby += G
+				put_in_hands(G)
+				G.update_hands(src)
+				// Apply both handcuffs and legcuffs
+				var/obj/item/rope/handropey = new /obj/item/rope
+				handropey.apply_cuffs(badboi, src)
+				var/obj/item/rope/legropey = new /obj/item/rope
+				legropey.apply_cuffs(badboi, src, TRUE)  // TRUE for legcuffs
 				start_pulling(badboi)
 		return FALSE
 	if(L == lasthitter && L.alpha > 100)
@@ -165,6 +181,8 @@
 	var/patrol = TRUE
 	var/lastpatroltime
 	var/last_report
+	var/last_hostile_message = 0
+	var/static/list/failed_arrests = list()
 
 /mob/living/carbon/human/species/human/smartnpc/townguard/should_target(mob/living/L)
 	if(!L)
@@ -174,8 +192,8 @@
 		return FALSE
 
 	//leaders arent shat on.
-	if(L.job in list("Hedge Knight", "Hedgemaster", "Guildmaster", "Guild Appraiser", "Grandmaster", "Archpriest", "Archpriestess", "Wytcher", "Wytcher Captain"))
-		return
+	if(L.job in list("Great Druid", "Hedge Warden", "Druid", "Hedge Knight", "Ovate", "Academy Archmage", "Guildmaster", "Guild Appraiser", "Grandmaster", "Archpriest", "Archpriestess", "Wytcher", "Wytcher Captain"))
+		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_PACIFISM))
 		return FALSE
@@ -195,38 +213,91 @@
 	if(L.stat != CONSCIOUS)
 		return FALSE
 
-	if(L.lying && !L.get_active_held_item())
-		if(ishuman(L) && L.mind)
-			var/mob/living/carbon/human/badboi = L
-			if(badboi == lasthitter && Adjacent(badboi) && !badboi.handcuffed)
-				//untested but yeah.
-				say("I got you now, criminal scum.")
-				if(do_after_mob(src, badboi, 3 SECONDS, FALSE))
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(H.has_status_effect(/datum/status_effect/grove_outlaw))
+			if(!failed_arrests[H.real_name])
+				failed_arrests[H.real_name] = 0
+				if(!H.handcuffed && world.time > last_hostile_message + 30 SECONDS)
+					say("Grove marked criminal! Do not move, you're under arrest! If you move you will be subdued with lethal force.")
+					last_hostile_message = world.time
+
+			if(failed_arrests[H.real_name] >= 2)
+				if(world.time > last_hostile_message + 30 SECONDS)
+					say("You've resisted arrest for the last time!")
+					last_hostile_message = world.time
+				return TRUE
+
+			if(!H.handcuffed && Adjacent(H))
+				if(world.time > last_hostile_message + 10 SECONDS)
+					failed_arrests[H.real_name]++
+					if(failed_arrests[H.real_name] == 2)
+						say("This is your final warning! Submit to justice!")
+					last_hostile_message = world.time
+
+				if(do_after_mob(src, H, 3 SECONDS, FALSE))
 					if(world.time > (last_report + 5 MINUTES))
 						last_report = world.time
-						scom_announce("I caught the criminal scum [badboi.real_name] at [get_area_name(get_area(src))].")
+						scom_announce("I caught the criminal scum [H.real_name] at [get_area_name(get_area(src))].")
 					var/obj/item/rope/ropey = new /obj/item/rope
 					ropey.item_flags = DROPDEL
-					ropey.apply_cuffs(badboi, src)
-					start_pulling(badboi)
-		return FALSE
-	if(L == lasthitter && L.alpha > 100)
-		return TRUE
-	if(ishuman(L))
-		var/mob/living/carbon/human/madafaka = L
-		if(madafaka.Adjacent(src) && mode != AI_HUNT && madafaka.mind && madafaka.alpha > 100)
+					if(ropey.apply_cuffs(H, src))
+						var/obj/item/rope/legropey = new /obj/item/rope
+						legropey.item_flags = DROPDEL
+						legropey.apply_cuffs(H, src, TRUE)  // TRUE for legcuffs
+						if(world.time > (last_report + 5 MINUTES))
+							last_report = world.time
+							scom_announce("I caught the grove-marked criminal [H.real_name] at [get_area_name(get_area(src))].")
+							var/message = "<span class='green'>ARREST ALERT: A town guard has apprehended [H.real_name] at [get_area_name(get_area(src))]! (<a href='?src=[REF(get_turf(src))];alert_response=1;caller=[H.real_name]'>Create Waygate</a>)</span>"
+							for(var/mob/M in GLOB.player_list)
+								if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
+									to_chat(M, message)
+									SEND_SOUND(M, sound('sound/misc/treefall.ogg'))
+						failed_arrests[H.real_name] = 0
+						return FALSE
+					else
+						qdel(ropey)
+			else if(!Adjacent(H))
+				walk2derpless(get_turf(H))
+			return FALSE
+
+		// Handle lying targets
+		if(H.lying && !H.get_active_held_item())
+			if(H.mind && H == lasthitter && Adjacent(H) && !H.handcuffed)
+				say("I got you now, criminal scum.")
+				if(do_after_mob(src, H, 3 SECONDS, FALSE))
+					if(world.time > (last_report + 5 MINUTES))
+						last_report = world.time
+						scom_announce("I caught the criminal scum [H.real_name] at [get_area_name(get_area(src))].")
+
+					// Create and use grab object
+					var/obj/item/rope/ropey = new /obj/item/rope
+					ropey.item_flags = DROPDEL
+
+					if(ropey.apply_cuffs(H, src))
+						var/obj/item/rope/legropey = new /obj/item/rope
+						legropey.item_flags = DROPDEL
+						legropey.apply_cuffs(H, src, TRUE)  // TRUE for legcuffs
+					else
+						qdel(ropey)
+			return FALSE
+
+		// Handle last hitter and faction checks
+		if(H == lasthitter && H.alpha > 100)
+			return TRUE
+		if(H.Adjacent(src) && mode != AI_HUNT && H.mind && H.alpha > 100)
 			if(prob(10))
-				face_atom(madafaka)
+				face_atom(H)
 				if(calmmessages.len)
 					say(pick(calmmessages))
 		if(friendlyfactions)
-			var/list/madafaction = madafaka.faction
+			var/list/madafaction = H.faction
 			if(find_match_in_list(madafaction, friendlyfactions) && lasthitter != target)
 				return FALSE
 			else
 				return TRUE
 		if(friendlyjobs)
-			var/list/madajob = madafaka.job
+			var/list/madajob = H.job
 			if((madajob in friendlyjobs) && lasthitter != target)
 				return FALSE
 			else
@@ -272,6 +343,15 @@
 
 // Custom idle behavior
 /mob/living/carbon/human/species/human/smartnpc/townguard/npc_idle()
+	if(pulling)
+		var/mob/living/carbon/human/H = pulling
+		if(istype(H) && H.handcuffed)
+			if(get_dist(src, H) > 1)
+				walk2derpless(get_turf(H))
+				return
+			else if(!Adjacent(H))
+				walk2derpless(get_turf(H))
+				return
 	if(wander)
 		if(world.time < next_idle + rand(30,50))
 			return
@@ -550,3 +630,37 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	else
 		H.name = pick( world.file2list("strings/rt/names/elf/elfwf.txt") )
 		H.real_name = H.name
+
+/mob/living/carbon/human/species/human/smartnpc/back_to_idle()
+	last_aggro_loss = world.time
+	if(pulling)
+		var/mob/living/carbon/human/H = pulling
+		if(!istype(H) || !H.handcuffed)
+			stop_pulling()
+	myPath = list()
+	mode = AI_IDLE
+	target = null
+	a_intent = INTENT_HELP
+	frustration = 0
+	walk_to(src,0)
+
+/mob/living/carbon/human/species/human/smartnpc/townguard/back_to_idle()
+	last_aggro_loss = world.time
+	if(pulling)
+		var/mob/living/carbon/human/H = pulling
+		if(!istype(H) || !H.handcuffed)
+			stop_pulling()
+	myPath = list()
+	mode = AI_IDLE
+	target = null
+	a_intent = INTENT_HELP
+	frustration = 0
+	walk_to(src,0)
+
+/mob/living/carbon/human/species/human/smartnpc/townguard/Moved()
+	. = ..()
+	if(pulling)
+		var/mob/living/carbon/human/H = pulling
+		if(istype(H) && H.handcuffed)
+			if(get_dist(src, H) > 1)
+				walk2derpless(get_turf(H))
