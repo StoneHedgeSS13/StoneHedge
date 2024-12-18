@@ -10,10 +10,6 @@
 	var/last_used = 0
 	var/cooldown_time = 300
 
-/obj/item/clothing/neck/roguetown/psicross/dendor/grove/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, "greater amulet of nature")
-
 /obj/item/clothing/neck/roguetown/psicross/dendor/grove/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
