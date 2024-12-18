@@ -26,21 +26,24 @@
 	var/mob/living/carbon/human/H = user
 
 	// Main Menu
-	var/list/choices = list("Consult bounties", "Set bounty")
-	if(user.job in list("Hedgemaster", "Hedge Knight"))
-		choices += "Remove bounty"
+	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties")
+	if(user.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
+		choices += "Remove Bounty"
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)
 
-		if("Consult bounties")
+		if("Consult Bounties")
 			consult_bounties(H)
 
-		if("Set bounty")
+		if("Set Bounty")
 			set_bounty(H)
 
-		if("Remove bounty")
+		if("Remove Bounty")
 			remove_bounty(H)
+
+		if("Print List of Bounties")
+			print_bounty_scroll(H)
 
 /obj/structure/roguemachine/bounty/attackby(obj/item/P, mob/user, params)
 
@@ -222,7 +225,53 @@
 			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
 	new_bounty.banner += "--------------<BR>"
 
+/obj/structure/roguemachine/bounty/proc/print_bounty_scroll(mob/living/carbon/human/user)
+	if(!GLOB.head_bounties.len)
+		say("No bounties are currently active.")
+		return
 
+	var/cost = 50
+	var/choice = alert(user, "Print a continously updated list of active bounties for [cost] mammons?", "Print Bounty Scroll", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	if(!(user in SStreasury.bank_accounts))
+		say("You have no bank account.")
+		return
+
+	if(SStreasury.bank_accounts[user] < cost)
+		say("Insufficient funds. [cost] mammons required.")
+		return
+
+	SStreasury.bank_accounts[user] -= cost
+	SStreasury.treasury_value += cost
+	SStreasury.log_entries += "+[cost] to treasury (bounty scroll fee)"
+
+	var/obj/item/paper/scroll/bounty/scroll = new(get_turf(src))
+	scroll.update_bounty_text()
+	playsound(src, 'sound/items/scroll_open.ogg', 100, TRUE)
+	visible_message(span_notice("The [src] prints out a weathered scroll."))
+	say("Your scroll is ready.")
+
+/obj/item/paper/scroll/bounty
+	name = "enchanted bounty scroll"
+	desc = "A weathered scroll enchanted to list the active bounties from the Excidium."
+	icon_state = "scroll"
+	open = FALSE
+
+/obj/item/paper/scroll/bounty/examine(mob/user)
+	. = ..()
+	if(open)
+		update_bounty_text()
+
+/obj/item/paper/scroll/bounty/proc/update_bounty_text()
+	var/scroll_text = "<center>WANTED BY THE EXCIDIUM</center><br><br>"
+
+	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
+		scroll_text += saved_bounty.banner
+		scroll_text += "<br>"
+
+	info = scroll_text
 
 /obj/structure/chair/arrestchair
 	name = "BOUNTYMASTER"
