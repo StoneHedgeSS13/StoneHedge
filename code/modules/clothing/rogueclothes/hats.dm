@@ -299,7 +299,7 @@
 				H.update_inv_head()
 				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 				H.update_inv_cloak()
-		return
+			return
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 			flags_inv = null
