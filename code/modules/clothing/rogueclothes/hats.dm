@@ -292,24 +292,25 @@
 			adjustable = CADJUSTED
 			if(toggle_icon_state)
 				icon_state = "[initial(icon_state)]_t"
-			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+			flags_inv = HIDEEARS|HIDEHAIR
 			body_parts_covered = NECK|HAIR|EARS|HEAD
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 				H.update_inv_cloak()
-			block2add = FOV_BEHIND
+			return
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 			flags_inv = null
+			body_parts_covered = NECK
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 					H.update_inv_cloak()
-		user.update_fov_angles()
+		return
 
 
 /obj/item/clothing/head/roguetown/menacing
