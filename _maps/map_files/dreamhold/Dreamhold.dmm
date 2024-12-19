@@ -845,6 +845,14 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"aEQ" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "aEX" = (
 /obj/structure/chair/bench{
 	dir = 4
@@ -950,12 +958,23 @@
 	first_time_text = "Stonehedge"
 	})
 "aHt" = (
+<<<<<<< Updated upstream
 /turf/open/floor/rogue/rooftop/green{
 	dir = 1
 	},
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
+=======
+/obj/structure/closet/crate/drawer{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/roguekey/farm,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+>>>>>>> Stashed changes
 	})
 "aHD" = (
 /obj/structure/flora/grass/jungle{
@@ -1860,6 +1879,20 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"bnt" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "bnB" = (
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/shelter/town)
@@ -2535,6 +2568,25 @@
 "bOL" = (
 /turf/closed/wall/shroud,
 /area/rogue/outdoors/woods/grove)
+"bOO" = (
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "bOU" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -3104,6 +3156,17 @@
 /obj/item/rogueweapon/mace/wsword,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
+"cjE" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/structure/fluff/millstone,
+/obj/item/reagent_containers/glass/bucket/wooden,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "cjY" = (
 /obj/structure/table/church{
 	icon_state = "churchtable_end"
@@ -3247,6 +3310,28 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/tavern{
 	name = "Tavern Stables"
+	})
+"cpi" = (
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/rogueweapon/hoe,
+/obj/item/rogueweapon/hoe,
+/obj/item/rogueweapon/hoe,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/stoneaxe/woodcut,
+/obj/item/rogueweapon/stoneaxe/woodcut,
+/obj/item/rogueweapon/stoneaxe/woodcut,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/pitchfork,
+/obj/item/rogueweapon/pitchfork,
+/obj/item/rogueweapon/pitchfork,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "cpw" = (
 /obj/structure/table/wood,
@@ -3559,12 +3644,18 @@
 	first_time_text = "The Twilight Woods"
 	})
 "cBx" = (
+<<<<<<< Updated upstream
 /obj/structure/fluff/railing/wood{
 	dir = 4;
 	layer = 2.8;
 	pixel_x = 8
 	},
 /turf/open/floor/rogue/cobblerock,
+=======
+/turf/open/floor/rogue/rooftop/green{
+	dir = 1
+	},
+>>>>>>> Stashed changes
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -3895,6 +3986,12 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
+"cNS" = (
+/obj/structure/ladder,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
@@ -4270,6 +4367,15 @@
 /obj/structure/closet/crate/chest/refilling/trait,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/caves)
+"dam" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "dav" = (
 /obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
@@ -5280,6 +5386,17 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
+"dGE" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet,
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "dGW" = (
 /obj/structure/flora/grass/jungle{
 	icon_state = "grassa1"
@@ -5299,6 +5416,13 @@
 "dHk" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/cand,
 /area/rogue/under/cavewet/bogcaves)
+"dHG" = (
+/obj/effect/landmark/start/farmer,
+/obj/structure/bed/rogue/inn/wooldouble,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "dHI" = (
 /obj/structure/chair/wood{
 	dir = 8
@@ -5391,6 +5515,13 @@
 /obj/structure/flora/junglebush/large,
 /turf/open/water/swamp,
 /area/rogue/under/cavewet/bogcaves)
+"dMB" = (
+/obj/structure/flora/roguegrass/water,
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "dNq" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -5449,6 +5580,7 @@
 /obj/structure/fluff/walldeco/chains,
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
+<<<<<<< Updated upstream
 "dPq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -5457,6 +5589,13 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
+=======
+"dPF" = (
+/obj/structure/closet/crate/roguecloset,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+>>>>>>> Stashed changes
 	})
 "dPY" = (
 /obj/structure/flora/grass/jungle/b,
@@ -5512,6 +5651,15 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
+"dRt" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "dRD" = (
 /turf/open/floor/grass,
 /area/rogue/outdoors/caves)
@@ -6061,6 +6209,13 @@
 /area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
 	name = "Schoolgrounds"
+	})
+"egn" = (
+/obj/machinery/light/rogue/hearth,
+/obj/item/reagent_containers/glass/bucket/pot,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
 	})
 "egp" = (
 /obj/structure/fluff/railing/wood{
@@ -6646,6 +6801,14 @@
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
 	})
+"eCm" = (
+/obj/structure/well,
+/obj/item/reagent_containers/glass/bucket/wooden,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "eCw" = (
 /mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
 /turf/open/floor/rogue/grass,
@@ -6828,6 +6991,13 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"eJH" = (
+/obj/effect/landmark/start/farmer,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "eJI" = (
 /obj/structure/glowshroom,
@@ -7329,8 +7499,7 @@
 	})
 "eVC" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/shelter/town)
@@ -8590,6 +8759,12 @@
 	icon_state = "road"
 	},
 /area/rogue/indoors/shelter/town/roofs)
+"fNO" = (
+/obj/structure/wallladder{
+	dir = 8
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/river)
 "fNQ" = (
 /obj/structure/spacevine,
 /turf/open/floor/rogue/grass,
@@ -9575,6 +9750,7 @@
 	name = "Adventurers Guild"
 	})
 "gzK" = (
+<<<<<<< Updated upstream
 /obj/structure/fluff/railing/wood{
 	dir = 4;
 	layer = 2.8;
@@ -9584,6 +9760,23 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/cobblerock,
+=======
+/obj/structure/rack/rogue,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/carrot,
+/obj/item/seeds/cherry,
+/obj/item/seeds/cucumber,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/onion,
+/obj/item/seeds/potato,
+/obj/item/seeds/tomato,
+/obj/item/seeds/rice,
+/obj/item/seeds/radish,
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/open/floor/rogue/twig,
+>>>>>>> Stashed changes
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -9861,6 +10054,7 @@
 /turf/open/water/river,
 /area/rogue/outdoors/caves)
 "gOi" = (
+<<<<<<< Updated upstream
 /obj/structure/rack/rogue,
 /obj/item/seeds/apple,
 /obj/item/seeds/apple,
@@ -9877,6 +10071,9 @@
 /obj/item/seeds/peas,
 /obj/item/seeds/nut,
 /turf/open/floor/rogue/twig,
+=======
+/turf/closed/wall/mineral/rogue/decowood,
+>>>>>>> Stashed changes
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -10303,6 +10500,15 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"hhH" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "hhP" = (
 /turf/open/floor/rogue/dirt,
@@ -10750,6 +10956,17 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
+"hwq" = (
+/obj/structure/mineral_door/wood{
+	name = "Farm";
+	lockid = "farm";
+	locked = 1
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "hwr" = (
 /obj/item/gun/ballistic/arquebus,
 /obj/item/gun/ballistic/arquebus,
@@ -11153,8 +11370,16 @@
 /obj/structure/fluff/railing/wood{
 	pixel_y = -8
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/river)
+=======
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
+>>>>>>> Stashed changes
 "hLR" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -11373,8 +11598,7 @@
 	})
 "hTL" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors{
@@ -11701,9 +11925,18 @@
 	})
 "ifI" = (
 /obj/structure/fluff/railing/wood{
+<<<<<<< Updated upstream
 	dir = 8;
 	pixel_x = -5;
 	pixel_y = -1
+=======
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+>>>>>>> Stashed changes
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors{
@@ -11867,8 +12100,7 @@
 	pixel_y = 7
 	},
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/exposed/tavern{
@@ -12487,6 +12719,13 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/shelter/bog)
+"iGP" = (
+/obj/effect/landmark/start/farmer,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "iIa" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/closed/wall/shroud,
@@ -13152,6 +13391,27 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
+"jhW" = (
+/obj/structure/rack/rogue,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/berryrogue,
+/obj/item/seeds/berryrogue,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/pear,
+/obj/item/seeds/pear,
+/obj/item/seeds/peas,
+/obj/item/seeds/nut,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "jin" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/water/cleanshallow,
@@ -13331,6 +13591,18 @@
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
+	})
+"jpX" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/nest,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "jql" = (
 /turf/open/floor/rogue/dirt/road,
@@ -13591,6 +13863,14 @@
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
+"jzL" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "jAd" = (
 /obj/structure/flora/grass/jungle,
 /turf/closed/wall/shroud,
@@ -14548,6 +14828,21 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
+"kcK" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "kcS" = (
 /obj/structure/flora/grass/jungle{
 	icon_state = "grassa1"
@@ -15399,6 +15694,14 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/caves)
+"kGx" = (
+/obj/machinery/light/rogue/oven{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "kGB" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -15567,6 +15870,29 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
+	})
+"kLJ" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
+"kMF" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "kMP" = (
 /obj/structure/grove_shrine,
@@ -15957,6 +16283,11 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"kYo" = (
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "kYC" = (
 /obj/item/natural/saddle,
 /obj/structure/rack/rogue/shelf/big,
@@ -16209,6 +16540,13 @@
 /obj/item/slimepotion/lovepotion,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/caves)
+"ljz" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "ljH" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
@@ -16296,8 +16634,7 @@
 /area/rogue/outdoors/river)
 "llI" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/decostone/mossy/cand,
 /area/rogue/outdoors{
@@ -16425,6 +16762,19 @@
 /area/rogue/indoors/town/garrison{
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
+	})
+"lqO" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/candle/yellow/lit{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
 	})
 "lqS" = (
 /obj/structure/spider/stickyweb{
@@ -17071,7 +17421,7 @@
 "lSl" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "roominnkeeper";
+	lockid = "roominnkeep";
 	name = "Tavern Owners Room"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -17230,8 +17580,7 @@
 	})
 "lXW" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/entrance)
@@ -18174,7 +18523,16 @@
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
 "mDg" = (
+<<<<<<< Updated upstream
 /turf/closed/wall/mineral/rogue/decowood,
+=======
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/cobblerock,
+>>>>>>> Stashed changes
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -18706,8 +19064,7 @@
 	})
 "mSm" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/bath)
@@ -18807,6 +19164,33 @@
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
 	})
+"mVG" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/obj/structure/closet/crate/chest,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/obj/item/natural/bundle/worms,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "mWB" = (
 /obj/structure/closet/crate/chest/refilling/weapon,
 /turf/open/floor/rogue/cobble/mossy,
@@ -19396,6 +19780,7 @@
 	name = "Ravenloft Academy"
 	})
 "nsb" = (
+<<<<<<< Updated upstream
 /obj/structure/rack/rogue,
 /obj/item/seeds/sugarcane,
 /obj/item/seeds/pumpkin,
@@ -19406,6 +19791,25 @@
 /obj/item/seeds/tea,
 /obj/item/seeds/garlic,
 /obj/item/seeds/poppy,
+=======
+/obj/item/seeds/mycelium/plumphelmet,
+/obj/item/seeds/shroom,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/structure/closet/crate/roguecloset/inn/chest,
+>>>>>>> Stashed changes
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
@@ -19535,8 +19939,7 @@
 	})
 "nvO" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/bog)
@@ -20507,6 +20910,15 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
+"obP" = (
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "obX" = (
 /obj/structure/flora/roguegrass,
 /obj/effect/landmark/events/haunts,
@@ -20853,6 +21265,16 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"osF" = (
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "osH" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/river)
@@ -20881,8 +21303,7 @@
 	})
 "oty" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/tavern{
@@ -21192,10 +21613,20 @@
 	first_time_text = "The Twilight Woods"
 	})
 "oFN" = (
+<<<<<<< Updated upstream
 /obj/structure/ladder,
 /turf/open/floor/rogue/twig,
+=======
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/dirt,
+>>>>>>> Stashed changes
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "oGb" = (
 /obj/structure/flora/newbranch/connector{
@@ -22394,8 +22825,7 @@
 	})
 "ptO" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark/slitted,
 /area/rogue/outdoors/beach{
@@ -22704,8 +23134,7 @@
 /area/rogue/indoors/town/tavern)
 "pFc" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/garrison{
@@ -22770,6 +23199,13 @@
 /turf/closed/wall/mineral/rogue/wooddark/slitted,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"pGd" = (
+/obj/structure/ladder,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "pHo" = (
 /obj/structure/flora/newtree,
@@ -23587,8 +24023,7 @@
 /area/rogue/indoors/shelter/bog)
 "qfv" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/garrison{
@@ -24453,8 +24888,7 @@
 	})
 "qGN" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark{
 	icon_state = "wooddark-k"
@@ -26002,6 +26436,13 @@
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
 	})
+"rIz" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatletboy,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "rIX" = (
 /obj/structure/fermenting_barrel/beer,
 /obj/structure/fluff/railing/wood{
@@ -26687,6 +27128,21 @@
 	first_time_text = "Shrine of Natures";
 	name = "Shrine of Natures"
 	})
+"shy" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "shF" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/tavern{
@@ -26794,6 +27250,13 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"slY" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "smT" = (
 /obj/structure/flora/roguetree/evil{
@@ -27267,10 +27730,21 @@
 	name = "Adventurers Guild"
 	})
 "sFI" = (
+<<<<<<< Updated upstream
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
+=======
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/effect/landmark/start/fisher,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
+>>>>>>> Stashed changes
 "sGl" = (
 /obj/structure/spacevine,
 /turf/open/floor/rogue/dirt,
@@ -28039,6 +28513,22 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"tfS" = (
+/obj/structure/rack/rogue,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/pumpkin,
+/obj/item/seeds/poppy,
+/obj/item/seeds/potato,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/tea,
+/obj/item/seeds/garlic,
+/obj/item/seeds/poppy,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "tfW" = (
 /obj/effect/wisp,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -28066,6 +28556,13 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
+	})
+"tgE" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "thA" = (
 /obj/structure/table/church,
@@ -28892,6 +29389,18 @@
 /obj/structure/roguemachine/camera/left,
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors/town/library)
+"tLG" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/closet/crate/chest,
+/obj/item/fishingrod,
+/obj/item/fishingrod,
+/obj/item/book/rogue/fishing,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "tLQ" = (
 /obj/structure/spider/stickyweb{
 	dir = 1
@@ -29089,11 +29598,31 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
+"tRC" = (
+/obj/structure/roguewindow/openclose{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "tRQ" = (
 /obj/structure/flora/roguegrass,
 /obj/effect/spawner/roguemap/shroud,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
+"tSl" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "tSH" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/fluff/railing/stonehedge,
@@ -30072,8 +30601,7 @@
 	})
 "uxS" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/tavern{
@@ -30267,6 +30795,14 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"uEq" = (
+/obj/structure/roguewindow/openclose{
+	dir = 4
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "uEB" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -30410,11 +30946,16 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
 "uKa" = (
+<<<<<<< Updated upstream
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_x = -5;
 	pixel_y = -1
 	},
+=======
+/obj/structure/flora/grass/jungle/b,
+/obj/machinery/light/rogue/firebowl/stump,
+>>>>>>> Stashed changes
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
@@ -31717,8 +32258,7 @@
 	})
 "vKK" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/outdoors/beach{
@@ -32421,6 +32961,21 @@
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/caves)
+"wmZ" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "wnj" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/open/floor/rogue/dirt,
@@ -32910,6 +33465,12 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town)
+"wGC" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
+	})
 "wGS" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -33035,6 +33596,15 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/shelter/town)
+"wLo" = (
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "wLq" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
@@ -33192,8 +33762,7 @@
 /area/rogue/under/cavewet)
 "wSb" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/tavern)
@@ -33472,6 +34041,17 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"xbJ" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "xbK" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
@@ -33589,6 +34169,14 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"xgJ" = (
+/obj/structure/roguewindow/openclose{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge"
 	})
 "xgK" = (
 /obj/structure/spacevine,
@@ -33922,6 +34510,10 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/shelter/town)
+"xre" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "xrt" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/swamp,
@@ -35011,6 +35603,12 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/river)
+"ybv" = (
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "ybI" = (
 /turf/closed/wall/shroud,
 /area/rogue/indoors/town/magician{
@@ -35092,6 +35690,13 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
+	})
+"ydj" = (
+/obj/structure/composter,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "yeq" = (
 /obj/structure/flora/grass/jungle/b,
@@ -35266,8 +35871,7 @@
 /area/rogue/indoors/shelter/town)
 "yjZ" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = 26
+	dir = 1
 	},
 /obj/structure/fluff/walldeco/masonflag,
 /turf/closed/wall/mineral/rogue/wooddark,
@@ -121603,6 +122207,7 @@ xDh
 xDh
 xDh
 beK
+<<<<<<< Updated upstream
 mDg
 mDg
 mDg
@@ -121610,6 +122215,15 @@ mDg
 mDg
 mDg
 mDg
+=======
+gOi
+gOi
+gOi
+gOi
+gOi
+gOi
+gOi
+>>>>>>> Stashed changes
 ijB
 xcU
 xDh
@@ -121805,6 +122419,7 @@ xDh
 xDh
 xcU
 ijB
+<<<<<<< Updated upstream
 mDg
 nhW
 sQW
@@ -121812,6 +122427,15 @@ lRR
 wSd
 gOi
 mDg
+=======
+gOi
+cpi
+bOO
+nsb
+wSd
+jhW
+gOi
+>>>>>>> Stashed changes
 beK
 xcU
 xDh
@@ -122007,6 +122631,7 @@ xDh
 beK
 ijB
 ijB
+<<<<<<< Updated upstream
 mDg
 wSd
 gko
@@ -122014,6 +122639,15 @@ wSd
 wSd
 vRx
 mDg
+=======
+gOi
+obP
+iGP
+wSd
+wSd
+gzK
+gOi
+>>>>>>> Stashed changes
 ijB
 beK
 uNM
@@ -122209,6 +122843,7 @@ xDh
 beK
 qJZ
 vSh
+<<<<<<< Updated upstream
 mDg
 nPw
 wSd
@@ -122216,6 +122851,15 @@ lCR
 wSd
 nsb
 mDg
+=======
+gOi
+pGd
+wSd
+cjE
+wSd
+tfS
+gOi
+>>>>>>> Stashed changes
 qJZ
 beK
 beK
@@ -122409,6 +123053,7 @@ tNb
 aBk
 xcU
 ijB
+<<<<<<< Updated upstream
 gTl
 qJZ
 mDg
@@ -122419,6 +123064,18 @@ dAc
 mDg
 mDg
 gTl
+=======
+jzL
+qJZ
+gOi
+gOi
+tRC
+gOi
+hwq
+gOi
+gOi
+jzL
+>>>>>>> Stashed changes
 qJZ
 ijB
 xDh
@@ -122611,7 +123268,11 @@ kqH
 xDh
 xDh
 qJZ
+<<<<<<< Updated upstream
 bSg
+=======
+eCm
+>>>>>>> Stashed changes
 vmN
 qJZ
 qJZ
@@ -123014,9 +123675,15 @@ tNb
 aBk
 xcU
 xDh
+<<<<<<< Updated upstream
 sJW
 uKa
 ciw
+=======
+kMF
+xbJ
+shy
+>>>>>>> Stashed changes
 qJZ
 qJZ
 tHV
@@ -123216,9 +123883,15 @@ kqH
 xcU
 xcU
 xDh
+<<<<<<< Updated upstream
 pWF
 tHV
 hFU
+=======
+hhH
+tHV
+osF
+>>>>>>> Stashed changes
 qJZ
 ijB
 ijB
@@ -123418,17 +124091,28 @@ rps
 xDh
 xDh
 xDh
+<<<<<<< Updated upstream
 ieb
 cvn
 whu
 gTl
+=======
+kLJ
+rIz
+hLN
+jzL
+>>>>>>> Stashed changes
 qJZ
 qJZ
 vmN
 beK
 qJZ
 qJZ
+<<<<<<< Updated upstream
 tHV
+=======
+uKa
+>>>>>>> Stashed changes
 qJZ
 ijB
 xDh
@@ -123620,6 +124304,7 @@ aBk
 xDh
 xDh
 xcU
+<<<<<<< Updated upstream
 dPq
 qJZ
 wKq
@@ -123627,6 +124312,15 @@ ifI
 ifI
 ifI
 uar
+=======
+dam
+qJZ
+wLo
+jpX
+tSl
+tSl
+kcK
+>>>>>>> Stashed changes
 beK
 ijB
 ijB
@@ -123822,6 +124516,7 @@ kqH
 xDh
 xDh
 xcU
+<<<<<<< Updated upstream
 pWF
 ijB
 gwG
@@ -123832,6 +124527,18 @@ wKq
 beK
 vSh
 ncO
+=======
+hhH
+ijB
+dGE
+ijB
+slY
+tgE
+wLo
+beK
+vSh
+eJH
+>>>>>>> Stashed changes
 qJZ
 ijB
 beK
@@ -124024,6 +124731,7 @@ hXM
 xDh
 xDh
 xcU
+<<<<<<< Updated upstream
 gzK
 cBx
 wsy
@@ -124033,6 +124741,17 @@ pbE
 iqZ
 beK
 euz
+=======
+bnt
+mDg
+ifI
+oFN
+oFN
+oFN
+wmZ
+beK
+ydj
+>>>>>>> Stashed changes
 tHV
 qJZ
 beK
@@ -125040,8 +125759,13 @@ rle
 qJZ
 pAs
 rle
+<<<<<<< Updated upstream
 uxy
 tjl
+=======
+ljz
+ybv
+>>>>>>> Stashed changes
 wSd
 uyD
 fhl
@@ -127472,6 +128196,7 @@ mRI
 yhI
 buM
 aaG
+<<<<<<< Updated upstream
 qEG
 buM
 xFE
@@ -127479,6 +128204,15 @@ buM
 aaG
 qEG
 oVU
+=======
+sFI
+xre
+tLG
+buM
+dRt
+sFI
+mVG
+>>>>>>> Stashed changes
 uNM
 uNM
 xDh
@@ -127680,7 +128414,11 @@ buM
 buM
 bzY
 buM
+<<<<<<< Updated upstream
 hLN
+=======
+dMB
+>>>>>>> Stashed changes
 uNM
 xDh
 xDh
@@ -127882,7 +128620,11 @@ xDh
 xDh
 xDh
 xDh
+<<<<<<< Updated upstream
 qus
+=======
+fNO
+>>>>>>> Stashed changes
 xDh
 xDh
 xDh
@@ -156550,6 +157292,7 @@ bcc
 bcc
 bcc
 bcc
+<<<<<<< Updated upstream
 sFI
 sFI
 sFI
@@ -156557,6 +157300,15 @@ sFI
 xVl
 sFI
 sFI
+=======
+kYo
+kYo
+kYo
+kYo
+uEq
+kYo
+kYo
+>>>>>>> Stashed changes
 bcc
 bcc
 bcc
@@ -156752,6 +157504,7 @@ bcc
 bcc
 bcc
 bcc
+<<<<<<< Updated upstream
 sFI
 rNW
 bhS
@@ -156759,6 +157512,15 @@ rcp
 bhS
 eDF
 sFI
+=======
+kYo
+egn
+wGC
+lqO
+wGC
+dPF
+kYo
+>>>>>>> Stashed changes
 bcc
 bcc
 bcc
@@ -156954,6 +157716,7 @@ bcc
 bcc
 bcc
 bcc
+<<<<<<< Updated upstream
 sFI
 uLs
 vjB
@@ -156961,6 +157724,15 @@ vjB
 vjB
 vjB
 sFI
+=======
+kYo
+kGx
+vjB
+vjB
+vjB
+aEQ
+kYo
+>>>>>>> Stashed changes
 bcc
 deL
 bcc
@@ -157156,6 +157928,7 @@ bcc
 bcc
 gue
 bcc
+<<<<<<< Updated upstream
 sFI
 oFN
 vjB
@@ -157163,6 +157936,15 @@ sFI
 fyb
 cdf
 sFI
+=======
+kYo
+cNS
+vjB
+kYo
+aHt
+dHG
+kYo
+>>>>>>> Stashed changes
 bcc
 bcc
 bcc
@@ -157358,6 +158140,7 @@ bcc
 bcc
 bcc
 bcc
+<<<<<<< Updated upstream
 sFI
 sFI
 mvE
@@ -157365,6 +158148,15 @@ sFI
 sFI
 sFI
 sFI
+=======
+kYo
+kYo
+xgJ
+kYo
+kYo
+kYo
+kYo
+>>>>>>> Stashed changes
 bcc
 bcc
 bcc
@@ -191900,6 +192692,7 @@ aZy
 aZy
 aZy
 aZy
+<<<<<<< Updated upstream
 aHt
 aHt
 aHt
@@ -191909,6 +192702,17 @@ aHt
 aHt
 aHt
 aHt
+=======
+cBx
+cBx
+cBx
+cBx
+cBx
+cBx
+cBx
+cBx
+cBx
+>>>>>>> Stashed changes
 aZy
 aZy
 aZy
