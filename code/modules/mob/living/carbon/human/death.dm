@@ -193,4 +193,4 @@
 	return TRUE
 
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)
+	return TRUE
