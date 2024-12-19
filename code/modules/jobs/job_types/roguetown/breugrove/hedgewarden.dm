@@ -46,21 +46,21 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/rogueweapon/mace/cudgel/thornlash
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/quiver/Parrows
-	l_hand = /obj/item/rogueweapon/woodstaff/thornlash
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1, /obj/item/roguekey/grove = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 6, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 5, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
@@ -71,6 +71,9 @@
 
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
+
 		H.change_stat("constitution", 5)
 		H.change_stat("perception", 4)
 		H.change_stat("endurance", 5)
@@ -80,6 +83,8 @@
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_VINE_WALKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)

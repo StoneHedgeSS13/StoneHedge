@@ -72,7 +72,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/dendor
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK|ITEM_SLOT_SHIRT
 	name = "briar robe"
 	desc = "Robes worn by Druid's in service to nature."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS

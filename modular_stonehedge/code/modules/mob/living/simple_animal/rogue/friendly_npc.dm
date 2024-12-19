@@ -215,6 +215,14 @@
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
+
+		if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))
+			return FALSE
+
+		if(H == lasthitter)
+			return TRUE
+
+		// Only check grove outlaw status if we can see their face
 		if(H.has_status_effect(/datum/status_effect/grove_outlaw))
 			if(!failed_arrests[H.real_name])
 				failed_arrests[H.real_name] = 0
@@ -563,7 +571,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	head = /obj/item/clothing/head/roguetown/helmet/elfbarbutewings
+	head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	if(prob(60))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -611,7 +619,7 @@ GLOBAL_LIST_EMPTY_TYPED(patrol_points, /obj/effect/landmark/townpatrol)
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	head = /obj/item/clothing/head/roguetown/helmet/elfbarbutewings
+	head = /obj/item/clothing/head/roguetown/helmet/dendorhelm
 	if(prob(60))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	gloves = /obj/item/clothing/gloves/roguetown/chain

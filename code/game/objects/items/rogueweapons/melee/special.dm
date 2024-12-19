@@ -308,35 +308,48 @@
 	icon_state = "skinningknife"
 
 
-/obj/item/rogueweapon/woodstaff/thornlash
-	name = "thornlash staff"
-	desc = "A mystical wooden staff wrapped in thorny vines. The vines pulse with druidic energy, ready to inflict nature's judgment upon wrongdoers."
-	force = 5
-	force_wielded = 10
-	possible_item_intents = list(SPEAR_BASH)
-	gripped_intents = list(SPEAR_BASH, /datum/intent/mace/smash/wood)
-	wlength = WLENGTH_LONG
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+/obj/item/rogueweapon/mace/cudgel/thornlash
+	name = "thornlash cudgel"
+	desc = "A runed cudgel wrapped in mystical thorny vines. The vines pulse with druidic energy, ready to subdue and restrain wrongdoers."
+	force = 10
+	force_wielded = 16
+	color = "#795548"
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_HIP
 	blade_dulling = DULLING_BASHCHOP
-	walking_stick = TRUE
-	max_integrity = 800
+	max_integrity = 1000
 	wdefense = 10
-	associated_skill = /datum/skill/combat/polearms
-	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg', 'sound/combat/wooshes/bladed/wooshsmall (2).ogg', 'sound/combat/wooshes/bladed/wooshsmall (3).ogg')
+	associated_skill = /datum/skill/combat/maces
 	sharpness = IS_BLUNT
 	var/cuffing = FALSE
 
-/obj/item/rogueweapon/woodstaff/thornlash/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+/obj/item/rogueweapon/mace/cudgel/thornlash/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(!nodmg && isliving(target))
 		var/mob/living/L = target
-		var/stamina_damage = wielded ? 45 : 25
+		var/stamina_damage = wielded ? 65 : 45
 		L.rogfat_add(stamina_damage)
 
-		if(L.rogfat >= L.maxrogfat)
-			L.Paralyze(6 SECONDS)
-			to_chat(L, span_danger("The thorns sap my strength, making it impossible to move!"))
+		if(prob(25))
+			L.Knockdown(4 SECONDS)
+			to_chat(L, span_danger("The thorny cudgel sweeps my legs out from under me!"))
+			user.visible_message(span_warning("[user] sweeps [L]'s legs with the thornlash cudgel!"))
+
+		if(prob(25) && iscarbon(L))
+			var/mob/living/carbon/C = L
+			var/obj/item/I = C.get_active_held_item()
+			if(I)
+				C.dropItemToGround(I)
+				to_chat(C, span_danger("The thorny vines wrap around my wrist, forcing me to drop what I'm holding!"))
+				user.visible_message(span_green("[user]'s thornlash cudgel disarms [C]!"))
+
+		if(prob(25) && iscarbon(L))
+			var/mob/living/carbon/C = L
+			C.reagents.add_reagent(/datum/reagent/medicine/soporpot, 1)
+			to_chat(C, span_danger("The thorny vines inject something into my bloodstream!"))
+			user.visible_message(span_green("[user]'s thornlash cudgel injects a substance into [C]!"))
 
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
@@ -344,13 +357,13 @@
 				cuffing = TRUE
 				user.visible_message(span_green("[user] begins wrapping [C]'s wrists with vines!"))
 				to_chat(C, span_userdanger("[user] begins wrapping my wrists with vines!"))
-				if(do_after(user, 5 SECONDS, C))
+				if(do_after(user, 3 SECONDS, C))
 					if(C.handcuffed || (!C.IsParalyzed() && C.rogfat < C.maxrogfat))
 						cuffing = FALSE
 						return
 					var/obj/item/rope/vine_cuffs = new(C)
 					vine_cuffs.name = "thorny vine restraints"
-					vine_cuffs.desc = "Restraints made from druidically-enhanced thorny vines."
+					vine_cuffs.desc = "Restraints made from druidically-enhanced thorny vines. They seem particularly difficult to break free from."
 					vine_cuffs.color = "#0F3F0F"
 					C.handcuffed = vine_cuffs
 					C.update_handcuffed()
@@ -359,3 +372,93 @@
 					playsound(C, 'sound/foley/dropsound/cloth_drop.ogg', 30, TRUE)
 					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 				cuffing = FALSE
+
+/obj/item/rogueweapon/whip/druidic
+	name = "druidic whip"
+	desc = "A mystical living whip that seems to writhe with primal energy. Three ancient runes pulse along its handle: one glows with toxic green, another with earthen brown, and the last with crimson vitality."
+	force = 15
+	force_wielded = 15
+	var/mode = 0 // 0 = normal, 1 = poison, 2 = draining, 3 = bleed
+	var/list/mode_names = list("dormant", "venomous", "draining", "thorned")
+	var/effect_message_cooldown = 0
+	var/list/slow_stacks = list()
+
+/obj/item/rogueweapon/whip/druidic/attack_self(mob/user)
+	mode = (mode + 1) % 4
+	var/effect_color
+	switch(mode)
+		if(0)
+			to_chat(user, span_green("The runes dim as the whip returns to its dormant form."))
+		if(1)
+			effect_color = "#4CAF50"
+			color = effect_color
+			to_chat(user, span_green("The poison rune flares to life with toxic energy!"))
+			var/obj/effect/temp_visual/dir_setting/rune_effect/RE = new(get_turf(user))
+			RE.color = effect_color
+		if(2)
+			effect_color = "#B39DDB"
+			color = effect_color
+			to_chat(user, span_green("The draining rune pulses with mystical power!"))
+			var/obj/effect/temp_visual/dir_setting/rune_effect/RE = new(get_turf(user))
+			RE.color = effect_color
+		if(3)
+			effect_color = "#EF5350"
+			color = effect_color
+			to_chat(user, span_green("The crimson rune blazes with thorned fury!"))
+			var/obj/effect/temp_visual/dir_setting/rune_effect/RE = new(get_turf(user))
+			RE.color = effect_color
+
+	playsound(user, 'sound/items/wood_sharpen.ogg', 50, TRUE)
+
+/obj/item/rogueweapon/whip/druidic/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+	. = ..()
+	if(!nodmg && isliving(target) && mode != 0)
+		var/mob/living/L = target
+		var/turf/T = get_turf(L)
+		var/effect_color
+		switch(mode)
+			if(1)
+				effect_color = "#4CAF50"
+				if(iscarbon(L))
+					var/mob/living/carbon/C = L
+					if(world.time > effect_message_cooldown)
+						user.visible_message(span_green("[user]'s whip exudes a toxic green mist as it strikes!"))
+						to_chat(C, span_green("Poisonous spores burst from the whip's strike, seeping into my wounds!"))
+						effect_message_cooldown = world.time + 10 SECONDS
+					C.reagents.add_reagent(/datum/reagent/toxin/berrypoison, 0.3)
+
+			if(2)
+				effect_color = "#B39DDB"
+				if(world.time > effect_message_cooldown)
+					user.visible_message(span_green("Magical vines sprout from [user]'s whip, reaching for [L]!"))
+					to_chat(L, span_green("Mystical vines wrap around my body, draining my energy!"))
+					if(iscarbon(L))
+						var/mob/living/carbon/C = L
+						if(C.rogstam > 50)
+							C.rogstam_add(-50)
+							if(iscarbon(user))
+								var/mob/living/carbon/U = user
+								U.rogstam_add(30)
+								to_chat(U, span_green("The vines transfer [L]'s energy to me!"))
+					effect_message_cooldown = world.time + 10 SECONDS
+
+			if(3)
+				effect_color = "#EF5350"
+				if(iscarbon(L))
+					var/mob/living/carbon/C = L
+					if(world.time > effect_message_cooldown)
+						user.visible_message(span_green("The whip's thorns grow and sharpen instantly as they tear into [L]!"))
+						to_chat(C, span_green("The whip's thorns pulse with primal energy as they rend my flesh!"))
+						effect_message_cooldown = world.time + 10 SECONDS
+					C.bleed(5)
+
+		if(T && effect_color)
+			new /obj/effect/temp_visual/dir_setting/bloodsplatter(T, pick(GLOB.alldirs))
+			var/obj/effect/temp_visual/dir_setting/rune_effect/RE = new(T)
+			RE.color = effect_color
+
+/obj/effect/temp_visual/dir_setting/rune_effect
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shield-flash"
+	duration = 6
+	layer = ABOVE_MOB_LAYER

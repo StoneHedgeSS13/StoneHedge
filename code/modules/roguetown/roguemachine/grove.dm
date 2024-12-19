@@ -4,11 +4,40 @@
 
 /obj/item/clothing/neck/roguetown/psicross/dendor/grove
 	name = "greater amulet of nature"
-	desc = "An enhanced amulet of nature that allows its wielder to create mystical pathways through the trees. Click any tree while holding this amulet to create druidic waygates to various locations."
+	desc = "An enhanced amulet of nature that allows its wielder to create mystical pathways through the trees. Click any tree while holding this amulet to create druidic waygates to various locations. You can also activate it in your hand to send a distress signal."
 	icon_state = "dendor"
 	var/channeling = FALSE
 	var/last_used = 0
 	var/cooldown_time = 300
+	var/last_distress = 0
+	var/distress_cooldown = 300
+
+/obj/item/clothing/neck/roguetown/psicross/dendor/grove/attack_self(mob/user)
+	. = ..()
+	if(world.time < last_distress + distress_cooldown)
+		var/remaining_time = round((last_distress + distress_cooldown - world.time)/10)
+		to_chat(user, "<span class='warning'>The amulet's distress signal hasn't yet recovered. [remaining_time] seconds remaining.</span>")
+		return
+
+	var/choice = alert(user, "Do you wish to send a distress signal to the Grove?", "Nature's Distress", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	last_distress = world.time
+
+	var/area/A = get_area(user)
+	var/message = "<span class='boldannounce'>GROVEMEMBER'S DISTRESS: [user.name] seeks assistance in [A.name]! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Waygate</a>)</span>"
+
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
+			to_chat(M, message)
+			SEND_SOUND(M, sound('sound/misc/treefall.ogg'))
+
+	to_chat(user, "<span class='green'>You grasp the amulet tightly, sending ripples of natural energy outward...</span>")
+	playsound(src, 'sound/misc/treefall.ogg', 50, TRUE)
+
+	var/obj/effect/temp_visual/shrine_activation/effect = new(get_turf(src))
+	effect.color = "#4ca64c"
 
 /obj/item/clothing/neck/roguetown/psicross/dendor/grove/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
@@ -26,7 +55,8 @@
 		return
 
 	if(world.time < last_used + cooldown_time)
-		to_chat(user, "<span class='warning'>The amulet's power hasn't yet recovered. Please wait a moment.</span>")
+		var/remaining_time = round((last_used + cooldown_time - world.time)/10)
+		to_chat(user, "<span class='warning'>The amulet's power hasn't yet recovered. [remaining_time] seconds remaining.</span>")
 		return
 
 	if(channeling)
@@ -188,7 +218,8 @@
 		return
 
 	if(world.time < last_used + cooldown_time)
-		to_chat(user, "<span class='warning'>The shrine's energy hasn't yet recovered. Please wait a moment.</span>")
+		var/remaining_time = round((last_used + cooldown_time - world.time)/10)
+		to_chat(user, "<span class='warning'>The shrine's energy hasn't yet recovered. [remaining_time] seconds remaining.</span>")
 		return
 
 	var/choice = alert(user, "Do you wish to summon the Hedge Guard?", "Grove Shrine", "Yes", "No")
@@ -201,7 +232,8 @@
 
 	last_used = world.time
 
-	var/message = "<span class='boldannounce'>GROVE SHRINE ALERT: [user.name] seeks assistance! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Waygate</a>)</span>"
+	var/area/A = get_area(user)
+	var/message = "<span class='boldannounce'>GROVE SHRINE ALERT: [user.name] seeks assistance in [A.name]! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Waygate</a>)</span>"
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
@@ -290,7 +322,8 @@
 		return
 
 	if(world.time < last_used + cooldown_time)
-		to_chat(user, "<span class='warning'>The speaking stone's energy hasn't yet recovered. Please wait a moment.</span>")
+		var/remaining_time = round((last_used + cooldown_time - world.time)/10)
+		to_chat(user, "<span class='warning'>The speaking stone's energy hasn't yet recovered. [remaining_time] seconds remaining.</span>")
 		return
 
 	var/message = stripped_input(user, "What message do you wish to convey to the town?", "Druidic Announcement", "")

@@ -28,20 +28,34 @@
 	jobtype = /datum/job/roguetown/druid
 	allowed_patrons = list(/datum/patron/divine/sylvarn)
 
+/datum/job/roguetown/druid/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	. = ..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(istype(H.cloak, /obj/item/clothing/cloak/templar/dendor))
+			var/obj/item/clothing/S = H.cloak
+			var/index = findtext(H.real_name, " ")
+			if(index)
+				index = copytext(H.real_name, 1,index)
+			if(!index)
+				index = H.real_name
+			S.name = "Breuddwyd Grove Tabard ([index])"
+
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots/forestershoes
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/whip
+	beltl = /obj/item/rogueweapon/whip/druidic
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/rogueweapon/woodstaff/aries
-	head = /obj/item/clothing/head/roguetown/dendormask
+	backr = /obj/item/rogueweapon/woodstaff/wise
+	head = /obj/item/clothing/head/roguetown/antlerhood
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor/grove
-	gloves = null
-	cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+	gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+	cloak = /obj/item/clothing/cloak/templar/dendor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	shirt = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	backpack_contents = list(
 		/obj/item/rogueweapon/sickle = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 1,
@@ -50,6 +64,7 @@
 		/obj/item/rogueweapon/huntingknife/skin = 1,
 	)
 	if(H.mind)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 
@@ -86,6 +101,8 @@
 	ADD_TRAIT(H, TRAIT_VINE_WALKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOG_TREKKING, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

@@ -243,6 +243,14 @@
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 	dynamic_hair_suffix = ""
 
+/obj/item/clothing/head/roguetown/dendormask/greatdruid
+	name = "sylvarn's grace"
+	desc = "A mask made out of enchanted wood and infused energies, worn by Great Druids of timeless wisdom and fearful mastery of nature's will."
+	icon_state = "priesthead"
+	item_state = "priesthead"
+	flags_inv = HIDEFACIALHAIR|HIDEHAIR
+	dynamic_hair_suffix = ""
+
 /obj/item/clothing/head/roguetown/necromhood
 	name = "necromancers hood"
 	color = null
@@ -725,6 +733,13 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
+
+/obj/item/clothing/head/roguetown/helmet/elfbarbutewings/Hedgeguard
+	name = "hedgeguard's helm"
+	desc = "An ironwood helm in the style of the Hedge-Guard of the Breuddwyd Grove. It's adorned with ornate thorns and iconography, signifying devotion to Sylvarn."
+	icon_state = "dendorhelm"
+	item_state = "dendorhelm"
+	color = "#9a7a54"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
