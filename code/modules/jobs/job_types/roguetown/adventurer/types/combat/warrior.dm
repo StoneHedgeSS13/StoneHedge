@@ -158,7 +158,6 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Duelist")
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
@@ -185,7 +184,7 @@
 			// beltl = /obj/item/rogueweapon/sword/rapier
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //they can already get to legendary weapon skill over martial styles so no heavy.
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
@@ -208,9 +207,8 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 			//not as fast or perceptive but more bulky and enduring in general, i suppose, one less sum of stats than rest for making up to other advantages.
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
+			H.change_stat("endurance", 2) //8 points like warrior.
 			H.change_stat("constitution", 3)
-			H.change_stat("speed", -1)
 			//has some good armor and more coins so spawns with no shield and knife etc
 			gloves = /obj/item/clothing/gloves/roguetown/brigandinegauntlets
 			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
@@ -241,7 +239,7 @@
 			H.change_stat("strength", 4)
 			H.change_stat("perception", -1) //you are going blind, but your mask will finish off the blindness for you.
 			H.change_stat("constitution", 3)
-			H.change_stat("speed", -1)
+			H.change_stat("endurance", 2)
 			//You are not gonna be able to fight without your mask, keep it from breaking..
 			mask = /obj/item/clothing/mask/rogue/facemask/leper/gold
 			gloves = /obj/item/clothing/gloves/roguetown/leather/angle/leper

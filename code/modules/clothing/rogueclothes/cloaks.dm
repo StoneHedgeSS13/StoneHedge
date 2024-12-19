@@ -1276,6 +1276,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	nodismemsleeves = TRUE
+
 /obj/item/clothing/cloak/fauld
 	name = "fauld"
 	desc = "A piece of cloth usually worn to cover the hips and part of the legs."

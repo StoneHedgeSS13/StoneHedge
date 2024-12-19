@@ -26,8 +26,8 @@
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
@@ -67,7 +67,9 @@
 	var/pain_amt = 3 //base pain amt to use
 	var/obj/item/dildo = user.get_active_held_item()
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks their cunt with \the [dildo]."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(user, 'sound/misc/mat/fingering.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 	var/obj/item/organ/filling_organ/vagina/uservagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 
 	if(prob(2))

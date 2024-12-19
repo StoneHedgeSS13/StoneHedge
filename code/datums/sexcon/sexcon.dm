@@ -55,8 +55,10 @@
 
 /datum/sex_controller/proc/do_message_signature(sigkey)
 	var/properkey = "[speed][force][sigkey]"
-	if(properkey == msg_signature && last_msg_signature + 5 SECONDS >= world.time)
-		if(prob(25))
+	if(user.rogue_sneaking || user.alpha <= 100) //stealth sex les go
+		return FALSE
+	if(properkey == msg_signature && last_msg_signature + 8 SECONDS >= world.time)
+		if(prob(40))
 			user.balloon_alert_to_viewers(pick("*plap*","*plop*","*slap*","*pap*","*slick*"))
 		return FALSE
 	msg_signature = properkey
@@ -312,7 +314,8 @@
 	set_arousal(40)
 	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
 		user.sate_addiction()
-	user.emote("sexmoanhvy", forced = TRUE)
+	if(!user.rogue_sneaking && user.alpha > 100) //stealth sex, keep your voice down.
+		user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE)||HAS_TRAIT(user, TRAIT_NYMPHO_CURSE))
@@ -445,6 +448,8 @@
 	if(arousal_amt < 1.5)
 		return
 	if(user.stat != CONSCIOUS)
+		return
+	if(user.rogue_sneaking || user.alpha <= 100) //stealth sex, keep your voice down.
 		return
 	if(last_moan + MOAN_COOLDOWN >= world.time)
 		return

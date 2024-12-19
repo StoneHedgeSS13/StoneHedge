@@ -20,6 +20,7 @@
 	/// Vrell - used for determining if the user/target should be gagged
 	var/gags_user = FALSE
 	var/gags_target = FALSE
+	var/segsovolume = 50 //volume for plaps
 
 /datum/sex_action/proc/can_perform(mob/living/user, mob/living/target)
 	return TRUE

@@ -54,10 +54,13 @@
 	return TRUE
 
 /mob/living/proc/make_sucking_noise()
+	var/suckyvolume = 25
+	if(rogue_sneaking || alpha <= 100)
+		suckyvolume *= 0.5
 	if(gender == FEMALE)
-		playsound(src, pick('sound/misc/mat/girlmouth (1).ogg','sound/misc/mat/girlmouth (2).ogg'), 25, TRUE, ignore_walls = FALSE)
+		playsound(src, pick('sound/misc/mat/girlmouth (1).ogg','sound/misc/mat/girlmouth (2).ogg'), suckyvolume, TRUE, ignore_walls = FALSE)
 	else
-		playsound(src, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 35, TRUE, ignore_walls = FALSE)
+		playsound(src, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), suckyvolume, TRUE, ignore_walls = FALSE)
 
 /mob/living/proc/get_highest_grab_state_on(mob/living/victim)
 	var/grabstate = null

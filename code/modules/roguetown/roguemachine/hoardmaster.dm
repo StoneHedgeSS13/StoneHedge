@@ -101,7 +101,7 @@
 			unlocked_cats+="Knight"
 		if("Knave")
 			unlocked_cats+="Knave"
-		if("Rogue Mage")
+		if("Bandit Mage")
 			unlocked_cats+="Mage"
 		if("Sawbones")
 			unlocked_cats+="Sawbones"

@@ -697,3 +697,14 @@
     H.verbs -= vore_verbs
     H.vore_flags &= ~SHOW_VORE_PREFS
     H.disable_vore_mode()
+
+/datum/quirk/maniac
+	name = "Cursed"
+	desc = "...I keep experiencing vivid hallucinations, What is happening here?"
+	value = -4 //it can stun you and knock you down if you get hit by a certain hallucination and make your screen shake in combat.
+
+/datum/quirk/maniac/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/zizo, TRUE)
+	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
+	H.cmode_music = 'sound/music/combat_maniac2.ogg' //You gotta understand it's very important.

@@ -154,7 +154,6 @@
 			. += span_userdanger("Hollvinr!")
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
-
 		if(commie_text)
 			. += commie_text
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
@@ -304,6 +303,11 @@
 				msg += "<B>[m1] severely wounded.</B>"
 			if(100 to INFINITY)
 				msg += span_danger("[m1] gravely wounded.")
+
+	var/datum/antagonist/vampirelord/vampness = mind.has_antag_datum(/datum/antagonist/vampirelord)
+	if(mind && vampness)
+		if(vampness && !vampness.disguised && vampness.is_solo)
+			msg += span_boldnotice("they have pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
 
 	// Blood volume
 	switch(blood_volume)

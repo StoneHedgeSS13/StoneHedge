@@ -90,3 +90,13 @@
 	name = "Freeky"
 	desc = "I can use my 'orifices' to store things and do more strange sexual things that wouldn't come to sane mind."
 	value = 0
+
+/datum/quirk/virgin
+	name = "Virgin"
+	desc = "I am a virgin, whether truly, by magic or plot holes. Vampires and cultists are likely to lust for my blood."
+	value = 0
+	gain_text = span_notice("I am a virgin.")
+
+/datum/quirk/virgin/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.virginity = TRUE

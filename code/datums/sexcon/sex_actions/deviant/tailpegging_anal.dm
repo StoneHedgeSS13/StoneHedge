@@ -21,8 +21,8 @@
 		var/mob/living/carbon/human/targethuman = target
 		if(targethuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = targethuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	var/obj/item/organ/tail/tail = user.getorganslot(ORGAN_SLOT_TAIL)
 	if(!tail?.can_penetrate)
@@ -52,7 +52,9 @@
 	if(user.sexcon.do_message_signature("[type]"))
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s butt with their tail."))
 
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(target, 'sound/misc/mat/segso.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))

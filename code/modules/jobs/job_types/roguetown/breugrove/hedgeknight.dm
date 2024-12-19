@@ -49,7 +49,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	l_hand = /obj/item/rogueweapon/woodstaff/thornlash
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/signal_horn = 1, /obj/item/roguekey/grove = 1,)
 
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
@@ -62,6 +62,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
 
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)

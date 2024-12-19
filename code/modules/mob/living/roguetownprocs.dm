@@ -29,7 +29,7 @@
 		if(used_intent.blade_class == BCLASS_CUT)
 			chance2hit += round(user.STAPER/2)
 		if(used_intent.blade_class == BCLASS_PICK) // Daggers are used on downed people to finish them off, not standing mid-fight. Downed strikes always hit target and ignore accuracy calc (above mobility flag check).
-			chance2hit -= 30 // Because daggers are WLENGTH_SHORT, this is effectively -20 accuracy, then PER, aimed style, and skill come in. Sucks for pickaxe enjoyers, but improvised weapon should be hard to aim.
+			chance2hit -= 20 // Because daggers are WLENGTH_SHORT, this is effectively -20 accuracy, then PER, aimed style, and skill come in. Sucks for pickaxe enjoyers, but improvised weapon should be hard to aim. (Edit: reduced this from 30 to 20 later on.)
 
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)

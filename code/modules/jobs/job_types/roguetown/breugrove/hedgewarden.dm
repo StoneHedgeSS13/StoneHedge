@@ -63,6 +63,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 6, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/tracking, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 4, TRUE)

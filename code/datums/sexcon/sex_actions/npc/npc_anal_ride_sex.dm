@@ -19,7 +19,9 @@
 /datum/sex_action/npc_anal_ride_sex/on_perform(mob/living/user, mob/living/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] anally rides [target]."))
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(target, 'sound/misc/mat/segso.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	if(target.sexcon.considered_limp())

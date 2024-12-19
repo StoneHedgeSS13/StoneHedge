@@ -25,8 +25,8 @@
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
@@ -49,7 +49,7 @@
 		if(wdildo.sharpness == IS_BLUNT)
 			to_chat(user, span_userdanger("\the [wdildo] will mush [target]'s insides if i am not careful.!"))
 			to_chat(user, span_smallred("I must control my <bold>speed</bold> for lesser risk."))
-			
+
 	if(istype(user.get_active_held_item(), /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/contdildo = dildo
 		if(contdildo.spillable)
@@ -61,13 +61,15 @@
 		to_chat(user, span_info("\the [fooddildo] is food, this is the wrong hole, but..."))
 		to_chat(user, span_smallred("I can <bold>force</bold> this in for faster success."))
 
-	user.visible_message(span_warning("[user] stuffs \the [dildo] in [target]'s cunt...")) 
+	user.visible_message(span_warning("[user] stuffs \the [dildo] in [target]'s cunt..."))
 
 /datum/sex_action/object_vaginal_other/on_perform(mob/living/user, mob/living/target)
 	var/pain_amt = 3 //base pain amt to use
 	var/obj/item/dildo = user.get_active_held_item()
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s cunt with \the [dildo]."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(user, 'sound/misc/mat/fingering.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 
 	if(dildo.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_SPREAD)
 		ouchietext = pick("OUCH! \the [dildo] burns [target]'s cunt!", "YOUCH! \the [dildo] burns [target]'s pussy!", "OW! \the [dildo] chars [target]'s walls!", "AGH! \the [dildo] burns [target]'s cunt!")

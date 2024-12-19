@@ -636,6 +636,7 @@
 				grinded.on_juice()
 				reagents.add_reagent_list(grinded.juice_results)
 				to_chat(user, "I juice [grinded] into a fine liquid.")
+				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
 				grinding_started = FALSE // Reset grinding status
 				return
@@ -643,6 +644,7 @@
 				grinded.on_grind()
 				reagents.add_reagent_list(grinded.grind_results)
 				to_chat(user, "I grind [grinded] into a fine powder.")
+				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
 				grinding_started = FALSE // Reset grinding status
 				return

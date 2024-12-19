@@ -1,4 +1,4 @@
-/datum/reagent/medicine/paralysispot                           // This is a tool of a hot topic. This may be removed entirely if people can abuse it in one way or another. 
+/datum/reagent/medicine/paralysispot                           // This is a tool of a hot topic. This may be removed entirely if people can abuse it in one way or another.
 	name = "Paralysis Potion"
 	description = "Paralyzes those it enters."
 	reagent_state = LIQUID
@@ -9,9 +9,10 @@
 	alpha = 225
 
 /datum/reagent/medicine/paralysispot/overdose_process(mob/living/L)
-	L.Paralyze(500)
+	L.balloon_alert_to_viewers("Paralyzed!")
+	L.Paralyze(200)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/soporpot
 	name = "Soporific Poison"
@@ -70,7 +71,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/fortitudepot))
 		holder.remove_reagent(/datum/reagent/medicine/fortitudepot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/swiftnesspot
 	name = "Swiftness Potion"
@@ -79,7 +80,7 @@
 	color = "#7efff9"
 	taste_description = "fleeting swirls"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/swiftnesspot/overdose_process(mob/living/carbon/M)
@@ -87,7 +88,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/swiftnesspot))
 		holder.remove_reagent(/datum/reagent/medicine/swiftnesspot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/alacritypot
 	name = "Alacrity Potion"
@@ -96,7 +97,7 @@
 	color = "#93c420"
 	taste_description = "carrots..?"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/alacritypot/overdose_process(mob/living/carbon/M)
@@ -104,7 +105,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/alacritypot))
 		holder.remove_reagent(/datum/reagent/medicine/alacritypot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/luckpot
 	name = "Luck Potion"
@@ -113,7 +114,7 @@
 	color = "#ceb328"
 	taste_description = "gold"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/luckpot/overdose_process(mob/living/carbon/M)
@@ -121,7 +122,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/luckpot))
 		holder.remove_reagent(/datum/reagent/medicine/luckpot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/endurancepot
 	name = "Endurance Potion"
@@ -130,7 +131,7 @@
 	color = "#2ab182"
 	taste_description = "strangely savory cider"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/endurancepot/overdose_process(mob/living/carbon/M)
@@ -138,7 +139,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/endurancepot))
 		holder.remove_reagent(/datum/reagent/medicine/endurancepot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/constitutionpot
 	name = "Ironskin Potion"
@@ -147,7 +148,7 @@
 	color = "#775c55"
 	taste_description = "iron and blood"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/constitutionpot/overdose_process(mob/living/carbon/M)
@@ -155,7 +156,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/constitutionpot))
 		holder.remove_reagent(/datum/reagent/medicine/constitutionpot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/invispot
 	name = "Invisibility Potion"
@@ -164,7 +165,7 @@
 	color = "#775c55"
 	taste_description = "my skin burning"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/invispot/overdose_process(mob/living/carbon/M)
@@ -172,7 +173,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/invispot))
 		holder.remove_reagent(/datum/reagent/medicine/invispot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/nullmagicpot
 	name = "Null Magic Potion"
@@ -181,7 +182,7 @@
 	color = "#cea4f6"
 	taste_description = "fizzing oil"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/nullmagicpot/overdose_process(mob/living/carbon/M)
@@ -189,7 +190,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/nullmagicpot))
 		holder.remove_reagent(/datum/reagent/medicine/nullmagicpot, 20)
 	..()
-	. = 1 
+	. = 1
 /datum/reagent/medicine/trekkersdelight
 	name = "Trekker's Delight"
 	description = "Makes one immune turf slowdown."
@@ -197,7 +198,7 @@
 	color = "#463612"
 	taste_description = "salt and murk"
 	overdose_threshold = 16
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/trekkersdelight/overdose_process(mob/living/carbon/M)
@@ -209,7 +210,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/trekkersdelight))
 		holder.remove_reagent(/datum/reagent/medicine/trekkersdelight, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/intellectpot
 	name = "Intellect Potion"
@@ -218,7 +219,7 @@
 	color = "#00ffa6"
 	taste_description = "whispering insight"
 	overdose_threshold = 19
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/intellectpot/overdose_process(mob/living/carbon/M)
@@ -226,7 +227,7 @@
 	if(holder.has_reagent(/datum/reagent/medicine/intellectpot))
 		holder.remove_reagent(/datum/reagent/medicine/intellectpot, 20)
 	..()
-	. = 1 
+	. = 1
 
 /datum/reagent/medicine/virilitypot
 	name = "Virlity Potion"
@@ -235,7 +236,7 @@
 	color = "#759cbf"
 	taste_description = "aching virility"
 	overdose_threshold = 9
-	metabolization_rate = 0.2 * REAGENTS_METABOLISM 
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	alpha = 225
 
 /datum/reagent/medicine/virilitypot/overdose_process(mob/living/carbon/M)
@@ -243,4 +244,4 @@
 	if(holder.has_reagent(/datum/reagent/medicine/virilitypot))
 		holder.remove_reagent(/datum/reagent/medicine/virilitypot, 10)
 	.. ()
-	. = 1 
+	. = 1

@@ -42,7 +42,7 @@
 	H.change_stat("intelligence", -3)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
-	var/weapons = list("Axe & Cudgel","Flail & Shield")
+	var/weapons = list("Axe & Cudgel","Flail & Shield","Magic")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -56,6 +56,16 @@
 			beltr = /obj/item/rogueweapon/flail
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+		if("Magic")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/forcewall_weak)
+			H.mind.adjust_spellpoints(1) //Hybrid tax
+			H.change_stat("strength", -2) //Not as strong or tough as a brigand, but much smarter
+			H.change_stat("endurance", -1)
+			H.change_stat("constitution", -1)
+			H.change_stat("intelligence", 4)
+			r_hand = /obj/item/rogueweapon/mace/cudgel
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
