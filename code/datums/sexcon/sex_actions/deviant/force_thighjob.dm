@@ -51,7 +51,7 @@
 	if(user.rogue_sneaking || user.alpha <= 100)
 		segsovolume *= 0.5
 	playsound(user, 'sound/misc/mat/fingering.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
-	do_thrust_animate(target, user)
+	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
 
