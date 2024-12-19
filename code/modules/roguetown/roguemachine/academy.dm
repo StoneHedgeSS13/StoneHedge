@@ -902,14 +902,11 @@
 
 /obj/structure/mineral_door/wood/fancywood/academy/Open()
 	. = ..()
-	if(!isSwitchingStates && !disabled_by_nullmagic)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(autoclose)), 10 SECONDS)
 
 /obj/structure/mineral_door/wood/fancywood/academy/proc/autoclose()
-	if(!isSwitchingStates && !density)
-		Close()
-		if(!disabled_by_nullmagic)
-			locked = TRUE
+	Close()
+	locked = TRUE
 
 /obj/structure/mineral_door/wood/fancywood/academy/proc/reactivate_wards()
 	if(!disabled_by_nullmagic)
