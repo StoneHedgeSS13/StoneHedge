@@ -1042,6 +1042,14 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
+"aJT" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "aJU" = (
 /obj/structure/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -4290,13 +4298,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/caves)
 "dav" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "day" = (
@@ -7235,7 +7237,17 @@
 	first_time_text = "The Dreamers Demesne.."
 	})
 "eSs" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "eSy" = (
@@ -11451,17 +11463,11 @@
 /area/rogue/indoors/cave/minotaurcave)
 "hRL" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/turf/open/floor/rogue/hexstone,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "hRU" = (
 /obj/item/natural/rock/gem,
@@ -14979,7 +14985,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "kgY" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermenting_barrel/random/ale,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "khc" = (
@@ -16468,6 +16474,16 @@
 /area/rogue/indoors/town/bath{
 	first_time_text = "The Dreamers Demesne.."
 	})
+"lge" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
+/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "lgz" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/greenstone,
@@ -21154,6 +21170,15 @@
 /obj/structure/flora/grass/jungle,
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
+"onz" = (
+/obj/structure/rack/rogue,
+/obj/item/reagent_containers/glass/cup/steel,
+/obj/item/reagent_containers/glass/cup/steel,
+/obj/item/reagent_containers/glass/cup/steel,
+/obj/item/reagent_containers/glass/cup/steel,
+/obj/item/reagent_containers/glass/cup/steel,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "onM" = (
 /obj/structure/grove_shrine,
 /turf/open/floor/rogue/dirt/nrich{
@@ -22080,10 +22105,6 @@
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "oWd" = (
@@ -22947,6 +22968,13 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"pBf" = (
+/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "pBr" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
@@ -23928,6 +23956,10 @@
 /obj/effect/wisp,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/river)
+"qdz" = (
+/obj/structure/fermenting_barrel/random/beer,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/tavern)
 "qdB" = (
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_x = 8;
@@ -26806,6 +26838,12 @@
 "rTo" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/exposed/tavern)
+"rTr" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
+	name = "Hisso"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "rTC" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -27846,9 +27884,7 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/under/cavewet)
 "sHV" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
-	name = "Hisso"
-	},
+/obj/structure/fermenting_barrel/random/beer/wine,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "sIo" = (
@@ -35947,10 +35983,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "yhX" = (
@@ -125369,11 +125401,11 @@ gPq
 idf
 idf
 idf
-vaE
-vaE
-vaE
-vaE
-vaE
+wZG
+wZG
+wZG
+wZG
+wZG
 lhD
 lhD
 lhD
@@ -125572,13 +125604,13 @@ idf
 idf
 wZG
 wZG
-wZG
-wZG
-wZG
-wZG
-lhD
-lhD
-qJZ
+iiU
+iiU
+iiU
+iiU
+iiU
+iiU
+iiU
 qMs
 qJZ
 lwK
@@ -125774,13 +125806,13 @@ idf
 idf
 wZG
 wZG
-wZG
-wZG
-wZG
-wZG
-lhD
-lhD
-doa
+iiU
+hAj
+tGs
+dav
+tGs
+aJT
+iiU
 qJZ
 qMs
 qJZ
@@ -125977,11 +126009,11 @@ ucG
 oCe
 oCe
 iiU
-iiU
-iiU
-iiU
-iiU
-iiU
+lge
+tGs
+tGs
+tGs
+hRL
 evw
 evw
 evw
@@ -126179,7 +126211,7 @@ eaT
 oCe
 oCe
 iiU
-hAj
+pBf
 tGs
 dav
 tGs
@@ -126383,9 +126415,9 @@ oCe
 iiU
 yhT
 tGs
+dav
 tGs
-tGs
-eSs
+onz
 evw
 jTd
 rSY
@@ -126989,7 +127021,7 @@ oCe
 iiU
 rno
 tGs
-tGs
+qdz
 tGs
 adr
 evw
@@ -127191,9 +127223,9 @@ oCe
 iiU
 rsR
 tGs
-hRL
 tGs
-eSs
+tGs
+rTr
 evw
 buU
 sJQ
