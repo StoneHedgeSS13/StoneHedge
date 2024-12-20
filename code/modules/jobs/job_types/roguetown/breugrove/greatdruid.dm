@@ -20,7 +20,7 @@
 
 	display_order = JDO_GREATDRUID
 	selection_color = JCOLOR_GROVE
-	give_bank_account = FALSE
+	give_bank_account = 800
 	min_pq = 15
 	max_pq = null
 
@@ -52,7 +52,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff/wise
-	head = /obj/item/clothing/head/roguetown/dendormask/greatdruid
+	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm/greatdruid
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor/grove
 	gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded

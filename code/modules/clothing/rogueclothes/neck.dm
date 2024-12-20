@@ -186,37 +186,33 @@
 	salvage_result = /obj/item/natural/hide/cured
 	clothing_flags = null
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
-	. = ..()
-	name = "cursed collar"
-	clothing_flags = null
+/obj/item/clothing/neck/roguetown/gorget/servant
+	name = "enchanted servant collar"
+	desc = "This collar makes me obligated to heed to orders from the citizens of the Town, and restricts my movements..."
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/neck/roguetown/gorget/servant/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!(src in user.held_items))
 		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
-	if(usr.job == "Great Druid" || usr.job == "Druid" || usr.job == "Hedge Warden" || usr.job == "Hedge Knight" || usr.job == "Ovate")
-		to_chat(usr, span_warning("I disable the collar's enchanted locking mechanism. It will only reactivate when worn again."))
+/obj/item/clothing/neck/roguetown/gorget/servant/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK)
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+		ADD_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+		user.visible_message(span_warning("[user] is bound by the collar's enchantment."), \
+			span_warning("This collar makes me heed to orders from the citizens of the Town, unless those orders will result in self harm, forced sexual interactions, or orders that will indirectly or directly harm the town or its population. It also restricts my movement."))
+		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
+
+/obj/item/clothing/neck/roguetown/gorget/servant/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
+	if(stripper.job == "Great Druid" || stripper.job == "Druid" || stripper.job == "Hedge Warden" || stripper.job == "Hedge Knight" || stripper.job == "Ovate")
+		to_chat(stripper, span_warning("I disable the collar's enchanted locking mechanism. It will only reactivate when worn again."))
 		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		return TRUE
 	else
 		return ..()
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/servant
-	name = "enchanted bounty-collar"
-	desc = "This collar makes me obligated to heed to orders from the citizens of the Town, and restricts my movements..."
-
-/obj/item/clothing/neck/roguetown/gorget/prisoner/servant/equipped(mob/living/carbon/human/user, slot)
-	. = ..()
-	if(slot == SLOT_NECK)
-		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-		ADD_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
-		to_chat(user, span_warning("This collar makes me heed to orders from the citizens of the Town, unless those orders will result in self harm, forced sexual interactions, or orders that will indirectly or directly harm the town or its population. It also restricts my movement."))
-		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
-
-/obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/user)
+/obj/item/clothing/neck/roguetown/gorget/servant/dropped(mob/user)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -224,6 +220,20 @@
 	if(prisoner.get_item_by_slot(SLOT_NECK) != src)
 		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		REMOVE_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+
+
+/obj/item/clothing/neck/roguetown/gorget/servant/imprisoned
+	name = "enchanted prisoner collar"
+	desc = "This collar makes me obligated to heed to orders from anyone, and restricts my movements..."
+
+/obj/item/clothing/neck/roguetown/gorget/servant/imprisoned/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK)
+		user.visible_message(span_warning("[user] is bound by the collar's enchantment."), \
+			span_warning("This collar makes me heed to orders from anyone, unless those orders will result in self harm or forced sexual interactions."))
+		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
+
+
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "divine Symbol"

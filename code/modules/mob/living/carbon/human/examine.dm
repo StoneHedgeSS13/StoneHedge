@@ -129,7 +129,7 @@
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("OUTLAW!")
 
-		if(istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/slavecollar)||istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/prisoner/servant))
+		if(istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/slavecollar)||istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/servant/imprisoned))
 			. += span_notice("It's a slave.")
 		if(mind)
 			var/mob/living/carbon/human/H = mind.current

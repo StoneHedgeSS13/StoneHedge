@@ -21,7 +21,7 @@
 
 /datum/outfit/job/roguetown/prisonerd/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner/servant
+	neck = /obj/item/clothing/neck/roguetown/gorget/servant
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights/stockings
 	else

@@ -13,7 +13,7 @@
 	display_order = JDO_OVATE
 	selection_color = JCOLOR_GROVE
 	outfit = /datum/outfit/job/roguetown/ovate
-	give_bank_account = 30
+	give_bank_account = 200
 	min_pq = 0
 	max_pq = null
 

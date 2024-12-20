@@ -26,7 +26,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner/servant
+	neck = /obj/item/clothing/neck/roguetown/gorget/servant/imprisoned
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights/stockings
 	else
@@ -65,7 +65,7 @@
 	ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ATHEISM_CURSE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ENDOWMENT, TRAIT_GENERIC)
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
+	neck = /obj/item/clothing/neck/roguetown/gorget/servant/imprisoned
 	H.change_stat("strength", -20)
 	H.change_stat("intelligence", -20)
 	H.change_stat("constitution", -20)

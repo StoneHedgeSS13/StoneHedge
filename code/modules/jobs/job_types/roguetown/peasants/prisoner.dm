@@ -22,7 +22,7 @@
 
 /datum/outfit/job/roguetown/prisonerr/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
+	neck = /obj/item/clothing/neck/roguetown/gorget/servant
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 1, TRUE)
@@ -47,4 +47,4 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
-		
+

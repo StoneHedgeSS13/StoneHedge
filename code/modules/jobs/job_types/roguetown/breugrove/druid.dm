@@ -19,8 +19,8 @@
 	tutorial = "You are a Druid of the Breuddwyd Grove, a sacred keeper of both natural and traditional law. Drawing power from the ancient spirits of the land, you maintain harmony between civilization and wilderness. As one of the Grove's spiritual authorities and Town's legal authorities, you interpret the wisdom written in both legal scrolls and forest leaves. Your judgments flow from the eternal laws of nature - as a stream shapes the stones, so too does justice shape society. While wielding primal magic and communing with beasts, your paramount duty is to preserve balance: mediating between town and wild, settling disputes through ancient rites, and ensuring both human law and nature's code are respected. Like the great oak that bridges earth and sky, you stand between the ordered realm of civilization and the raw power of the wilderness, drawing wisdom from both to maintain the sacred harmony."
 
 	display_order = JDO_DRUID
-	give_bank_account = FALSE
-	min_pq = 5
+	give_bank_account = 400
+	min_pq = 10
 	max_pq = null
 
 /datum/outfit/job/roguetown/druid

@@ -243,14 +243,6 @@
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 	dynamic_hair_suffix = ""
 
-/obj/item/clothing/head/roguetown/dendormask/greatdruid
-	name = "sylvarn's grace"
-	desc = "A mask made out of enchanted wood and infused energies, worn by Great Druids of timeless wisdom and fearful mastery of nature's will."
-	icon_state = "priesthead"
-	item_state = "priesthead"
-	flags_inv = HIDEFACIALHAIR|HIDEHAIR
-	dynamic_hair_suffix = ""
-
 /obj/item/clothing/head/roguetown/necromhood
 	name = "necromancers hood"
 	color = null
@@ -1270,6 +1262,10 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+
+/obj/item/clothing/head/roguetown/helmet/leather/volfhelm/greatdruid
+	name = "sylvarn's pelt-covered helm"
+	desc = "A sacred helm passed between Great Druids, crafted from the pelt of one of Sylvarn's own familiars. The volf who provided this pelt was said to have lived for centuries protecting the four aspects of the Wyld Huntsman's seasons, before it was murdered by a group of adventurers for coin. It serves as a reminder that civilization is cruel, as are its people."
 
 /obj/item/clothing/head/roguetown/helmet/leather/bearhead
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP

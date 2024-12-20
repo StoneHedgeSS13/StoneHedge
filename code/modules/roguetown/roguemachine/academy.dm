@@ -5,7 +5,7 @@
 //==============================================
 /obj/structure/wardingcrystal
 	name = "ravenloft warding crystal"
-	desc = "A crystal that shimmers with a warding glow, its surface veined with crackles of arcane energy, while faint, shadowy shapes swirl within, accompanied by an eerie hum and distant whispers."
+	desc = "A crystal that shimmers with a warding glow, its surface veined with crackles of arcane energy, while faint, shadowy shapes swirl within, accompanied by an eerie hum and distant whispers. For use when the Academy is facing a great danger."
 	icon = 'icons/obj/crystal.dmi'
 	icon_state = "Crystal"
 	anchored = TRUE
@@ -13,77 +13,138 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/active = FALSE
 	var/disabled_by_nullmagic = FALSE
+	var/total_active_time = 0
+	var/max_active_time = 10 MINUTES
+	var/needs_recharge = FALSE
+	var/last_active_time = 0
+	var/sublimate_charges = 0
 
-/obj/structure/wardingcrystal/attack_hand(mob/user)
-	to_chat(user, span_neutraltext("Whosoever doth seek to commune with the spirit bound within this crystal must first bear the Academy's Arch-Keystone in hand."))
-	return TRUE
+/obj/structure/wardingcrystal/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	last_active_time = world.time
+
+/obj/structure/wardingcrystal/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/wardingcrystal/process()
+	if(active && !needs_recharge)
+		var/time_since_last = world.time - last_active_time
+		total_active_time += time_since_last
+		last_active_time = world.time
+
+		if(total_active_time >= max_active_time)
+			needs_recharge = TRUE
+			active = FALSE
+			icon_state = "Crystal_Inert"
+			visible_message(span_redtext("[src]'s energies fade as it enters a depleted state!"))
+			playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+			for(var/obj/structure/academyward/ward in world)
+				if(!istype(ward, /obj/structure/academyward/perm))
+					ward.density = FALSE
+					ward.alpha = 0
+					ward.invisibility = INVISIBILITY_MAXIMUM
+
+/obj/structure/wardingcrystal/examine(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.job == "Academy Archmage" || H.job == "Academy Mage" || H.job == "Academy Apprentice")
+			if(needs_recharge)
+				. += span_redtext("The crystal's energies are depleted and requires [10 - sublimate_charges] more arcyne sublimate to recharge.")
+			else
+				var/time_left = max_active_time - total_active_time
+				. += span_notice("The crystal has enough arcyne sublimate for [round(time_left/600, 0.1)] minutes.")
 
 /obj/structure/wardingcrystal/attackby(obj/item/I, mob/user, params)
-    . = ..()
+	. = ..()
 
-    if(istype(I, /obj/item/clothing/ring/keystone/archkey))
-        var/obj/item/clothing/ring/keystone/archkey/key = I
-        if(!key.active)
-            to_chat(user, span_warning("The Archkeystone must first be activated. (Right-click to activate)"))
-            return
+	if(needs_recharge && istype(I, /obj/item/reagent_containers/powder/sublimate))
+		to_chat(user, span_notice("You begin feeding arcyne sublimate into the crystal's matrix..."))
+		if(do_after(user, 5 SECONDS, target = src))
+			sublimate_charges++
+			if(sublimate_charges >= 10)
+				sublimate_charges = 0
+				total_active_time = 0
+				needs_recharge = FALSE
+				icon_state = "Crystal"
+				playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+				visible_message(span_blue("[src] pulses with renewed energy as it absorbs the final sublimate!"))
+			else
+				visible_message(span_notice("[src] absorbs the sublimate. [10 - sublimate_charges] more needed for full recharge."))
+			qdel(I)
+		return TRUE
 
-        if(disabled_by_nullmagic)
-            audible_message(span_neutraltext("[user] begins channeling magical energy into the crystal..."), 7)
-            if(do_after(user, 10 SECONDS, target = src))
-                disabled_by_nullmagic = FALSE
-                audible_message(span_hear("The crystal rings out with a clear, harmonious tone as its power returns!"), 7)
-                for(var/mob/living/L in range(5, src))
-                    to_chat(L, span_blue("The crystal pulses with renewed vigor as arcane energy flows through it, its veins of power rekindling with brilliant light as ancient magicks stir once more within."), 7)
-                icon_state = "Crystal"
-                playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
-                for(var/obj/structure/academyward/ward in world)
-                    if(!istype(ward, /obj/structure/academyward/perm))
-                        ward.density = active
-                        ward.alpha = active ? 125 : 0
-                        ward.invisibility = active ? null : INVISIBILITY_MAXIMUM
-                return TRUE
-            return
+	if(istype(I, /obj/item/clothing/ring/keystone/archkey))
+		var/obj/item/clothing/ring/keystone/archkey/key = I
+		if(!key.active)
+			to_chat(user, span_warning("The Arch-Keystone must first be activated. (Right-click to activate)"))
+			return
 
-        audible_message(span_neutraltext("[user] begins channeling energy through the keystone..."), 7)
-        if(do_after(user, 3 SECONDS, target = src))
-            active = !active
-            for(var/obj/structure/academyward/ward in world)
-                if(!istype(ward, /obj/structure/academyward/perm))
-                    ward.density = active
-                    ward.alpha = active ? 125 : 0
-                    ward.invisibility = active ? null : INVISIBILITY_MAXIMUM
+		if(disabled_by_nullmagic)
+			audible_message(span_neutraltext("[user] begins channeling magical energy into the crystal..."), 7)
+			if(do_after(user, 10 SECONDS, target = src))
+				disabled_by_nullmagic = FALSE
+				audible_message(span_hear("The crystal rings out with a clear, harmonious tone as its power returns!"), 7)
+				for(var/mob/living/L in range(5, src))
+					to_chat(L, span_blue("The crystal pulses with renewed vigor as arcane energy flows through it, its veins of power rekindling with brilliant light as ancient magicks stir once more within."), 7)
+				icon_state = "Crystal"
+				playsound(src, 'sound/magic/churn.ogg', 50, TRUE)
+				for(var/obj/structure/academyward/ward in world)
+					if(!istype(ward, /obj/structure/academyward/perm))
+						ward.density = active
+						ward.alpha = active ? 125 : 0
+						ward.invisibility = active ? null : INVISIBILITY_MAXIMUM
+				return TRUE
+			return
 
-            if(active)
-                audible_message(span_blue("A chorus of ethereal chimes echoes through the air as the academy's wards spring to life!"), 7)
-            else
-                audible_message(span_blue("The magical harmonies fade to silence as the academy's wards dissipate."), 7)
-            return TRUE
-        return
+		if(needs_recharge)
+			to_chat(user, span_warning("The crystal's energies are depleted and requires arcyne sublimate to recharge."))
+			return
 
-    if(disabled_by_nullmagic)
-        to_chat(user, span_warning("The crystal remains dark and unresponsive. An Archmage's power might be able to reinvigorate it..."))
-        return
+		audible_message(span_neutraltext("[user] begins channeling energy through the keystone..."), 7)
+		if(do_after(user, 3 SECONDS, target = src))
+			active = !active
+			if(active)
+				last_active_time = world.time
+			for(var/obj/structure/academyward/ward in world)
+				if(!istype(ward, /obj/structure/academyward/perm))
+					ward.density = active
+					ward.alpha = active ? 125 : 0
+					ward.invisibility = active ? null : INVISIBILITY_MAXIMUM
 
-    if(istype(I, /obj/item/clothing/ring/active/nomag))
-        var/obj/item/clothing/ring/active/nomag/ring = I
-        if(!ring.active)
-            to_chat(user, span_warning("The ring must first be activated. (Right-click to activate)"))
-            return
+			if(active)
+				audible_message(span_blue("A chorus of ethereal chimes echoes through the air as the academy's wards spring to life!"), 7)
+			else
+				audible_message(span_blue("The magical harmonies fade to silence as the academy's wards dissipate."), 7)
+			return TRUE
+		return
 
-        audible_message(span_cultlarge("[user] begins channeling null magic into the crystal..."), 7)
-        if(do_after(user, 5 SECONDS, target = src))
-            disabled_by_nullmagic = TRUE
-            icon_state = "Crystal_Inert"
-            audible_message(span_cultlarge("The crystal shudders violently as its arcane energies are disrupted, its inner light dimming to a dull, lifeless shade."), 7)
-            playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
-            for(var/obj/structure/academyward/ward in world)
-                if(!istype(ward, /obj/structure/academyward/perm))
-                    ward.density = FALSE
-                    ward.alpha = 0
-                    ward.invisibility = INVISIBILITY_MAXIMUM
-        return TRUE
+	if(disabled_by_nullmagic)
+		to_chat(user, span_warning("The crystal remains dark and unresponsive. An Archmage's power might be able to reinvigorate it..."))
+		return
 
-    return ..()
+	if(istype(I, /obj/item/clothing/ring/active/nomag))
+		var/obj/item/clothing/ring/active/nomag/ring = I
+		if(!ring.active)
+			to_chat(user, span_warning("The ring must first be activated. (Right-click to activate)"))
+			return
+
+		audible_message(span_cultlarge("[user] begins channeling null magic into the crystal..."), 7)
+		if(do_after(user, 5 SECONDS, target = src))
+			disabled_by_nullmagic = TRUE
+			icon_state = "Crystal_Inert"
+			audible_message(span_cultlarge("The crystal shudders violently as its arcane energies are disrupted, its inner light dimming to a dull, lifeless shade."), 7)
+			playsound(src, 'sound/magic/antimagic.ogg', 50, TRUE)
+			for(var/obj/structure/academyward/ward in world)
+				if(!istype(ward, /obj/structure/academyward/perm))
+					ward.density = FALSE
+					ward.alpha = 0
+					ward.invisibility = INVISIBILITY_MAXIMUM
+		return TRUE
+
+	return ..()
 
 //==============================================
 //	Defensive Wards

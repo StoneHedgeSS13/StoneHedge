@@ -15,7 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/hedgeknight
 
-	give_bank_account = 1500
+	give_bank_account = 400
 	min_pq = 10
 	max_pq = null
 	cmode_music = 'sound/music/combat_bog.ogg'

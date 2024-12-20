@@ -389,6 +389,7 @@
 	switch(mode)
 		if(0)
 			to_chat(user, span_green("The runes dim as the whip returns to its dormant form."))
+			color = null
 		if(1)
 			effect_color = "#4CAF50"
 			color = effect_color

@@ -12,33 +12,6 @@
 	var/last_distress = 0
 	var/distress_cooldown = 300
 
-/obj/item/clothing/neck/roguetown/psicross/dendor/grove/attack_self(mob/user)
-	. = ..()
-	if(world.time < last_distress + distress_cooldown)
-		var/remaining_time = round((last_distress + distress_cooldown - world.time)/10)
-		to_chat(user, "<span class='warning'>The amulet's distress signal hasn't yet recovered. [remaining_time] seconds remaining.</span>")
-		return
-
-	var/choice = alert(user, "Do you wish to send a distress signal to the Grove?", "Nature's Distress", "Yes", "No")
-	if(choice != "Yes")
-		return
-
-	last_distress = world.time
-
-	var/area/A = get_area(user)
-	var/message = "<span class='boldannounce'>GROVEMEMBER'S DISTRESS: [user.name] seeks assistance in [A.name]! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name]'>Create Waygate</a>)</span>"
-
-	for(var/mob/M in GLOB.player_list)
-		if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
-			to_chat(M, message)
-			SEND_SOUND(M, sound('sound/misc/treefall.ogg'))
-
-	to_chat(user, "<span class='green'>You grasp the amulet tightly, sending ripples of natural energy outward...</span>")
-	playsound(src, 'sound/misc/treefall.ogg', 50, TRUE)
-
-	var/obj/effect/temp_visual/shrine_activation/effect = new(get_turf(src))
-	effect.color = "#4ca64c"
-
 /obj/item/clothing/neck/roguetown/psicross/dendor/grove/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
@@ -152,6 +125,49 @@
 	for(var/mob/M in view(7, T))
 		to_chat(M, "<span class='green'>[AM] emerges from a druidic waygate!</span>")
 
+//distress signal code, made after the shrine which is why it looks a little wonky
+
+/obj/item/clothing/neck/roguetown/psicross/dendor/grove/attack_self(mob/user)
+	. = ..()
+	if(world.time < last_distress + distress_cooldown)
+		var/remaining_time = round((last_distress + distress_cooldown - world.time)/10)
+		to_chat(user, "<span class='warning'>The amulet's distress signal hasn't yet recovered. [remaining_time] seconds remaining.</span>")
+		return
+
+	var/choice = alert(user, "Do you wish to send a distress signal to the Grove?", "Nature's Distress", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	last_distress = world.time
+	var/turf/alert_location = get_turf(user)
+	var/area/A = get_area(user)
+	var/message = "<span class='boldannounce'>GROVEMEMBER'S DISTRESS: [user.name] seeks assistance in [A.name]! (<a href='?src=[REF(src)];alert_response=1;caller=[user.name];x=[alert_location.x];y=[alert_location.y];z=[alert_location.z]'>Create Waygate</a>)</span>"
+
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind && (M.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
+			to_chat(M, message)
+			SEND_SOUND(M, sound('sound/misc/treefall.ogg'))
+
+	to_chat(user, "<span class='green'>You grasp the amulet tightly, sending ripples of natural energy outward...</span>")
+	playsound(src, 'sound/misc/treefall.ogg', 50, TRUE)
+
+	var/obj/effect/temp_visual/shrine_activation/effect = new(get_turf(src))
+	effect.color = "#4ca64c"
+
+/obj/item/clothing/neck/roguetown/psicross/dendor/grove/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+
+	if(!href_list["alert_response"])
+		return
+
+	var/target_x = text2num(href_list["x"])
+	var/target_y = text2num(href_list["y"])
+	var/target_z = text2num(href_list["z"])
+	var/turf/target_turf = locate(target_x, target_y, target_z)
+
+	create_emergency_waygate(usr, target_turf, href_list["caller"])
 
 //landmarks to add new waygates
 
@@ -254,11 +270,15 @@
 	if(!href_list["alert_response"])
 		return
 
-	var/mob/living/responder = usr
-	if(!responder?.mind || !(responder.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
-		return
+	create_emergency_waygate(usr, get_turf(src), href_list["caller"])
 
-	var/caller = href_list["caller"]
+/proc/create_emergency_waygate(mob/living/responder, turf/destination_turf, caller_name)
+	if(!responder?.mind || !(responder.mind.assigned_role in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight")))
+		return FALSE
+
+	if(!destination_turf)
+		to_chat(responder, "<span class='warning'>Unable to locate the destination!</span>")
+		return FALSE
 
 	var/obj/structure/flora/target_tree = null
 	for(var/obj/structure/flora/T in view(1, responder))
@@ -268,10 +288,10 @@
 
 	if(!target_tree)
 		to_chat(responder, "<span class='warning'>You need to be next to a tree to create a waygate!</span>")
-		return
+		return FALSE
 
 	responder.visible_message("<span class='green'>Ancient roots burst from the ground around [target_tree] as [responder] channels nature's call!</span>", \
-							"<span class='green'>You begin channeling druidic energy to create a quick waygate to aid [caller]!</span>")
+							"<span class='green'>You begin channeling druidic energy to create a quick waygate to aid [caller_name]!</span>")
 
 	if(do_after(responder, 100, target = target_tree))
 		var/obj/effect/portal/waygate/P = new(get_turf(target_tree))
@@ -280,23 +300,24 @@
 		P.icon = 'icons/effects/effects.dmi'
 		P.icon_state = "anom"
 		P.color = "#45b726"
-		P.linked_turf = get_turf(src)
+		P.linked_turf = destination_turf
 
 		var/old_density = target_tree.density
 		target_tree.density = FALSE
-		addtimer(CALLBACK(src, PROC_REF(restore_tree_density), target_tree, old_density), 10 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(restore_emergency_tree_density), target_tree, old_density), 10 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 		playsound(target_tree, 'sound/misc/treefall.ogg', 50, TRUE)
 		new /obj/effect/temp_visual/grove_portal_transit(get_turf(target_tree))
 		responder.visible_message("<span class='green'>A mystical portal springs forth from the twisted roots!</span>", \
 								"<span class='green'>You successfully create a waygate!</span>")
+		return TRUE
 	else
 		to_chat(responder, "<span class='warning'>Your druidic channeling was interrupted!</span>")
+		return FALSE
 
-/obj/structure/grove_shrine/proc/restore_tree_density(atom/target, old_density)
+/proc/restore_emergency_tree_density(atom/target, old_density)
 	if(target)
 		target.density = old_density
-
 
 //==============================================
 // speaking stone
@@ -364,10 +385,22 @@
 	anchored = TRUE
 	density = TRUE
 	var/list/marked_individuals = list()
+	var/list/roundstart_marks = list()
 
 /obj/structure/grove_wanted/Initialize()
 	. = ..()
 	add_overlay("vines")
+	check_for_marked_status()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/grove_wanted/process()
+	check_for_marked_status()
+
+/obj/structure/grove_wanted/proc/check_for_marked_status()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(H.has_status_effect(/datum/status_effect/grove_outlaw) && !marked_individuals[H.real_name] && !roundstart_marks[H.real_name])
+			var/datum/status_effect/grove_outlaw/G = H.has_status_effect(/datum/status_effect/grove_outlaw)
+			roundstart_marks[H.real_name] = G.crime || "Crimes Against Nature"
 
 /obj/structure/grove_wanted/attack_hand(mob/living/user)
 	. = ..()
@@ -390,7 +423,7 @@
 			if(!mark_target)
 				return
 
-			if(marked_individuals[mark_target])
+			if(marked_individuals[mark_target] || roundstart_marks[mark_target])
 				to_chat(user, span_warning("[mark_target] is already marked by the Grove!"))
 				return
 
@@ -407,7 +440,7 @@
 
 			for(var/mob/living/carbon/human/M in GLOB.player_list)
 				if(M.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight"))
-					to_chat(M, span_green("<b>Grove's Judgment Alert:</b> [mark_target] has been marked for [reason] by [user.real_name]."))
+					to_chat(M, span_green("<b>Grove Judgment Alert:</b> [mark_target] has been marked for [reason] by [user.real_name]."))
 					playsound(M, 'sound/misc/treefall.ogg', 50, TRUE)
 
 			for(var/mob/living/carbon/human/C in GLOB.player_list)
@@ -416,25 +449,29 @@
 					playsound(C, 'sound/misc/treefall.ogg', 50, TRUE)
 
 		if("Remove Mark")
-			if(!length(marked_individuals))
+			var/list/all_marked = marked_individuals.Copy()
+			all_marked += roundstart_marks
+
+			if(!length(all_marked))
 				to_chat(user, span_notice("There are currently no individuals marked by the Grove."))
 				return
 
-			var/mark_target = input(user, "Select individual to unmark:", "Remove Mark") as null|anything in marked_individuals
+			var/mark_target = input(user, "Select individual to unmark:", "Remove Mark") as null|anything in all_marked
 			if(!mark_target)
 				return
 
-			var/reason = marked_individuals[mark_target]
+			var/reason = all_marked[mark_target]
 			marked_individuals -= mark_target
+			roundstart_marks -= mark_target
 
 			log_admin("[key_name(user)] has removed the mark from [mark_target] using the grove marking totem. They were previously marked for: [reason]")
 			message_admins("[key_name_admin(user)] has removed the mark from [mark_target] using the grove marking totem. They were previously marked for: [reason]")
 
-			priority_announce("[mark_target] has been pardoned by the Grove and no longer suffer the mark of nature's judgment.", "Breuddwyd Grove", 'sound/misc/notice.ogg')
+			priority_announce("[mark_target] has been pardoned for their crimes by the Grove and no longer suffers nature's wrath.", "Breuddwyd Grove", 'sound/misc/notice.ogg')
 
 			for(var/mob/living/carbon/human/M in GLOB.player_list)
 				if(M.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight"))
-					to_chat(M, span_green("<b>Grove's Judgment Alert:</b> [mark_target] has been pardoned by [user.real_name]."))
+					to_chat(M, span_green("<b>Grove Judgment Alert:</b> [mark_target] has been pardoned by [user.real_name]."))
 					playsound(M, 'sound/misc/treefall.ogg', 50, TRUE)
 
 			for(var/mob/living/carbon/human/C in GLOB.player_list)
@@ -444,19 +481,26 @@
 
 /obj/structure/grove_wanted/examine(mob/user)
 	. = ..()
-	if(!length(marked_individuals))
+	var/list/all_marked = marked_individuals.Copy()
+	all_marked += roundstart_marks
+
+	if(!length(all_marked))
 		. += span_notice("There are currently no individuals marked by the Grove.")
 		return
 
 	. += span_notice("The following individuals are marked by the Grove:")
-	for(var/marked in marked_individuals)
-		. += span_warning("- [marked]: [marked_individuals[marked]]")
+	for(var/marked in all_marked)
+		. += span_warning("- [marked]: [all_marked[marked]]")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.real_name == marked)
-				user.visible_message(span_warning("[user] bears the mark of nature's judgment: [marked_individuals[marked]]"), \
-								span_warning("You bear the mark of nature's judgment: [marked_individuals[marked]]"))
+				user.visible_message(span_warning("[user] bears the mark of nature's judgment: [all_marked[marked]]"), \
+								span_warning("You bear the mark of nature's judgment: [all_marked[marked]]"))
+
+/obj/structure/grove_wanted/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /datum/status_effect/grove_outlaw
 	id = "grove_outlaw"
