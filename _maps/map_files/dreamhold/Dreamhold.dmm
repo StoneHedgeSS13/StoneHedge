@@ -2277,6 +2277,14 @@
 "bEj" = (
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
+"bEy" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "bEH" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
@@ -5412,6 +5420,20 @@
 /obj/structure/flora/junglebush/large,
 /turf/open/water/swamp,
 /area/rogue/under/cavewet/bogcaves)
+"dMm" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "dNq" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -6166,13 +6188,6 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
-"eic" = (
-/obj/structure/closet/crate/roguecloset/inn/south,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/cave)
 "eiw" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love."
@@ -10562,14 +10577,6 @@
 /area/rogue/outdoors/rtfield{
 	first_time_text = null
 	})
-"hlu" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/tavern)
 "hlz" = (
 /obj/structure/stairs{
 	dir = 8
@@ -11050,19 +11057,10 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/warehouse)
 "hAj" = (
-/obj/effect/decal/cleanable/cobweb,
 /obj/structure/closet/crate/roguecloset/inn/south,
-/obj/item/roguekey/roomii,
-/obj/item/roguekey/roomiii,
-/obj/item/roguekey/roomi,
-/obj/item/roguekey/roomiv,
-/obj/item/roguekey/roomv,
-/obj/item/roguekey/roomvi,
-/obj/item/roguekey/roomiv,
-/obj/item/roguekey/roomv,
-/obj/item/roguekey/roomvii,
-/obj/item/roguekey/roomviii,
-/obj/item/roguekey/roominnkeep,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "hBe" = (
@@ -11463,17 +11461,32 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
 "hRL" = (
-/obj/structure/rack/rogue,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/item/roguekey/roomii,
+/obj/item/roguekey/roomiii,
+/obj/item/roguekey/roomi,
+/obj/item/roguekey/roomiv,
+/obj/item/roguekey/roomv,
+/obj/item/roguekey/roomvi,
+/obj/item/roguekey/roomiv,
+/obj/item/roguekey/roomv,
+/obj/item/roguekey/roomvii,
+/obj/item/roguekey/roomviii,
+/obj/item/roguekey/roominnkeep,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
+/area/rogue/indoors/cave)
 "hRU" = (
 /obj/item/natural/rock/gem,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
+	})
+"hRY" = (
+/turf/open/floor/rogue/hexstone,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "hSg" = (
 /obj/structure/spacevine,
@@ -12779,6 +12792,13 @@
 	first_time_text = "Druids Grove";
 	name = "Grove"
 	})
+"iJM" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
+/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "iJR" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/exposed/church{
@@ -15460,20 +15480,6 @@
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
 	})
-"kvn" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/tavern)
 "kvz" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -18656,9 +18662,6 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
-"mGV" = (
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/cave)
 "mHk" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -20656,10 +20659,6 @@
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
 	})
-"nTV" = (
-/obj/structure/fermenting_barrel/random/beer,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/tavern)
 "nTZ" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -21025,6 +21024,16 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"oht" = (
+/obj/structure/fermenting_barrel,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/cave)
+"oio" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
+	name = "Hisso"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "oiw" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/dirt/road,
@@ -22971,12 +22980,6 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
-"pAG" = (
-/turf/open/floor/rogue/hexstone,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
 "pBr" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
@@ -24085,12 +24088,6 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove)
-"qgK" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
-	name = "Hisso"
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/tavern)
 "qgM" = (
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/blocks,
@@ -24130,13 +24127,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
-"qhU" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
-/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/tavern)
 "qiz" = (
 /obj/structure/closet/crate/chest/refilling/medicine,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
@@ -25452,6 +25442,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"qVG" = (
+/obj/structure/fermenting_barrel/random/beer,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/tavern)
 "qVU" = (
 /turf/closed/wall/shroud,
 /area/rogue/outdoors/woods{
@@ -25572,6 +25566,9 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"qZw" = (
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/cave)
 "qZN" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass/fungus_bush,
@@ -30246,6 +30243,13 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
+"uiJ" = (
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "uiV" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "tavern";
@@ -31369,10 +31373,6 @@
 	name = "Shrine of Elysius";
 	first_time_text = "Shrine of Elysius"
 	})
-"uTs" = (
-/obj/structure/fermenting_barrel,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/cave)
 "uTS" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/end{
 	dir = 4
@@ -125816,11 +125816,11 @@ idf
 wZG
 wZG
 dlN
-eic
-mGV
-uTs
-pAG
 hRL
+qZw
+oht
+hRY
+uiJ
 cns
 qJZ
 qMs
@@ -126018,11 +126018,11 @@ ucG
 oCe
 oCe
 iiU
-qhU
+iJM
 tGs
 tGs
 tGs
-hlu
+bEy
 evw
 evw
 evw
@@ -126426,7 +126426,7 @@ yhT
 tGs
 dav
 tGs
-kvn
+dMm
 evw
 jTd
 rSY
@@ -127030,7 +127030,7 @@ oCe
 iiU
 rno
 tGs
-nTV
+qVG
 tGs
 adr
 evw
@@ -127234,7 +127234,7 @@ rsR
 tGs
 tGs
 tGs
-qgK
+oio
 evw
 buU
 sJQ
