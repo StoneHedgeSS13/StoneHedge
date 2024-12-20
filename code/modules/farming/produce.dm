@@ -333,6 +333,7 @@
 	foodtype = SUGAR
 	tastes = list("sugar" = 1)
 	grind_results = list(/datum/reagent/sugar = 10)
+	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/rum
 
 /obj/item/reagent_containers/food/snacks/grown/pumpkin
