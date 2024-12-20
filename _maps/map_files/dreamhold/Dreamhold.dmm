@@ -4290,13 +4290,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/caves)
 "dav" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "day" = (
@@ -6172,6 +6166,13 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
 	})
+"eic" = (
+/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/cave)
 "eiw" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love."
@@ -7235,7 +7236,11 @@
 	first_time_text = "The Dreamers Demesne.."
 	})
 "eSs" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "eSy" = (
@@ -10557,6 +10562,14 @@
 /area/rogue/outdoors/rtfield{
 	first_time_text = null
 	})
+"hlu" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "hlz" = (
 /obj/structure/stairs{
 	dir = 8
@@ -11450,19 +11463,12 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
 "hRL" = (
-/obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/tavern)
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "hRU" = (
 /obj/item/natural/rock/gem,
 /turf/open/floor/rogue/dirt,
@@ -14979,7 +14985,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "kgY" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermenting_barrel/random/ale,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "khc" = (
@@ -15454,6 +15460,20 @@
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
 	})
+"kvn" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "kvz" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -18636,6 +18656,9 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
+"mGV" = (
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/cave)
 "mHk" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -20633,6 +20656,10 @@
 	first_time_text = "Adventurers Guild";
 	name = "Adventurers Guild"
 	})
+"nTV" = (
+/obj/structure/fermenting_barrel/random/beer,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/tavern)
 "nTZ" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -21766,6 +21793,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/reagent_containers/glass/bucket,
+/obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -21970,7 +21998,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "oSV" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/structure/meathook,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -22080,10 +22108,6 @@
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "oWd" = (
@@ -22946,6 +22970,12 @@
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
+	})
+"pAG" = (
+/turf/open/floor/rogue/hexstone,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "pBr" = (
 /obj/machinery/light/rogue/firebowl/stump,
@@ -24055,6 +24085,12 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove)
+"qgK" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
+	name = "Hisso"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "qgM" = (
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/blocks,
@@ -24094,6 +24130,13 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
+"qhU" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
+/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "qiz" = (
 /obj/structure/closet/crate/chest/refilling/medicine,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
@@ -27846,9 +27889,7 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/under/cavewet)
 "sHV" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/tame{
-	name = "Hisso"
-	},
+/obj/structure/fermenting_barrel/random/beer/wine,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "sIo" = (
@@ -31328,6 +31369,10 @@
 	name = "Shrine of Elysius";
 	first_time_text = "Shrine of Elysius"
 	})
+"uTs" = (
+/obj/structure/fermenting_barrel,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/cave)
 "uTS" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/end{
 	dir = 4
@@ -35947,10 +35992,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "yhX" = (
@@ -125169,7 +125210,7 @@ idf
 idf
 idf
 vaE
-idf
+vaE
 vaE
 vaE
 lhD
@@ -125369,11 +125410,11 @@ gPq
 idf
 idf
 idf
-vaE
-vaE
-vaE
-vaE
-vaE
+wZG
+wZG
+wZG
+wZG
+wZG
 lhD
 lhD
 lhD
@@ -125572,13 +125613,13 @@ idf
 idf
 wZG
 wZG
-wZG
-wZG
-wZG
-wZG
-lhD
-lhD
-qJZ
+dlN
+dlN
+dlN
+dlN
+cns
+cns
+cns
 qMs
 qJZ
 lwK
@@ -125774,13 +125815,13 @@ idf
 idf
 wZG
 wZG
-wZG
-wZG
-wZG
-wZG
-lhD
-lhD
-doa
+dlN
+eic
+mGV
+uTs
+pAG
+hRL
+cns
 qJZ
 qMs
 qJZ
@@ -125977,11 +126018,11 @@ ucG
 oCe
 oCe
 iiU
-iiU
-iiU
-iiU
-iiU
-iiU
+qhU
+tGs
+tGs
+tGs
+hlu
 evw
 evw
 evw
@@ -126383,9 +126424,9 @@ oCe
 iiU
 yhT
 tGs
+dav
 tGs
-tGs
-eSs
+kvn
 evw
 jTd
 rSY
@@ -126989,7 +127030,7 @@ oCe
 iiU
 rno
 tGs
-tGs
+nTV
 tGs
 adr
 evw
@@ -127191,9 +127232,9 @@ oCe
 iiU
 rsR
 tGs
-hRL
 tGs
-eSs
+tGs
+qgK
 evw
 buU
 sJQ
@@ -160525,7 +160566,7 @@ bjQ
 bjQ
 lwK
 kqH
-fbr
+kqH
 bcc
 bcc
 bcc
@@ -160727,7 +160768,7 @@ tNb
 tNb
 tNb
 kqH
-fbr
+kqH
 bcc
 bcc
 bcc
