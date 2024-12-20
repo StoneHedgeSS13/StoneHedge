@@ -106,8 +106,8 @@
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
-				if(HU.marriedto == src)
-					HU.adjust_triumphs(-1)
+				// if(HU.marriedto == src) STONEKEEP REMOVAL START
+				// 	HU.adjust_triumphs(-1) STONEKEEP REMOVAL END
 				if(HU != src && !HAS_TRAIT(HU, TRAIT_BLIND))
 					if(HU.dna?.species && dna?.species)
 						if(HU.dna.species.id == dna.species.id)
@@ -151,8 +151,8 @@
 		if(CA != src && !HAS_TRAIT(CA, TRAIT_BLIND))
 			if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
 				continue
-			if(CA.marriedto == src)
-				CA.adjust_triumphs(-1)
+			// if(CA.marriedto == src) STONEKEEP REMOVAL
+			// 	CA.adjust_triumphs(-1) STONEKEEP REMOVAL
 			var/mob/living/carbon/V = CA
 			if(V.has_flaw(/datum/charflaw/addiction/maniac))
 				V.add_stress(/datum/stressevent/viewgibmaniac)

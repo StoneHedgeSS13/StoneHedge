@@ -212,11 +212,13 @@
 //may need to go back on this autistic fluid based pregnancy to old one where its based on vaginal sex since it may not be working.
 /datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
 	. = ..()
-	if(istype(A, /obj/item/organ/filling_organ) && virile)
-		var/obj/item/organ/filling_organ/forgan = A
-		if(forgan.fertility && !forgan.pregnant)
-			if(prob(trans_volume/3)) //i was gonna make it have a chance each tick but couldnt, this works somewhat same ig
-				forgan.be_impregnated() //boom
+	var/obj/item/organ/filling_organ/vagina/forgan = A
+	if(!istype(forgan) || !virile)
+		return
+	if(!forgan.fertility || forgan.pregnant)
+		return
+	if(prob(trans_volume / 3)) //i was gonna make it have a chance each tick but couldnt, this works somewhat same ig
+		forgan.be_impregnated() //boom
 
 /datum/reagent/consumable/cum/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))

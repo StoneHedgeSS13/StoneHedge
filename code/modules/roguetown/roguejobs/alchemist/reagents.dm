@@ -206,11 +206,10 @@
 	alpha = 200
 
 /datum/reagent/medicine/antipregnancy/on_mob_life(mob/living/carbon/M)
-	if(istype(holder, /obj/item/organ/filling_organ))
-		var/obj/item/organ/filling_organ/forgan = holder
-		if(forgan.pregnant)
-			forgan.undo_preggoness()
-	M.add_nausea(0.2)
+	var/obj/item/organ/filling_organ/vagina/forgan = holder
+	if(istype(forgan) && forgan.pregnant)
+		forgan.undo_preggoness()
+	M.add_nausea(2)
 	..()
 	. = 1
 

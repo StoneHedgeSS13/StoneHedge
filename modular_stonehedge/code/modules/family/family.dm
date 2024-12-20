@@ -1,6 +1,8 @@
+GLOBAL_DATUM_INIT(families, /datum/family, new)
 
 /datum/family
 	var/list/families
+	var/list/family_offer = list()
 
 /datum/family/New()
 	. = ..()
@@ -68,7 +70,7 @@
 /datum/family/proc/find_player_info(family_id)
 	// json format for families.json
 	//	[family_id: {
-	// 		ckey, character, gender, motherhood_stage
+	// 		ckey: string, character: string, gender: string, motherhood_stage: number, unknown_children: number
 	//		relations: [
 	//			{id, relation}
 	//			{id, relation}, 
@@ -138,11 +140,11 @@
 /datum/family/proc/assign_family(mob/target)
 	if(!target?.client?.prefs?.family_id)
 		return
-	var/family_id = target.client.prefs.family_id
+	var/target_family_id = target.client.prefs.family_id
 	if(!ishuman(target))
 		CRASH("tried to assign family properties to a non-human mob!")
 	var/mob/living/carbon/human/human_target = target
-	var/list/relations = get_family_info(family_id)
+	var/list/relations = get_family_info(target_family_id)
 	if(!length(relations))
 		return
 	var/list/relatives = list()
@@ -156,7 +158,8 @@
 				continue
 			relatives[player] += relation["relation"]
 	human_target.relatives = relatives
-	check_motherhood(family_id)
+	var/stage = check_motherhood(target_family_id)
+	handle_motherhood(stage)
 	// update_family_hud(target, relatives)
 
 

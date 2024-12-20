@@ -26,7 +26,7 @@
 	var/pregnant = FALSE // is it pregnant
 	var/preggotimer //dumbass timer
 	var/pre_pregnancy_size = 0
-	var/obj/item/organ/pregnantaltorgan = null //change to switch which organ grows from pregnancy of this one. 
+	var/obj/item/organ/belly/pregnantaltorgan = null //change to switch which organ grows from pregnancy of this one. 
 
 	//misc
 	var/list/altnames = list("bugged place", "bugged organ") //used in thought messages.
@@ -160,51 +160,93 @@
 									to_chat(H, span_info("Phew, I maintain my [pick(altnames)]'s grip on [english_list(contents)]."))
 				break		
 
-/obj/item/organ/filling_organ/proc/be_impregnated()
-	if(pregnant)
+/obj/item/organ/filling_organ/vagina/proc/be_impregnated(silent = FALSE)
+	if(pregnant || !pregnantaltorgan || !owner || owner.stat == DEAD)
 		return
+	if(!silent && owner.has_quirk(/datum/quirk/selfawaregeni))
+		to_chat(owner, span_love("I feel a surge of warmth in my [src], I’m definitely pregnant!"))
+	pregnant = TRUE
+	pre_pregnancy_size = pregnantaltorgan.organ_size
+	preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggo_growth)), 2 HOURS, TIMER_STOPPABLE)
+
+	var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
+	if(breasties && !breasties.refilling && owner.has_quirk(/datum/quirk/selfawaregeni))
+		to_chat(owner, span_love("My [breasties] should start lactating soon..."))
+	breasties.refilling = TRUE
+	RegisterSignal(SSticker, COMSIG_ROUNDEND, PROC_REF(save_preggo))
+	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(undo_preggoness))
+
+/obj/item/organ/filling_organ/vagina/proc/save_preggo()
+	if(!owner && !pregnant && owner.stat == DEAD)
+		return
+	// technically, there's 4 stages, and motherhood needs to consider that, and the other number is to increment it next time
+	owner.set_persistent_motherhood_stage(pregnantaltorgan.organ_size + 2)
+
+/obj/item/organ/filling_organ/vagina/proc/handle_preggo_growth()
 	if(!owner)
 		return
-	if(owner.stat == DEAD)
+	if(organ_size < 3)
+		set_preggo_stage(pregnantaltorgan.organ_size + 1)
+
+/obj/item/organ/filling_organ/vagina/proc/set_preggo_stage(stage = 1)
+	if(!pregnant || !pregnantaltorgan)
 		return
-	if(owner.has_quirk(/datum/quirk/selfawaregeni))
-		to_chat(owner, span_love("I feel a surge of warmth in my [src], I’m definitely pregnant!"))
-	reagents.maximum_volume *= 0.5 //ick ock, should make the thing recalculate on next life tick.
-	pregnant = TRUE
-	if(owner.getorganslot(ORGAN_SLOT_BREASTS)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
-		var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
-		if(!breasties.refilling)
-			breasties.refilling = TRUE
-			if(owner.has_quirk(/datum/quirk/selfawaregeni))
-				to_chat(owner, span_love("My breasts should start lactating soon..."))
-		if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
-			pre_pregnancy_size = pregnantaltorgan.organ_size
-			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 2 HOURS, TIMER_STOPPABLE)
-		else
-			pre_pregnancy_size = organ_size
-			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 2 HOURS, TIMER_STOPPABLE)
-
-/obj/item/organ/filling_organ/proc/handle_preggoness()
-	var/datum/sprite_accessory/acc = accessory_type
-	to_chat(owner, span_love("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
+	to_chat(owner, span_love("I noticed my [pregnantaltorgan] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
-		if(organ_size < 3)
-			organ_size += 1
-			acc.get_icon_state()
-			owner.update_body_parts(TRUE)
-			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 2 HOURS, TIMER_STOPPABLE)
-		else
-			deltimer(preggotimer)
+		pregnantaltorgan.set_preggoness_stage(stage)
+	if(preggotimer)
+		deltimer(preggotimer)
+	preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggo_growth)), 2 HOURS, TIMER_STOPPABLE)
+	pregnancy_debuff(stage * 2)
 
-/obj/item/organ/filling_organ/proc/undo_preggoness()
+/obj/item/organ/filling_organ/vagina/proc/pregnancy_debuff(debuff_value = 1)
+	// normalize stats, and then debuff them.
+	if(pregnancy_stat_debuff_multiplier)
+		owner.change_stat(STAT_SPEED, -pregnancy_stat_debuff_multiplier)
+		owner.change_stat(STAT_ENDURANCE, -pregnancy_stat_debuff_multiplier)
+	if(debuff_value == 0)
+		return
+	pregnancy_stat_debuff_multiplier = debuff_value
+	owner.change_stat(STAT_SPEED, debuff_value)
+	owner.change_stat(STAT_ENDURANCE, debuff_value)
+
+/obj/item/organ/filling_organ/vagina
+	var/pregnancy_stat_debuff_multiplier = 0
+
+/obj/item/organ/filling_organ/vagina/Remove(mob/living/carbon/M, special, drop_if_replaced)
+	// yes you can remove the breasts, then remove this organ to have it refilling forever, but I do not care.
+	if(pregnant)
+		undo_preggoness()
+	. = ..() // this nulls owner
+
+/obj/item/organ/belly/proc/set_preggoness_stage(stage = 1, silent = FALSE)
+	var/datum/sprite_accessory/acc = accessory_type
+	organ_size = stage
+	acc.get_icon_state() // unsure the function of this
+	owner.update_body_parts(TRUE)
+
+/obj/item/organ/filling_organ/vagina/proc/undo_preggoness()
 	if(!pregnant)
 		return
+
+	UnregisterSignal(SSticker, COMSIG_ROUNDEND)
+	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	deltimer(preggotimer)
 	pregnant = FALSE
-	to_chat(owner, span_love("I feel my [src] shrink to how it was before. Pregnancy is no more."))
-	if(owner.getorganslot(ORGAN_SLOT_BELLY))
-		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
-		var/datum/sprite_accessory/belly/bellyacc = bellyussy.accessory_type
-		bellyussy.organ_size = pre_pregnancy_size
+
+	var/obj/item/organ/belly/belly = owner.getorganslot(ORGAN_SLOT_BELLY)
+	if(belly)
+		to_chat(owner, span_love("I feel my [belly] shrink to how it was before. Pregnancy is no more."))
+		var/datum/sprite_accessory/belly/bellyacc = belly.accessory_type
+		belly.organ_size = pre_pregnancy_size
 		bellyacc.get_icon_state()
+
+	var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
+	if(breasties)
+		addtimer(CALLBACK(breasties, TYPE_PROC_REF(/obj/item/organ/filling_organ/breasts, normalize_breasts)), 2 HOURS)
+
 	owner.update_body_parts(TRUE)
+	pregnancy_debuff(0)
+
+/obj/item/organ/filling_organ/breasts/proc/normalize_breasts()
+	refilling = FALSE

@@ -109,10 +109,10 @@
 			. += span_notice("[used_name] is a [usedrole].")
 		if(HAS_TRAIT(src, TRAIT_NOBLE))
 			. += span_notice("[used_name] is a <EM>NOBLE</EM>.")
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.marriedto == name)
-				. += span_love("It's my spouse.")
+		// if(ishuman(user)) STONKEEP REMOVAL START
+		// 	var/mob/living/carbon/human/H = user
+		// 	if(H.marriedto == name)
+		// 		. += span_love("It's my spouse.") STONEKEEP REMOVAL END
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
