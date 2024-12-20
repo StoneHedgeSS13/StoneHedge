@@ -95,7 +95,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 40
 	taste_description = "rum"
 	glass_name = "glass of rum"
-	color = "#ef7f16"
+	color = "#bc8a4c"
 
 // /datum/reagent/consumable/ethanol/beer/banana
 // 	name = "Banana Brew"
