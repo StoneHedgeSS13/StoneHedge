@@ -121,7 +121,7 @@
 
 /obj/structure/fermenting_barrel/random/shroomtea/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/shroomt, rand(0,300))
+	reagents.add_reagent(/datum/reagent/medicine/shroomt, rand(0,300))
 
 /obj/structure/fermenting_barrel/random/beer/rum/Initialize()
 	. = ..()
