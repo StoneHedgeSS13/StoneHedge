@@ -342,13 +342,6 @@
 					to_chat(grove_member, span_green("<b>Grove Judgment Alert:</b> [M.real_name] has been judged and sentenced by the POENA."))
 					playsound(grove_member, 'sound/misc/treefall.ogg', 50, TRUE)
 
-			if(M in SStreasury.bank_accounts)
-				var/money_to_take = round(SStreasury.bank_accounts[M] * 0.5)
-				if(money_to_take > 0)
-					SStreasury.bank_accounts[M] -= money_to_take
-					budget2change(money_to_take)
-					say("Extracting [money_to_take] mammons as penance.")
-
 		var/obj/item/clothing/neck/old_neck = M.get_item_by_slot(SLOT_NECK)
 		if(old_neck)
 			M.dropItemToGround(old_neck, TRUE)
