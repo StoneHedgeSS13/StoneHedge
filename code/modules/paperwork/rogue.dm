@@ -126,6 +126,16 @@
 		orders -= SO
 	return ..()
 
+/obj/item/paper/scroll/MiddleClick(mob/user)
+	var/hand_item = user.get_active_held_item()
+	if(hand_item)
+		if(istype(hand_item, /obj/item/natural/thorn) || istype(hand_item, /obj/item/natural/feather))
+			var/input_name = input("Name the scroll:")
+			if(input_name)
+				src.name = input_name
+	else
+		to_chat(user, span_warning("I need a thorn or feather to rename this scroll."))
+
 /obj/item/paper/scroll/cargo/examine(mob/user)
 	. = ..()
 //	if(signedname)
