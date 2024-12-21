@@ -591,14 +591,14 @@
 	})
 "avG" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "awc" = (
 /obj/structure/flora/grass/jungle/b,
@@ -3418,18 +3418,18 @@
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cavewet/bogcaves)
 "cvo" = (
-/obj/structure/stairs{
-	dir = 8
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
 	},
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	pixel_y = -8
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "cvD" = (
 /obj/structure/fermenting_barrel,
@@ -11557,7 +11557,15 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
-/turf/closed/wall/mineral/rogue/wooddark,
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -14080,13 +14088,12 @@
 	first_time_text = "Stonehedge"
 	})
 "jEp" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
 /obj/machinery/light/rogue/torchholder/c,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
@@ -14579,13 +14586,8 @@
 	name = "far stonehedge"
 	})
 "jUO" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
-	},
 /obj/structure/flora/grass/jungle/b,
-/turf/open/floor/rogue/twig/platform,
+/turf/open/transparent/openspace,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -28614,17 +28616,12 @@
 	})
 "tfh" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	pixel_y = -8
 	},
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "tfn" = (
 /obj/item/natural/stone,
@@ -28658,16 +28655,13 @@
 	first_time_text = "The Twilight Woods"
 	})
 "tgt" = (
-/obj/structure/flora/newbranch{
-	dir = 4
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	layer = 2.7;
-	pixel_x = 2;
+	pixel_x = 1;
 	pixel_y = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -29153,10 +29147,10 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
 "txB" = (
-/obj/structure/stairs{
-	dir = 8
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -31294,18 +31288,21 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove)
 "uQB" = (
-/obj/structure/stairs{
-	dir = 8
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	layer = 2.7;
 	pixel_x = 1;
 	pixel_y = 7
 	},
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "uQJ" = (
 /obj/structure/fluff/railing/wood{
@@ -31733,10 +31730,15 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	layer = 2.7;
-	pixel_x = 2;
+	pixel_x = 1;
 	pixel_y = 7
 	},
-/turf/open/floor/rogue/twig/platform,
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -32231,12 +32233,6 @@
 	name = "far stonehedge"
 	})
 "vzP" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
@@ -132987,7 +132983,7 @@ vrE
 sPO
 sPO
 sLh
-cvo
+sPO
 vzP
 qnW
 qnW
@@ -167732,8 +167728,8 @@ gue
 gue
 bcc
 gue
-uQB
-avG
+bcc
+bcc
 bcc
 bcc
 gue
@@ -167934,8 +167930,8 @@ bcc
 bcc
 bcc
 bcc
-tfh
-avG
+bcc
+bcc
 bcc
 bcc
 bcc
@@ -202070,7 +202066,7 @@ aZy
 aZy
 aZy
 aZy
-vey
+aZy
 oZz
 oZz
 oZz
@@ -202272,7 +202268,7 @@ aZy
 aZy
 aZy
 aZy
-vey
+aZy
 oZz
 oZz
 oZz
@@ -202474,11 +202470,11 @@ aZy
 aZy
 aZy
 aZy
-vey
-kTR
+aZy
+aZy
 jUO
-rSp
-sJC
+aZy
+oZz
 aZy
 aZy
 aZy
@@ -202676,10 +202672,10 @@ aZy
 aZy
 aZy
 oZz
-vey
-tgt
+aZy
+nXU
 oZz
-txB
+aZy
 aZy
 aZy
 aZy
@@ -202875,11 +202871,11 @@ aZy
 aZy
 aZy
 aZy
-itq
-itq
-itq
-vey
-tzc
+aZy
+aZy
+aZy
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -203076,12 +203072,12 @@ aZy
 aZy
 aZy
 aZy
-dhs
+uQB
 jEp
-wSd
-wSd
-jQX
-tzc
+avG
+avG
+cvo
+aZy
 aZy
 aZy
 aZy
@@ -203278,12 +203274,12 @@ aZy
 aZy
 aZy
 aZy
-aZy
-yhI
+tgt
+wSd
 wSd
 qqJ
-jQX
-tzc
+tfh
+aZy
 aZy
 aZy
 aZy
@@ -203480,12 +203476,12 @@ aZy
 aZy
 aZy
 aZy
-yhI
+tgt
 wSd
 wSd
 wSd
-wSd
-tzc
+txB
+aZy
 aZy
 aZy
 aZy
@@ -203682,8 +203678,8 @@ aZy
 aZy
 aZy
 aZy
-aZy
 vey
+kTR
 fhl
 fhl
 hTL
@@ -203885,8 +203881,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -204087,8 +204083,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -204289,8 +204285,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -204491,8 +204487,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -204693,8 +204689,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -204895,8 +204891,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
@@ -205097,8 +205093,8 @@ aZy
 aZy
 aZy
 aZy
-vey
-tzc
+aZy
+aZy
 aZy
 aZy
 aZy
