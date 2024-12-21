@@ -26,6 +26,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltr = /obj/item/rogueweapon/huntingknife/scissors
+	beltl = /obj/item/roguekey/tailor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/natural/bundle/fibers/full = 1)
 	H.change_stat("intelligence", 2)
