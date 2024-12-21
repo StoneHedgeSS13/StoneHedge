@@ -591,9 +591,17 @@
 	})
 "avG" = (
 /obj/structure/fluff/railing/wood{
-	pixel_y = -8
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
 	},
-/turf/open/floor/rogue/twig/platform,
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -3417,15 +3425,9 @@
 /area/rogue/under/cavewet/bogcaves)
 "cvo" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -4884,12 +4886,22 @@
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/under/cavewet)
 "dsQ" = (
-/obj/structure/flora/newleaf{
-	dir = 8;
-	icon_state = "branch-end1"
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
 	},
-/turf/closed/wall/mineral/rogue/decowood,
-/area/rogue/indoors/town)
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "duf" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newleaf{
@@ -9743,12 +9755,14 @@
 	first_time_text = "The Twilight Woods"
 	})
 "gBt" = (
-/obj/structure/flora/newleaf{
-	dir = 4;
-	icon_state = "branch-end1"
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
 	},
-/turf/closed/wall/mineral/rogue/decowood,
-/area/rogue/indoors/town)
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors{
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
+	})
 "gBA" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -14175,11 +14189,10 @@
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/shelter/town)
 "jHV" = (
-/obj/structure/flora/newleaf{
-	icon_state = "branch-end1"
+/obj/machinery/light/rogue/wallfire{
+	pixel_y = 32
 	},
-/obj/structure/ladder,
-/turf/open/floor/rogue/ruinedwood/platform,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "jHZ" = (
 /obj/structure/roguewindow/openclose,
@@ -24604,13 +24617,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
-"qwr" = (
-/obj/structure/flora/newleaf{
-	dir = 1;
-	icon_state = "branch-end1"
-	},
-/turf/closed/wall/mineral/rogue/decowood,
-/area/rogue/indoors/town)
 "qwx" = (
 /mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -28618,18 +28624,6 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
-"tfh" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
 "tfn" = (
 /obj/item/natural/stone,
 /turf/open/water/swamp/deep,
@@ -28663,17 +28657,9 @@
 	})
 "tgt" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	pixel_y = -8
 	},
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/twig,
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -28820,16 +28806,6 @@
 /obj/effect/particle_effect/smoke,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
-"tiG" = (
-/obj/structure/flora/newleaf{
-	icon_state = "branch-extend"
-	},
-/obj/structure/ladder,
-/turf/open/floor/rogue/rooftop/green,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
 "tjr" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/town)
@@ -29160,14 +29136,12 @@
 /area/rogue/under/cavewet/bogcaves)
 "txB" = (
 /obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
 	},
-/obj/structure/fluff/railing/wood{
-	pixel_y = -8
-	},
-/turf/open/floor/rogue/twig/platform,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -31305,17 +31279,6 @@
 /obj/structure/chair/arrestchair,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove)
-"uQB" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
-	})
 "uQJ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -31740,9 +31703,14 @@
 /area/rogue/under/cavewet/bogcaves)
 "vey" = (
 /obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/structure/fluff/railing/wood{
 	pixel_y = -8
 	},
-/turf/open/floor/rogue/twig,
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -170953,7 +170921,7 @@ wxB
 olY
 dgC
 bEj
-dsQ
+hRw
 oAL
 aKb
 hRw
@@ -171154,8 +171122,8 @@ bcc
 dww
 hRw
 hRw
-qwr
-xjn
+hRw
+hRw
 jHV
 oYD
 rqb
@@ -171357,7 +171325,7 @@ bcc
 hRw
 jsC
 iaH
-gBt
+hRw
 oan
 dFV
 bEj
@@ -203076,11 +203044,11 @@ aZy
 aZy
 aZy
 aZy
-tgt
+dsQ
 jEp
-uQB
-uQB
-txB
+cvo
+cvo
+vey
 aZy
 aZy
 aZy
@@ -203278,11 +203246,11 @@ aZy
 aZy
 aZy
 aZy
-tfh
+txB
 wSd
 wSd
 qqJ
-avG
+tgt
 aZy
 aZy
 aZy
@@ -203480,11 +203448,11 @@ aZy
 aZy
 aZy
 aZy
-tfh
+txB
 wSd
 wSd
 wSd
-vey
+gBt
 aZy
 aZy
 aZy
@@ -203682,7 +203650,7 @@ aZy
 aZy
 aZy
 aZy
-cvo
+avG
 kTR
 fhl
 fhl
@@ -206103,7 +206071,7 @@ ezT
 emL
 emL
 dRc
-tiG
+duf
 duf
 yaD
 tVr
