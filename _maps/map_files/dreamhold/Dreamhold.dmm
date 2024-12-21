@@ -591,11 +591,6 @@
 	})
 "avG" = (
 /obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/obj/structure/fluff/railing/wood{
 	pixel_y = -8
 	},
 /turf/open/floor/rogue/twig/platform,
@@ -3428,9 +3423,9 @@
 	pixel_y = 7
 	},
 /obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -19350,7 +19345,9 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/structure/roguemachine/merchantvend,
+/obj/structure/roguemachine/merchantvend{
+	lockid = "tailor"
+	},
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town)
 "ndV" = (
@@ -28666,6 +28663,12 @@
 	})
 "tgt" = (
 /obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_x = -5;
 	pixel_y = -1
@@ -29156,6 +29159,11 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
 "txB" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
+	},
 /obj/structure/fluff/railing/wood{
 	pixel_y = -8
 	},
@@ -31299,15 +31307,9 @@
 /area/rogue/outdoors/woods/grove)
 "uQB" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -203074,11 +203076,11 @@ aZy
 aZy
 aZy
 aZy
-cvo
+tgt
 jEp
-tgt
-tgt
-avG
+uQB
+uQB
+txB
 aZy
 aZy
 aZy
@@ -203280,7 +203282,7 @@ tfh
 wSd
 wSd
 qqJ
-txB
+avG
 aZy
 aZy
 aZy
@@ -203680,7 +203682,7 @@ aZy
 aZy
 aZy
 aZy
-uQB
+cvo
 kTR
 fhl
 fhl
