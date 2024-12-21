@@ -358,60 +358,92 @@
 	..()
 	H.STASTR = 8
 	if(is_species(H, /datum/species/goblin/moon))
-		H.STASPD = 16
+		H.STASPD = 15
 	else
-		H.STASPD = 14
+		H.STASPD = 13
 	H.STACON = 6
 	H.STAEND = 15
 	if(is_species(H, /datum/species/goblin/moon))
-		H.STAINT = 8
+		H.STAINT = 9
 	else
-		H.STAINT = 4
-	var/loadout = rand(1,6)
+		H.STAINT = 7
+	var/loadout = rand(1,7)
 	switch(loadout)
-		if(1) //tribal spear
-			r_hand = /obj/item/rogueweapon/spear/stone
-			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
-		if(2) //tribal axe
-			r_hand = /obj/item/rogueweapon/stoneaxe
-			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
-		if(3) //tribal club
-			r_hand = /obj/item/rogueweapon/mace/woodclub
-			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
-			if(prob(10))
-				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-		if(4) //lightly armored sword/flail/daggers
-			if(prob(50))
-				r_hand = /obj/item/rogueweapon/sword/iron
-			else
-				r_hand = /obj/item/rogueweapon/mace/spiked
-			if(prob(30))
-				l_hand = /obj/item/rogueweapon/shield/wood
-			if(prob(23))
-				r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-				l_hand = /obj/item/rogueweapon/huntingknife/stoneknife
+
+		if(1) //spear
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/spear
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-		if(5) //heavy armored sword/flail/shields
-			if(prob(30))
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(2) //axe
+			H.change_stat("strength", 1)
+			H.change_stat("speed", -1)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/stoneaxe/handaxe
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
 			if(prob(80))
-				head = /obj/item/clothing/head/roguetown/helmet/goblin
-			else
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
 			if(prob(50))
-				r_hand = /obj/item/rogueweapon/sword/iron
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(3) //maces
+			H.change_stat("strength", 2)
+			H.change_stat("speed", -2)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE) //Just in cast a player takes over an npc
+			r_hand = /obj/item/rogueweapon/mace
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(4) //knives
+			H.change_stat("strength", -1)
+			H.change_stat("speed", 1)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/huntingknife/idagger
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/huntingknife/idagger
+			else	
+				if(prob(50))
+					l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(5) //swords
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/sword/iron
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(6) //heavy armored sergeants
+			H.change_stat("strength", 3)
+			H.change_stat("speed", -1)
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+			head = /obj/item/clothing/head/roguetown/helmet/goblin
+			if(prob(50))
+				r_hand = /obj/item/rogueweapon/sword/sabre
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE) //They lived through enough raids to get experience that matters
 			else
-				r_hand = /obj/item/rogueweapon/mace/spiked
-			if(prob(20))
-				r_hand = /obj/item/rogueweapon/flail
+				r_hand = /obj/item/rogueweapon/flail/sflail
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
 			l_hand = /obj/item/rogueweapon/shield/wood
 			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
-		if(6) //tribal club with rope for lewd
+
+		if(7) //tribal club with rope for lewd
 			r_hand = /obj/item/rogueweapon/mace/woodclub
 			l_hand = /obj/item/rope
 			//pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin //lewd goblins don't need lioncloths i guess
