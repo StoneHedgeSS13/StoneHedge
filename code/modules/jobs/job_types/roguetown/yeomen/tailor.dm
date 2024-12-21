@@ -11,7 +11,6 @@
 	tutorial = "For years, you've honed your craft in the quiet hum of sewing rooms and bustling marketplaces. From mending humble garments to creating luxurious attire fit for royalty, your hands have become unmatched in the art of needle and thread."
 
 	outfit = /datum/outfit/job/roguetown/tailor
-	outfit_female = /datum/outfit/job/roguetown/tailor/female
 	display_order = JDO_TAILOR
 	min_pq = 0
 	max_pq = null
