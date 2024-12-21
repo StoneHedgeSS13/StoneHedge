@@ -148,6 +148,12 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
+/obj/item/roguekey/tailor
+	name = "tailor key"
+	desc = "This key should open and close the tailor shop."
+	icon_state = "brownkey"
+	lockid = "tailor"
+
 /obj/item/roguekey/velder
 	name = "elder's key"
 	desc = "This key should open and close the elder's home."
