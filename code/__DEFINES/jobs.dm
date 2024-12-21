@@ -292,6 +292,8 @@
 
 #define JDO_MASON 22
 
+#define JDO_TAILOR 23
+
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
 
