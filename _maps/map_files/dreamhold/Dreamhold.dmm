@@ -595,7 +595,10 @@
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/turf/open/floor/rogue/twig,
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -3419,14 +3422,17 @@
 /area/rogue/under/cavewet/bogcaves)
 "cvo" = (
 /obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/obj/structure/fluff/railing/wood{
-	pixel_y = -8
-	},
-/turf/open/floor/rogue/twig/platform,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -24363,6 +24369,7 @@
 	color = "grey"
 	},
 /obj/structure/closet/crate/roguecloset,
+/obj/item/roguekey/tailor,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "qoW" = (
@@ -28616,9 +28623,12 @@
 	})
 "tfh" = (
 /obj/structure/fluff/railing/wood{
-	pixel_y = -8
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 1;
+	pixel_y = 7
 	},
-/turf/open/floor/rogue/twig/platform,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -28656,10 +28666,9 @@
 	})
 "tgt" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = -1
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -29150,7 +29159,7 @@
 /obj/structure/fluff/railing/wood{
 	pixel_y = -8
 	},
-/turf/open/floor/rogue/twig,
+/turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -30181,6 +30190,7 @@
 /area/rogue/indoors/shelter/town)
 "ufU" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/roguekey/tailor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
 "ufX" = (
@@ -31295,9 +31305,9 @@
 	pixel_y = 7
 	},
 /obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -5;
-	pixel_y = -1
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -31728,15 +31738,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "vey" = (
 /obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
+	pixel_y = -8
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -203072,11 +203074,11 @@ aZy
 aZy
 aZy
 aZy
-uQB
-jEp
-avG
-avG
 cvo
+jEp
+tgt
+tgt
+avG
 aZy
 aZy
 aZy
@@ -203274,11 +203276,11 @@ aZy
 aZy
 aZy
 aZy
-tgt
+tfh
 wSd
 wSd
 qqJ
-tfh
+txB
 aZy
 aZy
 aZy
@@ -203476,11 +203478,11 @@ aZy
 aZy
 aZy
 aZy
-tgt
+tfh
 wSd
 wSd
 wSd
-txB
+vey
 aZy
 aZy
 aZy
@@ -203678,7 +203680,7 @@ aZy
 aZy
 aZy
 aZy
-vey
+uQB
 kTR
 fhl
 fhl
