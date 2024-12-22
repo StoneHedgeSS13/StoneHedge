@@ -71,7 +71,7 @@
 	if(locate(/mob/living/carbon) in get_turf(src))
 		sleep(1)
 		dir = pick(GLOB.alldirs)
-		step(src, dir)	
+		step(src, dir)
 		personal_space()
 	else
 		return
@@ -153,36 +153,6 @@
 	if(!memory_saved)
 		Write_Memory(TRUE)
 	..()
-
-/mob/living/simple_animal/pet/cat/Runtime/proc/Read_Memory()
-	if(fexists("data/npc_saves/Runtime.sav")) //legacy compatability to convert old format to new
-		var/savefile/S = new /savefile("data/npc_saves/Runtime.sav")
-		S["family"] >> family
-		fdel("data/npc_saves/Runtime.sav")
-	else
-		var/json_file = file("data/npc_saves/Runtime.json")
-		if(!fexists(json_file))
-			return
-		var/list/json = json_decode(file2text(json_file))
-		family = json["family"]
-	if(isnull(family))
-		family = list()
-
-/mob/living/simple_animal/pet/cat/Runtime/proc/Write_Memory(dead)
-	var/json_file = file("data/npc_saves/Runtime.json")
-	var/list/file_data = list()
-	family = list()
-	if(!dead)
-		for(var/mob/living/simple_animal/pet/cat/kitten/C in children)
-			if(istype(C,type) || C.stat || !C.z || (C.flags_1 & HOLOGRAM_1))
-				continue
-			if(C.type in family)
-				family[C.type] += 1
-			else
-				family[C.type] = 1
-	file_data["family"] = family
-	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(file_data))
 
 /mob/living/simple_animal/pet/cat/Runtime/proc/Deploy_The_Cats()
 	cats_deployed = 1

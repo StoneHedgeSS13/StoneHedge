@@ -63,6 +63,4 @@
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
-
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
-			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
