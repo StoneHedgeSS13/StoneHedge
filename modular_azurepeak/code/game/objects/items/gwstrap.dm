@@ -25,7 +25,7 @@
 	sewrepair = TRUE
 
 /obj/item/gwstrap/attackby(obj/A, mob/living/carbon/user, params)
-	if(istype(A, /obj/item/rogueweapon/spear) || istype(A, /obj/item/rogueweapon/eaglebeak) || istype(A, /obj/item/rogueweapon/halberd) || istype(A, /obj/item/rogueweapon/estoc) || istype(A, /obj/item/rogueweapon/greatsword))
+	if(istype(A, /obj/item/rogueweapon/spear) || istype(A, /obj/item/rogueweapon/eaglebeak) || istype(A, /obj/item/rogueweapon/halberd) || istype(A, /obj/item/rogueweapon/sword/estoc) || istype(A, /obj/item/rogueweapon/greatsword))
 		if(weps == null)
 			for(var/obj/item/gwstrap/I in user.get_equipped_items(TRUE))
 				to_chat(loc, span_warning("I work the latches of my strap to holster [A]."))
@@ -59,7 +59,7 @@
 		icon = weps.icon
 		icon_state = weps.icon_state
 		experimental_onback = TRUE
-		
+
 	else
 		icon = initial(icon)
 		icon_state = initial(icon_state)
@@ -75,7 +75,7 @@
 /obj/item/gwstrap/getonmobprop(tag)
 	. = ..()
 	if(weps != null)
-		if(istype(weps, /obj/item/rogueweapon/estoc) || istype(weps, /obj/item/rogueweapon/greatsword))
+		if(istype(weps, /obj/item/rogueweapon/sword/estoc) || istype(weps, /obj/item/rogueweapon/greatsword))
 			if(tag)
 				switch(tag)
 					if("onback")
@@ -98,4 +98,3 @@
 		update_icon()
 		user.dropItemToGround(I)
 		user.dropItemToGround(src)
-		
