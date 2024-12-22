@@ -157,13 +157,6 @@
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(file_data))
 
-/mob/living/simple_animal/pet/cat/Runtime/proc/Deploy_The_Cats()
-	cats_deployed = 1
-	for(var/cat_type in family)
-		if(family[cat_type] > 0)
-			for(var/i in 1 to min(family[cat_type],100)) //Limits to about 500 cats, you wouldn't think this would be needed (BUT IT IS)
-				new cat_type(loc)
-
 /mob/living/simple_animal/pet/cat/Runtime/Initialize()
 	if(prob(5))
 		icon_state = "original"
