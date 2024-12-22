@@ -288,7 +288,7 @@
 				eyes.owner.update_sight()
 
 			if("propulsion")
-				user.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=-1.075, movetypes=GROUND)
+				user.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=-1.025, movetypes=GROUND)
 				//user.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 
 			if("magical strength")

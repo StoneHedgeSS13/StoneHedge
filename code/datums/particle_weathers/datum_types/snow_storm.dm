@@ -45,7 +45,7 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("You feel a chill.", "The cold wind is freezing you to the bone!", "How can a man who is warm, understand a man who is cold?")
+	weather_messages = list("You feel a deep chill.", "The cold wind is freezing you to the bone!")
 
 	minSeverity = 40
 	maxSeverity = 100
