@@ -171,7 +171,7 @@
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
 
-	charge_max = 500  //2 seconds
+	charge_max = 1 HOURS
 
 	warnie = "spellwarning"
 
@@ -185,46 +185,37 @@
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
 	var/mob/living/fam
+	var/mob/master
 
 /obj/effect/proc_holder/spell/self/findfamiliar/cast(mob/user = usr)
 	..()
-
 	var/familiars = list(
-		/mob/living/carbon/human/species/goblin/hell, //imp
-		/mob/living/simple_animal/hostile/retaliate/rogue/mossback, //psuedodragon
-		/mob/living/carbon/human/species/skeleton, //quasit(skeleton?)
-		/mob/living/simple_animal/shade //sprite
+		"Imp" = /mob/living/carbon/human/species/goblin/hell,
+		"Crab" = /mob/living/simple_animal/hostile/retaliate/rogue/mossback,
+		"Skeleton" = /mob/living/carbon/human/species/skeleton,
+		"Sprite" = /mob/living/simple_animal/shade,
+		"Wolf" = /mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+		"Mutated Spider" = /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+		"Buck" = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck,
+		"Rous" = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+		"Goat" = /mob/living/simple_animal/hostile/retaliate/rogue/goat,
+		"Mole" = /mob/living/simple_animal/hostile/retaliate/rogue/mole,
 		)
 	var/familiarchoice = input("Choose your familiar", "Available familiars") as anything in familiars
-
+	var/familiar_type = familiars[familiarchoice]
 	to_chat(user, span_notice("Trying to find familiar..."))
-	var/list/L = pollCandidatesForMob(
-		Question = "Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] familiar")]?",
-		jobbanType = ROLE_PAI,
-		poll_time = 20 SECONDS,
-		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
-	)
-	if(L.len > 0)
+	var/list/L = pollGhostCandidates("Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] familiar")]?", ROLE_PAI)
+
+	if(LAZYLEN(L))
+		master = user
 		var/mob/chosen_one =  pick(L)
-		fam = new familiarchoice(user.loc)
+		fam = new familiar_type(user.loc)
 		fam.key = chosen_one.key
 		to_chat(user, span_notice("Your familiar appears..."))
 		chosen_one.mind.transfer_to(fam)
 		fam.fully_replace_character_name(null, "[user]'s familiar")
 		fam.get_language_holder().omnitongue = TRUE //Grants omnitongue
-		var/valid_input_name = custom_name(user)
-		if(valid_input_name)
-			fam.fully_replace_character_name(null, "[valid_input_name]")
-		user.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/findfamiliar)
+		//user.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/findfamiliar)  Until we find a way to bring the spell back, there'll be a cooldown of 1 hour instead
 	else
 		to_chat(user, span_notice("You could not find a familiar..."))
 		revert_cast()
-
-/obj/effect/proc_holder/spell/self/findfamiliar/proc/custom_name(mob/awakener, mob/chosen_one, iteration = 1)
-	if(iteration > 5)
-		return "indecision" // The spirit of indecision
-	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))
-	if(!chosen_name) // with the way that sanitize_name works, it'll actually send the error message to the awakener as well.
-		to_chat(awakener, span_warning("Your weapon did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
-		return custom_name(awakener, iteration++)
-	return chosen_name

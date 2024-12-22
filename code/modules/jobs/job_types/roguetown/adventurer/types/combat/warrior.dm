@@ -19,7 +19,8 @@
 		"Warrior",
 		"Monster Hunter",
 		"Knight-Errant",
-		"Leper"
+		"Leper",
+		"Combattante"
 		//"Eldritch Knight", //give eldritch blast, that's it
 		//"Champion", //higher crit rate
 		//"Battle Master", //give three combat manuevers
@@ -33,7 +34,7 @@
 		"Polearms"
 	)
 
-	if(classchoice != "Leper") //lepers get big sword chungus.
+	if((classchoice != "Leper") && (classchoice != "Combattante"))//lepers get big sword chungus. and duellist get rapier
 		var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
 
 		switch(weaponschoice)
@@ -260,6 +261,40 @@
 			if(!H.has_status_effect(STATUS_EFFECT_FAKE_VIRUS))
 				H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+		//Duellist, Similar to duelists but not quite the same.
+		if("Combattante")
+			H.set_blindness(0)
+			to_chat(H, span_warning("Originating in Grenzelhoft but now known across the world, the Combattante Association Duellists handle duels in almost any capacity. Mostly observing for their own records, Combattantes also train others, or duel on people's behalf for pay. Other mercenary work sometimes comes to them, but it is not their speciality."))
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE) //One-trick, rely mostly on their rapier.
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
+			H.change_stat("strength", 1)
+			H.change_stat("endurance", 2)
+			H.change_stat("perception", 2)
+			H.change_stat("speed", 3)
+			belt = /obj/item/storage/belt/rogue/leather/black
+			beltr = /obj/item/rogueweapon/sword/rapier/combattante
+			backl = /obj/item/storage/backpack/rogue/satchel
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			head = /obj/item/clothing/head/roguetown/paddedcap/combattante
+			armor = /obj/item/clothing/suit/roguetown/armor/combattante
+			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced/combattante
+			shoes = /obj/item/clothing/shoes/roguetown/nobleboot/combattante
+			gloves = /obj/item/clothing/gloves/roguetown/leather/black
+			cloak = /obj/item/clothing/cloak/combattante
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying, /obj/item/storage/belt/rogue/pouch/coins/poor)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+			REMOVE_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+
+
 	H.give_fightingstyle(TRUE)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/secondwind)

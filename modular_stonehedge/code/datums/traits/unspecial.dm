@@ -708,4 +708,5 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.add_curse(/datum/curse/zizo, TRUE)
 	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_SOONTOWAKEUP, QUIRK_TRAIT)
 	H.cmode_music = 'sound/music/combat_maniac2.ogg' //You gotta understand it's very important.
