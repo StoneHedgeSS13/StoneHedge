@@ -6,7 +6,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_STEELHEARTED)
 
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -123,6 +122,7 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			beltl = /obj/item/rogueweapon/huntingknife
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		if("Monster Hunter")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Monsters Hunters are typically contracted champions of the common folk dedicated to the slaying of both lesser vermin and greater beasts of the wilds."))
@@ -159,6 +159,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		if("Duelist")
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 2, TRUE)
@@ -222,6 +223,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 		//leper, darkest dungeon based. Sick, blind and rotting away but has massive strength if he can land it.
 		if("Leper")
@@ -255,6 +257,7 @@
 			r_hand = /obj/item/rogueweapon/greatsword/brokensword
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			//leprosy
 			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
 				H.apply_status_effect(STATUS_EFFECT_SPASMS)
@@ -292,7 +295,6 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
-			REMOVE_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
 
 	H.give_fightingstyle(TRUE)
