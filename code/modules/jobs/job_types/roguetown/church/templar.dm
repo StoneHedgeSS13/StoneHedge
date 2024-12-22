@@ -2,7 +2,7 @@
 
 /datum/job/roguetown/templar
 	title = "Temple Paladin"
-	department_flag = CHURCHMEN
+	department_flag = DIVINETEMPLE
 	faction = "Station"
 	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to their god, swearing oaths in their service to the divine. They guard the temples and uphold their sense of divine order - while keeping a watchful eye against evil's ploy and dangerous nite-creechers. Within troubled dreams, they seek divine guidance.."
 	allowed_sexes = list(MALE, FEMALE)

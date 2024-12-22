@@ -1,0 +1,123 @@
+/datum/job/roguetown/nightswain
+	title = "Nightswain"
+	f_title = "Nightmaiden"
+	flag = NIGHTSWAIN
+	department_flag = SYLVERDRAGONNE
+	faction = "Station"
+	total_positions = 5
+	spawn_positions = 5
+
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDSPLUS
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
+
+	tutorial = "The Courtesans of the wood are renowned across the land. Such grace and Charisma coupled with beauty has inspired many bards and adventurers alike. You work for the Spymaster; attending to clientele from across the realms needs -- for a price."
+
+	outfit = /datum/outfit/job/roguetown/nightswain
+	display_order = JDO_NIGHTSWAIN
+	give_bank_account = TRUE
+	can_random = FALSE
+	min_pq = -10
+	max_pq = null
+
+/datum/outfit/job/roguetown/nightswain/pre_equip(mob/living/carbon/human/H)
+	..()
+	switch(H.patron?.type)
+		if(/datum/patron/divine/viiritri) //Eoran loadouts
+			shoes = /obj/item/clothing/shoes/roguetown/sandals
+			armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random
+			pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
+			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
+			head  = /obj/item/clothing/head/peaceflower
+		else
+			shoes = /obj/item/clothing/shoes/roguetown/shortboots
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
+			pants = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random //Added fishnet stockings to the wenches
+
+	neck = /obj/item/storage/belt/rogue/pouch
+	r_hand = /obj/item/roguekey/nightmaiden
+	l_hand = /obj/item/rogue/instrument/harp
+	pants = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random //Added fishnet stockings to the wenches
+	backl = /obj/item/storage/backpack/rogue/satchel
+
+	if(H.mind)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	if(isseelie(H))
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+
+// Washing Implements
+
+/obj/item/bath/soap
+	name = "herbal soap"
+	desc = "A soap made from various herbs"
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "soap"
+	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
+	w_class = WEIGHT_CLASS_TINY
+	item_flags = NOBLUDGEON
+	throwforce = 0
+	throw_speed = 1
+	throw_range = 7
+	var/cleanspeed = 35 //slower than mop
+	var/uses = 10
+
+/obj/item/bath/soap/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/slippery, 80)
+
+/obj/item/bath/soap/examine(mob/user)
+	. = ..()
+	var/max_uses = initial(uses)
+	var/msg = "It looks like it was freshly made."
+	if(uses != max_uses)
+		var/percentage_left = uses / max_uses
+		switch(percentage_left)
+			if(0 to 0.2)
+				msg = "There's just a tiny bit left of what it used to be, you're not sure it'll last much longer."
+			if(0.21 to 0.4)
+				msg = "It's dissolved quite a bit, but there's still some life to it."
+			if(0.41 to 0.6)
+				msg = "It's past its prime, but it's definitely still good."
+			if(0.61 to 0.85)
+				msg = "It's started to get a little smaller than it used to be, but it'll definitely still last for a while."
+			else
+				msg = "It's seen some light use, but it's still pretty fresh."
+	. += span_notice("[msg]")
+
+/obj/item/bath/soap/attack(mob/target, mob/user)
+	var/turf/bathspot = get_turf(target)
+	if(!istype(bathspot, /turf/open/water/bath))
+		to_chat(user, span_warning("They must be in the bath water!"))
+		return
+	if(istype(target, /mob/living/carbon/human))
+		visible_message(span_info("[user] begins scrubbing [target] with the [src]."))
+		if(do_after(user, 50))
+			if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+				visible_message(span_info("[user] expertly scrubs and soothes [target] with the [src]."))
+				to_chat(target, span_love("I feel so relaxed and clean!"))
+				SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "bathcleaned", /datum/mood_event/bathcleaned)
+			else
+				visible_message(span_info("[user] tries their best to scrub [target] with the [src]."))
+				to_chat(target, span_warning("Ouch! That hurts!"))
+			uses -= 1
+			if(uses == 0)
+				qdel(src)

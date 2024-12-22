@@ -1,21 +1,21 @@
-/datum/job/roguetown/steward
+/datum/job/roguetown/appraiser
 	title = "Guild Appraiser"
-	flag = STEWARD
-	department_flag = NOBLEMEN
+	flag = APPRAISER
+	department_flag = ADVENTURERSGUILD
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
-	display_order = JDO_STEWARD
+	display_order = JDO_APPRAISER
 	tutorial = "Coin, Coin, Coin! Oh beautiful coin: The Magi's Trading Union put you here as an appraiser so you might -actually- fund this operation. You're the closest thing this place has to a banker that works with the Guild Captain and these adventurers-- and it's up to you to fund public projects from the hordes of wealth these ludicrous murder-hobos seem to pull in from literally thin air. You work for the Guild captain, but most of the time youre batting off adventurers from raiding your vault which contains the Neuromancer and some fascinating treasure. Don't forget the magic password you enchanted the wall with, either.."
-	outfit = /datum/outfit/job/roguetown/steward
+	outfit = /datum/outfit/job/roguetown/appraiser
 	give_bank_account = 17
 	min_pq = 0
 	max_pq = null
 
-/datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/appraiser/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == FEMALE)
 		H.virginity = TRUE
