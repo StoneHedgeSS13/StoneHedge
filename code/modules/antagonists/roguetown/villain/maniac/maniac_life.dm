@@ -189,7 +189,7 @@
 	for(var/turf/open/floor in view(target))
 		if(!prob(20))
 			continue
-		INVOKE_ASYNC(src, PROC_REF(handle_waking_up_floor), floor, target)
+		INVOKE_ASYNC(target, PROC_REF(handle_waking_up_floor), floor, target)
 
 /proc/handle_waking_up_floor(turf/open/floor, mob/living/target)
 	var/mutable_appearance/fake_floor = image('icons/roguetown/maniac/dreamer_floors.dmi', floor,  pick("rcircuitanim", "gcircuitanim"), floor.layer + 0.1)
