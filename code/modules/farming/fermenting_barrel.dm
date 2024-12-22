@@ -107,9 +107,9 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/ale, rand(0,300))
 
-/obj/structure/fermenting_barrel/random/beer/wine/Initialize()
+/obj/structure/fermenting_barrel/random/wine/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/wine, rand(0,300))
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/wine, rand(0,300))
 
 /obj/structure/fermenting_barrel/random/beer/cider/Initialize()
 	. = ..()

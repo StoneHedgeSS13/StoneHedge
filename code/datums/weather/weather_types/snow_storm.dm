@@ -26,3 +26,31 @@
 /datum/weather/snow_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(5,15))
 
+
+/datum/weather/snow
+	name = "snow"
+	desc = ""
+
+	telegraph_duration = 10 SECONDS
+	telegraph_message = span_warning("It begins to snow.")
+
+	weather_message = ""
+	weather_overlay = null
+	weather_duration_lower = 5 MINUTES
+	weather_duration_upper = 12 MINUTES
+	weather_alpha = 100
+
+	probability = 3
+
+	end_duration = 5 SECONDS
+	end_message = "The snow ceases."
+
+	area_type = /area/rogue/outdoors
+	protected_areas = list(/area/rogue/indoors,/area/rogue/under)
+	impacted_z_levels = list()
+
+	particles = list(/obj/emitters/weather/snow)
+
+/datum/weather/snow/New(z_levels)
+	impacted_z_levels = GLOB.sky_z.Copy()
+	. = ..()

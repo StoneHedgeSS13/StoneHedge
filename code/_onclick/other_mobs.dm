@@ -500,6 +500,9 @@
 											stealpos.Add(V.get_item_by_slot(SLOT_SHOES))
 								if (length(stealpos) > 0)
 									var/obj/item/picked = pick(stealpos)
+									if(HAS_TRAIT(picked, TRAIT_UNPICKPOCKETABLE))
+										to_chat(src, span_warning("I can't seem to get a grip on [picked]!"))
+										return
 									V.dropItemToGround(picked)
 									put_in_active_hand(picked)
 									to_chat(src, span_green("I stole [picked]!"))

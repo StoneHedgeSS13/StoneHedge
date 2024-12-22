@@ -9,6 +9,7 @@
 	var/datum/job/roguetown/intended_job
 	var/inventory_items = list()
 	var/classes = list()
+	var/used = FALSE
 
 /obj/item/class_selector/Initialize()
 	. = ..()
@@ -17,6 +18,10 @@
 
 //guildmaster
 /obj/item/class_selector/veteran/attack_self(mob/living/carbon/human/H)
+	if(used)
+		to_chat(H, span_warning("You've already chosen your class!"))
+		return
+	used = TRUE
 	. = ..()
 	//basicest classes basically
 	classes = list(
@@ -335,6 +340,10 @@
 	desc = "A leather-bound tome containing the specialized teachings of the Academy. It allows a mage to choose their magical focus."
 
 /obj/item/class_selector/acadmage/attack_self(mob/living/carbon/human/H)
+	if(used)
+		to_chat(H, span_warning("You've already chosen your specialization!"))
+		return
+	used = TRUE
 	. = ..()
 	classes = list(
 		"Spellweaver",
@@ -454,6 +463,10 @@
 	desc = "An ornate tome bound in rich leather and adorned with mystical runes. It contains the highest teachings of the Academy, allowing an Archmage to choose their mastery."
 
 /obj/item/class_selector/acadarchmage/attack_self(mob/living/carbon/human/H)
+	if(used)
+		to_chat(H, span_warning("You've already chosen your mastery!"))
+		return
+	used = TRUE
 	. = ..()
 	classes = list(
 		"Arcanist",
@@ -580,6 +593,10 @@
 
 //TEMPLE PALADIN
 /obj/item/class_selector/paladin/attack_self(mob/living/carbon/human/H)
+	if(used)
+		to_chat(H, span_warning("You've already chosen your weapon specialization!"))
+		return
+	used = TRUE
 	classes = list( //what did you primarily train with?
 		"Swords",
 		"Axes",

@@ -12,6 +12,10 @@
 	var/last_distress = 0
 	var/distress_cooldown = 300
 
+/obj/item/clothing/neck/roguetown/psicross/dendor/grove/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_UNPICKPOCKETABLE, ROUNDSTART_TRAIT)
+
 /obj/item/clothing/neck/roguetown/psicross/dendor/grove/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
@@ -304,7 +308,7 @@
 
 		var/old_density = target_tree.density
 		target_tree.density = FALSE
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(restore_emergency_tree_density), target_tree, old_density), 10 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/restore_emergency_tree_density, target_tree, old_density), 10 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 		playsound(target_tree, 'sound/misc/treefall.ogg', 50, TRUE)
 		new /obj/effect/temp_visual/grove_portal_transit(get_turf(target_tree))

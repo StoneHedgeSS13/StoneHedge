@@ -29,6 +29,10 @@
 	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties")
 	if(user.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
 		choices += "Remove Bounty"
+
+	if(user.job in list("Guildmaster", "Guild Appraiser"))
+		choices += "Set Bounty"
+
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)

@@ -159,8 +159,6 @@
 		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
 
-
-
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 

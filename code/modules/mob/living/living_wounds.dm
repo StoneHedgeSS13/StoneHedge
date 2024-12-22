@@ -1,3 +1,5 @@
+#define WOUND_HEAL_MULTIPLIER 3
+
 /mob/living
 	/// Simple wound instances with no associated bodyparts
 	var/list/datum/wound/simple_wounds
@@ -45,7 +47,7 @@
 			continue
 		woundies += wound
 	return woundies
-	
+
 /// Loops through our list of wounds and returns the first wound that is of the type specified by the path
 /mob/living/proc/has_wound(path, specific = FALSE)
 	if(!path)
@@ -60,6 +62,7 @@
 	var/healed_any = FALSE
 	if(has_status_effect(/datum/status_effect/buff/fortify))
 		heal_amount *= 1.5
+	heal_amount *= WOUND_HEAL_MULTIPLIER
 	for(var/datum/wound/wound as anything in get_wounds())
 		if(heal_amount <= 0)
 			continue
@@ -180,7 +183,7 @@
 		used = round(max(dam / 3, 1), 1)
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery/chest
-		
+
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = simple_add_wound(wound_type, silent, crit_message)
 		if(applied)

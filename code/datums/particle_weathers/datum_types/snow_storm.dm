@@ -17,12 +17,11 @@
 
 /datum/particle_weather/snow_gentle
 	name = "Snow"
-	desc = "Light snowfall, la la description."
+	desc = "Light snowfall."
 	particleEffectType = /particles/weather/snow
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("It's snowing!","You feel a chill.")
 
 	minSeverity = 1
 	maxSeverity = 10
@@ -36,6 +35,8 @@
 /datum/particle_weather/snow_gentle/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(1,3))
 
+/obj/emitters/weather/snow
+	particles 	= new/particles/weather/snow
 
 /datum/particle_weather/snow_storm
 	name = "Snow storm"

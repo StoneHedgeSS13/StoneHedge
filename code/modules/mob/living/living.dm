@@ -187,8 +187,8 @@
 
 			var/mob/living/L = M
 
-			var/self_points = FLOOR((STAEND + STASTR + mind.get_skill_level(/datum/skill/misc/athletics))/2, 1) //Constitution had too many quirk bonuses associated.
-			var/target_points = FLOOR((L.STAEND + L.STASTR + L.mind.get_skill_level(/datum/skill/misc/athletics))/2, 1)
+			var/self_points = FLOOR((STACON + STASTR + mind.get_skill_level(/datum/skill/misc/athletics))/2, 1) //Constitution had too many quirk bonuses associated.
+			var/target_points = FLOOR((L.STACON + L.STASTR + L.mind.get_skill_level(/datum/skill/misc/athletics))/2, 1)
 
 			switch(sprint_distance)
 				// Point blank
@@ -1540,6 +1540,7 @@
 /mob/living/proc/SoakMob(locations)
 	if(locations & CHEST)
 		ExtinguishMob()
+		wash_mob(src, CLEAN_MEDIUM)
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)

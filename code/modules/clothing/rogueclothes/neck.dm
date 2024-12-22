@@ -205,12 +205,10 @@
 		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
 
 /obj/item/clothing/neck/roguetown/gorget/servant/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
-	if(stripper.job == "Great Druid" || stripper.job == "Druid" || stripper.job == "Hedge Warden" || stripper.job == "Hedge Knight" || stripper.job == "Ovate")
-		to_chat(stripper, span_warning("I disable the collar's enchanted locking mechanism. It will only reactivate when worn again."))
+	if(stripper.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
 		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		return TRUE
-	else
-		return ..()
+	return FALSE
 
 /obj/item/clothing/neck/roguetown/gorget/servant/dropped(mob/user)
 	. = ..()

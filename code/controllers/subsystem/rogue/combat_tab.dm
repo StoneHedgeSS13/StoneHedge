@@ -22,13 +22,13 @@ GLOBAL_DATUM_INIT(hunted_indicator, /mutable_appearance, mutable_appearance('mod
 				enemy = HL
 
 		if(enemy)
-			if(length(H.hunting)) 
+			if(length(H.hunting))
 				if(H.hunting.Find(enemy))
 					already_enemy = TRUE
-			
+
 			if(!already_enemy)
 				H.hunting.Add(enemy)
-				enemy.hunters.Add(H)		
+				enemy.hunters.Add(H)
 				H.visible_message(span_danger("[H] has a malicious look!"), span_danger("I get ready to attack."))
 				to_chat(enemy, span_danger("You sense malicious intent."))
 				enemy.add_overlay(GLOB.hunted_indicator)

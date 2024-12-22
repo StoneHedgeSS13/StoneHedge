@@ -12,6 +12,7 @@
 	spells = list (
 		/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater,
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
+		/obj/effect/proc_holder/spell/invoked/torsion/arcane,
 		/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,

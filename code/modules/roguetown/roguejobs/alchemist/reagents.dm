@@ -15,9 +15,10 @@
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL) //can not overfill
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0 && prob(50)) //half as effective as a normal health pot but still heals wounds.
-		M.heal_wounds(1)
+		M.heal_wounds(10)
 		M.update_damage_overlays()
-		to_chat(M, span_nicegreen("I feel one of my wounds mend."))
+		if(prob(10))
+			to_chat(M, span_nicegreen("I feel my wounds mending."))
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
 			M.reagents.remove_reagent(R.type,1)
@@ -57,9 +58,10 @@
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
 		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
-		M.heal_wounds(1)
+		M.heal_wounds(20)
 		M.update_damage_overlays()
-		to_chat(M, span_nicegreen("I feel one of my wounds mend."))
+		if(prob(10))
+			to_chat(M, span_nicegreen("I feel my wounds mending."))
 	for(var/obj/item/organ/filling_organ/forgan in M.internal_organs) //auto detected heal of filling organs
 		M.adjustOrganLoss(forgan.slot, -2)
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
@@ -99,8 +101,10 @@
 	else
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
-		M.heal_wounds(4)
+		M.heal_wounds(30)
 		M.update_damage_overlays()
+		if(prob(10))
+			to_chat(M, span_nicegreen("I feel my wounds mending."))
 	for(var/obj/item/organ/filling_organ/forgan in M.internal_organs) //auto detected heal of filling organs
 		M.adjustOrganLoss(forgan.slot, -3)
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
@@ -146,8 +150,10 @@
 	else
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
-		M.heal_wounds(6)
+		M.heal_wounds(60)
 		M.update_damage_overlays()
+		if(prob(10))
+			to_chat(M, span_nicegreen("I feel my wounds mending."))
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
 			M.reagents.remove_reagent(R.type,4)
@@ -217,8 +223,10 @@
 	else
 		M.blood_volume = min(M.blood_volume+2, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
-		M.heal_wounds(1)
+		M.heal_wounds(10)
 		M.update_damage_overlays()
+		if(prob(10))
+			to_chat(M, span_nicegreen("I feel my wounds mending."))
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
 			M.reagents.remove_reagent(R.type,1)
@@ -285,7 +293,7 @@
 
 /datum/reagent/medicine/antipoisonpot
 	name = "Anti Poison Potion"
-	description = "Quickly nullifies toxins."
+	description = "Quickly nullifies toxins and repairs toxin damage."
 	reagent_state = LIQUID
 	color = "#64bf49"
 	taste_description = "ashes"
@@ -297,7 +305,7 @@
 	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
 		if(R != src)
 			M.reagents.remove_reagent(R.type,5)
-	M.adjustToxLoss(-5, 0)
+	M.adjustToxLoss(-15, 0)
 	..()
 	. = 1
 
@@ -343,7 +351,7 @@
 
 /datum/reagent/medicine/stimu/on_mob_life(mob/living/carbon/M)
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.heal_wounds(2) //same as health pot only heal wounds while bleeding. technically.
+		M.heal_wounds(20) //same as health pot only heal wounds while bleeding. technically.
 		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_NORMAL)
 	if(M.health <= M.crit_threshold)
 		M.adjustToxLoss(-0.5, 0)
@@ -366,7 +374,7 @@
 
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
 	M.adjustFireLoss(0.5, 0)
-	M.heal_wounds(3)
+	M.heal_wounds(30)
 	M.reagents.remove_reagent(/datum/reagent/toxin/infection, 9999)
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
@@ -403,7 +411,7 @@
 	else
 		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
-		M.heal_wounds(6)
+		M.heal_wounds(60)
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-4.5, 0)
 	M.adjustFireLoss(-4.5, 0)

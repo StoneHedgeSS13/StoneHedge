@@ -36,7 +36,6 @@
 //Makes you a little chilly
 /datum/particle_weather/rain_gentle/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(1,3))
-	wash_mob(L, CLEAN_WEAK)
 
 /datum/particle_weather/rain_storm
 	name = "Rain storm"
@@ -56,7 +55,6 @@
 	probability = 1
 	target_trait = PARTICLEWEATHER_RAIN
 
-//Makes you a bit chilly and washes
+//Makes you a bit chilly
 /datum/particle_weather/rain_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(3,5))
-	wash_mob(L, CLEAN_MEDIUM) //thats a whole shower

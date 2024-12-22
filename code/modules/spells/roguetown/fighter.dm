@@ -12,7 +12,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 600 SECONDS //cooldown
+	charge_max = 300 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -32,8 +32,8 @@
 /obj/effect/proc_holder/spell/self/secondwind/cast(mob/user = usr)
 	var/mob/living/target = user
 	var/mob/living/carbon/M = target
-	M.rogfat_add(-100)
-	M.rogstam_add(-100)
+	M.rogfat_add(-200)
+	M.rogstam_add(-200)
 	M.heal_wounds(500)
 	M.heal_overall_damage(250, 250, updating_health = TRUE)
 	user.balloon_alert_to_viewers("Second Wind!")

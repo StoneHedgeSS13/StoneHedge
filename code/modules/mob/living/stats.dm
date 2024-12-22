@@ -30,7 +30,7 @@
 	var/attunement_points_used = 0 //adjusted when equipping magic items
 	var/attunement_points_bonus = 0 //adjusted based on special roles, an artificer or antagonist should have this bonus, NOBODY ELSE...
 	var/spell_slots = 0
-	var/spell_slots_used = 0
+	var/spell_slots_used = 0 //only spells that are learned by non spawn means.
 	var/spell_slots_bonus = 0
 
 /mob/living/proc/calculate_attunement_points()
@@ -324,4 +324,5 @@
 	if(!mind)
 		return
 	//the amount of spells you can memorize out of scrolls, seperate from spellpoints learnt ones.
-	spell_slots = max(((STAINT/4) + mind.get_skill_level(/datum/skill/magic/arcane) + spell_slots_bonus) - spell_slots_used, 0)
+	spell_slots = round(max(((STAINT/4) + mind.get_skill_level(/datum/skill/magic/arcane) + spell_slots_bonus) - spell_slots_used, 0))
+	to_chat(src, "I think i can learn [spell_slots - spell_slots_used] more spells.")

@@ -171,7 +171,6 @@
 				/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 70,
 				/obj/item/reagent_containers/glass/bottle/rogue/manapot = 30,
 				/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 20,
-				/obj/item/reagent_containers/glass/bottle/rogue/poison = 10,
 				/obj/item/reagent_containers/glass/bottle/rogue/wine = 10,
 				/obj/item/reagent_containers/glass/bottle/rogue/water = 25
 				)

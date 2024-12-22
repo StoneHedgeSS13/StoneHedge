@@ -316,15 +316,17 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
-			H.visible_message(span_danger("[target] has their life force ripped from their body!!"), \
-					span_userdanger("I feel like i lost a part of me within!"), \
-					span_hear("..."), COMBAT_MESSAGE_RANGE, target)
-			sender.heal_overall_damage(50, 50, updating_health = TRUE)
+		var/mob/living/living = target
+		living.visible_message(span_danger("[target] has their life force ripped from their body!!"), \
+				span_userdanger("I feel like i lost a part of me within!"), \
+				span_hear("..."), COMBAT_MESSAGE_RANGE, target)
+		sender.heal_overall_damage(50, 50, updating_health = TRUE)
+		if(sender.blood_volume < BLOOD_VOLUME_NORMAL) //can not overfill
+			sender.blood_volume = min(sender.blood_volume+150, BLOOD_VOLUME_MAXIMUM)
 		var/list/wCount = sender.get_wounds()
 		if(wCount.len > 0)
 			sender.heal_wounds(150) //the fucking wound hps are crazy, this barely heals three normal wounds or something.
 			sender.update_damage_overlays()
 			to_chat(sender, span_blue("I feel some of my wounds mend."))
+		sender.update_damage_overlays()
 	qdel(src)
