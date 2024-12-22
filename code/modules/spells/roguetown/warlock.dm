@@ -19,8 +19,8 @@
 	charge_max = 20 SECONDS
 	miracle = FALSE
 	var/patronname = ""
-	var/targetnotification = ""
-	var/othernotification = ""
+	var/targetnotification = "Shimmering arcane energy lessens my pain!" // This (and the line below) is a default message; Warlocks with patrons will have it overwritten in their job file.
+	var/othernotification = "is surrounded by shimmering arcane energy."
 	var/ignore_faithless = FALSE
 
 /obj/effect/proc_holder/spell/invoked/eldritchhealing/cast(list/targets, mob/living/user)
