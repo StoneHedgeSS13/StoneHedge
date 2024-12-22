@@ -1106,14 +1106,9 @@
 /area/rogue/indoors/shelter/bog)
 "aLo" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
-/obj/structure/lever/wall{
-	dir = 8;
-	name = "Courtyard Portcullis";
-	redstone_id = s
-	},
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
+/obj/structure/rack/rogue,
+/obj/item/quiver/arrows,
+/turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/shelter/bog)
 "aLp" = (
 /obj/structure/spacevine/dendor,
@@ -2680,11 +2675,6 @@
 /obj/item/bedsheet/rogue/double_pelt,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
-"bSW" = (
-/obj/structure/rack/rogue,
-/obj/item/quiver/arrows,
-/turf/open/floor/rogue/greenstone,
-/area/rogue/indoors/shelter/bog)
 "bSX" = (
 /obj/item/organ/eyes/night_vision/mushroom,
 /turf/open/water/cleanshallow,
@@ -3691,10 +3681,9 @@
 	first_time_text = "Stonehedge"
 	})
 "cEY" = (
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
-/area/rogue)
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/indoors/shelter/bog)
 "cFb" = (
 /obj/item/natural/rock,
 /turf/open/floor/rogue/dirt/road,
@@ -13132,13 +13121,6 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/river)
-"iXt" = (
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/garrison{
-	first_time_text = "Adventurers Guild";
-	name = "Adventurers Guild"
-	})
 "iXB" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt,
@@ -17849,6 +17831,12 @@
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
 	})
+"mhi" = (
+/obj/effect/landmark/waygate_destination/hfortarm,
+/turf/open/floor/rogue/dirt/nrich{
+	icon_state = "road"
+	},
+/area/rogue/indoors/shelter/bog)
 "mhU" = (
 /obj/structure/flora/newtree,
 /turf/open/water/river{
@@ -22589,13 +22577,14 @@
 	name = "Shores of the Emerald Coast"
 	})
 "piH" = (
-/obj/effect/decal/dirt/grass{
-	dir = 2
+/obj/structure/flora/roguetree/happyrandom{
+	desc = "An old, beloved tree that even elves could love.";
+	icon_state = "t12"
 	},
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
 	},
-/area/rogue/outdoors/woods/grove)
+/area/rogue/indoors/shelter/bog)
 "piY" = (
 /turf/open/floor/rogue/naturalstone,
 /turf/open/floor/rogue/dirt,
@@ -23106,9 +23095,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "pEc" = (
-/obj/structure/bars/passage{
-	redstone_id = "rearmain"
-	},
+/obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
 	},
@@ -23127,7 +23114,7 @@
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
 	},
-/area/rogue)
+/area/rogue/indoors/shelter/town/roofs)
 "pEq" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -26565,13 +26552,6 @@
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
 	})
-"rIw" = (
-/obj/structure/chair/arrestchair,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/garrison{
-	first_time_text = "Adventurers Guild";
-	name = "Adventurers Guild"
-	})
 "rIX" = (
 /obj/structure/fermenting_barrel/beer,
 /obj/structure/fluff/railing/wood{
@@ -27793,6 +27773,16 @@
 	first_time_text = "Druids Grove";
 	name = "Grove"
 	})
+"sCq" = (
+/obj/structure/lever/wall{
+	dir = 8;
+	name = "Courtyard Portcullis";
+	redstone_id = s
+	},
+/turf/open/floor/rogue/dirt/nrich{
+	icon_state = "road"
+	},
+/area/rogue/indoors/shelter/bog)
 "sCL" = (
 /obj/structure/flora/roguetree/wise{
 	pixel_x = -10;
@@ -29206,12 +29196,6 @@
 /area/rogue/outdoors/rtfield{
 	first_time_text = null
 	})
-"tyU" = (
-/obj/structure/fermenting_barrel,
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
-/area/rogue)
 "tza" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/cobble/mossy,
@@ -33431,12 +33415,6 @@
 	first_time_text = "Emerald Shores";
 	name = "Shores of the Emerald Coast"
 	})
-"wxV" = (
-/obj/structure/fermenting_barrel/water,
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
-/area/rogue)
 "wyc" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/rtfield{
@@ -33839,6 +33817,9 @@
 	name = "Brueddwyd Armory";
 	lockid = "grove";
 	locked = 1
+	},
+/obj/structure/bars/passage{
+	redstone_id = "rearmain"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/shelter/bog)
@@ -34857,7 +34838,7 @@
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
 	},
-/area/rogue)
+/area/rogue/indoors/shelter/town/roofs)
 "xwM" = (
 /obj/structure/table/vtable,
 /obj/item/natural/feather,
@@ -90170,7 +90151,7 @@ bFf
 prw
 prw
 prw
-rIw
+qgp
 qgp
 qgp
 qfv
@@ -123904,7 +123885,7 @@ tKe
 xnj
 xnj
 ffo
-iXt
+dYB
 nNz
 dij
 rJG
@@ -131156,7 +131137,7 @@ wjh
 sNf
 sNf
 jCD
-piH
+qCo
 oPy
 qyC
 xWI
@@ -131358,7 +131339,7 @@ wjh
 sNf
 sNf
 jCD
-piH
+qCo
 oPy
 oPy
 xWI
@@ -163955,8 +163936,8 @@ vlx
 oCe
 oCe
 oCe
-oCe
-oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -164157,8 +164138,8 @@ vlx
 vlx
 vZx
 oCe
-oCe
-oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -164359,8 +164340,8 @@ vlx
 uvs
 vlx
 oCe
-oCe
-oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -164560,9 +164541,9 @@ oCe
 vlx
 uvs
 uvs
-iDn
 oCe
-oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -164762,9 +164743,9 @@ vlx
 uvs
 vlx
 vlx
-uvs
-iDn
 oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -164963,10 +164944,10 @@ vlx
 vlx
 vlx
 vlx
-vZx
-uvs
-vlx
-uvs
+oCe
+oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -165164,11 +165145,11 @@ vZx
 uvs
 vlx
 vlx
-vZx
-vZx
-vZx
-vlx
-uvs
+oCe
+oCe
+oCe
+rxm
+rxm
 rxm
 rxm
 rxm
@@ -165369,8 +165350,8 @@ vlx
 hcX
 hcX
 hcX
-pEc
-pEc
+hcX
+hcX
 hcX
 hcX
 dVE
@@ -165571,8 +165552,8 @@ uvs
 hcX
 oLa
 aLo
-fMr
-fMr
+luD
+cEY
 pTS
 jFC
 hcX
@@ -165772,7 +165753,7 @@ vlx
 uvs
 dVE
 qFN
-bSW
+fMr
 fMr
 fMr
 fMr
@@ -165973,12 +165954,12 @@ sib
 vlx
 vlx
 hcX
-dmR
+cEY
 fMr
 fMr
-fMr
-fMr
-giU
+piH
+mhi
+iGo
 hcX
 rxm
 rxm
@@ -166175,11 +166156,11 @@ sib
 uvs
 vlx
 hcX
-luD
 iGo
 fMr
 fMr
-iGo
+fMr
+fMr
 luD
 hcX
 rxm
@@ -166580,7 +166561,7 @@ hcX
 onM
 fMr
 buH
-fMr
+sCq
 fMr
 fMr
 fMr
@@ -166779,7 +166760,7 @@ sib
 sib
 sib
 hcX
-fMr
+pEc
 fMr
 fMr
 fMr
@@ -171828,12 +171809,12 @@ oCe
 oCe
 oCe
 oCe
-bmw
-wxV
-tyU
-tyU
-cEY
-bmw
+uYB
+fNH
+bTh
+bTh
+ciU
+uYB
 oCe
 oCe
 oCe
@@ -172030,12 +172011,12 @@ oCe
 oCe
 oCe
 oCe
-bmw
-tyU
-cEY
+uYB
+bTh
+ciU
 pEo
 xwg
-bmw
+uYB
 oCe
 oCe
 oCe
@@ -172232,12 +172213,12 @@ oCe
 oCe
 oCe
 oCe
-bmw
-bmw
-bmw
-bmw
-bmw
-bmw
+uYB
+uYB
+uYB
+uYB
+uYB
+uYB
 oCe
 oCe
 oCe

@@ -894,6 +894,11 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
+"fe" = (
+/obj/structure/fluff/statue/gargoyle/moss/candles,
+/obj/effect/mob_spawner/goblin,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "ff" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /obj/structure/flora/roguegrass/maneater/real,
@@ -3721,6 +3726,12 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"vD" = (
+/obj/effect/mob_spawner/goblin,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "vF" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/wisp,
@@ -4146,6 +4157,10 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"yz" = (
+/obj/effect/mob_spawner/goblin,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "yA" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/cobblerock,
@@ -5658,6 +5673,12 @@
 /obj/item/natural/rock/salt,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/cave/underdark)
+"Hn" = (
+/obj/effect/mob_spawner/goblin,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Hp" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/blocks,
@@ -5875,6 +5896,10 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/grass,
 /area/rogue/under/cavewet)
+"Iv" = (
+/obj/effect/mob_spawner/skeleton,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "Iw" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -8191,6 +8216,10 @@
 "Wa" = (
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/under/cavewet)
+"Wb" = (
+/obj/effect/mob_spawner/skeleton,
+/turf/open/water/swamp,
+/area/rogue/indoors/shelter/woods/overgrownfort)
 "Wc" = (
 /obj/structure/roguerock,
 /turf/open/water/river,
@@ -22493,7 +22522,7 @@ JU
 iB
 BJ
 BJ
-bK
+Iv
 BJ
 BJ
 BJ
@@ -24220,7 +24249,7 @@ Ly
 aZ
 iB
 iB
-iB
+Wb
 iB
 iB
 bK
@@ -41651,7 +41680,7 @@ CM
 BP
 mM
 bK
-bK
+Iv
 BJ
 Pg
 dX
@@ -42450,7 +42479,7 @@ CM
 BJ
 Tu
 Jt
-BJ
+zn
 BP
 Ly
 Ly
@@ -58802,7 +58831,7 @@ BP
 BP
 Bi
 RM
-ew
+yz
 ew
 ew
 EK
@@ -58946,7 +58975,7 @@ RX
 Cu
 AP
 AL
-El
+fe
 RX
 RX
 Gn
@@ -61208,7 +61237,7 @@ Hr
 Hr
 Ng
 Ng
-Ng
+Hn
 Lu
 PV
 hi
@@ -77573,7 +77602,7 @@ Pc
 Tm
 lV
 YH
-db
+vD
 JY
 BP
 Pc

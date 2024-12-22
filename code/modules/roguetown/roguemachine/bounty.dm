@@ -61,21 +61,13 @@
 	var/correct_head = FALSE
 
 	var/reward_amount = 0
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += b.amount
-			GLOB.head_bounties -= b
+
+	user.dropItemToGround(P)
+	P.forceMove(src)
 
 	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
 
 	sleep(1 SECONDS)
-
-	if(!correct_head)
-		say("This skull carries no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		return
 
 	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
 	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
@@ -84,7 +76,17 @@
 
 	sleep(2 SECONDS)
 
-	if(correct_head)
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == stored_head.real_name)
+			correct_head = TRUE
+			say("A bounty has been sated.")
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+
+	if(!correct_head)
+		say("This skull carries no reward.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	else
 		budget2change(reward_amount, user)
 
 	// Head has been "analyzed". Return it.
