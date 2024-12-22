@@ -1,7 +1,7 @@
 /datum/job/roguetown/mercenary
 	title = "Mercenary"
-	flag = MERCENARIES
-	department_flag = MERCENARIES
+	flag = MERCENARY
+	department_flag = UNAFFILIATED
 	faction = "Station"
 	total_positions = 12
 	spawn_positions = 12
@@ -9,7 +9,6 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	tutorial = "Blood stains your hands and the coins you hold. You are a sell-sword, a mercenary, a contractor of war. Where you come from, what you are, who you serve.. none of it matters. What matters is that the mammon flows to your pocket."
 	display_order = JDO_MERCENARY
-	selection_color = JCOLOR_MERCENARY
 	min_pq = 5		//Will be handled by classes if PQ limiting is needed.
 	max_pq = null
 	outfit = null	//Handled by classes

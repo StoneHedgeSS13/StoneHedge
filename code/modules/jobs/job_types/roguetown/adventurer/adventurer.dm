@@ -6,7 +6,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 /datum/job/roguetown/adventurer
 	title = "Adventurer"
 	flag = ADVENTURER
-	department_flag = PEASANTS
+	department_flag = ADVENTURERSGUILD
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
