@@ -257,6 +257,7 @@
 			r_hand = /obj/item/rogueweapon/greatsword/brokensword
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			//leprosy
 			if(!H.has_status_effect(STATUS_EFFECT_SPASMS))
