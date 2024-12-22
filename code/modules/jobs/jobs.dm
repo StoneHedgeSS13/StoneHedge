@@ -1,3 +1,98 @@
+
+//rogue positions
+
+GLOBAL_LIST_INIT(adventurers_guild_positions, list(
+	"Guildmaster",
+	"Steward",
+	"Adventurer",
+))
+
+GLOBAL_LIST_INIT(grove_positions, list(
+	"Great Druid",
+	"Hedge Warden",
+	"Druid",
+	"Hedge Knight",
+	"Ovate",
+))
+
+GLOBAL_LIST_INIT(divine_temple_positions, list(
+	"High Priest",
+	"Grandmaster",
+	"Priest",
+	"Templar",
+	"Gravesinger",
+	"Acolyte",
+))
+
+GLOBAL_LIST_INIT(merchant_consortium_positions, list(
+	"Merchant",
+	"Shophand",
+	"Blacksmith",
+	"Blacksmith Apprentice",
+))
+
+GLOBAL_LIST_INIT(forge_positions, list(
+	"Artificer",
+))
+
+GLOBAL_LIST_INIT(inn_positions, list(
+	"Innkeep",
+	"Barmaid",
+	"Cook",
+	"Nightmaster",
+	"Nightswain",
+	"Harlequin",
+))
+
+GLOBAL_LIST_INIT(academy_positions, list(
+	"Academy Archmage",
+	"Academy Mage",
+	"Academy Apprentice",
+))
+
+GLOBAL_LIST_INIT(tribe_positions, list(
+	"Chieftain",
+	"Tribal Shaman",
+	"Tribal Guard",
+	"Tribal Cook",
+	"Tribal Smith",
+	"Tribal Villager",
+))
+
+GLOBAL_LIST_INIT(unaffiliated_positions, list(
+	"Towner",
+	"Pilgrim",
+	"Mercenary",
+	"Sellsword",
+	"Bandit",
+	"Migrant",
+	))
+
+GLOBAL_LIST_INIT(allmig_positions, list(
+	"Adventurer",
+	"Pilgrim",
+))
+GLOBAL_LIST_INIT(underdark_positions, list(
+	"Underdark Peasant",
+	"Underdark Smithy"
+))
+
+GLOBAL_LIST_INIT(roguefight_positions, list(
+	"Red Captain",
+	"Red Caster",
+	"Red Ranger",
+	"Red Fighter",
+	"Green Captain",
+	"Green Caster",
+	"Green Ranger",
+	"Green Fighter",
+))
+
+GLOBAL_LIST_INIT(test_positions, list(
+	"Tester",
+))
+
+// default SS13
 GLOBAL_LIST_INIT(command_positions, list(
 	"Captain",
 	"Head of Personnel",
@@ -59,172 +154,24 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"Cyborg",
 	ROLE_PAI))
 
-GLOBAL_LIST_INIT(noble_positions, list(
-	"Monarch",
-	"Consort",
-	"Royal Heir",
-	"Watchmen Captain",
-	"Judge",
-	"Councillor",
-	"Steward",
-	"Knight",
-	"Noble Guest",
-))
-
-GLOBAL_LIST_INIT(grove_positions, list(
-	"Great Druid",
-	"Hedge Warden",
-	"Druid",
-	"Hedge Knight",
-	"Ovate",
-))
-
-GLOBAL_LIST_INIT(courtier_positions, list(
-	"Physician",
-	"Harlequin",
-	"Head Butler",
-))
-
-GLOBAL_LIST_INIT(garrison_positions, list(
-	"Watchman",
-	"Royal Guard",
-	"Beastmaster",
-	"Gatemaster",
-	"Watchmen Captain",
-))
-
-GLOBAL_LIST_INIT(church_positions, list(
-	"Archpriest",
-	"Wytcher Captain",
-	"Confessor",
-	"Gravesinger",
-	"Temple Paladin",
-	"Grandmaster",
-))
-
-GLOBAL_LIST_INIT(academy_positions, list(
-	"Academy Archmage",
-	"Academy Mage",
-	"Academy Apprentice",
-))
-
-GLOBAL_LIST_INIT(yeoman_positions, list(
-	"Merchant Prince",
-	"Innkeep",
-	"Armorer",
-	"Weaponsmith",
-	"Blacksmith",
-	"Tailor",
-	"Alchemist",
-	"Mason",
-	"Scribe",
-	"Village Elder",
-))
-
-GLOBAL_LIST_INIT(peasant_positions, list(
-	"Soilson",
-	"Butcher",
-	"Cook",
-	"Shunned Slave",
-	"Public Servant",
-	"Dumb Whoreson",
-	"Miner",
-	"Hunter",
-	"Fisher",
-	"Lumberjack",
-	"Towner",
-	"Grabber",
-	"Nightmaster",
-	"Nightswain",
-	"Docker",
-	"Prisoner",
-	"Low Life",
-	"Forest Seelie",
-	"Adventurer",
-	"Pilgrim",
-	"Bandit",
-))
-
-GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Mercenary",
-	"Sellsword",
-	"Guildmaster",
-))
-
-GLOBAL_LIST_INIT(apprentices_positions, list(
-	"Squire",
-	"Clerk",
-	"Smithy Apprentice",
-	"Churchling",
-	"Servant",
-	"Shophand",
-	"Vagabond",
-))
-
-GLOBAL_LIST_INIT(allmig_positions, list(
-	"Adventurer",
-	"Pilgrim",
-))
-
-GLOBAL_LIST_INIT(roguewar_positions, list(
-	"Adventurer",
-))
-
-
-GLOBAL_LIST_INIT(goblin_positions, list(
-	"Tribal Cook",
-	"Tribal Guard",
-	"Chieftain",
-	"Tribal Smith",
-	"Tribal Shaman",
-	"Tribal Villager",
-	/*"Tribal Slave",*/
-))
-
-GLOBAL_LIST_INIT(viking_positions, list(
-	"Dwarf Artificer",
-	"Northern Hostage",
-	"Northmen Berserkir"
-))
-
-GLOBAL_LIST_INIT(vampire_positions, list(
-	"Underdark Peasant",
-	"Underdark Smithy"
-))
-
-
-GLOBAL_LIST_INIT(roguefight_positions, list(
-	"Red Captain",
-	"Red Caster",
-	"Red Ranger",
-	"Red Fighter",
-	"Green Captain",
-	"Green Caster",
-	"Green Ranger",
-	"Green Fighter",
-))
-
-GLOBAL_LIST_INIT(test_positions, list(
-	"Tester",
-))
-
 GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 
 /proc/get_job_assignment_order()
 	var/list/sorting_order = list()
-	sorting_order += GLOB.noble_positions
-	sorting_order += GLOB.courtier_positions
-	sorting_order += GLOB.garrison_positions
-	sorting_order += GLOB.church_positions
+	sorting_order += GLOB.adventurers_guild_positions
+	sorting_order += GLOB.grove_positions
+	sorting_order += GLOB.divine_temple_positions
 	sorting_order += GLOB.academy_positions
-	sorting_order += GLOB.yeoman_positions
-	sorting_order += GLOB.peasant_positions
-	sorting_order += GLOB.apprentices_positions
-	sorting_order += GLOB.goblin_positions
+	sorting_order += GLOB.merchant_consortium_positions
+	sorting_order += GLOB.inn_positions
+	sorting_order += GLOB.unaffiliated_positions
+	sorting_order += GLOB.forge_positions
+	sorting_order += GLOB.tribe_positions
+	sorting_order += GLOB.underdark_positions
 	return sorting_order
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
-	EXP_TYPE_CREW = list("titles" = peasant_positions | command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | civilian_positions | list("AI","Cyborg")), // crew positions
+	EXP_TYPE_CREW = list("titles" = command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | civilian_positions | list("AI","Cyborg")), // crew positions
 	EXP_TYPE_COMMAND = list("titles" = command_positions),
 	EXP_TYPE_ENGINEERING = list("titles" = engineering_positions),
 	EXP_TYPE_MEDICAL = list("titles" = medical_positions),

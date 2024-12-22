@@ -1,6 +1,6 @@
 /datum/job/roguetown/grandmaster
 	title = "Grandmaster"
-	department_flag = CHURCHMEN
+	department_flag = DIVINETEMPLE
 	faction = "Station"
 	tutorial = "The Strongest. You have vowed and sworn your life to the Divine of this city. Interfaith politics or lordly politics have never interested you ever and todae marks your solem vigil over the land."
 	allowed_sexes = list(MALE, FEMALE)
@@ -12,7 +12,7 @@
 	max_pq = null
 	total_positions = 1
 	spawn_positions = 1
-	display_order = JDO_TEMPLAR
+	display_order = JDO_GRANDMASTER
 	give_bank_account = TRUE
 
 /datum/outfit/job/roguetown/grandmaster
@@ -84,17 +84,17 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 5, TRUE) // Might be utterly disgusting. Good luck.
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE) // dont give them any ranged stuff. thats what churchlings/inquis/confessor do.
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 2)  // Guard Captain stats with no fortune, making them weaker due to a lack of crits.
+		H.change_stat("endurance", 2)
 		H.cmode_music = 'sound/music/combat_clergy.ogg'
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

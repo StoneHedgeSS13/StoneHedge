@@ -92,7 +92,7 @@
 		if(istype(P, /obj/item/roguecoin))
 			if(H in SStreasury.bank_accounts)
 				SStreasury.generate_money_account(P.get_real_price(), H)
-				if(!(H.job in GLOB.noble_positions) && !HAS_TRAIT(H, TRAIT_NOBLE))
+				if(!HAS_TRAIT(H, TRAIT_NOBLE))
 					var/T = round(P.get_real_price() * SStreasury.tax_value)
 					say("Your deposit was taxed [T] mammon.")
 				qdel(P)

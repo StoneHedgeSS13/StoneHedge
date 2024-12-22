@@ -1,0 +1,53 @@
+/datum/advclass/tailor
+	name = "Tailor"
+	tutorial = "For years, you've honed your craft in the quiet hum of sewing rooms and bustling marketplaces. From mending humble garments to creating luxurious attire fit for royalty, your hands have become unmatched in the art of needle and thread."
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDSPLUS
+	outfit = /datum/outfit/job/roguetown/adventurer/tailor
+	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+
+/datum/outfit/job/roguetown/adventurer/tailor
+	allowed_patrons = ALL_DIVINE_PATRONS
+
+/datum/outfit/job/roguetown/adventurer/tailor/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.mind)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 4, TRUE)
+		H.change_stat("intelligence", 2)
+		H.change_stat("speed", 2)
+		H.change_stat("perception", 3)
+		if(isseelie(H))
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	beltr = /obj/item/rogueweapon/huntingknife/scissors
+	beltl = /obj/item/roguekey/tailor
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/natural/bundle/fibers/full = 1)
+	id = /obj/item/scomstone
+
+	if(H.pronouns == SHE_HER)
+		armor = /obj/item/clothing/suit/roguetown/armor/armordress
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
+		pants = /obj/item/clothing/under/roguetown/tights/random
+		cloak = /obj/item/clothing/cloak/raincloak/furcloak
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+	else
+		armor = /obj/item/clothing/suit/roguetown/shirt/rags
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		pants = /obj/item/clothing/under/roguetown/trou
+		cloak = /obj/item/clothing/cloak/apron/waist/brown
+		belt = /obj/item/storage/belt/rogue/leather

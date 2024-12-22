@@ -185,8 +185,8 @@ SUBSYSTEM_DEF(job)
 //		if(istype(job, GetJob(SSjob.overflow_role))) // We don't want to give him assistant, that's boring!
 //			continue
 
-		if(job.title in GLOB.noble_positions) //If you want a command position, select it!
-			continue
+//		if(job.title in GLOB.noble_positions) //If you want a command position, select it!
+//			continue
 
 		if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 			if(QDELETED(player))
@@ -281,7 +281,7 @@ SUBSYSTEM_DEF(job)
 //This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until
 //it locates a head or runs out of levels to check
 //This is basically to ensure that there's atleast a few heads in the round
-/datum/controller/subsystem/job/proc/FillHeadPosition()
+/*/datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in level_order)
 		for(var/noble_position in GLOB.noble_positions)
 			var/datum/job/job = GetJob(noble_position)
@@ -295,12 +295,12 @@ SUBSYSTEM_DEF(job)
 			var/mob/dead/new_player/candidate = pick(candidates)
 			if(AssignRole(candidate, noble_position))
 				return 1
-	return 0
+	return 0 */
 
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
-/datum/controller/subsystem/job/proc/CheckHeadPositions(level)
+/*/datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/noble_position in GLOB.noble_positions)
 		var/datum/job/job = GetJob(noble_position)
 		if(!job)
@@ -311,7 +311,7 @@ SUBSYSTEM_DEF(job)
 		if(!candidates.len)
 			continue
 		var/mob/dead/new_player/candidate = pick(candidates)
-		AssignRole(candidate, noble_position)
+		AssignRole(candidate, noble_position)*/
 
 /datum/controller/subsystem/job/proc/FillAIPosition()
 	var/ai_selected = 0

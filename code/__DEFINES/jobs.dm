@@ -1,3 +1,226 @@
+#define JOB_AVAILABLE 0
+#define JOB_UNAVAILABLE_GENERIC 1
+#define JOB_UNAVAILABLE_BANNED 2
+#define JOB_UNAVAILABLE_PLAYTIME 3
+#define JOB_UNAVAILABLE_ACCOUNTAGE 4
+#define JOB_UNAVAILABLE_PATRON 5
+#define JOB_UNAVAILABLE_RACE 6
+#define JOB_UNAVAILABLE_SEX 7
+#define JOB_UNAVAILABLE_AGE 8
+#define JOB_UNAVAILABLE_WTEAM 9
+#define JOB_UNAVAILABLE_LASTCLASS 10
+#define JOB_UNAVAILABLE_JOB_COOLDOWN 11
+#define JOB_UNAVAILABLE_SLOTFULL 12
+
+
+#define ADVENTURERSGUILD	(1<<1)
+
+#define GUILDMASTER		(1<<0)
+#define APPRAISER	(1<<1)
+#define ADVENTURER		(1<<2)
+
+#define GROVE			(1<<0)
+
+#define GREATDRUID		(1<<0)
+#define HEDGEWARDEN		(1<<1)
+#define DRUID		(1<<2)
+#define HEDGEKNIGHT		(1<<3)
+#define OVATE		(1<<4)
+
+#define DIVINETEMPLE	(1<<2)
+
+#define HIGH_PRIEST		(1<<0)
+#define GRANDMASTER	(1<<1)
+#define PRIEST		(1<<2)
+#define TEMPLAR		(1<<3)
+#define WYTCHER		(1<<4)
+#define GRAVESINGER	(1<<5)
+#define ACOLYTE		(1<<6)
+
+#define MERCHANTCONSORTIUM	(1<<3)
+
+#define MERCHANT	(1<<0)
+#define SHOPHAND		(1<<1)
+#define BLACKSMITH		(1<<2)
+#define BAPPRENTICE	(1<<3)
+
+#define ACADEMY				(1<<4)
+
+#define ACADARCHMAGE 	(1<<0)
+#define ACADMAGE 	(1<<2)
+#define ACADAPP 	(1<<3)
+
+#define FORGE	(1<<5)
+
+#define FORGEMASTER		(1<<0)
+#define ARTIFICER		(1<<1)
+#define APPRENTICE_ARTIFICER	(1<<2)
+
+#define SYLVERDRAGONNE	(1<<6)
+
+#define INNKEEP			(1<<0)
+#define BARMAID			(1<<1)
+#define COOK			(1<<2)
+#define BUTCHER			(1<<3)
+#define NIGHTMASTER		(1<<4)
+#define NIGHTSWAIN		(1<<5)
+#define HARLEQUIN		(1<<6)
+
+#define TRIBAL			(1<<7)
+
+#define CHIEFTAIN		(1<<0)
+#define TRIBALSHAMAN	(1<<1)
+#define TRIBALGUARD	(1<<2)
+#define TRIBALCOOK		(1<<3)
+#define TRIBALSMITH	(1<<4)
+#define TRIBALVILLAGER	(1<<5)
+
+#define UNAFFILIATED 	(1<<13)
+
+#define TOWNER (1<<0)
+#define PILGRIM (1<<1)
+#define MERCENARY (1<<2)
+#define SELLSWORD (1<<3)
+#define BANDIT (1<<4)
+#define MIGRANT (1<<5)
+#define DEATHKNIGHT (1<<6)
+#define SKELETON (1<<7)
+
+#define UNDERDARK (1<<14)
+
+#define UNUSED			(1<<15)
+
+
+// ==========================
+// job colors
+// ==========================
+
+#define JCOLOR_ADVENTURERS "#c86e3a"
+#define JCOLOR_GROVE "#50C878"
+#define JCOLOR_CHURCH "#c0ba8d"
+#define JCOLOR_MERCHANT "#819e82"
+#define JCOLOR_ACADEMY "#785286"
+#define JCOLOR_FORGE "#b18484"
+#define JCOLOR_INN "#81adc8"
+#define JCOLOR_TRIBE "#b09262"
+
+// job display orders //
+
+// Adventurer's Guild
+#define JDO_GUILDMASTER 1
+#define JDO_APPRAISER 2
+#define JDO_ADVENTURER 3
+
+// Bruewyyd Grove
+#define JDO_GREATDRUID 4
+#define JDO_HEDGEWARDEN 5
+#define JDO_DRUID 6
+#define JDO_HEDGEKNIGHT 7
+#define JDO_OVATE 8
+
+// Divine Temple
+#define JDO_HIGH_PRIEST 9
+#define JDO_GRANDMASTER 10
+#define JDO_PRIEST 11
+#define JDO_TEMPLAR 12
+#define JDO_WYTCHER 13
+#define JDO_GRAVESINGER 14
+#define JDO_ACOLYTE 15
+
+// Merchant Consortium
+#define JDO_MERCHANT 15
+#define JDO_SHOPHAND 16
+#define JDO_BLACKSMITH 17
+#define JDO_BAPPRENTICE 18
+
+// Ravenloft Academy
+#define JDO_ACADARCHMAGE 19
+#define JDO_ACADMAGE 20
+#define JDO_ACADAPP 21
+
+// Svaeryogh's Forge
+#define JDO_FORGEMASTER 22
+#define JDO_ARTIFICER 23
+#define JDO_APPRENTICE_ARTIFICER 24
+
+// Sylver Dragonne Inn
+#define JDO_INNKEEP 25
+#define JDO_BARMAID 26
+#define JDO_BUTCHER 27
+#define JDO_COOK 28
+#define JDO_NIGHTMASTER 29
+#define JDO_NIGHTSWAIN 30
+#define JDO_HARLEQUIN 31
+
+// Tribe
+#define JDO_CHIEFTAIN 32
+#define JDO_TRIBALSHAMAN 33
+#define JDO_TRIBALGUARD 34
+#define JDO_TRIBALCOOK 35
+#define JDO_TRIBALSMITH 36
+#define JDO_TRIBALVILLAGER 37
+
+//Unaffiliated
+#define JDO_TOWNER 38
+#define JDO_PILGRIM 39
+#define JDO_MERCENARY 40
+#define JDO_SELLSWORD 41
+#define JDO_BANDIT 42
+#define JDO_MIGRANT 43
+
+#define JDO_UNUSED 100
+
+#define ADVENTURERS_GUILD_ROLES \
+	/datum/job/roguetown/guildmaster,\
+	/datum/job/roguetown/steward,\
+	/datum/job/roguetown/adventurer
+
+#define GROVE_ROLES \
+	/datum/job/roguetown/greatdruid,\
+	/datum/job/roguetown/hedgewarden,\
+	/datum/job/roguetown/druid,\
+	/datum/job/roguetown/hedgeknight,\
+	/datum/job/roguetown/ovate
+
+#define DIVINE_TEMPLE_ROLES \
+	/datum/job/roguetown/high_priest,\
+	/datum/job/roguetown/grandmaster,\
+	/datum/job/roguetown/priest,\
+	/datum/job/roguetown/templar,\
+	/datum/job/roguetown/wytcher,\
+	/datum/job/roguetown/gravesinger,\
+	/datum/job/roguetown/acolyte
+
+#define MERCHANT_CONSORTIUM_ROLES \
+	/datum/job/roguetown/merchant\
+	/datum/job/roguetown/shophand,\
+	/datum/job/roguetown/blacksmith,\
+	/datum/job/roguetown/bapprentice
+
+#define ACADEMY_ROLES \
+	/datum/job/roguetown/acadarchmage,\
+	/datum/job/roguetown/acadmage,\
+	/datum/job/roguetown/acadapp
+
+#define FORGE_ROLES \
+	/datum/job/roguetown/artificer
+
+#define INN_ROLES \
+	/datum/job/roguetown/innkeep,\
+	/datum/job/roguetown/barmaid,\
+	/datum/job/roguetown/cook,\
+	/datum/job/roguetown/nightmaster,\
+	/datum/job/roguetown/nightswain,\
+	/datum/job/roguetown/harlequin
+
+#define TRIBE_ROLES \
+	/datum/job/roguetown/chieftain,\
+	/datum/job/roguetown/tribal_shaman,\
+	/datum/job/roguetown/tribal_guard,\
+	/datum/job/roguetown/tribal_cook,\
+	/datum/job/roguetown/tribal_smith,\
+	/datum/job/roguetown/tribal_villager
+
 
 #define ENGSEC			(1<<0)
 
@@ -42,20 +265,6 @@
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
 
-#define JOB_AVAILABLE 0
-#define JOB_UNAVAILABLE_GENERIC 1
-#define JOB_UNAVAILABLE_BANNED 2
-#define JOB_UNAVAILABLE_PLAYTIME 3
-#define JOB_UNAVAILABLE_ACCOUNTAGE 4
-#define JOB_UNAVAILABLE_PATRON 5
-#define JOB_UNAVAILABLE_RACE 6
-#define JOB_UNAVAILABLE_SEX 7
-#define JOB_UNAVAILABLE_AGE 8
-#define JOB_UNAVAILABLE_WTEAM 9
-#define JOB_UNAVAILABLE_LASTCLASS 10
-#define JOB_UNAVAILABLE_JOB_COOLDOWN 11
-#define JOB_UNAVAILABLE_SLOTFULL 12
-
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 
@@ -93,331 +302,3 @@
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 30
 #define JOB_DISPLAY_ORDER_AI 31
 #define JOB_DISPLAY_ORDER_CYBORG 32
-
-#define NOBLEMEN		(1<<0)
-
-#define LORD		(1<<0)
-#define LADY		(1<<1)
-#define HAND		(1<<2)
-#define KNIGHT		(1<<3)
-#define GUARD_CAPTAIN		(1<<4)
-#define JUDGE		(1<<5)
-#define HOSTAGE		(1<<6)
-#define NOBLE		(1<<7)
-
-#define GROVE			(1<<1)
-
-#define GREATDRUID		(1<<0)
-#define HEDGEWARDEN		(1<<1)
-#define DRUID		(1<<2)
-#define HEDGEKNIGHT		(1<<3)
-#define OVATE		(1<<4)
-
-#define GARRISON		(1<<2)
-
-#define GUARDSMAN	(1<<1)
-#define ROYALGUARD	(1<<2)
-#define DUNGEONEER	(1<<3)
-#define GATEMASTER	(1<<4)
-#define SHERIFF		(1<<5)
-
-#define CHURCHMEN		(1<<3)
-
-#define PRIEST		(1<<0)
-#define PURITAN		(1<<2)
-#define MONK		(1<<3)
-#define GRAVEDIGGER	(1<<4)
-#define CONFESSOR	(1<<5)
-
-#define ACADEMY				(1<<4)
-
-#define ACADARCHMAGE 	(1<<0)
-#define ACADMAGE 	(1<<2)
-#define ACADAPP 	(1<<3)
-
-#define COURTIERS	(1<<5)
-
-#define JESTER		(1<<0)
-#define PHYSICIAN 	(1<<1)
-#define BUTLER		(1<<2)
-#define COUNCILLOR	(1<<3)
-
-#define YEOMEN		(1<<6)
-
-#define BARKEEP		(1<<0)
-#define ARMORSMITH	(1<<1)
-#define WEAPONSMITH (1<<2)
-#define BLACKSMITH  (1<<3)
-#define ALCHEMIST	(1<<4)
-#define MASON		(1<<5)
-#define TAILOR		(1<<6)
-#define MERCHANT	(1<<7)
-#define SCRIBE		(1<<8)
-#define ELDER		(1<<9)
-#define APOTHECARY	(1<<10)
-
-#define PEASANTS	(1<<7)
-
-#define HUNTER		(1<<0)
-#define FARMER		(1<<1)
-#define BUTCHER		(1<<2)
-#define FISHER		(1<<3)
-#define LUMBERJACK	(1<<4)
-#define MINER		(1<<5)
-#define COOK		(1<<6)
-#define GRABBER		(1<<7)
-#define NIGHTMASTER	(1<<8)
-#define BEGGAR		(1<<9)
-#define VAGABOND		(1<<10)
-#define WENCH		(1<<11)
-#define ADVENTURER	(1<<12)
-#define PILGRIM		(1<<13)
-#define VILLAGER	(1<<14)
-#define PRISONERR	(1<<15)
-#define PRISONERB	(1<<16)
-#define PRISONERC	(1<<17)
-#define LUNATIC		(1<<18)
-#define MIGRANT (1<<19)
-#define SEELIE		(1<<20)
-#define PRISONERD	(1<<21)
-#define BANDIT		(1<<22)
-
-#define APPRENTICES	(1<<8)
-
-#define APPRENTICE	(1<<0)
-#define CHURCHLING	(1<<1)
-#define SQUIRE		(1<<2)
-#define SERVANT		(1<<3)
-#define PRINCE		(1<<4)
-#define SHOPHAND	(1<<5)
-#define CLERK 		(1<<6)
-
-#define MERCENARIES		(1<<0)
-#define VETERAN		(1<<1)
-#define STEWARD		(1<<2)
-#define SELLSWORD		(1<<3)
-
-#define TRIBAL		(1<<9)
-
-#define CHIEFTAIN	(1<<0)
-#define TRIBALCOOK	(1<<1)
-#define TRIBALGUARD	(1<<2)
-#define TRIBALSMITH	(1<<3)
-#define TRIBALSHAMAN	(1<<4)
-#define TRIBALVILLAGER	(1<<5)
-
-#define VIKING		(1<<10)
-#define HIGHKING	(1<<0)
-#define VIKINGFARMER	(1<<1)
-#define VIKINGGRUNT	(1<<1)
-
-#define VAMPIRE		(1<<11)
-#define VAMPTHRALL	(1<<0)
-#define VAMPSMITH	(1<<1)
-
-#define SLOP		(1<<12)
-
-#define TESTER		(1<<0)
-#define DEATHKNIGHT (1<<1)
-#define SKELETON	(1<<2)
-
-#define JCOLOR_GROVE "#50C878"
-#define JCOLOR_NOBLE "#aa83b9"
-#define JCOLOR_COURTIER "#81adc8"
-#define JCOLOR_CHURCH "#c0ba8d"
-#define JCOLOR_SOLDIER "#b18484"
-#define JCOLOR_YEOMAN "#819e82"
-#define JCOLOR_PEASANT "#b09262"
-#define JCOLOR_MERCENARY "#c86e3a"
-#define JCOLOR_ACADEMY "#785286"
-
-
-// job display orders //
-
-// Nobles
-#define JDO_LORD 1
-#define JDO_LADY 1.1
-#define JDO_PRINCE 1.2
-#define JDO_HAND 1.3
-#define JDO_CLERK 1.4
-#define JDO_JUDGE 1.5
-#define JDO_COUNCILLOR 1.6
-#define JDO_NOBLE 1.7
-
-// Grove
-#define JDO_GREATDRUID 2
-#define JDO_HEDGEWARDEN 3
-#define JDO_DRUID 4
-#define JDO_HEDGEKNIGHT 5
-#define JDO_OVATE 5.1
-
-// Courtiers
-#define JDO_PHYSICIAN 6
-#define JDO_JESTER 7
-#define JDO_BUTLER 7.1
-#define JDO_SERVANT 7.2
-
-#define JDO_GUARD_CAPTAIN 8
-#define JDO_KNIGHT 8.1
-#define JDO_SQUIRE 8.2
-#define JDO_ROYALGUARD 8.3
-#define JDO_GATEMASTER 8.4
-#define JDO_SHERIFF 8.5
-#define JDO_TOWNGUARD 8.6
-#define JDO_DUNGEONEER 8.7
-#define JDO_BOGMASTER 9
-#define JDO_BOGGUARD 9.1
-
-#define JDO_PRIEST 10
-#define JDO_PURITAN 11
-#define JDO_TEMPLAR 12
-#define JDO_MONK 13
-#define JDO_CHURCHLING 14
-#define JDO_GRAVEMAN 15
-#define JDO_SHEPHERD 16
-
-#define JDO_MERCHANT 17
-#define JDO_SHOPHAND 17.1
-#define JDO_GRABBER 17.2
-
-#define JDO_ACADARCHMAGE 18
-#define JDO_ACADMAGE 18.1
-#define JDO_ACADAPP 18.2
-
-#define JDO_CHIEF 19
-#define JDO_ARMORER 19.1
-#define JDO_WEAPONSMITH 19.2
-#define JDO_BLACKSMITH 20
-#define JDO_APPRENTICE 21
-
-#define JDO_MASON 22
-
-#define JDO_TAILOR 23
-
-#define JDO_BARKEEP 26
-#define JDO_COOK 27
-
-#define JDO_BUTCHER 27.1
-#define JDO_SOILSON 27.2
-
-#define JDO_NIGHTMASTER 28
-#define JDO_WENCH 28.1
-
-#define JDO_VILLAGER 30
-#define JDO_ADVENTURER 30.1
-#define JDO_PILGRIM 30.2
-#define JDO_MIGRANT 32.3
-
-#define JDO_MERCENARY 31
-#define JDO_VET 31.3
-#define JDO_STEWARD 31.4
-#define JDO_SEELIE 31.5
-#define JDO_SELLSWORD 31.6
-#define JDO_BANDIT 31.7
-
-#define JDO_VAGRANT 33
-#define JDO_VAGABOND 34
-
-#define JDO_PRISONERR 35
-#define JDO_PRISONERB 35.1
-#define JDO_PRISONERC 35.2
-#define JDO_HOSTAGE 35.3
-#define JDO_LUNATIC 35.4
-#define JDO_PRISONERD 35.5
-
-#define JDO_CHIEFTAIN 36
-#define JDO_TRIBALCOOK 37
-#define JDO_TRIBALGUARD 38
-#define JDO_TRIBALSMITH 39
-#define JDO_TRIBALSHAMAN 40
-#define JDO_TRIBALVILLAGER 41
-
-#define JDO_HIGHKING 42
-#define JDO_VIKINGFARMER 43
-#define JDO_VIKINGGRUNT 44
-
-#define JDO_VAMPTHRALL 45
-#define JDO_VAMPSMITH 46
-
-#define MANOR_ROLES \
-	/datum/job/roguetown/jester,\
-	/datum/job/roguetown/veteran,\
-	/datum/job/roguetown/steward,\
-	/datum/job/roguetown/clerk,\
-	/datum/job/roguetown/servant,\
-	/datum/job/roguetown/squire,\
-	/datum/job/roguetown/butler
-
-#define GROVE_ROLES \
-	/datum/job/roguetown/greatdruid,\
-	/datum/job/roguetown/hedgewarden,\
-	/datum/job/roguetown/druid,\
-	/datum/job/roguetown/hedgeknight,\
-	/datum/job/roguetown/ovate
-
-#define NOBLE_ROLES \
-	/datum/job/roguetown/prince,\
-	/datum/job/roguetown/councillor,\
-	/datum/job/roguetown/physician,\
-	/datum/job/roguetown/bailiff,\
-	/datum/job/roguetown/captain,\
-	/datum/job/roguetown/hand,\
-	/datum/job/roguetown/knight,\
-	/datum/job/roguetown/lady,\
-	/datum/job/roguetown/lord
-
-#define KING_QUEEN_ROLES \
-	/datum/job/roguetown/lady,\
-	/datum/job/roguetown/lord
-
-#define CHURCH_ROLES \
-	/datum/job/roguetown/churchling,\
-	/datum/job/roguetown/shepherd,\
-	/datum/job/roguetown/monk,\
-	/datum/job/roguetown/undertaker,\
-	/datum/job/roguetown/priest,\
-	/datum/job/roguetown/puritan,\
-	/datum/job/roguetown/grandmaster,\
-	/datum/job/roguetown/templar
-
-#define ACADEMY_ROLES \
-	/datum/job/roguetown/acadarchmage,\
-	/datum/job/roguetown/acadmage,\
-	/datum/job/roguetown/acadapp
-
-#define PEASANT_ROLES \
-	/datum/job/roguetown/villager,\
-	/datum/job/roguetown/nightmaiden,\
-	/datum/job/roguetown/beggar,\
-	/datum/job/roguetown/butcher,\
-	/datum/job/roguetown/cook,\
-	/datum/job/roguetown/lunatic,\
-	/datum/job/roguetown/nightman,\
-	/datum/job/roguetown/farmer,\
-	/datum/job/roguetown/orphan,\
-	/datum/job/roguetown/shophand,\
-	/datum/job/roguetown/bapprentice,\
-	/datum/job/roguetown/prisonerb,\
-	/datum/job/roguetown/hostage,\
-	/datum/job/roguetown/prisonerr
-
-#define YEOMEN_ROLES \
-	/datum/job/roguetown/woodsman,\
-	/datum/job/roguetown/barkeep,\
-	/datum/job/roguetown/armorsmith,\
-	/datum/job/roguetown/mason,\
-	/datum/job/roguetown/merchant,\
-	/datum/job/roguetown/scribe
-
-#define WANDERER_ROLES \
-	/datum/job/roguetown/pilgrim,\
-	/datum/job/roguetown/adventurer,\
-	/datum/job/roguetown/mercenary,\
-	/datum/job/roguetown/bandit
-
-#define GARRISON_ROLES \
-	/datum/job/roguetown/dungeoneer,\
-	/datum/job/roguetown/gatemaster,\
-	/datum/job/roguetown/manorguard,\
-	/datum/job/roguetown/sheriff,\
-	/datum/job/roguetown/guardsman

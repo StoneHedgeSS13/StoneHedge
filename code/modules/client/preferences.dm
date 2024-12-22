@@ -782,7 +782,29 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Physician", "Archpriest", "Merchant Prince", "Academy Archmage", "Blacksmith", "Nightmaster", "Towner", "Grenzelhoft Mercenary", "Low Life", "Prisoner", "Chieftain"), widthPerColumn = 295, height = 620) //295 620
+/datum/preferences/proc/getFactionInfo(jobtitle)
+	switch(jobtitle)
+		if("Guildmaster")
+			return list("Adventurer's Guild", "#8a0000")
+		if("Great Druid")
+			return list("Bruewyydd Grove", "#7b9b3e")
+		if("High Priest")
+			return list("Divine Temple", "#ebc300")
+		if("Merchant Prince")
+			return list("Merchant Consortium", "#ce00c3")
+		if("Academy Archmage")
+			return list("Ravenloft Academy", "#9370db")
+		if("Dwarven Artificer")
+			return list("Svaeryogh's Forge", "#ff9900")
+		if("Innkeep")
+			return list("Sylver Dragonne Inn", "#bb004e")
+		if("Chieftain")
+			return list("Woodland Tribe", "#523500")
+		if("Towner")
+			return list("Unaffiliated", "#c0c0c0")
+	return list("Unknown", "#FFFFFF")
+
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Guildmaster", "Great Druid", "High Priest", "Merchant Prince", "Academy Archmage", "Dwarven Artificer","Innkeep", "BREAK_HERE", "Chieftain", "Towner"), widthPerColumn = 340, height = 620)
 	if(!SSjob)
 		return
 
@@ -795,19 +817,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/HTML = "<center>"
 	if(SSjob.occupations.len <= 0)
-//		HTML += "The job SSticker is not yet finished creating jobs, please try again later"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
-
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
 	else
-//		HTML += "<b>Choose class preferences</b><br>"
-//		HTML += "<div align='center'>Left-click to raise a class preference, right-click to lower it.<br></div>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
-		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB) // this is to catch those that used the previous definition and reset.
-			joblessrole = RETURNTOLOBBY
-		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
-		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
-		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
-		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
+		HTML += "<table width='1020px'><tr>"
+		HTML += "<td width='340px' valign='top'>"
+		HTML += "<table width='340px' cellpadding='1' cellspacing='0'>"
 		var/index = -1
 
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
@@ -817,7 +832,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				continue
 
 			index += 1
-//			if((index >= limit) || (job.title in splitJobs))
+			if(job.title == "Chieftain")
+				// Add dummy entries before processing Chieftain
+				for(var/i in 1 to 2)  // Add 2 dummy entries
+					HTML += "<tr bgcolor='#000000' style='height: 1px;'><td colspan='2'></td></tr>"  // Minimal height
+					index += 1
+
 			if(index >= limit)
 				width += widthPerColumn
 				if((index < limit) && (lastJob != null))
@@ -825,34 +845,35 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					//the last job's selection color. Creating a rather nice effect.
 					for(var/i = 0, i < (limit - index), i += 1)
 						HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
-				HTML += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
+				HTML += "</table></td><td width='340px' valign='top' style='padding: 0;'><table width='340px' cellpadding='0' cellspacing='0'>"
 				index = 0
 
 			if(job.title in splitJobs)
-				HTML += "<tr bgcolor='#000000'><td width='60%' align='right'><hr></td></tr>"
+				var/list/faction_info = getFactionInfo(job.title)
+				HTML += "<tr bgcolor='#000000'><td width='80%' align='left'><hr></td></tr><tr bgcolor='#000000'><td width='80%' align='center'><font color='[faction_info[2]]'><b>[faction_info[1]]</b></font></td></tr><tr bgcolor='#000000'><td width='80%' align='left'><hr></td></tr>"
 
-			HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>"
+			HTML += "<tr bgcolor='#000000'><td width='60%' align='left' style='padding: 0 10px'>"
 			var/rank = job.title
 			var/used_name = "[job.title]"
 			if(gender == FEMALE && job.f_title)
 				used_name = "[job.f_title]"
 			lastJob = job
 			if(is_role_banned(user.ckey, job.title))
-				HTML += "[used_name]</td> <td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
+				HTML += "[used_name] <a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
-				HTML += "[used_name]</td> <td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
+				HTML += "[used_name] <font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
 				continue
 			if(!job.player_old_enough(user.client))
 				var/available_in_days = job.available_in_days(user.client)
-				HTML += "[used_name]</td> <td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+				HTML += "[used_name] <font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
 				continue
 			if(!job.required && !isnull(job.min_pq) && (get_playerquality(user.ckey) < job.min_pq))
-				HTML += "<font color=#a59461>[used_name] (Min PQ: [job.min_pq])</font></td> <td> </td></tr>"
+				HTML += "<font color=#a59461>[used_name]<div style='font-size: 80%;'>(Min PQ: [job.min_pq])</div></font></td></tr>"
 				continue
 			if(!job.required && !isnull(job.max_pq) && (get_playerquality(user.ckey) > job.max_pq) && !is_misc_banned(parent.ckey, BAN_MISC_LUNATIC))
-				HTML += "<font color=#a59461>[used_name] (Max PQ: [job.max_pq])</font></td> <td> </td></tr>"
+				HTML += "<font color=#a59461>[used_name]<div style='font-size: 80%;'>(Max PQ: [job.max_pq])</div></font></td></tr>"
 				continue
 			var/job_unavailable = JOB_AVAILABLE
 			if(isnewplayer(parent?.mob))
@@ -863,7 +884,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				JOB_UNAVAILABLE_SLOTFULL,
 			)
 			if(!(job_unavailable in acceptable_unavailables))
-				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
+				HTML += "<font color=#a36c63>[used_name]</font></td></tr>"
 				continue
 //			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
 //				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
@@ -890,7 +911,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	width: 280px;
 	background-color: black;
 	color: #e3c06f;
-	text-align: center;
+	text-align: left;
 	border-radius: 6px;
 	padding: 5px 0;
 
@@ -907,14 +928,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 </style>
 
-<div class="tutorialhover"><font>[used_name]</font>
+<div class="tutorialhover" style="display: inline-block">[used_name]
 <span class="tutorial">[job.tutorial]<br>
 Slots: [job.spawn_positions]</span>
 </div>
-
-			"}
-
-			HTML += "</td><td width='40%'>"
+"}
 
 			var/prefLevelLabel = "ERROR"
 			var/prefLevelColor = "pink"
@@ -946,16 +964,7 @@ Slots: [job.spawn_positions]</span>
 					prefUpperLevel = 3
 					prefLowerLevel = 1
 
-			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
-
-//			if(rank == SSjob.overflow_role)//Overflow is special
-//				if(job_preferences[SSjob.overflow_role] == JP_LOW)
-//					HTML += "<font color=green>Yes</font>"
-//				else
-//					HTML += "<font color=red>No</font>"
-//				HTML += "</a></td></tr>"
-//				continue
-
+			HTML += " - <a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
 			HTML += "<font color=[prefLevelColor]>[prefLevelLabel]</font>"
 			HTML += "</a></td></tr>"
 
@@ -977,7 +986,7 @@ Slots: [job.spawn_positions]</span>
 			HTML += "<br>"
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>"
 
-	var/datum/browser/noclose/popup = new(user, "mob_occupation", "<div align='center'>Class Selection</div>", width, height)
+	var/datum/browser/noclose/popup = new(user, "mob_occupation", "<div align='center'>Class Selection</div>", 1020, 800)
 	popup.set_window_options("can_close=0")
 	popup.set_content(HTML)
 	popup.open(FALSE)
@@ -1276,7 +1285,6 @@ Slots: [job.spawn_positions]</span>
 			else
 				SetChoices(user)
 		return 1
-
 
 	else if(href_list["preference"] == "trait")
 		switch(href_list["task"])
@@ -2706,3 +2714,4 @@ Slots: [job.spawn_positions]</span>
 	if(is_misc_banned(parent.ckey, BAN_MISC_RESPAWN))
 		return FALSE
 	return TRUE
+

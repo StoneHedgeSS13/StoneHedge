@@ -598,26 +598,22 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/column_counter = 0
 
 	var/list/omegalist = list()
-	omegalist += list(GLOB.noble_positions)
+	omegalist += list(GLOB.adventurers_guild_positions)
 	omegalist += list (GLOB.grove_positions)
-	omegalist += list(GLOB.courtier_positions)
-	omegalist += list(GLOB.garrison_positions)
-	omegalist += list(GLOB.church_positions)
+	omegalist += list(GLOB.divine_temple_positions)
+	omegalist += list(GLOB.merchant_consortium_positions)
 	omegalist += list(GLOB.academy_positions)
-	omegalist += list(GLOB.yeoman_positions)
-	omegalist += list(GLOB.peasant_positions)
-	omegalist += list(GLOB.mercenary_positions)
-	omegalist += list(GLOB.apprentices_positions)
-	omegalist += list(GLOB.goblin_positions)
-	omegalist += list(GLOB.viking_positions)
-	omegalist += list(GLOB.vampire_positions)
+	omegalist += list(GLOB.inn_positions)
+	omegalist += list(GLOB.forge_positions)
+	omegalist += list(GLOB.unaffiliated_positions)
+	omegalist += list(GLOB.tribe_positions)
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.allmig)
 			omegalist = list(GLOB.allmig_positions)
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
-		omegalist = list(GLOB.roguewar_positions)
+		omegalist = list(GLOB.unaffiliated_positions)
 
 	for(var/list/category in omegalist)
 		if(!SSjob.name_occupations[category[1]])
@@ -640,32 +636,26 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			var/cat_color = SSjob.name_occupations[category[1]].selection_color //use the color of the first job in the category (the department head) as the category color
 			var/cat_name = ""
 			switch (SSjob.name_occupations[category[1]].department_flag)
-				if (NOBLEMEN)
-					cat_name = "Nobles"
 				if (GROVE)
 					cat_name = "Breuddwyd Grove"
-				if (COURTIERS)
-					cat_name = "Courtiers"
-				if (GARRISON)
-					cat_name = "Garrison"
-				if (CHURCHMEN)
-					cat_name = "Churchmen"
+				if (ADVENTURERSGUILD)
+					cat_name = "Adventurer's Guild"
+				if (DIVINETEMPLE)
+					cat_name = "Divine Temple"
 				if (ACADEMY)
 					cat_name = "Ravenloft Academy"
-				if (YEOMEN)
-					cat_name = "Yeomen"
-				if (PEASANTS)
-					cat_name = "Peasants"
-				if (APPRENTICES)
-					cat_name = "Apprentices"
-				if (MERCENARIES)
-					cat_name = "Mercenaries"
+				if (MERCHANTCONSORTIUM)
+					cat_name = "Merchant Consortium"
+				if (SYLVERDRAGONNE)
+					cat_name = "Sylver Dragonne Inn"
+				if (UNAFFILIATED)
+					cat_name = "Unaffiliated"
 				if (TRIBAL)
-					cat_name = "Tribe"
-				if (VIKING)
-					cat_name = "Viking"
-				if (VAMPIRE)
-					cat_name = "Vampire"
+					cat_name = "Woodland Tribe"
+				if (FORGE)
+					cat_name = "Svaerygoh's Forge"
+				if (UNDERDARK)
+					cat_name = "Underdark"
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
@@ -690,8 +680,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				var/datum/job/job_datum = SSjob.name_occupations[job]
 				if(job_datum)
 					var/command_bold = ""
-					if(job in GLOB.noble_positions)
-						command_bold = " command"
+					if(job in GLOB.grove_positions)
+						command_bold = "command"
 					var/used_name = job_datum.title
 					if(client.prefs.gender == FEMALE && job_datum.f_title)
 						used_name = job_datum.f_title

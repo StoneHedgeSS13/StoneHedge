@@ -173,7 +173,9 @@
 				SStreasury.give_money_account(-newtax, A, "NERVE MASTER")
 				break
 	if(href_list["payroll"])
-		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.apprentices_positions)
+		var/list/L = list(GLOB.adventurers_guild_positions) + list(GLOB.grove_positions) + list(GLOB.divine_temple_positions) + \
+					list(GLOB.merchant_consortium_positions) + list(GLOB.academy_positions) + list(GLOB.forge_positions) + \
+					list(GLOB.inn_positions) + list(GLOB.tribe_positions) + list(GLOB.unaffiliated_positions)
 		var/list/things = list()
 		for(var/list/category in L)
 			for(var/A in category)

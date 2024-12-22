@@ -253,11 +253,11 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 					break
 				if(!(candidate in allantags)) // We don't want to double dip... I guess? Two birds one stone tho, A already bandit check would check pre_bandits
 					continue
-				if(candidate.assigned_role in GLOB.noble_positions) // Job cat string stoppers
+				if(candidate.assigned_role in GLOB.grove_positions) // Job cat string stoppers
 					continue
-				if(candidate.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.divine_temple_positions) // Many of these guys vanishing would suck
 					continue
-				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
+				if(candidate.assigned_role in GLOB.academy_positions) // Many of these guys vanishing would suck
 					continue
 				if(candidate.current && isseelie(candidate.current))
 					continue
@@ -328,15 +328,13 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 				var/blockme = FALSE
 				if(!(rebelguy in allantags))
 					blockme = TRUE
-				if(rebelguy.assigned_role in GLOB.garrison_positions)
+				if(rebelguy.assigned_role in GLOB.grove_positions)
 					blockme = TRUE
-				if(rebelguy.assigned_role in GLOB.noble_positions)
+				if(rebelguy.assigned_role in GLOB.divine_temple_positions)
 					blockme = TRUE
-				if(rebelguy.assigned_role in GLOB.apprentices_positions)
+				if(rebelguy.assigned_role in GLOB.merchant_consortium_positions)
 					blockme = TRUE
-				if(rebelguy.assigned_role in GLOB.church_positions)
-					blockme = TRUE
-				if(rebelguy.assigned_role in GLOB.yeoman_positions)
+				if(rebelguy.assigned_role in GLOB.academy_positions)
 					blockme = TRUE
 				if(blockme)
 					continue
@@ -384,7 +382,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 		var/blockme = FALSE
 		if(!(villain in allantags))
 			blockme = TRUE
-		if(villain.assigned_role in GLOB.apprentices_positions)
+		if(villain.assigned_role in GLOB.grove_positions)
 			blockme = TRUE
 		if(blockme)
 			return
@@ -465,9 +463,9 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 		var/blockme = FALSE
 		if(!(vampire in allantags))
 			blockme = TRUE
-		if(vampire.assigned_role in GLOB.noble_positions)
+		if(vampire.assigned_role in GLOB.grove_positions)
 			continue
-		if(vampire.assigned_role in GLOB.apprentices_positions)
+		if(vampire.assigned_role in GLOB.divine_temple_positions)
 			blockme = TRUE
 		if(blockme)
 			continue
@@ -517,9 +515,9 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 		var/blockme = FALSE
 		if(!(werewolf in allantags))
 			blockme = TRUE
-		if(werewolf.assigned_role in GLOB.noble_positions)
+		if(werewolf.assigned_role in GLOB.grove_positions)
 			continue
-		if(werewolf.assigned_role in GLOB.apprentices_positions)
+		if(werewolf.assigned_role in GLOB.divine_temple_positions)
 			blockme = TRUE
 		if(blockme)
 			return
