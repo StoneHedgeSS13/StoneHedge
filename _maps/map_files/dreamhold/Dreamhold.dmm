@@ -13121,13 +13121,6 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/river)
-"iXt" = (
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/garrison{
-	first_time_text = "Adventurers Guild";
-	name = "Adventurers Guild"
-	})
 "iXB" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt,
@@ -26558,13 +26551,6 @@
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
-	})
-"rIw" = (
-/obj/structure/chair/arrestchair,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/garrison{
-	first_time_text = "Adventurers Guild";
-	name = "Adventurers Guild"
 	})
 "rIX" = (
 /obj/structure/fermenting_barrel/beer,
@@ -90165,7 +90151,7 @@ bFf
 prw
 prw
 prw
-rIw
+qgp
 qgp
 qgp
 qfv
@@ -123899,7 +123885,7 @@ tKe
 xnj
 xnj
 ffo
-iXt
+dYB
 nNz
 dij
 rJG
