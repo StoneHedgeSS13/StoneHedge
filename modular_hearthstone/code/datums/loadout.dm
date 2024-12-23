@@ -64,7 +64,6 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Rider Cloak"
 	path = /obj/item/clothing/cloak/half/rider did not port from Azure*/
 
-
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
