@@ -225,7 +225,7 @@
 			H.mind.adjust_spellpoints(5)
 			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 			H.set_blindness(0)
-			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 6, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
