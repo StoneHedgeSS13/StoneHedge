@@ -10,7 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 
-	tutorial = "You are renting out the bath-house in a joint operation with the barkeep. Providing security for the Courtesans and helping them find work... And deal in other shady businesses behind closed doors."
+	tutorial = "You are renting out the brothel in a joint operation with the barkeep. Providing security for the Courtesans and helping them find work... And deal in other shady businesses behind closed doors."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman

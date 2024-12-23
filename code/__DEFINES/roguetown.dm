@@ -257,6 +257,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_PILGRIM 		"CAT_PILGRIM"  		// Pilgrim classes
 #define CTAG_ADVENTURER 	"CAT_ADVENTURER"  	// Adventurer classes
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercenary classes
+#define CTAG_HENCH			"CAT_HENCH"		// Henchman classes
 #define CTAG_SELLSWORD		"CAT_SELLSWORD"		// Sellsword classes
 #define CTAG_TOWNER 		"CAT_TOWNER"  		// Villager class - Villagers can use it
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag

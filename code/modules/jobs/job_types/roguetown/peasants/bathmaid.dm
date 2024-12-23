@@ -11,7 +11,7 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "The Courtesans of the wood are renowned across the land. Such grace and Charisma coupled with beauty has inspired many bards and adventurers alike. You work for the Spymaster; attending to clientele from across the realms needs -- for a price."
+	tutorial = "The 'brothel workers' of the wood are renowned across the land. Such grace and Charisma coupled with beauty has inspired many bards and adventurers alike. You work for the nightmaster; attending to clientele from across the realms needs -- for a price."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH

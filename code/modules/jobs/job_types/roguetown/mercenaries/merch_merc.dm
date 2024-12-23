@@ -3,14 +3,14 @@
 	flag = GRABBER
 	department_flag = MERCENARIES
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	tutorial = "You're hired muscle for the local brothel. \
-				You work directly under the Whitevein Lounge's ownership, whether that be a Nightmaster or Nightmatron. \
+				You work directly under the Brothel's ownership, whether that be a Nightmaster or Nightmatron. \
 				Assure nobody causes trouble or harms the prostitutes, \
 				alongside the added help of keeping the long arm of the law away from the shady business happening inside."
 
@@ -27,7 +27,7 @@
 /datum/outfit/job/roguetown/grabber/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltl = /obj/item/storage/keyring/nightman
@@ -66,7 +66,7 @@
 	name = "Muscle"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/muscle
-	tutorial = "Picked up off the street, or otherwise brought into the life of the Whitevein Lounge, it matters little to you. \
+	tutorial = "Picked up off the street, or otherwise brought into the life of the Brothel, it matters little to you. \
 	You've a mace and the skill to beat someone's head in. Do your job in keeping the order of this wonderful establishment. By force, if needed."
 	category_tags = list(CTAG_HENCH)
 
@@ -91,7 +91,7 @@
 	name = "Adherent"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/adherent
-	tutorial = "At one point, you were a prostitute of the Whitevein Lounge. Now? You defend them. \
+	tutorial = "At one point, you were a prostitute of the Brothel. Now? You defend them. \
 	Seeing potential in you, the Wightvein's owner saw to your training. \
 	No expense was spared, assuring you're easily the best sword hand this side of the harbour. Or so they say."
 	category_tags = list(CTAG_HENCH)
