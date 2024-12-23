@@ -6032,7 +6032,6 @@
 "Jf" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8;
-	locked = 1;
 	lockid = "nightman"
 	},
 /turf/open/floor/rogue/shroud,
