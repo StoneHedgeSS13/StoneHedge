@@ -328,8 +328,8 @@
 	reqs = list(/obj/item/rogueore/iron = 4)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/alchemy/i2top // Keep topers and their trinkets cheap to prevent wealth creep. Cheap means of getting gem dust, for potions.
-	name = "transmute iron to toper"
+/datum/crafting_recipe/roguetown/alchemy/i2top // Keep topaz and their trinkets cheap to prevent wealth creep. Cheap means of getting gem dust, for potions.
+	name = "transmute iron to topaz"
 	result = list(/obj/item/roguegem/yellow = 1)
 	reqs = list(
 		/obj/item/rogueore/iron = 1, //Toper will be worth 30 mammon. Iron ingot is worth 25.
