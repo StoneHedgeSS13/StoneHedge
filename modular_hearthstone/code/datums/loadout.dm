@@ -60,8 +60,18 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Fur Cloak"
 	path = /obj/item/clothing/cloak/raincloak/furcloak
 
+/datum/loadout_item/blkknight
+	name = "Blood Cape"
+	path = /obj/item/clothing/cloak/cape/blkknight
 
+/datum/loadout_item/lordcloak
+	name = "Lordly Cloak"
+	path = /obj/item/clothing/cloak/lordcloak
 
+/datum/loadout_item/roguehood
+	name = "Hood"
+
+	path = /obj/item/clothing/head/roguetown/roguehood
 /*/datum/loadout_item/ridercloak
 	name = "Rider Cloak"
 	path = /obj/item/clothing/cloak/half/rider did not port from Azure*/
@@ -181,6 +191,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Divine symbol"
 	path = /obj/item/clothing/neck/roguetown/psicross
 
+/datum/loadout_item/dildo
+	name = "Wooden Dildo"
+	path = /obj/item/dildo/wood
+
+/datum/loadout_item/dildo
+	name = "Wooden Butt Plug
+	path = /obj/item/dildo/plug/wood
+
 //ARMORS
 //HEAD
 /datum/loadout_item/lhelmet
@@ -261,4 +279,8 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/iboots
 	name = "Iron Boots"
 	path =	/obj/item/clothing/shoes/roguetown/boots/armoriron
+
+/datum/loadout_item/gladiator
+	name = "Leather Soleae"
+	path = /obj/item/clothing/shoes/roguetown/gladiator
 
