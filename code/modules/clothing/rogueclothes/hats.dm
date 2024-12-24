@@ -297,7 +297,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
-				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 				H.update_inv_cloak()
 			return
 		else if(adjustable == CADJUSTED)
@@ -308,7 +308,7 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
-					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 					H.update_inv_cloak()
 		return
 
