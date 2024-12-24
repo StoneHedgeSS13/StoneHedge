@@ -72,8 +72,8 @@
 	wdefense = 3
 
 /obj/item/rogueweapon/mace/steel
-	force = 30
-	force_wielded = 40
+	force = 25
+	force_wielded = 30
 	name = "steel mace"
 	desc = "This steel mace is objectively superior to an iron one."
 	icon_state = "smace"
@@ -331,7 +331,7 @@
 	desc = "A massive mace that can crush any opposition with ease."
 	icon_state = "polemace"
 	force = 15
-	force_wielded = 35
+	force_wielded = 45
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()
