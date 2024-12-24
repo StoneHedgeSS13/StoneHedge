@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/dildo/wood
 
 /datum/loadout_item/dildo
-	name = "Wooden Butt Plug
+	name = "Wooden Butt Plug"
 	path = /obj/item/dildo/plug/wood
 
 /datum/loadout_item/gladiator
