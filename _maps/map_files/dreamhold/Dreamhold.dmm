@@ -88,8 +88,8 @@
 /area/rogue/outdoors/caves)
 "abz" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/cavewet)
@@ -390,9 +390,9 @@
 /area/rogue/under/cavewet)
 "alD" = (
 /obj/structure/mineral_door/wood/donjon{
+	dir = 8;
 	locked = 1;
 	lockid = "nightmaiden";
-	dir = 8;
 	name = "Bath Room 01"
 	},
 /turf/open/floor/rogue/blocks,
@@ -1065,9 +1065,9 @@
 "aDB" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
+	locked = 1;
 	lockid = "roombard";
-	name = "Bard's Room";
-	locked = 1
+	name = "Bard's Room"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -1122,8 +1122,8 @@
 "aFt" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "aFz" = (
 /turf/closed/wall/shroud,
@@ -1329,8 +1329,8 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "aJC" = (
 /obj/effect/decal/dirt{
@@ -1967,8 +1967,8 @@
 	})
 "bbq" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/toy/cards/deck/syndicate,
 /turf/open/floor/carpet/red,
@@ -2254,11 +2254,11 @@
 /area/rogue/indoors/shelter/town)
 "bjq" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
@@ -2784,11 +2784,11 @@
 	})
 "byE" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cavewet)
@@ -3067,8 +3067,8 @@
 /obj/structure/fluff/statue/dragonr,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "bIr" = (
 /obj/effect/decal/remains/human,
@@ -3183,8 +3183,8 @@
 	})
 "bLP" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/rogue/cobble,
@@ -4123,11 +4123,11 @@
 /area/rogue/under/cavewet)
 "cnE" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/under/cavewet)
@@ -4435,8 +4435,8 @@
 /area/rogue/under/cavewet)
 "cvK" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
+	STASTR = 20;
+	faction = list("undead")
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cavewet)
@@ -4506,8 +4506,8 @@
 "cyN" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "cyU" = (
 /obj/structure/flora/grass/jungle/b,
@@ -6036,11 +6036,11 @@
 "dpY" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -6160,9 +6160,9 @@
 /area/rogue/under/cavewet)
 "dtj" = (
 /obj/structure/mineral_door/wood/donjon{
+	dir = 8;
 	lockid = "nightmaiden";
-	name = "Bath House";
-	dir = 8
+	name = "Bath House"
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cavewet)
@@ -6966,10 +6966,10 @@
 /area/rogue/indoors/shelter/town)
 "dSP" = (
 /obj/structure/mineral_door/bars{
+	icon_state = "donjon";
 	locked = 1;
 	lockid = "mage";
-	name = "Ravenloft Forge";
-	icon_state = "donjon"
+	name = "Ravenloft Forge"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -7835,8 +7835,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "enQ" = (
 /mob/living/carbon/human/species/goblin/npc/ambush,
@@ -7908,8 +7908,8 @@
 /area/rogue/under/cavewet)
 "epB" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -8126,8 +8126,8 @@
 	})
 "eyp" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "The Abyss Eye";
-	lockid = "merc"
+	lockid = "merc";
+	name = "The Abyss Eye"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/beach{
@@ -8244,8 +8244,8 @@
 	})
 "eAu" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
+	dir = 4;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble,
@@ -8937,8 +8937,8 @@
 /area/rogue/outdoors/caves)
 "eRS" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
+	STASTR = 20;
+	faction = list("undead")
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cavewet)
@@ -9188,8 +9188,8 @@
 	})
 "eWC" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/under/cavewet)
@@ -9624,9 +9624,9 @@
 	})
 "fhT" = (
 /obj/structure/mineral_door/wood/red{
+	locked = 1;
 	lockid = "nightmaiden";
-	name = "Service Room";
-	locked = 1
+	name = "Service Room"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet)
@@ -9860,8 +9860,8 @@
 "fnI" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "fnP" = (
 /obj/structure/closet/crate/roguecloset/dark,
@@ -9973,8 +9973,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "fqa" = (
 /obj/effect/spawner/roguemap/hauntpile,
@@ -10174,9 +10174,9 @@
 "fwm" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/fluff/statue/myth{
-	name = "Grandmage Lancoh";
 	desc = "A statue depicting Grandmage Lancoh, one of the first Professors of the Ravenloft Academy. Fiercely protective of his students, he was executed by the founders of the town when he refused them entry into the Academy during a crusade.";
-	icon_state = "bstatue"
+	icon_state = "bstatue";
+	name = "Grandmage Lancoh"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -10474,8 +10474,8 @@
 	})
 "fEy" = (
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
@@ -10655,8 +10655,8 @@
 /area/rogue/under/cavewet)
 "fIL" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 5
+	dir = 5;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet)
@@ -11066,8 +11066,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "fVN" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -11731,9 +11731,9 @@
 /area/rogue/under/cavewet)
 "gmO" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Brueddwyd Grove";
+	locked = 1;
 	lockid = "grove";
-	locked = 1
+	name = "Brueddwyd Grove"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/woods{
@@ -12010,9 +12010,9 @@
 	})
 "gvQ" = (
 /obj/structure/mineral_door/wood{
-	name = "Room VI";
+	locked = 1;
 	lockid = "roomvi";
-	locked = 1
+	name = "Room VI"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -12434,8 +12434,8 @@
 "gLO" = (
 /obj/structure/gate{
 	gid = "dungeonboss";
-	redstone_id = "dungeonboss";
-	max_integrity = 50000
+	max_integrity = 50000;
+	redstone_id = "dungeonboss"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -12508,8 +12508,8 @@
 /area/rogue/under/cavewet)
 "gQo" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -12609,8 +12609,8 @@
 "gSN" = (
 /mob/living/carbon/human/species/skeleton/npc,
 /turf/open/floor/rogue/metal{
-	icon_state = "plating2";
-	dir = 1
+	dir = 1;
+	icon_state = "plating2"
 	},
 /area/rogue/under/cavewet)
 "gTg" = (
@@ -12671,9 +12671,9 @@
 /area/rogue/under/cavewet)
 "gUh" = (
 /obj/structure/fluff/psycross{
+	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove.";
 	icon_state = "bstatue";
-	name = "Symbol of Sylvarhn";
-	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove."
+	name = "Symbol of Sylvarhn"
 	},
 /turf/open/water/river{
 	dir = 8;
@@ -12937,11 +12937,11 @@
 /area/rogue/under/cavewet)
 "hce" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet)
@@ -13615,8 +13615,8 @@
 "huN" = (
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "huR" = (
 /obj/structure/flora/roguegrass,
@@ -14017,8 +14017,8 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "hGw" = (
 /obj/structure/mineral_door/wood/deadbolt{
@@ -14120,8 +14120,8 @@
 	dir = 4
 	},
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/woodturned,
@@ -14431,8 +14431,8 @@
 /area/rogue/outdoors/river)
 "hRq" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "The Abyss Eye";
-	lockid = "merc"
+	lockid = "merc";
+	name = "The Abyss Eye"
 	},
 /turf/open/floor/rogue/wood/herringbone,
 /area/rogue/outdoors/beach{
@@ -14922,8 +14922,8 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "idV" = (
 /obj/structure/flora/wildplant/wild_poppy,
@@ -15075,8 +15075,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "ihJ" = (
 /obj/structure/mineral_door/wood/donjon{
@@ -15307,8 +15307,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cavewet)
@@ -15725,9 +15725,9 @@
 /area/rogue/outdoors/caves)
 "iBK" = (
 /obj/structure/closet/crate/drawer{
+	dir = 8;
 	pixel_x = 5;
-	pixel_y = 6;
-	dir = 8
+	pixel_y = 6
 	},
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/twig,
@@ -15772,17 +15772,11 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
-"iCD" = (
-/turf/closed/wall/mineral/rogue/pipe{
-	icon_state = "iron_corner";
-	dir = 4
-	},
-/area/rogue/under/cavewet)
 "iCE" = (
 /obj/structure/mineral_door/wood/window{
-	name = "Tailor";
 	locked = 1;
-	lockid = "tailor"
+	lockid = "tailor";
+	name = "Tailor"
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
@@ -15796,9 +15790,9 @@
 	})
 "iCS" = (
 /obj/structure/mineral_door/wood{
-	name = "Terrace";
 	locked = 1;
-	lockid = "roomvi","roomvii"
+	lockid = "roomvi","roomvii";
+	name = "Terrace"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -16259,9 +16253,9 @@
 /area/rogue/indoors/shelter/bog)
 "iRu" = (
 /obj/structure/mineral_door/wood/red{
+	locked = 1;
 	lockid = "nightmaiden";
-	name = "Sewer Room";
-	locked = 1
+	name = "Sewer Room"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavewet)
@@ -16276,8 +16270,8 @@
 	})
 "iRA" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 12
+	dir = 12;
+	icon_state = "largetable"
 	},
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -16833,12 +16827,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/caves)
-"jiw" = (
-/turf/closed/wall/mineral/rogue/pipe{
-	icon_state = "iron_corner";
-	dir = 8
-	},
-/area/rogue/under/cavewet)
 "jiz" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -17411,8 +17399,8 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "jyC" = (
 /obj/effect/mob_spawner/mossback,
@@ -17772,9 +17760,9 @@
 	})
 "jGg" = (
 /obj/structure/mineral_door/wood{
-	name = "Room VIII - Meeting hall";
+	locked = 1;
 	lockid = "roomviii";
-	locked = 1
+	name = "Room VIII - Meeting hall"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -18307,8 +18295,8 @@
 "jVr" = (
 /obj/structure/gate{
 	gid = "dungeongatetwo";
-	redstone_id = "dungeongatetwo";
-	max_integrity = 50000
+	max_integrity = 50000;
+	redstone_id = "dungeongatetwo"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -18385,15 +18373,15 @@
 	})
 "jWP" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cavewet)
 "jXh" = (
 /obj/structure/mineral_door/wood/window{
-	name = "Tailor";
-	lockid = "tailor"
+	lockid = "tailor";
+	name = "Tailor"
 	},
 /turf/open/floor/rogue/twig{
 	dir = 4
@@ -19010,10 +18998,10 @@
 	})
 "kme" = (
 /obj/structure/mineral_door/wood/donjon{
+	dir = 8;
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "Bath Room 02";
-	dir = 8
+	name = "Bath Room 02"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavewet)
@@ -19094,10 +19082,10 @@
 	})
 "knt" = (
 /obj/machinery/light/small{
-	mouse_opacity = 0;
-	dir = 4;
 	color = "#b51d12";
-	light_color = "#b51d12"
+	dir = 4;
+	light_color = "#b51d12";
+	mouse_opacity = 0
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
@@ -19649,9 +19637,9 @@
 	dir = 4
 	},
 /obj/structure/mineral_door/wood/window{
-	name = "Tailor's Quarters";
 	locked = 1;
-	lockid = "tailor"
+	lockid = "tailor";
+	name = "Tailor's Quarters"
 	},
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town)
@@ -19690,8 +19678,8 @@
 /area/rogue/under/cavewet)
 "kEv" = (
 /obj/structure/bars/passage{
-	icon_state = "passage1";
 	density = 0;
+	icon_state = "passage1";
 	redstone_id = "cliffharbor_gate"
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -19809,9 +19797,9 @@
 "kGS" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
+	locked = 1;
 	lockid = "roomiv";
-	name = "Room IV";
-	locked = 1
+	name = "Room IV"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -19890,9 +19878,9 @@
 /area/rogue/outdoors/river)
 "kIz" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "roomi";
-	name = "Room I";
-	locked = 1
+	name = "Room I"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -20444,8 +20432,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "lam" = (
 /obj/item/reagent_containers/glass/bucket,
@@ -20696,9 +20684,9 @@
 	})
 "lgX" = (
 /obj/structure/sink/copper{
+	color = "#6c6c6c";
 	dir = 4;
-	pixel_x = -14;
-	color = "#6c6c6c"
+	pixel_x = -14
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue/indoors/town/magician{
@@ -20843,8 +20831,8 @@
 	})
 "ljW" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 5
+	dir = 5;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/carpet/red,
@@ -20999,8 +20987,8 @@
 /area/rogue/indoors/town/tavern)
 "low" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/cobble,
@@ -21202,8 +21190,8 @@
 /area/rogue/under/cavewet)
 "lti" = (
 /obj/structure/mineral_door/bars{
-	name = "Cell Door";
-	lockid = "nightmaiden"
+	lockid = "nightmaiden";
+	name = "Cell Door"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet)
@@ -21270,8 +21258,8 @@
 /area/rogue/under/cavewet)
 "luj" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
+	dir = 8;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup,
 /turf/open/floor/rogue/cobble,
@@ -21464,8 +21452,8 @@
 "lzj" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "lzn" = (
 /obj/structure/fermenting_barrel/beer,
@@ -21642,8 +21630,8 @@
 /area/rogue/under/cavewet)
 "lGR" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/under/cavewet)
@@ -22324,8 +22312,8 @@
 /area/rogue/under/cavewet)
 "mcR" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble,
@@ -22676,8 +22664,8 @@
 	})
 "mnO" = (
 /obj/structure/table/wood{
-	icon_state = "longtable_mid";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable_mid"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/cavewet)
@@ -24228,9 +24216,9 @@
 /area/rogue/indoors/town)
 "ndV" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "roominnkeep";
-	name = "Terrace";
-	locked = 1
+	name = "Terrace"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -24459,8 +24447,8 @@
 /area/rogue/outdoors/caves)
 "nkE" = (
 /obj/structure/mineral_door/wood/window{
-	name = "Toilet";
-	lockid = "tailor"
+	lockid = "tailor";
+	name = "Toilet"
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/town)
@@ -24742,8 +24730,8 @@
 /area/rogue/outdoors/river)
 "nqD" = (
 /turf/open/floor/rogue/metal{
-	icon_state = "plating2";
-	dir = 1
+	dir = 1;
+	icon_state = "plating2"
 	},
 /area/rogue/under/cavewet)
 "nqU" = (
@@ -24803,9 +24791,9 @@
 	})
 "nsi" = (
 /obj/structure/fluff/psycross{
+	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove.";
 	icon_state = "bstatue";
-	name = "Symbol of Sylvarhn";
-	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove."
+	name = "Symbol of Sylvarhn"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
@@ -24840,9 +24828,9 @@
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/fluff/psycross{
+	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove.";
 	icon_state = "bstatue";
-	name = "Symbol of Sylvarhn";
-	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove."
+	name = "Symbol of Sylvarhn"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods{
@@ -24931,9 +24919,9 @@
 	})
 "nuF" = (
 /obj/structure/mineral_door/wood{
-	name = "Farmer's Bedroom";
+	locked = 1;
 	lockid = "farm";
-	locked = 1
+	name = "Farmer's Bedroom"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/river)
@@ -24941,8 +24929,8 @@
 /obj/machinery/light/rogue/firebowl/church,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "nuQ" = (
 /obj/structure/chair/stool/rogue{
@@ -24957,10 +24945,10 @@
 	})
 "nvw" = (
 /obj/machinery/light/small{
-	mouse_opacity = 0;
-	dir = 4;
 	color = "#b51d12";
-	light_color = "#b51d12"
+	dir = 4;
+	light_color = "#b51d12";
+	mouse_opacity = 0
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavewet)
@@ -25257,8 +25245,8 @@
 	})
 "nDH" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /obj/item/rogueweapon/hammer,
 /turf/open/floor/rogue/wood,
@@ -25977,8 +25965,8 @@
 	})
 "nWK" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet)
@@ -26229,8 +26217,8 @@
 	})
 "oeQ" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 6
+	dir = 6;
+	icon_state = "largetable"
 	},
 /obj/item/candle/yellow/lit,
 /turf/open/floor/carpet/red,
@@ -26743,9 +26731,9 @@
 "ovJ" = (
 /obj/structure/mineral_door/wood{
 	chat_color_name = "room";
+	locked = 1;
 	lockid = "roomv";
-	name = "Room V";
-	locked = 1
+	name = "Room V"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -26834,8 +26822,8 @@
 	})
 "oyQ" = (
 /obj/structure/fluff/walldeco/innsign{
-	pixel_y = -15;
-	alpha = 200
+	alpha = 200;
+	pixel_y = -15
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
@@ -26943,9 +26931,9 @@
 	redstone_id = "frontmain"
 	},
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Brueddwyd Grove";
+	locked = 1;
 	lockid = "grove";
-	locked = 1
+	name = "Brueddwyd Grove"
 	},
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
@@ -27723,8 +27711,8 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/metal{
-	icon_state = "plating2";
-	dir = 1
+	dir = 1;
+	icon_state = "plating2"
 	},
 /area/rogue/under/cavewet)
 "oWJ" = (
@@ -28128,11 +28116,11 @@
 	})
 "pgQ" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cavewet)
@@ -29949,9 +29937,9 @@
 	dir = 8
 	},
 /obj/structure/fluff/railing/wood{
+	dir = 1;
 	pixel_x = 8;
-	pixel_y = 8;
-	dir = 1
+	pixel_y = 8
 	},
 /obj/structure/stairs/stone{
 	dir = 8
@@ -30353,9 +30341,9 @@
 	redstone_id = "frontmain"
 	},
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Brueddwyd Grove";
+	locked = 1;
 	lockid = "grove";
-	locked = 1
+	name = "Brueddwyd Grove"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/bog)
@@ -30692,9 +30680,9 @@
 	})
 "quv" = (
 /obj/structure/mineral_door/wood/window{
-	name = "Tailor's Quarters";
 	locked = 1;
-	lockid = "tailor"
+	lockid = "tailor";
+	name = "Tailor's Quarters"
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
@@ -30752,8 +30740,8 @@
 /obj/structure/table/wood,
 /obj/structure/table/wood,
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cavewet)
@@ -30845,9 +30833,9 @@
 "qyC" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/roguetree/wise{
+	opacity = 0;
 	pixel_x = 4;
-	pixel_y = 16;
-	opacity = 0
+	pixel_y = 16
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods/grove)
@@ -31038,8 +31026,8 @@
 /obj/machinery/light/rogue/firebowl/church,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "qEC" = (
 /obj/structure/fermenting_barrel/random/water,
@@ -31577,8 +31565,8 @@
 	})
 "qRH" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 4
+	dir = 4;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/cavewet)
@@ -31608,9 +31596,9 @@
 	})
 "qSB" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "roomii";
-	name = "Room II";
-	locked = 1
+	name = "Room II"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -31818,9 +31806,9 @@
 	})
 "qXI" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "roomiii";
-	name = "Room III - Fancy room";
-	locked = 1
+	name = "Room III - Fancy room"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -32291,8 +32279,8 @@
 	})
 "rjR" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
+	STASTR = 20;
+	faction = list("undead")
 	},
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/under/cavewet)
@@ -32366,11 +32354,11 @@
 	})
 "rmg" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/cavewet)
@@ -32491,8 +32479,8 @@
 	})
 "rqC" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /obj/item/cooking/pan,
 /obj/item/reagent_containers/powder/flour,
@@ -32965,10 +32953,10 @@
 /area/rogue/indoors/town/church)
 "rDS" = (
 /obj/machinery/light/small{
-	mouse_opacity = 0;
-	dir = 1;
 	color = "#b51d12";
-	light_color = "#b51d12"
+	dir = 1;
+	light_color = "#b51d12";
+	mouse_opacity = 0
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavewet)
@@ -33104,8 +33092,8 @@
 /area/rogue/under/cavewet)
 "rHn" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/natural/feather,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
@@ -33177,8 +33165,8 @@
 	})
 "rJm" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 8
+	dir = 8;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/cavewet)
@@ -33293,8 +33281,8 @@
 /area/rogue/outdoors/exposed/tavern)
 "rMh" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
+	STASTR = 20;
+	faction = list("undead")
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -33432,8 +33420,8 @@
 /area/rogue/under/cavewet)
 "rQA" = (
 /obj/structure/fluff/traveltile{
-	aportalid = "lichdungeonout";
-	aportalgoesto = "lichdungeon"
+	aportalgoesto = "lichdungeon";
+	aportalid = "lichdungeonout"
 	},
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/caves)
@@ -33443,8 +33431,8 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "rQW" = (
 /obj/structure/flora/roguegrass/water,
@@ -33608,9 +33596,9 @@
 "rUO" = (
 /obj/structure/mineral_door/secret{
 	close_phrase = "Yamais";
-	open_phrase = "Olenor";
 	icon = 'icons/turf/roguewall.dmi';
-	icon_state = "decowood"
+	icon_state = "decowood";
+	open_phrase = "Olenor"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/magician{
@@ -33852,13 +33840,6 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt/nrich,
 /area/rogue/outdoors/river)
-"sbh" = (
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cavewet)
 "sbk" = (
 /obj/effect/mist,
 /obj/structure/flora/grass/jungle/b,
@@ -33927,8 +33908,8 @@
 	})
 "sdL" = (
 /obj/structure/mineral_door/wood{
-	lockid = "artificer";
-	locked = 1
+	locked = 1;
+	lockid = "artificer"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -34080,8 +34061,8 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "sht" = (
 /turf/open/floor/rogue/dirt/nrich,
@@ -34142,9 +34123,9 @@
 /area/rogue/outdoors/caves)
 "siS" = (
 /obj/structure/mineral_door/wood{
-	name = "Room VII";
+	locked = 1;
 	lockid = "roomvii";
-	locked = 1
+	name = "Room VII"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -34237,8 +34218,8 @@
 	})
 "slX" = (
 /obj/machinery/light/small{
-	mouse_opacity = 0;
-	dir = 8
+	dir = 8;
+	mouse_opacity = 0
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet)
@@ -34477,8 +34458,8 @@
 /area/rogue/under/cavewet)
 "stD" = (
 /obj/structure/mineral_door/wood/towner{
-	lockid = "nightmaiden";
-	locked = 0
+	locked = 0;
+	lockid = "nightmaiden"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet)
@@ -34753,8 +34734,8 @@
 /area/rogue/under/cavewet)
 "sCL" = (
 /obj/structure/flora/roguetree/wise{
-	pixel_x = -10;
-	opacity = 0
+	opacity = 0;
+	pixel_x = -10
 	},
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
@@ -35323,8 +35304,8 @@
 /area/rogue/indoors/town)
 "sRB" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 9
+	dir = 9;
+	icon_state = "largetable"
 	},
 /obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/cobble,
@@ -35431,9 +35412,9 @@
 /area/rogue/outdoors/river)
 "sVs" = (
 /obj/structure/mineral_door/wood/red{
+	locked = 1;
 	lockid = "nightmaiden";
-	name = "Bath Wench Quarters";
-	locked = 1
+	name = "Bath Wench Quarters"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavewet)
@@ -35679,8 +35660,8 @@
 "tcX" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/guard,
 /obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 1
+	dir = 1;
+	icon_state = "borderfall"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet)
@@ -36111,8 +36092,8 @@
 	})
 "tnE" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 10
+	dir = 10;
+	icon_state = "largetable"
 	},
 /obj/item/paper/scroll,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -36172,8 +36153,8 @@
 /area/rogue/under/cavewet)
 "tpt" = (
 /obj/structure/mineral_door/wood/towner{
-	lockid = "nightmaiden";
-	locked = 0
+	locked = 0;
+	lockid = "nightmaiden"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavewet)
@@ -36263,10 +36244,10 @@
 	})
 "tqY" = (
 /obj/structure/mineral_door/wood/donjon{
+	dir = 1;
 	locked = 1;
 	lockid = "nightmaiden";
-	name = "Dungeon Room";
-	dir = 1
+	name = "Dungeon Room"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -36346,8 +36327,8 @@
 	pixel_x = -18
 	},
 /obj/structure/wardingcrystal{
-	pixel_y = 36;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 36
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/magiciantower{
@@ -36775,8 +36756,8 @@
 /area/rogue/indoors/shelter/bog)
 "tIR" = (
 /obj/structure/academy_binder{
-	pixel_y = 8;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 8
 	},
 /obj/effect/decal/stone/hex,
 /obj/effect/decal/stone/hex{
@@ -37097,8 +37078,8 @@
 /area/rogue/under/cavewet)
 "tPR" = (
 /obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
+	dir = 1;
+	icon_state = "tablewood1"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/cavewet)
@@ -37427,8 +37408,8 @@
 "tYP" = (
 /obj/effect/decal/remains/bigrat,
 /turf/open/floor/rogue/metal{
-	icon_state = "plating2";
-	dir = 1
+	dir = 1;
+	icon_state = "plating2"
 	},
 /area/rogue/under/cavewet)
 "tZC" = (
@@ -37518,9 +37499,9 @@
 /area/rogue/indoors/town)
 "ubJ" = (
 /obj/structure/mineral_door/wood{
-	name = "Butcher's Room";
+	locked = 1;
 	lockid = "butcher";
-	locked = 1
+	name = "Butcher's Room"
 	},
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
@@ -37803,9 +37784,9 @@
 	icon_state = "churchtable_mid"
 	},
 /obj/structure/fluff/psycross{
-	name = "Symbol of Jayx";
 	desc = "A symbol of Jayx. Jayx is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire.";
 	icon_state = "bstatue";
+	name = "Symbol of Jayx";
 	pixel_y = 16
 	},
 /turf/open/floor/rogue/hexstone,
@@ -37911,8 +37892,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "ulE" = (
 /turf/open/floor/rogue/cobblerock,
@@ -38632,7 +38613,6 @@
 "uDe" = (
 /obj/item/roguegem/violet,
 /obj/item/riddleofsteel,
-/obj/effect/mob_spawner/skeleton/lich,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
 "uDg" = (
@@ -38660,11 +38640,11 @@
 	})
 "uDP" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -39056,8 +39036,8 @@
 /area/rogue/outdoors/caves)
 "uPo" = (
 /turf/closed/wall/mineral/rogue/pipe{
-	icon_state = "iron_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "iron_corner"
 	},
 /area/rogue/under/cavewet)
 "uPR" = (
@@ -39196,8 +39176,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "uTe" = (
 /obj/structure/chair/bench/church/smallbench,
@@ -39287,9 +39267,9 @@
 "uWo" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /obj/structure/closet/crate/drawer{
+	dir = 8;
 	pixel_x = 5;
-	pixel_y = 6;
-	dir = 8
+	pixel_y = 6
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
@@ -39375,9 +39355,9 @@
 /area/rogue/indoors/shelter/town/roofs)
 "uYJ" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Great Tree";
+	locked = 1;
 	lockid = "grove";
-	locked = 1
+	name = "Great Tree"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove)
@@ -39753,8 +39733,8 @@
 	})
 "vjK" = (
 /obj/structure/lever/wall{
-	redstone_id = "prisongate2";
-	pixel_x = 22
+	pixel_x = 22;
+	redstone_id = "prisongate2"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -40122,8 +40102,8 @@
 /area/rogue/indoors/town/bath)
 "vvA" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	faction = list("undead");
-	STASTR = 20
+	STASTR = 20;
+	faction = list("undead")
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet)
@@ -40802,8 +40782,8 @@
 /area/rogue/under/cavewet)
 "vPA" = (
 /turf/closed/wall/mineral/rogue/pipe{
-	icon_state = "iron_line";
-	dir = 4
+	dir = 4;
+	icon_state = "iron_line"
 	},
 /area/rogue/under/cavewet)
 "vPB" = (
@@ -40819,8 +40799,8 @@
 /area/rogue/under/cavewet)
 "vPN" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 1
+	dir = 1;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami,
 /turf/open/floor/rogue/cobble,
@@ -41396,8 +41376,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "wjh" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
@@ -41974,9 +41954,9 @@
 /area/rogue/under/cavewet)
 "wAn" = (
 /obj/structure/mineral_door/wood/red{
+	locked = 1;
 	lockid = "nightmaiden";
-	name = "Sewer Room";
-	locked = 1
+	name = "Sewer Room"
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavewet)
@@ -42295,8 +42275,8 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "wKl" = (
 /obj/structure/bars/passage{
@@ -42430,9 +42410,9 @@
 /area/rogue/under/cavewet)
 "wOd" = (
 /obj/structure/mineral_door/wood/fancywood{
-	name = "Brueddwyd Armory";
+	locked = 1;
 	lockid = "grove";
-	locked = 1
+	name = "Brueddwyd Armory"
 	},
 /obj/structure/bars/passage{
 	redstone_id = "rearmain"
@@ -42724,8 +42704,8 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "wWN" = (
 /obj/structure/fluff/statue/shisha,
@@ -42790,11 +42770,11 @@
 /area/rogue/outdoors/mountains)
 "wYO" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
-	inertia_move_delay = 0;
 	STACON = 13;
 	STAEND = 13;
 	STASPD = 13;
-	STASTR = 13
+	STASTR = 13;
+	inertia_move_delay = 0
 	},
 /turf/open/water/swamp/deep,
 /area/rogue/under/cavewet)
@@ -43056,9 +43036,9 @@
 	})
 "xgr" = (
 /obj/machinery/gear_painter{
+	desc = "An enchanted portal created by Grandmage Hozzohock for the sole purpose of modifying his robes so he never had to wear the same robes twice. No clue where it leads, but it is remarkably stable.";
 	icon_state = "shitportal";
-	name = "controlled portal";
-	desc = "An enchanted portal created by Grandmage Hozzohock for the sole purpose of modifying his robes so he never had to wear the same robes twice. No clue where it leads, but it is remarkably stable."
+	name = "controlled portal"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician{
@@ -43481,9 +43461,9 @@
 /area/rogue/indoors/shelter/town)
 "xre" = (
 /obj/structure/mineral_door/wood{
-	name = "Farmer's Bedroom";
+	locked = 1;
 	lockid = "farm";
-	locked = 1
+	name = "Farmer's Bedroom"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors{
@@ -43542,15 +43522,15 @@
 /area/rogue/under/cavewet)
 "xsZ" = (
 /obj/structure/mineral_door/wood{
-	name = "Room II";
-	lockid = "roomii"
+	lockid = "roomii";
+	name = "Room II"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cavewet)
 "xto" = (
 /obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 12
+	dir = 12;
+	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -44061,9 +44041,9 @@
 /area/rogue/under/cavewet)
 "xGA" = (
 /obj/structure/lever/wall{
+	dir = 1;
 	pixel_x = -24;
-	redstone_id = "dragonentry2";
-	dir = 1
+	redstone_id = "dragonentry2"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
@@ -44092,8 +44072,8 @@
 	})
 "xIq" = (
 /obj/structure/table/wood{
-	icon_state = "longtable";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/cavewet)
@@ -44536,8 +44516,8 @@
 /obj/structure/fluff/statue/dragonl,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "xSN" = (
 /obj/structure/flora/roguetree/burnt{
@@ -44717,9 +44697,9 @@
 	})
 "xXm" = (
 /obj/structure/mineral_door/wood/red{
+	locked = 1;
 	lockid = "nightmaiden";
-	name = "Bath Wench Quarters";
-	locked = 1
+	name = "Bath Wench Quarters"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavewet)
@@ -45028,9 +45008,9 @@
 /area/rogue/under/cavewet)
 "yfM" = (
 /obj/structure/fluff/psycross{
+	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove.";
 	icon_state = "bstatue";
-	name = "Symbol of Sylvarhn";
-	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove."
+	name = "Symbol of Sylvarhn"
 	},
 /turf/open/water/river{
 	dir = 4;
@@ -45088,8 +45068,8 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
-	name = "Shrine of Elysius";
-	first_time_text = "Shrine of Elysius"
+	first_time_text = "Shrine of Elysius";
+	name = "Shrine of Elysius"
 	})
 "yhF" = (
 /turf/closed/wall/shroud,
@@ -56706,7 +56686,7 @@ rGq
 rGq
 rGq
 rGq
-iCD
+aRF
 nhM
 nog
 iJr
@@ -57642,7 +57622,7 @@ mGu
 uSi
 sRB
 luj
-sbh
+nyP
 vuv
 kJd
 nnF
@@ -65762,7 +65742,7 @@ uMM
 uMM
 hBk
 pjG
-jiw
+fyQ
 nCp
 nog
 nog
@@ -65978,7 +65958,7 @@ eEc
 rGq
 rGq
 rGq
-iCD
+aRF
 nog
 hBk
 hBk

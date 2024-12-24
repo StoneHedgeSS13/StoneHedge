@@ -1,5 +1,5 @@
 GLOBAL_VAR_INIT(total_spawned_mobs, 0)
-GLOBAL_VAR_INIT(max_total_spawned_mobs, 100) // New global variable for the total limit
+GLOBAL_VAR_INIT(max_total_spawned_mobs, 400) // New global variable for the total limit
 
 /obj/effect/mob_spawner
 	icon = 'icons/effects/landmarks_static.dmi'
