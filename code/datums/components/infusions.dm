@@ -99,40 +99,40 @@
 		)
 
 	var/weapon_infusions = list(
-		"radiance" = 1, 
-		"returning" = 2, 
+		"radiance" = 1,
+		"returning" = 2,
 		)
 	var/staff_infusions = list(
-		"arcyne focus" = 3, 
+		"arcyne focus" = 3,
 		)
 
 	var/shield_infusions = list(
-		"repulsion" = 3, 
+		"repulsion" = 3,
 		)
-	
+
 	var/instrument_infusions = list(
-		"haunting" = 1, 
+		"haunting" = 1,
 		"the sewers" = 1, //gain summon rous spell XX
 		)
 
 	var/bottle_infusions = list(
-		"alchemy" = 1, 
+		"alchemy" = 1,
 		)
 	var/bag_infusions = list(
-		"holding" = 1, 
+		"holding" = 1,
 		)
 	var/rope_infusions = list(
 		"climbing" = 2,
 		)
 	var/stone_infusions = list(
-		"sending" = 1, //create paired stones, activate one to send a message to the other 
+		"sending" = 1, //create paired stones, activate one to send a message to the other
 		)
 	var/lantern_infusions = list(
-		"revealing" = 1, //double light 
+		"revealing" = 1, //double light
 		)
 	var/eyes_infusions = list(
-		"charming" = 4, //gain charm person spell (they are not able to attack you or something) 
-		"the eagle" = 3, //+3 perception 
+		"charming" = 4, //gain charm person spell (they are not able to attack you or something)
+		"the eagle" = 3, //+3 perception
 		)
 	var/gem_infusions = list(
 		"scrying" = 5, //scrying orb X
@@ -152,7 +152,7 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_IMPACT, PROC_REF(throw_impact))
 	RegisterSignal(parent, COMSIG_ITEM_HIT_REACT, PROC_REF(blocked))
 	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(after_attack))
-	
+
 	var/obj/item/I = parent
 	add_infusion(I, infuser, gem_used, random)
 
@@ -261,6 +261,7 @@
 	if(!active_item)
 		var/mob/living/L = user
 		L.attunement_points_used += source.attunement_cost
+		L.check_attunement_points()
 		active_item = TRUE
 		switch(infusion_name)
 			if("awareness")
@@ -288,7 +289,7 @@
 				eyes.owner.update_sight()
 
 			if("propulsion")
-				user.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=-1.025, movetypes=GROUND)
+				L.change_stat("speed", 2)
 				//user.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 
 			if("magical strength")
@@ -372,7 +373,7 @@
 
 			if("climbing")
 				user.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			
+
 			if("giant strength")
 				L.change_stat("strength", 2)
 
@@ -386,6 +387,7 @@
 	if(active_item)
 		var/mob/living/L = user
 		L.attunement_points_used -= source.attunement_cost
+		L.check_attunement_points()
 		active_item = FALSE
 		switch(infusion_name)
 			if("awareness")
@@ -412,7 +414,7 @@
 				eyes.owner.update_sight()
 
 			if("propulsion")
-				user.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+				L.change_stat("speed", -2)
 
 			if("magical strength")
 				L.change_stat("strength", -1)
@@ -495,7 +497,7 @@
 
 			if("climbing")
 				user.mind.adjust_skillrank(/datum/skill/misc/climbing, -3, TRUE)
-			
+
 			if("giant strength")
 				L.change_stat("strength", -2)
 
@@ -511,7 +513,7 @@
 /datum/component/infusions/proc/add_infusion(obj/item/source, mob/infuser, obj/item/roguegem/gem_used, random)
 	var/obj/item/I = source
 	var/tier = 5
-	
+
 	if(gem_used)
 		I.sellprice += gem_used.sellprice
 		//ruby is just gonna be as good as diamon or riddle of steel...
@@ -598,7 +600,7 @@
 	var/fill_per_minute = 15
 	var/reagent = /datum/reagent/water
 	var/wait = 0
-	
+
 /obj/item/reagent_containers/glass/bottle/alchemyjug/Initialize()
 	START_PROCESSING(SSobj, src)
 	. = ..()
@@ -621,7 +623,7 @@
 		/datum/reagent/consumable/ethanol/beer/wine, //wine
 		/datum/reagent/consumable/ethanol/beer/cider, //cider: original addition
 		/datum/reagent/consumable/honey, //honey
-		/datum/reagent/consumable/lemonade, //lemonade: 
+		/datum/reagent/consumable/lemonade, //lemonade:
 		/datum/reagent/consumable/mayonnaise, // mayonaise (maybe change to just egg yolk)
 		/datum/reagent/fuel/oil, //oil
 		/datum/reagent/toxin/berrypoison, //basic poison

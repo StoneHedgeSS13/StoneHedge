@@ -332,7 +332,7 @@
 	name = "transmute iron to topaz"
 	result = list(/obj/item/roguegem/yellow = 1)
 	reqs = list(
-		/obj/item/rogueore/iron = 1, //Toper will be worth 30 mammon. Iron ingot is worth 25.
+		/obj/item/rogueore/iron = 1,
 		/obj/item/natural/stone = 1)
 	craftdiff = 4
 

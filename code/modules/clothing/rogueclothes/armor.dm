@@ -702,11 +702,11 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
 	name = "dwarven fullarmor"
-	desc = "An extremely heavy set of armor in the Dwarven style, cumbersome to use but provides some of the best protection in the world."
+	desc = "An extremely heavy set of armor in the Dwarven style."
 	icon_state = "dwarvenchestplate"
 	item_state = "dwarvenchestplate"
-	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	max_integrity = 700
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	equip_delay_self = 80
 
 /obj/item/clothing/suit/roguetown/armor/plate/darkelfchestplate

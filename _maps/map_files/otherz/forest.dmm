@@ -687,6 +687,20 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/woods/overgrownfort)
+"dW" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffout7";
+	aportalid = "ffin7"
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "dX" = (
 /obj/structure/spacevine,
 /turf/open/floor/rogue/cobblerock,
@@ -1037,6 +1051,13 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
 	})
+"fV" = (
+/obj/structure/flora/roguegrass/bush,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "fX" = (
 /turf/closed/wall/shroud{
 	opacity = 0
@@ -1117,6 +1138,15 @@
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
 	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
+"gC" = (
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffout6";
+	aportalid = "ffin6"
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/woods{
@@ -2488,6 +2518,13 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/bronze,
 /area/rogue/indoors/shelter/town/dwarf)
+"om" = (
+/obj/structure/flora/roguegrass/bush,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "ot" = (
 /obj/structure/bars/passage{
 	gid = "dwarfinner2";
@@ -3304,18 +3341,13 @@
 	first_time_text = "The Deepwoods"
 	})
 "th" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffin9";
+	aportalid = "ffout9"
 	},
-/obj/structure/bars/steel{
-	icon_state = "barsbent"
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/tribalfort{
-	first_time_text = "The Woodland Tribe";
-	name = "Wood elf Tribes"
+/turf/open/floor/rogue/hexstone,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
 	})
 "tj" = (
 /turf/open/floor/rogue/rooftop{
@@ -3461,8 +3493,7 @@
 	})
 "uf" = (
 /obj/effect/wisp,
-/obj/structure/flora/wildplant/wild_poppy,
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/dirt/nrich,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
@@ -4832,6 +4863,15 @@
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
 	})
+"Cs" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "Ct" = (
 /obj/machinery/light/rogue/hearth,
 /obj/item/cooking/pan,
@@ -5384,6 +5424,12 @@
 /obj/item/restraints/legcuffs/beartrap/crafted,
 /turf/open/floor/bronze,
 /area/rogue/indoors/shelter/town/dwarf)
+"Fr" = (
+/turf/open/floor/rogue/dirt/nrich,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "Ft" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -6041,8 +6087,19 @@
 	name = "Wood elf Tribes"
 	})
 "Jf" = (
-/obj/structure/roguetent,
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 8;
+	locked = 1;
+	lockid = "nightman"
+	},
 /turf/open/floor/rogue/shroud,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
+"Jh" = (
+/obj/item/grown/log/tree/stick,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
@@ -6590,15 +6647,38 @@
 	name = "Wood elf Tribes"
 	})
 "Md" = (
-/obj/structure/portal,
-/turf/open/floor/rogue/hexstone,
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	layer = 2.8;
+	pixel_x = 8
+	},
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
+	})
+"Me" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
 	})
 "Mf" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Deepwoods"
+	})
+"Mg" = (
+/obj/structure/chair/stool/rogue{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
 	})
 "Mh" = (
 /turf/open/water/swamp/deep,
@@ -6940,6 +7020,39 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/river)
+"Og" = (
+/obj/structure/rack/rogue/shelf/big,
+/obj/item/storage/roguebag{
+	pixel_y = 10;
+	pixel_x = 4
+	},
+/obj/item/storage/roguebag{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/seeds/wheat{
+	pixel_y = 10;
+	pixel_x = -2
+	},
+/obj/item/seeds/shroom{
+	pixel_y = 10
+	},
+/obj/item/seeds/apple{
+	pixel_y = 11
+	},
+/obj/item/seeds/berryrogue{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/item/seeds/berryrogue/poison{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "Oi" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/cave)
@@ -7767,6 +7880,19 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Mountain Passe"
 	})
+"SY" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffout4";
+	aportalid = "ffin4"
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "SZ" = (
 /obj/structure/fluff/railing/wood,
 /obj/machinery/light/rogue/firebowl/stump,
@@ -7847,6 +7973,15 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/indoors/shelter/town/dwarf)
+"Tx" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "TB" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/rogue/grass,
@@ -8025,6 +8160,15 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/under/cavewet/spidermines)
+"UO" = (
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffin8";
+	aportalid = "ffout8"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "US" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/water/swamp,
@@ -8051,6 +8195,16 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/minotaurcave)
+"Vc" = (
+/obj/structure/chair/stool/rogue{
+	pixel_y = -7;
+	pixel_x = 1
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
 "Vd" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -8407,6 +8561,15 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave/underdark)
+"Xe" = (
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffout5";
+	aportalid = "ffin5"
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Xg" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods{
@@ -8766,6 +8929,15 @@
 "Zl" = (
 /turf/open/water/swamp/deep,
 /area/rogue/under/cavewet)
+"Zm" = (
+/obj/structure/fluff/traveltile/underdark{
+	aportalgoesto = "ffin10";
+	aportalid = "ffout10"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Deepwoods"
+	})
 "Zq" = (
 /obj/structure/glowshroom{
 	icon_state = "glowshroom2"
@@ -8812,6 +8984,14 @@
 "ZJ" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/water/cleanshallow,
+/area/rogue/outdoors/tribalfort{
+	first_time_text = "The Woodland Tribe";
+	name = "Wood elf Tribes"
+	})
+"ZR" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/roguegrass/bush,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/tribalfort{
 	first_time_text = "The Woodland Tribe";
 	name = "Wood elf Tribes"
@@ -49057,7 +49237,7 @@ EV
 JV
 JV
 GL
-mq
+om
 fX
 JV
 JV
@@ -49189,10 +49369,10 @@ aT
 EF
 Cp
 JV
-hZ
+ZR
 QW
 cc
-cc
+fV
 jn
 JV
 Cp
@@ -49322,8 +49502,8 @@ NS
 qZ
 Ie
 JV
-nl
-mq
+Og
+rU
 rU
 rU
 rU
@@ -49454,9 +49634,9 @@ aT
 aT
 qZ
 Ie
-IB
-yH
-nl
+Fr
+Fr
+Fr
 rU
 rU
 rU
@@ -49720,8 +49900,8 @@ Rr
 aT
 EF
 ih
-KF
-nl
+Fr
+Fr
 uf
 KP
 rU
@@ -50800,8 +50980,8 @@ HN
 JV
 JV
 JK
-cc
-Ar
+hx
+Jh
 hx
 aa
 uB
@@ -51333,7 +51513,7 @@ fX
 QW
 mq
 mq
-mq
+hx
 rP
 Ew
 NI
@@ -51725,12 +51905,12 @@ tK
 oy
 hx
 hx
-th
+xV
 cc
 mq
 mq
 cc
-JV
+cc
 JV
 aL
 lD
@@ -51861,9 +52041,9 @@ JV
 mq
 hL
 mq
-mq
+Vc
 IF
-LO
+cc
 mq
 QW
 QW
@@ -51995,7 +52175,7 @@ mq
 mq
 cc
 mq
-mq
+Mg
 mq
 mq
 mq
@@ -52129,7 +52309,7 @@ QW
 ep
 Gv
 mq
-cc
+Me
 iU
 mB
 ky
@@ -52390,7 +52570,7 @@ mq
 KP
 XQ
 zB
-ZJ
+cL
 cL
 tK
 Rd
@@ -54886,11 +55066,11 @@ IJ
 nk
 nk
 nk
-NI
-NI
-NI
-SD
-SD
+SY
+Tx
+Tx
+Tx
+Ng
 Ng
 Ng
 Lu
@@ -55019,10 +55199,10 @@ IJ
 nk
 nk
 nk
-NI
-NI
-NI
-PG
+Xe
+Nt
+Nt
+Nt
 Ng
 Lu
 Lu
@@ -55152,10 +55332,10 @@ IJ
 nk
 nk
 nk
-NI
-NI
-NI
-yE
+gC
+Nt
+Nt
+Nt
 Ng
 hF
 hF
@@ -55285,10 +55465,10 @@ IJ
 nk
 nk
 nk
-NI
-NI
-NI
-AN
+dW
+Md
+Md
+Md
 uB
 IN
 IN
@@ -55422,7 +55602,7 @@ NI
 NI
 NI
 AN
-uB
+xn
 IN
 IN
 IN
@@ -59318,7 +59498,7 @@ NI
 NI
 NI
 hF
-IJ
+Zs
 Zs
 Br
 Zs
@@ -59450,9 +59630,9 @@ NI
 NI
 NI
 NI
-uB
+Zs
+Zs
 AK
-Md
 AK
 AK
 XM
@@ -59583,8 +59763,8 @@ NI
 NI
 NI
 NI
-uB
-AK
+Zs
+UO
 AK
 AK
 AK
@@ -59716,8 +59896,8 @@ NI
 NI
 NI
 NI
-Ng
-AK
+Zs
+th
 AK
 AK
 AK
@@ -59849,8 +60029,8 @@ NI
 NI
 NI
 NI
-Ng
-AK
+Zs
+Zm
 AK
 AK
 AK
@@ -59983,7 +60163,7 @@ NI
 NI
 NI
 NI
-IJ
+Zs
 Zs
 Zs
 Br
@@ -67144,12 +67324,12 @@ Pc
 Pc
 Pc
 Ac
-kt
+Ew
 hx
 hx
 hx
 hk
-TU
+Ew
 Xq
 Yc
 Cm
@@ -67277,12 +67457,12 @@ Pc
 Pc
 Pc
 Ac
-kt
+Ew
 hx
 Df
 hx
 hx
-TU
+Ew
 fX
 Ac
 Cm
@@ -67410,12 +67590,12 @@ Pc
 Pc
 Pc
 Ac
-kt
+Ew
+Cs
 hx
 hx
 hx
-hx
-TU
+Ew
 Cm
 Cm
 Cm
@@ -67544,9 +67724,9 @@ Pc
 Pc
 Ac
 Cm
-PA
-PA
-PA
+Ew
+Ew
+Ew
 Jf
 Cm
 Cm

@@ -75,20 +75,19 @@
 
 /obj/structure/closet/crate/chest/refilling/Initialize()
 	. = ..()
-	loot_num_to_spawn = rand(max_loot_num_to_spawn)
+	loot_num_to_spawn = rand(1, max_loot_num_to_spawn)
 
 /obj/structure/closet/crate/chest/refilling/Destroy()
 	. = ..()
 
-/* old area-empty based system.
 /obj/structure/closet/crate/chest/refilling/proc/try_reset_chest()
 	//if its found before and area has no players when timer expire.
-	if(found && playerless_in_area(get_area(src), src))
+	if(found && !players_nearby(src.loc, 12))
 		found = FALSE
 		icon_state = "dungeon_chest_1"
 		base_icon_state = "dungeon_chest_1"
 		close()
-		loot_num_to_spawn = rand(max_loot_num_to_spawn)
+		loot_num_to_spawn = rand(1, max_loot_num_to_spawn)
 		update_icon()
 		PopulateContents()
 		if(reset_timer)
@@ -97,17 +96,12 @@
 		//quarter the time to check again because we really want to reset this chest soon at this point.
 		var/fast_time = time_to_reset/4
 		reset_timer = addtimer(CALLBACK(src, PROC_REF(try_reset_chest)), fast_time, TIMER_STOPPABLE)
-*/
 
-//new just timer based system, since mappers hate making new areas apparently.
-/obj/structure/closet/crate/chest/refilling/proc/try_reset_chest()
-	found = FALSE
-	icon_state = "dungeon_chest_1"
-	base_icon_state = "dungeon_chest_1"
-	close()
-	loot_num_to_spawn = rand(max_loot_num_to_spawn)
-	update_icon()
-	PopulateContents()
+/obj/structure/closet/crate/chest/refilling/proc/players_nearby(turf/T, distance)
+	for (var/mob/living/carbon/human/H in range(distance, T))
+		if (H.client)
+			return TRUE
+	return FALSE
 
 /obj/structure/closet/crate/chest/refilling/PopulateContents()
 	for(var/obj/item/olditem in contents)

@@ -5,8 +5,8 @@
 	flag = HIGHKING
 	department_flag = VIKING
 	faction = "Station"
-	total_positions = 10
-	spawn_positions = 10
+	total_positions = 3
+	spawn_positions = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/dwarf/mountain)
 	show_in_credits = FALSE		//Stops Scom from announcing their arrival.
@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/job/roguetown/highking
 
 	display_order = JDO_HIGHKING
-	min_pq = 10
+	min_pq = 15
 	max_pq = null
 	cmode_music = 'sound/music/combat_viking.ogg'
 
@@ -34,19 +34,15 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
 	shoes = /obj/item/clothing/shoes/roguetown/boots/dwarfboots
 	cloak = /obj/item/clothing/cloak/templar/malum
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE) // Chieftess gets nearly same skills as guard.
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2 , TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3 , TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 1, TRUE)
@@ -57,14 +53,15 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/firearms, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 4, TRUE)
 
-		H.change_stat("strength", 3) //Less strength than royal guard. Same as Captain
+		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 3)
-		H.change_stat("constitution", 5)	//They will likely have the entire town fighting them.
-		H.change_stat("endurance", 5)
+		H.change_stat("constitution", 2)
+		H.change_stat("speed", -1)
+		H.change_stat("endurance", -1)
 
 /obj/effect/proc_holder/spell/self/convertrole/viking
 	name = "Recruit Clanshield"

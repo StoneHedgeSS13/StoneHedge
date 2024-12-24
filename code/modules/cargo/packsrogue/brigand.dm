@@ -72,7 +72,7 @@
 
 /datum/supply_pack/rogue/Brigand/sallet
 	name = "Sallet"
-	cost = 00
+	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
 

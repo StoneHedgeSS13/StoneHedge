@@ -63,21 +63,23 @@
 		species.disliked_food = initial(species.disliked_food)
 */
 
+/* no longer necessary due to having male fem pref
 /datum/quirk/monsterhunter
 	name = "Monster \"Hunter\""
 	desc = "Allows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat. (CHOOSE PREF QUIRKS ASWELL)"
 	value = 0
 	gain_text = span_notice("I want to feel a monster inside.. or inside a monster.")
 	lose_text = span_notice("I no longer am a degenerate.")
+*/
 
 /datum/quirk/monsterhuntermale
 	name = "Monster \"Hunter\" (Males)"
-	desc = "Male monsters lust for me..."
+	desc = "llows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat. Male monsters lust for me..."
 	value = 0
 
 /datum/quirk/monsterhunterfemale
 	name = "Monster \"Hunter\" (Females)"
-	desc = "Female monsters lust for me... "
+	desc = "llows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat.Female monsters lust for me... "
 	value = 0
 
 /datum/quirk/selfawaregeni

@@ -75,7 +75,7 @@
 	cost = 100
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
-/datum/supply_pack/rogue/Knave/leather/LGloves/Advanced
+/datum/supply_pack/rogue/Knave/leather/Lskirt/Studded
 	name = "Studded Leather Skirt"
 	cost = 100
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron/studdedskirt)

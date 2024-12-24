@@ -870,6 +870,20 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/leather/hardenedbikini
+	name = "hardened leather bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/sewing/leather/hardenedbra
+	name = "hardened leather bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/leather/helmet
 	name = "hardened leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
@@ -920,6 +934,22 @@
 /datum/crafting_recipe/roguetown/sewing/leather/coat/masterwork
 	name = "masterwork leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 4,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/leather/coat/masterworkbikini
+	name = "masterwork leather bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini
+	reqs = list(/obj/item/natural/hide/cured = 4,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/leather/coat/masterworkbra
+	name = "masterwork leather bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini/bra
 	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)

@@ -50,7 +50,7 @@
 		for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
-			if(fucktarg.has_quirk(/datum/quirk/monsterhunter) && CanAttack(fucktarg, TRUE))
+			if((fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale)) && CanAttack(fucktarg, TRUE))
 				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
 					continue
 				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
@@ -92,19 +92,16 @@
 	if(!retreating && sexcon.current_action && fuckcd > 0)
 		return
 	for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
-		if(fucktarg.has_quirk(/datum/quirk/monsterhunter))
+		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg
 		if(foundfuckmeat.len)
 			L = pick(foundfuckmeat)
-			if(Adjacent(L))
+			if(Adjacent(L) || loc == L.loc)
 				if(iscarbon(L))
 					chasesfuck = FALSE
 					if(attack_sound)
 						playsound(src, pick(attack_sound), 100, TRUE, -1)
 					stop_automated_movement = TRUE
-					if(!L.has_quirk(/datum/quirk/monsterhunter)) //one more check incase this is somehow the wrong target who dont have the quirk.
-						stoppedfucking()
-						return
 					if(L.cmode)
 						L.SetImmobilized(40)
 						L.SetKnockdown(40)
@@ -131,7 +128,7 @@
 						sexcon.force = SEX_FORCE_MAX
 					else
 						sexcon.force = SEX_FORCE_MID
-					if(!Adjacent(L)) //are we at the same tile?
+					if(!Adjacent(L) || loc != L.loc) //are we at the same tile?
 						walk_to(src, get_turf(Adjacent(L)), 1, move_to_delay) //get on them.
 					visible_message(span_danger("[src] starts to breed [L]!"))
 					if(sexcon.force == SEX_FORCE_MAX)
@@ -236,7 +233,7 @@
 		for(var/mob/living/carbon/human/fucktarg in around)
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
-			if(fucktarg.has_quirk(/datum/quirk/monsterhunter) && should_target(fucktarg, TRUE)) //normally checks !sexcon.beingfucked but carbon mobs arent directly on top of the mob to fuck so its probably fine to get ganged.
+			if(should_target(fucktarg, TRUE)) //normally checks !sexcon.beingfucked but carbon mobs arent directly on top of the mob to fuck so its probably fine to get ganged.
 				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
 					continue
 				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
@@ -273,18 +270,15 @@
 	if(sexcon.current_action && fuckcd > 0)
 		return
 	for(var/mob/living/carbon/human/fucktarg in view(10, src))
-		if(fucktarg.has_quirk(/datum/quirk/monsterhunter))
+		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg
 		if(foundfuckmeat.len)
 			L = pick(foundfuckmeat)
 			STOP_PROCESSING(SShumannpc,src)
 			mode = AI_OFF
-			if(Adjacent(L))
+			if(Adjacent(L) || loc == L.loc)
 				if(iscarbon(L))
 					chasesfuck = FALSE
-					if(!L.has_quirk(/datum/quirk/monsterhunter)) //one more check incase this is somehow the wrong target who dont have the quirk.
-						stoppedfucking()
-						return
 					if(L.cmode)
 						L.SetImmobilized(40)
 						L.SetKnockdown(40)
@@ -306,7 +300,7 @@
 						sexcon.force = SEX_FORCE_MAX
 					else
 						sexcon.force = SEX_FORCE_MID
-					if(!Adjacent(L)) //are we at the same tile?
+					if(!Adjacent(L) || loc != L.loc) //are we at the same tile?
 						walk2derpless(L.loc) //get to them since it looks like shit tweaks out.
 					if(!pulling)
 						start_pulling(L)
