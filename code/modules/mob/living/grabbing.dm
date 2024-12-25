@@ -162,10 +162,9 @@
 				if(iscarbon(M) && M != user)
 					user.rogfat_add(rand(1,3))
 					var/mob/living/carbon/C = M
-					if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
-						if(prob(25))
-							C.emote("choke")
-						C.adjustOxyLoss(user.STASTR)
+					if(prob(25))
+						C.emote("choke")
+					C.adjustOxyLoss(user.STASTR)
 					C.visible_message(span_danger("[user] [pick("chokes", "strangles")] [C]!"), \
 									span_userdanger("[user] [pick("chokes", "strangles")] me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
 					to_chat(user, span_danger("I [pick("choke", "strangle")] [C]!"))
@@ -232,7 +231,7 @@
 					to_chat(user, span_green("I manage to set the bone in [C]'s [parse_zone(sublimb_grabbed)]. [fixchance]%"))
 		else
 			to_chat(user, span_warning("I fail to set the bone in [C]'s [parse_zone(sublimb_grabbed)]. [fixchance]%"))
-		
+
 	C.visible_message(span_danger("[user] twists [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
 					span_userdanger("[user] twists my [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("I twist [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))

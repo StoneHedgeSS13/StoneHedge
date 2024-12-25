@@ -140,7 +140,7 @@
 	What is? Those guns you possess. The last man, or woman for that matter, to say otherwise? They went into the harbour. \
 	Only a fool needs weapons."
 	category_tags = list(CTAG_HENCH)
-	traits_applied = list(TRAIT_STRONG_GRABBER, TRAIT_PUGILIST, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN) //They don't get a duster, but they get traits to atleast accomodate punching.
+	traits_applied = list(TRAIT_STRONG_GRABBER, TRAIT_PUGILIST, TRAIT_CRITICAL_RESISTANCE) //They don't get a duster, but they get traits to atleast accomodate punching.
 
 /datum/outfit/job/roguetown/grabber/bouncer/pre_equip(mob/living/carbon/human/H)
 	. = ..()
