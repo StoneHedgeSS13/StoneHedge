@@ -323,7 +323,7 @@
 					if(user.mind && R.skillcraft)
 						if(isliving(user))
 							var/mob/living/L = user
-							skill_modifier = H.mind.get_skill_speed_modifier(skillcraft)
+							skill_modifier = L.mind.get_skill_speed_modifier(skillcraft)
 							var/amt2raise = L.STAINT * 2 * skill_modifier // its different over here
 							if(R.craftdiff > 0) //difficult recipe
 								amt2raise += (R.craftdiff * 10) // also gets more
