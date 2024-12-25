@@ -52,12 +52,12 @@
 					var/obj/item/clothing/C = attacked_item
 					C.update_clothes_damaged_state(FALSE)
 				attacked_item.update_overlays()
-			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2 * (/datum/mind/proc/get_skill_speed_modifier(skillcraft))) //We gain as much exp as we fix divided by 2
+			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2 * (H.mind.get_skill_speed_modifier(skillcraft))) //We gain as much exp as we fix divided by 2
 			return
 		else
 			user.visible_message(span_info("[user] fumbles trying to repair [attacked_item]!"))
 			//attacked_item.take_damage(5, BRUTE, "blunt")
-			user.mind.adjust_experience(/datum/skill/craft/blacksmithing, (user.STAINT) / 2 * (/datum/mind/proc/get_skill_speed_modifier(skillcraft))) // We learn a bit from our failures.
+			user.mind.adjust_experience(/datum/skill/craft/blacksmithing, (user.STAINT) / 2 * (H.mind.get_skill_speed_modifier(skillcraft))) // We learn a bit from our failures.
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
@@ -70,7 +70,7 @@
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
 		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
-		blacksmith_mind.adjust_experience(attacked_structure.hammer_repair, exp_gained * (/datum/mind/proc/get_skill_speed_modifier(skillcraft))) //We gain as much exp as we fix
+		blacksmith_mind.adjust_experience(attacked_structure.hammer_repair, exp_gained * (H.mind.get_skill_speed_modifier(skillcraft))) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
 		return
