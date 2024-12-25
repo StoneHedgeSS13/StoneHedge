@@ -738,8 +738,26 @@
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
-	max_blade_int = 300
-	wdefense = 5
+	max_blade_int = 500
+	wdefense = 6
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/chop/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 1.2
+
+/datum/intent/sword/strike/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 0.7
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
