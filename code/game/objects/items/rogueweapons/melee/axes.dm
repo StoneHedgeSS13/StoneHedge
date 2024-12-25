@@ -99,6 +99,19 @@
 	swingdelay = 10
 	item_d_type = "slash"
 
+/datum/intent/axe/strike
+	name = "shaft strike"
+	icon_state = "instrike"
+	attack_verb = list("bashes", "clubs", "strikes")
+	animname = "strike"
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 5
+	damfactor = 0.8
+	item_d_type = "blunt"
+
 /datum/intent/axe/chop/battle
 	penfactor = 40		//Was 70, 40 is near-equal to spear. This is same pen as an arrow basically; be greatful.
 	damfactor = 1.2 	//36 base damage on battleaxe; scales with strength.
@@ -223,10 +236,10 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 /obj/item/rogueweapon/greataxe
-	force = 13
-	force_wielded = 50
-	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle,  SPEAR_BASH)
+	force = 30
+	force_wielded = 60
+	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //strike is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/axe/cut/great, /datum/intent/axe/chop/great,  /datum/intent/axe/strike/great)
 	name = "greataxe"
 	desc = "Might be able to chop anything in half!"
 	icon_state = "greataxe"
@@ -243,7 +256,19 @@
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/axes
 	max_blade_int = 300
-	wdefense = 3
+	wdefense = 2
+
+/datum/intent/axe/cut/great
+	penfactor = 15
+	damfactor = 1
+
+/datum/intent/axe/chop/great //72 base damage
+	penfactor = 60
+	damfactor = 1.2
+
+/datum/intent/axe/strike/great //Use chop if you wanna deal damage, this is just less than lethal quick strike to the face
+	penfactor = 40
+	damfactor = .6
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)
 	. = ..()
@@ -257,9 +282,5 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/greataxe/bearded
-	force = 15
-	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle,  SPEAR_BASH)
 	name = "bearded axe"
 	icon_state = "beardedaxe"
