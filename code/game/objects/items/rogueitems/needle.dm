@@ -89,7 +89,7 @@
 				//I.obj_integrity -= (60 - skill)
 				user.visible_message(span_info("[user] flubs repairing [I] due to a lack of skill!"))
 				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
-				user.mind.adjust_experience(/datum/skill/misc/sewing, ((user.STAINT * (get_skill_speed_modifier(/datum/skill/misc/sewing))) / 2) // Only failing a repair teaches us something
+				user.mind.adjust_experience(/datum/skill/misc/sewing, ((user.STAINT * (H.mind.get_skill_speed_modifier(/datum/skill/misc/sewing))) / 2) // Only failing a repair teaches us something
 				return
 			else
 				playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
