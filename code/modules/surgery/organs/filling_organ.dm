@@ -92,7 +92,7 @@
 				owner.adjust_nutrition(remove_amount) //since hunger factor is so tiny compared to the nutrition levels it has to fill
 			reagents.remove_reagent(reagent_to_make, (remove_amount*4)) //we consume our own reagents for food less efficently, allowing running out (may undo this multiplier later.)
 		else
-			if((reagents.total_volume < reagents.maximum_volume) && refilling) //if organ is not full.
+			if((reagents.total_volume < reagents.maximum_volume) && refilling && owner.nutrition > (NUTRITION_LEVEL_FED + 25)) //if organ is not full.
 				var/max_restore = owner.nutrition > (NUTRITION_LEVEL_WELL_FED) ? reagent_generate_rate * 2 : reagent_generate_rate
 				var/restore_amount = min(max_restore, reagents.maximum_volume - reagents.total_volume) // amount restored if fed, capped by reagents.maximum_volume
 				if(uses_nutrient) //consume nutrient
@@ -213,14 +213,16 @@
 			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
+	var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+	var/datum/sprite_accessory/belly/bellyacc = bellyussy.accessory_type
 	var/datum/sprite_accessory/acc = accessory_type
 	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
-		if(organ_size < 3)
-			organ_size += 1
+		if(bellyussy.organ_size < 3)
+			bellyussy.organ_size = pre_pregnancy_size + 1
 			acc.get_icon_state()
 			owner.update_body_parts(TRUE)
-			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 2 HOURS, TIMER_STOPPABLE)
+			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
 		else
 			deltimer(preggotimer)
 
