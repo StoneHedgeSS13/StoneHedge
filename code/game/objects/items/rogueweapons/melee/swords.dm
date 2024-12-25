@@ -720,9 +720,9 @@
 
 /obj/item/rogueweapon/greatsword
 	force = 12
-	force_wielded = 60
+	force_wielded = 45
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	name = "greatsword"
 	desc = "Might be able to chop anything in half!"
 	icon_state = "gsw"
