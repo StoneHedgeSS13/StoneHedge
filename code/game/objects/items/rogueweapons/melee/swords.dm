@@ -720,7 +720,7 @@
 
 /obj/item/rogueweapon/greatsword
 	force = 12
-	force_wielded = 30
+	force_wielded = 60
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	name = "greatsword"
@@ -738,8 +738,26 @@
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
-	max_blade_int = 300
-	wdefense = 5
+	max_blade_int = 500
+	wdefense = 6
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/chop/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 1.2
+
+/datum/intent/sword/strike/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 0.7
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
