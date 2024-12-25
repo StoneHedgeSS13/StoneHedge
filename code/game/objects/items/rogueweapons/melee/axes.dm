@@ -237,7 +237,7 @@
 	return ..()
 /obj/item/rogueweapon/greataxe
 	force = 30
-	force_wielded = 60
+	force_wielded = 60 //Lol don't get hit
 	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //strike is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/axe/cut/great, /datum/intent/axe/chop/great,  /datum/intent/axe/strike/great)
 	name = "greataxe"

@@ -3636,7 +3636,6 @@
 #include "modular_hearthstone\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular_hearthstone\code\game\objects\items\rogueitems\hearthnatural.dm"
 #include "modular_hearthstone\code\game\objects\items\rogueitems\natural\animals.dm"
-#include "modular_hearthstone\code\game\objects\items\weapons\great_axe.dm"
 #include "modular_hearthstone\code\game\objects\structures\canopy.dm"
 #include "modular_hearthstone\code\game\objects\structures\fluff.dm"
 #include "modular_hearthstone\code\game\objects\structures\gis_statues.dm"
