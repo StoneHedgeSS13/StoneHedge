@@ -142,6 +142,7 @@
 	category_tags = list(CTAG_HENCH)
 	traits_applied = list(TRAIT_STRONG_GRABBER, TRAIT_PUGILIST, TRAIT_CRITICAL_RESISTANCE) //They don't get a duster, but they get traits to atleast accomodate punching.
 
+
 /datum/outfit/job/roguetown/grabber/bouncer/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.mind)
