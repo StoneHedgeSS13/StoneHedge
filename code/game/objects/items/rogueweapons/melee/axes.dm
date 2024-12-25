@@ -268,7 +268,7 @@
 
 /datum/intent/axe/strike/great //Use chop if you wanna deal damage, this is just less than lethal quick strike to the face
 	penfactor = 40
-	damfactor = .6
+	damfactor = 0.6
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)
 	. = ..()
