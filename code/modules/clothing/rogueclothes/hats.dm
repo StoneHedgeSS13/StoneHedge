@@ -1416,6 +1416,7 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -1439,6 +1440,7 @@
 	anvilrepair = null
 	smeltresult = null
 	blocksound = SOFTHIT
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/footmanhelmet
 	name = "footman helmet"
