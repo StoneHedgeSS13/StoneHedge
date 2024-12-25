@@ -371,7 +371,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/feldgloves
-	name = "surggloves"
+	name = "feldgloves"
 	result = list(/obj/item/clothing/gloves/roguetown/feldgloves)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
