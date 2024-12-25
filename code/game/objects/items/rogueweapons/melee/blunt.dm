@@ -73,7 +73,7 @@
 
 /obj/item/rogueweapon/mace/steel
 	force = 25
-	force_wielded = 30
+	force_wielded = 35
 	name = "steel mace"
 	desc = "This steel mace is objectively superior to an iron one."
 	icon_state = "smace"
