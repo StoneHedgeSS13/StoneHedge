@@ -1,5 +1,5 @@
 /datum/job/roguetown/physician
-	title = "Physician"
+	title = "Guild Physician"
 	flag = PHYSICIAN
 	department_flag = NOBLEMEN
 	faction = "Station"
