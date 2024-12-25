@@ -80,7 +80,7 @@
 	wbalance = -1
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
-	wdefense = 3
+	wdefense = 1
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
