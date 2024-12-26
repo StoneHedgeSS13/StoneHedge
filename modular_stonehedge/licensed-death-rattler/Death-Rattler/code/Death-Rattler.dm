@@ -10,7 +10,7 @@
 /obj/item/storage/fancy/shhig
 	name = "\improper Shhig Brand Zigs"
 	gender = PLURAL
-	desc = "Dr. V's Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
+	desc = "Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
 	icon = 'modular_stonehedge/licensed-death-rattler/Death-Rattler/icon/smokable.dmi'
 	icon_state = "smokebox"
 	icon_type = "smoke"
@@ -35,7 +35,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/snekbt
 	name = "Snake Bite"
-	desc = "Dr. V's... vim... and... Ask yourself this: 'What am I doing?' It is a glowing viscous sludge you are about to put into your body. This can't be a good idea, can it?"
+	desc = "Ask yourself this: 'What am I doing?' It is a glowing viscous sludge you are about to put into your body. This can't be a good idea, can it?"
 	icon = 'modular_stonehedge/licensed-death-rattler/Death-Rattler/icon/smokable.dmi'
 	icon_state = "bite"
 	has_cap = FALSE // no icons
@@ -45,7 +45,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/nourish
 	name = "NOURISH"
-	desc = "Dr. V's nutritional supplement: normal people eat and drink, but true champions NOURISH."
+	desc = "nutritional supplement: normal people eat and drink, but true champions NOURISH."
 	icon = 'modular_stonehedge/licensed-death-rattler/Death-Rattler/icon/smokable.dmi'
 	icon_state = "nourish"
 	has_cap = FALSE // no icons

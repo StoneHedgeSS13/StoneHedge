@@ -650,7 +650,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
-	desc = "Dr. V's well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	desc = "well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
