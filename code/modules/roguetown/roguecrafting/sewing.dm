@@ -1040,6 +1040,13 @@
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/cook_apron
+    name = "cook apron - (3 cloths, fiber)"
+    result = list(/obj/item/clothing/cloak/apron/cook)
+    reqs = list(/obj/item/natural/cloth = 3,
+                /obj/item/natural/fibers = 1)
+    craftdiff = 3
+
 /* craftdif of 4 = EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/astratarobe
