@@ -11,7 +11,7 @@
 	emote_see = list("cleans its nose.")
 	speak_chance = 1
 	turns_per_move = 5
-	butcher_results = list(/obj/item/natural/hide = 1, /obj/item/natural/fur = 1,
+	butcher_results = list(/obj/item/natural/rabbitsfoot = 1, /obj/item/natural/hide = 1, /obj/item/natural/fur = 1,
 						/obj/item/natural/bone = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
 	faction = list("rats")
 	response_help_continuous = "pets"
