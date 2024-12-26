@@ -219,7 +219,7 @@
 	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
 		if(bellyussy.organ_size < 3)
-			bellyussy.organ_size = pre_pregnancy_size + 1
+			bellyussy.organ_size = bellyussy.organ_size + 1
 			acc.get_icon_state()
 			owner.update_body_parts(TRUE)
 			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
