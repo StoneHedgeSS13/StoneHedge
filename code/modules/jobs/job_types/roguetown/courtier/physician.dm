@@ -64,6 +64,7 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 6, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
 		H.change_stat("intelligence", 2) /// bumped these up by one and added some con. I cant rework everyclass but this one made me sad.
 		H.change_stat("fortune", 1)
 		H.change_stat("constitution", 2) // regular health checks to self. I dunno man give em something. miricles already shits all over surgery healin.

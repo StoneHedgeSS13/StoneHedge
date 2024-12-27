@@ -49,7 +49,7 @@
 
 /obj/structure/closet/crate/chest/refilling/medicine/guild
 	name = "guild medicine chest"
-	loot_type = "medicineguild" //only minorhealth potions, faster refill
+	loot_type = "medicineguild" //only minorhealth potions, faster refill, does not refill when players nearby
 	time_to_reset = 2 MINUTES
 
 /obj/structure/closet/crate/chest/refilling/materials
