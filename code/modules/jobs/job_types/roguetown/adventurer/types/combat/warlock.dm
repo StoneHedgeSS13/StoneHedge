@@ -141,10 +141,10 @@
 	H.change_stat("constitution", 1)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/archfey_warlock_strip)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/archfey_warlock_seelie_kiss)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 
 	ADD_TRAIT(H, TRAIT_WILDMAGIC, TRAIT_GENERIC)
 

@@ -1657,7 +1657,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!nodmg)
 			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
 			SEND_SIGNAL(I, COMSIG_APPLY_REAGENTS, affecting.owner, user)
-			if(should_embed_weapon(crit_wound, I))
+			if(H.mind && should_embed_weapon(crit_wound, I))
 				var/can_impale = TRUE
 				if(!affecting)
 					can_impale = FALSE

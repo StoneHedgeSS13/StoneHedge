@@ -157,7 +157,7 @@
 	name = "flour"
 	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
-	
+
 
 // /obj/item/reagent_containers/powder/sugar
 // 	name = "sugar"
@@ -388,7 +388,6 @@
 	description = ""
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose_threshold = 100
-	metabolization_rate = 0.1
 
 /datum/reagent/seelie_drugs/overdose_process(mob/living/M)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25*REM)

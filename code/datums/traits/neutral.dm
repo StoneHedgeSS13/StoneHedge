@@ -102,3 +102,4 @@
 /datum/quirk/virgin/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.virginity = TRUE
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)

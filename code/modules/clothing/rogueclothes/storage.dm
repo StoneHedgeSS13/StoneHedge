@@ -516,16 +516,14 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
-		/obj/item/natural/cloth/bandage,
-		/obj/item/natural/bundle/cloth/bandage,
-		/obj/item/natural/bundle/cloth/bandage/full,
-		/obj/item/reagent_containers/pill/pnkpill,
+		/obj/item/reagent_containers/hypospray/, //all injectards
+		/obj/item/natural/cloth/,
+		/obj/item/natural/bundle/cloth/, //all cloth and bandage
+		/obj/item/reagent_containers/, //all pills-drugs
 		/obj/item/candle,
-		/obj/item/needle,
-		/obj/item/needle/thorn,
-		/obj/item/needle/pestra,
+		/obj/item/needle/,
+		/obj/item/reagent_containers/glass/bottle/rogue/, //all bottles
+		/obj/item/storage/fancy/, //pilltins, you can put a ifak inside a ifak
 	))
 
 /obj/item/storage/fancy/ifak/PopulateContents()

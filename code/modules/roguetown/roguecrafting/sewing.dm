@@ -371,7 +371,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/feldgloves
-	name = "surggloves"
+	name = "feldgloves"
 	result = list(/obj/item/clothing/gloves/roguetown/feldgloves)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
@@ -1039,6 +1039,13 @@
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/cook_apron
+    name = "cook apron - (3 cloths, fiber)"
+    result = list(/obj/item/clothing/cloak/apron/cook)
+    reqs = list(/obj/item/natural/cloth = 3,
+                /obj/item/natural/fibers = 1)
+    craftdiff = 3
 
 /* craftdif of 4 = EXPERT */
 

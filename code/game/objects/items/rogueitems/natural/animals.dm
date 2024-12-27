@@ -35,6 +35,13 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
+/obj/item/natural/rabbitsfoot
+	name = "rabbit's foot"
+	icon_state = "rabbitfoot"
+	desc = "A rabbit's foot. A lucky charm."
+	w_class = WEIGHT_CLASS_TINY
+	sellprice = 10
+
 /obj/item/natural/fur
 	name = "fur"
 	icon_state = "wool1"
