@@ -38,6 +38,11 @@
 
 	wander = TRUE
 
+/mob/living/carbon/human/species/halforc/orc_raider/savage_orc
+
+/mob/living/carbon/human/species/halforc/orc_raider/savage_orc/after_creation()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/halforc/orc_raider)
+
 /datum/species/halforc/orc_raider
 	name = "Orc"
 	id = "orc"
@@ -325,15 +330,15 @@
 			if(prob(33)
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-				r_hand = /obj/item/rogueweapon/greatsword
+					r_hand = /obj/item/rogueweapon/greatsword
 			elseif(prob(33)
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-				r_hand = /obj/item/rogueweapon/mace/goden/steel
+					r_hand = /obj/item/rogueweapon/mace/goden/steel
 			else
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-				r_hand = /obj/item/rogueweapon/greataxe
+					r_hand = /obj/item/rogueweapon/greataxe
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 
 ///
