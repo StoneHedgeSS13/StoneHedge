@@ -520,7 +520,7 @@
 	layer = BELOW_OBJ_LAYER
 	var/gobs = 0
 	var/maxgobs = 3
-	var/sergeants = 1 //You there, check out that noise
+	var/sergeants = 0 //You there, check out that noise
 	var/datum/looping_sound/boneloop/soundloop
 	var/spawning = FALSE
 	var/moon_goblins = 0
@@ -552,7 +552,7 @@
 	if(!spawning)
 		return
 	spawning = FALSE
-	if(sergeant == 0)
+	if(sergeants == 0)
 		if(prob(50))
 			if(GLOB.tod == "night") //100% chance
 				new /mob/living/carbon/human/species/goblin/npc/moon/sergeant(get_turf(src))
@@ -560,7 +560,7 @@
 				new /mob/living/carbon/human/species/goblin/npc/sergeant(get_turf(src))
 		else
 			new	/mob/living/carbon/human/species/halforc/orc_raider(get_turf(src))
-		sergeant++
+		sergeants++
 		gobs++
 	if(moon_goblins == 1)
 		new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
