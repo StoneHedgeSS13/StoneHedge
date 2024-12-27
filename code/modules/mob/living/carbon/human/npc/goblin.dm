@@ -444,12 +444,12 @@
 /mob/living/carbon/human/species/goblin/npc/sergeant
 	name = "goblin sergeant" //Heavy Armored Sergeants
 	bounty = 50
-	var/gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
+	gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
 
 /mob/living/carbon/human/species/goblin/npc/moon/sergeant
 	name = "goblin sergeant" //Mooned
 	bounty = 50
-	var/gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
+	gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
 
 /datum/outfit/job/roguetown/npc/goblin/sergeant/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -562,7 +562,7 @@
 			new	/mob/living/carbon/human/species/halforc/orc_raider(get_turf(src))
 		sergeants++
 		gobs++
-	if(moon_goblins == 1)
+	elseif(moon_goblins == 1)
 		new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
 	if(moon_goblins == 0)
 		if(GLOB.tod == "night")
