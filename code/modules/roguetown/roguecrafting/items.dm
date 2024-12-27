@@ -775,6 +775,26 @@
 	result = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini = 1)
 
+/datum/crafting_recipe/roguetown/lharmorconvone
+	name = "hardened leather armor to bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced = 1)
+
+/datum/crafting_recipe/roguetown/lharmorconvtwo
+	name = "hardened leather bikini to bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini = 1)
+
+/datum/crafting_recipe/roguetown/lmarmorconvone
+	name = "enhanced leather armor to bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/masterwork = 1)
+
+/datum/crafting_recipe/roguetown/lmarmorconvtwo
+	name = "enhanced leather bikini to bra"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini/bra
+	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini = 1)
+
 /datum/crafting_recipe/roguetown/ichainkiniconv
 	name = "chainmail bikini to bra"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra)
@@ -823,6 +843,12 @@
 	verbage = "crafted"
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/goodluckcharm
+	name = "luck charm"
+	result = /obj/item/clothing/neck/roguetown/luckcharm // +1 fortune when worn
+	reqs = list(/obj/item/natural/rabbitsfoot = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
 /datum/crafting_recipe/roguetown/banner
 	name = "battle standard"
 	result = /obj/item/rogueweapon/spear/banner

@@ -132,14 +132,14 @@
 	/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2 = 1,
 	/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3 = 1)
 	spawn_text = "appears out of"
-	faction = list("undead")	
+	faction = list("undead")
 
 /obj/structure/spawner/ghost/cursedsouls
 	max_mobs = 3
 	mob_types = list(
 	/mob/living/simple_animal/hostile/rogue/ghost/cursed = 1,
 	/mob/living/simple_animal/hostile/rogue/ghost/cursed/cursed2 = 1)
-	
+
 /obj/structure/spawner/ghost/wraiths
 	max_mobs = 3
 	mob_types = list(
@@ -210,7 +210,7 @@
 /obj/structure/spawner/invisible
 	name = ""
 	desc = ""
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF 
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	spawn_time = 4200 //7 minutes
 	max_mobs = 1
 	mob_types = list(
@@ -229,7 +229,7 @@
 	/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow = 3,
 	/mob/living/simple_animal/hostile/rogue/skeleton/bow = 4,
 	/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard = 2,
-	/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard_spear = 2)
+	/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard_spear = 2,)
 	spawn_text = "jumps out in ambush!"
 	faction = list("undead")
 
@@ -242,13 +242,13 @@
 	/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2 = 1,
 	/mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith3 = 1)
 	spawn_text = "appears out of thin air!"
-	faction = list("undead")	
+	faction = list("undead")
 
 /obj/structure/spawner/invisible/ghost/cursedsouls
 	mob_types = list(
 	/mob/living/simple_animal/hostile/rogue/ghost/cursed = 1,
 	/mob/living/simple_animal/hostile/rogue/ghost/cursed/cursed2 = 1)
-	
+
 /obj/structure/spawner/invisible/ghost/wraiths
 	mob_types = list(
 	/mob/living/simple_animal/hostile/rogue/ghost/wraith = 1,
@@ -304,8 +304,33 @@
 	max_mobs = 2
 	mob_types = list(
 	/mob/living/simple_animal/hostile/retaliate/rogue/spider = 3,
-	/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated = 1)
+	/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter/viper = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse/midwife = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/tarantula = 1)
 	faction = list("spiders")
+
+/obj/structure/spawner/invisible/monster/spider/hunter
+	mob_types = list(
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/hunter/viper = 1,
+)
+
+/obj/structure/spawner/invisible/monster/spider/hardest
+	mob_types = list(
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse/ice = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/nurse/midwife = 1,
+	/mob/living/simple_animal/hostile/retaliate/rogue/poison/giant_spider/tarantula = 1
+)
 
 /obj/structure/spawner/invisible/monster/mossback
 	max_mobs = 1
@@ -326,6 +351,28 @@
 	/mob/living/simple_animal/hostile/retaliate/rogue/goblin = 3)		//archer
 	spawn_text = "appears out of hiding!"
 	faction = list("orcs")
+
+/obj/structure/spawner/invisible/orcs
+	max_mobs = 1
+	mob_types = list(
+	/mob/living/simple_animal/hostile/retaliate/rogue/orc = 3,
+	/mob/living/simple_animal/hostile/retaliate/rogue/orc/ranged = 3,
+	/mob/living/simple_animal/hostile/retaliate/rogue/orc = 3,
+	/mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/ravager = 3,)
+	spawn_text = "appears out of hiding!"
+	faction = list("orcs")
+
+/obj/structure/spawner/invisible/dragger
+	max_mobs = 1
+	mob_types = list(/mob/living/simple_animal/hostile/rogue/dragger)
+	spawn_text = "appears out of hiding!"
+	faction = list("undead")
+
+/obj/structure/spawner/invisible/gravelord
+	max_mobs = 1
+	mob_types = list(/mob/living/simple_animal/hostile/rogue/gravelord)
+	spawn_text = "appears out of hiding!"
+	faction = list("undead")
 
 //Invisible spawners capable of handling carbon mobs. Use in dungeons and areas with respawning chests.
 
@@ -353,6 +400,8 @@
 		/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow = 30,
 		/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard = 20,
 		/mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard_spear = 20,
+		/mob/living/carbon/human/species/skeleton/dwarf = 20,
+		/mob/living/carbon/human/species/skeleton/dwarf/npc/dungeon = 20,
 		/mob/living/carbon/human/species/skeleton/npc/dungeon = 30,
 		/mob/living/carbon/human/species/skeleton/npc/dungeon/boss = 5)
 

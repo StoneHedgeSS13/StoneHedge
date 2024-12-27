@@ -64,7 +64,7 @@
 /datum/vore_look/proc/gen_vui(var/mob/living/user)
 	var/dat
 	dat += "Remember to toggle the vore mode, it's to the left of your combat toggle. Open mouth means you're voracious!<br>"
-	dat += "Remember that the prey is blind, use audible mode subtle messages to communicate to them with posts!<br>"
+	dat += "Remember to use audible mode subtle messages to communicate to them with posts!<br>"
 	dat += "<HR>"
 	var/atom/userloc = user.loc
 	if (isbelly(userloc))

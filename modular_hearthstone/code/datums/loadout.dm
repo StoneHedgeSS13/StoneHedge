@@ -56,10 +56,37 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Halfcloak"
 	path = /obj/item/clothing/cloak/half
 
+/datum/loadout_item/furcloak
+	name = "Fur Cloak"
+	path = /obj/item/clothing/cloak/raincloak/furcloak
+
+/datum/loadout_item/blkknight
+	name = "Blood Cape"
+	path = /obj/item/clothing/cloak/cape/blkknight
+
+/datum/loadout_item/lordcloak
+	name = "Lordly Cloak"
+	path = /obj/item/clothing/cloak/lordcloak
+
+/datum/loadout_item/roguehood
+	name = "Hood"
+	path = /obj/item/clothing/head/roguetown/roguehood
+
+/datum/loadout_item/dildo
+	name = "Wooden Dildo"
+	path = /obj/item/dildo/wood
+
+/datum/loadout_item/dildo
+	name = "Wooden Butt Plug"
+	path = /obj/item/dildo/plug/wood
+
+/datum/loadout_item/gladiator
+	name = "Leather Soleae"
+	path = /obj/item/clothing/shoes/roguetown/gladiator
+
 /*/datum/loadout_item/ridercloak
 	name = "Rider Cloak"
 	path = /obj/item/clothing/cloak/half/rider did not port from Azure*/
-
 
 //SHOES
 /datum/loadout_item/darkboots

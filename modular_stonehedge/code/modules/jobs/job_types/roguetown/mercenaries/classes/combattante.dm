@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/mercenary/combattante
-	category_tags = list(CTAG_MERCENARY)
+	category_tags = list(CTAG_DISABLED)
 	maximum_possible_slots = 6
 
 

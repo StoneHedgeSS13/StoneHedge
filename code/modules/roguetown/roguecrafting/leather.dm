@@ -38,7 +38,14 @@
 	result = /obj/item/quiver
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fibers = 2)
-	sellprice = 18	//Costs about ~14 to make
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/leather/gwstrap
+	name = "Greatweapon Strap"
+	result = /obj/item/gwstrap
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	sellprice = 30
 
 /datum/crafting_recipe/roguetown/leather/gloves
 	name = "leather gloves (x2)"

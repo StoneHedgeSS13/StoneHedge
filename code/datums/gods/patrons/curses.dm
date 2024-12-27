@@ -11,6 +11,8 @@
 	/// Trait given by this curse
 	var/trait
 
+	var/fear = FALSE
+
 /datum/curse/proc/on_life()
 	return
 
@@ -256,9 +258,23 @@
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
 	handle_maniac_visions(owner, hallucinations)
-	handle_maniac_hallucinations(owner)
+	if(HAS_TRAIT(owner, TRAIT_SOONTOWAKEUP) && SSticker.mode?.roundvoteend) //If the round timer isn't up yet, it'll do the normal hallucination..
+		handle_waking_up(owner)
+	else
+		handle_maniac_hallucinations(owner)
 	handle_maniac_floors(owner)
 	handle_maniac_walls(owner)
+	if(HAS_TRAIT(owner, TRAIT_SOONTOWAKEUP) && !fear && SSticker.mode?.roundvoteend) //wake up..
+		REMOVE_TRAIT(owner, TRAIT_SOONTOWAKEUP, TRAIT_GENERIC)
+		var/sound/im_sick = sound('sound/villain/imsick.ogg', TRUE, FALSE, CHANNEL_IMSICK, 5)
+		SEND_SOUND(owner, im_sick)
+		owner.overlay_fullscreen("dream", /atom/movable/screen/fullscreen/dreaming)
+		owner.overlay_fullscreen("wakeup", /atom/movable/screen/fullscreen/dreaming/waking_up)
+		to_chat(owner, span_userdanger("<span class='big'>WHAT IS HAPPENING?!</span>"))
+		ADD_TRAIT(owner, TRAIT_MANIAC_AWOKEN, TRAIT_GENERIC) // The only change is when someone examines the owner.
+		ADD_TRAIT(owner, TRAIT_SCREENSHAKE, TRAIT_GENERIC)
+		fear = TRUE
+		return FALSE
 
 
 // cursed_freak_out() is freak_out() without stress adjustments

@@ -621,12 +621,12 @@
 /datum/antagonist/vampirelord/lesser/secret/move_to_spawnpoint()
 	return
 
-/datum/quirk/nymphomaniac
-	name = "Nymphomaniac"
+/datum/quirk/hypersensitivity
+	name = "Hypersensitivity"
 	desc = "I am so senstiive even my pants are enough to constantly arouse me... I must not wear pants or wear things that don't touch my groin. Atleast my experiences with certain things make me good in bed."
 	value = -3 // this thing really really sucks to have. I watched someone suffer all round with it.
 
-/datum/quirk/nymphomaniac/on_spawn()
+/datum/quirk/hypersensitivity/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.add_curse(/datum/curse/nympho, TRUE)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, QUIRK_TRAIT)
@@ -709,3 +709,15 @@
 	H.add_curse(/datum/curse/zizo, TRUE)
 	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
 	H.cmode_music = 'sound/music/combat_maniac2.ogg' //You gotta understand it's very important.
+
+/datum/quirk/maniacextra
+	name = "Cursed (Extra)"
+	desc = "..I keep experiencing vivid hallucinations, What is happening here? (Same as Cursed, Except the fourth wonder sequence will start when the round start ending.)"
+	value = -4
+
+/datum/quirk/maniacextra/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/zizo, TRUE)
+	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_SOONTOWAKEUP, QUIRK_TRAIT)
+	H.cmode_music = 'sound/music/combat_maniac2.ogg'

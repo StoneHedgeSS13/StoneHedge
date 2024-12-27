@@ -10,13 +10,13 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 
-	tutorial = "You are renting out the bath-house in a joint operation with the barkeep. Providing security for the Courtesans and helping them find work... And deal in other shady businesses behind closed doors."
+	tutorial = "You are renting out the brothel in a joint operation with the barkeep. Providing security for the Courtesans and helping them find work... And deal in other shady businesses behind closed doors."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightmaster
 	display_order = JDO_NIGHTMASTER
 	give_bank_account = TRUE
-	min_pq = -10
+	min_pq = 5
 	max_pq = null
 
 /datum/outfit/job/roguetown/nightmaster/pre_equip(mob/living/carbon/human/H)
@@ -49,7 +49,7 @@
 		if(H.dna?.species)
 			if(iself(H) || ishalfelf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
-			else if(ishumannorthern(H))
+			if(H.gender == MALE)
 				H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 			else if(isdwarf(H))
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
@@ -63,5 +63,4 @@
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
-
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random

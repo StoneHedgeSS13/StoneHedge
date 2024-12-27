@@ -297,7 +297,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
-				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 				H.update_inv_cloak()
 			return
 		else if(adjustable == CADJUSTED)
@@ -308,7 +308,7 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
-					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 					H.update_inv_cloak()
 		return
 
@@ -1416,6 +1416,7 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -1439,6 +1440,7 @@
 	anvilrepair = null
 	smeltresult = null
 	blocksound = SOFTHIT
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/footmanhelmet
 	name = "footman helmet"

@@ -262,7 +262,7 @@
 	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roominnkeep)
 
 /obj/item/storage/keyring/veteran
-	keys = list(/obj/item/roguekey/veteran, /obj/item/roguekey/vault, /obj/item/roguekey/steward, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/graveyard)
+	keys = list(/obj/item/roguekey/veteran, /obj/item/roguekey/vault, /obj/item/roguekey/steward, /obj/item/roguekey/physician, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/graveyard)
 
 /obj/item/storage/keyring/sheriff
 	keys = list(/obj/item/roguekey/sheriff_office, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
@@ -334,7 +334,7 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/archive)
 
 /obj/item/storage/keyring/physician
-	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/physician)
+	keys = list(/obj/item/roguekey/physician)
 
 /obj/item/storage/keyring/royal
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/royal)

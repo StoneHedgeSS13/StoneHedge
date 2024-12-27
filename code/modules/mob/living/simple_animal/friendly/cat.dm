@@ -71,7 +71,7 @@
 	if(locate(/mob/living/carbon) in get_turf(src))
 		sleep(1)
 		dir = pick(GLOB.alldirs)
-		step(src, dir)	
+		step(src, dir)
 		personal_space()
 	else
 		return
@@ -127,33 +127,6 @@
 	var/cats_deployed = 0
 	var/memory_saved = FALSE
 
-/mob/living/simple_animal/pet/cat/Runtime/Initialize()
-	if(prob(5))
-		icon_state = "original"
-		icon_living = "original"
-		icon_dead = "original_dead"
-	Read_Memory()
-	. = ..()
-
-/mob/living/simple_animal/pet/cat/Runtime/Life()
-	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
-		Deploy_The_Cats()
-	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
-		Write_Memory()
-		memory_saved = TRUE
-	..()
-
-/mob/living/simple_animal/pet/cat/Runtime/make_babies()
-	var/mob/baby = ..()
-	if(baby)
-		children += baby
-		return baby
-
-/mob/living/simple_animal/pet/cat/Runtime/death()
-	if(!memory_saved)
-		Write_Memory(TRUE)
-	..()
-
 /mob/living/simple_animal/pet/cat/Runtime/proc/Read_Memory()
 	if(fexists("data/npc_saves/Runtime.sav")) //legacy compatability to convert old format to new
 		var/savefile/S = new /savefile("data/npc_saves/Runtime.sav")
@@ -183,6 +156,33 @@
 	file_data["family"] = family
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(file_data))
+
+/mob/living/simple_animal/pet/cat/Runtime/Initialize()
+	if(prob(5))
+		icon_state = "original"
+		icon_living = "original"
+		icon_dead = "original_dead"
+	Read_Memory()
+	. = ..()
+
+/mob/living/simple_animal/pet/cat/Runtime/Life()
+	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
+		Deploy_The_Cats()
+	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
+		Write_Memory()
+		memory_saved = TRUE
+	..()
+
+/mob/living/simple_animal/pet/cat/Runtime/make_babies()
+	var/mob/baby = ..()
+	if(baby)
+		children += baby
+		return baby
+
+/mob/living/simple_animal/pet/cat/Runtime/death()
+	if(!memory_saved)
+		Write_Memory(TRUE)
+	..()
 
 /mob/living/simple_animal/pet/cat/Runtime/proc/Deploy_The_Cats()
 	cats_deployed = 1

@@ -233,3 +233,43 @@
 	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though... The bottom half is literally covered by nothing, it somehow still protects the full torso!"
 	flags_inv = HIDEBOOB
 	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini
+	name = "hardened leather bikini"
+	desc = "Sturdy, durable, flexible. Will keep you alive in style, and now even less than before!"
+	icon = 'modular_stonehedge/icons/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "advkini"
+	item_state = "advkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+	allowed_race = CLOTHED_RACES_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini
+	name = "enhanced leather bikini"
+	desc = "This bikini is a craftsmanship marvel. Made with the finest leather. Strong, VERY nimible, reliable."
+	icon = 'modular_stonehedge/icons/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	icon_state = "mastkini"
+	item_state = "mastkini"
+	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
+	allowed_race = CLOTHED_RACES_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
+	name = "hardened leather bra"
+	icon_state = "advbra"
+	item_state = "advbra"
+	desc = "Sturdy, durable, flexible. Will keep you alive in style, and now even... EVEN less than before!"
+	flags_inv = HIDEBOOB
+	is_bra = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/leather/masterwork/bikini/bra
+	name = "enhanced leather bra"
+	icon_state = "mastbra"
+	item_state = "mastbra"
+	desc = "This... bra is a craftsmanship marvel. Made with the finest leather. Strong, VERY VERY nimible, reliable."
+	flags_inv = HIDEBOOB
+	is_bra = TRUE

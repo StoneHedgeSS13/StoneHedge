@@ -194,6 +194,9 @@
 /obj/effect/landmark/waygate_destination/hfort
 	name = "Hedge Fortress"
 
+/obj/effect/landmark/waygate_destination/hfortarm
+	name = "Hedge Fortress Armory"
+
 /obj/effect/landmark/waygate_destination/northgate
 	name = "North Gate"
 

@@ -19,7 +19,9 @@
 		/datum/language/orcish,
 		/datum/language/draconic,
 		/datum/language/faexin,
-		/datum/language/canilunzt
+		/datum/language/canilunzt,
+		/datum/language/thievescant,
+		/datum/language/grenzelhoftian
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)

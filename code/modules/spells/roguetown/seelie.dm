@@ -11,12 +11,10 @@
 /obj/effect/proc_holder/spell/invoked/seelie_dust/cast(list/targets, mob/living/user)
 	. = ..()
 	user.emote("giggle")
-	var/target = targets[1]
-	if(isliving(target))
-		var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SD(get_turf(target))
-		K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
+	if(iscarbon(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		target.reagents.add_reagent(/datum/reagent/seelie_drugs, 10)
 		user.log_message("has drugged [key_name(target)] with Seelie dust", LOG_ATTACK)
-		qdel(K)
 	return TRUE
 
 //Unfinished spells to be finished at a later date:
@@ -50,7 +48,7 @@
 
 
 //Because seelie glows constantly, this seemed unnecessary. May revisit if we can find a better execution
-	
+
 /obj/effect/proc_holder/spell/invoked/brighten
 	name = "Light"
 	overlay_state = "tamebeast"
@@ -114,7 +112,7 @@
 	var/mob/living/target = targets[1]
 	if(iscarbon(target))
 		var/obj/item/object = target.get_item_by_slot(pick(SLOT_GLOVES,SLOT_SHOES,SLOT_HEAD))
-		if(!istype(object, /obj/item/clothing/head/roguetown/helmet))//Can't take helmets!	
+		if(!istype(object, /obj/item/clothing/head/roguetown/helmet))//Can't take helmets!
 			target.dropItemToGround(object)
 		user.log_message("has stripped a piece of clothing from [key_name(target)] via spell", LOG_ATTACK)
 		target.log_message("has had a piece of clothing stripped by [key_name(user)] via spell", LOG_ATTACK)
@@ -162,9 +160,9 @@
 			return FALSE
 	else
 		to_chat(user, span_warning("I cant drain energy from that!"))
-	
+
 	return FALSE
-		
+
 
 /obj/effect/proc_holder/spell/invoked/replenish
 	name = "Replenish Nature"
@@ -246,15 +244,13 @@
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		var/obj/item/reagent_containers/powder/K = new /obj/item/reagent_containers/powder/SK(target.loc)
-		K.reagents.trans_to(target, K.reagents.total_volume, transfered_by = user, method = "swallow")
+		target.reagents.add_reagent_list(/datum/reagent/medicine/healthpot = 5, /datum/reagent/medicine/manapot = 5)
 		target.add_nausea(9)
 		to_chat(target, span_notice("I suddenly feel reinvigorated!"))
 		to_chat(user, span_notice("I have reinvigorated [target] with a kiss."))
-		user.log_message("has blessed [key_name(target)] with a kiss spell, healing them a little", LOG_ATTACK)
-		target.log_message("has been blessed by [key_name(user)] with a kiss spell, healing them a little", LOG_ATTACK)
+		user.log_message("has blessed [key_name(target)] with a kiss spell, healing them.", LOG_ATTACK)
+		target.log_message("has been blessed by [key_name(user)] with a kiss spell, healing them.", LOG_ATTACK)
 		user.emote("kiss")
-		qdel(K)
 		return TRUE
 	return FALSE
 
@@ -272,12 +268,6 @@
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-
-/obj/item/reagent_containers/powder/SK
-	list_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/medicine/manapot = 1)
-
-/obj/item/reagent_containers/powder/SD
-	list_reagents = list(/datum/reagent/seelie_drugs = 10)
 
 /obj/item/reagent_containers/glass/bucket/wooden/spell_water
 	list_reagents = list(/datum/reagent/water = 40)

@@ -233,14 +233,14 @@
 
 	//those are here for proc dependancy.
 	if(!attack_lying && L.lying && !L.get_active_held_item()) //laying with no items in hand, no threat.
-		if(prob(4) && L.has_quirk(/datum/quirk/monsterhunter) && erpable) //tiny chance to trigger abuss.
+		if(prob(4) && (L.has_quirk(/datum/quirk/monsterhuntermale) || L.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //tiny chance to trigger abuss.
 			fuckcd = 0
 		return FALSE
 
 	if(ishuman(L)) //leave alone if handcuffed.
 		var/mob/living/carbon/human/lhuman = L
 		if(lhuman.handcuffed)
-			if(prob(8) && lhuman.has_quirk(/datum/quirk/monsterhunter) && erpable) //small chance to trigger abuss.
+			if(prob(8) && (lhuman.has_quirk(/datum/quirk/monsterhuntermale) || lhuman.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //small chance to trigger abuss.
 				fuckcd = 0
 			return FALSE
 

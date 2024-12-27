@@ -67,6 +67,7 @@
 			H.change_stat("perception", 1)
 			r_hand = /obj/item/rogueweapon/halberd
 
+
 	//General gear regardless of class.
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
@@ -81,5 +82,6 @@
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 
 	backpack_contents = list(/obj/item/roguekey/mercenary)
+	H.grant_language(/datum/language/grenzelhoftian)
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
