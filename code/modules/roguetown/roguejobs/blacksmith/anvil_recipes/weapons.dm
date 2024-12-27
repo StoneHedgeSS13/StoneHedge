@@ -255,6 +255,14 @@
 	craftdiff = 3
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/beardedaxe
+	name = "Bearded Axe (+2 Steel Ingot, +1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small, /obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/greataxe/bearded
+	craftdiff = 4
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/zweihander
 	name = "Zweihander (+2 Iron)"
 	req_bar = /obj/item/ingot/iron
