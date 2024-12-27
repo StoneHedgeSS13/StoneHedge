@@ -323,7 +323,8 @@
 /datum/crafting_recipe/roguetown/leather/whip
 	name = "leather whip"
 	result = /obj/item/rogueweapon/whip
-	reqs = list(/obj/item/natural/hide = 2,/obj/item/natural/stone = 1)
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/stone = 1)
 	sellprice = 26	//Costs about ~14 to make, resells very well.
 	craftdiff = 3	//Harder craft.
 
