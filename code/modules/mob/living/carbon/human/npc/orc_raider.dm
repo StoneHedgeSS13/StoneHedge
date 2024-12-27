@@ -263,10 +263,10 @@
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-				elseif(prob(33))
-					armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-					else
-					armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -279,10 +279,10 @@
 			r_hand = /obj/item/rogueweapon/flail/sflail
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-					elseif(prob(33))
-						armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-						else
-							armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -295,10 +295,10 @@
 			r_hand = /obj/item/rogueweapon/mace/steel
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-				elseif(prob(33))
-					armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-					else
-						armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -311,10 +311,10 @@
 			r_hand = /obj/item/rogueweapon/sword/long
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-				elseif(prob(33))
-					armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-					else
-						armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -331,14 +331,14 @@
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 					r_hand = /obj/item/rogueweapon/greatsword
-				elseif(prob(33)
-					if(H.mind)
-						H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-					r_hand = /obj/item/rogueweapon/mace/goden/steel
-					else
-						if(H.mind)
-							H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-						r_hand = /obj/item/rogueweapon/greataxe
+			elseif(prob(33)
+				if(H.mind)
+					H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				r_hand = /obj/item/rogueweapon/mace/goden/steel
+			else
+				if(H.mind)
+					H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				r_hand = /obj/item/rogueweapon/greataxe
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 
 ///
