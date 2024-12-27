@@ -20,7 +20,7 @@
 			if("paincrit")
 				used = pick('sound/vo/mobs/simple_orcs/orc_pain.ogg','sound/vo/mobs/simple_orcs/orc_pain2.ogg','sound/vo/mobs/simple_orcs/orc_pain3.ogg','sound/vo/mobs/simple_orcs/orc_pain4.ogg')
 			if("painscream")
-				used = pick('sound/vo/mobs/simple_orcs/orc_pain.ogg','sound/vo/mobs/simple_orcs/orc_pain2.ogg',sound/vo/mobs/simple_orcs/orc_pain3.ogg','sound/vo/mobs/simple_orcs/orc_pain4.ogg')
+				used = pick('sound/vo/mobs/simple_orcs/orc_pain.ogg','sound/vo/mobs/simple_orcs/orc_pain2.ogg','sound/vo/mobs/simple_orcs/orc_pain3.ogg','sound/vo/mobs/simple_orcs/orc_pain4.ogg')
 	if(!used)
 		used = ..(soundin)
 	return used
