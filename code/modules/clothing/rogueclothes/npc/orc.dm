@@ -2,7 +2,7 @@
 	name = "warlord plate"
 	icon_state = "warlord_armor_item"
 	item_state = "warlord_armor"
- 	armor = list("blunt" = 60, "slash" = 75, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 75, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	max_integrity = 400
 	icon = 'icons/roguetown/mob/monster/orc.dmi'
 	smeltresult = /obj/item/ingot/iron

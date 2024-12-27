@@ -537,7 +537,7 @@
 		return
 	if(!in_range(src, user))
 		return
-	elseif(gobs >= (maxgobs+1))
+	if(gobs >= (maxgobs+1))
 		to_chat(user, span_danger("Too many Gobs."))
 		return
 	gobs++
@@ -562,9 +562,7 @@
 			new	/mob/living/carbon/human/species/halforc/orc_raider(get_turf(src))
 		sergeants++
 		gobs++
-	elseif(moon_goblins == 1)
-		new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
-	if(moon_goblins == 0)
+	elseif(moon_goblins == 0)
 		if(GLOB.tod == "night")
 			if(prob(30))
 				moon_goblins = 1
