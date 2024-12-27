@@ -562,7 +562,7 @@
 			new	/mob/living/carbon/human/species/halforc/orc_raider(get_turf(src))
 		sergeants++
 		gobs++
-	elseif(moon_goblins == 0)
+	if(moon_goblins == 0)
 		if(GLOB.tod == "night")
 			if(prob(30))
 				moon_goblins = 1
