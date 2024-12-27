@@ -2131,7 +2131,6 @@
 /turf/open/water/swamp,
 /area/rogue/under/cavewet/bogcaves/sunkencity)
 "aQn" = (
-/mob/living/carbon/human/species/halforc/orc_raider/savage_orc/ambush,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "aQu" = (
@@ -18472,7 +18471,6 @@
 /area/rogue/indoors/town/garrison)
 "kSG" = (
 /obj/structure/bed/rogue/shit,
-/mob/living/carbon/human/species/halforc/orc_raider/savage_orc/ambush,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "kSK" = (
