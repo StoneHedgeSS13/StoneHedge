@@ -36,7 +36,7 @@
 	sellprice = 20
 
 /obj/item/natural/rabbitsfoot
-	name = "rabbit foot"
+	name = "rabbit's foot"
 	icon_state = "rabbitfoot"
 	desc = "A rabbit's foot. A lucky charm."
 	w_class = WEIGHT_CLASS_TINY
