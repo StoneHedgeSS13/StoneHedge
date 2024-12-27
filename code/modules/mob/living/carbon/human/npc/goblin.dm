@@ -537,7 +537,7 @@
 		return
 	if(!in_range(src, user))
 		return
-	elseif(gobs >= (maxgobs+1))
+	if(gobs >= (maxgobs+1))
 		to_chat(user, span_danger("Too many Gobs."))
 		return
 	gobs++
