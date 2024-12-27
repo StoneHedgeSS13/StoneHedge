@@ -47,6 +47,11 @@
 /obj/structure/closet/crate/chest/refilling/medicine
 	loot_type = "medicine"
 
+/obj/structure/closet/crate/chest/refilling/medicine/guild
+	name = "guild medicine chest"
+	loot_type = "medicineguild" //only minorhealth potions, faster refill
+	time_to_reset = 2 MINUTES
+
 /obj/structure/closet/crate/chest/refilling/materials
 	loot_type = "materials"
 
@@ -178,6 +183,17 @@
 				/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 20,
 				/obj/item/reagent_containers/glass/bottle/rogue/wine = 10,
 				/obj/item/reagent_containers/glass/bottle/rogue/water = 25
+				)
+		if("medicineguild")
+			loot = list(
+				/obj/item/natural/bundle/cloth = 20,
+				/obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot = 70,
+				/obj/item/reagent_containers/glass/bottle/rogue/manapot = 30,
+				/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 20,
+				/obj/item/reagent_containers/glass/bottle/rogue/water = 25,
+				/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju = 10, //epipen
+				/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify = 10, //heals infections
+				/obj/item/reagent_containers/hypospray/medipen/sealbottle/mori = 1 //free revival, shitass rare
 				)
 		if("materials")
 			loot = list(

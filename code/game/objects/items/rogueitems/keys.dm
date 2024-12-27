@@ -344,7 +344,7 @@
 	lockid = "merc"
 
 /obj/item/roguekey/physician
-	name = "physician key"
+	name = "guild physician key"
 	desc = "The key smells of herbs, feeling soothing to the touch."
 	icon_state = "greenkey"
 	lockid = "physician"
