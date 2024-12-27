@@ -51,7 +51,7 @@
 	name = "orc trousers"
 	desc = "smells funny."
 	icon = 'icons/roguetown/mob/monster/orc.dmi'
-	icon_state = 'orc_leather_item'
+	icon_state = "orc_leather_item"
 	item_state = "orc_leather"
 	armor = list("blunt" = 40, "slash" = 40, "stab" = 40, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) //no free leg shots for you
 	max_integrity = 200
