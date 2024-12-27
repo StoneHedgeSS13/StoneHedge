@@ -443,12 +443,12 @@
 
 /mob/living/carbon/human/species/goblin/npc/sergeant
 	name = "goblin sergeant" //Heavy Armored Sergeants
-	headdy.sellprice = 50
+	bounty = 50
 	var/gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
 
 /mob/living/carbon/human/species/goblin/npc/moon/sergeant
 	name = "goblin sergeant" //Mooned
-	headdy.sellprice = 50
+	bounty = 50
 	var/gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
 
 /datum/outfit/job/roguetown/npc/goblin/sergeant/pre_equip(mob/living/carbon/human/H)
