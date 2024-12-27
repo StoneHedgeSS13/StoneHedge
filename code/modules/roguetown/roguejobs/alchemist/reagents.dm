@@ -372,10 +372,13 @@
 	overdose_threshold = null
 	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
 
-/datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
-	M.adjustFireLoss(0.5, 0)
-	M.heal_wounds(30)
-	M.reagents.remove_reagent(/datum/reagent/toxin/infection, 9999)
+/datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/M)
+	M.heal_wounds(10)
+	M.adjustBruteLoss(-5, 0)
+	M.adjustToxLoss(-15, 0)
+	M.reagents.remove_reagent(/datum/reagent/toxin/infection, 500)
+	..()
+	. = 1
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
 		// Iterate through wounds on each body part
