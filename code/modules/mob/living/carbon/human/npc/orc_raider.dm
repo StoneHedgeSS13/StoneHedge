@@ -7,12 +7,14 @@
 	gender = MALE
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
-	rot_type = /datum/component/rot/corpse/orc_raider
-	var/gob_outfit = /datum/outfit/job/roguetown/npc/orc_raider
+	rot_type = /datum/component/rot/corpse/halforc/orc_raider
+	var/orc_outfit = /datum/outfit/job/roguetown/npc/halforc/orc_raider
 	ambushable = FALSE
+	erpable = TRUE
+	hornychance = 0 //I don't know how to give them genitals
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
 	possible_rmb_intents = list()
-	//If someone ends up writing custom messages for goblins, lewd talk could be used ig -vide
+	//If someone ends up writing custom messages for orcs, lewd talk could be used ig -yack
 	//lewd_talk = TRUE
 	//skin color is "e8b59b"
 	skin_tone = "e8b59b"
@@ -27,8 +29,8 @@
 /mob/living/carbon/human/species/halforc/orc_raider/npc
 	aggressive = 1
 	mode = AI_IDLE
-	dodgetime = 30 //they can dodge easily, but have a cooldown on it
-	flee_in_pain = TRUE
+	dodgetime = 150 //slow dodgers, relies on their gear and durability
+	flee_in_pain = FALSE //Actual Psychos
 
 	wander = FALSE
 
@@ -40,7 +42,7 @@
 	name = "Orc"
 	id = "orc"
 	species_traits = list(NO_UNDERWEAR,NOEYESPRITES)
-	inherent_traits = list(TRAIT_NOROGSTAM,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_CRITICAL_WEAKNESS)
+	inherent_traits = list(TRAIT_NOROGSTAM,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE) //Removed the critweakness because they're hardier than goblins
 	nojumpsuit = 1
 	sexes = 0 //Someone can fix this when sprites are made
 	offset_features = list(OFFSET_HANDS = list(0,-4), OFFSET_HANDS_F = list(0,-4))
@@ -172,9 +174,9 @@
 		src.dna.species.soundpack_f = new /datum/voicepack/male/halforc/orc_raider()
 		var/obj/item/headdy = get_bodypart("head")
 		if(headdy)
-			headdy.icon = 'icons/roguetown/mob/monster/goblins.dmi'
+			headdy.icon = 'icons/roguetown/mob/monster/orc.dmi'
 			headdy.icon_state = "[src.dna.species.id]_head"
-			headdy.sellprice = 30
+			headdy.sellprice = 60
 	src.grant_language(/datum/language/orcish)
 	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -186,8 +188,8 @@
 		QDEL_NULL(src.charflaw)
 	update_body()
 	faction = list("orcs")
-	name = "goblin"
-	real_name = "goblin"
+	name = "orc"
+	real_name = "orc"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
@@ -201,7 +203,7 @@
 		if(O)
 			equipOutfit(O)
 
-/datum/component/rot/corpse/goblin/process()
+/datum/component/rot/corpse/halforc/orc_raider/process()
 	var/amt2add = 10 //1 second
 	if(last_process)
 		amt2add = ((world.time - last_process)/10) * amt2add
@@ -216,7 +218,7 @@
 		return
 	var/should_update = FALSE
 	if(amount > 8 MINUTES)
-		C.visible_message(span_notice("The Goblin decomposes..."))
+		C.visible_message(span_notice("The Orc decomposes..."))
 		qdel(C)
 		/*
 		for(var/obj/item/bodypart/B in C.bodyparts)
@@ -239,3 +241,103 @@
 			return
 		else if(amount > 4 MINUTES)
 			C.update_body()
+
+/datum/outfit/job/roguetown/npc/halforc/orc_raider/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.STASTR = 16
+	H.STASPD = 8
+	H.STACON = 16
+	H.STAEND = 15
+	H.STAINT = 9
+	var/loadout = rand(1,5)
+	switch(loadout)
+
+		if(1) //axe
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE) //Just in cast a player takes over an npc
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+			if(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/orc
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(2) //flail
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/flail/sflail
+			if(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/orc
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(3) //maces
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/mace/steel
+			if(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/orc
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(4) //sword
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/sword/long
+			if(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
+			elseif(prob(33))
+				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
+			else
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
+			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
+			if(prob(80))
+				head = /obj/item/clothing/head/roguetown/helmet/orc
+			if(prob(50))
+				l_hand = /obj/item/rogueweapon/shield/wood
+
+		if(5) //naked berserker, huge weapon no armor
+			TRAIT_CRITICAL_RESISTANCE
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 2)
+			H.change_stat("intelligence", -3)
+			H.change_stat("speed", 4)
+			if(prob(33)
+				if(H.mind)
+					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+				r_hand = /obj/item/rogueweapon/greatsword
+			elseif(prob(33)
+				if(H.mind)
+					H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				r_hand = /obj/item/rogueweapon/mace/goden/steel
+			else
+				if(H.mind)
+					H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				r_hand = /obj/item/rogueweapon/greataxe
+			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
+
+///
+///
+/// Genital Slop goes here, I don't know how that shit works
+///
+///
