@@ -38,6 +38,11 @@
 
 	wander = TRUE
 
+/mob/living/carbon/human/species/halforc/orc_raider/savage_orc
+
+/mob/living/carbon/human/species/halforc/orc_raider/savage_orc/after_creation()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/halforc/orc_raider)
+
 /datum/species/halforc/orc_raider
 	name = "Orc"
 	id = "orc"
