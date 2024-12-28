@@ -216,7 +216,6 @@
 		/obj/item/reagent_containers/powder/toper = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 
 /datum/crafting_recipe/roguetown/transmutation/g2sub
@@ -230,7 +229,6 @@
 		/obj/item/reagent_containers/powder/gemerald = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/s2sub
 	name = "Sublimate Sapphire Dust"
@@ -245,7 +243,6 @@
 		/obj/item/reagent_containers/powder/saffira = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/b2sub
 	name = "Sublimate Quartz Dust"
@@ -262,7 +259,6 @@
 		/obj/item/reagent_containers/powder/blortz = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/r2sub
 	name = "Sublimate Ruby Dust"
@@ -281,7 +277,6 @@
 		/obj/item/reagent_containers/powder/rontz = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/d2sub
 	name = "Sublimate Diamond Dust"
@@ -302,7 +297,6 @@
 		/obj/item/reagent_containers/powder/dorpel = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/m2sub
 	name = "Sublimate Malum's Fire"
@@ -335,4 +329,3 @@
 		/obj/item/reagent_containers/powder/mfire = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
-	alchemists_only = TRUE
