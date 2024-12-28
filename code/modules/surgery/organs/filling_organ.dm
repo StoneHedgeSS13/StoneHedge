@@ -189,8 +189,6 @@
 				break
 
 /obj/item/organ/filling_organ/proc/be_impregnated()
-	if(pregnant)
-		return
 	if(!owner)
 		return
 	if(owner.stat == DEAD)
@@ -205,12 +203,12 @@
 			breasties.refilling = TRUE
 			if(owner.has_quirk(/datum/quirk/selfawaregeni))
 				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
-		if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
-			pre_pregnancy_size = pregnantaltorgan.organ_size
-			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
-		else
-			pre_pregnancy_size = organ_size
-			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
+	if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
+		pre_pregnancy_size = pregnantaltorgan.organ_size
+		addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
+	else
+		pre_pregnancy_size = organ_size
+		addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 5 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
 	if(organ_sizeable)
