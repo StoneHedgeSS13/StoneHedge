@@ -481,7 +481,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/goblin
 			r_hand =/obj/item/rogueweapon/eaglebeak
 			if(H.mind)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/spears, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
 
 		if(3) //maces
