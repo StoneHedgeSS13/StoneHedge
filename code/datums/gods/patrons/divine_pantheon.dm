@@ -133,6 +133,10 @@
 	worshippers = "Smiths, Crafters, Masochists, Miners, Artisans."
 	mob_traits = list(TRAIT_MALUMSGRACE)
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
+	//below may need shuffling or changes idfk what they do.
+	t2 = /obj/effect/proc_holder/spell/invoked/vigorousexchange
+	t3 = /obj/effect/proc_holder/spell/invoked/heatmetal
+	t4 = /obj/effect/proc_holder/spell/invoked/hammerfall
 	confess_lines = list(
 		"Blessed forgefires be my guidance!",
 		"TRUE VALUE IS IN THE TOIL!",
