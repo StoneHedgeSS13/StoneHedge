@@ -215,6 +215,9 @@
 		if(!(locate(R.structurecraft) in T))
 			to_chat(user, span_warning("I'm missing a structure I need."))
 			return
+	if(R.alchemists_only && !HAS_TRAIT(user, TRAIT_ALCHEMYKNOWLEDGE))
+		to_chat(user, span_warning("I do not know how to work on that."))
+		return
 	if(check_contents(R, contents))
 		if(check_tools(user, R, contents))
 			if(R.craftsound)

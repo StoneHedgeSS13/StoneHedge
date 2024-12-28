@@ -3602,6 +3602,7 @@
 #include "modular\code\modules\maturity-prompt\code\config_entries.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_prompt.dm"
 #include "modular\code\modules\maturity-prompt\code\maturity_subsystem.dm"
+#include "modular\icons\code\trufflepig.dm"
 #include "modular\Neu_Food\code\NeuFood.dm"
 #include "modular\Neu_Food\code\cooked\NeuFood_meals.dm"
 #include "modular\Neu_Food\code\cooked\NeuFood_pies.dm"

@@ -160,6 +160,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 		neck = /obj/item/clothing/neck/roguetown/psicross/eora
 		ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 	if(classchoice == "Arcanist")
 		head = /obj/item/clothing/head/roguetown/roguehood/shalal
 		r_hand = /obj/item/scrying

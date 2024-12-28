@@ -247,6 +247,7 @@
 			//cant really give him much legendaries in this point cause mf is a magician, cant teach arcane. So he will get artificer instead
 			ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/torsion/arcane)
@@ -455,6 +456,7 @@
 			ADD_TRAIT(H, TRAIT_ARTIFICER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			to_chat(H, span_notice("You have chosen the path of the Academy Alchemist, taking your first steps toward becoming a Scholarch. As you study the intricate arts of magical brewing, you also learn to teach and guide others, preparing for your future role in shaping the next generation of mages. Like all scholarly paths, your focus on knowledge and creation comes at the expense of martial and offensive magical abilities."))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/encodethoughts5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/magicstone5e)
@@ -498,6 +500,7 @@
 				H.change_stat("perception", 2)
 				H.mind.adjust_spellpoints(7)
 			ADD_TRAIT(H, TRAIT_FIENDKISS, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			to_chat(H, span_notice("You have achieved the rank of Arcanist, becoming a true master of the arcane arts. Your ceaseless pursuit of magical knowledge and power has led to mastery over spells that others can barely comprehend, and you continue to push the boundaries of what's magically possible. However, your body remains physically frail, and you must rely on your magical prowess alone."))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/arcyne_storm)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/firebolt5e)
@@ -533,6 +536,7 @@
 			ADD_TRAIT(H, TRAIT_STRONGTHROW, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BLINDFIGHTING, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			to_chat(H, span_notice("You have achieved the rank of Wardmaster, becoming the Academy's supreme protector. Your mastery of both martial combat and defensive magic makes you an imposing guardian, ready to face any threat to the institution and its inhabitants with unwavering resolve. While you excel at protection, the most powerful offensive spells remain beyond your grasp."))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bladeward5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)
@@ -574,7 +578,7 @@
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_EASYLIMBDISABLE, TRAIT_GENERIC) //they're scholars not fighters, prevents people from turning it into an OP omnibus class.
-
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			to_chat(H, span_notice("You have achieved the rank of Scholarch, becoming a true master of magical academia. Your profound understanding of magical theory and practice makes you an invaluable teacher and mentor, shaping the next generation of mages while preserving and expanding magical knowledge. Though your wisdom is vast, you lack the combat prowess of your more martial colleagues."))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/encodethoughts5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/magicstone5e)

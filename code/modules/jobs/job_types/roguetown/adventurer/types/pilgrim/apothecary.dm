@@ -21,6 +21,7 @@
 		/obj/item/reagent_containers/glass/mortar = 1,
 		/obj/item/pestle = 1,
 	)
+	ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)

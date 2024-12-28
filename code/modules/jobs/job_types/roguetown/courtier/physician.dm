@@ -54,6 +54,7 @@
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_SELF_AWARE, "[type]") //can see exact numbers for diagnose
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
+	ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 5, TRUE)

@@ -9,7 +9,7 @@
 		/datum/species/elf/wood,
 	)
 	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
-	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT, TRAIT_BOG_TREKKING, TRAIT_PERFECT_TRACKER)
+	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT, TRAIT_BOG_TREKKING, TRAIT_PERFECT_TRACKER, TRAIT_ALCHEMYKNOWLEDGE)
 	category_tags = list(CTAG_ADVENTURER)
 
 
