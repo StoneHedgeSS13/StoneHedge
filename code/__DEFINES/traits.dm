@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_USEMAGIC = span_info("I know my way around magic items by legit means or trickery."),
 	TRAIT_FEINT_IMMUNITY = span_info("Those fools can not feint me."),
 	TRAIT_LEARNMAGIC = span_info("I can memorize spells long as my intellect allow me."),
-	TRAIT_ALCHEMYKNOWLEDGE = span_info("I know how to make potions and transmute things.")
+	TRAIT_ALCHEMYKNOWLEDGE = span_info("I know how to transmute things.")
 ))
 
 // trait accessor defines
