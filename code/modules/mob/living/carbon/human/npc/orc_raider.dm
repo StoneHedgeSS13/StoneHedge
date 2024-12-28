@@ -203,8 +203,8 @@
 //	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 //	blue breathes underwater, need a new specific one for this maybe organ cheque
 //	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
-	if(gob_outfit)
-		var/datum/outfit/O = new gob_outfit
+	if(orc_outfit)
+		var/datum/outfit/O = new orc_outfit
 		if(O)
 			equipOutfit(O)
 
