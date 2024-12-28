@@ -4,7 +4,7 @@
 	skillcraft = /datum/skill/misc/alchemy
 	subtype_reqs = TRUE
 	structurecraft = /obj/structure/fluff/alch
-	alchemists_only = TRUE
+	alchemists_only = FALSE
 
 
 /datum/crafting_recipe/roguetown/transmutation/distill
@@ -93,24 +93,28 @@
 	result = list(/obj/item/rogueore/coal = 1)
 	reqs = list(/obj/item/natural/stone = 4)
 	craftdiff = 2
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/coa2s
 	name = "coal to stones"
 	result = list(/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone)
 	reqs = list(/obj/item/rogueore/coal = 1)
 	craftdiff = 2
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/c2irn
 	name = "coal to iron"
 	result = list(/obj/item/rogueore/iron = 1)
 	reqs = list(/obj/item/rogueore/coal = 2)
 	craftdiff = 3
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/i2gol
 	name = "iron to gold"
 	result = list(/obj/item/rogueore/gold = 1)
 	reqs = list(/obj/item/rogueore/iron = 4)
 	craftdiff = 4
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/i2top // Keep topaz and their trinkets cheap to prevent wealth creep. Cheap means of getting gem dust, for potions.
 	name = "iron to topaz"
@@ -119,6 +123,7 @@
 		/obj/item/rogueore/iron = 1,
 		/obj/item/natural/stone = 1)
 	craftdiff = 4
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/alglass // TO-DO: add construction recipe for church windows using this. Touching a church window with mage hand will invert it to the evil version and vice versa.
 	name = "stone to alchemical glass"
@@ -127,6 +132,7 @@
 		/obj/item/reagent_containers/powder/sublimate = 1,
 		/obj/item/natural/stone = 1)
 	craftdiff = 3
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/t2gem
 	name = "topaz to emerald"
@@ -134,6 +140,7 @@
 	reqs = list(
 		/obj/item/roguegem/yellow = 2)
 	craftdiff = 4
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/g2saf
 	name = "emerald to sapphire"
@@ -142,6 +149,7 @@
 		/obj/item/roguegem/green = 1,
 		/obj/item/roguegem/yellow = 1)
 	craftdiff = 4
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/s2blo
 	name = "sapphire to turquise"
@@ -150,6 +158,7 @@
 		/obj/item/roguegem/violet = 1,
 		/obj/item/roguegem/yellow = 1)
 	craftdiff = 4
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/b2ron
 	name = "turquoise to ruby"
@@ -158,6 +167,7 @@
 		/obj/item/roguegem/blue = 1,
 		/obj/item/roguegem/yellow = 1)
 	craftdiff = 5
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/r2dia
 	name = "ruby to diamond"
@@ -166,6 +176,7 @@
 		/obj/item/roguegem/red = 1,
 		/obj/item/roguegem/yellow = 1)
 	craftdiff = 5
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/d2ros
 	name = "diamonds to riddle of steel" /// holy grail requires legendary. (sell price on average is 350. ruby and diamond worth 100 each. you get to legndary you deserve 150-200 profit)
@@ -175,6 +186,7 @@
 		/obj/item/rogueore/iron = 3, //3 iron and 1 coal, same as the ratio of materials in a greatforge.
 		/obj/item/rogueore/coal = 1)
 	craftdiff = 6
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/e2s
 	name = "steel to silver" // Making it is still pretty involved, but at least now you aren't wasting 3 entire ingots of steel plus almost 300 mammon worth of potential profit for a single silver ingot.
@@ -185,6 +197,7 @@
 		/obj/item/ingot/silver)
 	reqs = list(/obj/item/rogueore/gold = 2, /obj/item/ingot/steel = 4, /obj/item/roguegem/violet = 2)
 	craftdiff = 6
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/moon
 	name = "Moondust"
@@ -203,6 +216,8 @@
 		/obj/item/reagent_containers/powder/toper = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
+
 
 /datum/crafting_recipe/roguetown/transmutation/g2sub
 	name = "Sublimate Emerald Dust"
@@ -215,6 +230,7 @@
 		/obj/item/reagent_containers/powder/gemerald = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/s2sub
 	name = "Sublimate Sapphire Dust"
@@ -229,6 +245,7 @@
 		/obj/item/reagent_containers/powder/saffira = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/b2sub
 	name = "Sublimate Quartz Dust"
@@ -245,6 +262,7 @@
 		/obj/item/reagent_containers/powder/blortz = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/r2sub
 	name = "Sublimate Ruby Dust"
@@ -263,6 +281,7 @@
 		/obj/item/reagent_containers/powder/rontz = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/d2sub
 	name = "Sublimate Diamond Dust"
@@ -283,6 +302,7 @@
 		/obj/item/reagent_containers/powder/dorpel = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/m2sub
 	name = "Sublimate Malum's Fire"
@@ -315,3 +335,4 @@
 		/obj/item/reagent_containers/powder/mfire = 1,
 		/obj/item/reagent_containers/powder/moondust = 1)
 	craftdiff = 1
+	alchemists_only = TRUE
