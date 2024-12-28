@@ -189,6 +189,8 @@
 				break
 
 /obj/item/organ/filling_organ/proc/be_impregnated()
+	var/mob/living/carbon/human/H = owner
+
 	if(pregnant)
 		return
 	if(!owner)
@@ -196,9 +198,11 @@
 	if(owner.stat == DEAD)
 		return
 	if(owner.has_quirk(/datum/quirk/selfawaregeni))
-		to_chat(owner, span_lovebold("I feel a surge of warmth in my [src.name], I’m definitely pregnant!"))
+		to_chat(H, span_lovebold("I feel a surge of warmth in my [src.name], I’m definitely pregnant!"))
 	reagents.maximum_volume *= 0.5 //ick ock, should make the thing recalculate on next life tick.
 	pregnant = TRUE
+	H.apply_status_effect(/datum/status_effect/debuff/pregnant)
+
 	if(owner.getorganslot(ORGAN_SLOT_BREASTS)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
 		var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!breasties.refilling)
@@ -207,10 +211,24 @@
 				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
 		if(pregnantaltorgan) //there is no birthing so hopefully 2 hours for one stage is enough to last till round end, there is 0 to 3 belly sizes.
 			pre_pregnancy_size = pregnantaltorgan.organ_size
-			addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			///addtimer(CALLBACK(pregnantaltorgan, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			//fuck timers
+
+			///  I'm now trying to pass the buck to a proc in like, carbon living or some shit. it should make apply the status effect, right?
+		//	H.pregnated()
+			//H.apply_status_effect(/datum/status_effect/debuff/pregnant)
+			owner.apply_status_effect(/datum/status_effect/debuff/pregnant)
+
+			///TESTING IF I CAN JUST APPLY STATUS EFFECT LIKE Thought I could not EARLIER. WITHOUT the proc in /living. Yep. :)
+
+
+
 		else
 			pre_pregnancy_size = organ_size
-			addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			//addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+			owner.apply_status_effect(/datum/status_effect/debuff/pregnant)
+			//owner.pregnated()
+			//h.pregnated()
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
 	var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
@@ -219,17 +237,18 @@
 	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
 		if(bellyussy.organ_size < 3)
-			bellyussy.organ_size = bellyussy.organ_size + 1
+			//bellyussy.organ_size = bellyussy.organ_size + 1
+
 			acc.get_icon_state()
 			owner.update_body_parts(TRUE)
-			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+
 		else
 			deltimer(preggotimer)
 
 /obj/item/organ/filling_organ/proc/undo_preggoness()
 	if(!pregnant)
 		return
-	deltimer(preggotimer)
+	//deltimer(preggotimer)
 	pregnant = FALSE
 	to_chat(owner, span_love("I feel my [src] shrink to how it was before. Pregnancy is no more."))
 	if(owner.getorganslot(ORGAN_SLOT_BELLY))

@@ -32,3 +32,35 @@
 	desc = "So full..."
 	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
 	icon_state = "bloat2"
+
+/datum/status_effect/debuff/pregnant
+	id = "pregnant"
+	duration = 30 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/pregnant
+	examine_text = span_notice("Their belly is swollen...")
+	//effectedstats = list("constitution" = 1, "speed" = -1)
+	//maybe. MAYBE.
+
+/atom/movable/screen/alert/status_effect/pregnant
+	name = "Pregnant"
+	desc = "My belly is growing"
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "bloat1"
+
+
+/datum/status_effect/debuff/pregnant/on_remove()
+	if(owner.getorganslot(ORGAN_SLOT_BELLY))
+		//var w = owner.getorganslot(ORGAN_SLOT_VAGINA)
+
+		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+		var/datum/sprite_accessory/belly/bellyacc = bellyussy.accessory_type
+		if(bellyussy.organ_size < 3)
+			bellyussy.organ_size = bellyussy.organ_size + 1
+			bellyacc.get_icon_state()
+
+			// how to call update_body_parts from a status effect.
+			//owner.update_body_parts()
+			owner.apply_status_effect(/datum/status_effect/debuff/pregnant)
+
+	else
+		return
