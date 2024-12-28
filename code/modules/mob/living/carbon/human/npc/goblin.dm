@@ -24,6 +24,7 @@
 	var/breast_organ = /obj/item/organ/filling_organ/breasts/goblin
 	var/ass_organ = /obj/item/organ/butt/goblin
 	var/penis_organ = /obj/item/organ/penis/goblin
+	var/bounty = 30
 
 
 /mob/living/carbon/human/species/goblin/unarmed
@@ -281,7 +282,7 @@
 		if(headdy)
 			headdy.icon = 'icons/roguetown/mob/monster/goblins.dmi'
 			headdy.icon_state = "[src.dna.species.id]_head"
-			headdy.sellprice = 30
+			headdy.sellprice = bounty
 	src.grant_language(/datum/language/orcish)
 	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -367,7 +368,7 @@
 		H.STAINT = 9
 	else
 		H.STAINT = 7
-	var/loadout = rand(1,7)
+	var/loadout = rand(1,6)
 	switch(loadout)
 
 		if(1) //spear
@@ -398,7 +399,7 @@
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			if(H.mind)
-				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE) //Just in cast a player takes over an npc
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE) //Just in case a player takes over an npc
 			r_hand = /obj/item/rogueweapon/mace
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
@@ -434,36 +435,80 @@
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood
 
-		if(6) //heavy armored sergeants
-			H.change_stat("strength", 3)
-			H.change_stat("speed", -1)
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
-			head = /obj/item/clothing/head/roguetown/helmet/goblin
-			if(prob(50))
-				r_hand = /obj/item/rogueweapon/sword/sabre
-				if(H.mind)
-					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE) //They lived through enough raids to get experience that matters
-			else
-				r_hand = /obj/item/rogueweapon/flail/sflail
-				if(H.mind)
-					H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
-			l_hand = /obj/item/rogueweapon/shield/wood
-			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
-
-		if(7) //tribal club with rope for lewd
+		if(6) //tribal club with rope for lewd
 			r_hand = /obj/item/rogueweapon/mace/woodclub
 			l_hand = /obj/item/rope
 			//pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin //lewd goblins don't need lioncloths i guess
 			H.seeksfuck = TRUE
 
+/mob/living/carbon/human/species/goblin/npc/sergeant
+	name = "goblin sergeant" //Heavy Armored Sergeants
+	bounty = 50
+	gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
 
-////
-////
+/mob/living/carbon/human/species/goblin/npc/moon/sergeant
+	name = "goblin sergeant" //Mooned
+	bounty = 50
+	gob_outfit = /datum/outfit/job/roguetown/npc/goblin/sergeant
+
+/datum/outfit/job/roguetown/npc/goblin/sergeant/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.STASTR = 11
+	if(is_species(H, /datum/species/goblin/moon))
+		H.STASPD = 15
+	else
+		H.STASPD = 13
+	H.STACON = 6
+	H.STAEND = 15
+	if(is_species(H, /datum/species/goblin/moon))
+		H.STAINT = 9
+	else
+		H.STAINT = 7
+	var/loadout = rand(1,4)
+	switch(loadout)
+
+		if(1) //swords
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+			head = /obj/item/clothing/head/roguetown/helmet/goblin
+			r_hand = /obj/item/rogueweapon/sword/sabre
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE) //They lived through enough raids to get experience that matters
+			l_hand = /obj/item/rogueweapon/shield/wood
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+
+		if(2) //spears
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+			head = /obj/item/clothing/head/roguetown/helmet/goblin
+			r_hand =/obj/item/rogueweapon/eaglebeak
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+
+		if(3) //maces
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+			head = /obj/item/clothing/head/roguetown/helmet/goblin
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/mace/steel
+			l_hand = /obj/item/rogueweapon/shield/wood
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+
+		if(4) //axes
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
+			head = /obj/item/clothing/head/roguetown/helmet/goblin
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+			l_hand = /obj/item/rogueweapon/shield/wood
+			pants = /obj/item/clothing/under/roguetown/loincloth/goblinloin
+
+///
+///
+///
 /// INVADER ZIM
 ///
 ///
 ///
-
 
 /obj/structure/gob_portal
 	name = "Gob Portal"
@@ -475,6 +520,7 @@
 	layer = BELOW_OBJ_LAYER
 	var/gobs = 0
 	var/maxgobs = 3
+	var/sergeants = 0 //You there, check out that noise
 	var/datum/looping_sound/boneloop/soundloop
 	var/spawning = FALSE
 	var/moon_goblins = 0
@@ -506,6 +552,16 @@
 	if(!spawning)
 		return
 	spawning = FALSE
+	if(sergeants == 0)
+		if(prob(50))
+			if(GLOB.tod == "night") //100% chance
+				new /mob/living/carbon/human/species/goblin/npc/moon/sergeant(get_turf(src))
+			else
+				new /mob/living/carbon/human/species/goblin/npc/sergeant(get_turf(src))
+		else
+			new	/mob/living/carbon/human/species/halforc/orc_raider(get_turf(src))
+		sergeants++
+		gobs++
 	if(moon_goblins == 0)
 		if(GLOB.tod == "night")
 			if(prob(30))
