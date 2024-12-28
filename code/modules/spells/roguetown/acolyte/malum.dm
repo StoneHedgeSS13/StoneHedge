@@ -67,29 +67,6 @@
 	chargedloop = /datum/looping_sound/invokegen
 	devotion_cost = 80
 
-/obj/effect/proc_holder/spell/invoked/craftercovenant
-	name = "The Crafter’s Covenant"
-	overlay_state = "craftercovenant"
-	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
-	range = 1
-	warnie = "sydwarning"
-	movement_interrupt = TRUE
-	no_early_release = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
-	sound = 'sound/items/bsmithfail.ogg'
-	invocation = "Coins to ash, flame to form, in Malum’s name, let creation be born!"
-	invocation_type = "shout"
-	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = FALSE
-	charge_max = 25 MINUTES
-	chargetime = 10 SECONDS
-	miracle = TRUE
-	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
-	devotion_cost = 100
-
 /obj/effect/proc_holder/spell/invoked/heatmetal/cast(list/targets, mob/user = usr)
 	. = ..()
 	var/list/nosmeltore = list(/obj/item/rogueore/coal)
@@ -118,7 +95,7 @@
 
 /obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_living_entity(mob/target, mob/user, list/nosmeltore)
 	var/obj/item/targeteditem = get_targeted_item(user, target)
-	if (!targeteditem || targeteditem.smeltresult == /obj/item/ash || target.anti_magic_check(TRUE,TRUE)) 
+	if (!targeteditem || targeteditem.smeltresult == /obj/item/ash || target.anti_magic_check(TRUE,TRUE))
 		show_visible_message(user, "After their incantation, [user] points at [target] but it seems to have no effect.", "After your incantation, you point at [target] but it seems to have no effect.")
 		return
 	if (istype(targeteditem, /obj/item/rogueweapon/tongs))
@@ -141,7 +118,7 @@
 			if(target.get_item_by_slot(SLOT_ARMOR))
 				target_item = target.get_item_by_slot(SLOT_ARMOR)
 			else if (target.get_item_by_slot(SLOT_SHIRT))
-				target_item = target.get_item_by_slot(SLOT_SHIRT)	
+				target_item = target.get_item_by_slot(SLOT_SHIRT)
 		if (BODY_ZONE_PRECISE_NECK)
 			target_item = target.get_item_by_slot(SLOT_NECK)
 		if (BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE)
@@ -190,7 +167,7 @@
 	var/obj/item/armor = target.get_item_by_slot(SLOT_ARMOR)
 	var/obj/item/shirt = target.get_item_by_slot(SLOT_SHIRT)
 	var/armor_can_heat = armor && armor.smeltresult && armor.smeltresult != /obj/item/ash
-	var/shirt_can_heat = shirt && shirt.smeltresult && shirt.smeltresult != /obj/item/ash // Full damage if no shirt 
+	var/shirt_can_heat = shirt && shirt.smeltresult && shirt.smeltresult != /obj/item/ash // Full damage if no shirt
 	var/damage_to_apply = 20 // How much damage should your armor burning you should do.
 	if (user.zone_selected == BODY_ZONE_CHEST)
 		if (armor_can_heat && (!shirt_can_heat && shirt))
@@ -223,7 +200,7 @@
 	. = ..()
 	var/const/starminatoregen = 500 // How much stamina should the spell give back to the caster.
 	var/mob/target = targets[1]
-	if (!iscarbon(target)) 
+	if (!iscarbon(target))
 		return
 	if (target == user)
 		target.rogstam_add(starminatoregen)
@@ -232,104 +209,6 @@
 		user.rogstam_add(-(starminatoregen * 2))
 		target.rogstam_add(starminatoregen * 2)
 		show_visible_message(target, "As [user] intones the incantation, vibrant flames swirl around them, a dance of energy flowing towards [target].", "As [user] intones the incantation, vibrant flames swirl around them, a dance of energy flowing towards you. You feel refreshed")
-
-/obj/effect/proc_holder/spell/invoked/craftercovenant/cast(list/targets, mob/user = usr)
-	. = ..()
-	var/tithe = 0
-	var/list/doable[][] = list()
-	var/const/divine_tax = 2 // Multiplier used to adjust the price that should be paid.
-	var/buyprice = 0
-	var/turf/altar
-	var/datum/effect_system/spark_spread/sparks = new()
-	if (istype(targets[1], /turf/closed))
-		return
-	if (!istype(targets[1], /turf/open))
-		altar = targets[1]
-	else
-		altar = targets[1]
-	for (var/obj/item/sacrifice in altar.contents)
-	{
-		if (istype(sacrifice, /obj/item/roguecoin/))
-			var/obj/item/roguecoin/coincrifice = sacrifice
-			tithe += (coincrifice.quantity * coincrifice.sellprice)
-		else if (istype(sacrifice, /obj/item/roguestatue/) || istype(sacrifice, /obj/item/clothing/ring/) || istype(sacrifice, /obj/item/roguegem/))
-			tithe += sacrifice.sellprice
-		qdel(sacrifice)
-	}
-	buyprice = tithe / divine_tax
-	for (var/list/entry in anvil_recipe_prices)
-	{
-		var/obj/item/tentative_item = entry[1] // The recipe
-		var/total_sellprice = entry[2] // The precompiled material price
-		if (total_sellprice <= buyprice)
-			var/obj/itemtorecord = tentative_item
-			doable += list(list(itemtorecord.name, itemtorecord))
-	}
-	if (!doable.len)
-		show_visible_message(usr, "A wave of heat washes over the pile as [user] speaks Malum's name. The pile of valuables crumble into dust.", "A wave of heat washes over the pile as you speak Malum's name. The pile of valuables crumble into dust. Malum accepted your sacrifice. Yet it seems it wasn't enough.")
-		return
-	var/list/doablename = list()
-	var/list/item_map = list()
-	for (var/list/doableextract in doable)
-	{
-		doablename += list(doableextract[1])
-		item_map[doableextract[1]] = doableextract[2]
-	}
-	var/itemchoice = input(user, "Choose your boon", "Available boons") in (doablename)
-	if (itemchoice)
-		var/obj/item/itemtospawn = item_map[itemchoice]
-		if (itemtospawn)
-			new itemtospawn.type(altar)
-			sparks.set_up(1, 1, altar)
-			sparks.start()
-			show_visible_message(usr, "A wave of heat washes over the pile as [user] speaks Malum's name. The pile of valuables crumble into dust, only for the dust to reform into an item as if reborn from the flames. Malum has accepted the offering.", "A wave of heat washes over the pile as you speak Malum's name. The pile of valuables crumble into dust, only for the dust to reform into an item as if reborn from the flames. Malum has accepted the offering.")
-
-var/global/list/anvil_recipe_prices[][]
-/obj/effect/proc_holder/spell/invoked/craftercovenant/proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
-	var/total_sellprice = 0
-	var/obj/item/ingot/bar = recipe.req_bar
-	var/obj/item/itemtosend = null
-	if (bar)
-		total_sellprice += bar.sellprice
-		itemtosend = recipe.created_item
-	if (recipe.additional_items)
-		for (var/obj/additional_item in recipe.additional_items)
-			total_sellprice += additional_item.sellprice
-	if (istype(recipe.created_item, /list))
-		var/list/itemlist = recipe.created_item
-		total_sellprice = total_sellprice/itemlist.len
-		itemtosend = recipe.created_item[1]
-	if (!istype(recipe.created_item, /list))
-		itemtosend = recipe.created_item
-	if (total_sellprice > 0)
-		global.anvil_recipe_prices += list(list(itemtosend, total_sellprice))
-
-/obj/effect/proc_holder/spell/invoked/craftercovenant/proc/initialize_anvil_recipe_prices()
-	for (var/datum/anvil_recipe/armor/recipe)
-	{
-		add_recipe_to_global(recipe)
-	}
-	for (var/datum/anvil_recipe/tools/recipe)
-	{
-		add_recipe_to_global(recipe)
-	}
-	for (var/datum/anvil_recipe/weapons/recipe)
-	{
-		add_recipe_to_global(recipe)
-	}
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/flute, 10))
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/drum, 10))
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/harp, 20))
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/lute, 20))
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/guitar, 30))
-	global.anvil_recipe_prices += list(list(new /obj/item/rogue/instrument/accord, 30))
-	global.anvil_recipe_prices += list(list(new /obj/item/riddleofsteel, 400))
-	global.anvil_recipe_prices += list(list(new /obj/item/dmusicbox, 500))
-	// Add any other recipe types if needed
-
-/obj/effect/proc_holder/spell/invoked/craftercovenant/world/New()
-	..()
-	initialize_anvil_recipe_prices() // Precompute recipe prices on startup
 
 /obj/effect/proc_holder/spell/invoked/hammerfall/cast(list/targets, mob/user = usr)
 	var/turf/fallzone = null
@@ -358,7 +237,7 @@ var/global/list/anvil_recipe_prices[][]
 			shaken.apply_effect(1 SECONDS, EFFECT_IMMOBILIZE, 0)
 			show_visible_message(shaken, null, "The ground quakes but I manage to keep my footing.")
 		else
-			shaken.apply_effect(1 SECONDS, EFFECT_KNOCKDOWN, 0)		
+			shaken.apply_effect(1 SECONDS, EFFECT_KNOCKDOWN, 0)
 			show_visible_message(shaken, null, "The ground quakes, making me fall over.")
 	for (var/obj/structure/damaged in view(radius, fallzone))
 		if(!istype(damaged, /obj/structure/flora/newbranch))
