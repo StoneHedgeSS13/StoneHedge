@@ -123,3 +123,8 @@
 		C.integrity_failure /= modifier
 		C.armor = C.armor.multiplymodifyAllRatings(modifier)
 		C.equip_delay_self *= modifier
+	if(istype(I, /obj/item/gun)) //Bows, crossbows, and arquebuses
+		var/obj/item/gun/R = I
+		I.force *= modifier
+		I.damfactor *= modifier
+		I.chargetime /= modifier
