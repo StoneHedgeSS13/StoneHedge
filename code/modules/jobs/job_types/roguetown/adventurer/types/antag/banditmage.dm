@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/bandit/banditmage
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/combat_bandit_mage.ogg'
-	traits_applied = list(TRAIT_LEARNMAGIC)
+	traits_applied = list(TRAIT_LEARNMAGIC, TRAIT_ALCHEMYKNOWLEDGE)
 
 /datum/outfit/job/roguetown/bandit/banditmage/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,7 +25,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 4, TRUE)
-  
+
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

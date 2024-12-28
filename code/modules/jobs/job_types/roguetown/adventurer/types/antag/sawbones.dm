@@ -45,6 +45,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistency sake as the idol still provides scalemail.
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
 	H.change_stat("intelligence", 1)
