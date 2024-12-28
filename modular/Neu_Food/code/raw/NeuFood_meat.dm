@@ -91,6 +91,7 @@
 
 /*	.............   Pork, spidermeat, birdmeat   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
+	icon_state = "meatslab"
 	slices_num = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	chopping_sound = TRUE
