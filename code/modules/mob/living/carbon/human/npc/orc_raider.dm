@@ -335,6 +335,7 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", -3)
 			H.change_stat("speed", 4)
+			r_hand = /obj/item/rogueweapon/greataxe
 			if(prob(33))
 				r_hand = /obj/item/rogueweapon/greatsword
 			if(prob(33))
@@ -343,7 +344,6 @@
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-			r_hand = /obj/item/rogueweapon/greataxe
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 
 ///
