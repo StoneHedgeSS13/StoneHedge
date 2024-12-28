@@ -259,7 +259,7 @@
 		else if(amount > 4 MINUTES)
 			C.update_body()
 
-/datum/outfit/job/roguetown/npc/halforc/orc_raider/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/halforc/orc_raider/npc/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 16
 	H.STASPD = 8
