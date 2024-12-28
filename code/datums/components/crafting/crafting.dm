@@ -318,9 +318,9 @@
 									C.equip_delay_self *= modifier
 								if(istype(I, /obj/item/gun)) //Bows, crossbows, and arquebuses
 									var/obj/item/gun/R = I
-									I.force *= modifier
-									I.damfactor *= modifier
-									I.chargetime /= modifier
+									R.force *= modifier
+									R.damfactor *= modifier
+									R.chargetime /= modifier
 
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
