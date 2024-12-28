@@ -21,10 +21,10 @@
 	hair_color = "291e01"
 
 /mob/living/carbon/human/species/halforc/orc_raider/unarmed
-	gob_outfit = null
+	orc_outfit = null
 
 /mob/living/carbon/human/species/halforc/orc_raider/unarmed
-	gob_outfit = null
+	orc_outfit = null
 
 /mob/living/carbon/human/species/halforc/orc_raider/npc
 	aggressive = 1
