@@ -261,12 +261,11 @@
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE) //Just in cast a player takes over an npc
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-			elseif(prob(33))
+			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-			else
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -277,12 +276,11 @@
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
 			r_hand = /obj/item/rogueweapon/flail/sflail
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-			elseif(prob(33))
+			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -293,12 +291,11 @@
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 			r_hand = /obj/item/rogueweapon/mace/steel
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-			elseif(prob(33))
+			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
@@ -309,12 +306,11 @@
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 			r_hand = /obj/item/rogueweapon/sword/long
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/orc
-			elseif(prob(33))
+			if(prob(33))
 				armor = /obj/item/clothing/suit/roguetown/armor/carapace/cuirass/orc
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/orc
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/orc
