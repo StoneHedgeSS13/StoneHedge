@@ -100,7 +100,7 @@
 /datum/crafting_recipe/roguetown/recurvebowpartial
 	name = "unstrung recurve bow"
 	result = /obj/item/grown/log/tree/recurvebowpartial
-	reqs = list(/obj/item/grown/log/tree/small = 1)
+	reqs = list(/obj/item/grown/log/tree/small = 1,/obj/item/natural/hide/cured = 1)
 	tools = /obj/item/rogueweapon/huntingknife
 	verbage_simple = "carve"
 	verbage = "carves"
