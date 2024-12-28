@@ -112,6 +112,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 			H.put_in_hands(giveamulet(patronchoice), FALSE)
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			H.set_blindness(0)
 		if("purpose") //Pact of the Star Chain
 			wrists = /obj/item/rope/chain/constellation
