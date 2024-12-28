@@ -43,6 +43,18 @@
 /mob/living/carbon/human/species/halforc/orc_raider/savage_orc/after_creation()
 	equipOutfit(new /datum/outfit/job/roguetown/npc/halforc/orc_raider)
 
+/obj/item/bodypart/head/orc/update_icon_dropped()
+	return
+
+/obj/item/bodypart/head/orc/get_limb_icon(dropped, hideaux = FALSE)
+	return
+
+/obj/item/bodypart/head/orc/skeletonize()
+	. = ..()
+	icon_state = "orc_skel_head"
+	sellprice = 2
+
+
 /datum/species/halforc/orc_raider
 	name = "Orc"
 	id = "orc"
