@@ -93,14 +93,12 @@
 	result = list(/obj/item/rogueore/coal = 1)
 	reqs = list(/obj/item/natural/stone = 4)
 	craftdiff = 2
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/coa2s
 	name = "coal to stones"
 	result = list(/obj/item/natural/stone,/obj/item/natural/stone,/obj/item/natural/stone)
 	reqs = list(/obj/item/rogueore/coal = 1)
 	craftdiff = 2
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/transmutation/c2irn
 	name = "coal to iron"
