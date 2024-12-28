@@ -330,7 +330,7 @@
 				l_hand = /obj/item/rogueweapon/shield/wood
 
 		if(5) //naked berserker, huge weapon no armor
-			TRAIT_CRITICAL_RESISTANCE
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", -3)
