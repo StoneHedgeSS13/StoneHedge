@@ -17,7 +17,7 @@
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
 
 //guildmaster
-/obj/item/class_selector/veteran/attack_self(mob/living/carbon/human/H)
+/obj/item/class_selector/guildmaster/attack_self(mob/living/carbon/human/H)
 	if(used)
 		to_chat(H, span_warning("You've already chosen your class!"))
 		return

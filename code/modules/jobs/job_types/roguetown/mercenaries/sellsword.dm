@@ -2,13 +2,12 @@
 /datum/job/roguetown/mercenary/sellsword
 	title = "Sellsword"
 	flag = SELLSWORD
-	department_flag = MERCENARIES
+	department_flag = UNAFFILIATED
 	tutorial = "You are a common sellsword, regarded as scum by many. You travelled the isle working as a bodyguard, mercenary or a cutthroat. You're loyal to your own well being and the sounds mammons make in your pouch."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword
 	display_order = JDO_SELLSWORD
-	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
 	total_positions = 10
 	spawn_positions = 10

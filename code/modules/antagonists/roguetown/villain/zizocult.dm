@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(.)
 		if(new_owner.current == SSticker.rulermob)
 			return FALSE
-		if(new_owner.assigned_role in GLOB.church_positions)
+		if(new_owner.assigned_role in GLOB.divine_temple_positions)
 			return FALSE
 		if(new_owner.unconvertable)
 			return FALSE
@@ -585,7 +585,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.real_name == P.info)
 				if(HL.IsSleeping())
-					if(HL.mind.assigned_role in GLOB.church_positions)
+					if(HL.mind.assigned_role in GLOB.divine_temple_positions)
 						to_chat(HL.mind, span_warning("I sense an unholy presence loom near my soul."))
 						return
 					if(HL == SSticker.rulermob)
