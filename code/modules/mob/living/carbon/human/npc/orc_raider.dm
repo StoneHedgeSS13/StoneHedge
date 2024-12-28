@@ -41,7 +41,7 @@
 /mob/living/carbon/human/species/halforc/orc_raider/savage_orc
 
 /mob/living/carbon/human/species/halforc/orc_raider/savage_orc/after_creation()
-	equipOutfit(new /datum/outfit/job/roguetown/nhalforc/orc_raider/npc)
+	equipOutfit(new /datum/outfit/job/roguetown/halforc/orc_raider/npc)
 
 /obj/item/bodypart/head/orc/update_icon_dropped()
 	return
