@@ -34,7 +34,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			if(classchoice == "Battlemaster")
+			if(classchoice == "Battle Master")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/sword/long
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
@@ -45,7 +45,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-			if(classchoice == "Battlemaster")
+			if(classchoice == "Battle Master")
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
@@ -58,7 +58,7 @@
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			if(classchoice == "Battlemaster")
+			if(classchoice == "Battle Master")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/mace
@@ -70,7 +70,7 @@
 			H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			if(classchoice == "Battlemaster")
+			if(classchoice == "Battle Master")
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/spear/billhook
 			l_hand = /obj/item/rogueweapon/shield/tower/metal

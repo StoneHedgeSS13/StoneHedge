@@ -491,7 +491,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(!valid_ooc_notes(null, ooc_notes, TRUE))
 		ooc_notes = null
 
-		S["custom_race_name"]			>> custom_race_name
+	S["custom_race_name"]			>> custom_race_name
 	if(!valid_custom_race_name(null, custom_race_name, TRUE))
 		custom_race_name = null
 /* useless shit from hearthstone.

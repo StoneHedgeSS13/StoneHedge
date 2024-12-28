@@ -182,6 +182,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 			log_game("Major Antagonist: Extended") //gotta put something here.
 */
 		if(0 to 50)
+			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Werewolves and Vampires")
 		if(51 to 99)

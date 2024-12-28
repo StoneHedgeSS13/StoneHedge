@@ -69,7 +69,7 @@
 
 /mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
 	if(amount < 0) //healing
-		amount *= -HEAL_MULTIPLIER
+		amount *= HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
@@ -82,7 +82,7 @@
 
 /mob/living/carbon/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
 	if(amount < 0) //healing
-		amount *= -HEAL_MULTIPLIER
+		amount *= HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
@@ -95,7 +95,7 @@
 
 /mob/living/carbon/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(amount < 0) //healing
-		amount *= -HEAL_MULTIPLIER
+		amount *= HEAL_MULTIPLIER
 	if(!forced && HAS_TRAIT(src, TRAIT_TOXINLOVER)) //damage becomes healing and healing becomes damage
 		amount = -amount
 		if(amount > 0)
@@ -117,7 +117,7 @@
 
 /mob/living/carbon/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(amount < 0) //healing
-		amount *= -HEAL_MULTIPLIER
+		amount *= HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)

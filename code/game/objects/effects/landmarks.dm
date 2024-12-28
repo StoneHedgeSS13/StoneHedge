@@ -263,7 +263,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grandtemplar
-	name = "Grandmaster Templar"
+	name = "Grandmaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/puritan

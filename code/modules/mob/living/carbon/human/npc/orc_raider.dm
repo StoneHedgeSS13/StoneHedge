@@ -8,7 +8,7 @@
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	rot_type = /datum/component/rot/corpse/halforc/orc_raider
-	var/orc_outfit = /datum/outfit/job/roguetown/npc/halforc/orc_raider
+	var/orc_outfit = /datum/outfit/job/roguetown/halforc/orc_raider/npc
 	ambushable = FALSE
 	erpable = TRUE
 	hornychance = 0 //I don't know how to give them genitals
@@ -41,7 +41,7 @@
 /mob/living/carbon/human/species/halforc/orc_raider/savage_orc
 
 /mob/living/carbon/human/species/halforc/orc_raider/savage_orc/after_creation()
-	equipOutfit(new /datum/outfit/job/roguetown/npc/halforc/orc_raider)
+	equipOutfit(new /datum/outfit/job/roguetown/halforc/orc_raider/npc)
 
 /obj/item/bodypart/head/orc/update_icon_dropped()
 	return
@@ -259,7 +259,7 @@
 		else if(amount > 4 MINUTES)
 			C.update_body()
 
-/datum/outfit/job/roguetown/npc/halforc/orc_raider/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/halforc/orc_raider/npc/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 16
 	H.STASPD = 8

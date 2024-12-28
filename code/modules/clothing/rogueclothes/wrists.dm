@@ -43,6 +43,7 @@
 	max_integrity = 200
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	sewrepair = FALSE
 
 /obj/item/clothing/wrists/roguetown/bracers/carapace
 	name = "carapace bracers"
