@@ -14,8 +14,7 @@
 									/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
 									/mob/living/simple_animal/hostile/retaliate/rogue/chicken = 33,
 									/mob/living/simple_animal/hostile/retaliate/rogue/turkey = 55,
-									/mob/living/simple_animal/hostile/retaliate/rogue/rabbit = 33,
-									/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig = 33)
+									/mob/living/simple_animal/hostile/retaliate/rogue/rabbit = 33)
 	var/attraction_chance = 100
 	var/deployed = 0
 	resistance_flags = FLAMMABLE
@@ -100,8 +99,7 @@
 							/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 20,
 							/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck = 20,
 							/mob/living/simple_animal/hostile/retaliate/rogue/turkey = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/rabbit = 10,
-							/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig = 20)
+							/mob/living/simple_animal/hostile/retaliate/rogue/rabbit = 10)
 
 
 /obj/item/bait/bloody

@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/doctor
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
-	traits_applied = list(TRAIT_EMPATH, TRAIT_SELF_AWARE, TRAIT_NOSTINK, TRAIT_ALCHEMYKNOWLEDGE)
+	traits_applied = list(TRAIT_EMPATH, TRAIT_SELF_AWARE, TRAIT_NOSTINK)
 	cmode_music = 'sound/music/combat_physician.ogg'
 
 /datum/outfit/job/roguetown/adventurer/doctor

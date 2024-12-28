@@ -26,7 +26,6 @@
 	var/sellprice = 0
 	var/can_be_qualitied = TRUE
 	//crafting diff, every diff removes 25% chance to craft
-	var/alchemists_only = FALSE
 
 /datum/crafting_recipe/pin_removal
 	name = "Pin Removal"
