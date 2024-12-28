@@ -323,11 +323,11 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", -3)
 			H.change_stat("speed", 4)
-			if(prob(33)
+			if(prob(33))
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword
-			elseif(prob(33)
+			elseif(prob(33))
 				if(H.mind)
 					H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
