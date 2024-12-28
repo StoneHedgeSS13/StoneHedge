@@ -41,6 +41,39 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 
+/obj/item/grown/log/tree/bowpartial
+	name = "unstrung bow"
+	desc = "A partially completed bow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 30
+	firefuel = 10 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/recurvebowpartial
+	name = "unstrung recurve bow"
+	desc = "A partially completed recurve bow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 60
+	firefuel = 10 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/longbowpartial
+	name = "unstrung longbow"
+	desc = "A partially completed longbow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 60
+	firefuel = 20 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
 /obj/item/grown/log/tree/stick
 	name = "stick"
 	icon_state = "stick1"
