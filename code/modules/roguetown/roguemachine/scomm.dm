@@ -46,7 +46,8 @@
 		next_decree = world.time + rand(3 MINUTES, 8 MINUTES)
 		if(GLOB.lord_decrees.len)
 			if(speaking)
-				say("The [TITLE_LORD] Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+				say("The Monarch Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+
 
 /obj/structure/roguemachine/scomm/attack_hand(mob/living/user)
 	. = ..()
@@ -84,7 +85,6 @@
 		speaking = !speaking
 		to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the output on the SCOM."))
 		return
-	var/canread = user.can_read(src, TRUE)
 	var/contents
 	if(SSticker.rulertype == "Monarch")
 		contents += "<center>MONARCH'S DECREES<BR>"

@@ -212,8 +212,8 @@
 
 /datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
 	. = ..()
-	if(istype(A, /obj/item/organ/filling_organ) && virile)
-		var/obj/item/organ/filling_organ/forgan = A
+	if(istype(A, /obj/item/organ/filling_organ/vagina) && virile)
+		var/obj/item/organ/filling_organ/vagina/forgan = A
 		if(forgan.fertility && !forgan.pregnant)
 			if(prob(20))
 				forgan.be_impregnated() //boom

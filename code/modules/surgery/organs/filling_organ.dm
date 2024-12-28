@@ -25,9 +25,6 @@
 	//pregnancy vars
 	var/fertility = FALSE //can it be impregnated
 	var/pregnant = FALSE // is it pregnant
-	var/preggotimer //dumbass timer
-	var/pre_pregnancy_size = 0
-	var/obj/item/organ/pregnantaltorgan = null //change to switch which organ grows from pregnancy of this one.
 
 	//misc
 	var/list/altnames = list("bugged place", "bugged organ") //used in thought messages.
@@ -66,7 +63,7 @@
 				to_chat(H, span_blue("My [pick(altnames)] may be able to hold a different amount now."))
 
 	//debuff checks
-	if(reagents.maximum_volume > 40 && bloatable) //if there is space to bloat to begin with, and its bloatable.
+	if(bloatable) //its bloatable.
 		if(reagents.total_volume > (reagents.maximum_volume/3)) //more than 1/3 full, light bloat.
 			if(!reagents.total_volume > (reagents.maximum_volume/2)) //more than half full, heavy bloat.
 				if(!owner.has_status_effect(/datum/status_effect/debuff/bloatone) && !owner.has_status_effect(/datum/status_effect/debuff/bloattwo))
