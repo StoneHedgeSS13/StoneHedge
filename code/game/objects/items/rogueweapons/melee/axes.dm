@@ -260,12 +260,14 @@
 
 /datum/intent/axe/cut/great
 	penfactor = 15
+	damfactor = 1
 
 /datum/intent/axe/chop/great
-	penfactor = 30
+	penfactor = 60
+	damfactor = 1.2
 
 /datum/intent/axe/strike/great
-	penfactor = 30
+	penfactor = 40
 	damfactor = 0.6
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)
