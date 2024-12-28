@@ -6,21 +6,18 @@
 	skillcraft = /datum/skill/misc/alchemy
 	subtype_reqs = TRUE
 	structurecraft = /obj/structure/fluff/alch
-	alchemists_only = TRUE
 
 /datum/crafting_recipe/roguetown/alchemy/thermometer
 	name = "Thermoscope"
 	result = list(/obj/item/thermometer)
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/mercury = 5)
 	craftdiff = 2
-	alchemists_only = FALSE
 
 /datum/crafting_recipe/roguetown/alchemy/bbomb
 	name = "Bottle bomb"
 	result = list(/obj/item/bomb)
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 1,/obj/item/reagent_containers/powder/gunpowder = 1, /obj/item/natural/cloth = 1)
 	craftdiff = 2
-	alchemists_only = FALSE //Even a child can figure that out
 
 /datum/crafting_recipe/roguetown/alchemy/ozium
 	name = "Ozium Poppy"
@@ -216,7 +213,6 @@
 	reqs = list(/obj/item/ingot/glass = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
-	alchemists_only = FALSE
 
 /datum/crafting_recipe/roguetown/alchemy/glasssyringe
 	name = "Glass syringe (x3)"
@@ -224,7 +220,6 @@
 	reqs = list(/obj/item/ingot/glass = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
-	alchemists_only = FALSE
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
