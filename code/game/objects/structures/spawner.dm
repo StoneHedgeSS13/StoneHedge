@@ -436,7 +436,8 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 10,
 	/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck = 15,
 	/mob/living/simple_animal/hostile/retaliate/rogue/goat = 10,
-	/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 15)
+	/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 15,
+	/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig = 15)
 
 /obj/effect/mob_spawner/wilderness/hostile
 	max_spawned_mobs = 8
