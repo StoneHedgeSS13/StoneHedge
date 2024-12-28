@@ -44,7 +44,6 @@
 		/obj/item/storage/keyring/priest = 1,
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)

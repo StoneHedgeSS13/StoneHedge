@@ -28,7 +28,6 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
 		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = null
 	var/patrons = list( //who is your patron?
