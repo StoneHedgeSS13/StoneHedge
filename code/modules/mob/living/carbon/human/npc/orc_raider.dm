@@ -324,17 +324,14 @@
 			H.change_stat("intelligence", -3)
 			H.change_stat("speed", 4)
 			if(prob(33))
-				if(H.mind)
-					H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword
-			elseif(prob(33))
-				if(H.mind)
-					H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+			if(prob(33))
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
-			else
-				if(H.mind)
-					H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-				r_hand = /obj/item/rogueweapon/greataxe
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			r_hand = /obj/item/rogueweapon/greataxe
 			pants = /obj/item/clothing/under/roguetown/trou/leather/orc
 
 ///
