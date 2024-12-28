@@ -798,6 +798,16 @@
 		stat = CONSCIOUS
 		updatehealth() //then we check if the mob should wake up.
 		update_mobility()
+		if(has_quirk(/datum/quirk/greaternightvision))
+			var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+			if(eyes)
+				eyes.see_in_dark = 14 // Same as full darksight eyes
+				eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+		if(has_quirk(/datum/quirk/night_vision))
+			var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+			if(eyes)
+				eyes.see_in_dark = 7
+				eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		update_sight()
 		clear_alert("not_enough_oxy")
 		reload_fullscreen()

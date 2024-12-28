@@ -37,3 +37,20 @@
 	desc = "Dark trousers worn by morticians while performing burial rites."
 	icon_state = "leathertrou"
 	color = "#151615"
+
+/obj/item/clothing/under/roguetown/trou/leather/advanced/skirt
+	name = "hardened leather skirt"
+	icon = 'modular_stonehedge/icons/armor/pants.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	icon_state = "hlskirt"
+	item_state = "hlskirt"
+	genitalaccess = TRUE
+
+/obj/item/clothing/under/roguetown/trou/leather/masterwork/skirt
+	name = "enhanced leather skirt"
+	desc = "This skirt is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
+	icon = 'modular_stonehedge/icons/armor/pants.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	icon_state = "hlskirt"
+	item_state = "hlskirt"
+	genitalaccess = TRUE

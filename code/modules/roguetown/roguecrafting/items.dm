@@ -739,6 +739,16 @@
 	result = list(/obj/item/clothing/under/roguetown/trou/skirt)
 	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1)
 
+/datum/crafting_recipe/roguetown/leatherskirtconvtwo
+	name = "hardened leather pants to skirt"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/advanced/skirt)
+	reqs = list(/obj/item/clothing/under/roguetown/trou/leather/advanced = 1)
+
+/datum/crafting_recipe/roguetown/leatherskirtconvthree
+	name = "enhanced leather pants to skirt"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/masterwork/skirt)
+	reqs = list(/obj/item/clothing/under/roguetown/trou/leather/masterwork = 1)
+
 /datum/crafting_recipe/roguetown/larmorconvone
 	name = "leather armor to bikini"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini

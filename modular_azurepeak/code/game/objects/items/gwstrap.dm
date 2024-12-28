@@ -25,7 +25,7 @@
 	sewrepair = TRUE
 
 /obj/item/gwstrap/attackby(obj/A, mob/living/carbon/user, params)
-	if(istype(A, /obj/item/rogueweapon/spear) || istype(A, /obj/item/rogueweapon/eaglebeak) || istype(A, /obj/item/rogueweapon/halberd) || istype(A, /obj/item/rogueweapon/sword/estoc) || istype(A, /obj/item/rogueweapon/greatsword))
+	if(istype(A, /obj/item/rogueweapon/spear) || istype(A, /obj/item/rogueweapon/eaglebeak) || istype(A, /obj/item/rogueweapon/halberd) || istype(A, /obj/item/rogueweapon/sword/estoc) || istype(A, /obj/item/rogueweapon/greatsword) || istype(A, /obj/item/rogueweapon/greataxe))
 		if(weps == null)
 			for(var/obj/item/gwstrap/I in user.get_equipped_items(TRUE))
 				to_chat(loc, span_warning("I work the latches of my strap to holster [A]."))

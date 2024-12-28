@@ -85,7 +85,7 @@
 			if(buckled?.sleepy)
 				sleepy_mod = buckled.sleepy
 			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
-				var/obj/structure/bed/rogue/bed = locate() in loc
+				var/obj/structure/bed = locate() in loc //anything with sleepy, couches etc too.
 				if(bed)
 					sleepy_mod = bed.sleepy
 			if(sleepy_mod > 0)

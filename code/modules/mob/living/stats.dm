@@ -58,6 +58,11 @@
 	desc = "I am feeling sick due to powerful item enchantments."
 	icon_state = "debuff"
 
+/datum/status_effect/buff/magic_sickness/tick()
+	var/mob/living/target = owner
+	var/mob/living/carbon/M = target
+	M.add_nausea(5) //it's a lot, but get the fucking items off. That's the point.
+
 /mob/living/proc/init_faith()
 	set_patron(/datum/patron/godless)
 

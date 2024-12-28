@@ -36,7 +36,7 @@
 		span_notice("[user] begins to work lux into [target]'s heart."))
 	return TRUE
 
-/datum/surgery_step/infuse_lux/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
+/datum/surgery_step/infuse_lux/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/revive_pq = PQ_GAIN_REVIVE
 	if(target.mob_biotypes & MOB_UNDEAD)
 		display_results(user, target, span_notice("You cannot infuse life into the undead! The rot must be cured first."),
@@ -61,7 +61,9 @@
 	target.emote("breathgasp")
 	target.Jitter(100)
 	target.update_body()
-	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
+	target.revive(TRUE, TRUE) //only way to get past the stupid fucking head glitch maybe.
+	target.client.prefs.copy_to(target, TRUE, FALSE) //reapply prefs for skin color and shit
+	target.visible_message(span_notice("[target] is dragged back from Yamais's hold!"), span_green("I awake from the void."))
 	qdel(tool)
 	if(target.mind)
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)

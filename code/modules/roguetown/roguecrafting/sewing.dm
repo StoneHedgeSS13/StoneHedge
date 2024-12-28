@@ -905,6 +905,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/leather/advskirt
+	name = "hardened leather skirt"
+	result = /obj/item/clothing/under/roguetown/trou/leather/advanced/skirt
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
 /// MASTERWORK
 
 /datum/crafting_recipe/roguetown/sewing/leather/boots/masterwork
@@ -974,6 +981,14 @@
 /datum/crafting_recipe/roguetown/sewing/leather/chausses/masterwork
 	name = "masterwork leather chausses"
 	result = /obj/item/clothing/under/roguetown/trou/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 3,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/leather/chausses/masterworkskirt
+	name = "masterwork leather skirt"
+	result = /obj/item/clothing/under/roguetown/trou/leather/masterwork/skirt
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)

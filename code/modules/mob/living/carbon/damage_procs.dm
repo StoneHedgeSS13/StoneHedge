@@ -68,6 +68,8 @@
 
 
 /mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
+	if(amount < 0) //healing
+		amount *= -HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
@@ -79,6 +81,8 @@
 	return amount
 
 /mob/living/carbon/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
+	if(amount < 0) //healing
+		amount *= -HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
@@ -90,6 +94,8 @@
 	return amount
 
 /mob/living/carbon/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE)
+	if(amount < 0) //healing
+		amount *= -HEAL_MULTIPLIER
 	if(!forced && HAS_TRAIT(src, TRAIT_TOXINLOVER)) //damage becomes healing and healing becomes damage
 		amount = -amount
 		if(amount > 0)
@@ -110,6 +116,8 @@
 		. += round(BP.stamina_dam * BP.stam_damage_coeff, DAMAGE_PRECISION)
 
 /mob/living/carbon/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
+	if(amount < 0) //healing
+		amount *= -HEAL_MULTIPLIER
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
@@ -183,6 +191,9 @@
 //It automatically updates damage overlays if necessary
 //It automatically updates health status
 /mob/living/carbon/heal_bodypart_damage(brute = 0, burn = 0, stamina = 0, updating_health = TRUE, required_status)
+	brute *= HEAL_MULTIPLIER
+	burn *= HEAL_MULTIPLIER
+	stamina *= HEAL_MULTIPLIER
 	var/list/obj/item/bodypart/parts = get_damaged_bodyparts(brute,burn,stamina,required_status)
 	if(!parts.len)
 		return
@@ -208,6 +219,9 @@
 		brute *= 1.5
 		burn *= 1.5
 		stamina *= 1.5
+	brute *= HEAL_MULTIPLIER
+	burn *= HEAL_MULTIPLIER
+	stamina *= HEAL_MULTIPLIER
 
 	var/update = NONE
 	while(length(parts) && (brute > 0 || burn > 0 || stamina > 0))

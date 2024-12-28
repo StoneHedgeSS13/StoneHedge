@@ -333,7 +333,7 @@
 	desc = "A massive mace that can crush any opposition with ease."
 	icon_state = "polemace"
 	force = 20
-	force_wielded = 50
+	force_wielded = 40
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()

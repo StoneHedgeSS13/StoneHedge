@@ -1,4 +1,4 @@
-#define WOUND_HEAL_MULTIPLIER 3
+#define HEAL_MULTIPLIER 2
 
 /mob/living
 	/// Simple wound instances with no associated bodyparts
@@ -62,7 +62,7 @@
 	var/healed_any = FALSE
 	if(has_status_effect(/datum/status_effect/buff/fortify))
 		heal_amount *= 1.5
-	heal_amount *= WOUND_HEAL_MULTIPLIER
+	heal_amount *= HEAL_MULTIPLIER
 	for(var/datum/wound/wound as anything in get_wounds())
 		if(heal_amount <= 0)
 			continue

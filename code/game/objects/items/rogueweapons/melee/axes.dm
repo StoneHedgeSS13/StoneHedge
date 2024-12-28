@@ -236,8 +236,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 /obj/item/rogueweapon/greataxe
-	force = 30
-	force_wielded = 60 //Lol don't get hit
+	force = 20
+	force_wielded = 40
 	possible_item_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //strike is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/axe/cut/great, /datum/intent/axe/chop/great,  /datum/intent/axe/strike/great)
 	name = "greataxe"
@@ -260,14 +260,12 @@
 
 /datum/intent/axe/cut/great
 	penfactor = 15
-	damfactor = 1
 
-/datum/intent/axe/chop/great //72 base damage
-	penfactor = 60
-	damfactor = 1.2
+/datum/intent/axe/chop/great
+	penfactor = 30
 
-/datum/intent/axe/strike/great //Use chop if you wanna deal damage, this is just less than lethal quick strike to the face
-	penfactor = 40
+/datum/intent/axe/strike/great
+	penfactor = 30
 	damfactor = 0.6
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)

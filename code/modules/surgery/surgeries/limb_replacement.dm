@@ -53,7 +53,6 @@
 		var/obj/item/bodypart/bodypart = tool
 		if(istype(bodypart) && user.temporarilyRemoveItemFromInventory(bodypart))
 			if(bodypart.replace_limb(target, special = TRUE) && bodypart.attach_wound)
-				bodypart.heal_wounds(500) //hopefully fixes some issues.
 				bodypart.add_wound(bodypart.attach_wound)
 		display_results(user, target, span_notice("I successfully augment [target]'s [parse_zone(target_zone)]."),
 			span_notice("[user] successfully augments [target]'s [parse_zone(target_zone)] with [bodypart]!"),
