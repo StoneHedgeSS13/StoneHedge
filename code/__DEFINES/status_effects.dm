@@ -106,7 +106,7 @@
 
 #define STATUS_EFFECT_FAKE_VIRUS /datum/status_effect/fake_virus //gives you fluff messages for cough, sneeze, headache, etc but without an actual virus
 
-#define STATUS_EFFECT_ENDOWED /datum/status_effect/debuff/
+#define STATUS_EFFECT_ENDOWED /datum/status_effect/debuff/bigboobs
 
 #define STATUS_EFFECT_PREGNANT /datum/status_effect/debuff/pregnant //relating to the new pregnancy thing that I'm using in place of timers, and possibly for lewd flavortext
 
