@@ -8,7 +8,7 @@
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	rot_type = /datum/component/rot/corpse/halforc/orc_raider
-	var/orc_outfit = /datum/outfit/job/roguetown/halforc/orc_raider/npc
+	var/orc_outfit = /datum/outfit/job/npc/roguetown/halforc/orc_raider/
 	ambushable = FALSE
 	erpable = TRUE
 	hornychance = 0 //I don't know how to give them genitals
@@ -19,6 +19,7 @@
 	//skin color is "e8b59b"
 	skin_tone = "e8b59b"
 	hair_color = "291e01"
+	var/bounty = 60
 
 /mob/living/carbon/human/species/halforc/orc_raider/unarmed
 	orc_outfit = null
@@ -259,7 +260,7 @@
 		else if(amount > 4 MINUTES)
 			C.update_body()
 
-/datum/outfit/job/roguetown/halforc/orc_raider/npc/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/npc/halforc/orc_raider/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 16
 	H.STASPD = 8
