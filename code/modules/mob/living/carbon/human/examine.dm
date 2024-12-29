@@ -308,7 +308,18 @@
 		var/datum/antagonist/vampirelord/vampness = mind.has_antag_datum(/datum/antagonist/vampirelord)
 		if(vampness)
 			if(vampness && !vampness.disguised && vampness.is_solo)
-				msg += span_boldnotice("they have pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
+				msg += span_boldnotice("[m3] pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
+
+		if(user == src)
+			switch(bodytemperature)
+				if(-INFINITY to BODYTEMP_COLD_DAMAGE_LIMIT)
+					msg += span_blue("I feel freezing cold!")
+				if(BODYTEMP_COLD_DAMAGE_LIMIT to BODYTEMP_NORMAL)
+					msg += span_notice("I am shivering from the cold.")
+				if(BODYTEMP_NORMAL to BODYTEMP_HEAT_DAMAGE_LIMIT)
+					msg += span_notice("I am sweating from the heat.")
+				if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
+					msg += span_red("I feel burning hot!")
 
 	// Blood volume
 	switch(blood_volume)
