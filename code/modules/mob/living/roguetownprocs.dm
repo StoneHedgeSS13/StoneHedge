@@ -41,7 +41,7 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 		chance2hit += (user.STAPER)*2
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		chance2hit -= 20
+		chance2hit -= 30
 
 	chance2hit = CLAMP(chance2hit, 5, 99)
 

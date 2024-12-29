@@ -5,7 +5,7 @@
 	var/storage_per_size = 10 //added per organ size
 	var/datum/reagent/reagent_to_make = /datum/reagent/consumable/nutriment //naturally generated reagent
 	var/refilling = FALSE //slowly refills when not hungry
-	var/reagent_generate_rate = HUNGER_FACTOR //with refilling
+	var/reagent_generate_rate = 0.1 //with refilling
 	var/hungerhelp = FALSE //if refilling, absorbs reagent_to_make as nutrients if hungry. Conversion is to nutrients direct even if you brew poison in there.
 	var/uses_nutrient = TRUE //incase someone for some reason wanna make an OP paradox i guess.
 	var/organ_sizeable = FALSE //if organ can be resized in prefs etc, SET THIS RIGHT, IT'S IMPORTANT.
