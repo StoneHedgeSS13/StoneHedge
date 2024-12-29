@@ -109,7 +109,7 @@
 /datum/crafting_recipe/roguetown/longbowpartial
 	name = "unstrung longbow"
 	result = /obj/item/grown/log/tree/longbowpartial
-	reqs = list(/obj/item/grown/log/tree = 1)
+	reqs = list(/obj/item/grown/log/tree/large = 1)
 	tools = /obj/item/rogueweapon/huntingknife
 	verbage_simple = "carve"
 	verbage = "carves"
