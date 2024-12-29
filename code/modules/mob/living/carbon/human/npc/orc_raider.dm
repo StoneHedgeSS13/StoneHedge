@@ -8,7 +8,7 @@
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	rot_type = /datum/component/rot/corpse/halforc/orc_raider
-	var/orc_outfit = /datum/outfit/job/npc/roguetown/halforc/orc_raider/
+	var/orc_outfit = /datum/outfit/job/roguetown/npc/halforc/orc_raider/
 	ambushable = FALSE
 	erpable = TRUE
 	hornychance = 0 //I don't know how to give them genitals
