@@ -76,6 +76,9 @@
 /obj/structure/composter/full,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"v" = (
+/turf/open/transparent/openspace,
+/area/rogue)
 "w" = (
 /obj/item/customblank,
 /obj/item/customlock,
@@ -99,7 +102,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "D" = (
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	keylock = 0
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "E" = (
@@ -141,6 +146,11 @@
 /area/rogue/indoors)
 "L" = (
 /obj/machinery/light/rogue/oven/east,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"M" = (
+/obj/item/customlock,
+/obj/item/rogueweapon/hammer/stone,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "Q" = (
@@ -194,7 +204,7 @@ j
 j
 X
 U
-U
+M
 L
 w
 E
@@ -228,22 +238,22 @@ j
 "}
 
 (1,1,2) = {"
-h
-h
-h
-h
-h
-h
-h
+v
+v
+v
+v
+v
+v
+v
 "}
 (2,1,2) = {"
 h
-h
-h
-h
-h
-h
-h
+v
+v
+v
+v
+v
+v
 "}
 (3,1,2) = {"
 h
