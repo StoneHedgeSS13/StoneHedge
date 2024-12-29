@@ -323,7 +323,7 @@
 		to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
 		var/obj/effect/proc_holder/spell/S = new spell
 		user.spell_slots_used += 1
-		user.calculate_spell_slots()
+		user.calculate_spell_slots(TRUE)
 		user.mind.AddSpell(S)
 		user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
 		onlearned(user)

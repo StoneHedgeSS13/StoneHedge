@@ -325,9 +325,10 @@
 	if(STALUC > 10)
 		return prob((STALUC - 10) * multi)
 
-/mob/living/proc/calculate_spell_slots()
+/mob/living/proc/calculate_spell_slots(report_slots = FALSE)
 	if(!mind)
 		return
 	//the amount of spells you can memorize out of scrolls, seperate from spellpoints learnt ones.
 	spell_slots = max(round(((STAINT/4) + mind.get_skill_level(/datum/skill/magic/arcane) + spell_slots_bonus) - spell_slots_used), 0)
-	to_chat(src, "I think i can learn [spell_slots] more spells.")
+	if(report_slots)
+		to_chat(src, "I think i can learn [spell_slots] more spells.")

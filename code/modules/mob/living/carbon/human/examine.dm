@@ -304,10 +304,11 @@
 			if(100 to INFINITY)
 				msg += span_danger("[m1] gravely wounded.")
 
-	var/datum/antagonist/vampirelord/vampness = mind.has_antag_datum(/datum/antagonist/vampirelord)
-	if(mind && vampness)
-		if(vampness && !vampness.disguised && vampness.is_solo)
-			msg += span_boldnotice("they have pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
+	if(mind)
+		var/datum/antagonist/vampirelord/vampness = mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(vampness)
+			if(vampness && !vampness.disguised && vampness.is_solo)
+				msg += span_boldnotice("they have pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
 
 	// Blood volume
 	switch(blood_volume)
