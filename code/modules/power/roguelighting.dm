@@ -369,13 +369,10 @@
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
-			H.visible_message(span_info("[H] warms \his hand over the fire."))
+			H.visible_message(span_info("[H] warms \himself over the fire."))
 
 			if(do_after(H, 15, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-				to_chat(H, span_warning("HOT!"))
-				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays()
+				H.adjust_bodytemperature(15, max_temp = BODYTEMP_NORMAL) //Heat yourself in cold.
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 	else
@@ -862,10 +859,7 @@
 			if(istype(H))
 				H.visible_message(span_info("[H] warms \his hand over the embers."))
 				if(do_after(H, 50, target = src))
-					var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-					to_chat(H, span_warning("HOT!"))
-					if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-						H.update_damage_overlays()
+					H.adjust_bodytemperature(50, max_temp = BODYTEMP_NORMAL) //Heat yourself in cold.
 			return TRUE
 
 /obj/machinery/light/rogue/hearth/process()
@@ -941,13 +935,10 @@
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
-			H.visible_message(span_info("[H] warms \his hand near the fire."))
+			H.visible_message(span_info("[H] warms \himself near the fire."))
 
 			if(do_after(H, 100, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-				to_chat(H, span_warning("HOT!"))
-				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays()
+				H.adjust_bodytemperature(100, max_temp = BODYTEMP_NORMAL) //Heat yourself in cold.
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 /obj/machinery/light/rogue/campfire/densefire
