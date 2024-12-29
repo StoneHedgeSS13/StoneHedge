@@ -169,14 +169,14 @@
 	var/area/A = get_area(src)
 	for(var/i in 1 to 6)
 		CT = get_step_multiz(CT, UP)
-		if(!CT)
+		if(!CT) //no z above
 			if(!A.outdoors)
 				can_see_sky = SEE_SKY_NO
 			else
 				can_see_sky = SEE_SKY_YES
 			return can_see_sky()
 		A = get_area(CT)
-		if(!istype(CT, /turf/open/transparent/openspace))
+		if(!istype(CT, /turf/open/transparent))
 			can_see_sky = SEE_SKY_NO
 			return can_see_sky()
 

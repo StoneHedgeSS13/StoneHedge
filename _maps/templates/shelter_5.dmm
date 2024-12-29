@@ -104,7 +104,9 @@
 /area/rogue/indoors)
 "E" = (
 /obj/structure/bars/passage/shutter/open,
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	keylock = 0
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "F" = (

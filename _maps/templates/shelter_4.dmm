@@ -27,7 +27,9 @@
 /area/rogue/indoors)
 "i" = (
 /obj/structure/bars/passage/shutter/open,
-/obj/structure/mineral_door/wood/fancywood,
+/obj/structure/mineral_door/wood/fancywood{
+	keylock = 0
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "j" = (
