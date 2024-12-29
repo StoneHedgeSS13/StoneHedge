@@ -123,8 +123,16 @@
 		C.integrity_failure /= modifier
 		C.armor = C.armor.multiplymodifyAllRatings(modifier)
 		C.equip_delay_self *= modifier
-	if(istype(I, /obj/item/gun)) //Bows, crossbows, and arquebuses
-		var/obj/item/gun/RA = I
-		RA.force *= modifier
-		RA.damfactor *= modifier
-		RA.chargetime /= modifier
+	if(istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher/bow)) //Bows
+		var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/RAB = I
+		RAB.force *= modifier
+		RAB.damfactor *= modifier
+	if(istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)) //Crossbows
+		var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/RAC = I
+		RAC.force *= modifier
+		RAC.damfactor *= modifier
+	if(istype(I, /obj/item/gun/ballistic/arquebus)) //Guns
+		var/obj/item/gun/ballistic/arquebus/RAG = I
+		RAG.force *= modifier
+		RAG.force_wielded *= modifier
+		RAG.damfactor *= modifier
