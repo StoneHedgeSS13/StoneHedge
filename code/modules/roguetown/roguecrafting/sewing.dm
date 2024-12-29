@@ -878,7 +878,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/leather/hardenedbra
-	name = "hardened leather bikini"
+	name = "hardened leather bra"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced/bikini/bra
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
