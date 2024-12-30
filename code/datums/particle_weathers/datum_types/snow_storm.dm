@@ -58,7 +58,7 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("You feel a deep chill.", "The cold wind is freezing you to the bone!")
+	weather_messages = list("You feel a deep chill.", "The cold wind is freezing me to the bone!")
 
 	minSeverity = 40
 	maxSeverity = 100
@@ -83,4 +83,4 @@
 	var/area/thearea = get_area(L)
 	if(!thearea.outdoors)
 		return
-	L.adjust_bodytemperature(-rand(10,30))
+	L.adjust_bodytemperature(-rand(10,20))
