@@ -343,8 +343,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set name = "fix-chat"
 	set category = "Options"
 	set hidden = 0
-	if(!check_rights(0))
-		return
 	if (!chatOutput || !istype(chatOutput))
 		var/action = alert(src, "Invalid Chat Output data found!\nRecreate data?", "Wot?", "Recreate Chat Output data", "Cancel")
 		if (action != "Recreate Chat Output data")
