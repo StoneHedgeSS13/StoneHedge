@@ -235,7 +235,7 @@
 	icon_state = "stonetongs"
 	force = 5
 	smeltresult = null
-	max_integrity = 20
+	max_integrity = 40
 	anvilrepair = null
 
 /obj/item/rogueweapon/tongs/stone/update_icon()
