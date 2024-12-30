@@ -95,9 +95,9 @@
 		var/obj/item/organ/zombie_infection/ZI = L.getorganslot(ORGAN_SLOT_ZOMBIE)
 		if(ZI)
 			brainmob.set_species(ZI.old_species)	//For if the brain is cloned
-//	if(L.mind?.current)
-//		L.mind.transfer_to(brainmob)
-//	to_chat(brainmob, span_notice("I feel slightly disoriented. That's normal when you're just a brain."))
+	if(L.mind?.current)
+		L.mind.transfer_to(brainmob)
+	to_chat(brainmob, span_notice("I feel slightly disoriented. That's normal when you're just a brain."))
 
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
