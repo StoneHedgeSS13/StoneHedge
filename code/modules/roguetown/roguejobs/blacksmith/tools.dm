@@ -82,7 +82,8 @@
 	icon_state = "stonehammer"
 	force = 16
 	smeltresult = null
-	max_integrity = 15
+	max_integrity = 40
+	anvilrepair = null
 
 /obj/item/rogueweapon/hammer/claw
 	icon_state = "clawh"
@@ -234,7 +235,8 @@
 	icon_state = "stonetongs"
 	force = 5
 	smeltresult = null
-	max_integrity = 15
+	max_integrity = 20
+	anvilrepair = null
 
 /obj/item/rogueweapon/tongs/stone/update_icon()
 	. = ..()
