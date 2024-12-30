@@ -70,10 +70,12 @@
 				display_as_wanderer = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			if(J.wanderer_examine)
-				display_as_wanderer = TRUE
+			if(J)
+				if(J.wanderer_examine)
+					display_as_wanderer = TRUE
+			/* worthless.
 			if(islatejoin)
-				is_returning = TRUE
+				is_returning = TRUE*/
 		if(display_as_wanderer)
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [custom_race_name ? "[custom_race_name] ([race_name])" : "[race_name]"].")
 		else if(used_title)
