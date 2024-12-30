@@ -1157,6 +1157,12 @@
 	dir = 4;
 	icon_state = "largetable"
 	},
+/obj/item/roguekey/vampire,
+/obj/item/roguekey/vampire,
+/obj/item/roguekey/vampire,
+/obj/item/roguekey/vampire,
+/obj/item/roguekey/vampire,
+/obj/item/roguekey/vampire,
 /turf/open/floor/rogue/blocks/stone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -1369,7 +1375,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	locked = 1;
-	lockid = "dungeon"
+	lockid = "mansionvampire"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet)
@@ -1594,7 +1600,10 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
 "rk" = (
-/obj/structure/mineral_door/wood,
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "mansionvampire"
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "rn" = (
@@ -2586,7 +2595,10 @@
 	name = "Underkeep"
 	})
 "Br" = (
-/obj/structure/mineral_door/wood,
+/obj/structure/mineral_door/wood{
+	lockid = "mansionvampire";
+	locked = 1
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
@@ -4265,6 +4277,16 @@
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue/under/cavewet)
+"Up" = (
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "mansionvampire"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "Us" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -4427,7 +4449,10 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "VY" = (
-/obj/structure/mineral_door/wood,
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "mansionvampire"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "We" = (
@@ -4594,6 +4619,16 @@
 	},
 /obj/item/rogueweapon/surgery/scalpel,
 /turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
+"XO" = (
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "mansionvampire"
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Underkeep";
 	name = "Underkeep"
@@ -22965,7 +23000,7 @@ cc
 wj
 wj
 wj
-Br
+Up
 RG
 Kz
 Ht
@@ -23097,7 +23132,7 @@ Mv
 wj
 wj
 wj
-Br
+Up
 RG
 Kz
 Xp
@@ -23493,7 +23528,7 @@ Mv
 wj
 wj
 wj
-Br
+Up
 RG
 Kz
 hv
@@ -23625,7 +23660,7 @@ Mv
 wj
 wj
 wj
-Br
+Up
 RG
 Kz
 mo
@@ -27440,7 +27475,7 @@ aE
 sD
 bK
 sl
-sv
+XO
 qw
 qw
 qw
