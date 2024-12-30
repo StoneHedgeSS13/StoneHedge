@@ -1112,6 +1112,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /obj/effect/landmark/start/vampirespawn
 	name = "Vampire Spawn"
 	icon_state = "arrow"
+	jobspawn_override = list("Vampire Spawn")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampireknight
