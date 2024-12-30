@@ -34,7 +34,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/blackleather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver =1, /obj/item/toy/cards/deck/tarot =1, /obj/item/scrying =1, /obj/item/storage/fancy/skit =1, /obj/item/roguekey/church = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver =1, /obj/item/toy/cards/deck/tarot =1, /obj/item/scrying =1, /obj/item/storage/fancy/skit =1, /obj/item/reagent_containers/glass/alembic =1, /obj/item/roguekey/church = 1)
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/shovel/small
 	backr = /obj/item/rogueweapon/sickle/scythe
