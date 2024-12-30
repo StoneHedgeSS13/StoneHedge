@@ -5566,7 +5566,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -6089,7 +6089,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -6976,13 +6976,6 @@
 /area/rogue/indoors/town/magician{
 	first_time_text = "Ravenloft Academy";
 	name = "Ravenloft Academy"
-	})
-"eJl" = (
-/obj/structure/fluff/statue/gargoyle/moss,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge Borders";
-	name = "far stonehedge"
 	})
 "eJs" = (
 /obj/structure/bed/rogue/inn/double,
@@ -13653,8 +13646,8 @@
 	first_time_text = "The Twilight Woods"
 	})
 "jja" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -14427,8 +14420,12 @@
 	name = "Shrine of Lune"
 	})
 "jIX" = (
-/turf/open/dark_filler,
-/area/rogue/outdoors/river)
+/obj/structure/fluff/statue/dragonl,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/indoors/town/church/chapel{
+	first_time_text = "Shrine of Lune";
+	name = "Shrine of Lune"
+	})
 "jJk" = (
 /turf/open/floor/rogue/rooftop/green{
 	dir = 8
@@ -15591,7 +15588,8 @@
 	name = "Ravenloft Academy"
 	})
 "ksn" = (
-/obj/structure/fluff/statue/dragonr,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/spacevine,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
@@ -20131,11 +20129,6 @@
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
 	})
-"nsi" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/structure/spacevine,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/river)
 "nss" = (
 /obj/structure/closet/crate/chest/refilling/medicine,
 /turf/open/floor/rogue/churchmarble,
@@ -27143,8 +27136,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
 "rOC" = (
-/obj/structure/fluff/statue/dragonl,
-/turf/open/floor/rogue/grass,
+/obj/structure/flora/roguegrass,
+/obj/structure/flora/roguegrass/bush/wall,
+/turf/open/dark_filler,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
@@ -33382,7 +33376,7 @@
 	pixel_y = -1
 	},
 /obj/structure/fluff/statue/small,
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -34551,7 +34545,7 @@
 	})
 "wUB" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -35377,7 +35371,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/blocks/stone,
+/turf/open/floor/rogue/blocks/platform,
 /area/rogue/indoors/town/church/chapel{
 	first_time_text = "Shrine of Lune";
 	name = "Shrine of Lune"
@@ -124223,13 +124217,13 @@ fed
 wsc
 tNT
 kan
-kan
+xDy
+xDy
 tax
 tax
 tax
-tax
-kan
-kan
+xDy
+xDy
 pgm
 wsc
 wsc
@@ -124430,7 +124424,7 @@ kan
 kan
 kan
 kan
-kan
+xDy
 cal
 tax
 wFA
@@ -124441,11 +124435,11 @@ xDh
 cZy
 tSN
 wsc
-nsi
+bjQ
 tHV
 qJZ
-tHV
-qJZ
+nze
+qMs
 qJZ
 tLk
 nFS
@@ -124646,10 +124640,10 @@ hYX
 wza
 jIc
 pMl
-gTl
 qJZ
 qJZ
-rOC
+qMs
+tLk
 vIa
 rLF
 beK
@@ -124848,10 +124842,10 @@ tax
 kan
 kan
 kan
-qMs
+gTl
 vmN
-qJZ
-qJZ
+tLk
+auZ
 beK
 rLF
 rLF
@@ -125042,7 +125036,7 @@ kan
 kan
 tax
 kan
-kan
+xDy
 emy
 adc
 tax
@@ -125051,9 +125045,9 @@ kan
 cVO
 sfZ
 nFS
-qJZ
-vmN
-qJZ
+haD
+rOC
+haD
 beK
 beK
 rLF
@@ -125241,8 +125235,8 @@ eHD
 eHD
 eHD
 xis
-kan
-kan
+xDy
+xDy
 kan
 hYX
 emy
@@ -125431,7 +125425,7 @@ xDh
 xDh
 xDh
 tKG
-aug
+dqW
 kan
 bFR
 ebT
@@ -125444,7 +125438,7 @@ eHD
 mpx
 trL
 dAL
-kan
+xDy
 tax
 tax
 fCT
@@ -125452,9 +125446,9 @@ sPq
 tax
 tax
 sfZ
+jIX
 kan
-kan
-eJl
+beK
 xfx
 nFS
 beK
@@ -125849,7 +125843,7 @@ eOW
 kan
 kan
 kan
-kan
+xDy
 wUB
 emy
 adc
@@ -125859,9 +125853,9 @@ kan
 sfZ
 kan
 nFS
-qJZ
-qJZ
-qJZ
+haD
+haD
+auZ
 beK
 beK
 beK
@@ -126062,8 +126056,8 @@ kan
 kan
 gTl
 qJZ
-qJZ
-qJZ
+qMs
+auZ
 beK
 beK
 nFS
@@ -126259,13 +126253,13 @@ xDh
 wsc
 vcN
 rDk
-tNb
-qJZ
-qJZ
-qJZ
-qJZ
+wza
+ity
 nSI
+qJZ
+qJZ
 ksn
+qMs
 beK
 beK
 vIa
@@ -126450,8 +126444,8 @@ tax
 kan
 kan
 kan
-tax
-tax
+xDy
+xDy
 kan
 wFA
 cZy
@@ -126466,8 +126460,8 @@ qJZ
 qJZ
 aRc
 tHV
-qJZ
-qJZ
+qMs
+tLk
 rLF
 beK
 beK
@@ -126646,8 +126640,8 @@ xDh
 toi
 wsc
 tNT
-kan
-tax
+xDy
+xDy
 tax
 kan
 cal
@@ -126661,7 +126655,7 @@ xDh
 xDh
 xDh
 kqH
-kqH
+pYl
 tNb
 sIo
 qMs
@@ -127464,7 +127458,7 @@ xDh
 xDh
 xDh
 xDh
-jIX
+xDh
 kqH
 tNb
 tNb
@@ -158968,8 +158962,8 @@ bcc
 pOo
 hep
 eNl
-tax
-tax
+xDy
+xDy
 tUh
 iJY
 tax
@@ -159174,7 +159168,7 @@ qVg
 rsg
 fPM
 kTA
-rsg
+xDy
 rsg
 iVM
 eLJ
@@ -159376,8 +159370,8 @@ dSo
 hYX
 tax
 qgd
-rsg
-fEp
+xDy
+eAi
 tax
 tax
 urx
@@ -159581,7 +159575,7 @@ vBB
 rsg
 rsg
 rsg
-hYX
+eAi
 tax
 hDE
 pOo
@@ -159774,8 +159768,8 @@ bcc
 hiP
 hiP
 cRR
-tax
-jja
+xDy
+wUB
 tax
 tax
 hep
@@ -159783,8 +159777,8 @@ jue
 ovd
 uIX
 lXw
-uIX
-tax
+jja
+xDy
 jVB
 wsc
 dhQ
@@ -159995,7 +159989,7 @@ dgn
 fEp
 tax
 hYX
-rsg
+xDy
 ecb
 aZy
 aZy
@@ -160190,11 +160184,11 @@ iYC
 rsg
 tax
 tax
-rsg
-rsg
-tax
+xDy
 rsg
 tax
+rsg
+xDy
 tax
 lXw
 dmy
@@ -160385,18 +160379,18 @@ sQJ
 rsg
 kyi
 rsg
-rsg
-rsg
+xDy
+xDy
 tax
 rsg
 rsg
-tax
-rsg
-rsg
+xDy
+xDy
+xDy
 rsg
 fEp
 rsg
-tax
+xDy
 guW
 mLt
 rsg
@@ -160592,7 +160586,7 @@ ovd
 uIX
 ghn
 uIX
-rsg
+xDy
 rsg
 rsg
 hbb
@@ -161002,7 +160996,7 @@ hep
 dhQ
 dhQ
 mMv
-rsg
+xDy
 wBU
 icP
 wmy
@@ -161190,13 +161184,13 @@ hiP
 dhQ
 dbt
 hYX
-tax
-tax
+xDy
+xDy
 uIX
 hep
 rsg
 rsg
-rsg
+xDy
 tax
 rsg
 vfo
@@ -161397,8 +161391,8 @@ mVx
 aXI
 qgd
 rsg
-tax
-rsg
+xDy
+xDy
 tax
 urx
 hep
@@ -161593,7 +161587,7 @@ bcc
 hiP
 hep
 ojs
-rsg
+xDy
 rsg
 tax
 tax
