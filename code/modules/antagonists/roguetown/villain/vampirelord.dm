@@ -1244,7 +1244,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		var/datum/antagonist/vampirelord/vampness = V.has_antag_datum(/datum/antagonist/vampirelord)
+		if(!vampness.is_solo) //no solo vamp peeping telepathy
+			to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/datum/mind/D in C.deathknights)
 		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
