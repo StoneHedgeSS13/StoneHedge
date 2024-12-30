@@ -550,7 +550,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/plaincake
 	name = "plain cake"
 	desc = ""
-	icon = 'icons/roguetown/items/food.dmi'
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	icon_state = "plaincake"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/plaincakeslice
@@ -561,7 +561,6 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 6
 	rotprocess = SHELFLIFE_EXTREME
-	dropshrink = 0.80
 
 /obj/item/reagent_containers/food/snacks/rogue/plaincakeslice
 	name = "plain cake slice"
