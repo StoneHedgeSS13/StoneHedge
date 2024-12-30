@@ -26,12 +26,6 @@
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 
-/datum/surgery_step/extract_lux/validate_target(mob/user, mob/living/target, target_zone, datum/intent/intent)
-	. = ..()
-	if(target.stat == DEAD)
-		to_chat(user, "They're dead!")
-		return FALSE
-
 /datum/surgery_step/extract_lux/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("I begin to scrape lux from [target]'s heart..."),
 		span_notice("[user] begins to scrape lux from [target]'s heart."),
@@ -40,7 +34,7 @@
 
 /datum/surgery_step/extract_lux/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	target.emote("painscream")
-	if(target.has_status_effect(/datum/status_effect/debuff/devitalised))
+	if(target.has_status_effect(/datum/status_effect/debuff/devitalised) || target.stat == DEAD)
 		display_results(user, target, span_notice("You cannot draw lux from [target]; they have none left to give."),
 		"[user] extracts lux from [target]'s innards.",
 		"[user] extracts lux from [target]'s innards.")

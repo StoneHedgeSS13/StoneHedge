@@ -24,12 +24,6 @@
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 
-/datum/surgery_step/infuse_lux/validate_target(mob/user, mob/living/target, target_zone, datum/intent/intent)
-	. = ..()
-	if(target.stat < DEAD)
-		to_chat(user, "They're not dead!")
-		return FALSE
-
 /datum/surgery_step/infuse_lux/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("I begin to revive [target]..."),
 		span_notice("[user] begins to work lux into [target]'s heart."),
@@ -38,6 +32,9 @@
 
 /datum/surgery_step/infuse_lux/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/revive_pq = PQ_GAIN_REVIVE
+	if(target.stat != DEAD)
+		to_chat(user, "They're not dead!")
+		return FALSE
 	if(target.mob_biotypes & MOB_UNDEAD)
 		display_results(user, target, span_notice("You cannot infuse life into the undead! The rot must be cured first."),
 		"[user] works the lux into [target]'s innards.",
