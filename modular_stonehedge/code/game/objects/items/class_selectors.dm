@@ -585,7 +585,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/rogue_knock)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/guidance5e)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/guidance5e)
 			equip_items(H, list(
 				/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
 				/obj/item/clothing/under/roguetown/tights/black,

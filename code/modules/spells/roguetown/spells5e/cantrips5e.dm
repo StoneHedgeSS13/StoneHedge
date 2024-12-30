@@ -815,7 +815,7 @@
 //==============================================
 //	GUIDANCE
 //==============================================
-/obj/effect/proc_holder/spell/targeted/guidance5e
+/obj/effect/proc_holder/spell/invoked/guidance5e
 	name = "Guidance"
 	overlay_state = "null"
 	releasedrain = 50
@@ -838,14 +838,14 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	include_user = TRUE
 
-/obj/effect/proc_holder/spell/targeted/guidance5e/cast(list/targets, mob/living/user)
-	for(var/mob/living/carbon/C in targets)
-		var/datum/status_effect/buff/guidance5e/G = new /datum/status_effect/buff/guidance5e/
-		C.apply_status_effect(G) //apply buff
-		to_chat(C, span_info("You are illuminated by [user]'s guiding light."))
-		C.visible_message(span_info("[C] is illuminated by a guiding presence!"), span_info("You begin to guide [C]."))
+
+/obj/effect/proc_holder/spell/invoked/guidance5e/cast(list/targets, mob/living/user)
+	if(isliving(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		var/mob/living/carbon/caster = user
+		target.visible_message(span_warning("You are being guided by [caster]"), span_notice("You guide [target] "))
+		target.apply_status_effect(/datum/status_effect/buff/guidance5e/) // adds guidance
 
 /datum/status_effect/buff/guidance5e
 	id = "guidance"
