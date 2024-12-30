@@ -69,6 +69,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Steward",
 	"Knight",
 	"Noble Guest",
+	"Guild Appraiser",
 ))
 
 GLOBAL_LIST_INIT(grove_positions, list(
