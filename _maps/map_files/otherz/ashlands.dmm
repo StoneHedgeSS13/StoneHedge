@@ -214,7 +214,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "bX" = (
 /obj/item/roguecoin/gold/pile,
 /obj/item/dildo/plug/gold,
@@ -599,7 +599,7 @@
 	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "gZ" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -728,7 +728,7 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "ih" = (
 /obj/effect/decal/remains/human/grave{
 	icon_state = "remainslarva"
@@ -1151,7 +1151,7 @@
 	icon_state = "1,0"
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "nc" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -1451,7 +1451,7 @@
 /obj/item/storage/backpack/rogue/backpack/surgery,
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "pO" = (
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/dirt,
@@ -1480,7 +1480,7 @@
 	icon_state = "saint"
 	},
 /turf/open/floor/carpet/inn,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "qb" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/grass,
@@ -1948,7 +1948,7 @@
 "uH" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "uL" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -2015,7 +2015,7 @@
 "vG" = (
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "vI" = (
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/naturalstone,
@@ -2253,7 +2253,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "xG" = (
 /obj/machinery/light/roguestreet/midlamp,
 /turf/open/floor/rogue/dirt/road,
@@ -2379,7 +2379,7 @@
 	icon_state = "longtable_mid"
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "zg" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -2393,7 +2393,7 @@
 	icon_state = "longtable"
 	},
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "zl" = (
 /turf/open/floor/rogue/rooftop,
 /area/rogue/under/cavewet)
@@ -2442,7 +2442,7 @@
 	})
 "zM" = (
 /turf/open/floor/carpet/inn,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "zN" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale,
 /turf/open/floor/rogue/dirt/road,
@@ -2955,7 +2955,7 @@
 "Fs" = (
 /obj/structure/chair/bench/coucha,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "Fv" = (
 /obj/structure/fluff/statue/knight,
 /turf/open/floor/rogue/blocks/stone,
@@ -3149,7 +3149,7 @@
 /obj/structure/table/wood,
 /obj/item/candle/skull/lit,
 /turf/open/floor/carpet/inn,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "HP" = (
 /mob/living/simple_animal/hostile/rogue/ghost/wraith,
 /turf/open/floor/rogue/dirt/road,
@@ -3185,7 +3185,7 @@
 "Ij" = (
 /obj/structure/healingfountain,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "Il" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
@@ -3265,7 +3265,7 @@
 /obj/item/rogueweapon/sickle/scythe,
 /obj/item/rogueweapon/sickle/scythe,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "Jj" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4;
@@ -3637,7 +3637,7 @@
 /obj/structure/chair/bench/coucha/r,
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "MN" = (
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -4137,7 +4137,7 @@
 "SP" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "SS" = (
 /obj/structure/chair/wood/rogue/chair3{
 	dir = 1
@@ -4675,7 +4675,7 @@
 	dir = 8
 	},
 /turf/closed/wall/mineral/rogue/stone/red_moss,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "YO" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8
@@ -4772,7 +4772,7 @@
 /area/rogue/under/cavewet)
 "ZL" = (
 /turf/open/floor/rogue/hexstone,
-/area/chapel/main)
+/area/rogue/indoors/town/church/chapel)
 "ZM" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
