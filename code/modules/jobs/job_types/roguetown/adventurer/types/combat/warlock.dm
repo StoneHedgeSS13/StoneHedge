@@ -88,7 +88,7 @@
 			H.put_in_hands(givebook(patronchoice), FALSE)
 			H.change_stat("intelligence", 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/guidance5e)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/guidance5e)
 			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC) // Goo-locks and book pacts can actually be a mage
 		if("power") //empowered eldritch blast
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e)
@@ -473,7 +473,7 @@
 	//removed eldritch blast and infestation
 	spell1 = pick(/obj/effect/proc_holder/spell/invoked/projectile/fireball,/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,/obj/effect/proc_holder/spell/invoked/projectile/fetch,/obj/effect/proc_holder/spell/invoked/projectile/spitfire,/obj/effect/proc_holder/spell/invoked/projectile/firebolt5e,/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e,/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,/obj/effect/proc_holder/spell/invoked/blade_burst,/obj/effect/proc_holder/spell/invoked/frostbite5e,/obj/effect/proc_holder/spell/invoked/poisonspray5e,/obj/effect/proc_holder/spell/invoked/arcyne_storm,/obj/effect/proc_holder/spell/invoked/chilltouch5e,/obj/effect/proc_holder/spell/invoked/mindsliver5e,/obj/effect/proc_holder/spell/targeted/lightninglure5e,/obj/effect/proc_holder/spell/invoked/greenflameblade5e,)
 	spell2 = pick(/obj/effect/proc_holder/spell/invoked/forcewall_weak,/obj/effect/proc_holder/spell/self/bladeward5e,)
-	spell3 = pick(/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,/obj/effect/proc_holder/spell/invoked/message,/obj/effect/proc_holder/spell/invoked/push_spell,/obj/effect/proc_holder/spell/invoked/longjump,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/targeted/guidance5e,/obj/effect/proc_holder/spell/targeted/encodethoughts5e,/obj/effect/proc_holder/spell/invoked/magicstone5e,/obj/effect/proc_holder/spell/invoked/mending5e,/obj/effect/proc_holder/spell/self/light5e,/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,)
+	spell3 = pick(/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,/obj/effect/proc_holder/spell/invoked/message,/obj/effect/proc_holder/spell/invoked/push_spell,/obj/effect/proc_holder/spell/invoked/longjump,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/invoked/guidance5e,/obj/effect/proc_holder/spell/targeted/encodethoughts5e,/obj/effect/proc_holder/spell/invoked/magicstone5e,/obj/effect/proc_holder/spell/invoked/mending5e,/obj/effect/proc_holder/spell/self/light5e,/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,)
 
 
 /obj/item/book/rogue/eldritch/equipped(mob/living/user)

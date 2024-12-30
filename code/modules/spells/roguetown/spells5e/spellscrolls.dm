@@ -100,7 +100,7 @@
 
 /obj/item/book/granter/spell/spells5e/guidance5e
 	name = "Scroll of Guidance"
-	spell = /obj/effect/proc_holder/spell/targeted/guidance5e
+	spell = /obj/effect/proc_holder/spell/invoked/guidance5e
 	spellname = "guidance"
 	icon_state = "scrollred"
 
