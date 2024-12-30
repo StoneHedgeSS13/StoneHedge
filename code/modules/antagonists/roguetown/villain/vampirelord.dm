@@ -943,24 +943,24 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two
 	name = "infiltrate2"
-	explanation_text = "Make a member of the Nobility my spawn."
+	explanation_text = "Make one of the leaders of the town my spawn."
 	triumph_count = 5
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("Monarch", "Consort", "Royal Heir", "Hand", "Steward")
+	var/list/noblejobs = list("Monarch", "Consort", "Royal Heir", "Hand", "Steward", "Guildmaster", "Guild Appraiser", "Academy Archmage")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE
 
 /datum/objective/vampirelord/spread
 	name = "spread"
-	explanation_text = "Have 10 vampire spawn."
+	explanation_text = "Have 6 vampire spawn."
 	triumph_count = 5
 
 /datum/objective/vampirelord/spread/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	if(C.vampires.len >= 10)
+	if(C.vampires.len >= 6)
 		return TRUE
 
 /datum/objective/vampirelord/stock
