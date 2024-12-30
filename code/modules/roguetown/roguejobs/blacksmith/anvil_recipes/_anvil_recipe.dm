@@ -94,6 +94,7 @@
 			I.name = "rough [I.name]"
 			modifier = 0.9
 		if(BLACKSMITH_LEVEL_COMPETENT)
+			modifier = 1
 			I.desc = "[I.desc] It is competently made."
 		if(BLACKSMITH_LEVEL_FINE)
 			I.name = "fine [I.name]"
