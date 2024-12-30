@@ -290,6 +290,7 @@
 										I.name = "rough [I.name]"
 										modifier = 0.9
 									if(3)
+										modifier = 1
 										I.desc = "[I.desc] It is competently made."
 									if(4)
 										I.name = "fine [I.name]"
