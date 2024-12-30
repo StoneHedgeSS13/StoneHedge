@@ -12,7 +12,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 300 SECONDS //cooldown
+	charge_max = 200 SECONDS //cooldown, lessened from 600 seconds to hopefully allow fighters to not refrain from using this too much.
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -33,8 +33,8 @@
 	var/mob/living/target = user
 	var/mob/living/carbon/M = target
 	M.rogfat_add(-200)
-	M.rogstam_add(-200)
-	M.heal_wounds(300)
-	M.heal_overall_damage(250, 250, updating_health = TRUE)
+	M.rogstam_add(-100) //tires you out fatigue wise but recovers stamina as a final push. (stam and fatigue are reversed in names and functions its weird)
+	M.heal_wounds(200)
+	M.heal_overall_damage(200, 200, updating_health = TRUE)
 	user.balloon_alert_to_viewers("Second Wind!")
 	user.visible_message("<span class='info'>[user] takes a deep breath in.</span>", "<span class='notice'>I take a deep breath in, invoking the determination within.</span>")

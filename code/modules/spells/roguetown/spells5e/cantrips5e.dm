@@ -53,7 +53,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Acid splash!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -143,7 +143,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Blade ward!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 // Notes: Bard, Sorcerer, Warlock, Wizard
 
@@ -203,7 +203,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Booming blade!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/boomingblade5e/cast(list/targets, mob/living/user)
@@ -287,8 +287,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Chill touch!"
+	invocation_type = "shout"
 	ignore_fiendkiss = FALSE
 
 // Notes: sorcerer, warlock, wizard
@@ -422,8 +422,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Bonfire!"
+	invocation_type = "shout"
 
 	summon_type = list(
 		/obj/machinery/light/rogue/campfire/createbonfire5e
@@ -474,14 +474,14 @@
 	chargedloop = null
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	associated_skill = /datum/skill/magic/blood //can be arcane, druidic, blood, holy
 	cost = 1
 
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Decompose."
+	invocation_type = "whisper"
 
 /obj/effect/proc_holder/spell/invoked/decompose5e/cast(list/targets, mob/living/user)
 	if(!isliving(targets[1]))
@@ -557,8 +557,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Eldritch blast!"
+	invocation_type = "shout"
 	ignore_fiendkiss = FALSE
 
 
@@ -672,6 +672,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 1
+	invocation = "Firebolt!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/firebolt5e
@@ -716,7 +718,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Frostbite!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -780,7 +782,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Green flame blade!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/greenflameblade5e/cast(list/targets, mob/living/user)
@@ -836,8 +838,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Guidance."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
 
 
 /obj/effect/proc_holder/spell/invoked/guidance5e/cast(list/targets, mob/living/user)
@@ -898,13 +900,13 @@
 	chargedloop = null
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	associated_skill = /datum/skill/magic/druidic //can be arcane, druidic, blood, holy
 	cost = 1
 
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Infestation!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -993,8 +995,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Let there be light."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
 
 	var/obj/item/item
 	var/item_type = /obj/item/flashlight/flare/light5e
@@ -1155,7 +1157,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Lightning lure!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	include_user = FALSE
 
@@ -1211,8 +1213,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Magic stone."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
 	var/magic_color = "#c8daff"
 
 /obj/effect/proc_holder/spell/invoked/magicstone5e/cast(list/targets, mob/living/user)
@@ -1260,8 +1262,8 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Mending."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/mending5e/cast(list/targets, mob/living/user)
 	if(istype(targets[1], /obj/item))
@@ -1312,7 +1314,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Mind Sliver!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	var/delay = 7
 	ignore_fiendkiss = FALSE
@@ -1386,7 +1388,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Poison Cloud!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/poisonspray5e/cast(list/targets, mob/living/user)
@@ -1444,14 +1446,14 @@
 	antimagic_allowed = FALSE //can you use it if you are antimagicked?
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	associated_skill = /datum/skill/magic/druidic //can be arcane, druidic, blood, holy
 	cost = 1
 
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Primal savagery."
+	invocation_type = "whisper" //can be none, whisper, emote and shout
 // Notes: Bard, Sorcerer, Warlock, Wizard
 
 /obj/effect/proc_holder/spell/self/primalsavagery5e/cast(mob/user = usr)
@@ -1506,7 +1508,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = ""
+	invocation = "Ray of Frost!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 

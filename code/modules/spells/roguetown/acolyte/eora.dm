@@ -118,6 +118,8 @@
 	antimagic_allowed = TRUE
 	charge_max = 45 SECONDS // 50% more than lightning bolt. Less lethal upfront stun, but annoying lingering wound. This spell does nothing if used on the same target again before they heal.
 	miracle = TRUE
+	invocation = "torsis!"
+	invocation_type = "shout"
 	devotion_cost = 100  // Highest cost tier of divine spells.
 
 /obj/effect/proc_holder/spell/invoked/torsion/cast(list/targets, mob/living/user) // The actual CBT code is stolen entirely from the admin CBT punishment command.
@@ -131,7 +133,7 @@
 	if(target.gender != MALE) // This uses body type instead of actual genitals, but so does the wound itself. I shudder to think of what would get torsioned in people with no genitals...
 		user.say("Viiritri, twist their ovaries!")
 	else
-		user.say("Viiritri, twist their balls!")	
+		user.say("Viiritri, twist their balls!")
 	target.visible_message(span_warning("The air churns strangely around [target]!"), span_danger("I feel a deep sense of dread..."))
 	affecting.add_wound(/datum/wound/cbt) // This has its own flavor text, so above flavor text is less explicit about the torsion.
 	return TRUE
@@ -144,7 +146,7 @@
 	invocation = "Twist and fall!"
 	invocation_type = "shout"
 	cost = 4 // Same cost as Fireball. Definitely stronger than lightning bolt.
-	
+
 /obj/effect/proc_holder/spell/invoked/torsion/arcane/cast(list/targets, mob/living/user) // Separate effect because we aren't asking Eora for help, we're doing it ourselves.
 	var/mob/living/target = targets[1]
 	if(!ishuman(target))

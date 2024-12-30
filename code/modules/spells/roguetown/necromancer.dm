@@ -12,6 +12,9 @@
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
+	invocation = "Infuse unlife!"
+	invocation_type = "shout"
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
@@ -50,6 +53,9 @@
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
+	invocation = "Eyebite!"
+	invocation_type = "shout"
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
 	. = ..()
@@ -77,6 +83,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
 	charge_max = 30 SECONDS
+	xp_gain = TRUE
 
 
 /**
@@ -242,6 +249,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 15 SECONDS
+	invocation = "Ray of Sickness!"
+	invocation_type = "shout"
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/command_undead
 	name = "Command Undead"
@@ -288,6 +298,9 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
+	invocation = "Life Steal!"
+	invocation_type = "shout"
+	xp_gain = TRUE
 
 /obj/projectile/magic/lifesteal
 	name = "life steal"

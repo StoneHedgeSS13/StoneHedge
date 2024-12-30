@@ -18,6 +18,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
+	invocation = "Lightning bolt!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/magic/lightning
@@ -114,6 +116,8 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
+	invocation = "Blood bolt!"
+	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
 
@@ -162,6 +166,8 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
+	invocation = "Your blood is mine!"
+	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
 
@@ -221,6 +227,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 4
+	invocation = "Fireball!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue
@@ -268,6 +276,8 @@
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
 	cost = 10
+	invocation = "FIREBALL!!!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -292,15 +302,17 @@
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 10
-	charge_max = 8 SECONDS
+	chargetime = 3
+	charge_max = 3 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 3
+	cost = 1
+	invocation = "Spitfire!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
@@ -347,6 +359,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
+	invocation = "Arcane bolt!"
+	invocation_type = "shout"
 	xp_gain = TRUE
 
 /obj/projectile/energy/rogue3
@@ -369,29 +383,6 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-
-
-/obj/effect/proc_holder/spell/invoked/projectile/spitfire
-	name = "spitfire"
-	desc = ""
-	clothes_req = FALSE
-	range = 8
-	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
-	overlay_state = "fireball_multi"
-	sound = list('sound/magic/whiteflame.ogg')
-	active = FALSE
-	releasedrain = 30
-	chargedrain = 1
-	chargetime = 3
-	charge_max = 3 SECONDS
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane
-	cost = 1
-	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue2
 	name = "fireball"
@@ -490,6 +481,8 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Fetch."
+	invocation_type = "whisper"
 	cost = 2
 	xp_gain = TRUE
 
@@ -506,7 +499,6 @@
 /obj/effect/proc_holder/spell/targeted/conjure_item/summon_sword
 	name = "Summon Sword"
 	desc = ""
-	invocation_type = "none"
 	include_user = TRUE
 	range = -1
 	clothes_req = FALSE
@@ -799,6 +791,8 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
+	invocation = "Forcewall!"
+	invocation_type = "shout"
 	cost = 3
 
 //adapted from forcefields.dm, this needs to be destructible
@@ -871,6 +865,8 @@
 	associated_skill = /datum/skill/magic/arcane
 	range = 6
 	overlay_state = "ensnare"
+	invocation = "Black tentacles!"
+	invocation_type = "shout"
 	var/area_of_effect = 1
 	var/duration = 2.5 SECONDS
 	var/delay = 0.8 SECONDS
@@ -921,6 +917,8 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "minds connect..."
+	invocation_type = "whisper"
 	overlay_state = "message"
 
 /obj/effect/proc_holder/spell/invoked/message/cast(list/targets, mob/user)
@@ -1021,6 +1019,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
+	invocation = "blade burst."
+	invocation_type = "whisper"
 	var/delay = 7
 	var/damage = 45
 
@@ -1060,6 +1060,8 @@
 	dropmessage = "I release my arcyne focus."
 	school = "abjuration"
 	charge_max = 30 SECONDS
+	invocation = "Nondetection."
+	invocation_type = "whisper"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/nondetection
@@ -1122,6 +1124,7 @@
 	name = "Darkvision"
 	desc = "Enhance the night vision of a target you touch for an hour."
 	clothes_req = FALSE
+	range = 2
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."
 	school = "transmutation"
@@ -1130,6 +1133,8 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	xp_gain = TRUE
+	invocation = "runs a hand over their eyes, chanting before they open with a new-found sparkle."
+	invocation_type = "emote"
 	cost = 2
 
 /obj/item/melee/touch_attack/darkvision
@@ -1173,6 +1178,8 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	charging_slowdown = 2
+	invocation = "featherfall."
+	invocation_type = "whisper"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "jump"
@@ -1200,6 +1207,8 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 2
+	invocation = "haste!"
+	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 

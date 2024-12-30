@@ -14,6 +14,8 @@
 	charge_max = 10 SECONDS
 	miscast_recharge = TRUE
 	miracle = TRUE
+	invocation = "'s hands glow with divine light."
+	invocation_type = "emote"
 	devotion_cost = 10
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
@@ -152,6 +154,8 @@
 	charge_max = 20 SECONDS
 	miscast_recharge = TRUE
 	miracle = TRUE
+	invocation = "divine light shine upon thee."
+	invocation_type = "whisper"
 	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)

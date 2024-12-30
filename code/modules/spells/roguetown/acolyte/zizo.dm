@@ -8,7 +8,8 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/antimagic.ogg'
-	invocation_type = "none"
+	invocation = "'s hands glow with darkness."
+	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
@@ -90,6 +91,8 @@
 	charge_max = 1 MINUTES
 	miracle = TRUE
 	devotion_cost = 100
+	invocation = "Break free and return to your body!"
+	invocation_type = "shout"
 	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/invoked/revive_inhumen/cast(list/targets, mob/living/user)

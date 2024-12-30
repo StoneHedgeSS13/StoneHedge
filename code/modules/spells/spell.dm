@@ -314,6 +314,12 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			to_chat(user, span_warning("This spell can only be cast by physical beings!"))
 			return FALSE
 
+	if(ishuman(user))
+		var/mob/living/carbon/human/huser = user
+		if(huser.handcuffed || huser.get_num_arms(TRUE) > 0) //not handcuffed and has atleast one working arm to make invocations and direct the spells.
+			to_chat(user, span_warning("I can't without my arms!"))
+			return FALSE
+
 	if(req_items.len)
 		var/list/confirmed_items = list()
 		for(var/I in req_items)

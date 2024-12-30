@@ -13,7 +13,8 @@
 	movement_interrupt = FALSE
 	chargedloop = null
 	sound = 'sound/magic/heal.ogg'
-	invocation_type = "none"
+	invocation = "Eldritch healing!"
+	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
@@ -123,8 +124,8 @@
 	xp_gain = FALSE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Cloak of flies!"
+	invocation_type = "shout"
 	var/activated = FALSE
 	var/rot_type = /datum/component/rot/warlock
 	var/static/mutable_appearance/flies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
@@ -181,8 +182,8 @@
 	xp_gain = FALSE
 	miracle = FALSE
 
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
+	invocation = "Come forth familiar."
+	invocation_type = "whisper"
 
 	var/mob/living/fam
 	var/mob/master

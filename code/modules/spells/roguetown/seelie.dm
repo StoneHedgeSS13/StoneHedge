@@ -3,10 +3,11 @@
 	overlay_state = "createlight"
 	releasedrain = 50
 	charge_max = 150 SECONDS
-	range = 7
+	range = 3
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation_type = "none" //can be none, whisper, emote and shout
+	invocation = "blows some dust from their palm."
+	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/seelie_dust/cast(list/targets, mob/living/user)
 	. = ..()
@@ -81,7 +82,8 @@
 	range = 7
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation_type = "none" //can be none, whisper, emote and shout
+	invocation = "Squeak!"
+	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/summon_rat/cast(list/targets, mob/user)
 	. = ..()
@@ -125,7 +127,8 @@
 	charge_max = 3 MINUTES
 	range = 1
 	sound = 'sound/magic/churn.ogg'
-	invocation_type = "none" //can be none, whisper, emote and shout
+	invocation = "flutters energetically."
+	invocation_type = "emote"
 	//random_target = TRUE
 	//random_target_priority = TARGET_RANDOM
 	cast_without_targets = TRUE
@@ -172,7 +175,8 @@
 	range = 1
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation_type = "none" //can be none, whisper, emote and shout
+	invocation = "spreads some seelie dust around."
+	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/replenish/cast(list/targets, mob/user)
 	. = ..()
@@ -203,6 +207,8 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Waky waky!"
+	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/targeted/roustame
 	name = "Tame Rous"

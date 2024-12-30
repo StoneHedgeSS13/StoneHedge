@@ -58,6 +58,8 @@
 	charge_max = 2 MINUTES
 	miscast_recharge = TRUE
 	miracle = TRUE
+	invocation = "Rise!"
+	invocation_type = "shout"
 	devotion_cost = 100
 	/// Amount of PQ gained for reviving people
 	var/revive_pq = PQ_GAIN_REVIVE
