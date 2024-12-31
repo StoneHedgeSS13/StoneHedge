@@ -790,13 +790,14 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/vikingbodyguardhelm
-	name = "Bodyguard Helmet"
+	name = "Bodyguard Helmet Bear (+1 Fur)"
+	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/fur)
 	created_item = /obj/item/clothing/head/roguetown/helmet/leather/bearhead
 	craftdiff = 1
 
-/datum/anvil_recipe/armor/spiderarmor
-	name = "Spider Armor (+1 Steel)"
+/datum/anvil_recipe/armor/vikingbodyguardhelmet
+	name = "Bodyguard Helmet Steel)"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/vikingbodyguardhelmet
 	craftdiff = 2
