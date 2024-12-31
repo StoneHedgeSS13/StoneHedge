@@ -549,3 +549,106 @@
 				/obj/item/natural/fibers = 1,
 				)
 	craftdiff = 1
+
+
+/// ADVANCED LEATHER
+
+/datum/crafting_recipe/roguetown/leather/advboots
+	name = "hardened leather boots"
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/leather/advgloves
+	name = "hardened leather gloves"
+	result = /obj/item/clothing/gloves/roguetown/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/leather/advcoat
+	name = "hardened leather coat"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/leather/advhelmet
+	name = "hardened leather helmet"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/leather/advneck
+	name = "hardened leather gorget"
+	result = /obj/item/clothing/neck/roguetown/gorget/leather
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/leather/advchausses
+	name = "hardened leather chausses"
+	result = /obj/item/clothing/under/roguetown/trou/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/// MASTERWORK
+
+/datum/crafting_recipe/roguetown/leather/advboots/masterwork
+	name = "masterwork leather boots"
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advgloves/masterwork
+	name = "masterwork leather gloves"
+	result = /obj/item/clothing/gloves/roguetown/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advbracers/masterwork
+	name = "masterwork leather bracers"
+	result = /obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advcoat/masterwork
+	name = "masterwork leather coat"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 4,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advhelmet/masterwork
+	name = "masterwork leather helmet"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advstudhood/masterwork
+	name = "masterwork leather studded hood"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/masterwork
+	reqs = list(/obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced = 1,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/leather/advchausses/masterwork
+	name = "masterwork leather chausses"
+	result = /obj/item/clothing/under/roguetown/trou/leather/masterwork
+	reqs = list(/obj/item/natural/hide/cured = 3,
+				/obj/item/natural/cured/essence = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 5

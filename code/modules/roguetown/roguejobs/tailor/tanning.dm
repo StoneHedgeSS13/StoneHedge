@@ -51,7 +51,7 @@
 			user.mind.adjust_experience(/datum/skill/craft/hunting, user.STAINT * 2) //these numbers may need some revision
 			update_icon()
 			for(var/i = 0; i < pieces_to_spawn; i++)
-				if(prob(skill_level + user.goodluck(2)))
+				if(prob(skill_level + user.goodluck(2) + 10))
 					new /obj/item/natural/cured/essence(get_turf(user))
 					if(!sound_played)
 						sound_played = TRUE
