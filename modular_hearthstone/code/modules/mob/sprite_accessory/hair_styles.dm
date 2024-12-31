@@ -127,11 +127,11 @@
 	name = "Baum"
 	icon_state = "baum"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
-	
+
 /datum/sprite_accessory/hair/head/sabitsuki
 	name = "Sabitsuki"
 	icon_state = "sabitsuki"
-	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'	
+	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
 /datum/sprite_accessory/hair/head/gloomy_short
 	name = "Gloomy Short"
@@ -201,7 +201,7 @@
 /datum/sprite_accessory/hair/head/dreadlocks_long
 	name = "Dreadlocks Long"
 	icon_state = "dreadlocks_long"
-	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
+	icon = 'modular_stonehedge/icons/mob/sprite_accessory/hair/hair_styles.dmi'
 
 /datum/sprite_accessory/hair/head/rows1
 	name = "Row 1"
@@ -252,4 +252,4 @@
 	name = "Kobeni (Alt)"
 	icon_state = "kobeni_2"
 	icon = 'modular_hearthstone/icons/mob/sprite_accessory/hair/hair_styles.dmi'
-	
+

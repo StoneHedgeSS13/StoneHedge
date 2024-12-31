@@ -550,7 +550,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/plaincake
 	name = "plain cake"
 	desc = ""
-	icon = 'modular/Neu_Food/icons/food.dmi'
+	icon = 'modular_hearthstone/icons/obj/items/food/food.dmi'
 	icon_state = "plaincake"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/plaincakeslice
