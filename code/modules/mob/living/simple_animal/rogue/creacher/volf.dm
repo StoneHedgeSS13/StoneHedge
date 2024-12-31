@@ -152,8 +152,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar
 	name = "familiar volf"
-	faction = list("neutral")
-
+	faction = list("neutral", "Station") //until i find a way to not make it suck.
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/gator
 	icon = 'modular_hearthstone/icons/mob/alligator.dmi'
