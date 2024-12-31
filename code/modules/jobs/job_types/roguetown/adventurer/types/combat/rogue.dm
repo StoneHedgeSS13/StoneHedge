@@ -247,8 +247,10 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE) //they spawn with a crossbow
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 3, TRUE)
 	pants = /obj/item/clothing/under/roguetown/trou/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	if(prob(30))
