@@ -27,7 +27,7 @@
 	var/obscure_name = FALSE
 	var/race_name = dna.species.name
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
-	if(maniac && (user != src))
+	if(maniac && (user != src) || HAS_TRAIT(user, TRAIT_SOONTOWAKEUP) && (user != src))
 		race_name = "disgusting pig"
 
 	var/m1 = "[t_He] [t_is]"

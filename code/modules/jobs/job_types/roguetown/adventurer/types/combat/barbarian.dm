@@ -6,7 +6,7 @@
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED, TRAIT_BLINDFIGHTING)
-	cmode_music = 'sound/music/combat_gronn.ogg'
+	cmode_music = 'sound/music/combat_barbarian.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)

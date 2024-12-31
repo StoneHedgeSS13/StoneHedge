@@ -24,3 +24,5 @@ manorgarri.ogg: Exanima - Arena Hub
 combat_steppe: Tatar Theme(Hellish Quart OST)
 combat_pirate.ogg: Alestorm - Alestorm (instrumental edit)
 combat_clergy.ogg: Pathologic (Classic) - Main Theme
+combat_combattante.ogg: Limbus Company - Canto 1 - Battle Theme C1
+combat_barbarian.ogg: Amon Amarth – Tattered Banners and Bloody Flags (Instrumental cover)

@@ -6,7 +6,7 @@
 	total_positions = 5
 	spawn_positions = 5
 	antag_job = TRUE
-	allowed_races = RACES_ALL_KINDSPLUS	//Begone foul seelies. Your age of banditry is gone
+	allowed_races = RACES_ALL_KINDSPLUS_NOSEELIE	//Begone foul seelies. Your age of banditry is gone
 	tutorial = "Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good. (THIS IS NOT A FRAG ROLE, WORK ON MAKING GOOD ROLEPLAY.)"
 
 	outfit = null

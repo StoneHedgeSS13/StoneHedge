@@ -35,7 +35,6 @@
 	/datum/species/anthromorphbig,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
-	/datum/species/seelie,\
 	/datum/species/demihuman,\
 	/datum/species/tabaxi,\
 	/datum/species/lizardfolk,\
@@ -64,6 +63,7 @@
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_ALL_KINDSPLUS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
+#define RACES_ALL_KINDSPLUS_NOSEELIE list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 

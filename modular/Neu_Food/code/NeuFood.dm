@@ -47,7 +47,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/Initialize()
 	. = ..()
 	eatverb = pick("bite","chew","nibble","gobble","chomp")
-	
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase // root item for uncooked food thats disgusting when raw
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	bitesize = 3
@@ -83,11 +83,11 @@
 
 // Used for adding reagents from bottles into food items.
 
-/obj/item/reagent_containers/food/snacks/rogue/MiddleClick(mob/living/user, params) 
+/obj/item/reagent_containers/food/snacks/rogue/MiddleClick(mob/living/user, params)
 	. = ..()
-	
+
 	var/obj/item/held_item = user.get_active_held_item()
-	
+
 	if(held_item)
 		if(istype(held_item, /obj/item/reagent_containers/glass/bottle))
 			if(!held_item.reagents.total_volume)
@@ -151,18 +151,18 @@
 /obj/item/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
 	if(reagents)
-		if(reagents.total_volume > 0) 
-			if(reagents.total_volume <= 11) 
+		if(reagents.total_volume > 0)
+			if(reagents.total_volume <= 11)
 				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_low")
 				filling.color = mix_color_from_reagents(reagents.reagent_list)
 				add_overlay(filling)
-		if(reagents.total_volume > 11) 
-			if(reagents.total_volume <= 22) 
+		if(reagents.total_volume > 11)
+			if(reagents.total_volume <= 22)
 				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_half")
 				filling.color = mix_color_from_reagents(reagents.reagent_list)
 				add_overlay(filling)
-		if(reagents.total_volume > 22) 
-			if(reagents.has_reagent(/datum/reagent/consumable/soup/oatmeal, 10)) 
+		if(reagents.total_volume > 22)
+			if(reagents.has_reagent(/datum/reagent/consumable/soup/oatmeal, 10))
 				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_oatmeal")
 				filling.color = mix_color_from_reagents(reagents.reagent_list)
 				add_overlay(filling)
@@ -176,7 +176,7 @@
 				filling.color = mix_color_from_reagents(reagents.reagent_list)
 				icon_state = "bowl_steam"
 				add_overlay(filling)
-			else 
+			else
 				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_full")
 				filling.color = mix_color_from_reagents(reagents.reagent_list)
 				add_overlay(filling)
@@ -196,7 +196,7 @@
 			if(do_after(user,1 SECONDS, target = src))
 				addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 		return TRUE
-				
+
 /obj/item/reagent_containers/glass/bowl/proc/beingeaten()
 	in_use = TRUE
 	sleep(10)
@@ -207,7 +207,7 @@
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
-	
+
 /obj/item/cooking/pan
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -435,7 +435,7 @@
 		return ..()
 	if(isturf(loc)&& (!found_table))
 		to_chat(user, "<span class='notice'>Need a table...</span>")
-		return ..()	
+		return ..()
 	if(!R.reagents.has_reagent(/datum/reagent/water, 10))
 		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
 		return TRUE
@@ -447,7 +447,7 @@
 		desc = "Destined for greatness, at your hands."
 		R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
-		color = "#d9d0cb"	
+		color = "#d9d0cb"
 	return TRUE
 
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
@@ -477,12 +477,18 @@
 /*	..................   Food platter   ................... */
 /obj/item/cooking/platter/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
+	if(findtext("[I.type]", "/plated")) //All plated food items have /plated at end of path
+		to_chat(user, span_warning("[I] in your hand appears to already be plated."))
+		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
 				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
+				if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced))
+					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
+				else
+					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
 				qdel(I)
 				qdel(src)
 		else
@@ -648,7 +654,7 @@
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
 	else
-		return ..()	
+		return ..()
 
 /* * * * * * * * * * * **
  *						*
@@ -688,7 +694,7 @@
 /*	.................   Decent shelflife   ................... */
 
 * Fresh cheese
-* Mixed dishes with meats 
+* Mixed dishes with meats
 * Fried meats & eggs
 
 /*	.................   Short shelflife   ................... */

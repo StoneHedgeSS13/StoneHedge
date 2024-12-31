@@ -215,11 +215,17 @@
 			// Ratwood has RNG here. No thanks.
 
 			if(self_points > target_points)
-				L.Knockdown(1)
+				L.Knockdown(30)
+				L.Immobilize(30)
+				if(isseelie(L)) //You're a seelie? You're cooked.
+					L.Knockdown(60)
+					L.Immobilize(60)
+					L.changeNext_move(10)
 			if(self_points < target_points)
 				Knockdown(30)
 			if(self_points == target_points) // Exact match will be rare with athletics being fractional.
-				L.Knockdown(1)
+				L.Knockdown(30)
+				L.Immobilize(30)
 				Knockdown(30)
 			Immobilize(30)
 			var/playsound = FALSE
@@ -505,7 +511,40 @@
 	to_chat(src, span_info("I grab [target]."))
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
-	return //rtd fix not updating because no dirchange
+	if(M.buckled)
+		return //don't make them change direction or offset them if they're buckled into something.
+	if(M.dir != turn(get_dir(M,src), 180))
+		M.setDir(get_dir(M, src))
+	var/offset = 0
+	switch(grab_state)
+		if(GRAB_PASSIVE)
+			offset = GRAB_PIXEL_SHIFT_PASSIVE
+		if(GRAB_AGGRESSIVE)
+			offset = GRAB_PIXEL_SHIFT_AGGRESSIVE
+		if(GRAB_NECK)
+			offset = GRAB_PIXEL_SHIFT_NECK
+		if(GRAB_KILL)
+			offset = GRAB_PIXEL_SHIFT_NECK
+	switch(get_dir(M, src))
+		if(NORTH)
+			M.set_mob_offsets("pulledby", 0, 0+offset)
+			M.layer = MOB_LAYER+0.05
+		if(SOUTH)
+			M.set_mob_offsets("pulledby", 0, 0-offset)
+			M.layer = MOB_LAYER-0.05
+		if(EAST)
+			M.set_mob_offsets("pulledby", 0+offset, 0)
+			M.layer = MOB_LAYER
+		if(WEST)
+			M.set_mob_offsets("pulledby", 0-offset, 0)
+			M.layer = MOB_LAYER
+
+/mob/living/proc/reset_pull_offsets(mob/living/M, override)
+	if(!override && M.buckled)
+		return
+	M.reset_offsets("pulledby")
+	M.layer = MOB_LAYER
+	//animate(M, pixel_x = 0 , pixel_y = 0, 1)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -544,6 +583,7 @@
 		if(ismob(pulling))
 			var/mob/living/M = pulling
 			M.reset_offsets("pulledby")
+			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
 			if(istype(get_active_held_item(), /obj/item/grabbing))
@@ -1142,6 +1182,11 @@
 	var/wrestling_diff = 0
 	var/resist_chance = 40
 	var/mob/living/L = pulledby
+	var/combat_modifier = 1
+
+	if(HAS_TRAIT(src, TRAIT_PARALYSIS) || isseelie(src))//Will stop someone who is a seelie or paralized from trying to resist
+		to_chat(src, span_warning("I can't move!"))
+		return FALSE
 
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
@@ -1150,13 +1195,23 @@
 
 	resist_chance += ((STASTR - L.STASTR) * 10)
 
-	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance += -20 + min((wrestling_diff * 5), -20) //Can improve resist chance at high skill difference
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance += -20 + max((wrestling_diff * 10), 0)
-		resist_chance = max(resist_chance, 50 + min((wrestling_diff * 5), 0))
-	else
-		resist_chance = max(resist_chance, 70 + min((wrestling_diff * 5), 0))
+	if(restrained())
+		combat_modifier -= 0.25
+
+	if(cmode && !L.cmode)
+		combat_modifier += 0.3
+	else if(!cmode && L.cmode)
+		combat_modifier -= 0.3
+
+	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.2
+
+
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier -= 0.15
+
+	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20

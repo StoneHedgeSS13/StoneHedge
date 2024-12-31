@@ -75,6 +75,31 @@
 	icon_state = pick("mushroom1_full","mushroom1_full","mushroom1_full")
 	. = ..()
 
+// for truffles + bacon meal
+/obj/item/reagent_containers/food/snacks/rogue/truffles/cooked/attackby(obj/item/I, mob/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(user.mind)
+		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
+		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				new /obj/item/reagent_containers/food/snacks/rogue/royaltruffles(loc)
+				qdel(I)
+				qdel(src)
+
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/cooked))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				new /obj/item/reagent_containers/food/snacks/rogue/royaltruffles_poisoned(loc)
+				qdel(I)
+				qdel(src)
+	else
+		return ..()
+
+
 //	........   Truffle Pig   ................
 /mob/living/simple_animal/hostile/retaliate/rogue/trufflepig
 	icon = 'modular/icons/icons/piggie.dmi'

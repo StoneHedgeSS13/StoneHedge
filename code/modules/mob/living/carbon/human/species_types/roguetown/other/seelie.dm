@@ -106,7 +106,6 @@
 	..()
 	to_chat(C, "<span class='info'>I can speak Faexin with ,p before my speech.</span>")
 	C.verbs |= (/mob/living/carbon/human/proc/Turnlight)
-	C.verbs |= (/mob/living/carbon/proc/switchaura)
 
 /datum/species/seelie/on_species_loss(mob/living/carbon/C)
 	. = ..()

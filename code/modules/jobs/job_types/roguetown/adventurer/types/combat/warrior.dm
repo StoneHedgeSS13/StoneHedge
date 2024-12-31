@@ -296,6 +296,9 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+			H.cmode_music = 'sound/music/combat_combattante.ogg'
+			H.verbs -= list(/mob/living/carbon/human/proc/mark_target)
+			H.verbs += list(/mob/living/carbon/human/proc/declare_duel)
 
 
 	H.give_fightingstyle(TRUE)

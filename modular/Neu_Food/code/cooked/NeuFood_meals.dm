@@ -249,6 +249,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "carpcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -261,6 +262,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "clownfishcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -273,6 +275,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "anglercooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -285,6 +288,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "eelcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -326,7 +330,10 @@
 				return TRUE
 			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
 			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
+			if(istype(src, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated))
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
+			else
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
 			qdel(src)
 
 	else
@@ -348,6 +355,68 @@
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
 
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated
+	icon_state = "roastchicken_plated"
+	item_state = "plate_food"
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	color = "#ffc0c0"
+	experimental_inhand = FALSE
+	w_class = WEIGHT_CLASS_BULKY
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	trash = /obj/item/cooking/platter
+	rotprocess = SHELFLIFE_LONG
+
+/*-----------\
+| Royal meal |
+\-----------*/
+
+/*	.................   Royal Truffles   ................... */
+/obj/item/reagent_containers/food/snacks/rogue/royaltruffles
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_FILLING+SNACK_DECENT)
+	tastes = list("salty bacon" = 1, "divine truffles" = 1)
+	name = "royal truffles"
+	desc = "The height of decadence, a precious truffle pig, turned into a amusing meal, served on a bed of its beloved golden truffles."
+	icon_state = "royaltruffles"
+	foodtype = VEGETABLES | MEAT
+	warming = 3 MINUTES
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/foodbuff
+
+/obj/item/reagent_containers/food/snacks/rogue/royaltruffles/plated
+	icon_state = "royaltruffles_plated"
+	item_state = "plate_food"
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	trash = /obj/item/cooking/platter
+	rotprocess = SHELFLIFE_EXTREME
+
+
+/*	.................   Royal Truffles (Poisoned) ............ */
+/obj/item/reagent_containers/food/snacks/rogue/royaltruffles_poisoned
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_FILLING,  /datum/reagent/toxin/berrypoison = 10)
+	tastes = list("salty bacon" = 1, "mushrooms" = 1)
+	name = "royal truffles"
+	desc = "The height of decadence, a precious truffle pig, turned into a amusing meal, served on a bed of its beloved golden truffles."
+	icon_state = "royaltruffles"
+	foodtype = VEGETABLES | MEAT
+	warming = 3 MINUTES
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/foodbuff
+
+/obj/item/reagent_containers/food/snacks/rogue/royaltruffles_poisoned/plated
+	icon_state = "royaltruffles_plated"
+	item_state = "plate_food"
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	trash = /obj/item/cooking/platter
+	rotprocess = SHELFLIFE_EXTREME
 
 /*	.................   Cooked rat   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated
@@ -361,4 +430,5 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
+
 
