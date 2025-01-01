@@ -265,7 +265,7 @@
 				qdel(src)
 	else
 		return ..()
-	
+
 
 /*	.............   Fried onions   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
@@ -302,7 +302,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("warm potato" = 1)
 	rotprocess = SHELFLIFE_LONG
-	
+
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -329,3 +329,12 @@
 	else
 		return ..()
 
+/* .............   Roast Pork   ................ */
+/obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
+	icon = 'modular_stonehedge/icons/roguetown/items/food.dmi'
+	icon_state = "roastpork"
+	name = "roast pork"
+	desc = "A hunk of pigflesh, roasted to a perfect crispy texture"
+	bitesize = 3
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
+	rotprocess = SHELFLIFE_DECENT

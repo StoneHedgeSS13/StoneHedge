@@ -91,7 +91,11 @@
 
 /*	.............   Pork, spidermeat, birdmeat   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
-	icon_state = "meatslab"
+	name = "raw pork"
+	icon = 'modular_stonehedge/icons/roguetown/items/food.dmi'
+	icon_state = "pork"
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
 	slices_num = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
 	chopping_sound = TRUE
