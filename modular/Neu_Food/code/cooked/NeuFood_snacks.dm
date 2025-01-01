@@ -266,7 +266,6 @@
 	else
 		return ..()
 
-
 /*	.............   Fried onions   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
 	name = "fried onion"
