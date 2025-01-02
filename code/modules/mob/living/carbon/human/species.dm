@@ -96,6 +96,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//Breathing!
 	var/obj/item/organ/lungs/mutantlungs = null
 	var/breathid = "o2"
+
+	var/obj/item/organ/brain/mutant_brain = /obj/item/organ/brain
+	var/obj/item/organ/heart/mutant_heart = /obj/item/organ/heart
+	var/obj/item/organ/eyes/mutanteyes = /obj/item/organ/eyes
+	var/obj/item/organ/ears/mutantears = /obj/item/organ/ears
+	var/obj/item/organ/tongue/mutanttongue = /obj/item/organ/tongue
+	var/obj/item/organ/tail/mutanttail = null
+
+	var/obj/item/organ/liver/mutantliver
+	var/obj/item/organ/stomach/mutantstomach
+	var/obj/item/organ/guts/mutantguts
 	var/override_float = FALSE
 
 	//Bitflag that controls what in game ways can select this species as a spawnable source
@@ -143,20 +154,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	)
 
 	var/list/specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	var/list/specstats_m = list(
-		"constitution" = 1, 
+		"constitution" = 1,
 		"intelligence" = -1,
 	)
 	var/list/specstats_f = list(
-		"strength" = -1, 
+		"strength" = -1,
 		"speed" = 1,
 	)
 	var/list/specskills
@@ -195,7 +206,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!body_marking_sets)
 		return
 	if(!body_markings)
-		body_markings = list()
+		body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,)
 	var/datum/body_marking_set/bodyset
 	for(var/set_type in body_marking_sets)
 		bodyset = GLOB.body_marking_sets_by_type[set_type]
@@ -577,9 +590,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
 		if(BODY_FRONT_FRONT_LAYER)
-			return "FFRONT"
+			return "FRONT"
 		if(BODY_FRONT_FRONT_FRONT_LAYER)
-			return "FFFRONT"
+			return "FRONT"
 		if(BODY_UNDER_LAYER)
 			return "UNDER"
 
@@ -609,6 +622,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
 	var/is_retarded = HAS_TRAIT(H, TRAIT_RETARD_ANATOMY)
+	var/is_BOOBS = HAS_TRAIT(H, TRAIT_ENDOWMENT)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
 
@@ -667,6 +681,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.wear_armor)
 				return FALSE
 			if(is_nudist)
+				return FALSE
+			if(is_BOOBS && !I.can_hold_endowed && H.gender == FEMALE)
+				if(!disable_warning)
+					to_chat(H, span_warning("I can't squeeze MY TITS in!.."))
 				return FALSE
 			if(I.blocking_behavior & BULKYBLOCKS)
 				if(H.cloak)
@@ -744,6 +762,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.wear_pants)
 				return FALSE
 			if(is_nudist)
+				return FALSE
+			if(is_BOOBS && !I.can_hold_endowed && H.gender == MALE)
+				if(!disable_warning)
+					to_chat(H, span_warning("I can't squeeze MY JUNK in!.."))
 				return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_PANTS) )
 				return FALSE
@@ -1162,6 +1184,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.visible_message(span_warning("[user] stole [target]'s [I.name]!"),
 								span_notice("I stole [target]'s [I.name]!"), null, null, target)
 				to_chat(target, span_danger("[user] stole my [I.name]!"))*/
+		var/def_zone = check_zone(user.zone_selected)
+		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+		for(var/obj/item/embedded in affecting?.embedded_objects)
+			target.grabbedby(user, 1, item_override = embedded)
+			return TRUE
 		target.grabbedby(user)
 		return TRUE
 
@@ -1230,7 +1257,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class)
+		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class, damage = damage)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1438,8 +1465,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.mind.attackedme[user.real_name] = world.time
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/damage = user.get_punch_dmg() * 1.4
+			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
 			if(HAS_TRAIT(user, TRAIT_MARTIALARTIST))
 				damage *= 1.5
 			target.next_attack_msg.Cut()
@@ -1629,7 +1656,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				I.take_damage(1, BRUTE, I.d_type)
 		if(!nodmg)
 			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
-			if(should_embed_weapon(crit_wound, I))
+			SEND_SIGNAL(I, COMSIG_APPLY_REAGENTS, affecting.owner, user)
+			if(H.mind && should_embed_weapon(crit_wound, I))
 				var/can_impale = TRUE
 				if(!affecting)
 					can_impale = FALSE
@@ -1886,7 +1914,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if (H.on_fire)
 			burn_damage = 20
 			if(H.fire_stacks >= 10)
-				burn_damage = 40
+				burn_damage = 100
 		else
 			firemodifier = min(firemodifier, 0)
 			burn_damage = max(log(2-firemodifier,(H.bodytemperature-BODYTEMP_NORMAL))-5,0) // this can go below 5 at log 2.5

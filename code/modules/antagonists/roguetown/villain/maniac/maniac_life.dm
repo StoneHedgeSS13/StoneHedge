@@ -180,20 +180,20 @@
 	sleep(disappearsecond)
 	target.client?.images -= shit
 
-/datum/antagonist/maniac/proc/handle_waking_up(mob/living/dreamer)
-	if(!dreamer.client)
+/proc/handle_waking_up(mob/living/target)
+	if(!target.client)
 		return
 	if(prob(2.5))
-		dreamer.emote("laugh")
+		target.emote("laugh")
 	//Floors go crazier go stupider
-	for(var/turf/open/floor in view(dreamer))
+	for(var/turf/open/floor in view(target))
 		if(!prob(20))
 			continue
-		INVOKE_ASYNC(src, PROC_REF(handle_waking_up_floor), floor, dreamer)
+		INVOKE_ASYNC(target, PROC_REF(handle_waking_up_floor), floor, target)
 
-/datum/antagonist/maniac/proc/handle_waking_up_floor(turf/open/floor, mob/living/dreamer)
+/proc/handle_waking_up_floor(turf/open/floor, mob/living/target)
 	var/mutable_appearance/fake_floor = image('icons/roguetown/maniac/dreamer_floors.dmi', floor,  pick("rcircuitanim", "gcircuitanim"), floor.layer + 0.1)
-	dreamer.client.images += fake_floor
+	target.client.images += fake_floor
 	var/offset = pick(-1, 1, 2)
 	var/disappearfirst = 3 SECONDS
 	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
@@ -201,4 +201,4 @@
 	var/disappearsecond = 3 SECONDS
 	animate(fake_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
-	dreamer.client?.images -= fake_floor
+	target.client?.images -= fake_floor

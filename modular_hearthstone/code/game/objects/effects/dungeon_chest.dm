@@ -37,7 +37,7 @@
 		/obj/item/clothing/shoes/roguetown/simpleshoes = 15,
 		/obj/item/clothing/suit/roguetown/shirt/undershirt/random = 15,
 		/obj/item/storage/belt/rogue/leather/cloth = 15,
-		/obj/item/clothing/cloak/raincloak/mortus = 15,
+		/obj/item/clothing/cloak/raincloak/rogue = 15,
 		/obj/item/clothing/head/roguetown/armingcap = 15,
 		/obj/item/clothing/cloak/apron/waist = 15,
 		/obj/item/storage/belt/rogue/leather/rope = 15,
@@ -356,7 +356,6 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 70,
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot = 30,
 		/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 20,
-		/obj/item/reagent_containers/glass/bottle/rogue/poison = 10,
 		/obj/item/reagent_containers/glass/bottle/rogue/wine = 10,
 		/obj/item/reagent_containers/glass/bottle/rogue/water = 25
 		)
@@ -370,7 +369,7 @@
 		if(prob(50))
 			new I(src)
 			if(prob(30))
-				new I(src) 
+				new I(src)
 	if(prob(80))
 		new O(src)
 		if(prob(50))
@@ -524,7 +523,7 @@
 		/obj/item/book/granter/spell/blackstone/blindness = 15,
 		// /obj/item/book/granter/spell/blackstone/invisibility = 15,
 		// /obj/item/book/granter/spell/blackstone/sicknessray = 15,
-		/obj/item/book/granter/spell/blackstone/bonechill = 10
+		/obj/item/book/granter/spell/blackstone/strengthen_undead = 10
 
 		)
 

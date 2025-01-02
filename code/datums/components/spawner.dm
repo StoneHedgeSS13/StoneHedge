@@ -48,4 +48,4 @@
 	spawned_mobs += L
 	L.nest = src
 	L.faction = src.faction
-	P.visible_message(span_danger("[L] [spawn_text] [P]."))
+	P.visible_message(span_danger("[L] [spawn_text] [P]"))

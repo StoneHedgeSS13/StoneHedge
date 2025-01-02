@@ -17,17 +17,15 @@
 	l_sleeve_zone = BODY_ZONE_L_LEG
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH
+	flags_inv = HIDECROTCH|HIDEBUTT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/under/roguetown/AdjustClothes(mob/user)
-#ifdef MATURESERVER
 	if(loc == user)
 		if(adjustable == CAN_CADJUST)
 			adjustable = CADJUSTED
 			icon_state = "[initial(icon_state)]_t"
-			body_parts_covered = null
-			slowdown += 2
+			flags_inv = null
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_pants()
@@ -37,9 +35,7 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_pants()
-#else
 	return
-#endif
 
 /obj/item/clothing/under/roguetown/tights
 	name = "tights"
@@ -72,6 +68,7 @@
 /obj/item/clothing/under/roguetown/tights/vagrant
 	r_sleeve_status = SLEEVE_TORN
 	body_parts_covered = GROIN|LEG_LEFT
+	torn_sleeve_number = 1
 
 /obj/item/clothing/under/roguetown/tights/vagrant/l
 	r_sleeve_status = SLEEVE_NORMAL
@@ -94,6 +91,7 @@
 	item_state = "webs"
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/under/roguetown/trou
 	name = "work trousers"
@@ -101,7 +99,7 @@
 	gender = PLURAL
 	icon_state = "trou"
 	item_state = "trou"
-//	adjustable = CAN_CADJUST
+	max_integrity = 100
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT)
@@ -109,24 +107,16 @@
 	blade_dulling = DULLING_BASHCHOP
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-
-/obj/item/clothing/under/roguetown/trou/leather
-	name = "leather trousers"
-	desc = "Trousers made of fine leather."
-	icon_state = "leathertrou"
-
-/obj/item/clothing/under/roguetown/trou/skirt
-	name = "leather skirt"
-	icon = 'modular_stonehedge/icons/armor/pants.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
-	desc = "Short skirt made of fine leather."
-	icon_state = "leatherskirt"
-	genitalaccess = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/under/roguetown/chainlegs/iron/studdedskirt
 	name = "studded skirt"
 	icon = 'modular_stonehedge/icons/armor/pants.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	//slightly better than normal iron chain by 10 blunt and stab.
+	armor = list("blunt" = 50, "slash" = 80, "stab" = 50, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	desc = "Short studded skirt made of fine leather and iron."
 	icon_state = "studdedskirt"
 	genitalaccess = TRUE
@@ -160,6 +150,9 @@
 	desc = "Pants worn by clanmen in the Narvali Highlands."
 	icon_state = "narvali_green"
 	item_state = "narvali_green"
+	max_integrity = 130
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
@@ -182,12 +175,13 @@
 	blocksound = CHAINHIT
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -204,7 +198,7 @@
 	body_parts_covered = GROIN
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -217,9 +211,10 @@
 	name = "iron chain chausses"
 	icon = 'modular_stonehedge/icons/armor/pants.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
-	icon_state = "ichain_legs"
+	icon_state = "chain_legs"
+	color = "#9EA48E"
 	armor = list("blunt" = 40, "slash" = 80, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/under/roguetown/platelegs
@@ -237,7 +232,8 @@
 	blocksound = PLATEHIT
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_BULKY
@@ -257,13 +253,13 @@
 	blocksound = PLATEHIT
 	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 
 /obj/item/clothing/under/roguetown/carapacelegs
 	name = "carapace chausses"
-	desc = "aquatic plated armor to protect the legs."
+	desc = "Aquatic plated armor to protect the legs."
 	gender = PLURAL
 	icon_state = "carapace_legs"
 	item_state = "carapace_legs"
@@ -277,6 +273,15 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/under/roguetown/chainlegs/iron/skirt
+	name = "iron chain skirt"
+	icon = 'modular_stonehedge/icons/armor/pants.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/pants.dmi'
+	icon_state = "chain_skirt"
+	item_state = "chain_skirt"
+	color = "#9EA48E"
+	genitalaccess = TRUE
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
 	name = "chain skirt"
@@ -302,9 +307,9 @@
 
 /obj/item/clothing/under/roguetown/carapacelegs/dragon
 	name = "dragonscale platelegs"
-	desc = "dragonscale armor to protect the legs."
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
-	color = "red"
+	desc = "Dragonscale armor to protect the legs."
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	color = "#9e5761"
 	sellprice = 50
 
 /obj/item/clothing/under/roguetown/carapacelegs/dragon/skirt
@@ -323,6 +328,8 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	genitalaccess = TRUE
+	fiber_salvage = FALSE
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/loincloth/brown
 	color = CLOTHING_BROWN

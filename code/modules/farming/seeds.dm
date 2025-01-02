@@ -204,3 +204,42 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/random
+	name = "mystery seeds"
+	seed_identity = "unknown seeds"
+	var/static/list/possible_seeds = list(
+		/obj/item/seeds/wheat,
+		/obj/item/seeds/herbs,
+		/obj/item/seeds/poppy,
+		/obj/item/seeds/wheat/oat,
+		/obj/item/seeds/apple,
+		/obj/item/seeds/berryrogue,
+		/obj/item/seeds/potato,
+		/obj/item/seeds/sugarcane,
+		/obj/item/seeds/pumpkin,
+		/obj/item/seeds/carrot,
+		/obj/item/seeds/garlic,
+		/obj/item/seeds/cabbage,
+		/obj/item/seeds/pear,
+		/obj/item/seeds/cherry,
+		/obj/item/seeds/olive,
+		/obj/item/seeds/nut,
+		/obj/item/seeds/tomato,
+		/obj/item/seeds/onion,
+		/obj/item/seeds/eggplant,
+		/obj/item/seeds/bean,
+		/obj/item/seeds/radish,
+		/obj/item/seeds/beet,
+		/obj/item/seeds/bellpepper,
+		/obj/item/seeds/peas,
+		/obj/item/seeds/rice,
+		/obj/item/seeds/cucumber,
+		/obj/item/seeds/tea
+	)
+
+/obj/item/seeds/random/Initialize()
+	. = ..()
+	var/chosen_seed = pick(possible_seeds)
+	new chosen_seed(get_turf(src))
+	qdel(src)

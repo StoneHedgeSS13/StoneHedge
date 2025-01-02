@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/roguetown/shirt/belldress
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
 	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/belldress.dmi'
 	name = "bell dress"
@@ -10,6 +10,7 @@
 	sleevetype = "bdress"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBUTT
 
 
 //COLORS
@@ -60,53 +61,53 @@
 
 //CRAFTING
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress
+/datum/crafting_recipe/roguetown/sewing/bell_dress
 	name = "bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_yellow
+/datum/crafting_recipe/roguetown/sewing/bell_dress_yellow
 	name = "yellow bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/yellow)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_red
+/datum/crafting_recipe/roguetown/sewing/bell_dress_red
 	name = "red bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/red)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_cyan
+/datum/crafting_recipe/roguetown/sewing/bell_dress_cyan
 	name = "cyan bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/cyan)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_purple
+/datum/crafting_recipe/roguetown/sewing/bell_dress_purple
 	name = "purple bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/purple)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 
-/datum/crafting_recipe/roguetown/weaving/dress_white
+/datum/crafting_recipe/roguetown/sewing/dress_white
 	name = "white dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/white)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_black
+/datum/crafting_recipe/roguetown/sewing/bell_dress_black
 	name = "black bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/black)
 	reqs = list(/obj/item/natural/silk = 2,
 				/obj/item/natural/fibers = 1)
 
-/datum/crafting_recipe/roguetown/weaving/bell_dress_baroness
+/datum/crafting_recipe/roguetown/sewing/bell_dress_baroness
 	name = "baroness bell dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/belldress/baroness)
 	reqs = list(/obj/item/natural/silk = 2,

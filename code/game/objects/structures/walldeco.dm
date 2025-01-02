@@ -174,6 +174,25 @@
 	breakoutextra = 10 MINUTES
 	buckleverb = "tie"
 
+/obj/structure/fluff/walldeco/user_unbuckle_mob(mob/living/M, mob/user)
+	if(obj_broken)
+		..()
+		return
+	if(isliving(user))
+		var/mob/living/L = user
+		var/time2mount = CLAMP((L.STASTR*2), 1, 99)
+		user.changeNext_move(CLICK_CD_RESIST)
+		if(user != M)
+			if(prob(time2mount))
+				..()
+			else
+				user.visible_message(span_warning("[user] tries to pull [M] free of [src]!"))
+			return
+		if(prob(time2mount))
+			..()
+		else
+			user.visible_message(span_warning("[user] tries to break free of [src]!"))
+
 /obj/structure/fluff/walldeco/chains/Initialize()
 	icon_state = "chains[rand(1,8)]"
 	..()
@@ -184,7 +203,7 @@
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -218,3 +237,16 @@
 
 /obj/structure/fluff/walldeco/rpainting/crown
 	icon_state = "painting_3"
+
+/obj/structure/fluff/walldeco/medposter1
+	icon_state = "medposter"
+/obj/structure/fluff/walldeco/medposter2
+	icon_state = "medposter2"
+/obj/structure/fluff/walldeco/medposter3
+	icon_state = "medposter3"
+/obj/structure/fluff/walldeco/medposter4
+	icon_state = "medposter4"
+/obj/structure/fluff/walldeco/medposter5
+	icon_state = "medposter5"
+/obj/structure/fluff/walldeco/medposter6
+	icon_state = "medposter6"

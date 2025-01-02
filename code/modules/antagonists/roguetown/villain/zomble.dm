@@ -196,7 +196,7 @@
 		zombie_part.update_disabled()
 	zombie.update_body()
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
-	zombie.set_patron(/datum/patron/inhumen/zizo)
+	zombie.set_patron(/datum/patron/inhumen/levishth)
 
 /*
 	// Outside of one 2% chance remaining for zombie era strength

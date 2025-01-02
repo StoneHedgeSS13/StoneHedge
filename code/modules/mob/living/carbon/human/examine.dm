@@ -11,7 +11,7 @@
 		event.desc = self_species.stress_desc */
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
-	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
+	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Harlequin")
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
@@ -70,16 +70,18 @@
 				display_as_wanderer = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			if(J.wanderer_examine)
-				display_as_wanderer = TRUE
+			if(J)
+				if(J.wanderer_examine)
+					display_as_wanderer = TRUE
+			/* worthless.
 			if(islatejoin)
-				is_returning = TRUE
+				is_returning = TRUE*/
 		if(display_as_wanderer)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [custom_race_name ? "[custom_race_name] ([race_name])" : "[race_name]"].")
 		else if(used_title)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
+			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][custom_race_name ? "[custom_race_name] ([race_name])" : "[race_name]"] [used_title].")
 		else
-			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
+			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [custom_race_name ? "[custom_race_name] ([race_name])" : "[race_name]"].")
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
@@ -117,12 +119,27 @@
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
 
+		if(HAS_TRAIT(src, TRAIT_GROVE_MARKED))
+			. += span_userdanger("MARKED BY THE GROVE!")
+
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
+		if(iszizocultist(user) || iszizolackey(user))
+			if(virginity)
+				. += "<span class='userdanger'>VIRGIN!</span>"
 
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("OUTLAW!")
 
+		if(istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/slavecollar)||istype(get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/servant/imprisoned))
+			. += span_notice("It's a slave.")
+		if(mind)
+			var/mob/living/carbon/human/H = mind.current
+			if(H.enemies.Find(name))
+				. += span_userdanger("My target!")
+
+			if(H.hunters.Find(name))
+				. += span_userdanger("I'm a dead man!")
 
 		var/commie_text
 		if(mind)
@@ -131,16 +148,14 @@
 					commie_text = span_notice("Free man!")
 				else
 					commie_text = span_userdanger("BANDIT!")
-			if(mind.special_role == "Vampire Lord" && !mind.has_antag_datum(/datum/antagonist/vampirelord/).disguised)
+			if(mind.special_role == "Vampire Lord" && !mind.has_antag_datum(/datum/antagonist/vampirelord)?.disguised)
 				. += span_userdanger("A MONSTER!")
-			if(mind.assigned_role == "Lunatic")
-				. += span_userdanger("LUNATIC!")
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
-
+		if(HAS_TRAIT(src, TRAIT_NORTHMAN) && HAS_TRAIT(user, TRAIT_NORTHMAN))
+			. += span_userdanger("Hollvinr!")
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
-
 		if(commie_text)
 			. += commie_text
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
@@ -290,6 +305,23 @@
 				msg += "<B>[m1] severely wounded.</B>"
 			if(100 to INFINITY)
 				msg += span_danger("[m1] gravely wounded.")
+
+	if(mind)
+		var/datum/antagonist/vampirelord/vampness = mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(vampness)
+			if(vampness && !vampness.disguised && vampness.is_solo)
+				msg += span_boldnotice("[m3] pale skin and sunken features.") //mostly so healers know they cant miracle those to health.
+
+		if(user == src)
+			switch(bodytemperature)
+				if(-INFINITY to BODYTEMP_COLD_DAMAGE_LIMIT)
+					msg += span_blue("I feel freezing cold!")
+				if(BODYTEMP_COLD_DAMAGE_LIMIT to BODYTEMP_NORMAL)
+					msg += span_notice("I am shivering from the cold.")
+				if(BODYTEMP_NORMAL to BODYTEMP_HEAT_DAMAGE_LIMIT)
+					msg += span_notice("I am sweating from the heat.")
+				if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
+					msg += span_red("I feel burning hot!")
 
 	// Blood volume
 	switch(blood_volume)
@@ -449,7 +481,7 @@
 				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
-			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
+			else if(has_status_effect(/datum/status_effect/debuff/sleepytime)) //lune worshippers still wont look tired.
 				msg += "[m1] looking a little tired."
 	else
 		msg += "[m1] unconscious."
@@ -466,6 +498,12 @@
 
 	if(length(msg))
 		. += span_warning("[msg.Join("\n")]")
+	// Show especially large embedded objects at a glance
+	for(var/obj/item/bodypart/part in bodyparts)
+		if (LAZYLEN(part.embedded_objects))
+			for(var/obj/item/stuck_thing in part.embedded_objects)
+				if (stuck_thing.w_class >= WEIGHT_CLASS_SMALL)
+					. += span_bloody("<b>[m3] \a [stuck_thing] stuck in [m2] [part.name]!</b>")
 
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
@@ -485,12 +523,43 @@
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
 
+		//The Nymphomaniac Underground
+		if((!appears_dead) && stat == CONSCIOUS && src.has_flaw(/datum/charflaw/addiction/lovefiend))
+			var/datum/charflaw/addiction/bonercheck = src.charflaw
+			if((bonercheck) && (bonercheck.sated == 0))
+				if(user.has_flaw(/datum/charflaw/addiction/lovefiend)) //Takes one to know one
+					switch(rand(1,5))
+						if(1)
+							. += span_love("I can sense [m2] <B>need</B> for fun...")
+						if(2)
+							. += span_love("[m1] <B>aching</B> for a release.")
+						if(3)
+							. += span_love("A carnal need <B>stirs</B> within [m2] core.")
+						if(4)
+							. += span_love("I can practically feel [m2] <B>horniness</B>...")
+						if(5)
+							. += span_love("Embers of desire <B>smolder</B> within [m2].")
+				else if(Adjacent(user)) //No nympho, but close enough to notice.
+					switch(rand(1,4))
+						if(1)
+							. += span_love("[m1] shifting their legs quite a bit...")
+						if(2)
+							. += span_love("I can see [m2] is a bit restless...")
+						if(3)
+							. += span_love("[m2] seem distracted...")
+						if(4)
+							. += span_love("[m1] restless, for some reason.")
+
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart)
 			var/inscryption_key = LAZYACCESS(heart.inscryption_keys, maniac) // SPECIFICALLY the key that WE wrote
 			if(inscryption_key && (inscryption_key in maniac.key_nums))
 				. += span_danger("[t_He] know[p_s()] [inscryption_key], I AM SURE OF IT!")
+
+	var/cursed_stuff = examine_bellies() //vore Code
+	if(cursed_stuff)
+		. += cursed_stuff
 
 	if(aghost_privilege)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
@@ -533,15 +602,16 @@
 	for(var/line in lines)
 		. += span_info(line)
 
-	if(!obscure_name && headshot_link)
+	var/see_masked = client?.prefs.masked_examine
+	if(headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View face closely</a>"
-	if(nudeshot_link && !wear_shirt)
+	if(nudeshot_link && !wear_shirt && !wear_armor)
 		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
-	if(!obscure_name && flavor_text && !headshot_link)
+	if(flavor_text && !headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_flavor;'>View Description</a>"
-	if(!obscure_name && ooc_notes && !headshot_link)
+	if(ooc_notes && !headshot_link && (!obscure_name || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_ooc_notes;'>View OOC Notes</a>"
-	if(!obscure_name && nsfw_info && !headshot_link)
+	if(nsfw_info && !headshot_link && (!obscure_name  || see_masked))
 		. += "<a href='?src=[REF(src)];task=view_nsfw_notes;'>View NSFW Notes</a>"
 
 	var/perpname = get_face_name(get_id_name(""))

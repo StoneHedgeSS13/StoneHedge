@@ -103,6 +103,30 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,300))
 
+/obj/structure/fermenting_barrel/random/ale/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/ale, rand(0,300))
+
+/obj/structure/fermenting_barrel/random/wine/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/wine, rand(0,300))
+
+/obj/structure/fermenting_barrel/random/beer/cider/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/cider, rand(0,300))
+
+/obj/structure/fermenting_barrel/random/beer/vodka/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/vodka, rand(0,300))
+
+/obj/structure/fermenting_barrel/random/shroomtea/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/medicine/shroomt, rand(0,300))
+
+/obj/structure/fermenting_barrel/random/beer/rum/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer/rum, rand(0,300))
+
 /obj/structure/fermenting_barrel/water/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/water,300)

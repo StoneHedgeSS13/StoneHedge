@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_PENIS, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_ANUS),
+GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_PENIS, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BUTT, ORGAN_SLOT_ANUS),
 	BODY_ZONE_CHEST=list(ORGAN_SLOT_BREASTS, ORGAN_SLOT_BELLY))) //Vrell - If we want to do this to other organs down the line, we can just add their slots here.
 
 /datum/surgery/organ_manipulation
@@ -54,6 +54,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	var/list/implements_extract = list(
 		TOOL_HEMOSTAT = 80,
 		TOOL_CROWBAR = 65,
+		TOOL_IMPROVISED_HEMOSTAT = 40,
 		TOOL_HAND = 60,
 	)
 
@@ -115,7 +116,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 			organs -= found_organ
 			organs[found_organ.name] = found_organ
 
-		var/selected = input(user, "Remove which organ?", "PESTRA") as null|anything in sortList(organs)
+		var/selected = input(user, "Remove which organ?", "HERMEIR") as null|anything in sortList(organs)
 		if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
 			return FALSE
 		var/obj/item/organ/final_organ = organs[selected]
@@ -166,7 +167,8 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	accept_hand = TRUE
 	implements = list(
 		TOOL_HEMOSTAT = 80,
-		TOOL_CROWBAR = 65
+		TOOL_CROWBAR = 65,
+		TOOL_IMPROVISED_HEMOSTAT = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
@@ -200,7 +202,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	if(!length(organs))
 		to_chat(user, span_warning("There are no organs you can mold in [target]'s [parse_zone(target_zone)]!"))
 		return FALSE
-	var/selected = input(user, "Create which organ?", "PESTRA") as null|anything in sortList(organs)
+	var/selected = input(user, "Create which organ?", "HERMEIR") as null|anything in sortList(organs)
 	if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
 		return FALSE
 	if(target.getorganslot(selected))
@@ -255,7 +257,7 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 		organs -= found_organ
 		organs[found_organ.name] = found_organ
 
-	var/selected = input(user, "Sever which part?", "PESTRA") as null|anything in sortList(organs)
+	var/selected = input(user, "Sever which part?", "HERMEIR") as null|anything in sortList(organs)
 	if(QDELETED(user) || QDELETED(target) || !user.Adjacent(target) || (user.get_active_held_item() != tool))
 		return FALSE
 	var/obj/item/organ/final_organ = organs[selected]

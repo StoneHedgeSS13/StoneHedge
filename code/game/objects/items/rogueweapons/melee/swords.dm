@@ -5,7 +5,7 @@
 	force_wielded = 25
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
-	name = "sword"
+	name = "steel sword"
 	desc = "A simple steel sword, clean and effective."
 	icon_state = "sword1"
 	icon = 'icons/roguetown/weapons/32.dmi'
@@ -18,21 +18,28 @@
 	max_integrity = 150
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
-	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_sword.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_sword.ogg'
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
 	//dropshrink = 0.75
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	minstr = 7
 	sellprice = 30
 	wdefense = 4
 
+
 /obj/item/rogueweapon/sword/Initialize()
 	. = ..()
 	if(icon_state == "sword1")
 		icon_state = "sword[rand(1,3)]"
+
+/obj/item/rogueweapon/sword/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_sword.ogg", "modular_helmsguard/sound/sheath_sounds/draw_sword2.ogg", "modular_helmsguard/sound/sheath_sounds/draw_sword3.ogg")
+	sheathe_sound = pick("modular_helmsguard/sound/sheath_sounds/put_back_sword.ogg", "modular_helmsguard/sound/sheath_sounds/put_back_sword2.ogg")
+	. = ..()
 
 /obj/item/rogueweapon/sword/decorated
 	name = "engraved sword"
@@ -105,7 +112,7 @@
 	desc = "A bastard sword that can chop with ease."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
-	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_greatsword.ogg'
 	bigboy = 1
 	wlength = WLENGTH_LONG
 	gripsprite = TRUE
@@ -129,6 +136,11 @@
 			if("onback") return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 			if("wielded") return list("shrink" = 0.6,"sx" = 6,"sy" = -2,"nx" = -4,"ny" = 2,"wx" = -8,"wy" = -1,"ex" = 8,"ey" = 3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = -200,"wturn" = -160,"eturn" = -25,"nflip" = 8,"sflip" = 8,"wflip" = 0,"eflip" = 0)
 			if("onbelt") return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/sword/long/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pickup_sound
+	sheathe_sound = pick("sound/foley/equip/swordlarge1.ogg", "sound/foley/equip/swordlarge2.ogg")
+	. = ..()
 
 /obj/item/rogueweapon/sword/long/rider/messer
 	force = 20
@@ -245,6 +257,28 @@
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
+	attunement_cost = 5
+	infusable = FALSE
+	var/active_item
+
+/obj/item/rogueweapon/sword/long/vlord/equipped(mob/living/user)
+	. = ..()
+	if(active_item)
+		return
+	else
+		active_item = TRUE
+		user.attunement_points_used += attunement_cost
+		user.check_attunement_points()
+		return
+
+/obj/item/rogueweapon/sword/long/vlord/dropped(mob/living/user)
+	. = ..()
+	if(active_item)
+		user.attunement_points_used -= attunement_cost
+		user.check_attunement_points()
+		active_item = FALSE
+		return
+
 
 /obj/item/rogueweapon/sword/long/vlord/getonmobprop(tag)
 	. = ..()
@@ -366,7 +400,7 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 10
 	swingdelay = 8
-	damfactor = 0.8
+	damfactor = 1.1
 	item_d_type = "slash"
 
 /datum/intent/sword/chop/falchion
@@ -405,7 +439,7 @@
 	return
 
 /obj/item/rogueweapon/sword/iron
-	name = "sword"
+	name = "iron sword"
 	desc = "A simple iron sword, the most classical war weapon."
 	icon_state = "isword"
 	minstr = 6
@@ -525,8 +559,8 @@
 
 /obj/item/rogueweapon/sword/rapier/lord
 	force = 20
-	name = "sword of the Mad Duke"
-	desc = "Passed down through the ages, this decorative sword was recovered from the ashes of Roguetown when it was last destroyed... clutched in the bony fingers of the Mad Duke."
+	name = "sword of the Mad Lord"
+	desc = "Passed down through the ages, this decorative sword was recovered from the ashes of Roguetown when it was last destroyed... clutched in the bony fingers of the Mad Lord."
 	icon_state = "lordrap"
 	sellprice = 300
 	max_integrity = 300
@@ -589,23 +623,28 @@
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.adjustFireLoss(60)
-			H.Paralyze(20)
-			H.fire_act(1,5)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+		if(H.mind)
+			var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+			var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+			if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
 				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.Paralyze(20)
+				H.Knockdown(20)
+				H.adjustFireLoss(60)
+				H.Paralyze(20)
+				H.fire_act(1,5)
+				return FALSE
+			if(V_lord)
+				if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+					to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+					H.Knockdown(10)
+					H.Paralyze(10)
+					return FALSE
+			if(W && W.transformed == TRUE)
+				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+				H.Knockdown(20)
+				H.Paralyze(20)
+				return FALSE
+	return ..()
 
 /obj/item/rogueweapon/sword/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
 	if(world.time < src.last_used + 100)
@@ -616,29 +655,12 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/s_user = user
 		var/mob/living/carbon/human/H = target
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		var/datum/antagonist/vampirelord/lesser/Vp = H.mind.has_antag_datum(/datum/antagonist/vampire)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		if(Vp)
-			H.Stun(20)
-			to_chat(H, span_userdanger("The silver burns me!"))
-			H.adjustFireLoss(30)
-			H.Paralyze(20)
-			H.fire_act(1,4)
-			H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-			src.last_used = world.time
-		if(V)
-			if(V.disguised)
-				H.Stun(20)
-				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("The silver burns me!"))
-				H.adjustFireLoss(30)
-				H.Paralyze(20)
-				H.fire_act(1,4)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-			else
+		if(H.mind)
+			var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+			var/datum/antagonist/vampirelord/lesser/Vp = H.mind.has_antag_datum(/datum/antagonist/vampire)
+			var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+			var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+			if(Vp)
 				H.Stun(20)
 				to_chat(H, span_userdanger("The silver burns me!"))
 				H.adjustFireLoss(30)
@@ -646,26 +668,44 @@
 				H.fire_act(1,4)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !V)
-				if(V_lord.disguised)
+			if(V)
+				if(V.disguised)
+					H.Stun(20)
 					H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				H.Stun(10)
+					to_chat(H, span_userdanger("The silver burns me!"))
+					H.adjustFireLoss(30)
+					H.Paralyze(20)
+					H.fire_act(1,4)
+					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					src.last_used = world.time
+				else
+					H.Stun(20)
+					to_chat(H, span_userdanger("The silver burns me!"))
+					H.adjustFireLoss(30)
+					H.Paralyze(20)
+					H.fire_act(1,4)
+					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					src.last_used = world.time
+			if(V_lord)
+				if(V_lord.vamplevel < 4 && !V)
+					if(V_lord.disguised)
+						H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+					H.Stun(10)
+					to_chat(H, span_userdanger("The silver burns me!"))
+					H.adjustFireLoss(25)
+					H.Paralyze(10)
+					H.fire_act(1,4)
+					src.last_used = world.time
+				if(V_lord.vamplevel == 4 && !V)
+					s_user.Stun(10)
+					s_user.Paralyze(10)
+					to_chat(s_user, "<font color='red'>The silver weapon fails!</font>")
+					H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
+			if(W && W.transformed == TRUE)
+				H.Stun(40)
+				H.Paralyze(40)
 				to_chat(H, span_userdanger("The silver burns me!"))
-				H.adjustFireLoss(25)
-				H.Paralyze(10)
-				H.fire_act(1,4)
 				src.last_used = world.time
-			if(V_lord.vamplevel == 4 && !V)
-				s_user.Stun(10)
-				s_user.Paralyze(10)
-				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
-				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
-		if(W && W.transformed == TRUE)
-			H.Stun(40)
-			H.Paralyze(40)
-			to_chat(H, span_userdanger("The silver burns me!"))
-			src.last_used = world.time
 
 /obj/item/rogueweapon/sword/silver/sabre/elf
 	force = 25
@@ -680,9 +720,9 @@
 
 /obj/item/rogueweapon/greatsword
 	force = 12
-	force_wielded = 30
+	force_wielded = 40
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	name = "greatsword"
 	desc = "Might be able to chop anything in half!"
 	icon_state = "gsw"
@@ -699,7 +739,25 @@
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
-	wdefense = 5
+	wdefense = 6
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
+	penfactor = 30
+
+/datum/intent/sword/chop/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 1.2
+
+/datum/intent/sword/strike/zwei
+	reach = 1
+	penfactor = 60
+	damfactor = 0.7
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
@@ -718,8 +776,24 @@
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
-	wdefense = 4
+	max_blade_int = 400
+
+//leper sword, unique
+/obj/item/rogueweapon/greatsword/brokensword
+	slot_flags = ITEM_SLOT_BACK
+	name = "broken sword"
+	desc = "A massive, heavy broken blade, it is a little more than a hunk of metal."
+	icon_state = "brokensword"
+	icon = 'modular_stonehedge/icons/roguetown/weapons/64.dmi'
+	item_state = "brokensword"
+	possible_item_intents = list(/datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/axe/chop/battle, /datum/intent/sword/strike) //destroy. them. all.
+	gripsprite = FALSE
+	minstr = 14
+	force = 16
+	max_blade_int = 100 //fragile
+	force_wielded = 34
+	wdefense = 2 //take the punishment.
 
 /datum/intent/sword/cut/zwei
 	reach = 2
@@ -737,7 +811,7 @@
 	item_state = "graggarsword"
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
-	name = "graggar's sword"
+	name = "nyrnhe's sword"
 	desc = "A twisted sword cursed by Graggar, the tendrils running along its blade squirm in anticipation of bloodshed."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE

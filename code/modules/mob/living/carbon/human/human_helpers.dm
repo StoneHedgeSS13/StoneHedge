@@ -8,12 +8,10 @@
 /mob/living/carbon/human/check_language_hear(language)
 	if(!language)
 		return
-	if(wear_neck)
-		if(istype(wear_neck, /obj/item/clothing/neck/roguetown/talkstone))
-			return TRUE
-	if(!has_language(language))
-		if(has_flaw(/datum/charflaw/paranoid))
-			add_stress(/datum/stressevent/paratalk)
+	if(istype(wear_neck, /obj/item/clothing/neck/roguetown/talkstone))
+		return TRUE
+	if(!has_language(language) && has_flaw(/datum/charflaw/paranoid))
+		add_stress(/datum/stressevent/paratalk)
 
 
 /mob/living/carbon/human/canBeHandcuffed()
@@ -69,7 +67,7 @@
 	if( head && (head.flags_inv&HIDEFACE) )
 		return if_no_face		//Likewise for hats
 	var/obj/item/bodypart/O = get_bodypart(BODY_ZONE_HEAD)
-	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || !real_name || O.skeletonized )	//disfigured. use id-name if possible
+	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || !real_name || (O.skeletonized && !mind?.has_antag_datum(/datum/antagonist/lich)))	//disfigured. use id-name if possible
 		return if_no_face
 	return real_name
 

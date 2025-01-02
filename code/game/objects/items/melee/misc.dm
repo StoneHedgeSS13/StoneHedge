@@ -608,9 +608,6 @@
 	if (!on)
 		return
 	if (is_type_in_typecache(target, ovens))
-		// if (held_sausage && held_sausage.roasted)
-		// 	to_chat(span_warning("My [held_sausage] has already been cooked!"))
-		// 	return
 		if (istype(target, /obj/singularity) && get_dist(user, target) < 10)
 			to_chat(user, span_notice("I send [held_sausage] towards [target]."))
 			playsound(src, 'sound/blank.ogg', 50, TRUE)

@@ -30,7 +30,7 @@
 		has_plod = FALSE
 		update_icon() 
 		timer = initial(timer) + rand(-100,100) 
-		addtimer(CALLBACK(src, .proc/regrow),timer) 
+		addtimer(CALLBACK(src, PROC_REF(regrow)),timer) 
 	update_icon()
 
 /obj/structure/flora/wildplant/proc/regrow()
@@ -96,7 +96,7 @@
 		has_plod = FALSE
 		update_icon() 
 		timer = initial(timer) + rand(-100,100) 
-		addtimer(CALLBACK(src, .proc/regrow),timer) 
+		addtimer(CALLBACK(src, PROC_REF(regrow)),timer) 
 	update_icon()
 
 /obj/structure/flora/wildtree/wildplant/proc/regrow()

@@ -69,40 +69,49 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Steward",
 	"Knight",
 	"Noble Guest",
+	"Guild Appraiser",
+))
+
+GLOBAL_LIST_INIT(grove_positions, list(
+	"Great Druid",
+	"Hedge Warden",
+	"Druid",
+	"Hedge Knight",
+	"Ovate",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Magician",
-	"Physician",
-	"Jester",
+	"Guild Physician",
+	"Harlequin",
 	"Head Butler",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
 	"Watchman",
-	"Hedge Knight",
-	"Hedgemaster",
 	"Royal Guard",
 	"Beastmaster",
 	"Gatemaster",
-	"Town Sheriff",
+	"Watchmen Captain",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
-	"Prophet",
-	"Witcher",
+	"Archpriest",
+	"Wytcher Captain",
 	"Confessor",
-	"Priest",
 	"Gravesinger",
-	"Templar",
+	"Temple Paladin",
 	"Grandmaster",
-	"Druid",
+))
+
+GLOBAL_LIST_INIT(academy_positions, list(
+	"Academy Archmage",
+	"Academy Mage",
+	"Academy Apprentice",
 ))
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
-	"Merchant",
+	"Merchant Prince",
 	"Innkeep",
-	"Archivist",
 	"Armorer",
 	"Weaponsmith",
 	"Blacksmith",
@@ -117,34 +126,36 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
 	"Butcher",
 	"Cook",
-	"Lunatic",
+	"Shunned Slave",
+	"Public Servant",
+	"Dumb Whoreson",
 	"Miner",
 	"Hunter",
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Grabber",
+	"Henchman",
 	"Nightmaster",
 	"Nightswain",
 	"Docker",
 	"Prisoner",
-	"Beggar",
+	"Low Life",
 	"Forest Seelie",
 	"Adventurer",
 	"Pilgrim",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Mercenary",
 	"Sellsword",
-	"Guild Captain",
+	"Guildmaster",
 ))
 
 GLOBAL_LIST_INIT(apprentices_positions, list(
 	"Squire",
 	"Clerk",
 	"Smithy Apprentice",
-	"Magicians Apprentice",
 	"Churchling",
 	"Servant",
 	"Shophand",
@@ -172,14 +183,14 @@ GLOBAL_LIST_INIT(goblin_positions, list(
 ))
 
 GLOBAL_LIST_INIT(viking_positions, list(
-	"Northmen King",
+	"Dwarf Artificer",
 	"Northern Hostage",
 	"Northmen Berserkir"
 ))
 
 GLOBAL_LIST_INIT(vampire_positions, list(
-	"Antediluvian Peasant",
-	"Vampire Smith"
+	"Underdark Peasant",
+	"Underdark Smithy"
 ))
 
 
@@ -206,6 +217,7 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.courtier_positions
 	sorting_order += GLOB.garrison_positions
 	sorting_order += GLOB.church_positions
+	sorting_order += GLOB.academy_positions
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.apprentices_positions

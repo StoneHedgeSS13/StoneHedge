@@ -58,7 +58,7 @@
 						O.ckey = G.ckey
 						O.set_patron(O.client.prefs.selected_patron)
 						SSdroning.area_entered(get_area(O), O.client)
-					G.client.verbs -= GLOB.ghost_verbs
+					G.client?.verbs -= GLOB.ghost_verbs
 
 				return
 
@@ -131,6 +131,7 @@
 	using.hud = src
 	static_inventory += using
 
+/*
 	using = new /atom/movable/screen/grain
 	using.hud = src
 	static_inventory += using
@@ -140,6 +141,7 @@
 	static_inventory += scannies
 	if(owner.client?.prefs?.crt == TRUE)
 		scannies.alpha = 70
+*/
 
 	using = new /atom/movable/screen/ghost/orbit/rogue()
 	using.hud = src
@@ -196,6 +198,7 @@
 	using.hud = src
 	static_inventory += using
 
+/*
 	using = new /atom/movable/screen/grain
 	using.hud = src
 	static_inventory += using
@@ -205,6 +208,7 @@
 	static_inventory += scannies
 	if(owner.client?.prefs?.crt == TRUE)
 		scannies.alpha = 70
+*/
 
 /datum/hud/eye/show_hud(version = 0, mob/viewmob)
 	// don't show this HUD if observing; show the HUD of the observee
@@ -230,6 +234,7 @@
 	using.hud = src
 	static_inventory += using
 
+/*
 	using = new /atom/movable/screen/grain
 	using.hud = src
 	static_inventory += using
@@ -239,3 +244,4 @@
 	static_inventory += scannies
 	if(owner.client?.prefs?.crt == TRUE)
 		scannies.alpha = 70
+*/

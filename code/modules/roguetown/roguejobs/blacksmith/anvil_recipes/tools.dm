@@ -4,7 +4,7 @@
 	name = "Surgery Kit (+1 iron +1 cloth)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/cloth)
-	created_item = /obj/item/storage/belt/rogue/pouch/skit
+	created_item = /obj/item/storage/fancy/skit
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/surgery/lpick
@@ -19,6 +19,12 @@
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 	i_type = "General"
+
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pan
 	name = "Frypan"
@@ -141,10 +147,11 @@
 	created_item = /obj/item/rogueweapon/thresher
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pot
-	name = "Metal Pot"
+/datum/anvil_recipe/tools/pote
+	name = "Iron pot"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
+	craftdiff = 0
 
 /datum/anvil_recipe/tools/iron_arm_left
 	name = "Iron arm (L)"
@@ -183,11 +190,10 @@
 	created_item = /obj/item/rogueweapon/pick/steel
 	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgery tools set (+1 Steel)"
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = list(/obj/item/rogueweapon/surgery/scalpel, /obj/item/rogueweapon/surgery/saw, /obj/item/rogueweapon/surgery/hemostat, /obj/item/rogueweapon/surgery/retractor, /obj/item/rogueweapon/surgery/bonesetter, /obj/item/rogueweapon/surgery/cautery, /obj/item/reagent_containers/syringe/steel)
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/surgery/syringes
@@ -317,3 +323,24 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/r_leg/rprosthetic/clock
 	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
+
+/datum/anvil_recipe/tools/alembic        ////////// yes I know the sprites copper. chill.
+	name = "Alembic"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/reagent_containers/glass/alembic
+	i_type = "Tools"
+
+/datum/anvil_recipe/tools/glassbottles
+	name = "5x glass bottles" //more efficent cuz u smith em ig
+	created_item = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
+	req_bar = /obj/item/ingot/glass
+	craftdiff = 1
+	i_type = "General"
+
+/datum/anvil_recipe/tools/glasssyringes
+	name = "5x glass syringes" //more efficent cuz u smith em ig
+	created_item = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/syringe)
+	req_bar = /obj/item/ingot/glass
+	craftdiff = 2
+	i_type = "General"

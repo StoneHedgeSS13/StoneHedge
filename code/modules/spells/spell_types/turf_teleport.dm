@@ -8,6 +8,7 @@
 
 	var/include_space = FALSE //whether it includes space tiles in possible teleport locations
 	var/include_dense = FALSE //whether it includes dense tiles in possible teleport locations
+	var/include_teleport_restricted = FALSE //whether it includes tiles restricted from normal teleportation
 	var/sound1 = 'sound/blank.ogg'
 	var/sound2 = 'sound/blank.ogg'
 
@@ -21,6 +22,8 @@
 			if(isspaceturf(T) && !include_space)
 				continue
 			if(T.density && !include_dense)
+				continue
+			if(T.teleport_restricted && !include_teleport_restricted)
 				continue
 			if(T.x>world.maxx-outer_tele_radius || T.x<outer_tele_radius)
 				continue	//putting them at the edge is dumb

@@ -1,5 +1,5 @@
 /datum/sex_action/store_nipple
-	name = "Store/remove object in breasts"
+	name = "Store/remove object in nipple"
 
 /datum/sex_action/store_nipple/shows_on_menu(mob/living/user, mob/living/target)
 	if(user != target)
@@ -52,23 +52,19 @@
 /datum/sex_action/store_nipple/on_start(mob/living/user, mob/living/target)
 	var/obj/item/organ/filling_organ/breasts/userbreasts = user.getorgan(/obj/item/organ/filling_organ/breasts)
 	var/obj/item/heldstuff = user.get_active_held_item()
-	if(userbreasts.organ_size < 4)
-		to_chat(user, span_info("Unfortunately, my breasts are not big enough to fit anything in them."))
-		user.dropItemToGround(heldstuff)
-		return
-	else 
-		if(userbreasts.organ_size < 6 && heldstuff.w_class > WEIGHT_CLASS_TINY)
-			to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit tiny things."))
+	if(heldstuff)
+		if(userbreasts.organ_size < 4)
+			to_chat(user, span_info("Unfortunately, my breasts are not big enough to fit anything in them."))
 			user.dropItemToGround(heldstuff)
 			return
-		else 
-			if(userbreasts.organ_size < 8 && heldstuff.w_class > WEIGHT_CLASS_SMALL)
-				to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit small things."))
+		else
+			if(userbreasts.organ_size < 6 && heldstuff.w_class > WEIGHT_CLASS_TINY)
+				to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit tiny things."))
 				user.dropItemToGround(heldstuff)
 				return
-			else 
-				if(userbreasts.organ_size < 10 && heldstuff.w_class > WEIGHT_CLASS_NORMAL)
-					to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit medium sized things."))
+			else
+				if(userbreasts.organ_size < 8 && heldstuff.w_class > WEIGHT_CLASS_SMALL)
+					to_chat(user, span_info("Unfortunately, my breasts are only big enough to fit small things."))
 					user.dropItemToGround(heldstuff)
 					return
 
@@ -83,8 +79,8 @@
 	var/obj/item/useditem = user.get_active_held_item()
 	var/obj/item/organ/filling_organ/breasts/userbreasts = user.getorgan(/obj/item/organ/filling_organ/breasts)
 	var/mob/living/carbon/human/userussy = user
-	var/stealskill =  min(1,user.mind.get_skill_level(/datum/skill/misc/stealing))
-	var/medicineskill =  min(1,user.mind.get_skill_level(/datum/skill/misc/medicine))
+	var/stealskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/stealing))
+	var/medicineskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/medicine))
 	var/flubchance = 100
 	if(stealskill > medicineskill) //medicine or stealth, taken higher and used to divide the flubbing chance, if you got neither skill its 100 odds, go home bro.
 		flubchance = flubchance/stealskill
@@ -123,7 +119,7 @@
 				nipplecontents.doMove(get_turf(user))
 				userbreasts.contents -= nipplecontents
 				user.put_in_active_hand(nipplecontents)
-			to_chat(user, span_info("There is now nothing in my nipples."))			
+			to_chat(user, span_info("There is now nothing in my nipples."))
 		else
 			playsound(user, 'sound/misc/mat/insert (1).ogg', 8, TRUE, -2, ignore_walls = FALSE)
 			for(var/obj/item/nipplecontents as anything in userbreasts.contents)

@@ -21,16 +21,17 @@
 	resistance_flags = FLAMMABLE
 	can_parry = TRUE
 	associated_skill = /datum/skill/combat/shields		//Trained via blocking or attacking dummys with; makes better at parrying w/ shields.
-	wdefense = 5										//Was 15, lowered to 5 - Reason: Shield skill now handles your better parrying w/ shields.
+	wdefense = 8										//Was 15, lowered to 5 - Reason: Shield skill now handles your better parrying w/ shields.
 	var/coverage = 90
 	parrysound = "parrywood"
 	attacked_sound = "parrywood"
-	max_integrity = 150
+	max_integrity = 300
 	blade_dulling = DULLING_BASHCHOP
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	COOLDOWN_DECLARE(shield_bang)
 	w_class = WEIGHT_CLASS_BULKY
-
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_shield.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_shield.ogg'
 
 /obj/item/rogueweapon/shield/attackby(obj/item/attackby_item, mob/user, params)
 
@@ -113,10 +114,10 @@
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
-	wdefense = 6
+	wdefense = 9
 	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
-	max_integrity = 200
+	max_integrity = 300
 
 /obj/item/rogueweapon/shield/tower/getonmobprop(tag)
 	. = ..()
@@ -138,11 +139,11 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = null
 	flags_1 = CONDUCT_1
-	wdefense = 8
+	wdefense = 10
 	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
-	max_integrity = 300
+	max_integrity = 400
 	blade_dulling = DULLING_BASH
 	sellprice = 30
 
@@ -180,7 +181,7 @@
 	throwforce = 10
 	dropshrink = 0.8
 	resistance_flags = null
-	wdefense = 7		//Covers less than tower, so more arrows go through, but are more made for parrying.
+	wdefense = 8		//Covers less than tower, so more arrows go through, but are more made for parrying.
 	coverage = 10
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')

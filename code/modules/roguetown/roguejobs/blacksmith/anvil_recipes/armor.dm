@@ -1,5 +1,5 @@
 /datum/anvil_recipe/armor
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	craftdiff = 1
 
 
@@ -33,6 +33,14 @@
 	name = "Gorget"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget
+	craftdiff = 3
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/lgorget
+	name = "Studded Leather Gorget (Hardened Leather Gorget)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/neck/roguetown/gorget)
+	created_item = /obj/item/clothing/neck/roguetown/gorget/studdedleather
 	craftdiff = 3
 	i_type = "Armor"
 
@@ -142,7 +150,21 @@
 /datum/anvil_recipe/armor/goldmask
 	name = "Gold Mask"
 	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/clothing/mask/rogue/goldmask
+	created_item = /obj/item/clothing/mask/rogue/facemask/gold
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/steelmaskleper
+	name = "Steel Leper Mask (+1 Sapphire)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/roguegem/violet)
+	created_item = /obj/item/clothing/mask/rogue/facemask/leper
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/goldmaskleper
+	name = "Gold Leper Mask (+1 Sapphire)"
+	req_bar = /obj/item/ingot/gold
+	additional_items = list(/obj/item/roguegem/violet)
+	created_item = /obj/item/clothing/mask/rogue/facemask/leper/gold
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/goldarmor
@@ -169,6 +191,13 @@
 	name = "Katefractoii Helmet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/head/roguetown/helmet/katefractoiihelmet
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/studdedhood
+	name = "Studded Leather Hood (+Padded Hood)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/clothing/head/roguetown/helmet/leather/armorhood)
+	created_item = /obj/item/clothing/head/roguetown/helmet/leather/armorhood/advanced
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/studded
@@ -276,7 +305,7 @@
 	name = "Half-Plate Bikini (+2 Steel +1 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/bikini
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	craftdiff = 3
 	i_type = "Armor"
 
@@ -382,16 +411,23 @@
 	craftdiff = 2
 	i_type = "Armor"
 
+/datum/anvil_recipe/armor/ichainskirt
+	name = "Iron Chain Skirt"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron/skirt
+	craftdiff = 1
+	i_type = "Armor"
+
 /datum/anvil_recipe/armor/chainfishnet
 	name = "Chain Fishnet"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/chain
+	created_item = /obj/item/clothing/under/roguetown/chainlegs/fishnet
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/ichainfishnet
 	name = "Chain Fishnet"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/chain/iron
+	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron/fishnet
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/plateskirt
@@ -666,7 +702,7 @@
 	i_type = "Armor"
 
 /datum/anvil_recipe/armor/nochelm
-	name = "Noc Helmet (+1 Steel)"
+	name = "Jayx Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm

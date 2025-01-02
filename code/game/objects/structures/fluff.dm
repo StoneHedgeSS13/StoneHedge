@@ -194,7 +194,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/Initialize()
-	..()
+	. = ..()
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
@@ -225,7 +225,7 @@
 		if(!(M.mobility_flags & MOBILITY_STAND))
 			if(passcrawl)
 				return TRUE
-	if(icon_state == "woodrailing" && dir in CORNERDIRS)
+	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)
 			if(SOUTHEAST)
@@ -256,7 +256,7 @@
 		if(!(M.mobility_flags & MOBILITY_STAND))
 			if(passcrawl)
 				return TRUE
-	if(icon_state == "woodrailing" && dir in CORNERDIRS)
+	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)
 			if(SOUTHEAST)
@@ -320,7 +320,7 @@
 	climb_offset = 6
 
 /obj/structure/fluff/railing/fence/Initialize()
-	..()
+	. = ..()
 	smooth_fences()
 
 /obj/structure/fluff/railing/fence/Destroy()
@@ -390,8 +390,7 @@
 		return 1
 	if(mover.throwing && !ismob(mover))
 		return prob(66)
-	return !density
-	..()
+	return ..()
 
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
@@ -425,6 +424,7 @@
 	icon_state = "passage0"
 	density = TRUE
 	max_integrity = 1500
+	var/lockid = null
 
 /obj/structure/bars/passage/steel
 	name = "steel bars"
@@ -780,19 +780,6 @@
 					icon_state = "signwrote"
 	..()
 
-/obj/structure/fluff/dryingrack
-	name = "drying rack"
-	desc = ""
-	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dryrack"
-	density = TRUE
-	anchored = TRUE
-	layer = BELOW_OBJ_LAYER
-	blade_dulling = DULLING_BASHCHOP
-	max_integrity = 150
-	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
-	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-
 /obj/structure/fluff/alch
 	name = "alchemical lab"
 	desc = ""
@@ -873,6 +860,45 @@
 	desc = "An ornamental stone statue of the sun Goddess Astrata, decorated with golden jewelry. Bless."
 	icon_state = "astrata_bling"
 
+/obj/structure/fluff/statue/xylix
+	name = "ornamental astrata statue"
+	desc = "An ornamental stone statue of the God Xylix."
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "xylix"
+	pixel_x = -32
+/obj/structure/fluff/statue/noc
+	name = "ornamental astrata statue"
+	desc = "An ornamental stone statue of the Goddess Noc."
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "2"
+	pixel_x = -32
+/obj/structure/fluff/statue/eora
+	name = "ornamental eora statue"
+	desc = "An ornamental stone statue of the Goddess Eora."
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "5"
+	pixel_x = -32
+
+/obj/structure/fluff/statue/dragonr
+	name = "ornamental dragon statue"
+	desc = "An ornamental stone statue of a dragon."
+	icon = 'modular_hearthstone/icons/obj/dragon_statue.dmi'
+	icon_state = "1"
+	pixel_x = -32
+/obj/structure/fluff/statue/dragonl
+	name = "ornamental dragon statue"
+	desc = "An ornamental stone statue of a dragon."
+	icon = 'modular_hearthstone/icons/obj/dragon_statue.dmi'
+	icon_state = "2"
+	pixel_x = -32
+
+/obj/structure/fluff/statue/hay
+	name = "pile of hay"
+	desc = "A massive pile of hay."
+	icon = 'modular_hearthstone/icons/obj/hay.dmi'
+	icon_state = "haybale"
+	pixel_x = -32
+
 /obj/structure/fluff/statue/knight/r
 	icon_state = "knightstatue_r"
 
@@ -918,6 +944,12 @@
 	M.Scale(0.7,0.7)
 	src.transform = M
 
+/obj/structure/fluff/statue/femalestatue2
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "4"
+	pixel_x = -32
+	pixel_y = -16
+
 /obj/structure/fluff/statue/scare
 	name = "scarecrow"
 	icon_state = "td"
@@ -957,7 +989,6 @@
 							to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
 							amt2raise = 0
 						if(amt2raise > 0)
-							user.mind.add_sleep_experience(W.associated_skill, amt2raise * boon, FALSE)
 							user.mind.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
 						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 					else
@@ -1060,9 +1091,11 @@
 	)
 
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
+	if(!HAS_TRAIT(user, TRAIT_COMMIE))
+		return
+	var/donatedamnt = W.get_real_price()
 	if(user.mind)
-		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
-		if(B)
+		if(user)
 			if(W.sellprice <= 0)
 				to_chat(user, span_warning("This item is worthless."))
 				return
@@ -1072,61 +1105,16 @@
 					proceed_with_offer = TRUE
 					break
 			if(proceed_with_offer)
-				if(B.tri_amt >= 10)
-					to_chat(user, span_warning("The mouth doesn't open."))
-					return
-				B.contrib += W.get_real_price()
-				if(B.contrib >= 100)
-					B.tri_amt++
-					user.mind.adjust_triumphs(1)
-					B.contrib -= 100
-					var/I = list()
-					switch(B.tri_amt)
-						if(1)
-							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
-							I += /obj/item/storage/backpack/rogue/backpack
-						if(2)
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/bomb
-						if(3)
-							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
-						if(4)
-							I += /obj/item/clothing/neck/roguetown/bervor
-						if(5)
-							I += /obj/item/clothing/head/roguetown/helmet/horned
-						if(6)
-							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/bomb
-						if(7)
-							I += /obj/item/clothing/shoes/roguetown/boots/armor
-						if(8)
-							I += /obj/item/clothing/gloves/roguetown/plate
-						if(9)
-							I += /obj/item/clothing/wrists/roguetown/bracers
-						if(10)
-							I += /obj/item/clothing/neck/roguetown/blkknight
-							message_admins("A Bandit [ADMIN_FLW(user)] has reached maximum contribution level 10.")
-							user.log_message("as Bandit reached maximum contribution level 10.", LOG_GAME)
-					if(length(I))
-						for(var/R in I)
-							var/obj/item/T = new R(user.loc)
-							T.sellprice = 0
-					I = list()
-					playsound(loc,'sound/items/carvgood.ogg', 50, TRUE)
-				else
-					playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
-				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
-				if(istype(W, /obj/item/clothing/head/roguetown/crown/serpcrown)) // duplicate check here to notify admins and disable a second crown sale
-					message_admins("A Bandit [ADMIN_FLW(user)] has offered the Crown of Rockhill to Matthios.")
-					user.log_message("as Bandit offered the Crown of Rockhill to Matthios. (THRONE)", LOG_GAME)
-					treasuretypes = treasuretypes - /obj/item/clothing/head/roguetown/crown/serpcrown
-					SSroguemachine.crown = null //Avoid keeping an invalid reference to the crown.
+				playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				qdel(W)
-				return
+				for(var/mob/player in GLOB.player_list)
+					if(player.mind)
+						if(player.mind.has_antag_datum(/datum/antagonist/bandit))
+							var/datum/antagonist/bandit/bandit_players = player.mind.has_antag_datum(/datum/antagonist/bandit)
+							bandit_players.favor += donatedamnt
+							bandit_players.totaldonated += donatedamnt
+							to_chat(player, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You now have [bandit_players.favor] favor.</font>"))
+
 			else
 				to_chat(user, span_warning("This item isn't a good offering."))
 				return
@@ -1188,7 +1176,7 @@
 
 /obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
 	if(user.mind)
-		if(user.mind.assigned_role == "Prophet")
+		if(user.mind.assigned_role == "Archpriest")
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
 				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
 					to_chat(user, span_warning("I need to do this in the chapel."))
@@ -1270,7 +1258,7 @@
 	if(!L || !message)
 		return FALSE
 	var/message2recognize = sanitize_hear_message(message)
-	if(findtext(message2recognize, "zizo"))
+	if(findtext(message2recognize, "levishth"))
 		L.add_stress(/datum/stressevent/psycurse)
 		L.adjust_fire_stacks(100)
 		L.IgniteMob()

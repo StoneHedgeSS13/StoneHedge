@@ -51,12 +51,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	has_gravity = STANDARD_GRAVITY
 
-
-/area/testroom
-	requires_power = FALSE
-	name = "Test Room"
-	icon_state = "storage"
-
 //EXTRA
 
 /area/asteroid

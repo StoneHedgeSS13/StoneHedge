@@ -36,7 +36,7 @@
 	faction = list("undead")
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
-	patron = /datum/patron/inhumen/zizo		//So they can be hurt by holy fire/healing
+	patron = /datum/patron/inhumen/levishth		//So they can be hurt by holy fire/healing
 
 /mob/living/simple_animal/hostile/rogue/skeleton/axe
 	name = "Skeleton"
@@ -95,7 +95,7 @@
 	icon_dead = ""
 	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone,	/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow, /obj/item/ammo_casing/caseless/rogue/bolt,
 	/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/skull)
-	projectiletype = /obj/projectile/bullet/reusable/bolt/ancient
+	projectiletype = /obj/projectile/bullet/bolt/npc
 	projectilesound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
 	ranged = 1
 	retreat_distance = 2
@@ -104,6 +104,20 @@
 	check_friendly_fire = 1
 	maxHealth = 100
 	health = 100
+
+/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow/playersentry
+	var/list/friendlyjobs = list("Guild Appraiser", "Guildmaster")
+
+/mob/living/simple_animal/hostile/rogue/skeleton/guard/xbow/playersentry/CanAttack(atom/the_target, attack_lying)
+	if(ishuman(the_target))
+		var/mob/living/carbon/human/madafaka = the_target
+		if(madafaka.job |= friendlyjobs)
+			return FALSE
+		else
+			//funny screaming
+			if(prob(10))
+				src.say(pick("I GOT YOU NOW MADAFAKA!!!", "I SEE A MADA-FFFFFFFFFFFFFAKAAAA HERE!!!!", "WHAT'CHU DOIN HERE MADAFFFFAKA!!!!", "ALERT!! MADAFFFFAKA SPOTTEEEEED!!!"))
+	. = ..()
 
 /mob/living/simple_animal/hostile/rogue/skeleton/guard/crypt_guard
 	name = "Crypt Guard"
@@ -139,7 +153,7 @@
 	icon_state = "skeleton_bow"
 	icon_living = "skeleton_bow"
 	icon_dead = ""
-	projectiletype = /obj/projectile/bullet/reusable/arrow/ancient
+	projectiletype = /obj/projectile/bullet/arrow/npc
 	projectilesound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
 	ranged = 1
 	retreat_distance = 2
@@ -194,28 +208,27 @@
 	icon_state = "skull"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/projectile/bullet/reusable/arrow/ancient
-	damage = 10
-	damage_type = BRUTE
-	armor_penetration = 25
+/obj/item/ammo_casing/caseless/rogue/bolt/npc
+	name = "bolt"
+	desc = "A wooden shaft with a pointy iron end."
+	projectile_type = /obj/projectile/bullet/bolt/npc
+	caliber = "bolt"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "bullet"
-	speed = 2
+	icon_state = "bolt"
+	force = 7
+	dropshrink = 0.6
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
+	max_integrity = 1
+	w_class = WEIGHT_CLASS_SMALL
 
-
-/obj/projectile/bullet/reusable/bolt/ancient
-	damage = 15
+/obj/projectile/bullet/bolt/npc
+	name = "bolt"
+	damage = 20
 	damage_type = BRUTE
-	armor_penetration = 30
+	armor_penetration = 60
 	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "arrow_proj"
-	ammo_type = /obj/projectile/bullet/reusable/bolt
+	icon_state = "bolt_proj"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/npc
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100

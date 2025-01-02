@@ -52,6 +52,9 @@
 		return FALSE
 	if(user.get_inactive_held_item())
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_ENDOWMENT))
+		to_chat(user, span_warning("MY [src.gender == FEMALE ? "TITS" : "COCK"] prevent me from aiming my bow!.."))
+		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -102,6 +105,9 @@
 			return FALSE
 		if(mastermob.get_inactive_held_item())
 			return FALSE
+		if(HAS_TRAIT(mastermob, TRAIT_ENDOWMENT))
+			to_chat(mastermob, span_warning("MY [mastermob.gender == FEMALE ? "TITS" : "COCK"] prevent me from drawing my bowstring!.."))
+			return FALSE
 	return TRUE
 
 /datum/intent/shoot/bow/prewarning()
@@ -114,10 +120,10 @@
 		var/newtime = 0
 		//skill block
 		newtime = newtime + 10
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * (10/6))
-		//str block //rtd replace 10 with drawdiff on bows that are hard and scale str more (10/20 = 0.5)
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * 2)
+		//str block //rtd replace 10 with drawdiff on bows that are hard and scale str more
 		newtime = newtime + 10
-		newtime = newtime - (mastermob.STASTR * (10/20))
+		newtime = newtime - (mastermob.STASTR * 0.5)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - (mastermob.STAPER * 1) //20/20 is 1

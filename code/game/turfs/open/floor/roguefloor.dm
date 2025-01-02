@@ -152,21 +152,166 @@
 	slowdown = 0
 	smooth = SMOOTH_TRUE
 	neighborlay = "grassedge"
+
 /turf/open/floor/rogue/grass/get_slowdown(mob/user)
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-0.5, -1)
+	var returned = slowdown // Initialize 'returned' with a default value
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
-// /turf/open/floor/rogue/grass/Initialize()
-//	dir = pick(GLOB.cardinals)
-//	GLOB.dirt_list += src
-//	. = ..()
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/grass/turf_destruction(damage_flag)
+	. = ..()
+	src.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
+
+/turf/open/floor/rogue/snow
+	name = "snow"
+	desc = "A gentle blanket of snow."
+	icon_state = "snow"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	neighborlay = "snowedge"
+
+/turf/open/floor/rogue/snow/Initialize()
+	dir = pick(GLOB.cardinals)
+	. = ..()
+
+/turf/open/floor/rogue/snow/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/snowrough
+	name = "rough snow"
+	desc = "A rugged blanket of snow."
+	icon_state = "snowrough"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/snowrough,)
+	neighborlay = "snowroughedge"
+
+/turf/open/floor/rogue/snowrough/Initialize()
+	dir = pick(GLOB.cardinals)
+	. = ..()
+
+/turf/open/floor/rogue/snowrough/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/snowpatchy
+	name = "patchy snow"
+	desc = "Half-melted snow revealing the hardy grass underneath."
+	icon_state = "snowpatchy_grass"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
+	neighborlay = "snowpatchy_grassedge"
+
+/turf/open/floor/rogue/snowpatchy/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/grasscold
+	name = "tundra grass"
+	desc = "Grass, frigid and touched by winter."
+	icon_state = "grass_cold"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
+	neighborlay = "grass_coldedge"
+
+/turf/open/floor/rogue/grasscold/Initialize()
+	dir = pick(GLOB.cardinals)
+	. = ..()
+
+/turf/open/floor/rogue/grasscold/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/grassred
+	name = "red grass"
+	desc = "Grass, ripe with Dendor's blood."
+	icon_state = "grass_red"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(
+						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
+	neighborlay = "grass_rededge"
+
+/turf/open/floor/rogue/grassred/Initialize()
+	dir = pick(GLOB.cardinals)
+	. = ..()
+
+/turf/open/floor/rogue/grassred/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/grassyel
+	name = "yellow grass"
+	desc = "Grass, blessed by Astrata's light."
+	icon_state = "grass_yel"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
+	neighborlay = "grass_yeledge"
+
+/turf/open/floor/rogue/grassyel/Initialize()
+	dir = pick(GLOB.cardinals)
+	. = ..()
+
+/turf/open/floor/rogue/grassyel/cardinal_smooth(adjacencies)
+	roguesmooth(adjacencies)
+
+/turf/open/floor/rogue/hay
+	icon_state = "hay"
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/grassland.wav'
+	slowdown = 0
 
 /turf/open/floor/rogue/dirt/ambush
 	name = "dirt"
@@ -221,25 +366,32 @@
 	var/dirt_amt = 3
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
-	//No tile slowdown for fairies
+	// No tile slowdown for fairies
 	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	if (isseelie(FM) && !(FM.resting)) // Add wingcheck
 		return 0
 
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
-	for(var/obj/item/I in user.held_items)
-		if(I.walking_stick)
-			if(!I.wielded)
+	// Define 'returned' with an initial value
+	var returned = slowdown
+	var negate_slowdown = FALSE
+
+	// Check for walking stick
+	for (var/obj/item/I in user.held_items)
+		if (I.walking_stick)
+			if (!I.wielded)
 				var/mob/living/L = user
-				if(!L.cmode)
+				if (!L.cmode)
 					negate_slowdown = TRUE
 
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-2.5, -1)
+	// Additional check for 'TRAIT_BOG_TREKKING'
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0
+
+	if (negate_slowdown)
+		returned = 0
+
 	return returned
+
 
 
 
@@ -293,44 +445,12 @@
 //	update_water()
 
 /turf/open/floor/rogue/dirt/update_water()
-	water_level = max(water_level-10,0)
-	if(water_level > 10) //this would be a switch on normal tiles
+	update_muddy()
+	return TRUE
+
+/turf/open/floor/rogue/dirt/proc/update_muddy()
+	if(!muddy && water_level > 25)
 		color = "#95776a"
-	else
-		color = null
-	return TRUE
-
-/turf/open/floor/rogue/dirt/road/update_water()
-	water_level = max(water_level-10,0)
-	for(var/D in GLOB.cardinals)
-		var/turf/TU = get_step(src, D)
-		if(istype(TU, /turf/open/water))
-			if(!muddy)
-				become_muddy()
-			return TRUE //stop processing
-	if(water_level > 10) //this would be a switch on normal tiles
-		if(!muddy)
-			become_muddy()
-//flood process goes here to spread to other turfs etc
-//	if(water_level > 250)
-//		return FALSE
-	if(muddy)
-		if(water_level <= 0)
-			water_level = 0
-			muddy = FALSE
-			slowdown = initial(slowdown)
-			icon_state = initial(icon_state)
-			name = initial(name)
-			footstep = initial(footstep)
-			barefootstep = initial(barefootstep)
-			clawfootstep = initial(clawfootstep)
-			heavyfootstep = initial(heavyfootstep)
-			track_prob = initial(track_prob) //Hearthstone change.
-	return TRUE
-
-/turf/open/floor/rogue/dirt/proc/become_muddy()
-	if(!muddy)
-		water_level = max(water_level-100,0)
 		muddy = TRUE
 		icon_state = "mud[rand (1,3)]"
 		name = "mud"
@@ -340,6 +460,26 @@
 		heavyfootstep = FOOTSTEP_MUD
 		track_prob = 10 //Hearthstone change.
 		bloodiness = 20
+	else if(muddy && water_level <= 25)
+		color = null
+		muddy = FALSE
+		icon_state = initial(icon_state)
+		name = initial(name)
+		slowdown = initial(slowdown)
+		footstep = initial(footstep)
+		barefootstep = initial(barefootstep)
+		heavyfootstep = initial(heavyfootstep)
+		track_prob = initial(track_prob)
+		bloodiness = initial(bloodiness)
+	drying()
+
+/turf/open/floor/rogue/dirt/proc/drying()
+	if(water_level > 0) //self drying, hopefully not performance impactful.
+		water_level -= 5
+		water_level = max(water_level, 0) //should keep it above minus.
+		if(water_level <= 25 && muddy)
+			update_muddy()
+		addtimer(CALLBACK(src, PROC_REF(update_muddy)), pick(1 MINUTES, 2 MINUTES)) //not all tiles at once to hopefully spread out the processing required.
 
 /turf/open/floor/rogue/dirt/road
 	name = "dirt"
@@ -355,13 +495,11 @@
 	canSmoothWith = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
 	neighborlay = "roadedge"
 	slowdown = 0
+
 /turf/open/floor/rogue/dirt/road/get_slowdown(mob/user)
-	var/returned = slowdown
-	var/negate_slowdown = FALSE
-	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
-		negate_slowdown = TRUE
-	if(negate_slowdown)
-		returned = max(returned-0.5, -1)
+	var returned = slowdown // Initialize 'returned' with a default value
+	if (HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		returned = 0 // No slowdown if user has 'TRAIT_BOG_TREKKING'
 	return returned
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
 	return
@@ -1044,7 +1182,7 @@
 	icon_state = ""
 
 /turf/open/floor/rogue/carpet/lord/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else

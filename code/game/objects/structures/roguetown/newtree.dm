@@ -12,7 +12,7 @@
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/woodhit.ogg'
 	climbable = FALSE
-	static_debris = list(/obj/item/grown/log/tree = 1)
+	static_debris = list(/obj/item/grown/log/tree/large = 1)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_IN_UP | BLOCK_Z_OUT_DOWN
 	max_integrity = 400
 	leanable = TRUE
@@ -37,13 +37,16 @@
 			return
 
 /obj/structure/flora/newtree/proc/wallpress(mob/living/user)
-	if(user.wallpressed)
+	if(user.wallpressed) {
+		// Release wallpressed state if already pressed
+		release_wallpress(user)
 		return
+	}
 	if(user.pixelshifted)
 		return
 	if(!(user.mobility_flags & MOBILITY_STAND))
 		return
-	var/dir2wall = get_dir(user,src)
+	var/dir2wall = get_dir(user, src)
 	if(!(dir2wall in GLOB.cardinals))
 		return
 	user.wallpressed = dir2wall
@@ -62,6 +65,11 @@
 		if(WEST)
 			user.setDir(EAST)
 			user.set_mob_offsets("wall_press", _x = -12, _y = 0)
+
+/obj/structure/flora/newtree/proc/release_wallpress(mob/living/user)
+	user.wallpressed = null
+	user.update_wallpress_slowdown()
+	user.set_mob_offsets("reset_wall_press", _x = 0, _y = 0)
 
 /obj/structure/flora/newtree/attack_right(mob/user)
 	if(user.mind && isliving(user))
@@ -83,7 +91,7 @@
 
 	for(var/obj/structure/flora/newtree/D in UPNT)//theoretically you'd be able to break trees through a floor but no one is building floors under a tree so this is probably fine
 		D.obj_destruction(damage_flag)
-	for(var/obj/item/grown/log/tree/I in UPNT)
+	for(var/obj/item/grown/log/tree/large/I in UPNT)
 		UPNT.zFall(I)
 
 	for(var/DI in GLOB.cardinals)
@@ -148,7 +156,6 @@
 			user.start_pulling(pulling,supress_message = TRUE)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 			if(L.mind) // idk just following whats going on above
-				L.mind.add_sleep_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 				L.mind.adjust_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 
 /obj/structure/flora/newtree/update_icon()

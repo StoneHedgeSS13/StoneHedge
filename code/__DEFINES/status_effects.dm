@@ -106,6 +106,9 @@
 
 #define STATUS_EFFECT_FAKE_VIRUS /datum/status_effect/fake_virus //gives you fluff messages for cough, sneeze, headache, etc but without an actual virus
 
+#define STATUS_EFFECT_ENDOWED /datum/status_effect/debuff/bigboobs
+
+
 /////////////
 // NEUTRAL //
 /////////////

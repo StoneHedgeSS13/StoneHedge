@@ -274,3 +274,91 @@
 		owner.heal_overall_damage(15, 15, 0, BODYPART_ORGANIC)
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
+
+
+/obj/item/organ/heart/clockwork
+	name = "clockwork heart"
+	desc = ""
+	organ_flags = ORGAN_SYNTHETIC
+	var/min_next_adrenaline = 0
+	var/revive_cost = 0
+	var/reviving = 0
+	var/cooldown = 0
+
+/obj/item/organ/heart/clockwork/on_life()
+	. = ..()
+
+	// Define healing amounts per cycle
+	var/constant_healing = 0.1
+	var/list/wCount = owner.get_wounds()
+
+	// Constant healing for specified damage types
+	owner.adjustBruteLoss(-0.1, 0) // Brute damage
+	owner.adjustFireLoss(-0.1, 0) // Fire damage
+	owner.adjustOxyLoss(-0.1, 0) // Oxygen damage
+	owner.adjustToxLoss(-0.1, 0) // Toxin damage
+	if(wCount.len > 0)
+		owner.heal_wounds(-0.1, 0) // Wound damage
+		owner.update_damage_overlays()
+		to_chat(owner, span_nicegreen("I feel one of my wounds mend."))
+	owner.adjustOrganLoss(ORGAN_SLOT_LUNGS, -constant_healing) // Lungs
+	owner.adjustOrganLoss(ORGAN_SLOT_HEART, -constant_healing) // Heart
+	owner.adjustOrganLoss(ORGAN_SLOT_TONGUE, -constant_healing) // Tongue
+	owner.adjustOrganLoss(ORGAN_SLOT_EARS, -constant_healing) // Ears
+	owner.adjustOrganLoss(ORGAN_SLOT_EYES, -constant_healing) // Eyes
+	owner.adjustOrganLoss(ORGAN_SLOT_LIVER, -constant_healing) // Liver
+	owner.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -constant_healing) // Appendix
+	owner.adjustOrganLoss(ORGAN_SLOT_STOMACH, -constant_healing) // Stomach
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -constant_healing) // Brain
+	owner.adjustCloneLoss(-constant_healing, 0) // Clone damage
+
+	// Adrenaline boost logic
+	if(owner.health < 5 && world.time > min_next_adrenaline)
+		min_next_adrenaline = world.time + rand(200, 400)
+		to_chat(owner, span_danger("I feel myself dying, but you refuse to give up!"))
+		owner.heal_overall_damage(15, 15, 0, BODYPART_ORGANIC)
+		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
+			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
+
+	// Reviver implant functionality
+	if(reviving)
+		if(owner.stat == UNCONSCIOUS)
+			addtimer(CALLBACK(src, PROC_REF(heal)), 30)
+		else
+			cooldown = revive_cost + world.time
+			reviving = FALSE
+			to_chat(owner, span_notice("My clockwork heart shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)]."))
+		return
+
+	if(cooldown > world.time)
+		return
+	if(owner.stat != UNCONSCIOUS)
+		return
+	if(owner.suiciding)
+		return
+
+	revive_cost = 0
+	reviving = TRUE
+	to_chat(owner, span_notice("I feel a faint buzzing as my clockwork heart starts mending me..."))
+
+/obj/item/organ/heart/clockwork/proc/heal()
+	if(owner.getOxyLoss())
+		owner.adjustOxyLoss(-5)
+		revive_cost += 5
+	if(owner.getBruteLoss())
+		owner.adjustBruteLoss(-2)
+		revive_cost += 40
+	if(owner.getFireLoss())
+		owner.adjustFireLoss(-2)
+		revive_cost += 40
+	if(owner.getToxLoss())
+		owner.adjustToxLoss(-1)
+		revive_cost += 40
+
+	// Adjust blood volume
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume += BLOOD_VOLUME_SURVIVE
+
+
+
+

@@ -209,7 +209,7 @@
 	glass_desc = ""
 	var/virile = TRUE
 
-//may need to go back on this autistic fluid based pregnancy to old one where its based on vaginal sex since it may not be working.
+
 /datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
 	. = ..()
 	var/obj/item/organ/filling_organ/vagina/forgan = A
@@ -217,7 +217,7 @@
 		return
 	if(!forgan.fertility || forgan.pregnant)
 		return
-	if(prob(trans_volume / 3)) //i was gonna make it have a chance each tick but couldnt, this works somewhat same ig
+	if(prob(trans_volume)) //i was gonna make it have a chance each tick but couldnt, this works somewhat same ig
 		forgan.be_impregnated() //boom
 
 /datum/reagent/consumable/cum/on_mob_life(mob/living/carbon/M)
@@ -236,27 +236,29 @@
 /datum/reagent/consumable/cum/sterile
 	virile = FALSE
 
-/datum/reagent/consumable/breastmilk
-	name = "Breast Milk"
-	description = "An opaque white liquid produced by the mammary glands of humanoids. In brief, breastmilk."
-	color = "#DFDFDF" // rgb: 223, 223, 223
-	taste_description = "cloyingly sweet milk"
+/datum/reagent/consumable/cum/sterile/old //used in statue fountain.
+	name = "Old Semen"
+	description = "Disgusting... smelly slime... And somewhat yellow. This was magically, barely preserved through decades... It used to be fine, even clear as water until I severed it from it's home."
+	color = "#c7c49e"
+	taste_description = "salty, disgusting moldy slime"
 	glass_icon_state = "glass_white"
-	glass_name = "glass of breast milk"
-	glass_desc = "Milk derived from a humanoid source. Some Eorans might swear by its use in rituals of fertility or as a private indulgence between partners, but honest merchants refuse to deal in the substance or products made from it."
+	glass_name = "glass of old semen"
 
-/datum/reagent/consumable/breastmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/cum/sterile/old/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))
 		M.heal_bodypart_damage(1,0, 0)
-		. = 1
-	if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
-		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 2)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
-			H.adjust_hydration(10)
-		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
-			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+			H.adjust_hydration(5)
+			H.adjust_nutrition(5)
+		if(!HAS_TRAIT(H, TRAIT_ROT_EATER))
+			H.adjustToxLoss(3, TRUE) //this shit is toxic.
+			H.add_nausea(10)
+			if(prob(5))
+				to_chat(M, span_notice("[pick("God, I am going to puke...","My stomach is crying for help...","I feel sick...","That was disgusting... I feel sick...")]"))
+
+	. = 1
 	..()
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
@@ -268,7 +270,8 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
-			H.adjust_hydration(10)
+			H.adjust_hydration(8)
+			H.adjust_nutrition(2)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
 	..()
@@ -894,3 +897,81 @@
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of bungo juice"
 	glass_desc = ""
+//////////////////////////////////////////////////////////////////-------------------------------DREAM-------------------------------////////////////////////////////////
+
+/datum/reagent/consumable/acorn_powder
+	name = "Acorn Powder"
+	description = "A bitter fine powder"
+	color = "#dcb137"
+	quality = DRINK_VERYGOOD
+	taste_description = "bitter earthy-ness"
+
+/datum/reagent/consumable/acorn_powder/on_mob_life(mob/living/carbon/M)
+	M.rogstam_add(8)
+	..()
+
+/datum/reagent/consumable/Acoffee
+	name = "Acorn Coffee"
+	description = "A nice bitter stimulating brew"
+	color = "#800000"
+	quality = DRINK_VERYGOOD
+	taste_description = "robust earthy-ness"
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	var/hydration = 8
+
+// Add variables to track initial and consumed amounts
+/mob/living/carbon/var/initial_acoffee_amount = 0 // Tracks the initial amount of Acorn Coffee when consumed
+/mob/living/carbon/var/metabolized_acoffee = 0 // Tracks the total amount of Acorn Coffee metabolized
+
+/datum/reagent/consumable/Acoffee/on_mob_life(mob/living/carbon/M)
+	// Initialize the initial amount when first consumed
+	if(M.initial_acoffee_amount == 0)
+		M.initial_acoffee_amount = M.reagents.get_reagent_amount(src)
+
+	// Calculate the current amount and the amount metabolized in this cycle
+	var current_amount = M.reagents.get_reagent_amount(src)
+	var metabolized_now = (M.initial_acoffee_amount - current_amount) * metabolization_rate
+
+	// Update the total metabolized amount
+	M.metabolized_acoffee += metabolized_now
+	// Update the initial amount for the next cycle
+	M.initial_acoffee_amount = current_amount
+
+	// Apply the effects of Acorn Coffee
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(hydration)
+		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	M.rogstam_add(8)
+	M.dizziness = max(0, M.dizziness - 5)
+	M.drowsyness = max(0, M.drowsyness - 3)
+	M.SetSleeping(0, FALSE)
+
+	// Remove the sleepytime status effect after 12u of Acorn Coffee has metabolized
+	if(M.metabolized_acoffee >= 12)
+		if(M.has_status_effect(/datum/status_effect/debuff/sleepytime) || M.has_status_effect(/datum/status_effect/debuff/sleepytime/lune))
+			M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+			M.remove_status_effect(/datum/status_effect/debuff/sleepytime/lune)
+			M.remove_stress(/datum/stressevent/sleepytime)
+			M.mind.sleep_adv.advance_cycle()
+
+	..()
+
+/datum/chemical_reaction/alch/acoffee
+	name = "coffee-acorn"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/consumable/Acoffee
+	required_temp = 374
+	results = list(/datum/reagent/consumable/Acoffee = 6)
+	required_reagents = list(/datum/reagent/consumable/acorn_powder = 1, /datum/reagent/water = 5)
+
+/datum/chemical_reaction/alch/acoffee/on_reaction(mob/user, obj/item/reagent_containers/container, total_volume)
+	. = ..()
+	if(container)
+		// Remove all leftover water
+		container.reagents.del_reagent(/datum/reagent/water)
+
+

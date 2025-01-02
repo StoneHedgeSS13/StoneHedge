@@ -4,7 +4,7 @@
 	anchored = TRUE
 
 /obj/structure/flora/Initialize()
-	..()
+	. = ..()
 	if(isclosedturf(loc))
 		return INITIALIZE_HINT_QDEL
 
@@ -45,7 +45,7 @@
 				user.visible_message(span_notice("[user] fells [src] with the [W]."),span_notice("I fell [src] with the [W]."), span_hear("I hear the sound of a tree falling."))
 				playsound(get_turf(src), 'sound/blank.ogg', 100 , FALSE, FALSE)
 				for(var/i=1 to log_amount)
-					new /obj/item/grown/log/tree(get_turf(src))
+					new /obj/item/grown/log/tree/large(get_turf(src))
 
 				var/obj/structure/flora/stump/S = new(loc)
 				S.name = "[name] stump"
@@ -204,6 +204,7 @@
 //bushes
 /obj/structure/flora/bush
 	name = "bush"
+	max_integrity = 5
 	desc = ""
 	icon = 'icons/obj/flora/snowflora.dmi'
 	icon_state = "snowbush1"
@@ -217,6 +218,7 @@
 
 /obj/structure/flora/ausbushes
 	name = "bush"
+	max_integrity = 5
 	desc = ""
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
@@ -437,6 +439,7 @@
 
 /obj/structure/flora/junglebush
 	name = "bush"
+	max_integrity = 5
 	desc = ""
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_state = "busha"

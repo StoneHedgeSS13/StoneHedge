@@ -51,12 +51,14 @@
 	var/lose_patience_timer_id //id for a timer to call LoseTarget(), used to stop mobs fixating on a target they can't reach
 	var/lose_patience_timeout = 300 //30 seconds by default, so there's no major changes to AI behaviour, beyond actually bailing if stuck forever
 
-	var/del_on_deaggro = 0 //seconds to delete after losing aggro
+//	var/del_on_deaggro = 0 //seconds to delete after losing aggro /*Gisela moved it to living_defines */
 	var/last_aggro_loss = null
 
 	var/retreat_health
 
 	var/next_seek
+
+	var/prevent_goto_target = FALSE // If true, prevent any kinds of movement.
 
 	cmode = TRUE
 	setparrytime = 30
@@ -207,9 +209,11 @@
 			. += A
 			continue
 
-
-
 /mob/living/simple_animal/hostile/proc/Found(atom/A)//This is here as a potential override to pick a specific target if available
+	if (isliving(A))
+		var/mob/living/living_target = A
+		if(living_target.alpha <= 0) // is our target hidden? if they are, attempt to detect them once
+			return npc_detect_sneak(living_target, simple_detect_bonus)
 	return
 
 /mob/living/simple_animal/hostile/proc/PickTarget(list/Targets)//Step 3, pick amongst the possible, attackable targets
@@ -226,7 +230,7 @@
 	return chosen_target
 
 // Please do not add one-off mob AIs here, but override this function for your mob
-/mob/living/simple_animal/hostile/CanAttack(atom/the_target)//Can we actually attack a possible target?
+/mob/living/simple_animal/hostile/CanAttack(atom/the_target, attack_lying = FALSE)//Can we actually attack a possible target?
 	if(isturf(the_target) || !the_target || the_target.type == /atom/movable/lighting_object) // bail out on invalids
 		return FALSE
 
@@ -237,12 +241,13 @@
 		if(M.name in friends)
 			return FALSE
 
+	if(attack_laying) //used for bosses etc.
+		attack_lying = TRUE
+
 	if(ishuman(the_target))
 		var/mob/living/carbon/human/th = the_target
-		if(th.sexcon.beingfucked) //dont touch the battlefucked
-			return FALSE
-		if(th.lying && !th.get_active_held_item()) //if is laying and holding nothing, and not in cmode. Ignore.
-			if(prob(4) && th.has_quirk(/datum/quirk/monsterhunter) && erpable) //tiny chance to trigger abuss.
+		if(!attack_lying && th.lying && !th.get_active_held_item()) //if is laying and holding nothing, and not in cmode. Ignore.
+			if(prob(4) && (th.has_quirk(/datum/quirk/monsterhuntermale) || th.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //tiny chance to trigger abuss.
 				fuckcd = 0
 			return FALSE
 
@@ -312,6 +317,8 @@
 		AttackingTarget()
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget(list/possible_targets)//Step 5, handle movement between us and our target
+	if(prevent_goto_target)
+		return FALSE
 	stop_automated_movement = 1
 	if(!target || !CanAttack(target))
 		LoseTarget()
@@ -343,6 +350,7 @@
 					MeleeAction(FALSE)
 				in_melee = FALSE //If we're just preparing to strike do not enter sidestep mode
 			return 1
+		LoseTarget() // Somehow we don't have a target now! Maybe OpenFire() or MeleeAction destroyed them?
 		return 0
 	else
 		if(ranged_ignores_vision && ranged_cooldown <= world.time) //we can't see our target... but we can fire at them!
@@ -350,21 +358,10 @@
 		Goto(target,move_to_delay,minimum_distance)
 		FindHidden()
 		return 1
-//	if(environment_smash)
-//		if(target.loc != null && get_dist(targets_from, target.loc) <= vision_range) //We can't see our target, but he's in our vision range still
-//			if(ranged_ignores_vision && ranged_cooldown <= world.time) //we can't see our target... but we can fire at them!
-//				OpenFire(target)
-//			if((environment_smash & ENVIRONMENT_SMASH_WALLS) || (environment_smash & ENVIRONMENT_SMASH_RWALLS)) //If we're capable of smashing through walls, forget about vision completely after finding our target
-//				Goto(target,move_to_delay,minimum_distance)
-//				FindHidden()
-//				return 1
-//			else
-//				if(FindHidden())
-//					return 1
-	LoseTarget()
-	return 0
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
+	if(prevent_goto_target)
+		return FALSE
 	if(target == src.target)
 		approaching_target = TRUE
 	else
@@ -481,7 +478,9 @@
 
 
 /mob/living/simple_animal/hostile/Move(atom/newloc, dir , step_x , step_y)
-	if(dodging && approaching_target && prob(dodge_prob) && moving_diagonally == 0 && isturf(loc) && isturf(newloc))
+	if(prevent_goto_target)
+		return FALSE
+	if(dodging && approaching_target && prob(dodge_prob) && moving_diagonally == 0 && isturf(loc) && isturf(newloc) && !incapacitated())
 		return dodge(newloc,dir)
 	else
 		return ..()

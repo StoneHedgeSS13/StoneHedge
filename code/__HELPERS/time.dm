@@ -47,20 +47,24 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 						GLOB.forecast = "fog"
 					if(prob(13))
 						GLOB.forecast = "rain"
+					if(prob(5))
+						GLOB.forecast = "snow"
 				if("day")
 					if(prob(5))
 						GLOB.forecast = "rain"
 				if("dusk")
-					if(prob(13))
+					if(prob(5))
 						GLOB.forecast = "rain"
 				if("night")
 					if(prob(5))
 						GLOB.forecast = "fog"
 					if(prob(21))
 						GLOB.forecast = "rain"
+					if(prob(10))
+						GLOB.forecast = "snow"
 			if(GLOB.forecast == "rain")
 				var/foundnd
-				for(var/datum/weather/rain/R in SSweather.curweathers)
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 					foundnd = TRUE
 				if(!foundnd)
 					SSweather.run_weather(/datum/weather/rain, 1)
@@ -69,7 +73,13 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 				for(var/datum/weather/fog/R in SSweather.curweathers)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/fog, 1) 
+					SSweather.run_weather(/datum/weather/fog, 1)
+			if(GLOB.forecast == "snow")
+				var/foundnd
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_SNOW)
+					foundnd = TRUE
+				if(!foundnd)
+					SSweather.run_weather(/datum/weather/snow, 1)
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")
@@ -80,6 +90,8 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 				if("rainbow")
 					GLOB.forecast = null
 				if("fog")
+					GLOB.forecast = null
+				if("snow")
 					GLOB.forecast = null
 
 	if(GLOB.tod != oldtod)
@@ -140,6 +152,18 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 	client.screen += D
 	animate(D, alpha = 255, time = 20, easing = EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(clear_time_icon), D), 30)
+	//fookin recalc bandit slots available
+	var/num_players = 0
+	var/num_bandits = 0
+	for(var/i in GLOB.player_list)
+		num_players ++
+	if(num_players >= 10)
+		// 1 bandit per 10 players,
+		num_bandits = round(num_players / 10)
+		if(num_bandits >= 8)	//caps bandits at 8
+			num_bandits = 8
+		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
+		bandit_job.total_positions = num_bandits
 
 /proc/station_time_debug(force_set)
 	if(isnum(force_set))

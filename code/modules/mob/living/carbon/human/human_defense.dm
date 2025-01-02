@@ -13,7 +13,6 @@
 		organnum++
 	return (armorval/max(organnum, 1))
 
-
 /mob/living/carbon/human/proc/checkarmor(def_zone, d_type, damage, armor_penetration, blade_dulling)
 	if(!d_type)
 		return 0
@@ -22,7 +21,7 @@
 		def_zone = CBP.body_zone
 	var/protection = 0
 	var/obj/item/clothing/used
-	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, wear_shirt, wear_neck, cloak, wear_armor, wear_pants, backr, backl, gloves, shoes, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, gloves, wear_neck, cloak, wear_armor, wear_shirt, shoes, wear_pants, backr, backl, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -33,26 +32,10 @@
 					if(C.obj_integrity <= 0)
 						continue
 				var/val = C.armor.getRating(d_type)
-				// The code below finally fixes the targetting order of armor > shirt > flesh. - Foxtrot (#gundamtanaka) <- Fix from Stonekeep, Furries are too busy to fix.
-				var/armorworn = src.get_item_by_slot(SLOT_ARMOR) // The armor we're wearing
-				var/shirtworn = src.get_item_by_slot(SLOT_SHIRT) // The shirt we're wearing
-				if(bp == armorworn) // If the targeted bodypart has an armor...
-					if(val > 0) // ...and it's an actual armor with armor values...
-						if(val > protection)
-							protection = val
-							used = armorworn // ...force us to use it above all!
-				// If we don't have armor equipped or the one we have is broken...
-				else if(bp == shirtworn && wear_armor?.obj_integrity <= 0 || armorworn == null)
-					if(val > 0) // ...and it's not just a linen shirt...
-						if(val > protection)
-							protection = val
-							used = shirtworn //  ...skip straight to the shirt slot, and target it!
-				// Otherwise, proceed with normal assignment of bodypart protected by armor that isn't armor or shirt
-				else if(!istype(bp, wear_armor) && !istype(bp, wear_shirt))
-					if(val > 0)
-						if(val > protection)
-							protection = val
-							used = C
+				if(val > 0)
+					if(val > protection)
+						protection = val
+						used = C
 	if(used)
 		if(!blade_dulling)
 			blade_dulling = BCLASS_BLUNT
@@ -69,7 +52,7 @@
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
-	var/list/body_parts = list(head, wear_mask, wear_wrists, wear_shirt, wear_neck, cloak, wear_armor, wear_pants, backr, backl, gloves, shoes, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(head, wear_mask, wear_wrists, wear_neck, cloak, wear_armor, wear_shirt, wear_pants, backr, backl, gloves, shoes, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -220,6 +203,7 @@
 				L.add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 				emote("embed")
 				L.receive_damage(I.w_class*I.embedding.embedded_impact_pain_multiplier)
+				SEND_SIGNAL(I, COMSIG_APPLY_REAGENTS, I.thrownby, L)
 //					visible_message(span_danger("[I] embeds itself in [src]'s [L.name]!"),span_danger("[I] embeds itself in my [L.name]!"))
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "embedded", /datum/mood_event/embedded)
 				hitpush = FALSE
@@ -329,68 +313,6 @@
 			if(stat != DEAD)
 				apply_damage(damage, BRUTE, affecting, run_armor_check(affecting, "slash", damage = damage))
 		return 1
-
-/mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if(check_shields(M, 0, "the M.name"))
-		visible_message(span_danger("[M] attempts to touch [src]!"), \
-						span_danger("[M] attempts to touch you!"), span_hear("I hear a swoosh!"), null, M)
-		to_chat(M, span_warning("I attempt to touch [src]!"))
-		return 0
-
-	if(..())
-		if(M.used_intent.type == INTENT_HARM)
-			if (wear_pants)
-				wear_pants.add_fingerprint(M)
-			var/damage = prob(90) ? 20 : 0
-			if(!damage)
-				playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
-				visible_message(span_danger("[M] lunges at [src]!"), \
-								span_danger("[M] lunges at you!"), span_hear("I hear a swoosh!"), null, M)
-				to_chat(M, span_danger("I lunge at [src]!"))
-				return 0
-			var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
-			if(!affecting)
-				affecting = get_bodypart(BODY_ZONE_CHEST)
-			var/armor_block = run_armor_check(affecting, "slash","","",10)
-
-			playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[M] slashes at [src]!"), \
-							span_danger("[M] slashes at you!"), span_hear("I hear a sickening sound of a slice!"), null, M)
-			to_chat(M, span_danger("I slash at [src]!"))
-			log_combat(M, src, "attacked")
-			if(!dismembering_strike(M, M.zone_selected)) //Dismemberment successful
-				return 1
-			apply_damage(damage, BRUTE, affecting, armor_block)
-
-		if(M.used_intent.type == INTENT_DISARM) //Always drop item in hand, if no item, get stun instead.
-			var/obj/item/I = get_active_held_item()
-			if(I && dropItemToGround(I))
-				playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-				visible_message(span_danger("[M] disarms [src]!"), \
-								span_danger("[M] disarms you!"), span_hear("I hear aggressive shuffling!"), null, M)
-				to_chat(M, span_danger("I disarm [src]!"))
-			else
-				playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-				Paralyze(100)
-				log_combat(M, src, "tackled")
-				visible_message(span_danger("[M] tackles [src] down!"), \
-								span_danger("[M] tackles you down!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), null, M)
-				to_chat(M, span_danger("I tackle [src] down!"))
-
-
-/mob/living/carbon/human/attack_larva(mob/living/carbon/alien/larva/L)
-
-	if(..()) //successful larva bite.
-		var/damage = rand(1, 3)
-		if(check_shields(L, damage, "the [L.name]"))
-			return 0
-		if(stat != DEAD)
-			L.amount_grown = min(L.amount_grown + damage, L.max_grown)
-			var/obj/item/bodypart/affecting = get_bodypart(ran_zone(L.zone_selected))
-			if(!affecting)
-				affecting = get_bodypart(BODY_ZONE_CHEST)
-			var/armor_block = run_armor_check(affecting, "stab")
-			apply_damage(damage, BRUTE, affecting, armor_block)
 
 
 /mob/living/carbon/human/attack_animal(mob/living/simple_animal/M)
@@ -824,7 +746,7 @@
 			examination += span_danger("[m1] TETRAPLEGIC!")
 	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
 		examination += span_warning("[m1] PARAPLEGIC!")
-	
+
 	var/static/list/body_zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
@@ -841,7 +763,7 @@
 		examination += bodypart.check_for_injuries(user, deep_examination)
 
 #ifdef MATURESERVER
-	var/mob/living/carbon/userino = user
+	var/mob/living/carbon/userino = src
 	examination += "ø ------------ ø" //automatically lists internal organs that have those functions
 	for(var/obj/item/organ/filling_organ/forgan in userino.internal_organs)
 		if(forgan.reagents.total_volume)
@@ -874,7 +796,7 @@
 		examination += span_notice("Let's see how [src]'s [parse_zone(choice)] is doing.")
 		if(!user.stat && !silent)
 			visible_message(span_notice("[user] examines [src]'s [parse_zone(choice)]."))
-	
+
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
 		examination += examined_part.check_for_injuries(user, advanced)

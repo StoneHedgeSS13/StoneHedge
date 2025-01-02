@@ -37,6 +37,13 @@
 			var/mob/living/M = A
 			if(faction_check_mob(M) && attack_same || !faction_check_mob(M))
 				enemies |= M
+				if (M.alpha <= 100)
+					// we just got hit by something hidden so try and find them
+					if (prob(5))
+						visible_message(span_notice("[src] begins searching around frantically..."))
+					var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
+					if (!npc_detect_sneak(M, extra_chance))
+						return
 //		else if(ismecha(A))
 //			var/obj/mecha/M = A
 //			if(M.occupant)

@@ -20,11 +20,11 @@
 	///////////TIERS
 	in the list next to the name of the infusion there is a number. This number is the TIER of the infusion. higher level gems are required for higher level infusions.
 
-	tier 1, toper : adds flavor
-	tier 2, gemerald : minor effect (skill increases and okay traits)
-	tier 3, saffira : normal effect or (okay spells, stat increases and good traits)
-	tier 4, blortz : major effect (good spells and amazing traits)
-	tier 5, dorpel or rontz or riddle of steel : potentially game changing effect
+	tier/cost 1, topaz : adds flavor
+	tier/cost 2, emerald : minor effect (skill increases and okay traits)
+	tier/cost 3, sapphire : normal effect or (okay spells, stat increases and good traits)
+	tier/cost 4, quartz : major effect (good spells and amazing traits)
+	tier/cost 5, dorpel or ruby or riddle of steel : potentially game changing effect
 
 	Hope that has been helpful in using this datum.
 	~Ham-Hole
@@ -49,7 +49,7 @@
 		)
 
 	var/armor_infusions = list(
-		"propulsion" = 5, //increase walking speed
+		"propulsion" = 3, //+2 speed
 		"magical strength" = 3, //cant be pushed +1 strength?
 		//"tools", //activate to get a hammer, pickaxe, axe, lockpick REMEMBER ME!!!!
 		"fire resistance" = 4, //no fire trait
@@ -99,40 +99,40 @@
 		)
 
 	var/weapon_infusions = list(
-		"radiance" = 1, 
-		"returning" = 2, 
+		"radiance" = 1,
+		"returning" = 2,
 		)
 	var/staff_infusions = list(
-		"arcyne focus" = 3, 
+		"arcyne focus" = 3,
 		)
 
 	var/shield_infusions = list(
-		"repulsion" = 3, 
+		"repulsion" = 3,
 		)
-	
+
 	var/instrument_infusions = list(
-		"haunting" = 1, 
+		"haunting" = 1,
 		"the sewers" = 1, //gain summon rous spell XX
 		)
 
 	var/bottle_infusions = list(
-		"alchemy" = 1, 
+		"alchemy" = 1,
 		)
 	var/bag_infusions = list(
-		"holding" = 1, 
+		"holding" = 1,
 		)
 	var/rope_infusions = list(
 		"climbing" = 2,
 		)
 	var/stone_infusions = list(
-		"sending" = 1, //create paired stones, activate one to send a message to the other 
+		"sending" = 1, //create paired stones, activate one to send a message to the other
 		)
 	var/lantern_infusions = list(
-		"revealing" = 1, //double light 
+		"revealing" = 1, //double light
 		)
 	var/eyes_infusions = list(
-		"charming" = 4, //gain charm person spell (they are not able to attack you or something) 
-		"the eagle" = 3, //+3 perception 
+		"charming" = 4, //gain charm person spell (they are not able to attack you or something)
+		"the eagle" = 3, //+3 perception
 		)
 	var/gem_infusions = list(
 		"scrying" = 5, //scrying orb X
@@ -151,8 +151,16 @@
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(dropped))
 	RegisterSignal(parent, COMSIG_MOVABLE_IMPACT, PROC_REF(throw_impact))
 	RegisterSignal(parent, COMSIG_ITEM_HIT_REACT, PROC_REF(blocked))
+	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(after_attack))
+
 	var/obj/item/I = parent
 	add_infusion(I, infuser, gem_used, random)
+
+/datum/component/infusions/proc/after_attack(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
+	switch(infusion_name)
+		if("flaming")
+			source.say("flame on") //don't do this, do something else.
+
 
 /datum/component/infusions/proc/check_change_item(obj/item/source, mob/user)
 	switch(infusion_name)
@@ -162,18 +170,17 @@
 				var/new_slash = 90
 				var/new_stab = 70
 				var/new_bullet = 100
-				source.armor.modifyRatingMax(new_blunt, new_slash, new_stab, new_bullet)
+				source.armor = getArmor("blunt" = new_blunt, "slash" = new_slash, "stab" = new_stab, "bullet" = new_bullet, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 			else //mask
 				var/new_blunt = 90
 				var/new_slash = 100
 				var/new_stab = 80
 				var/new_bullet = 20
-				source.armor.modifyRatingMax(new_blunt, new_slash, new_stab, new_bullet)
+				source.armor = getArmor("blunt" = new_blunt, "slash" = new_slash, "stab" = new_stab, "bullet" = new_bullet, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 		if("radiance")
 			source.light_range = 5
 			source.light_color = "#da8c45"
 			source.set_light_on(TRUE)
-			START_PROCESSING(SSobj, source)
 		if("alchemy")
 			var/item = new /obj/item/reagent_containers/glass/bottle/alchemyjug
 
@@ -253,6 +260,8 @@
 /datum/component/infusions/proc/equipped(obj/item/source, mob/user, slot)
 	if(!active_item)
 		var/mob/living/L = user
+		L.attunement_points_used += source.attunement_cost
+		L.check_attunement_points()
 		active_item = TRUE
 		switch(infusion_name)
 			if("awareness")
@@ -280,7 +289,7 @@
 				eyes.owner.update_sight()
 
 			if("propulsion")
-				user.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=-1.15, movetypes=GROUND)
+				L.change_stat("speed", 2)
 				//user.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 
 			if("magical strength")
@@ -364,7 +373,7 @@
 
 			if("climbing")
 				user.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			
+
 			if("giant strength")
 				L.change_stat("strength", 2)
 
@@ -377,6 +386,8 @@
 /datum/component/infusions/proc/dropped(obj/item/source, mob/user)
 	if(active_item)
 		var/mob/living/L = user
+		L.attunement_points_used -= source.attunement_cost
+		L.check_attunement_points()
 		active_item = FALSE
 		switch(infusion_name)
 			if("awareness")
@@ -403,7 +414,7 @@
 				eyes.owner.update_sight()
 
 			if("propulsion")
-				user.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+				L.change_stat("speed", -2)
 
 			if("magical strength")
 				L.change_stat("strength", -1)
@@ -486,7 +497,7 @@
 
 			if("climbing")
 				user.mind.adjust_skillrank(/datum/skill/misc/climbing, -3, TRUE)
-			
+
 			if("giant strength")
 				L.change_stat("strength", -2)
 
@@ -502,10 +513,10 @@
 /datum/component/infusions/proc/add_infusion(obj/item/source, mob/infuser, obj/item/roguegem/gem_used, random)
 	var/obj/item/I = source
 	var/tier = 5
-	
+
 	if(gem_used)
 		I.sellprice += gem_used.sellprice
-		//rontz is just gonna be as good as diamon or riddle of steel...
+		//ruby is just gonna be as good as diamon or riddle of steel...
 		if (istype(gem_used, /obj/item/roguegem/yellow))
 			tier = 1
 		else if (istype(gem_used, /obj/item/roguegem/green))
@@ -574,6 +585,8 @@
 				infusion_name = input("Choose Infusion", "Available Infusions") as anything in options
 
 			I.name = "[I.name] of [infusion_name]"
+			I.attunement_cost = options[infusion_name]
+			I.say(options[infusion_name])
 			check_change_item(I, infuser)
 		else
 			qdel(src)
@@ -587,7 +600,7 @@
 	var/fill_per_minute = 15
 	var/reagent = /datum/reagent/water
 	var/wait = 0
-	
+
 /obj/item/reagent_containers/glass/bottle/alchemyjug/Initialize()
 	START_PROCESSING(SSobj, src)
 	. = ..()
@@ -610,10 +623,10 @@
 		/datum/reagent/consumable/ethanol/beer/wine, //wine
 		/datum/reagent/consumable/ethanol/beer/cider, //cider: original addition
 		/datum/reagent/consumable/honey, //honey
-		/datum/reagent/consumable/lemonade, //lemonade: 
+		/datum/reagent/consumable/lemonade, //lemonade:
 		/datum/reagent/consumable/mayonnaise, // mayonaise (maybe change to just egg yolk)
 		/datum/reagent/fuel/oil, //oil
-		/datum/reagent/berrypoison, //basic poison
+		/datum/reagent/toxin/berrypoison, //basic poison
 		/datum/reagent/toxin/acid/fluacid //acid
 		)
 	var/reagent_change = input("Choose Contents", "Available Liquids") as anything in options
@@ -639,7 +652,7 @@
 			fill_per_minute = 7.5
 		if(/datum/reagent/fuel/oil)
 			fill_per_minute = 3.25
-		if(/datum/reagent/berrypoison)
+		if(/datum/reagent/toxin/berrypoison)
 			fill_per_minute = 3.25
 		if(/datum/reagent/toxin/acid/fluacid)
 			fill_per_minute = 1

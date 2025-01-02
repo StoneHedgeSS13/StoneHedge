@@ -37,12 +37,12 @@
 	eyes_organ.second_color = second_color
 
 /datum/organ_dna/penis
-	var/penis_size = DEFAULT_PENIS_SIZE
+	var/organ_size = DEFAULT_PENIS_SIZE
 
 /datum/organ_dna/penis/imprint_organ(obj/item/organ/organ)
 	..()
 	var/obj/item/organ/penis/penis_organ = organ
-	penis_organ.penis_size = penis_size
+	penis_organ.organ_size = organ_size
 
 /datum/organ_dna/testicles
 	var/organ_size = DEFAULT_TESTICLES_SIZE
@@ -79,3 +79,11 @@
 	..()
 	var/obj/item/organ/filling_organ/vagina/vagina_organ = organ
 	vagina_organ.fertility = fertility
+
+/datum/organ_dna/butt
+	var/organ_size = DEFAULT_BUTT_SIZE
+
+/datum/organ_dna/butt/imprint_organ(obj/item/organ/organ)
+	..()
+	var/obj/item/organ/butt/butt_organ = organ
+	butt_organ.organ_size = organ_size

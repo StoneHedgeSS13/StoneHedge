@@ -13,7 +13,7 @@
 
 #define BAN_MISC_RESPAWN "Respawn"
 #define BAN_MISC_PUNISHMENT_CURSE "PunishmentCurse"
-#define BAN_MISC_LUNATIC "Lunatic"
+#define BAN_MISC_LUNATIC "Shunned Slave"
 #define BAN_MISC_LEPROSY "Leprosy"
 #define BAN_MISC_OOC "OOC"
 #define BAN_MISC_LOOC "LOOC"

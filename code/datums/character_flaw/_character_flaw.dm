@@ -503,8 +503,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/mob/living/carbon/human/H = user
 	if(!H.wear_mask)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/lepermask(H), SLOT_WEAR_MASK)
- H.apply_status_effect(STATUS_EFFECT_SPASMS)
- H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
+	H.apply_status_effect(STATUS_EFFECT_SPASMS)
+	H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
+
 /datum/charflaw/noeyel/apply_post_equipment(mob/user)
 	..()
 	if(!ishuman(user))

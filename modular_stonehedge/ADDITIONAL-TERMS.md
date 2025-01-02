@@ -1,0 +1,13 @@
+ADDITIONAL TERMS
+
+In accordance with Section 7. "Additional Terms" of the GNU Affero General Public License version 3.0 (hereafter referred to as "license"), whose contents are nominally available in StoneHedge/LICENSE.md or online at https://www.gnu.org/licenses/agpl-3.0.html#license-text, the Author(s) of all code (.dm) and map (.dmm) files within this directory and its subdirectories (henceforth referred to as "contents") permit all activities with regards to the contents that are permissible under this license, subject to the following additional terms, current as of 11/26/2024:
+
+1. Removal of this document from this directory or modification of its text by anyone other than its author (https://github.com/DerFlammenwerfer), or a person with permission granted by its author is strictly prohibited.
+
+2. The contents are provided as-is, and their Author(s) make no warranty or guarantees in regards to its functionality if modified, obtained separately from a copy of this repository, packaged separately from a copy of this repository, or redistributed separately from a copy of this repository.
+
+3. Each file within the contents, where possible or unless otherwise disclaimed, shall contain a list of its author(s) in comments at the beginning of the file, as well as a link to the StoneHedge repository on GitHub. In the case of .dmm files or .dmi files, an itemized list of file names and their respective authors must be included in the same directory as these terms. Modification of attribution lists to add attribution of files to additional authors is permitted, but removal of attributions are prohibited except where expressly requested by the authors whose attributions are to be removed.
+
+4. Failure to include the aforementioned attributions while obtaining, modifying, or conveying any or all of the contents, or misrepresentation of where the contents were obtained from will be considered a violation of these terms.
+
+5. By modifying, conveying, redistributing, or performing any other permissible activity with the contents under the aforementioned license, you agree to this and the above listed terms and acknowledge that, except where prohibited by the license or by law, violation of these additional terms will equate to a violation of the license and will result in immediate and automatic termination of the rights granted by the license in accordance with the terms of Section 8. "Termination" Additionally, when adding new files to the contents, you agree to subject those additions to these additional terms.

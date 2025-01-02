@@ -10,11 +10,12 @@
 	antag_hud_name = "rev"
 	show_in_roundend = FALSE
 	confess_lines = list(
-		"VIVA!", 
+		"VIVA!",
 		"DEATH TO THE NOBLES!",
 		"STICK IT TO THE MAN!",
 		"NO GODS, NO MASTERS!",
 	)
+	rogue_enabled = FALSE
 	increase_votepwr = FALSE
 	var/datum/team/prebels/rev_team
 
@@ -107,7 +108,7 @@
 /datum/antagonist/prebel/head/on_gain()
 	. = ..()
 	owner.AddSpell(new /obj/effect/proc_holder/spell/self/rebelconvert)
-	owner.current?.set_patron(/datum/patron/inhumen/matthios) //head rebels always love matthios, of course
+	owner.current?.set_patron(/datum/patron/inhumen/thief) //head rebels always love matthios, of course
 
 /datum/antagonist/prebel/proc/can_be_converted(mob/living/candidate)
 	if(!candidate.mind)

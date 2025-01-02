@@ -250,6 +250,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/hostile
 	var/retreating
+	var/attack_laying = FALSE
 
 /mob/living/simple_animal/hostile/updatehealth()
 	..()
@@ -423,16 +424,19 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(held_item)
 			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 				var/used_time = 210
+				if(src.buckled && istype(src.buckled, /obj/structure/meathook))
+					used_time -= 30
+					visible_message("[user] begins to efficiently butcher [src]...")
+				else
+					visible_message("[user] begins to butcher [src]...")
 				if(user.mind)
-					used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
-				visible_message("[user] begins to butcher [src].")
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
 					if(user.mind)
 						var/mob/living/carbon/userh = user
-						userh.mind.add_sleep_experience(/datum/skill/labor/butchering, userh.STAINT * 4)
-						userh.mind.adjust_experience(/datum/skill/labor/butchering, userh.STAINT * 4)
+						userh.mind.adjust_experience(/datum/skill/craft/hunting, userh.STAINT * 4)
 	..()
 
 /mob/living/simple_animal/gib()
@@ -486,13 +490,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		remove_movespeed_modifier(MOVESPEED_ID_SIMPLEMOB_VARSPEED, TRUE)
 	add_movespeed_modifier(MOVESPEED_ID_SIMPLEMOB_VARSPEED, TRUE, 100, multiplicative_slowdown = speed, override = TRUE)
 
-/mob/living/simple_animal/Stat()
-	..()
-	return //RTCHANGE
-	if(statpanel("Status"))
-		stat(null, "Health: [round((health / maxHealth) * 100)]%")
-		return 1
-
 /mob/living/simple_animal/proc/drop_loot()
 	if(loot.len)
 		for(var/i in loot)
@@ -542,7 +539,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return FALSE
 	return TRUE
 
-mob/living/simple_animal/handle_fire()
+/mob/living/simple_animal/handle_fire()
 	. = ..()
 	if(fire_stacks > 0)
 		apply_damage(5, BURN)
@@ -602,10 +599,8 @@ mob/living/simple_animal/handle_fire()
 		var/childspawn = pickweight(childtype)
 		var/turf/target = get_turf(loc)
 		if(target)
-			return new childspawn(target)
-//			visible_message(span_warning("[src] finally gives birth."))
 			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			breedchildren--
+			return new childspawn(target)
 
 /mob/living/simple_animal/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())

@@ -54,8 +54,8 @@
 	var/obj/item/useditem = user.get_active_held_item()
 	var/obj/item/organ/filling_organ/vagina/targetvag = target.getorgan(/obj/item/organ/filling_organ/vagina)
 	var/mob/living/carbon/human/targetussy = target
-	var/stealskill =  min(1,user.mind.get_skill_level(/datum/skill/misc/stealing))
-	var/medicineskill =  min(1,user.mind.get_skill_level(/datum/skill/misc/medicine))
+	var/stealskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/stealing))
+	var/medicineskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/medicine))
 	var/flubchance = 100
 	if(stealskill > medicineskill) //medicine or stealth, taken higher and used to divide the flubbing chance, if you got neither skill its 100 odds, go home bro.
 		flubchance = flubchance/stealskill

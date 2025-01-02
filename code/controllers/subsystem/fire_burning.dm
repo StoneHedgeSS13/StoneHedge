@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(fire_burning)
 	name = "Fire Burning"
-	priority = FIRE_PRIOTITY_BURNING
+	priority = FIRE_PRIORITY_BURNING
 	flags = SS_NO_INIT|SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(fire_burning)
 
 		if(O.resistance_flags & ON_FIRE) //in case an object is extinguished while still in currentrun
 			if(!(O.resistance_flags & FIRE_PROOF))
-				O.take_damage(0.15, BURN, "fire", 0)
+				O.take_damage(2, BURN, "fire", 0)
 			else
 				O.extinguish()
 			if(!O.fire_burn_start)

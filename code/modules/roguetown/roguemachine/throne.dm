@@ -25,7 +25,7 @@ GLOBAL_VAR(king_throne)
 	M.reset_offsets("bed_buckle")
 
 /obj/structure/roguethrone/Initialize()
-	..()
+	. = ..()
 	if(GLOB.king_throne == null)
 		GLOB.king_throne = src
 	if(GLOB.lordprimary)
@@ -70,7 +70,7 @@ GLOBAL_VAR(king_throne)
 	if(rebel_leader_sit_time >= REBEL_THRONE_TIME && !notified_rebel_able)
 		notified_rebel_able = TRUE
 		to_chat(user, span_notice("That's it - time to announce our victory!"))
-	
+
 /obj/structure/roguethrone/lordcolor(primary,secondary)
 	if(!primary || !secondary)
 		return

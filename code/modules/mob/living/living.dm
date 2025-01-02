@@ -180,23 +180,45 @@
 			if(!move_failed)
 				return TRUE
 
-	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))
+	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M)) // Rebalance of charge code. Taken almost directly from Ratwood.
 		if(isliving(M))
+			var/sprint_distance = sprinted_tiles
+			toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
+
 			var/mob/living/L = M
-			var/charge_add = 0
+
+			var/self_points = FLOOR((STACON + STASTR + mind.get_skill_level(/datum/skill/misc/athletics))/2, 1) //Constitution had too many quirk bonuses associated.
+			var/target_points = FLOOR((L.STACON + L.STASTR + L.mind.get_skill_level(/datum/skill/misc/athletics))/2, 1)
+
+			switch(sprint_distance)
+				// Point blank
+				if(0 to 1)
+					self_points -= 5
+				// One to two tiles between people - this is the main combat case.
+				if(2 to 3)
+					self_points -= 2
+				// Five or above tiles between people - 3-4, a viable combat ram with good planning, results in a modifier of 0.
+				if(6 to INFINITY)
+					self_points += 3 // This is basically impossible to use in combat unless the other guy's asleep, and I think accidentally knocking over someone is funny, so big bonus.
+
+			// If charging into the BACK of the enemy (facing away)
+			if(L.dir == get_dir(src, L))
+				self_points += 2
+
+			// Ratwood does not have artificer, but we do. Numbers are basically the same so I'm keeping the old bonus.
+			// Being prone here gets you sneak attacked for 2x to 8x damage, so Charger is +2.
 			if(HAS_TRAIT(src, TRAIT_CHARGER))
-				charge_add = 3
-			if(STACON + charge_add > L.STACON)
-				if(STASTR + charge_add > L.STASTR)
-					L.Knockdown(1)
-					Immobilize(30)
-				else
-					Knockdown(1)
-					Immobilize(30)
-			if(STACON + charge_add < L.STACON)
+				self_points += 2
+			if(HAS_TRAIT(L, TRAIT_CHARGER))
+				target_points += 2
+
+			// Ratwood has RNG here. No thanks.
+
+			if(self_points > target_points)
+				L.Knockdown(1)
+			if(self_points < target_points)
 				Knockdown(30)
-				Immobilize(30)
-			if(STACON + charge_add == L.STACON)
+			if(self_points == target_points) // Exact match will be rare with athletics being fractional.
 				L.Knockdown(1)
 				Knockdown(30)
 			Immobilize(30)
@@ -215,6 +237,7 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
+		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -313,6 +336,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if(HAS_TRAIT(L, TRAIT_MARTIALARTIST))
 		acceptable.Add(BODY_ZONE_HEAD)
@@ -438,7 +463,7 @@
 			O.icon_state = zone_selected
 			put_in_hands(O)
 			O.update_hands(src)
-			if(HAS_TRAIT(src, TRAIT_STRONG_GRABBER) || item_override)
+			if(cmode && HAS_TRAIT(src, TRAIT_STRONG_GRABBER) || item_override)
 				supress_message = TRUE
 				C.grippedby(src)
 			if(!supress_message)
@@ -454,7 +479,7 @@
 				O.sublimb_grabbed = M.simple_limb_hit(zone_selected)
 			put_in_hands(O)
 			O.update_hands(src)
-			if(HAS_TRAIT(src, TRAIT_STRONG_GRABBER) || item_override)
+			if(cmode && HAS_TRAIT(src, TRAIT_STRONG_GRABBER) || item_override)
 				supress_message = TRUE
 				M.grippedby(src)
 			if(!supress_message)
@@ -481,40 +506,6 @@
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
 	return //rtd fix not updating because no dirchange
-	if(M == src)
-		return
-	if(M.wallpressed)
-		return
-	if(M.buckled)
-		return //don't make them change direction or offset them if they're buckled into something.
-	var/offset = 0
-	switch(grab_state)
-		if(GRAB_PASSIVE)
-			offset = GRAB_PIXEL_SHIFT_PASSIVE
-		if(GRAB_AGGRESSIVE)
-			offset = GRAB_PIXEL_SHIFT_AGGRESSIVE
-		if(GRAB_NECK)
-			offset = GRAB_PIXEL_SHIFT_NECK
-		if(GRAB_KILL)
-			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
-		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
-		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
-		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
-		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -601,7 +592,7 @@
 		return
 	if(!reaper)
 		return
-	if (InCritical() || health <= 0 || blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE)
+	if (InCritical() || health <= 0 || (blood_volume < BLOOD_VOLUME_SURVIVE))
 		log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] while in [InFullCritical() ? "hard":"soft"] critical with [round(health, 0.1)] points of health!", LOG_ATTACK)
 		adjustOxyLoss(201)
 		updatehealth()
@@ -679,19 +670,24 @@
 			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
 			if(Wing == null)
 				to_chat(src, span_warning("I can't stand without my wings!"))
-				return
-		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
-			if(move_after(src, 10, target = src))
-				set_resting(FALSE, FALSE)
-				if(resting)
-					src.visible_message(span_warning("[src] tries to stand up."))
-					return FALSE // workaround for broken legs and stuff
-				src.visible_message(span_notice("[src] stands up."))
-				return TRUE
-			else
-				src.visible_message(span_warning("[src] tries to stand up."))
 				return FALSE
+		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
+			if(HAS_TRAIT(src, TRAIT_ENDOWMENT))
+				src.visible_message(span_notice("[src] stands up, struggling because of THEIR [src.gender == FEMALE ? "TITS" : "JUNK"]'s weight."))
+				if(move_after(src, 30, target = src))
+					set_resting(FALSE, FALSE)
+			else
+				src.visible_message(span_notice("[src] stands up."))
+				if(move_after(src, 10, target = src))
+					set_resting(FALSE, FALSE)
+					if(resting)
+						src.visible_message(span_warning("[src] tries to stand up."))
+						return FALSE // workaround for broken legs and stuff
+					src.visible_message(span_notice("[src] stands up."))
+					return TRUE
+				else
+					src.visible_message(span_warning("[src] tries to stand up."))
+					return FALSE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
 			return FALSE
@@ -712,9 +708,14 @@
 				to_chat(src, span_warning("I can't stand without my wings!"))
 				return
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_info("[src] begins to stand up."))
-			if(move_after(src, 10, target = src))
-				set_resting(FALSE, FALSE)
+			if(HAS_TRAIT(src, TRAIT_ENDOWMENT))
+				src.visible_message(span_notice("[src] begins to stand up, struggling because of THEIR weight."))
+				if(move_after(src, 30, target = src))
+					set_resting(FALSE, FALSE)
+			else
+				src.visible_message(span_info("[src] begins to stand up."))
+				if(move_after(src, 10, target = src))
+					set_resting(FALSE, FALSE)
 		else
 			src.visible_message(span_warning("[src] struggles to stand up."))
 	else
@@ -797,6 +798,16 @@
 		stat = CONSCIOUS
 		updatehealth() //then we check if the mob should wake up.
 		update_mobility()
+		if(has_quirk(/datum/quirk/greaternightvision))
+			var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+			if(eyes)
+				eyes.see_in_dark = 14 // Same as full darksight eyes
+				eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+		if(has_quirk(/datum/quirk/night_vision))
+			var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+			if(eyes)
+				eyes.see_in_dark = 7
+				eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		update_sight()
 		clear_alert("not_enough_oxy")
 		reload_fullscreen()
@@ -902,6 +913,9 @@
 
 	var/old_direction = dir
 	var/turf/T = loc
+
+	if(m_intent == MOVE_INTENT_RUN)
+		sprinted_tiles++
 
 	if(wallpressed)
 		GetComponent(/datum/component/leaning).wallhug_check(T, newloc, direct)
@@ -1051,6 +1065,11 @@
 		resist_grab()
 		return
 
+	// CIT CHANGE - climbing out of a gut.
+	if(vore_process_resist())
+		//Sure, give clickdelay for anti spam. shouldn't be combat voring anyways.
+		return TRUE
+
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)
 		resist_buckle()
@@ -1066,7 +1085,7 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/proc/submit(var/instant = FALSE)
+/mob/living/proc/submit(instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
@@ -1255,8 +1274,11 @@
 
 	if(isliving(who))
 		var/mob/living/L = who
-		if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+		if(L.cmode && (L.mobility_flags & MOBILITY_STAND) && L.client) //cmode, standing and cliented mobs.
 			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.ckey && !client && L.stat != DEAD) //basically ssd probably
+			to_chat(src, span_warning("The fog prevents me from taking \the [what]..."))
 			return
 		if(L.surrendering)
 			surrender_mod = 0.5
@@ -1528,6 +1550,7 @@
 /mob/living/proc/SoakMob(locations)
 	if(locations & CHEST)
 		ExtinguishMob()
+		wash_mob(src, CLEAN_MEDIUM)
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
@@ -1901,10 +1924,10 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			if(see_invisible < M.invisibility)
-				continue
-			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
-				continue
+			//if(see_invisible < M.invisibility)
+				//continue
+			// if(M.mob_timers[MT_INVISIBILITY] > world.time) Check if the mob is affected by the invisibility spell - commented out, this makes invis immune to active spotting, cringe
+				// continue
 			var/probby = 3 * STAPER
 			if(M.mind)
 				probby -= (M.mind.get_skill_level(/datum/skill/misc/sneaking) * 10)
@@ -1913,8 +1936,14 @@
 				found_ping(get_turf(M), client, "hidden")
 				if(M.m_intent == MOVE_INTENT_SNEAK)
 					emote("huh")
+					playsound(M, 'modular_stonehedge/sound/mgsalert.ogg', 100, TRUE)
 					to_chat(M, span_danger("[src] sees me! I'm found!"))
-					M.mob_timers[MT_FOUNDSNEAK] = world.time
+					M.apply_status_effect(/datum/status_effect/debuff/stealthcd)
+				if(M.mob_timers[MT_INVISIBILITY] > world.time)
+					if(prob(probby)) // first success will ping their location, but you need to succeed twice in a row to fully dispel magical invisibility with just your eyes - this should not be an easy thing to do
+						emote("huh")
+						to_chat(M, span_danger("[src]'s supernatural perception dispels my invisbility!"))
+						animate(M, alpha = 255, time = 1 SECONDS, easing = EASE_IN) // this will not remove the chat message when the invis spell actually wears off, slop code, but better than godmode invis
 			else
 				if(M.m_intent == MOVE_INTENT_SNEAK)
 					if(M.client?.prefs.showrolls)

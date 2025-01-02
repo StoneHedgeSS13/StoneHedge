@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(librarian)
 		return list()
 	if(books.Find(input))
 		return books[input]
-	else
+	else if(fexists("strings/books/[input]"))
 		books[input] = file2book(input)
 		return books[input]
 	return list()

@@ -203,7 +203,7 @@
 			user.say(m)
 
 /obj/item/book/rogue/bibble/attack(mob/living/M, mob/user)
-	if(user.mind && user.mind.assigned_role == "Prophet")
+	if(user.mind && user.mind.assigned_role == "Archpriest")
 		if(!user.can_read(src))
 			to_chat(user, span_warning("I don't understand these scribbly black lines."))
 			return
@@ -294,7 +294,7 @@
 
 /obj/item/book/rogue/robber
 	name = "Reading for Robbers"
-	desc = "By Flavius of Dendor"
+	desc = "By Flavius of the Woods"
 	icon_state ="basic_book_0"
 	base_icon_state = "basic_book"
 	bookfile = "tales4.json"
@@ -328,15 +328,15 @@
 	bookfile = "tales8.json"
 
 /obj/item/book/rogue/necra
-	name = "Burial Rites for Necra"
-	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Necra."
+	name = "Burial Rites of Astralith"
+	desc = "By Hunlaf, Gravedigger. Revised by Eigriff; Gravesinger of Yamais."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales9.json"
 
 /obj/item/book/rogue/noc
 	name = "Dreamseeker"
-	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Priest of Necra."
+	desc = "By Hunlaf, Gravedigger. Revised by Lenore, Cleric of Jayx."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales10.json"
@@ -356,7 +356,7 @@
 	bookfile = "tales12.json"
 
 /obj/item/book/rogue/arcyne
-	name = "Latent Magicks, where does Arcyne Power come from?"
+	name = "Latent Magicks and You."
 	desc = "By Kildren Birchwood, scholar of Magicks"
 	icon_state ="book4_0"
 	base_icon_state = "book4"
@@ -381,11 +381,11 @@
 	var/list/book_icons = list(
 	"Sickly green with embossed bronze" = "book8",
 	"White with embossed obsidian" = "book7",
-	"Black with embossed blortz" = "book6",
-	"Blue with embossed rontz" = "book5",
+	"Black with embossed quartz" = "book6",
+	"Blue with embossed ruby" = "book5",
 	"Green with embossed amethyst" = "book4",
-	"Purple with embossed gemerald" = "book3",
-	"Red with embossed saffira" = "book2",
+	"Purple with embossed emerald" = "book3",
+	"Red with embossed sapphire" = "book2",
 	"Brown with embossed gold" = "book1",
 	"Brown without embossed material" = "basic_book")
 	name = "unknown title"
@@ -394,7 +394,7 @@
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
 
-/obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
+/obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated
 	if(is_in_round_player_generated)

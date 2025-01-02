@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/roguetown/shirt/robe
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK|ITEM_SLOT_SHIRT
 	name = "robe"
 	desc = ""
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -8,7 +8,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 	color = "#7c6d5c"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
@@ -17,7 +17,7 @@
 	is_bra = TRUE //so it lets bottom access.
 
 /obj/item/clothing/suit/roguetown/shirt/robe/monk
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "monk robe"
 	desc = "Humble robes worn by monks in service to the gods."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -30,7 +30,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "sun robe"
 	desc = "Robes worn by those in service to the sun."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -44,7 +44,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/noc
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "moon robe"
 	desc = "Robes worn by those in service to the moon."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -58,13 +58,13 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "necromancer robes"
 	desc = "Often worn by those who practice in the field of necromancy."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "necromrobe"
-	icon = 'icons/roguetown/clothing/armor.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	icon = 'modular_stonehedge/icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = null
 	boobed = TRUE
 	color = null
@@ -72,7 +72,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/dendor
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK|ITEM_SLOT_SHIRT
 	name = "briar robe"
 	desc = "Robes worn by Druid's in service to nature."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -86,7 +86,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/necra
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "mourning robe"
 	desc = "Black robes which cover the body not unlike those in depictions of the tollcollector."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -100,7 +100,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/psydonrobe
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "red robes"
 	desc = "Red like blood.."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -188,18 +188,18 @@
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "physcoat"
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
 //Eora content from Stonekeep
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "eoran robe"
 	desc = "Holy robes, intended for use by followers of love."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -209,7 +209,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDECROTCH
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	var/fanatic_wear = FALSE
@@ -243,7 +243,7 @@
 		L.update_inv_armor()
 
 /obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "spellcaster robes"
 	desc = "Robes worn by journeyman wizards"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -256,7 +256,7 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/vamprobe
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "dark robes"
 	desc = "Dark robes usually worn by those with bad intentions."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
@@ -274,11 +274,11 @@
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "feldrobe"
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK|ITEM_SLOT_SHIRT
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -288,11 +288,11 @@
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "surgrobe"
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK|ITEM_SLOT_SHIRT
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -302,10 +302,10 @@
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "judgecoat"
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	sleeved = null
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL
+	flags_inv = HIDEBOOB|HIDETAIL|HIDECROTCH|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL

@@ -5,19 +5,18 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
+	organ_size = DEFAULT_PENIS_SIZE
 	organ_dna_type = /datum/organ_dna/penis
 	accessory_type = /datum/sprite_accessory/penis/human
 	var/sheath_type = SHEATH_TYPE_NONE
 	var/erect_state = ERECT_STATE_NONE
 	var/penis_type = PENIS_TYPE_PLAIN
-	var/penis_size = DEFAULT_PENIS_SIZE
 	var/always_hard = FALSE
 	var/strapon = FALSE
 
-/obj/item/organ/penis/Initialize()
-	. = ..()
-
 /obj/item/organ/penis/proc/update_erect_state()
+	if(istype(src, /obj/item/organ/penis/internal))
+		return
 	var/oldstate = erect_state
 	var/new_state = ERECT_STATE_NONE
 	if(owner)
@@ -40,7 +39,7 @@
 	icon_state = "knotpenis"
 
 /obj/item/organ/penis/knotted/big
-	penis_size = 3
+	organ_size = 5
 
 /obj/item/organ/penis/equine
 	name = "equine penis"
@@ -93,7 +92,7 @@
 /obj/item/organ/filling_organ/anus
 	//absorbs faster than womb, less capacity.
 	name = "anus"
-	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
 	icon_state = "anus"
 	dropshrink = 0.5
 	visible_organ = TRUE
@@ -106,10 +105,11 @@
 	altnames = list("ass", "asshole", "butt", "butthole", "guts") //used in thought messages.
 	spiller = TRUE
 	blocker = ITEM_SLOT_PANTS
+	bloatable = TRUE
 
 /obj/item/organ/filling_organ/vagina
 	name = "vagina"
-	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
 	icon_state = "vagina"
 	dropshrink = 0.5
 	visible_organ = TRUE
@@ -119,14 +119,59 @@
 	max_reagents = 40 //big cap, ordinary absorbtion.
 	absorbing = TRUE
 	fertility = TRUE
-	pregnantaltorgan = /obj/item/organ/belly
 	altnames = list("vagina", "cunt", "womb", "pussy", "slit", "kitty", "snatch") //used in thought messages.
 	spiller = TRUE
 	blocker = ITEM_SLOT_PANTS
+	bloatable = TRUE
+	var/preggotimer //dumbass timer
+	var/pre_pregnancy_size = 0
+
+//we handle all of this here because cant timer another goddamn thing from here correctly.
+/obj/item/organ/filling_organ/vagina/proc/be_impregnated()
+	if(!owner)
+		return
+	if(owner.stat == DEAD)
+		return
+	if(owner.has_quirk(/datum/quirk/selfawaregeni))
+		to_chat(owner, span_lovebold("I feel a surge of warmth in my [src.name], I’m definitely pregnant!"))
+	reagents.maximum_volume *= 0.5 //ick ock, should make the thing recalculate on next life tick.
+	pregnant = TRUE
+	if(owner.getorganslot(ORGAN_SLOT_BREASTS)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
+		var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
+		if(!breasties.refilling)
+			breasties.refilling = TRUE
+			if(owner.has_quirk(/datum/quirk/selfawaregeni))
+				to_chat(owner, span_lovebold("My breasts should start lactating soon..."))
+	if(owner.getorganslot(ORGAN_SLOT_BELLY)) //shitty default behavior i guess, i aint gonna customiza-ble this fuck that.
+		var/obj/item/organ/belly/belly = owner.getorganslot(ORGAN_SLOT_BELLY)
+		pre_pregnancy_size = belly.organ_size
+		addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+
+/obj/item/organ/filling_organ/vagina/proc/undo_preggoness()
+	if(!pregnant)
+		return
+	deltimer(preggotimer)
+	pregnant = FALSE
+	to_chat(owner, span_love("I feel my [src] shrink to how it was before. Pregnancy is no more."))
+	if(owner.getorganslot(ORGAN_SLOT_BELLY))
+		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+		bellyussy.organ_size = pre_pregnancy_size
+	owner.update_body_parts(TRUE)
+
+/obj/item/organ/filling_organ/vagina/proc/handle_preggoness()
+	if(owner.getorganslot(ORGAN_SLOT_BELLY))
+		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+		if(bellyussy.organ_size < 4)
+			to_chat(owner, span_lovebold("I notice my belly has grown due to pregnancy...")) //dont need to repeat this probably if size cant grow anyway.
+			bellyussy.organ_size = bellyussy.organ_size + 1
+			owner.update_body_parts(TRUE)
+			preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggoness)), 30 MINUTES, TIMER_STOPPABLE)
+		else
+			deltimer(preggotimer)
 
 /obj/item/organ/filling_organ/breasts
 	name = "breasts"
-	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
 	icon_state = "breasts"
 	dropshrink = 0.8
 	visible_organ = TRUE
@@ -135,7 +180,7 @@
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	organ_size = DEFAULT_BREASTS_SIZE
-	reagent_to_make = /datum/reagent/consumable/breastmilk
+	reagent_to_make = /datum/reagent/consumable/milk
 	hungerhelp = TRUE
 	organ_sizeable = TRUE
 	absorbing = FALSE //funny liquid tanks
@@ -150,7 +195,7 @@
 
 /obj/item/organ/belly
 	name = "belly"
-	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
 	icon_state = "belly"
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_STOMACH
@@ -161,7 +206,7 @@
 
 /obj/item/organ/filling_organ/testicles
 	name = "testicles"
-	icon = 'modular_stonehedge/icons/obj/surgery.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
 	icon_state = "testicles"
 	dropshrink = 0.5
 	visible_organ = TRUE
@@ -172,10 +217,9 @@
 	organ_size = DEFAULT_TESTICLES_SIZE
 	reagent_to_make = /datum/reagent/consumable/cum
 	refilling = TRUE
-	hungerhelp = FALSE //balls dont be dry if you starve
 	reagent_generate_rate = 0.2
+	storage_per_size = 20 //more size since they have so little size selections.
 	organ_sizeable = TRUE
-	storage_per_size = 6
 	altnames = list("balls", "testicles", "testes", "orbs", "cum tanks", "seed tanks") //used in thought messages.
 	startsfilled = TRUE
 	blocker = ITEM_SLOT_PANTS
@@ -187,6 +231,18 @@
 		reagent_to_make = /datum/reagent/consumable/cum/sterile
 		reagents.clear_reagents()
 		reagents.add_reagent(reagent_to_make, reagents.maximum_volume)
+
+/obj/item/organ/butt
+	name = "butt"
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/obj/surgery.dmi'
+	icon_state = "butt"
+	visible_organ = TRUE
+	zone = BODY_ZONE_PRECISE_STOMACH
+	slot = ORGAN_SLOT_BUTT
+	organ_dna_type = /datum/organ_dna/butt
+	accessory_type = /datum/sprite_accessory/butt/pair
+	organ_size = DEFAULT_BUTT_SIZE
+
 
 /obj/item/organ/filling_organ/testicles/internal
 	name = "internal testicles"
@@ -210,5 +266,10 @@
 
 /obj/item/organ/belly/internal
 	name = "internal belly"
+	visible_organ = FALSE
+	accessory_type = /datum/sprite_accessory/none
+
+/obj/item/organ/butt/internal
+	name = "internal butt"
 	visible_organ = FALSE
 	accessory_type = /datum/sprite_accessory/none

@@ -44,7 +44,9 @@
 	do_thrust_animate(target, user)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
-	user.sexcon.handle_passive_ejaculation()
+	if(user.sexcon.check_active_ejaculation())
+		user.visible_message(span_lovebold("[user] ejaculates into [target]'s mouth!"))
+		user.sexcon.cum_into(girljuice = TRUE)
 
 	user.sexcon.perform_sex_action(target, 0, 2, FALSE)
 	target.sexcon.handle_passive_ejaculation()

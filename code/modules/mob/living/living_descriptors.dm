@@ -89,7 +89,7 @@
 	if(fifth)
 		lines += fifth
 
-	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA), "%THEY% %DESC1% and %DESC2%")
+	var/sixth = build_coalesce_description(desc_copy, described, list(MOB_DESCRIPTOR_SLOT_BREASTS, MOB_DESCRIPTOR_SLOT_VAGINA, MOB_DESCRIPTOR_SLOT_BUTT), "%THEY% %DESC1%, %DESC2% and %DESC3%")
 	if(sixth)
 		lines += sixth
 

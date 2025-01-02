@@ -13,6 +13,11 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	var/heldz_items = 3
+	sewrepair = TRUE
+	fiber_salvage = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+	var/datum/wound/artery/artery_wound
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
 	. = ..()
@@ -36,7 +41,6 @@
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
 	heldz_items = 3
-	sewrepair = TRUE
 
 /*/obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
 	..()
@@ -52,7 +56,7 @@
 	icon_state = "goldplaque"
 	sellprice = 50
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/shalal
 	name = "shalal belt"
@@ -75,7 +79,7 @@
 	icon_state = "silverplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/hand
 	name = "steel belt"
@@ -83,7 +87,7 @@
 	icon_state = "steelplaque"
 	sellprice = 30
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/rope
 	name = "rope belt"
@@ -92,12 +96,14 @@
 	item_state = "rope"
 	color = "#b9a286"
 	heldz_items = 1
+	salvage_result = /obj/item/rope
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
 	heldz_items = 1
+	salvage_result = /obj/item/natural/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -121,7 +127,7 @@
 	equip_sound = 'sound/blank.ogg'
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
+	fiber_salvage = FALSE
 
 /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
 	. = ..()
@@ -174,6 +180,12 @@
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
 
+/obj/item/storage/backpack/rogue //holding salvage vars for children
+	sewrepair = TRUE
+	fiber_salvage = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"
 	desc = "A bulky bag worn over the shoulder which can be used to hold many things."
@@ -189,55 +201,250 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
-	sewrepair = TRUE
 
-/obj/item/storage/belt/rogue/pouch/skit
-	name = "surgical pouch"
-	desc = "Emergency surgical pouch."
-	icon_state = "pouch"
-	item_state = "pouch"
-	icon = 'icons/roguetown/clothing/storage.dmi'
-	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
-	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
-	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("whips", "lashes")
-	max_integrity = 300
-	equip_sound = 'sound/blank.ogg'
-	content_overlays = FALSE
-	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
+/obj/item/storage/fancy/pilltin
+	name = "pill tin"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
 
-/obj/item/storage/belt/rogue/pouch/skit/ComponentInitialize()
+/obj/item/storage/fancy/pilltin/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltincustom_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltin/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltin/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltin/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinwake
+	name = "pill tin (wake)"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/pilltinwake/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltinwake_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltinwake/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltinwake/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinwake/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinwake/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		STR.max_combined_w_class = 42
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 12
-		STR.set_holdable(list(
-			/obj/item/rogueweapon/surgery/scalpel,
-			/obj/item/rogueweapon/surgery/saw,
-			/obj/item/rogueweapon/surgery/hemostat,
-			/obj/item/rogueweapon/surgery/hemostat,
-			/obj/item/rogueweapon/surgery/retractor,
-			/obj/item/rogueweapon/surgery/bonesetter,
-			/obj/item/rogueweapon/surgery/cautery,
-			/obj/item/needle,
-			/obj/item/needle/thorn,
-			/obj/item/needle/pestra,
-			/obj/item/reagent_containers/glass/bottle/waterskin,
-			/obj/item/reagent_containers/glass/bottle,
-			/obj/item/natural/fibers,
-			/obj/item/natural/cloth,
-			/obj/item/natural/bundle/fibers,
-			/obj/item/natural/bundle/cloth,
-			/obj/item/natural/worms/leech,
-			/obj/item/natural/worms/leech/cheele,
-			/obj/item/reagent_containers/lux
-		))
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/caffpill))
 
-/obj/item/storage/belt/rogue/pouch/skit/PopulateContents()
+/obj/item/storage/fancy/pilltinwake/PopulateContents()
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+
+/obj/item/storage/fancy/pilltinpink
+	name = "pill tin (pnk)"
+	desc = "a tin for all your pill needs, snake branded (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pilltin"
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/pilltinpink/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "pilltin_empty"
+		else
+			icon_state = "pilltinpink_open"
+	else
+		icon_state = "pilltin"
+
+/obj/item/storage/fancy/pilltinpink/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/pilltinpink/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/pilltinpink/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/pilltinpink/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 12
+		STR.set_holdable(list(/obj/item/reagent_containers/pill/pnkpill))
+
+/obj/item/storage/fancy/pilltinpink/PopulateContents()
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+
+/obj/item/storage/fancy/skit
+	name = "surgery kit"
+	desc = "portable and compact (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "skit"
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/skit/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "skit_empty"
+		else
+			icon_state = "skit_open"
+	else
+		icon_state = "skit"
+
+/obj/item/storage/fancy/skit/examine(mob/user)
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/skit/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/skit/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/skit/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/skit/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/skit/ComponentInitialize()
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 10
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.max_combined_w_class = 42
+	STR.set_holdable(list(
+		/obj/item/rogueweapon/surgery/scalpel,
+		/obj/item/rogueweapon/surgery/saw,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/retractor,
+		/obj/item/rogueweapon/surgery/bonesetter,
+		/obj/item/rogueweapon/surgery/cautery,
+		/obj/item/natural/worms/leech/cheele,
+		/obj/item/needle,
+		/obj/item/needle/thorn,
+		/obj/item/needle/pestra
+	))
+
+/obj/item/storage/fancy/skit/PopulateContents()
 	new /obj/item/rogueweapon/surgery/scalpel(src)
 	new /obj/item/rogueweapon/surgery/saw(src)
 	new /obj/item/rogueweapon/surgery/hemostat(src)
@@ -245,7 +452,87 @@
 	new /obj/item/rogueweapon/surgery/retractor(src)
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
+	new /obj/item/natural/worms/leech/cheele(src)
 	new /obj/item/needle/pestra(src)
+
+/obj/item/storage/fancy/ifak
+	name = "personal patch kit"
+	desc = "A personal treatment pouch; has all you need to stop you or someone else from their souls reincarnation - at least this time. Even comes with a little guide scroll for the learning. (close/open mmb)"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "ifak"
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 1
+	slot_flags = null
+
+/obj/item/storage/fancy/ifak/PopulateContents()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	for(var/i = 1 to STR.max_items)
+		new spawn_type(src)
+
+/obj/item/storage/fancy/ifak/update_icon()
+	if(fancy_open)
+		if(contents.len == 0)
+			icon_state = "ifak_empty"
+		else
+			icon_state = "ifak_open"
+	else
+		icon_state = "ifak"
+
+/obj/item/storage/fancy/ifak/examine(mob/user)
+	. = ..()
+	if(fancy_open)
+		if(length(contents) == 1)
+			. += "There is one item left."
+		else
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] items left."
+
+/obj/item/storage/fancy/ifak/attack_self(mob/user)
+	fancy_open = !fancy_open
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/ifak/Entered(mob/user)
+	if(!fancy_open)
+		to_chat(user, span_notice("[src] needs to be opened first."))
+		return
+	fancy_open = TRUE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/ifak/Exited(mob/user)
+	fancy_open = FALSE
+	update_icon()
+	. = ..()
+
+/obj/item/storage/fancy/ifak/MiddleClick(mob/user, params)
+	fancy_open = !fancy_open
+	update_icon()
+	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
+
+/obj/item/storage/fancy/ifak/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 8
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.max_combined_w_class = 42
+	STR.set_holdable(list(
+		/obj/item/reagent_containers/hypospray/, //all injectards
+		/obj/item/natural/cloth/,
+		/obj/item/natural/bundle/cloth/, //all cloth and bandage
+		/obj/item/reagent_containers/, //all pills-drugs
+		/obj/item/candle,
+		/obj/item/needle/,
+		/obj/item/reagent_containers/glass/bottle/rogue/, //all bottles
+		/obj/item/storage/fancy/, //pilltins, you can put a ifak inside a ifak
+	))
+
+/obj/item/storage/fancy/ifak/PopulateContents()
+	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
+	new /obj/item/natural/bundle/cloth/bandage/full(src)
+	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/candle/yellow(src)
+	new /obj/item/needle(src)
 
 /obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
 	new /obj/item/natural/feather(src)
@@ -282,6 +569,28 @@
 		CP.rmb_show(user)
 		return TRUE
 
+/obj/item/storage/backpack/rogue/backpack/rucksack
+	name = "rucksack"
+	desc = "A bulky backpack worn on the back which can store many items."
+	icon_state = "rucksack"
+	item_state = "rucksack"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	resistance_flags = NONE
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	sewrepair = TRUE
+
+/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 10
+		STR.not_while_equipped = TRUE
 
 /obj/item/storage/backpack/rogue/backpack
 	name = "backpack"
@@ -295,7 +604,6 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
 
 /obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
 	. = ..()
@@ -327,7 +635,7 @@
 	icon_state = "ornate_belt"
 	sellprice = 50
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/belt/rogue/leather/blackleather
 	name = "black leather belt"
@@ -345,6 +653,7 @@
 	max_integrity = 100
 	content_overlays = FALSE
 	heldz_items = 4
+	sewrepair = FALSE
 
 /obj/item/storage/belt/rogue/pickles/ComponentInitialize()
 	. = ..()

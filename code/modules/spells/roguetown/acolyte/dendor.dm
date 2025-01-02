@@ -18,14 +18,9 @@
 /obj/effect/proc_holder/spell/targeted/blesscrop/cast(list/targets,mob/user = usr)
 	. = ..()
 	var/growed = FALSE
-	var/amount_blessed = 0
 	for(var/obj/structure/soil/soil in view(4))
 		soil.bless_soil()
 		growed = TRUE
-		amount_blessed++
-		// Blessed only up to 5 crops
-		if(amount_blessed >= 5)
-			break
 	if(growed)
 		visible_message(span_green("[usr] blesses the nearby crops with swirling nature energy!"))
 	return growed
@@ -105,7 +100,7 @@
 	associated_skill = /datum/skill/magic/holy
 	invocation = "Nature spirits, come to me.."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
-	devotion_cost = 30
+	devotion_cost = 60
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom/cast(list/targets, mob/user = usr)
 	. = ..()
@@ -113,4 +108,6 @@
 	for(var/X in GLOB.cardinals)
 		var/turf/TT = get_step(T, X)
 		if(!isclosedturf(TT) && !locate(/obj/structure/glowshroom) in TT)
-			new /obj/structure/glowshroom(TT)
+			var/shroomtospawn = pick(/obj/structure/glowshroom, /obj/structure/safeglowshroom) //hey its fungal illumination not fungal zapping your ass away.
+			var/obj/structure/shroomie = new shroomtospawn(TT)
+			addtimer(CALLBACK(shroomie, /obj/structure/glowshroom/proc/destroy, shroomie), 5 SECONDS, TIMER_STOPPABLE) // Destroys after 5 secs

@@ -54,6 +54,8 @@
 	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
 	if(length(message2recognize) > 15)
+		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
+			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
 			if(world.time < L.mob_timers[MT_PSYPRAY] + 1 MINUTES)
 				L.mob_timers[MT_PSYPRAY] = world.time
@@ -254,8 +256,6 @@
 	message = "gasps out their last breath."
 	message_robot = "shudders violently for a moment before falling still, its eyes slowly darkening."
 	message_AI = "screeches, its screen flickering as its systems slowly halt."
-	message_alien = "lets out a waning guttural screech, and collapses onto the floor..."
-	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
 	message_simple =  "falls limp."
 	stat_allowed = UNCONSCIOUS
@@ -947,6 +947,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled noise."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/clap
@@ -1222,6 +1224,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yawn."
+		else
+			message = initial(message)
 
 /datum/emote/living/warcry
 	key = "warcry"
@@ -1241,6 +1245,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled shout!"
+		else
+			message = initial(message)
 
 /datum/emote/living/custom
 	key = "me"
@@ -1407,6 +1413,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yip."
+		else
+			message = initial(message)
 
 /datum/emote/living/yap
 	key = "yap"
@@ -1426,6 +1434,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled yap."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/coyhowl
@@ -1446,6 +1456,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled howl."
+		else
+			message = initial(message)
 
 
 /datum/emote/living/snap
@@ -1492,6 +1504,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled bark."
+		else
+			message = initial(message)
 
 /datum/emote/living/whine
 	key = "whine"
@@ -1511,6 +1525,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled whine."
+		else
+			message = initial(message)
 /datum/emote/living/cackle
 	key = "cackle"
 	key_third_person = "cackles"
@@ -1529,6 +1545,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled cackle."
+		else
+			message = initial(message)
 
 /datum/emote/living/blink
 	key = "blink"
@@ -1561,6 +1579,8 @@
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak_vocal())
 			message = "makes a muffled meow."
+		else
+			message = initial(message)
 
 /datum/emote/living/hiss
 	key = "hiss"

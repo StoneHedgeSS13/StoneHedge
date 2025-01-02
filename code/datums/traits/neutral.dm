@@ -1,6 +1,7 @@
 //traits with no real impact that can be taken freely
 //MAKE SURE THESE DO NOT MAJORLY IMPACT GAMEPLAY. those should be positive or negative traits.
 
+/*
 /datum/quirk/pineapple_liker
 	name = "Ananas Affinity"
 	desc = "Has no effect but breaks the game if we remove it."
@@ -39,7 +40,6 @@
 		var/datum/species/species = H.dna.species
 		species.disliked_food &= ~PINEAPPLE
 
-/*
 /datum/quirk/deviant_tastes
 	name = "Deviant Tastes"
 	desc = "Stuff you like is now the stuff you hate, and other way around. (probably) Has no effect."
@@ -63,12 +63,24 @@
 		species.disliked_food = initial(species.disliked_food)
 */
 
+/* no longer necessary due to having male fem pref
 /datum/quirk/monsterhunter
 	name = "Monster \"Hunter\""
-	desc = "Allows targeting by specific monsters for something very lewd. May be unfair to you in combat."
+	desc = "Allows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat. (CHOOSE PREF QUIRKS ASWELL)"
 	value = 0
 	gain_text = span_notice("I want to feel a monster inside.. or inside a monster.")
 	lose_text = span_notice("I no longer am a degenerate.")
+*/
+
+/datum/quirk/monsterhuntermale
+	name = "Monster \"Hunter\" (Males)"
+	desc = "llows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat. Male monsters lust for me..."
+	value = 0
+
+/datum/quirk/monsterhunterfemale
+	name = "Monster \"Hunter\" (Females)"
+	desc = "llows targeting by specific monsters (such as werewolves, goblins and minotaurs etc.) for something very lewd. May be unfair to you in combat.Female monsters lust for me... "
+	value = 0
 
 /datum/quirk/selfawaregeni
 	name = "Sensitiveness"
@@ -78,5 +90,16 @@
 //damn snowflakes.
 /datum/quirk/weirdo
 	name = "Freeky"
-	desc = "I can use my 'orifices' and do more strange sexual things that wouldn't come to sane mind."
+	desc = "I can use my 'orifices' to store things and do more strange sexual things that wouldn't come to sane mind."
 	value = 0
+
+/datum/quirk/virgin
+	name = "Virgin"
+	desc = "I am a virgin, whether truly, by magic or plot holes. Vampires and cultists are likely to lust for my blood."
+	value = 0
+	gain_text = span_notice("I am a virgin.")
+
+/datum/quirk/virgin/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.virginity = TRUE
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)

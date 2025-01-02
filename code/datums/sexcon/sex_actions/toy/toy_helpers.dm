@@ -77,8 +77,8 @@
 
 /proc/get_insertable_in_hand(mob/living/user)
 	var/obj/item/thing = user.get_active_held_item()
-	if(thing != null && thing.w_class < MAX_INSERT_SIZE) //Anything smaller than this goes in the puss.
-		if(thing.w_class == (MAX_INSERT_SIZE-1) && thing.type == /obj/item/rogueweapon) //no weapons that size
+	if(thing != null && thing.w_class <= MAX_INSERT_SIZE) //Anything smaller than this goes in the puss.
+		if(thing.w_class > (MAX_INSERT_SIZE-1) && (istype(thing, /obj/item/rogueweapon) || istype(thing, /obj/item/clothing))) //no weapons unless one less than insert size
 			return null
 		return thing
 	return null

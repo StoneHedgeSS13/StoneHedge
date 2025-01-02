@@ -58,7 +58,6 @@
 					break
 				src.storedfiber -= 2
 				new /obj/item/natural/cloth(get_turf(src))
-				weaver.mind.add_sleep_experience(/datum/skill/misc/sewing, (weaver.STAINT*0.5))//you get less exp from using the loom
 				weaver.mind.adjust_experience(/datum/skill/misc/sewing, (weaver.STAINT*0.5))//you get less exp from using the loom
 
 /obj/machinery/loom/examine(mob/user)

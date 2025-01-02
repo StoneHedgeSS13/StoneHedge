@@ -39,7 +39,7 @@
 		/obj/item/ingot/iron=22,
 		/obj/item/rogueweapon/huntingknife/cleaver=22,
 		/obj/item/rogueweapon/mace=22,
-		/obj/item/clothing/cloak/raincloak/mortus=22,
+		/obj/item/clothing/cloak/raincloak/rogue=22,
 		/obj/item/reagent_containers/food/snacks/butter=22,
 		/obj/item/clothing/mask/cigarette/pipe=10,
 		/obj/item/clothing/mask/cigarette/pipe/westman=10,
@@ -61,8 +61,6 @@
 		new I(src)
 /obj/structure/closet/crate/chest/gold/lootbox/trait/PopulateContents()
 	var/list/loot = list(/obj/item/rogueweapon/huntingknife/idagger/silver=33,
-		/obj/item/book/granter/trait/war/undying=13,
-		/obj/item/book/granter/trait/war/relentless=13,
 		/obj/item/book/granter/trait/mobility/bogtrek=33,
 		/obj/item/book/granter/trait/defense/mediumarmor=40,
 		/obj/item/book/granter/trait/defense/heavyarmor=40,

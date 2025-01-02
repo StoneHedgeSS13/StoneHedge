@@ -79,7 +79,13 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
-	A.attack_right(src, params)
+	//TODO: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
+	var/obj/item/held_item = get_active_held_item()
+	if(held_item)
+		if(!held_item.pre_attack_right(A, src, params))
+			A.attack_right(src, params)
+	else
+		A.attack_right(src, params)
 
 /mob/living/attack_right(mob/user, params)
 	. = ..()
@@ -164,7 +170,7 @@
 
 	if(user.sexcon && user.sexcon.target == src && !isnull(user.sexcon.current_action))
 		switch(user.sexcon.current_action)
-			if(/datum/sex_action/blowjob || /datum/sex_action/crotch_nuzzle || /datum/sex_action/cunnilingus || /datum/sex_action/rimming || /datum/sex_action/suck_balls)
+			if(/datum/sex_action/blowjob, /datum/sex_action/crotch_nuzzle, /datum/sex_action/cunnilingus, /datum/sex_action/rimming, /datum/sex_action/suck_balls)
 				dam2do *= 2 //Vrell - biting their junk hurts more
 				def_zone = BODY_ZONE_PRECISE_GROIN
 				do_bound_check = FALSE
@@ -174,7 +180,7 @@
 				do_bound_check = FALSE
 	if(sexcon && sexcon.target == user && !isnull(sexcon.current_action))
 		switch(sexcon.current_action)
-			if(/datum/sex_action/throat_sex || /datum/sex_action/force_blowjob || /datum/sex_action/force_crotch_nuzzle || /datum/sex_action/force_cunnilingus || /datum/sex_action/facesitting || /datum/sex_action/force_rimming)
+			if(/datum/sex_action/throat_sex, /datum/sex_action/force_blowjob, /datum/sex_action/force_crotch_nuzzle, /datum/sex_action/force_cunnilingus, /datum/sex_action/facesitting, /datum/sex_action/force_rimming)
 				dam2do *= 2 //Vrell - biting their junk hurts more
 				def_zone = BODY_ZONE_PRECISE_GROIN
 				do_bound_check = FALSE
@@ -287,8 +293,7 @@
 				if(A == src)
 					return
 				if(isliving(A))
-					var/mob/living/L = A
-					if(!(L.mobility_flags & MOBILITY_STAND) && L.pulling != src)
+					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
 						return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
@@ -403,6 +408,8 @@
 							T.cut_overlay("damage25")
 							for(var/turf/open/transparent/glass/turfie in range(1,T)) //turns surrounding glass to shit also at a chance
 								if(prob(25))
+									var/obj/item/shard/glassshard = new /obj/item/shard(turfie)
+									glassshard.throw_at(turfie) //so they fall down hopefully
 									turfie.ChangeTurf(/turf/open/transparent/openspace, flags = CHANGETURF_INHERIT_AIR)
 							T.Entered(src)
 						else
@@ -419,7 +426,7 @@
 					return
 				if(src.incapacitated(ignore_restraints = TRUE))
 					return
-				if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
+				if(is_mouth_covered())
 					to_chat(src, span_warning("My mouth is blocked."))
 					return
 				if(HAS_TRAIT(src, TRAIT_NO_BITE))
@@ -438,19 +445,26 @@
 					var/thiefskill = src.mind.get_skill_level(/datum/skill/misc/stealing)
 					var/stealroll = roll("[thiefskill]d6")
 					var/targetperception = (V.STAPER)
-					var/list/stealablezones = list("chest", "neck", "groin", "r_hand", "l_hand")
+					var/list/stealablezones = list("neck", "groin", "r_hand", "l_hand")
 					var/list/stealpos = list()
 					var/list/mobsbehind = list()
 					var/exp_to_gain = STAINT
+					if(V.stat != CONSCIOUS || !(V.mobility_flags & MOBILITY_STAND)) //sleeping or dead cant stop you.
+						targetperception = 0
+						stealroll = 20
+						stealablezones += list("chest", "head", "l_foot", "r_foot") //you should be able to pull those off from someone laying or unconscious
 					to_chat(src, span_notice("I try to steal from [V]..."))
 					if(do_after(src, 5, target = V, progress = 0))
 						if(stealroll > targetperception)
 						//TODO add exp here
 							// RATWOOD MODULAR START
-							if(V.cmode)
+							if(V.cmode && V.stat == CONSCIOUS && (V.mobility_flags & MOBILITY_STAND))
 								to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
 								return
 							// RATWOOD MODULAR END
+							if(!V.key && V.mind && V.stat != DEAD)
+								to_chat(src, "<span class='warning'>[V] is protected by the fog. I can't pickpocket them like this.</span>")
+								return
 							if(U.get_active_held_item())
 								to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
 								return
@@ -460,6 +474,11 @@
 							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
 							if(mobsbehind.Find(src))
 								switch(U.zone_selected)
+									if("head")
+										if (V.get_item_by_slot(SLOT_HEAD))
+											stealpos.Add(V.get_item_by_slot(SLOT_HEAD))
+										else if (V.get_item_by_slot(SLOT_WEAR_MASK)) //can only steal mask if no helmet, in case of closed helms.
+											stealpos.Add(V.get_item_by_slot(SLOT_WEAR_MASK))
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
 											stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
@@ -473,16 +492,24 @@
 											stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
 										if (V.get_item_by_slot(SLOT_BELT_L))
 											stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
-									if("r_hand" || "l_hand")
+									if("r_hand", "l_hand")
 										if (V.get_item_by_slot(SLOT_RING))
 											stealpos.Add(V.get_item_by_slot(SLOT_RING))
+									if("l_foot", "r_foot")
+										if (V.get_item_by_slot(SLOT_SHOES))
+											stealpos.Add(V.get_item_by_slot(SLOT_SHOES))
 								if (length(stealpos) > 0)
 									var/obj/item/picked = pick(stealpos)
+									if(HAS_TRAIT(picked, TRAIT_UNPICKPOCKETABLE))
+										to_chat(src, span_warning("I can't seem to get a grip on [picked]!"))
+										return
 									V.dropItemToGround(picked)
 									put_in_active_hand(picked)
 									to_chat(src, span_green("I stole [picked]!"))
 									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+									if(has_flaw(/datum/charflaw/addiction/kleptomaniac))
+										sate_addiction()
 								else
 									exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 									to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
@@ -501,7 +528,7 @@
 							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
 						// If we're pickpocketing someone else, and that person is conscious, grant XP
 						if(src != V && V.stat == CONSCIOUS)
-							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+							mind.adjust_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 						changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)
@@ -674,26 +701,6 @@
 			ML.visible_message(span_danger("[src]'s bite misses [ML]!"), \
 							span_danger("I avoid [src]'s bite!"), span_hear("I hear jaws snapping shut!"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("My bite misses [ML]!"))
-
-/*
-	Aliens
-	Defaults to same as monkey in most places
-*/
-/mob/living/carbon/alien/UnarmedAttack(atom/A)
-	A.attack_alien(src)
-
-/atom/proc/attack_alien(mob/living/carbon/alien/user)
-	attack_paw(user)
-	return
-
-/mob/living/carbon/alien/RestrainedClickOn(atom/A)
-	return
-
-// Babby aliens
-/mob/living/carbon/alien/larva/UnarmedAttack(atom/A)
-	A.attack_larva(src)
-/atom/proc/attack_larva(mob/user)
-	return
 
 
 /*

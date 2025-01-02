@@ -93,9 +93,8 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -122,7 +121,7 @@
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	name = "iron chain coif"
 	icon_state = "ichaincoif"
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
@@ -131,7 +130,7 @@
 	desc = "A steel bervor designed to protect the neck."
 	icon_state = "bervor"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 300
 	resistance_flags = FIRE_PROOF
@@ -146,7 +145,7 @@
 	icon_state = "gorget"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
@@ -155,17 +154,84 @@
 	blocksound = PLATEHIT
 	clothing_flags = CANT_SLEEP_IN
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
-	. = ..()
-	name = "cursed collar"
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+/obj/item/clothing/neck/roguetown/gorget/leather
+	name = "hardened leather gorget"
+	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
+	icon_state = "lgorget"
+	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 150
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //This one will help against chopping
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	smeltresult = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
 	clothing_flags = null
 
-/obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/neck/roguetown/gorget/studdedleather
+	name = "studded leather gorget"
+	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering and stabs."
+	icon_state = "lgorget"
+	armor = list("blunt" = 100, "slash" = 80, "stab" = 70, "bullet" = 80, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 200
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //being stabbed in the neck sucks.
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	smeltresult = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+	clothing_flags = null
+
+/obj/item/clothing/neck/roguetown/gorget/servant
+	name = "enchanted servant collar"
+	desc = "This collar makes me obligated to heed to orders from the citizens of the Town, and restricts my movements..."
+
+/obj/item/clothing/neck/roguetown/gorget/servant/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(QDELETED(src))
+	if(!(src in user.held_items))
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/neck/roguetown/gorget/servant/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK)
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+		ADD_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+		user.visible_message(span_warning("[user] is bound by the collar's enchantment."), \
+			span_warning("This collar makes me heed to orders from the citizens of the Town, unless those orders will result in self harm, forced sexual interactions, or orders that will indirectly or directly harm the town or its population. It also restricts my movement."))
+		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
+
+/obj/item/clothing/neck/roguetown/gorget/servant/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
+	if(stripper.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
+		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+		return TRUE
+	return FALSE
+
+/obj/item/clothing/neck/roguetown/gorget/servant/dropped(mob/user)
+	. = ..()
+	if(!ishuman(user))
 		return
-	qdel(src)
+	var/mob/living/carbon/human/prisoner = user
+	if(prisoner.get_item_by_slot(SLOT_NECK) != src)
+		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+		REMOVE_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+
+
+/obj/item/clothing/neck/roguetown/gorget/servant/imprisoned
+	name = "enchanted prisoner collar"
+	desc = "This collar makes me obligated to heed to orders from anyone, and restricts my movements..."
+
+/obj/item/clothing/neck/roguetown/gorget/servant/imprisoned/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK)
+		user.visible_message(span_warning("[user] is bound by the collar's enchantment."), \
+			span_warning("This collar makes me heed to orders from anyone, unless those orders will result in self harm or forced sexual interactions."))
+		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
+
+
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "divine Symbol"
@@ -176,7 +242,7 @@
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	sellprice = 10
 	experimental_onhip = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
 	name = "Amulet of the Sun"
@@ -313,7 +379,7 @@
 	resistance_flags = FIRE_PROOF
 	allowed_race = CLOTHED_RACES_TYPES
 	sellprice = 98
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/horus
 	name = "all-seeing eye"
@@ -323,7 +389,7 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 30
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/shalal
 	name = "desert rider medal"
@@ -333,7 +399,7 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 15
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/collar/feldcollar
 	name = "high collar"
@@ -357,7 +423,7 @@
 	desc = "An neckguard once worn by the descendents of giants."
 	icon_state = "nephilimneckguard"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ash
 	max_integrity = 350
 	resistance_flags = FIRE_PROOF
@@ -391,3 +457,33 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 100
+
+/obj/item/clothing/neck/roguetown/slavecollar
+	name = "slave collar"
+	desc = ""
+	icon_state = "bervor"
+	color = "#ff8400ff"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_NECK
+	sellprice = 10
+
+/obj/item/clothing/neck/roguetown/luckcharm
+	name = "luck charm"
+	desc = "A rabbit's foot necklace. Some say it brings good luck."
+	icon_state = "luckcharm"
+	sellprice = 15
+	slot_flags = ITEM_SLOT_NECK
+	var/goodluckactivated = FALSE
+/obj/item/clothing/neck/roguetown/luckcharm/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK)
+		user.change_stat("fortune", 1) //how much luck stat it gives when equipped
+		goodluckactivated = TRUE
+	return
+/obj/item/clothing/neck/roguetown/luckcharm/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(goodluckactivated == TRUE)
+		user.change_stat("fortune", -1) //how much luck stat taken away when unequipped
+		goodluckactivated = FALSE
+	return

@@ -97,7 +97,7 @@
 
 	resistance_flags = FLAMMABLE
 
-/obj/item/bodypart/proc/adjust_marking_overlays(var/list/appearance_list)
+/obj/item/bodypart/proc/adjust_marking_overlays(list/appearance_list)
 	return
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
@@ -163,6 +163,21 @@
 			qdel(src)
 		return
 	return ..()
+
+/obj/item/bodypart/MiddleClick(mob/user, params)
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item)
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			var/used_time = 210
+			if(user.mind)
+				used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+			visible_message("[user] begins to butcher \the [src].")
+			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+			if(do_after(user, used_time, target = src))
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+				qdel(src)
+	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
 	if(ishuman(C))
@@ -248,7 +263,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
@@ -283,10 +298,6 @@
 
 	if(!brute && !burn && !stamina)
 		return FALSE
-
-	switch(animal_origin)
-		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn //nothing can burn with so much snowflake code around
-			burn *= 2
 
 	//cap at maxdamage
 	if(brute_dam + brute > max_damage)
@@ -326,6 +337,10 @@
 	update_HP()
 	if(required_status && (status != required_status)) //So we can only heal certain kinds of limbs, ie robotic vs organic.
 		return
+	if(owner && owner.has_status_effect(/datum/status_effect/buff/fortify))
+		brute *= 1.5
+		burn *= 1.5
+		stamina *= 1.5
 
 	brute_dam	= round(max(brute_dam - brute, 0), DAMAGE_PRECISION)
 	burn_dam	= round(max(burn_dam - burn, 0), DAMAGE_PRECISION)
@@ -663,24 +678,10 @@
 	icon_state = "default_monkey_chest"
 	animal_origin = MONKEY_BODYPART
 
-/obj/item/bodypart/chest/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_chest"
-	dismemberable = 0
-	max_damage = 500
-	animal_origin = ALIEN_BODYPART
-
 /obj/item/bodypart/chest/devil
 	dismemberable = 0
 	max_damage = 5000
 	animal_origin = DEVIL_BODYPART
-
-/obj/item/bodypart/chest/larva
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "larva_chest"
-	dismemberable = 0
-	max_damage = 50
-	animal_origin = LARVA_BODYPART
 
 /obj/item/bodypart/l_arm
 	name = "left arm"
@@ -734,14 +735,6 @@
 	px_x = -5
 	px_y = -3
 
-/obj/item/bodypart/l_arm/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_l_arm"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
 
 /obj/item/bodypart/l_arm/devil
 	dismemberable = 0
@@ -800,15 +793,6 @@
 	px_x = 5
 	px_y = -3
 
-/obj/item/bodypart/r_arm/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_r_arm"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
-
 /obj/item/bodypart/r_arm/devil
 	dismemberable = 0
 	max_damage = 5000
@@ -855,15 +839,6 @@
 	icon_state = "default_monkey_l_leg"
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
-
-/obj/item/bodypart/l_leg/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_l_leg"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
 
 /obj/item/bodypart/l_leg/devil
 	dismemberable = 0
@@ -913,14 +888,6 @@
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
 
-/obj/item/bodypart/r_leg/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_r_leg"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
 
 /obj/item/bodypart/r_leg/devil
 	dismemberable = 0

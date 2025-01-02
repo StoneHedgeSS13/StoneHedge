@@ -49,6 +49,25 @@
 		else
 			to_chat(src, "Screen shake disabled.")
 
+/client/verb/masked_examine()
+	set category = "Options"
+	set name = "Toggle Masked Examine"
+	if(prefs)
+		prefs.masked_examine = !prefs.masked_examine
+		prefs.save_preferences()
+		if(prefs.masked_examine)
+			to_chat(src, "Your character information will be viewable when masked.")
+		else
+			to_chat(src, "Your character information will no longer be viewable when masked.")
+
+/client/verb/toggle_tail()
+	set category = "Options"
+	set name = "Toggle Tail Visibility"
+
+	var/mob/living/carbon/human/H = src
+	H.tail_toggle = !H.tail_toggle
+	H.update_body_parts(TRUE)
+
 //defiant exists
 /*
 /client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.

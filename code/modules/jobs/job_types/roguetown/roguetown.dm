@@ -83,7 +83,7 @@
 				if(H.dna.species.name in list("Elf", "Half-Elf"))
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) */
 	H.update_body()
-
+	H.verbs += list(/mob/living/carbon/human/proc/mark_target)
 /datum/outfit/job/roguetown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(H.mind)
@@ -97,7 +97,7 @@
 	return
 
 // For magic class roundstart spell selection
-/datum/outfit/job/roguetown/proc/choose_magic(list/category, mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/proc/choose_magic(list/obj/effect/proc_holder/spell/category, mob/living/carbon/human/H)
 	var/list/choices = list()
 	for(var/i = 1, i <= category.len, i++)
 		choices["[category[i].name]: [category[i].cost]"] = category[i]

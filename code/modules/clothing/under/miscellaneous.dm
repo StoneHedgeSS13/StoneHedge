@@ -127,8 +127,6 @@
 			to_chat(user, span_notice("I refill the suit's built-in extinguisher, using up the cartridge."))
 			qdel(E)
 			return
-		return
-	return
 
 /obj/item/extinguisher_refill
 	name = "envirosuit extinguisher cartridge"

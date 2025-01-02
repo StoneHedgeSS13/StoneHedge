@@ -1,5 +1,5 @@
 /obj/structure/roguemachine/bounty
-	name = "Excidium"
+	name = "EXCIDIUM"
 	desc = "A machine that sets and collects bounties. Its bloodied maw could easily fit a human head."
 	icon = 'icons/roguetown/topadd/statue1.dmi'
 	icon_state = "baldguy"
@@ -26,16 +26,28 @@
 	var/mob/living/carbon/human/H = user
 
 	// Main Menu
-	var/list/choices = list("Consult bounties", "Set bounty")
+	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties")
+	if(user.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
+		choices += "Remove Bounty"
+
+	if(user.job in list("Guildmaster", "Guild Appraiser"))
+		choices += "Set Bounty"
+
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)
 
-		if("Consult bounties")
+		if("Consult Bounties")
 			consult_bounties(H)
 
-		if("Set bounty")
+		if("Set Bounty")
 			set_bounty(H)
+
+		if("Remove Bounty")
+			remove_bounty(H)
+
+		if("Print List of Bounties")
+			print_bounty_scroll(H)
 
 /obj/structure/roguemachine/bounty/attackby(obj/item/P, mob/user, params)
 
@@ -49,19 +61,9 @@
 	var/correct_head = FALSE
 
 	var/reward_amount = 0
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += b.amount
-			GLOB.head_bounties -= b
-		
-	if(correct_head)
-		qdel(P)
-	else // No valid bounty for this head?
-		say("This skull carries no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		return
+
+	user.dropItemToGround(P)
+	P.forceMove(src)
 
 	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
 
@@ -74,15 +76,23 @@
 
 	sleep(2 SECONDS)
 
-	if(correct_head)
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == stored_head.real_name)
+			correct_head = TRUE
+			say("A bounty has been sated.")
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+
+	if(!correct_head)
+		say("This skull carries no reward.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	else
 		budget2change(reward_amount, user)
 
 	// Head has been "analyzed". Return it.
 	sleep(2 SECONDS)
 	playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
-	stored_head = new /obj/item/bodypart/head(machine_location)
-	stored_head.name = "mutilated head"
-	stored_head.desc = "This head has been violated beyond recognition, the work of a horrific machine."
+	P.forceMove(machine_location)
 
 ///Shows all active bounties to the user.
 /obj/structure/roguemachine/bounty/proc/consult_bounties(mob/living/carbon/human/user)
@@ -140,7 +150,7 @@
 		say("No reason given.")
 		return
 
-	var/confirm = input(user, "Do you dare unleash this darkness upon the world? Your name will be known.", src) as null|anything in list("Yes", "No")	
+	var/confirm = input(user, "Do you dare unleash this darkness upon the world? Your name will be known.", src) as null|anything in list("Yes", "No")
 	if(isnull(confirm) || confirm == "No") return
 
 	// Deduct money from user
@@ -164,6 +174,34 @@
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
 
+/obj/structure/roguemachine/bounty/proc/remove_bounty(mob/living/carbon/human/user)
+	var/list/eligible_players = list()
+
+	if(user.mind.known_people.len)
+		for(var/datum/bounty/b in GLOB.head_bounties)
+			eligible_players += b.target
+	else
+		to_chat(user, span_warning("I don't know anyone."))
+		return
+	var/mob/living/carbon/target = input(user, "Whose name shall be removed from the wanted list?", src) as null|anything in eligible_players
+	if(isnull(target))
+		say("No target selected.")
+		return
+
+	var/confirm = input(user, "Do you dare release this one?", src) as null|anything in list("Yes", "No")
+	if(isnull(confirm) || confirm == "No") return
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == target.real_name)
+			GLOB.head_bounties -= b
+
+	//Announce it locally and on scomm
+	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	var/bounty_announcement = "[target] is no longer wanted."
+	say(bounty_announcement)
+	scom_announce(bounty_announcement)
+
+	message_admins("[ADMIN_LOOKUPFLW(user)] has removed a bounty on [ADMIN_LOOKUPFLW(target)]'")
+
 /proc/add_bounty(target_realname, amount, bandit_status, reason, employer_name)
 	var/datum/bounty/new_bounty = new /datum/bounty
 	new_bounty.amount = amount
@@ -180,7 +218,7 @@
 	switch(rand(1, 3))
 		if(1)
 			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
-			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"	
+			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"
 		if(2)
 			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
 			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
@@ -188,3 +226,189 @@
 			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
 			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
 	new_bounty.banner += "--------------<BR>"
+
+/obj/structure/roguemachine/bounty/proc/print_bounty_scroll(mob/living/carbon/human/user)
+	if(!GLOB.head_bounties.len)
+		say("No bounties are currently active.")
+		return
+
+	var/cost = 50
+	var/choice = alert(user, "Print a continously updated list of active bounties for [cost] mammons?", "Print Bounty Scroll", "Yes", "No")
+	if(choice != "Yes")
+		return
+
+	if(!(user in SStreasury.bank_accounts))
+		say("You have no bank account.")
+		return
+
+	if(SStreasury.bank_accounts[user] < cost)
+		say("Insufficient funds. [cost] mammons required.")
+		return
+
+	SStreasury.bank_accounts[user] -= cost
+	SStreasury.treasury_value += cost
+	SStreasury.log_entries += "+[cost] to treasury (bounty scroll fee)"
+
+	var/obj/item/paper/scroll/bounty/scroll = new(get_turf(src))
+	scroll.update_bounty_text()
+	playsound(src, 'sound/items/scroll_open.ogg', 100, TRUE)
+	visible_message(span_notice("The [src] prints out a weathered scroll."))
+	say("Your scroll is ready.")
+
+/obj/item/paper/scroll/bounty
+	name = "enchanted bounty scroll"
+	desc = "A weathered scroll enchanted to list the active bounties from the Excidium."
+	icon_state = "scroll"
+	open = FALSE
+
+/obj/item/paper/scroll/bounty/examine(mob/user)
+	. = ..()
+	if(open)
+		update_bounty_text()
+
+/obj/item/paper/scroll/bounty/proc/update_bounty_text()
+	var/scroll_text = "<center>WANTED BY THE EXCIDIUM</center><br><br>"
+
+	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
+		scroll_text += saved_bounty.banner
+		scroll_text += "<br>"
+
+	info = scroll_text
+
+/obj/structure/chair/arrestchair
+	name = "POENA"
+	desc = "A chairesque machine that clears grove marks and collects bounties, for a greater reward, through enslavement to the Town rather than death."
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "brass_chair"
+	blade_dulling = DULLING_BASH
+	item_chair = null
+	anchored = TRUE
+
+/obj/structure/chair/arrestchair/buckle_mob(mob/living/carbon/human/M, force, check_loc)
+	. = ..()
+	if(!(ishuman(M)))
+		return
+	if(M.loc != loc)
+		M.forceMove(get_turf(src))
+		buckle_mob(M)
+		return
+
+	playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
+	M.Paralyze(3 SECONDS)
+
+	var/correct_head = FALSE
+	var/grove_marked = FALSE
+	var/reward_amount = 0
+
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.target == M.real_name)
+			correct_head = TRUE
+			reward_amount += b.amount
+			GLOB.head_bounties -= b
+
+	if(M.has_status_effect(/datum/status_effect/grove_outlaw))
+		grove_marked = TRUE
+
+	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
+
+	sleep(1 SECONDS)
+
+	if(M.stat == DEAD)
+		say("Yamais' hands are over this one, send them to the EXCIDIUM.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		unbuckle_all_mobs()
+		return
+
+	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
+	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
+	M.emote("scream")
+	M.apply_damage(50, BRUTE, BODY_ZONE_HEAD, FALSE)
+	sleep(1 SECONDS)
+	playsound(src, pick(headcrush), 100, FALSE, -1)
+	M.emote("agony")
+	M.apply_damage(50, BRUTE, BODY_ZONE_HEAD, FALSE)
+
+	sleep(2 SECONDS)
+
+	if(correct_head || grove_marked)
+		if(correct_head)
+			say("A bounty has been sated.")
+			budget2change((reward_amount*2))
+
+		if(grove_marked)
+			say("Nature's mark detected. Issuing summary judgment and commencing sentencing...")
+			M.remove_status_effect(/datum/status_effect/grove_outlaw)
+
+			for(var/obj/structure/grove_wanted/totem in world)
+				totem.marked_individuals -= M.real_name
+				totem.roundstart_marks -= M.real_name
+
+			for(var/mob/living/carbon/human/grove_member in GLOB.player_list)
+				if(grove_member.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight"))
+					to_chat(grove_member, span_green("<b>Grove Judgment Alert:</b> [M.real_name] has been judged and sentenced by the POENA."))
+					playsound(grove_member, 'sound/misc/treefall.ogg', 50, TRUE)
+
+		var/obj/item/clothing/neck/old_neck = M.get_item_by_slot(SLOT_NECK)
+		if(old_neck)
+			M.dropItemToGround(old_neck, TRUE)
+		var/obj/item/clothing/neck/roguetown/gorget/servant/servant = new(get_turf(M))
+		M.equip_to_slot_or_del(servant, SLOT_NECK, TRUE)
+		playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
+	else
+		say("This skull carries no reward, you fool.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	M.Unconscious(15 SECONDS)
+
+	sleep(2 SECONDS)
+	playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
+	unbuckle_all_mobs()
+
+/obj/structure/chair/arrestchair/proc/budget2change(budget, mob/user, specify)
+	var/turf/T
+	if(!user || (!ismob(user)))
+		T = get_turf(src)
+	else
+		T = get_turf(user)
+	if(!budget || budget <= 0)
+		return
+	budget = floor(budget)
+	var/type_to_put
+	var/zenars_to_put
+	if(specify)
+		switch(specify)
+			if("GOLD")
+				zenars_to_put = budget/10
+				type_to_put = /obj/item/roguecoin/gold
+			if("SILVER")
+				zenars_to_put = budget/5
+				type_to_put = /obj/item/roguecoin/silver
+			if("BRONZE")
+				zenars_to_put = budget
+				type_to_put = /obj/item/roguecoin/copper
+	else
+		var/highest_found = FALSE
+		var/zenars = floor(budget/10)
+		if(zenars)
+			budget -= zenars * 10
+			highest_found = TRUE
+			type_to_put = /obj/item/roguecoin/gold
+			zenars_to_put = zenars
+		zenars = floor(budget/5)
+		if(zenars)
+			budget -= zenars * 5
+			if(!highest_found)
+				highest_found = TRUE
+				type_to_put = /obj/item/roguecoin/silver
+				zenars_to_put = zenars
+			else
+				new /obj/item/roguecoin/silver(T, zenars)
+		if(budget >= 1)
+			if(!highest_found)
+				type_to_put = /obj/item/roguecoin/copper
+				zenars_to_put = budget
+			else
+				new /obj/item/roguecoin/copper(T, budget)
+	if(!type_to_put || zenars_to_put < 1)
+		return
+	new type_to_put(T, floor(zenars_to_put))
+	playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)

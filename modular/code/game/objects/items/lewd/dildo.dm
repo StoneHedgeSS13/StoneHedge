@@ -92,13 +92,13 @@
 			temp.penis_type = PENIS_TYPE_EQUINE
 	switch(dildo_size)
 		if("small")
-			temp.penis_size = DEFAULT_PENIS_SIZE-1
+			temp.organ_size = DEFAULT_PENIS_SIZE-1
 		if("medium")
-			temp.penis_size = DEFAULT_PENIS_SIZE
+			temp.organ_size = DEFAULT_PENIS_SIZE
 		if("big")
-			temp.penis_size = DEFAULT_PENIS_SIZE+1
+			temp.organ_size = DEFAULT_PENIS_SIZE+1
 		if("huge")
-			temp.penis_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
+			temp.organ_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
 	temp.always_hard = TRUE
 	temp.strapon = TRUE
 	strapon = temp
@@ -250,6 +250,26 @@
 	. = ..()
 	name = "unfinished [dildo_material] plug"
 
+/obj/item/dildo/plug/customize(mob/living/user)
+	if(!can_custom)
+		return FALSE
+	if(src && !user.incapacitated() && in_range(user,src))
+		size_choice = input(user, "Choose a size for your dildo.","Dildo Size") as null|anything in list("small", "medium", "big", "huge")
+		if(src && size_choice && !user.incapacitated() && in_range(user,src))
+			dildo_size = size_choice
+			switch(dildo_size)
+				if("small")
+					pleasure = 4
+				if("medium")
+					pleasure = 6
+				if("big")
+					pleasure = 8
+				if("huge")
+					pleasure = 10
+	update_appearance()
+	update_strapon()
+	return TRUE
+
 /obj/item/dildo/plug/update_appearance()
 	icon_state = "plug_[dildo_size]"
 	name = "[dildo_size] [dildo_material] plug"
@@ -258,6 +278,23 @@
 	if(istype(src, /obj/item/dildo/plug/gold))
 		desc = pick("Prevents royal accidents.","Royal hole preserver.","Shuts the wrong hole of royalty.","Best investment ever.")
 	can_custom = FALSE
+
+/obj/item/dildo/plug/update_strapon()
+	var/obj/item/organ/penis/temp = new /obj/item/organ/penis
+	temp.name = name
+	icon_state = "plug_[dildo_size]"
+	switch(dildo_size)
+		if("small")
+			temp.organ_size = DEFAULT_PENIS_SIZE-1
+		if("medium")
+			temp.organ_size = DEFAULT_PENIS_SIZE
+		if("big")
+			temp.organ_size = DEFAULT_PENIS_SIZE+1
+		if("huge")
+			temp.organ_size = DEFAULT_PENIS_SIZE+1 //huge doesnt exist in mobs
+	temp.always_hard = TRUE
+	temp.strapon = TRUE
+	strapon = temp
 
 /obj/item/dildo/plug/wood
 	color = "#7D4033"

@@ -33,6 +33,7 @@
 	STACON = 7
 	STASTR = 7
 	STASPD = 13
+	simple_detect_bonus = 20
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
@@ -139,17 +140,15 @@
 			return "foreleg"
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/horny
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/shapeshift
+	faction = list("wolfs", "Station")
+	health = 200
+	maxHealth = 200
 	erpable = TRUE
-	seeksfuck = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/safe
 	aggressive = FALSE
 	tame = TRUE
-
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/safe/horny
-	erpable = TRUE
-	seeksfuck = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar
 	name = "familiar volf"

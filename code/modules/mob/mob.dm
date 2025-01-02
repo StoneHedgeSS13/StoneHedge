@@ -192,7 +192,7 @@ GLOBAL_VAR_INIT(mobids, 1)
   * * vision_distance (optional) define how many tiles away the message can be seen.
   * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
   */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null, mob/target = null, target_message = null)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -202,17 +202,22 @@ GLOBAL_VAR_INIT(mobids, 1)
 	hearers -= ignored_mobs
 	if(self_message)
 		hearers -= src
+	if(target && target_message)
+		hearers -= target
+		target.show_message(target_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
 	for(var/mob/M in hearers)
 		if(!M.client)
 			continue
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
-		if(M.see_invisible < invisibility)//if src is invisible to M
-			msg = blind_message
-		else if(T != loc && T != src) //if src is inside something and not a turf.
-			msg = blind_message
-//		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
-//			msg = blind_message
+		/// Visible messages are shown to things which contain them and vice versa, mostly to help with vore system UX. Also - dont hide msg from self
+		if(!in_contents_recursive(src, M) && !in_contents_recursive(M, src) && M != src)
+			if(M.see_invisible < invisibility)//if src is invisible to M
+				msg = blind_message
+			else if(T != loc && T != src) //if src is inside something and not a turf.
+				msg = blind_message
+			//else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
+			//	msg = blind_message
 		if(!msg)
 			continue
 		M.show_message(msg, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -221,8 +226,23 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(log_seen)
 		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
 
+/// Checks whether `thing` is somewhere inside `target`
+/proc/in_contents_recursive(atom/movable/thing, atom/movable/target)
+	var/atom/location = thing.loc
+	/// Theoretically a while(TRUE) but it's an i++ to 100 for safety
+	for(var/i in 1 to 100)
+		if(isnull(location))
+			break
+		if(isturf(location))
+			break
+		if(location == target)
+			return TRUE
+		else
+			location = location.loc
+	return FALSE
+
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null, target = null, target_message = null)
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -478,7 +498,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	return TRUE
 
 /mob/proc/linepoint(atom/A as mob|obj|turf in view(), params)
-	if(world.time < lastpoint + 10)
+	if(world.time < lastpoint + 5)
 		return FALSE
 
 	if(stat)
@@ -741,6 +761,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/Stat()
 	..()
 	// && check_rights(R_ADMIN,0)
+	var/ticker_time = world.time - SSticker.round_start_time
+	var/time_left = SSticker.mode?.round_ends_at - ticker_time
 	if(client && client.holder)
 		if(statpanel("Status"))
 			if (client)
@@ -752,6 +774,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 			stat(null, "Round ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
 //			stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
 			stat(null, "Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
 			stat(null, "Round TrueTime: [worldtime2text()] [world.time]")
 			stat(null, "TimeOfDay: [GLOB.tod]")
 			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
@@ -766,6 +790,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")
 			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
 			stat("TimeOfDay: [GLOB.tod]")
 
 	if(client && client.holder && check_rights(R_ADMIN,0))
@@ -1380,3 +1406,17 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return FALSE
 	else
 		return TRUE
+
+/proc/find_match_in_list(list/list_A, list/list_B, exact_match)
+	var/list/match_list
+	if(!list_A || !list_B)
+		return
+	if(exact_match)
+		match_list = list_A&list_B //only items in both lists
+		var/length = LAZYLEN(match_list)
+		if(length)
+			return (length == LAZYLEN(list_A)) //if they're not the same len(gth) or we don't have a len, then this isn't an exact match.
+	else
+		match_list = list_A&list_B
+		return LAZYLEN(match_list)
+	return FALSE

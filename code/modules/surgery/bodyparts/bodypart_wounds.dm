@@ -193,6 +193,7 @@
 			dam += 30
 			dam *= sneakmult
 			user.apply_status_effect(/datum/status_effect/debuff/stealthcd)
+			animate(user, alpha = 255, time = 1 SECONDS, easing = EASE_IN) // shitcode to prevent infinite attacks from invisibility
 			to_chat(src, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
 			to_chat(user, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
 			user.mind?.adjust_experience(/datum/skill/misc/sneaking, user.STAINT * 5, TRUE)
@@ -232,6 +233,8 @@
 	return FALSE
 
 /obj/item/bodypart/chest/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+	if(!user)
+		return FALSE
 	if(!bclass || !dam || (owner.status_flags & GODMODE))
 		return FALSE
 	var/list/attempted_wounds = list()
@@ -252,6 +255,7 @@
 			var/sneakmult = 2 + (user.mind.get_skill_level(/datum/skill/misc/sneaking))
 			dam += 30
 			dam *= sneakmult
+			animate(user, alpha = 255, time = 1 SECONDS, easing = EASE_IN) // shitcode to prevent infinite attacks from invisibility
 			user.apply_status_effect(/datum/status_effect/debuff/stealthcd)
 			to_chat(src, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
 			to_chat(user, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
@@ -321,6 +325,7 @@
 			var/sneakmult = 2 + (user.mind.get_skill_level(/datum/skill/misc/sneaking))
 			dam += 30
 			dam *= sneakmult
+			animate(user, alpha = 255, time = 1 SECONDS, easing = EASE_IN) // shitcode to prevent infinite attacks from invisibility
 			user.apply_status_effect(/datum/status_effect/debuff/stealthcd)
 			to_chat(src, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
 			to_chat(user, span_userdanger("SNEAK ATTACK!!! CRITICAL HIT CHANCE INCREASED!"))
@@ -330,7 +335,7 @@
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else
+			else if (!resistance)
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
 		used = round(damage_dividend * 20 + (dam / 3), 1)
@@ -339,10 +344,10 @@
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
-		if(!owner.stat && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
+		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
-			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
+			owner.Unconscious(15 SECONDS + (from_behind * 15 SECONDS))
 			if(owner.client)
 				winset(owner.client, "outputwindow.output", "max-lines=1")
 				winset(owner.client, "outputwindow.output", "max-lines=100")
@@ -406,7 +411,7 @@
 						attempted_wounds +=/datum/wound/fracture/head/nose
 					else
 						attempted_wounds += /datum/wound/facial/disfigurement/nose
-				else if(zone_precise in knockout_zones)
+				else if(zone_precise == BODY_ZONE_PRECISE_SKULL)
 					attempted_wounds += /datum/wound/fracture/head/brain
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -562,3 +567,4 @@
 	if(skeletonized)
 		returned_flags |= SURGERY_INCISED | SURGERY_RETRACTED | SURGERY_DRILLED //ehh... we have access to whatever organ is there
 	return returned_flags
+

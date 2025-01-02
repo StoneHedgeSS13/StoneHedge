@@ -236,3 +236,12 @@
 	name = "surgical toolset implant"
 	desc = ""
 	contents = newlist(/obj/item/retractor/augment, /obj/item/hemostat/augment, /obj/item/cautery/augment, /obj/item/surgicaldrill/augment, /obj/item/scalpel/augment, /obj/item/circular_saw/augment, /obj/item/surgical_drapes)
+
+/obj/item/organ/cyberimp/arm/clock
+	name = "clockwork arm modification"
+	desc = ""
+	contents = newlist(/obj/item/rogueweapon/whip/antique, /obj/item/rogueweapon/huntingknife/cleaver, /obj/item/rogueweapon/shovel/small,
+		/obj/item/rogueweapon/pick, /obj/item/rogueweapon/tongs, /obj/item/rogueweapon/hammer) // whip is a monowire reference. im sorry I fucking had too.
+
+/obj/item/organ/cyberimp/arm/clock/l
+	zone = BODY_ZONE_L_ARM

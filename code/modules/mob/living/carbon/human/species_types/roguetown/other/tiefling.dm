@@ -45,15 +45,13 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 0, "fortune" = 1)
-	specstats_f = list("strength" = -1, "perception" = 1, "intelligence" = 2, "constitution" = -2, "endurance" = 1, "speed" = 1, "fortune" = 1)
 	race_bonus = list(STAT_INTELLIGENCE = 1)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
-		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
+		ORGAN_SLOT_EYES = /obj/item/organ/eyes/night_vision/full_darksight, // The eyes get replaced by the customizer, so this is here for a backup or in case of admin shenanigans
 		ORGAN_SLOT_EARS = /obj/item/organ/ears/tiefling,
 		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue,
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
@@ -66,13 +64,15 @@
 		/datum/bodypart_feature/hair/facial,
 	)
 	customizers = list(
-		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/eyes/full_darksight,
 		/datum/customizer/bodypart_feature/hair/head/humanoid,
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/*
 		/datum/customizer/organ/horns/humanoid/tiefling,
 		/datum/customizer/organ/tail/tiefling,
+		*/ // Duplicates
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/horns/humanoid/tiefling,
 		/datum/customizer/organ/tail/tiefling,
@@ -80,9 +80,14 @@
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/belly/human,
+		/datum/customizer/organ/butt/human,
 		/datum/customizer/organ/vagina/human,
+		/datum/customizer/organ/wings/tiefling,
+
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
@@ -107,13 +112,16 @@
 
 /datum/species/tieberian/get_skin_list()
 	return list(
-		"Castillian" = SKIN_COLOR_CASTILLIAN,
-		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
-		"Succubus" = SKIN_COLOR_SUCCUBUS,
-		"Incubus" = SKIN_COLOR_INCUBUS,
-		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
 		"Zariel" = SKIN_COLOR_ZARIEL,
+		"Levistus" = SKIN_COLOR_LEVISTUS,
+		"Glasya" = SKIN_COLOR_GLASYA,
+		"Asmodeus" = SKIN_COLOR_ASMODEUS,
+		"Baalzebul" = SKIN_COLOR_BAALZEBUL,
+		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
+		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
+		"Nymsea" = SKIN_COLOR_NYMSEA,
+		"Mammon" = SKIN_COLOR_MAMMON
 	)
 
 /datum/species/tieberian/get_hairc_list()

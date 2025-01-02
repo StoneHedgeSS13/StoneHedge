@@ -51,7 +51,7 @@
 	dodgetime = 10
 	canparry = TRUE
 	retreat_health = null
-	patron = /datum/patron/inhumen/zizo		//So they can be hurt by holy fire/healing
+	patron = /datum/patron/inhumen/levishth		//So they can be hurt by holy fire/healing
 
 /mob/living/simple_animal/hostile/rogue/ghost/wraith/wraith2
 	icon_state = "wraith2"
@@ -122,7 +122,7 @@
 /mob/living/simple_animal/hostile/rogue/ghost/wraith/Life()
 	. = ..()
 	if(!target)
-		if(prob(40))
+		if(prob(10))
 			emote(pick("idle"), TRUE)
 
 

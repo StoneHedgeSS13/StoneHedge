@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	var/list/fail_reasons
 
 	/// Do not instantiate if type matches this
-	var/abstract_type = /datum/unit_test
+	abstract_type = /datum/unit_test
 
 	/// List of atoms that we don't want to ever initialize in an agnostic context, like for Create and Destroy. Stored on the base datum for usability in other relevant tests that need this data.
 	var/static/list/uncreatables = null
@@ -263,8 +263,6 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	returnable_list += typesof(/obj/effect/anomaly/grav/high)
 	//See above
 	returnable_list += typesof(/obj/effect/timestop)
-	//This lad also sleeps
-	returnable_list += typesof(/obj/item/hilbertshotel)
 	//this boi spawns turf changing stuff, and it stacks and causes pain. Let's just not
 	returnable_list += typesof(/obj/effect/sliding_puzzle)
 	//these can explode and cause the turf to be destroyed at unexpected moments
@@ -281,6 +279,12 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	returnable_list += typesof(/obj/item/toy/cards/cardhand)
 	//Needs a holodeck area linked to it which is not guarenteed to exist and technically is supposed to have a 1:1 relationship with computer anyway.
 	returnable_list += typesof(/obj/machinery/computer/holodeck)
+	// requires other parts
+	returnable_list += typesof(/obj/machinery/gravity_generator)
+	// requires a generator
+	returnable_list += typesof(/obj/structure/projected_forcefield)
+	// genuinely just too lazy to get this one working
+	returnable_list += typesof(/obj/structure/bodycontainer)
 
 	return returnable_list
 

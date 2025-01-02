@@ -18,6 +18,7 @@
 	var/releasedrain = 0
 	var/chargedrain = 0
 	var/chargetime = 0
+	var/miscast_recharge = FALSE //Failing to cast successfully bypasses the cooldown.
 	var/vitaedrain = 0 //for vamp spells
 	var/warnie = "mobwarning"
 	var/list/charge_invocation
@@ -429,6 +430,23 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if(action)
 			action.UpdateButtonIcon()
 		return TRUE
+	if(miscast_recharge)
+		revert_cast(user) //Failed. Don't consume the spell.
+	else
+		if(!HAS_TRAIT(user, TRAIT_LEARNMAGIC)) //if we cant learn magic, like a mage or some shit, scrolls are disintegrated after use, when their uses are gone.
+			for(var/obj/item/book/granter/spell/spellscroll in user.held_items)
+				if(spellscroll.castable)
+					spellscroll.usable_times -= 1 //we used dis shit.
+					if(spellscroll.usable_times > 0)
+						//spellscroll.desc = initial(spellscroll.desc) + " Looks like the arcyne ink on it has [usable_times]/[initial(spellscroll.usable_times)] uses left..."
+						spellscroll.desc = "Looks like the arcyne ink on it has [spellscroll.usable_times]/[initial(spellscroll.usable_times)] uses left..."
+					else
+						user.dropItemToGround(spellscroll) //to fix potential intent problems
+						spellscroll.Destroy() //buh bye scroll
+						to_chat(user, span_warning("The scroll disintegrates in my hands!"))
+					break
+				else
+					continue
 	return FALSE
 
 /obj/effect/proc_holder/spell/proc/before_cast(list/targets, mob/user = usr)

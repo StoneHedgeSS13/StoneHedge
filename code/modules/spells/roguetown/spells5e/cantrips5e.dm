@@ -1,10 +1,10 @@
-//		   _   _ Ham-Hole's                                __                      _                    
-//		  /_\ | |_ __ ___   __ _ _ __   __ _  ___    ___  / _|   /\/\   __ _ _   _| |__   ___ _ __ ___  
-//		 //_\\| | '_ ` _ \ / _` | '_ \ / _` |/ __|  / _ \| |_   /    \ / _` | | | | '_ \ / _ \ '_ ` _ \ 
-//		/  _  \ | | | | | | (_| | | | | (_| | (__  | (_) |  _| / /\/\ \ (_| | |_| | | | |  __/ | | | | |
-//		\_/ \_/_|_| |_| |_|\__,_|_| |_|\__,_|\___|  \___/|_|   \/    \/\__,_|\__, |_| |_|\___|_| |_| |_|
-//		                                                                     |___/                      
-
+/* 		   _   _ Ham-Hole's                                __                      _
+		  /_\ | |_ __ ___   __ _ _ __   __ _  ___    ___  / _|   /\/\   __ _ _   _| |__   ___ _ __ ___
+		 //_\\| | '_ ` _ \ / _` | '_ \ / _` |/ __|  / _ \| |_   /    \ / _` | | | | '_ \ / _ \ '_ ` _ \
+		/  _  \ | | | | | | (_| | | | | (_| | (__  | (_) |  _| / /\/\ \ (_| | |_| | | | |  __/ | | | | |
+		\_/ \_/_|_| |_| |_|\__,_|_| |_|\__,_|\___|  \___/|_|   \/    \/\__,_|\__, |_| |_|\___|_| |_| |_|
+		                                                                     |___/
+ */
 // Notes: When I was thinking about an ultimate magic update. I would have non-cantrip spells be refunded on sleep.
 // in DND a wizard must prepare his spells each day. I would also attempt to bring a per-day/per-sleep limit to spells that are of higher level.
 // With that in mind, since these spells are ones which are permanently attached to your character (in my head-code)
@@ -56,7 +56,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/self/acidsplash5e/cast(mob/user = usr)
 	var/mob/living/target = user
 	target.visible_message(span_warning("[target] hurls a caustic bubble!"), span_notice("You hurl a caustic bubble!"))
@@ -65,18 +65,18 @@
 /obj/projectile/magic/acidsplash5e
 	name = "acid bubble"
 	icon_state = "green_laser"
-	damage = 10
+	damage = 25
 	damage_type = BURN
 	flag = "magic"
 	range = 15
-	speed = 30 //higher is slower
+	speed = 20 //higher is slower
 	var/aoe_range = 1
 
 /obj/projectile/magic/acidsplash5e/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/turf/T = get_turf(src)
 	playsound(src, 'sound/misc/nutriment.ogg', 100)
-	
+
 	for(var/mob/living/L in range(aoe_range, get_turf(src))) //apply damage over time to mobs
 		if(!L.anti_magic_check())
 			var/mob/living/carbon/M = L
@@ -117,7 +117,7 @@
 //==============================================
 //	BLADE WARD
 //==============================================
-// Notes: You extend your hand and trace a sigil of warding in the air. 
+// Notes: You extend your hand and trace a sigil of warding in the air.
 /obj/effect/proc_holder/spell/self/bladeward5e
 	name = "Blade Ward"
 	desc = ""
@@ -135,7 +135,6 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
-	antimagic_allowed = FALSE //can you use it if you are antimagicked?
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
@@ -151,13 +150,12 @@
 /obj/effect/proc_holder/spell/self/bladeward5e/cast(mob/user = usr)
 	var/mob/living/target = user
 	target.apply_status_effect(/datum/status_effect/buff/bladeward5e)
-	ADD_TRAIT(target, TRAIT_BREADY, TRAIT_GENERIC)
 	user.visible_message("<span class='info'>[user] traces a warding sigil in the air.</span>", "<span class='notice'>I trace a a sigil of warding in the air.</span>")
 
 /datum/status_effect/buff/bladeward5e
 	id = "blade ward"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/bladeward5e
-	effectedstats = list("constitution" = 2)
+	effectedstats = list("constitution" = 3)
 	duration = 20 SECONDS
 	var/static/mutable_appearance/ward = mutable_appearance('icons/effects/beam.dmi', "purple_lightning", -MUTATIONS_LAYER)
 
@@ -176,8 +174,10 @@
 	var/mob/living/target = owner
 	target.cut_overlay(ward)
 	target.update_vision_cone()
-	REMOVE_TRAIT(target, TRAIT_BREADY, TRAIT_GENERIC)
 	. = ..()
+
+/obj/effect/proc_holder/spell/self/bladeward5e/test
+	antimagic_allowed = TRUE
 
 //==============================================
 //	BOOMING BLADE
@@ -205,7 +205,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/boomingblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -246,7 +246,7 @@
 		//explosion
 		if(!owner.anti_magic_check())
 			boom()
-		Destroy(src)
+		qdel(src)
 
 /datum/status_effect/buff/boomingblade5e/proc/boom()
 	var/exp_heavy = 0
@@ -290,7 +290,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 // Notes: sorcerer, warlock, wizard
 /obj/effect/proc_holder/spell/invoked/chilltouch5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -306,7 +306,7 @@
 		target.visible_message(span_warning("A skeletal hand grips [target]'s [bodypart]!"), span_danger("A skeletal hand grips me [bodypart]!"))
 		if(user.zone_selected == BODY_ZONE_CHEST && !user.cmode && !target.cmode) //must be out of combat mode and have erp panel allowed for this prompt to appear
 			hand.pleasureaccepted = TRUE
-		else 
+		else
 			hand.pleasureaccepted = FALSE
 	return FALSE
 
@@ -315,14 +315,14 @@
 	desc = "A ghostly, skeletal hand which moves of it's own accord."
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bounty"
-	
+
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0.75
 	throwforce = 0
 	max_integrity = 10
 
 	var/oxy_drain = 2
-	var/pleasure = 1
+	var/pleasure = 5 //pleasurable quicker since they bleed inevitably due embed
 	var/curprocs = 0
 	var/procsmax = 180
 	var/pleasureaccepted = FALSE
@@ -413,7 +413,7 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
-	antimagic_allowed = FALSE //can you use it if you are antimagicked?
+	antimagic_allowed = FALSE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
@@ -428,7 +428,7 @@
 	summon_type = list(
 		/obj/machinery/light/rogue/campfire/createbonfire5e
 	)
-	summon_lifespan = 600
+	summon_lifespan = 15 MINUTES
 	summon_amt = 1
 
 	action_icon_state = "the_traps"
@@ -446,6 +446,9 @@
 	cookonme = TRUE
 	can_damage = TRUE
 	max_integrity = 30
+
+/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e/test
+	antimagic_allowed = TRUE
 
 //==============================================
 //	DANCING LIGHTS
@@ -526,7 +529,7 @@
 //==============================================
 //	ELDRITCH BLAST
 //==============================================
-// Notes: 
+// Notes:
 /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e
 	name = "Eldritch Blast"
 	desc = ""
@@ -557,13 +560,13 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 
 /obj/projectile/magic/eldritchblast5e
 	name = "eldritch blast"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "arcane_barrage"
-	damage = 20
+	damage = 25
 	damage_type = BRUTE
 	flag = "magic"
 	range = 15
@@ -580,7 +583,7 @@
 	projectile_type = /obj/projectile/magic/eldritchblast5e/empowered
 
 /obj/projectile/magic/eldritchblast5e/empowered
-	damage = 30
+	damage = 35
 	range = 25
 
 /obj/projectile/magic/eldritchblast5e/empowered/on_hit(atom/target, blocked = FALSE)
@@ -641,10 +644,13 @@
 	to_chat(user, span_warning("I wasn't able to find a mind to weave here."))
 	revert_cast()
 
+/obj/effect/proc_holder/spell/targeted/encodethoughts5e/test
+	antimagic_allowed = TRUE
+
 //==============================================
 //	FIRE BOLT
 //==============================================
-// Notes: 
+// Notes:
 
 /obj/effect/proc_holder/spell/invoked/projectile/firebolt5e
 	name = "Fire Bolt"
@@ -713,7 +719,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/invoked/frostbite5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -726,7 +732,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite5e
 	duration = 20 SECONDS
 	var/static/mutable_appearance/frost = mutable_appearance('icons/roguetown/mob/coldbreath.dmi', "breath_m", ABOVE_ALL_MOB_LAYER)
-	effectedstats = list("speed" = -2)
+	effectedstats = list("speed" = -4)
 
 /atom/movable/screen/alert/status_effect/buff/frostbite5e
 	name = "Frostbite"
@@ -776,7 +782,7 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/greenflameblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -809,7 +815,7 @@
 //==============================================
 //	GUIDANCE
 //==============================================
-/obj/effect/proc_holder/spell/targeted/guidance5e
+/obj/effect/proc_holder/spell/invoked/guidance5e
 	name = "Guidance"
 	overlay_state = "null"
 	releasedrain = 50
@@ -832,20 +838,20 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	include_user = FALSE
 
-/obj/effect/proc_holder/spell/targeted/guidance5e/cast(list/targets, mob/living/user)
-	for(var/mob/living/carbon/C in targets)
-		var/datum/status_effect/buff/guidance5e/G = new /datum/status_effect/buff/guidance5e/
-		C.apply_status_effect(G) //apply buff
-		to_chat(C, span_info("You are illuminated by [user]'s guiding light."))
-		C.visible_message(span_info("[C] is illuminated by a guiding presence!"), span_info("You begin to guide [C]."))
+
+/obj/effect/proc_holder/spell/invoked/guidance5e/cast(list/targets, mob/living/user)
+	if(isliving(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		var/mob/living/carbon/caster = user
+		target.visible_message(span_warning("You are being guided by [caster]"), span_notice("You guide [target] "))
+		target.apply_status_effect(/datum/status_effect/buff/guidance5e/) // adds guidance
 
 /datum/status_effect/buff/guidance5e
 	id = "guidance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance5e
-	duration = 30 SECONDS
-	effectedstats = list("intelligence" = 2)
+	duration = 60 SECONDS
+	effectedstats = list("intelligence" = 3)
 	var/static/mutable_appearance/guided = mutable_appearance('icons/effects/effects.dmi', "blessed")
 	var/mob/living/carbon/giver
 
@@ -883,10 +889,8 @@
 	name = "Infestation"
 	overlay_state = "null"
 	releasedrain = 50
-	chargetime = 3
+	chargetime = 10
 	charge_max = 20 SECONDS
-	//chargetime = 10
-	//charge_max = 30 SECONDS
 	range = 8
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
@@ -903,7 +907,7 @@
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-		
+
 /obj/effect/proc_holder/spell/invoked/infestation5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -913,7 +917,7 @@
 /datum/status_effect/buff/infestation5e
 	id = "infestation"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/infestation5e
-	duration = 15 SECONDS
+	duration = 5 SECONDS
 	effectedstats = list("constitution" = -2)
 	var/static/mutable_appearance/rotten = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
 
@@ -929,7 +933,7 @@
 	var/mob/living/target = owner
 	target.cut_overlay(rotten)
 	target.update_vision_cone()
-	. = ..() 
+	. = ..()
 
 /datum/status_effect/buff/infestation5e/tick()
 	var/mob/living/target = owner
@@ -1084,7 +1088,7 @@
 		M.update_inv_hands()
 		M.update_inv_belt()
 	damtype = BRUTE
-	Destroy(src)
+	qdel(src)
 
 /obj/item/flashlight/flare/light5e/fire_act(added, maxstacks)
 	if(fuel)
@@ -1137,7 +1141,7 @@
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 1
-	charge_max = 5 SECONDS
+	charge_max = 20 SECONDS
 	range = 3
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
@@ -1146,7 +1150,7 @@
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
-	cost = 1
+	cost = 2 // might even deserve a cost of 3
 
 	xp_gain = TRUE
 	miracle = FALSE
@@ -1159,13 +1163,13 @@
 	var/sprite_changes = 10
 	var/datum/beam/current_beam = null
 	ignore_fiendkiss = FALSE
-	
-obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/user = usr)
+
+/obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/C in targets)
 		user.visible_message(span_warning("[C] is connected to [user] with a lightning lure!"), span_warning("You create a static link with [C]."))
 		playsound(user, 'sound/items/stunmace_gen (2).ogg', 100)
 
-		var/x 
+		var/x
 		for(x=1; x < sprite_changes; x++)
 			current_beam = new(user,C,time=30/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
 			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
@@ -1173,13 +1177,13 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 
 		var/dist = get_dist(user, C)
 		if (dist <= range)
-			C.electrocute_act(1, user) //just shock	
+			C.electrocute_act(1, user) //just shock
 			//var/atom/throw_target = get_step(user, get_dir(user, C))
 			//C.throw_at(throw_target, 100, 2) //from source material but kinda op.
 		else
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
-			
+
 //==============================================
 //	MAGE HAND
 //==============================================
@@ -1262,13 +1266,17 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 /obj/effect/proc_holder/spell/invoked/mending5e/cast(list/targets, mob/living/user)
 	if(istype(targets[1], /obj/item))
 		var/obj/item/I = targets[1]
-		if(I.obj_integrity < I.max_integrity)	
+		if(I.obj_integrity < I.max_integrity)
 			var/repair_percent = 0.25
 			repair_percent *= I.max_integrity
 			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
 			user.visible_message(span_info("[I] glows in a faint mending light."))
 			if(I.obj_broken == TRUE)
 				I.obj_broken = FALSE
+			if(istype(I, /obj/item/clothing))
+				var/obj/item/clothing/C = I
+				C.update_clothes_damaged_state(FALSE)
+			I.update_overlays()
 		else
 			user.visible_message(span_info("[I] appears to be in pefect condition."))
 			revert_cast()
@@ -1308,7 +1316,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	var/delay = 7
 	ignore_fiendkiss = FALSE
-	
+
 /obj/effect/proc_holder/spell/invoked/mindsliver5e/cast(list/targets, mob/user)
 	var/turf/T = get_turf(targets[1])
 	new /obj/effect/temp_visual/mindsliver5e_p1(T)
@@ -1333,7 +1341,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 /obj/effect/temp_visual/mindsliver5e_p2
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "rift"
-	
+
 	randomdir = FALSE
 	duration = 1 SECONDS
 	layer = ABOVE_ALL_MOB_LAYER
@@ -1368,6 +1376,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
 	no_early_release = FALSE
+	antimagic_allowed = FALSE
 	chargedloop = null
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
@@ -1379,7 +1388,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-	
+
 /obj/effect/proc_holder/spell/invoked/poisonspray5e/cast(list/targets, mob/living/user)
 	var/turf/T = get_turf(targets[1]) //check for turf
 	if(T)
@@ -1408,6 +1417,9 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 	else
 		to_chat(user, "<span class='warning'>I couldn't find a good place for this!</span>")
 		revert_cast()
+
+/obj/effect/proc_holder/spell/invoked/poisonspray5e/test
+	antimagic_allowed = TRUE
 
 //==============================================
 //	Primal Savagery
@@ -1497,12 +1509,12 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
-	
+
 /obj/projectile/magic/rayoffrost5e
 	name = "ray of frost"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ice_2"
-	damage = 10
+	damage = 25
 	damage_type = BRUTE
 	flag = "magic"
 	range = 15
@@ -1519,7 +1531,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 /datum/status_effect/buff/rayoffrost5e
 	id = "frostbite"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/rayoffrost5e
-	duration = 3 SECONDS
+	duration = 6 SECONDS
 	var/static/mutable_appearance/frost = mutable_appearance('icons/roguetown/mob/coldbreath.dmi', "breath_m", ABOVE_ALL_MOB_LAYER)
 	effectedstats = list("speed" = -2)
 
@@ -1535,7 +1547,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 	target.update_vision_cone()
 	var/newcolor = rgb(136, 191, 255)
 	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 3 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 6 SECONDS)
 	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
 
 /datum/status_effect/buff/rayoffrost5e/on_remove()
@@ -1548,12 +1560,12 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 //==============================================
 //	RESISTANCE
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SACRED FLAME
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SAPPING STING
@@ -1563,7 +1575,7 @@ obj/effect/proc_holder/spell/targeted/lightninglure5e/cast(list/targets, mob/use
 //==============================================
 //	SHAPE WATER
 //==============================================
-//Notes: 
+//Notes:
 
 //==============================================
 //	SHILLELAGH

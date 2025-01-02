@@ -9,6 +9,8 @@
 	var/reading = FALSE //sanity
 	var/oneuse = TRUE //default this is true, but admins can var this to 0 if we wanna all have a pass around of the rod form book
 	var/used = FALSE //only really matters if oneuse but it might be nice to know if someone's used it for admin investigations perhaps
+	var/required_trait = null
+	var/required_learn_trait = null
 
 /obj/item/book/granter/proc/turn_page(mob/user)
 	playsound(user, pick('sound/blank.ogg'), 30, TRUE)
@@ -39,6 +41,9 @@
 
 
 /obj/item/book/granter/attack_self(mob/living/user)
+	if(user.attunement_points_used + attunement_cost > user.attunement_points_max)
+		to_chat(user, span_warning("A sharp arcyne pain stops me from using this currently!"))
+		return FALSE
 	if(reading)
 		to_chat(user, span_warning("You're already using this!"))
 		return FALSE
@@ -49,8 +54,12 @@
 //	if(!user.can_read(src))
 //		return FALSE
 	if(user.STAINT < 8)
-		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
+		to_chat(user, span_warning("You can't make sense of the sprawling runes, you are just too dumb!"))
 		return FALSE
+	if(required_learn_trait)
+		if(!HAS_TRAIT(user, required_learn_trait))
+			to_chat(user, span_warning("You can't figure out a way to use this!"))
+			return FALSE
 	if(used)
 		if(oneuse)
 			recoil(user)
@@ -85,11 +94,12 @@
 	sellprice = 20
 	drop_sound = 'sound/items/gem.ogg'
 	pickup_sound =  list('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
+	attunement_cost = 3
 
 /obj/item/book/granter/trait/already_known(mob/user)
 	if(!granted_trait)
 		return TRUE
-	if(HAS_TRAIT(user, granted_trait))
+	if(HAS_TRAIT(user, granted_trait) && HAS_TRAIT(user, granted_trait2))
 		to_chat(user, "<span class ='notice'>You already have all the insight you need from [traitname].")
 		return TRUE
 	return FALSE
@@ -97,24 +107,33 @@
 /obj/item/book/granter/trait/on_reading_start(mob/user)
 	to_chat(user, "<span class='notice'>Voices fill your head, imbuing you with the power of [traitname].</span>")
 	playsound(user, pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 30, TRUE)
-/obj/item/book/granter/trait/on_reading_finished(mob/user)
-	. = ..()
-	to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
-	ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
-	ADD_TRAIT(user, granted_trait2, SHARD_TRAIT)
-	name = "drained crystal shard"
-	desc = "The essence of this crystal is completely drained."
-	color = null
-	light_range = 0
-	light_power = 0
-	icon_state ="Crystal2"
-	if(!user.mind)
+
+/obj/item/book/granter/trait/on_reading_finished(mob/living/user)
+	if((user.attunement_points_max - user.attunement_points_used) + attunement_cost > 0)
+		. = ..()
+		to_chat(user, "<span class='notice'>The shard dims, granting you knowledge of [traitname]!</span>")
+		if(!HAS_TRAIT(user, granted_trait))
+			ADD_TRAIT(user, granted_trait, SHARD_TRAIT)
+		if(!HAS_TRAIT(user, granted_trait2))
+			ADD_TRAIT(user, granted_trait2, SHARD_TRAIT)
+		name = "drained crystal shard"
+		desc = "The essence of this crystal is completely drained."
+		color = null
+		light_range = 0
+		light_power = 0
+		icon_state ="Crystal2"
+		if(!user.mind)
+			return
+		for(var/crafting_recipe_type in crafting_recipe_types)
+			var/datum/crafting_recipe/R = crafting_recipe_type
+			user.mind.teach_crafting_recipe(crafting_recipe_type)
+			to_chat(user,"<span class='notice'>You learned how to make [initial(R.name)].</span>")
+		user.attunement_points_used += attunement_cost
+		user.check_attunement_points()
+		onlearned(user)
+	else
+		to_chat(user, "<span class='notice'>The shard refuses me, I can not attune to more..</span>")
 		return
-	for(var/crafting_recipe_type in crafting_recipe_types)
-		var/datum/crafting_recipe/R = crafting_recipe_type
-		user.mind.teach_crafting_recipe(crafting_recipe_type)
-		to_chat(user,"<span class='notice'>You learned how to make [initial(R.name)].</span>")
-	onlearned(user)
 
 /obj/item/book/granter/trait/mobility
 	light_color = "#32CD32"
@@ -125,10 +144,10 @@
 	traitname = "the swamp"
 	remarks = list("<font color='#32CD32'>The forest will guide you.", "<font color='#32CD32'>March with haste, there is no fear.", "<font color='#32CD32'>Be one with your surroundings.", "<font color='#32CD32'>What are you doing in my swamp?", "<font color='#32CD32'>Step light, step quick.</font>",)
 /obj/item/book/granter/trait/mobility/kneestinger
-	name = "Fragment of Dendor"
+	name = "Fragment of Sylvarhn"
 	granted_trait = TRAIT_KNEESTINGER_IMMUNITY
 	traitname = "Dendor"
-	remarks = list("<font color='#32CD32'>Dendor guides me.", "<font color='#32CD32'>You feel a shiver up your spine.", "<font color='#32CD32'>Your feet go numb.", "<font color='#32CD32'>Dendor watches my path.", "<font color='#32CD32'>I walk without fear...</font>",)
+	remarks = list("<font color='#32CD32'>Nature guides me.", "<font color='#32CD32'>You feel a shiver up your spine.", "<font color='#32CD32'>Your feet go numb.", "<font color='#32CD32'>Dendor watches my path.", "<font color='#32CD32'>I walk without fear...</font>",)
 
 /obj/item/book/granter/trait/defense
 	light_color = "#4f83ff"
@@ -154,12 +173,14 @@
 	granted_trait2 = TRAIT_BLOODLOSS_IMMUNE
 	traitname = "the undying"
 	remarks = list("<span class ='colossus'>Curse, bless, me now with your fierce tears, I pray.</span>", "<span class ='colossus'>Rage, rage against the dying of the light.</span>", "<span class ='colossus'>Grave men, near death, who see with blinding sight.</span>", "<span class ='colossus'>Do not go gentle into that good night.</span>",)
+	attunement_cost = 5
+
 /obj/item/book/granter/trait/war/relentless
 	name = "Fragment of the Relentless"
 	granted_trait = TRAIT_NOROGSTAM
 	traitname = "the relentless"
 	remarks = list("<span class ='colossus'>Death can have me, when I am done.", "<span class ='colossus'>Rip and tear.", "<span class ='colossus'>This is where we hold them. This is where they die.", "<span class ='colossus'>Let go of everything.", "<span class ='colossus'>No surrender. No retreat.</span>",)
-
+	attunement_cost = 5
 
 /obj/item/book/granter/trait/acrobat
 	name = "Fragment of the Acrobat"
@@ -179,6 +200,7 @@
 	sellprice = 50
 	traitname = "the succubus"
 	remarks = list("<font color='#b028fffb'>They like what they see.", "<font color='#b028fffb'>I can't wait to hear you scream.", "<font color='#b028fffb'>So many hearts to break, so little time.","<font color='#b028fffb'>Without pain, how would they know pleasure?</font>",)
+	attunement_cost = 2
 
 /obj/item/book/granter/trait/north
 	name = "Fragment of the North"
@@ -188,6 +210,7 @@
 	sellprice = 150
 	traitname = "the north"
 	remarks = list("<font color='#28d8fffb'>It is important to stay warm.", "<font color='#28d8fffb'>Sail em high.", "<font color='#28d8fffb'>Plug the holes of your ship with a finger.","<font color='#28d8fffb'>Just follow the North Star.</font>",)
+	attunement_cost = 2
 ///ACTION BUTTONS///
 
 /obj/item/book/granter/action
@@ -244,6 +267,39 @@
 /obj/item/book/granter/spell
 	var/spell
 	var/spellname = "conjure bugs"
+	var/spell_slot_cost = 1
+	//Can this be one-casted by non learnables?
+	var/castable = TRUE
+	var/usable_times = 10
+	required_trait = TRAIT_USEMAGIC
+	required_learn_trait = TRAIT_LEARNMAGIC
+	//should help us not remove spells from people that have em memorized.
+	var/user_has_spell_already = FALSE
+
+/obj/item/book/granter/spell/Initialize()
+	. = ..()
+	desc = "The arcyne ink on it is at pristine condition and may be cast off of [usable_times] times."
+
+/obj/item/book/granter/spell/equipped(mob/user, slot, initial)
+	. = ..()
+	if(spell && castable && HAS_TRAIT(user, required_trait) && !HAS_TRAIT(user, required_learn_trait))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+				if(knownspell == spell)
+					user_has_spell_already = TRUE
+					return
+			if(H.mind)
+				H.mind.AddSpell(new spell)
+
+/obj/item/book/granter/spell/dropped(mob/user, silent)
+	. = ..()
+	if(spell && castable && HAS_TRAIT(user, required_trait) && !user_has_spell_already && !HAS_TRAIT(user, required_learn_trait))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.mind)
+				H.mind.RemoveSpell(spell)
+	user_has_spell_already = FALSE //reset
 
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)
@@ -261,12 +317,19 @@
 /obj/item/book/granter/spell/on_reading_start(mob/user)
 	to_chat(user, span_notice("I start reading about casting [spellname]..."))
 
-/obj/item/book/granter/spell/on_reading_finished(mob/user)
-	to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
-	var/obj/effect/proc_holder/spell/S = new spell
-	user.mind.AddSpell(S)
-	user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
-	onlearned(user)
+/obj/item/book/granter/spell/on_reading_finished(mob/living/user)
+	user.calculate_spell_slots()
+	if(user.spell_slots - spell_slot_cost >= 0)
+		to_chat(user, span_notice("I feel like you've experienced enough to cast [spellname]!"))
+		var/obj/effect/proc_holder/spell/S = new spell
+		user.spell_slots_used += 1
+		user.calculate_spell_slots(TRUE)
+		user.mind.AddSpell(S)
+		user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
+		onlearned(user)
+	else
+		to_chat(user, span_notice("I can't memorize any more spells looks like..."))
+		return
 
 /obj/item/book/granter/spell/recoil(mob/user)
 	user.visible_message(span_warning("[src] glows in a black light!"))
@@ -537,7 +600,7 @@
 		user.mind.teach_crafting_recipe(crafting_recipe_type)
 		to_chat(user,span_notice("I learned how to make [initial(R.name)]."))
 
-//! --DREAM KEEP SCROLLS-- !/
+//! --BLACKSTONE SCROLLS-- !/
 /obj/item/book/granter/spell/blackstone/
     desc = "A scroll of potential known only to those that can decipher its secrets."
     icon = 'icons/roguetown/items/misc.dmi'
@@ -607,9 +670,9 @@
 	icon_state ="scrollgreen"
 	remarks = list("Foe rubiginem meam..", "Pestilentia in terris..", "Trabes putrida..")
 
-/obj/item/book/granter/spell/blackstone/bonechill
+/obj/item/book/granter/spell/blackstone/strengthen_undead
 	name = "Scroll of Bone Chill"
-	spell = /obj/effect/proc_holder/spell/invoked/bonechill
+	spell = /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	spellname = "Bone Chill"
 	icon_state ="scrolldarkred"
 	remarks = list("Mediolanum ventis..", "Sana damnatorum..", "Frigidus ossa mortuorum..")

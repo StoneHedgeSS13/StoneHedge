@@ -169,6 +169,12 @@
 	name = "undead eyes"
 	desc = ""
 
+/obj/item/organ/eyes/night_vision/zombie/on_life()
+	. = ..()
+	if (!(owner.mob_biotypes & MOB_UNDEAD))
+		if (prob(10))
+			owner.adjustToxLoss(0.2)
+
 /obj/item/organ/eyes/night_vision/werewolf
 	name = "moonlight eyes"
 	desc = ""
@@ -179,20 +185,35 @@
 	desc = ""
 	icon_state = "burning_eyes"
 
+/obj/item/organ/eyes/night_vision/wild_goblin
+	name = "wild goblin eyes"
+	desc = "What manner of madness have these reddened orbs espied in the darker places of the realm?"
+	icon_state = "burning_eyes"
+
+/obj/item/organ/eyes/night_vision/wild_goblin/on_life()
+	. = ..()
+	if (!istype(owner, /mob/living/carbon/human/species/goblin))
+		if (prob(10))
+			owner.adjustToxLoss(0.2)
+
 /obj/item/organ/eyes/night_vision/mushroom
 	name = "fung-eye"
 	desc = ""
 
-/obj/item/organ/eyes/night_vision/elf
-	name = "elf eyes"
+// Standardized darksight eyes
+
+/obj/item/organ/eyes/night_vision/full_darksight
+	name = "darksight eyes"
 	desc = ""
 	see_in_dark = 14
 
-/obj/item/organ/eyes/halfelf
-	name = "half-elf eyes"
+/obj/item/organ/eyes/half_darksight
+	name = "half-darksight eyes"
 	desc = ""
 	see_in_dark = 7
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
+//
 
 /obj/item/organ/eyes/goblin
 	name = "goblin eyes"
@@ -481,7 +502,7 @@
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
 
-/proc/set_eye_color(var/mob/living/carbon/mob, color_one, color_two)
+/proc/set_eye_color(mob/living/carbon/mob, color_one, color_two)
 	var/obj/item/organ/eyes/eyes = mob.getorganslot(ORGAN_SLOT_EYES)
 	if(!eyes)
 		return

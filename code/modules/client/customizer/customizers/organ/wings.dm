@@ -76,6 +76,7 @@
 
 /datum/customizer/organ/wings/dracon
 	customizer_choices = list(/datum/customizer_choice/organ/wings/dracon)
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/wings/dracon
 	name = "Fluvian Wings"
@@ -104,3 +105,29 @@
 		/datum/sprite_accessory/wings/seelie,
 		/datum/sprite_accessory/wings/bee,
 	)
+
+/datum/customizer/organ/wings/aasimar
+	customizer_choices = list(/datum/customizer_choice/organ/wings/aasimar)
+	allows_disabling = TRUE
+	default_disabled = TRUE
+
+/datum/customizer_choice/organ/wings/aasimar
+	name = "Aasimar Wings" //the corrupt bargin
+	organ_type = /obj/item/organ/wings/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/wings/feathery,
+		/datum/sprite_accessory/wings/huge/angel,
+		)
+
+/datum/customizer/organ/wings/tiefling
+	customizer_choices = list(/datum/customizer_choice/organ/wings/tiefling)
+	allows_disabling = TRUE
+	default_disabled = TRUE
+
+/datum/customizer_choice/organ/wings/tiefling
+	name = "Tiefling Wings"
+	organ_type = /obj/item/organ/wings/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/wings/bat,
+		/datum/sprite_accessory/wings/wide/succubus,
+		)

@@ -255,8 +255,14 @@
 /obj/item/lockpickring/mundane
 	picks = list(/obj/item/lockpick, /obj/item/lockpick, /obj/item/lockpick)
 
-/obj/item/storage/keyring/butcher	// Just incase, butcher can at least see to getting farmers incase there are none given he sucks at farming.
-	keys = list(/obj/item/roguekey/farm, /obj/item/roguekey/butcher)
+/obj/item/storage/keyring/butcher
+	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/butcher)
+
+/obj/item/storage/keyring/cook
+	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roominnkeep)
+
+/obj/item/storage/keyring/veteran
+	keys = list(/obj/item/roguekey/veteran, /obj/item/roguekey/vault, /obj/item/roguekey/steward, /obj/item/roguekey/physician, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/graveyard)
 
 /obj/item/storage/keyring/sheriff
 	keys = list(/obj/item/roguekey/sheriff_office, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/walls, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
@@ -295,7 +301,7 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/tower, /obj/item/roguekey/mage)
 
 /obj/item/storage/keyring/innkeep
-	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi)
+	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/roominnkeep, /obj/item/roguekey/roombard, /obj/item/roguekey/roomviii, /obj/item/roguekey/roomvii, /obj/item/roguekey/roomvi, /obj/item/roguekey/roomv, /obj/item/roguekey/roomiv, /obj/item/roguekey/roomiii, /obj/item/roguekey/roomii, /obj/item/roguekey/roomi)
 
 /obj/item/storage/keyring/priest
 	keys = list(/obj/item/roguekey/priest, /obj/item/roguekey/confession, /obj/item/roguekey/church)
@@ -313,7 +319,7 @@
 	keys = list(/obj/item/roguekey/hand, /obj/item/roguekey/steward, /obj/item/roguekey/tavern, /obj/item/roguekey/church, /obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/bog_barracks, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
 
 /obj/item/storage/keyring/steward
-	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
+	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard, /obj/item/roguekey/vault)
 
 /obj/item/storage/keyring/clerk
 	keys = list(/obj/item/roguekey/walls, /obj/item/roguekey/keep_dungeon, /obj/item/roguekey/town_dungeon, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
@@ -328,7 +334,7 @@
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/archive)
 
 /obj/item/storage/keyring/physician
-	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/keep_barracks, /obj/item/roguekey/physician)
+	keys = list(/obj/item/roguekey/physician)
 
 /obj/item/storage/keyring/royal
 	keys = list(/obj/item/roguekey/manor, /obj/item/roguekey/royal)

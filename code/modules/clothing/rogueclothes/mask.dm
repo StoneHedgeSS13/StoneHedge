@@ -16,7 +16,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 //	block2add = FOV_BEHIND
 
 /obj/item/clothing/mask/rogue/spectacles/golden
@@ -29,7 +29,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/spectacles/Initialize()
 	. = ..()
@@ -57,6 +57,7 @@
 	block2add = FOV_RIGHT
 	body_parts_covered = EYES
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/eyepatch/left
 	desc = "An eyepatch, fitted for the left eye."
@@ -68,7 +69,7 @@
 	desc = "Half of your face turned gold."
 	icon_state = "lmask"
 	sellprice = 50
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
@@ -94,7 +95,7 @@
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	clothing_flags = CANT_SLEEP_IN
 
@@ -109,6 +110,45 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
+
+/obj/item/clothing/mask/rogue/facemask/gold
+	name = "gold mask"
+	desc = "A golden mask commonly found in the Zybantine Empire, worn by nobles. Gold is softer than iron therefore it is easier to break than iron masks."
+	icon_state = "goldmask"
+	max_integrity = 75
+	smeltresult = /obj/item/ingot/gold
+
+/obj/item/clothing/mask/rogue/facemask/leper
+	name = "steel leper mask"
+	desc = "A gem-dust enchanted steel mask, Those are used to suppress the spasms of leprosy... But it'd make me pretty much blind when worn..."
+	icon = 'modular_stonehedge/icons/roguetown/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/masks.dmi'
+	icon_state = "steelmaskleper"
+	block2add = FOV_BEHIND
+	max_integrity = 200 //same as steel mask
+
+//Cant see a fucking thing.
+/obj/item/clothing/mask/rogue/facemask/leper/equipped(mob/living/carbon/human/user)
+	. = ..()
+	if(user.wear_mask)
+		user.apply_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/attackby(obj/item/I, mob/living/carbon/human/user, params) //for removing into hand check
+	. = ..()
+	if(!user.wear_mask)
+		user.remove_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/dropped(mob/living/carbon/human/user)
+	..()
+	if(!user.wear_mask)
+		user.remove_status_effect(/datum/status_effect/debuff/lepermask)
+
+/obj/item/clothing/mask/rogue/facemask/leper/gold
+	name = "gold leper mask"
+	desc = "A gem-dust enchanted gold mask, Those are used to suppress the spasms of leprosy... But it'd make me pretty much blind when worn..."
+	icon_state = "goldmaskleper"
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"
@@ -132,6 +172,7 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)
@@ -171,10 +212,10 @@
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "bullet" = 8, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = null
-	flags_inv = HIDEFACE
-	body_parts_covered = FACE
+	armor = list("blunt" = 45, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	body_parts_covered = FACE|EYES|MOUTH|HEAD|HAIR
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
@@ -223,7 +264,7 @@
 	name = "plague mask"
 	desc = "Do no harm."
 	icon_state = "feldmask"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
@@ -233,15 +274,6 @@
 	desc = "Masks often worn by Pestran acolytes. It is similar in design to the mask worn by plague doctors, only modified in such a way to feature three bird's heads instead of one. One for the cure. One for the disease. And one for the compassion towards those who suffer with illness as Pestra does."
 	icon_state = "pestramask"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
-	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
-	sewrepair = TRUE
-
-/obj/item/clothing/mask/rogue/goldmask
-	name = "gold mask"
-	desc = "A golden mask commonly found in the Zybantine Empire, worn by nobles."
-	icon_state = "goldmask"
-	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE

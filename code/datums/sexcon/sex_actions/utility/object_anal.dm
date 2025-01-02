@@ -23,8 +23,8 @@
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	if(!get_funobject_in_hand(user))
 		return FALSE
@@ -62,7 +62,21 @@
 	var/pain_amt = 3 //base pain amt to use
 	var/obj/item/dildo = user.get_active_held_item()
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks their ass with \the [dildo]."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(user, 'sound/misc/mat/fingering.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
+
+	var/obj/item/organ/filling_organ/vagina/userass = user.getorganslot(ORGAN_SLOT_ANUS)
+
+	if(prob(2))
+		if(dildo.w_class < WEIGHT_CLASS_SMALL && !userass.contents.len)
+			to_chat(user, span_userdanger("Oh shit \the [dildo] is so small it slipped and now it's inside my hole."))
+			dildo.extinguish()
+			dildo.forceMove(userass)
+			userass.contents += dildo
+		else if (dildo.w_class < WEIGHT_CLASS_SMALL && userass.contents.len)
+			to_chat(user, span_userdanger("Ah shit \the [dildo] is so small i dropped it on the ground."))
+			user.dropItemToGround(dildo)
 
 	if(dildo.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_SPREAD)
 		ouchietext = pick("OUCH! \the [dildo] burns my ass!", "YOUCH! \the [dildo] burns my asshole!", "OW! \the [dildo] chars my guts!", "AGH! \the [dildo] burns my ass!")
@@ -77,7 +91,7 @@
 		if(user.lying) //less odds if laying
 			cutchance *= 0.5
 		if(wdildo.sharpness >= IS_SHARP && sc.speed > SEX_SPEED_LOW && prob(cutchance))
-			ouchietext = pick("OUCH! \the [wdildo] cuts my insides!", "ACK! \the [wdildo] poked my guts!", "OW! \the [wdildo] cut my lower lips!", "ACK! \the [wdildo] stabs my guts!")
+			ouchietext = pick("OUCH! \the [wdildo] cuts my insides!", "ACK! \the [wdildo] poked my guts!", "OW! \the [wdildo] cut my asshole!", "ACK! \the [wdildo] stabs my guts!")
 			to_chat(user, span_userdanger(ouchietext))
 			user.apply_damage(rand(10,20), BRUTE, BODY_ZONE_PRECISE_GROIN)
 			pain_amt *= 2
@@ -120,7 +134,6 @@
 		if(user.lying) //double spill odds if lying down due gravity and stuff.
 			spillchance *= 2
 		if(contdildo.spillable && prob(spillchance) && contdildo.reagents.total_volume)
-			var/obj/item/organ/userass = user.getorganslot(ORGAN_SLOT_ANUS)
 			if(userass.reagents.total_volume >= (userass.reagents.maximum_volume -0.5))
 				user.visible_message(span_notice("[contdildo] splashes it's contents around [user]'s hole as it is packed full!"))
 				contdildo.reagents.reaction(user, TOUCH, sc.speed, FALSE)

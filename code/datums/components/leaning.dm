@@ -3,7 +3,7 @@
 	var/atom/leaning_on
 	var/dir2wall
 
-/datum/component/leaning/Initialize(var/atom/atom_to_lean_on)
+/datum/component/leaning/Initialize(atom/atom_to_lean_on)
 	if(!istype(parent, /mob/living))
 		return COMPONENT_INCOMPATIBLE
 	leaning_on = atom_to_lean_on
@@ -31,7 +31,7 @@
 
 	RegisterSignal(leaning_on, COMSIG_DOOR_OPEN, PROC_REF(collapse))
 	RegisterSignal(leaning_on, COMSIG_PARENT_QDELETING, PROC_REF(collapse))
-	
+
 	. = ..()
 
 /datum/component/leaning/RemoveComponent()
@@ -46,14 +46,14 @@
 		UnregisterSignal(parent, COMSIG_MOB_CMODE_ENABLED, PROC_REF(RemoveComponent))
 		UnregisterSignal(parent, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(mobility_check))
 	. = ..()
-	
+
 /datum/component/leaning/proc/wallhug_check(turf/T, atom/newloc, direct)
 	var/atom/new_leaning_on = get_leanable(get_turf(newloc))
 
 	if(!MLparent.fixedeye)
 		RemoveComponent()
 		return
-	if(!new_leaning_on?.density) 
+	if(!new_leaning_on?.density)
 		RemoveComponent()
 		return
 	if(!leaning_on.Adjacent(new_leaning_on))

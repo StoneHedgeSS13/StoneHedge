@@ -26,7 +26,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	experimental_onhip = TRUE
 	nodismemsleeves = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBUTT
 	w_class = WEIGHT_CLASS_NORMAL //death to all pouch abusers
 
 //Drayco's max_integrity notes
@@ -68,9 +68,10 @@
 	var/do_sound = FALSE
 	max_integrity = 200
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/Initialize()
 	. = ..()
@@ -85,7 +86,7 @@
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "ichainmail"
 	max_integrity = 125
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -97,7 +98,7 @@
 	item_state = "hauberk"
 	max_integrity = 220
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	do_sound = TRUE
 	max_integrity = 350
@@ -113,7 +114,8 @@
 	item_state = "chainkini"
 	max_integrity = 225
 	allowed_sex = list(FEMALE)
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
+	flags_inv = HIDEBOOB|HIDECROTCH
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra
@@ -133,9 +135,12 @@
 	item_state = "chainkini"
 	color = "#9EA48E"
 	allowed_sex = list(FEMALE)
+	flags_inv = HIDEBOOB|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
 	name = "iron chainmail bra"
+	icon = 'modular_stonehedge/icons/armor/armor.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
 	icon_state = "chainbra"
 	item_state = "chainbra"
 	color = "#9EA48E"
@@ -152,7 +157,7 @@
 	item_state = "carapace"
 	blocksound = PLATEHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	armor = list("blunt" = 60, "slash" = 100, "stab" = 0, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = 175
 	allowed_sex = list(MALE, FEMALE)
@@ -174,33 +179,35 @@
 /obj/item/clothing/suit/roguetown/armor/carapace/cuirass
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "carapace cuirass"
-	desc = "vest styled watery shell chest armor sewn in layers."
+	desc = "Vest styled watery shell chest armor sewn in layers."
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
+	flags_inv = HIDEBOOB // No sprite exists as of yet, so this is temporary
 	max_integrity = 200
 	equip_delay_self = 30
 
 /obj/item/clothing/suit/roguetown/armor/carapace/dragon
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dragonscale armor"
-	desc = "armor crafted from the hardened bones of a dragon."
+	desc = "Armor crafted from the hardened scales of a dragon."
 	body_parts_covered = CHEST|GROIN|VITALS
-	color = "red"
-	icon_state = "carapacecuirass"
-	item_state = "carapacecuirass"
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 0, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	color = "#9e5761"
+	icon_state = "carapace"
+	item_state = "carapace"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
 	max_integrity = 700	//4 dragonscales, 6 fibers, and 2 difficulty.
 	sellprice = 50
 
 /obj/item/clothing/suit/roguetown/armor/carapace/dragon/cuirass
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dragonscale cuirass"
-	desc = "vest styled dragonbone chest armor sewn in layers."
+	desc = "Vest styled dragonscale chest armor sewn in layers."
 	body_parts_covered = CHEST|GROIN|VITALS
-	color = "red"
+	color = "#9e5761"
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
+	flags_inv = HIDEBOOB // No sprite exists as of yet, so this is temporary
 	max_integrity = 450
 	equip_delay_self = 30
 	sellprice = 50
@@ -218,13 +225,14 @@
 	allowed_sex = list(MALE, FEMALE)
 	var/do_sound = TRUE
 	max_integrity = 525	//3 steel, 3 difficulty.
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	unequip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	flags_inv = HIDEBOOB // Sprite stops just at the waist line
 
 /obj/item/clothing/suit/roguetown/armor/plate/Initialize()
 	. = ..()
@@ -246,13 +254,21 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB
+
+//gold cuirass for leper, unique and cant be crafted.
+/obj/item/clothing/suit/roguetown/armor/plate/half/leper
+	color = "#ffee00"
+	name = "golden cuirass"
+	desc = "A cuirass of gold."
+	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/suit/roguetown/armor/plate/graggaritearmorleader
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "graggarite leader cuirass"
+	name = "nyrnheite leader cuirass"
 	desc = "Armor worn by leaders of northmen warbands. A status symbol if ever there was one."
 	body_parts_covered = CHEST|VITALS
 	icon_state = "graggaritechestplateleader"
@@ -263,9 +279,10 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 600	//steel cuirass is 2 steel and 2 difficulty for 350, add 250 for Unique
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/ironarmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -274,12 +291,13 @@
 	body_parts_covered = CHEST|VITALS
 	icon_state = "ironarmor"
 	item_state = "ironarmor"
+	flags_inv = HIDEBOOB // No gendered/dwarf sprites
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 20, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 250
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -296,23 +314,25 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 675	//3 steel, 3 difficulty, and uncraftable
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
-/obj/item/clothing/suit/roguetown/armor/plate/half/bikini
-	name = "plate bikini"
+/obj/item/clothing/suit/roguetown/armor/plate/bikini
+	name = "half-plate bikini"
 	desc = "Half plate in bikini form, still just as protective somehow."
 	icon = 'modular_stonehedge/icons/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
 	allowed_sex = list(FEMALE)
 	max_integrity = 550
-	anvilrepair = /datum/skill/craft/armorsmithing
+	flags_inv = HIDECROTCH|HIDEBOOB
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/suit/roguetown/armor/plate/bikini/bra
-	name = "plate bra"
+	name = "half-plate bra"
 	icon_state = "halfplatebra"
 	item_state = "halfplatebra"
 	desc = "Half plate that's even half-er, still just as protective somehow."
@@ -321,13 +341,13 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "plate armor"
+	name = "fullplate armor"
 	desc = "Full plate. Leg protecting tassets, groin cup, armored vambraces."
 	icon_state = "plate"
 	max_integrity = 700
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
-	equip_delay_self = 1200
-	unequip_delay_self = 1200
+	equip_delay_self = 400
+	unequip_delay_self = 200
 	equip_delay_other = 80
 	strip_delay = 60
 	armor_class = ARMOR_CLASS_HEAVY
@@ -337,8 +357,10 @@
 	desc = "Full plate in bikini form, full package and full exposure."
 	icon = 'modular_stonehedge/icons/armor/armor.dmi'
 	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
+	sleeved = 'modular_stonehedge/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	icon_state = "platekini"
 	allowed_sex = list(FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra
@@ -356,6 +378,7 @@
 	icon_state = "ibreastplate"
 	max_integrity = 250
 	smeltresult = /obj/item/ingot/iron
+	flags_inv = HIDEBOOB
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/shortbrigandine
@@ -379,6 +402,8 @@
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT
+	flags_inv = HIDEBOOB // No gendered/dwarf sprites
+
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale
 	slot_flags = ITEM_SLOT_ARMOR
@@ -388,7 +413,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	icon_state = "lamellar"
 	max_integrity = 225
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -398,7 +423,7 @@
 	name = "coat of armor"
 	desc = "A lordly coat of armor."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
-	icon_state = "heartfelt"
+	icon_state = "heartfelt" // No gendered/dwarf sprites
 	item_state = "heartfelt"
 	armor = list("blunt" = 90, "slash" = 90, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
@@ -406,7 +431,7 @@
 	nodismemsleeves = TRUE
 	blocking_behavior = null
 	max_integrity = 475	//Coat of plates is 1 steel, 1 cloth, 2 difficulty, and Unique
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -417,7 +442,7 @@
 	name = "coat of armor"
 	desc = "A lordly coat of armor."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
-	icon_state = "heartfelt_hand"
+	icon_state = "heartfelt_hand" // No gendered/dwarf sprites
 	item_state = "heartfelt_hand"
 	armor = list("blunt" = 90, "slash" = 90, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
@@ -425,7 +450,7 @@
 	nodismemsleeves = TRUE
 	blocking_behavior = null
 	max_integrity = 475	//Coat of plates is 1 steel, 1 cloth, 2 difficulty, and Unique
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -443,12 +468,28 @@
 	allowed_sex = list(MALE, FEMALE)
 	nodismemsleeves = TRUE
 	max_integrity = 425
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/attack_right(mob/user)
+	if(detail_tag)
+		return
+	var/the_time = world.time
+	var/pickedcolor = input(user, "Select a color.","Brigandine Color") as null|anything in CLOTHING_COLOR_NAMES
+	if(!pickedcolor)
+		return
+	if(world.time > (the_time + 30 SECONDS))
+		return
+	detail_tag = "_det"
+	detail_color = clothing_color2hex(pickedcolor)
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -478,7 +519,7 @@
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
-		L.update_inv_cloak()
+		L.update_inv_armor()
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/Destroy()
 	GLOB.lordcolor -= src
@@ -499,8 +540,8 @@
 /obj/item/clothing/suit/roguetown/armor/armordress
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "padded dress"
-	desc = "This dress has been padded with leather for extra protection."
-	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	desc = "This dress has been padded for extra protection."
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
 	icon_state = "armordress"
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
@@ -536,6 +577,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	color = "#646464"
@@ -543,167 +585,9 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
 	desc = "Similar to a gambeson, it is meant to be used under heavier armor."
-	icon_state = "dgamb"
+	icon_state = "dgamb" // No gendered/dwarf sprites
 	max_integrity = 350
 	allowed_sex = list(MALE, FEMALE)
-
-/obj/item/clothing/suit/roguetown/armor/leather
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "leather armor"
-	desc = "Flexible cowhide armor. Lightweight, better than nothing."
-	icon_state = "leather"
-//	color = "#514339"
-	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
-	blocksound = SOFTHIT
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	sewrepair = TRUE
-	nodismemsleeves = TRUE
-	max_integrity = 125
-	sellprice = 20
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/suit/roguetown/armor/leather/hide
-	name = "hide armor"
-	desc = "A light armor of wildbeast hide. More durable than leather."
-	icon_state = "hidearmor"
-	max_integrity = 175
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/suit/roguetown/armor/leather/studded
-	name = "studded leather armor"
-	desc = "Studded leather is the most durable of all hides and leathers and about as light."
-	icon_state = "studleather"
-	item_state = "studleather"
-	blocksound = SOFTHIT
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	nodismemsleeves = TRUE
-	body_parts_covered = CHEST|GROIN|VITALS
-	max_integrity = 250
-	sellprice = 25
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/suit/roguetown/armor/leather/bikini
-	name = "leather bikini"
-	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
-	icon = 'modular_stonehedge/icons/armor/armor.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
-	icon_state = "leatherkini"
-	item_state = "leatherkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/bikini/bra
-	name = "Leather armor bra"
-	icon_state = "leatherbra"
-	item_state = "leatherbra"
-	desc = "Flexible cowhide armor. Lightweight, better than nothing, Although the bottom half is literally covered by nothing, it somehow still protects the full torso!"
-	flags_inv = HIDEBOOB
-	is_bra = TRUE
-
-/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-	name = "studded leather bikini"
-	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
-	icon = 'modular_stonehedge/icons/armor/armor.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
-	icon_state = "studleatherkini"
-	item_state = "studleatherkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini/bra
-	name = "studded Leather bra"
-	icon_state = "studleatherbra"
-	item_state = "studleatherbra"
-	desc = "Studded leather is the most durable of all hides and leathers and about as light. Although the bottom half is literally covered by nothing, it somehow still protects the full torso!"
-	flags_inv = HIDEBOOB
-	is_bra = TRUE
-
-/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	name = "hide bikini"
-	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though..."
-	icon = 'modular_stonehedge/icons/armor/armor.dmi'
-	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/armor.dmi'
-	icon_state = "hidearmorkini"
-	item_state = "hidearmorkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
-	name = "hide bra"
-	icon_state = "hidearmorbra"
-	item_state = "hidearmorbra"
-	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though... The bottom half is literally covered by nothing, it somehow still protects the full torso!"
-	flags_inv = HIDEBOOB
-	is_bra = TRUE
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest
-	name = "leather vest"
-	desc = "A leather vest. Not very protective, but fashion."
-	icon_state = "vest"
-	item_state = "vest"
-	color = "#514339"
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT)
-	blocksound = SOFTHIT
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	blade_dulling = DULLING_BASHCHOP
-	body_parts_covered = CHEST|VITALS|LEGS
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	max_integrity = 150
-	sewrepair = TRUE
-	sleevetype = null
-	sleeved = null
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
-	name = "sea jacket"
-	desc = "A sailor's garb."
-	icon_state = "sailorvest"
-	color = null
-	slot_flags = ITEM_SLOT_ARMOR
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
-	sleevetype = "shirt"
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 2
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/dropped(mob/living/carbon/human/user)
-	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
-	name = "silk jacket"
-	desc = "A soft and comfortable jacket."
-	icon_state = "nightman"
-	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
-	allowed_sex = list(MALE, FEMALE)
-
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/hand
-	name = "Hand's vest"
-	desc = "A soft vest of finest fabric."
-	icon_state = "handcoat"
-	color = null
-	allowed_sex = list(MALE, FEMALE)
-
-/obj/item/clothing/suit/roguetown/armor/leather/vest/black
-	color = "#3c3a38"
 
 /obj/item/clothing/suit/roguetown/armor/workervest
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -722,6 +606,7 @@
 	sleeved = null
 	nodismemsleeves = TRUE
 	boobed = TRUE
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/workervest/Initialize()
 	color = pick("#94b4b6", "#ba8f9e", "#bd978c", "#92bd8c", "#c7c981")
@@ -748,6 +633,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
+	salvage_result = /obj/item/natural/fur
+	can_hold_endowed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
@@ -762,6 +649,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	max_integrity = 500
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -772,22 +660,24 @@
 	max_integrity = 225
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/graggaritearmor
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "graggarite armor"
+	name = "nyrnheite armor"
 	desc = "Armor worn by Graggarite fanatics in battle."
 	icon_state = "graggaritechestplate"
 	item_state = "graggaritechestplate"
 	max_integrity = 400
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/barrelarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "Barrel Armor"
 	desc = "Makeshift armor made using a barrel with two holes made for the hands to fit through."
-	icon_state = "barrelarmor"
+	icon_state = "barrelarmor" // No gendered/dwarf sprites
 	item_state = "barrelarmor"
 	armor = list("blunt" = 5, "slash" = 1, "stab" = 1, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	blocksound = SOFTHIT
@@ -804,7 +694,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "katefractoii chestplate"
 	desc = "Lamellar armor worn by the elite Katefractoii heavy cavalry."
-	icon_state = "katefractoiichestplate"
+	icon_state = "katefractoiichestplate" // No gendered/dwarf sprites
 	item_state = "katefractoiichestplate"
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron
@@ -812,11 +702,11 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
 	name = "dwarven fullarmor"
-	desc = "An extremely heavy set of armor in the Dwarven style, cumbersome to use but provides some of the best protection in the world."
+	desc = "An extremely heavy set of armor in the Dwarven style."
 	icon_state = "dwarvenchestplate"
 	item_state = "dwarvenchestplate"
-	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	max_integrity = 700
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	equip_delay_self = 80
 
 /obj/item/clothing/suit/roguetown/armor/plate/darkelfchestplate
@@ -832,15 +722,16 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 525
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/foresterarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "forester chestplate"
 	desc = "Wooden armor worn by those who inhabit the forests."
-	icon_state = "foresterchestplate"
+	icon_state = "foresterchestplate" // No gendered/dwarf sprites
 	item_state = "foresterchestplate"
 	max_integrity = 100
 	smeltresult = /obj/item/ash
@@ -860,7 +751,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -878,16 +769,16 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "spellslinger cuirass"
-	desc = "Armor of a spellslinger. Studded with a variety of sapphiras and other prized gizaels; this is truly the armor of a magician. Known to cause a heavy toll on the user..."
+	desc = "Armor of a spellslinger. Studded with a variety of sapphires and other prized jewels; this is truly the armor of a magician. Known to cause a heavy toll on the user..."
 	body_parts_covered = CHEST|VITALS|GROIN|NECK
-	icon_state = "spellslingerarmor"
+	icon_state = "spellslingerarmor" // No gendered/dwarf sprites
 	item_state = "spellslingerarmor"
 	armor = list("blunt" = 30, "slash" = 50, "stab" = 45, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
@@ -895,7 +786,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 525 //Might be studded with gems, but it has a difficulty of 3 and uses 3 steel to make.
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT //Designed for the infirm.
 	var/active_item = FALSE //Prevents issues like dragon ring giving negative str instead
@@ -914,9 +805,10 @@
 			user.change_stat("intelligence", 3) //Additional cooldown (scales with int)
 			return
 		else
-			to_chat(user, span_warning("The curiass feels cold and dead."))
+			to_chat(user, span_warning("The armor feels cold and dead."))
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/dropped(mob/living/user) //Remove some bugfixing stuff in exchange for stricter checks.
+	. = ..()
 	if(active_item)
 		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
 			var/mob/living/carbon/human/H = user
@@ -927,15 +819,15 @@
 				active_item = FALSE
 				return
 		else
-			to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
+			to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the armor be."))
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/psydonianknightarmor
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "psydonian knight cuirass"
-	desc = "PSYDON's heart still beats."
+	name = "seraph-irosian knight cuirass"
+	desc = "SERAPH-IROS's heart still beats."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "psydonianknightarmor"
+	icon_state = "psydonianknightarmor" // No gendered/dwarf sprites
 	item_state = "psydonianknightarmor"
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
@@ -943,7 +835,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 500
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -952,7 +844,7 @@
 	name = "zybantinearmor"
 	desc = "Medium armor worn by Zybantine soldiers."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "zybantinearmor"
+	icon_state = "zybantinearmor" // No gendered/dwarf sprites
 	item_state = "zybantinearmor"
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
@@ -960,7 +852,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -984,7 +876,7 @@
 	name = "nephilim armor"
 	desc = "Armor once worn by the descendents of giants."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "nephilimplate"
+	icon_state = "nephilimplate" // No dwarf sprites
 	item_state = "nephilimplate"
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 85, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
@@ -992,7 +884,7 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -1001,7 +893,7 @@
 	name = "royal heavyplate"
 	desc = "An extremely heavy piece of armor made of steel and decorated with golden pauldrons."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "heavyroyalplate"
+	icon_state = "heavyroyalplate" // No dwarf sprites
 	item_state = "heavyroyalplate"
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
@@ -1009,16 +901,9 @@
 	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 500
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
-
-/obj/item/clothing/suit/roguetown/armor/leathervest
-	name = "leather vest"
-	desc = "A simple vest made of leather, provides poor protection."
-	icon_state = "leathervest"
-	item_state = "leathervest"
-	allowed_race = CLOTHED_RACES_TYPES
 
 /obj/item/clothing/suit/roguetown/armor/valorianarmor
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -1037,10 +922,11 @@
 	allowed_sex = list(MALE, FEMALE)
 	icon_state = "scale_armor"
 	max_integrity = 150
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	equip_delay_self = 20
 	armor_class = ARMOR_CLASS_LIGHT
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/vikingbodyguardchestplate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -1048,9 +934,9 @@
 	desc = "Lamellar armor worn by Viking bodyguards."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	allowed_sex = list(MALE, FEMALE)
-	icon_state = "vikingbodyguardc"
+	icon_state = "vikingbodyguardc" // No gendered/dwarf sprites
 	max_integrity = 350
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -1060,31 +946,33 @@
 	name = "golden chestplate"
 	desc = "A cuirass made of pure gold."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "gold_chestplate"
+	icon_state = "gold_chestplate" // No gendered/dwarf sprites
 	item_state = "gold_chestplate"
 	armor = list("blunt" = 20, "slash" = 80, "stab" = 60, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	blocking_behavior = null
 	max_integrity = 100	//2 gold
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/gold
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/bone/chestplate
 	name = "bone chestplate"
 	desc = "A chestplate made using bone."
 	body_parts_covered = CHEST
-	icon_state = "bonearmor"
+	icon_state = "bonearmor" // No gendered/dwarf sprites
 	item_state = "bonrearmor"
 	max_integrity = 100
 	smeltresult = /obj/item/ash
 	equip_delay_self = 15
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/hide/bearfur
 	name = "bear fur"
 	desc = "Thick and warm."
 	body_parts_covered = CHEST|VITALS
-	icon_state = "bearfur"
+	icon_state = "bearfur" // No gendered/dwarf sprites
 	item_state = "bearfur"
 	max_integrity = 200
 	smeltresult = /obj/item/ash

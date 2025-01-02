@@ -1,235 +1,4360 @@
-"ax" = (/obj/structure/underworld/barrier,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"az" = (/obj/structure/flora/grass/jungle/b,/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"aS" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"bf" = (/obj/structure/flora/grass/jungle{icon_state = "grassa1"},/mob/living/simple_animal/butterfly,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"bu" = (/obj/effect/wisp,/turf/open/floor/fakespace,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"bG" = (/turf/closed/wall/mineral/rogue/wooddark,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"bK" = (/obj/structure/flora/roguetree/underworld,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"dn" = (/obj/structure/flora/grass/jungle/b,/obj/effect/wisp,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"ds" = (/obj/effect/landmark/underworldsafe,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"dB" = (/obj/structure/flora/roguetree/happyrandom,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"dH" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"dX" = (/obj/structure/table/wood/fancy/royalblue,/obj/item/toy/cards/deck,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"em" = (/obj/structure/flora/grass/jungle/b,/obj/effect/landmark/underworldsafe,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"ew" = (/obj/structure/chair/bench{dir = 8},/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"eW" = (/obj/structure/flora/ausbushes/ppflowers,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"fV" = (/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"gh" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"gD" = (/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"ha" = (/obj/structure/flora/roguetree/underworld,/obj/structure/spacevine,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"hm" = (/obj/structure/portal,/turf/open/floor/rogue/blocks/stone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"ht" = (/turf/closed/wall/mineral/rogue/wooddark/vertical,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"hU" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"iH" = (/turf/closed/wall/mineral/rogue/wooddark/window,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"iL" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/rogue/blocks/stone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"iV" = (/obj/structure/fluff/statue/gargoyle/moss,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"jQ" = (/obj/effect/wisp,/obj/structure/flora/grass/jungle,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"lA" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/blocks/stone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"lF" = (/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"lU" = (/obj/effect/wisp,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"mO" = (/mob/living/carbon/spirit,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"mS" = (/obj/effect/landmark/underworldcoin,/turf/open/floor/fakespace,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"mW" = (/obj/structure/spacevine,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"no" = (/turf/closed/wall/mineral/rogue/decostone/mossy/cand,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"nP" = (/obj/structure/flora/roguetree/underworld,/obj/structure/flora/roguetree/underworld,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"oj" = (/obj/structure/flora/roguetree/burnt,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"pi" = (/obj/machinery/light/rogue/wallfire/candle/blue/l,/obj/structure/spacevine,/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"pk" = (/obj/structure/flora/grass/jungle,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"pu" = (/obj/structure/spacevine,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"px" = (/obj/structure/flora/roguetree/happyrandom,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"pz" = (/obj/effect/wisp,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"qI" = (/obj/structure/fluff/clock,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"qW" = (/obj/structure/chair/bench/couchablack,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"ri" = (/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/obj/structure/flora/grass/jungle/b,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"rR" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/fakespace,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"sc" = (/obj/structure/flora/roguetree/happyrandom{icon_state = "t8"; desc = "An old, beloved tree that even elves could love."},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"sZ" = (/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"tC" = (/obj/item/reagent_containers/glass/cup/skull,/obj/item/reagent_containers/glass/cup/skull,/obj/item/reagent_containers/glass/cup/skull,/obj/item/reagent_containers/glass/cup/skull,/obj/item/reagent_containers/glass/cup/skull,/obj/structure/table/wood,/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"uS" = (/turf/closed/wall/shroud,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"vg" = (/obj/structure/table/wood/fancy/royalblue,/obj/item/scrying,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"vG" = (/obj/structure/flora/grass/jungle/b,/mob/living/carbon/spirit,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"wt" = (/obj/structure/underworld/carriage{pixel_x = -100},/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"wO" = (/obj/effect/wisp,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"xc" = (/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"yv" = (/obj/structure/spacevine,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"zb" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"zx" = (/obj/structure/flora/roguetree/underworld,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"zU" = (/obj/machinery/light/rogue/wallfire/candle/blue,/obj/structure/closet/crate/roguecloset/lord,/obj/item/reagent_containers/glass/bottle/rogue/milk,/obj/item/reagent_containers/glass/bottle/rogue/milk,/obj/structure/flora/grass/jungle/b,/obj/item/reagent_containers/glass/bottle/rogue/milk,/obj/item/reagent_containers/glass/bottle/rogue/milk,/obj/item/reagent_containers/glass/bottle/rogue/milk,/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"zY" = (/mob/living/simple_animal/butterfly,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Be" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Bw" = (/obj/structure/flora/junglebush/b,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Bx" = (/turf/open/floor/rogue/blocks/stone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"By" = (/obj/effect/wisp,/obj/structure/spacevine,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"BC" = (/obj/structure/spacevine,/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"BP" = (/obj/effect/wisp,/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"BV" = (/obj/structure/spacevine,/obj/structure/closet/crate/chest,/obj/item/natural/feather,/obj/item/natural/feather,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/obj/item/paper/scroll,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Cj" = (/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Ct" = (/obj/effect/landmark/underworldsafe,/obj/structure/spacevine,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"CD" = (/obj/effect/wisp,/obj/structure/flora/grass/jungle/b,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"CR" = (/obj/machinery/light/rogue/wallfire/candle/blue,/obj/structure/closet/crate/roguecloset/lord,/obj/item/reagent_containers/glass/bottle/rogue/wine,/obj/item/reagent_containers/glass/bottle/rogue/wine,/obj/item/reagent_containers/glass/bottle/rogue/wine,/obj/item/reagent_containers/glass/bottle/rogue/wine,/obj/item/reagent_containers/glass/bottle/rogue/wine,/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"CV" = (/obj/structure/flora/roguetree/happyrandom{icon_state = "t3"; desc = "An old, beloved tree that even elves could love."},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Dh" = (/obj/machinery/light/rogue/wallfire/candle/blue/l,/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"DE" = (/obj/effect/landmark/underworldcoin,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"EF" = (/obj/structure/flora/grass/jungle/b,/mob/living/simple_animal/butterfly,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"EU" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"EX" = (/obj/structure/flora/grass/jungle/b,/obj/structure/fluff/statue/gargoyle/moss,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Fu" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Gc" = (/obj/structure/flora/grass/jungle,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Gf" = (/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Gp" = (/obj/machinery/light/rogue/wallfire/candle/blue/r,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"HB" = (/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"In" = (/turf/open/floor/rogue/hexstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Jj" = (/obj/structure/spacevine,/turf/open/floor/fakespace,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"JO" = (/obj/structure/flora/grass/jungle/b,/obj/effect/wisp,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Kj" = (/obj/effect/wisp,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Kn" = (/obj/structure/flora/grass/jungle{icon_state = "grassa1"},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"KE" = (/turf/closed/wall/mineral/rogue/wooddark/horizontal,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Li" = (/obj/effect/landmark/underworldsafe,/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Ll" = (/obj/structure/flora/roguetree/happyrandom{icon_state = "t6"; desc = "An old, beloved tree that even elves could love."},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Ln" = (/obj/machinery/light/rogue/wallfire/candle/blue/r,/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"LR" = (/obj/structure/flora/grass/jungle/b,/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"LY" = (/obj/structure/table/wood/fancy/royalblue,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Mp" = (/obj/structure/spacevine,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Mq" = (/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Nb" = (/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Np" = (/mob/living/simple_animal/butterfly,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Ox" = (/obj/effect/wisp,/obj/structure/chair/bench,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"PG" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"PX" = (/obj/effect/landmark/underworld,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Qd" = (/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Qj" = (/obj/effect/landmark/underworldsafe,/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"QB" = (/obj/structure/mineral_door/wood/fancywood,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"QL" = (/obj/structure/flora/grass/jungle/b,/obj/effect/wisp,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Rm" = (/obj/structure/chair/bench/couchablack/r,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Rn" = (/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"RG" = (/obj/structure/chair/stool/rogue,/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Sb" = (/obj/effect/wisp,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Sc" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Sg" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Sw" = (/obj/structure/underworld/carriageman{pixel_x = -15; pixel_y = -20},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Ty" = (/obj/structure/well/fountain,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Uo" = (/obj/structure/flora/roguetree/happyrandom,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Uv" = (/mob/living/simple_animal/butterfly,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"UB" = (/obj/structure/flora/roguetree/stump/log,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"UU" = (/turf/open/floor/fakespace,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Vj" = (/obj/structure/underworld/barrier,/turf/open/floor/rogue/blocks/stone/stonepattern3,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"VQ" = (/obj/structure/flora/ausbushes/brflowers,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"VX" = (/obj/effect/landmark/underworldsafe,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Wb" = (/obj/structure/underworld/barrier,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Wn" = (/obj/structure/flora/grass/jungle,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Wx" = (/obj/structure/flora/junglebush/c,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"WU" = (/obj/structure/flora/roguetree/underworld,/obj/structure/spacevine,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"WV" = (/obj/structure/flora/roguetree/underworld,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Xl" = (/obj/effect/wisp,/obj/structure/flora/ausbushes/brflowers,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Xm" = (/obj/structure/flora/roguetree/happyrandom{icon_state = "t3"; desc = "An old, beloved tree that even elves could love."},/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Xv" = (/obj/structure/flora/grass/jungle{icon_state = "grassa2"},/mob/living/carbon/spirit,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"XT" = (/obj/machinery/light/rogue/firebowl/standing/blue,/turf/open/floor/rogue/cobblerock,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"XZ" = (/obj/structure/flora/roguetree/burnt,/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Yh" = (/obj/structure/chair/bench{dir = 8},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Yq" = (/obj/structure/underworld/barrier,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Yx" = (/obj/structure/flora/roguetree/happyrandom{icon_state = "t12"; desc = "An old, beloved tree that even elves could love."},/turf/open/floor/grass,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"YW" = (/obj/structure/flora/grass/jungle/b,/turf/open/water/cleanshallow,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
-"Zr" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/rogue/dirt,/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{first_time_text = "Twilight Shores"; name = "Twilight Shores"})
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ax" = (
+/obj/structure/underworld/barrier,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"az" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"aS" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"bf" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa1"
+	},
+/mob/living/simple_animal/butterfly,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"bu" = (
+/obj/effect/wisp,
+/turf/open/floor/fakespace,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"bG" = (
+/turf/closed/wall/mineral/rogue/wooddark,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"bK" = (
+/obj/structure/flora/roguetree/underworld,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"dn" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/wisp,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"ds" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"dB" = (
+/obj/structure/flora/roguetree/happyrandom,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"dH" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"dX" = (
+/obj/item/toy/cards/deck,
+/obj/structure/table/wood{
+	icon_state = "tablewood1";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"em" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"ew" = (
+/obj/structure/chair/bench{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"eW" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"fV" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"gh" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"gD" = (
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"ha" = (
+/obj/structure/flora/roguetree/underworld,
+/obj/structure/spacevine,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"hm" = (
+/obj/structure/portal,
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"ht" = (
+/turf/closed/wall/mineral/rogue/wooddark/vertical,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"hU" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1";
+	dir = 1
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"iH" = (
+/turf/closed/wall/mineral/rogue/wooddark/window,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"iL" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"iV" = (
+/obj/structure/fluff/statue/gargoyle/moss,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"jQ" = (
+/obj/effect/wisp,
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"lA" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"lF" = (
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"lU" = (
+/obj/effect/wisp,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"mO" = (
+/mob/living/carbon/spirit,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"mW" = (
+/obj/structure/spacevine,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"no" = (
+/turf/closed/wall/mineral/rogue/decostone/mossy/cand,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"nP" = (
+/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/roguetree/underworld,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"oj" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"pi" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"pk" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"pu" = (
+/obj/structure/spacevine,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"px" = (
+/obj/structure/flora/roguetree/happyrandom,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"pz" = (
+/obj/effect/wisp,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"qI" = (
+/obj/structure/fluff/clock,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"qW" = (
+/obj/structure/chair/bench/couchablack,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"ri" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"rR" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/fakespace,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"sc" = (
+/obj/structure/flora/roguetree/happyrandom{
+	icon_state = "t8";
+	desc = "An old, beloved tree that even elves could love."
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"sZ" = (
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"tC" = (
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/item/reagent_containers/glass/cup/skull,
+/obj/structure/table/wood,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"uS" = (
+/turf/closed/wall/shroud,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"vG" = (
+/obj/structure/flora/grass/jungle/b,
+/mob/living/carbon/spirit,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"wt" = (
+/obj/structure/underworld/carriage{
+	pixel_x = -100
+	},
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"wO" = (
+/obj/effect/wisp,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"xc" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"yv" = (
+/obj/structure/spacevine,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"zb" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"zx" = (
+/obj/structure/flora/roguetree/underworld,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"zU" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/structure/closet/crate/roguecloset/lord,
+/obj/item/reagent_containers/glass/bottle/rogue/milk,
+/obj/item/reagent_containers/glass/bottle/rogue/milk,
+/obj/structure/flora/grass/jungle/b,
+/obj/item/reagent_containers/glass/bottle/rogue/milk,
+/obj/item/reagent_containers/glass/bottle/rogue/milk,
+/obj/item/reagent_containers/glass/bottle/rogue/milk,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"zY" = (
+/mob/living/simple_animal/butterfly,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Be" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Bw" = (
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Bx" = (
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"By" = (
+/obj/effect/wisp,
+/obj/structure/spacevine,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"BC" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"BP" = (
+/obj/effect/wisp,
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"BV" = (
+/obj/structure/spacevine,
+/obj/structure/closet/crate/chest,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Cj" = (
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Ct" = (
+/obj/effect/landmark/underworldsafe,
+/obj/structure/spacevine,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"CD" = (
+/obj/effect/wisp,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"CR" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/structure/closet/crate/roguecloset/lord,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"CV" = (
+/obj/structure/flora/roguetree/happyrandom{
+	icon_state = "t3";
+	desc = "An old, beloved tree that even elves could love."
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Dh" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"EF" = (
+/obj/structure/flora/grass/jungle/b,
+/mob/living/simple_animal/butterfly,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"EU" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"EX" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/fluff/statue/gargoyle/moss,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Fu" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Gc" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Gf" = (
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Gp" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"HB" = (
+/turf/closed/wall/mineral/rogue/stone/moss,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"In" = (
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Jj" = (
+/obj/structure/spacevine,
+/turf/open/floor/fakespace,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"JO" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/wisp,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Kj" = (
+/obj/effect/wisp,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Kn" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa1"
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"KE" = (
+/turf/closed/wall/mineral/rogue/wooddark/horizontal,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Li" = (
+/obj/effect/landmark/underworldsafe,
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Ll" = (
+/obj/structure/flora/roguetree/happyrandom{
+	icon_state = "t6";
+	desc = "An old, beloved tree that even elves could love."
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Ln" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"LR" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"LY" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Mp" = (
+/obj/structure/spacevine,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Mq" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Nb" = (
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Np" = (
+/mob/living/simple_animal/butterfly,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Ox" = (
+/obj/effect/wisp,
+/obj/structure/chair/bench,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"PG" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"PX" = (
+/obj/effect/landmark/underworld,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Qd" = (
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Qj" = (
+/obj/effect/landmark/underworldsafe,
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"QB" = (
+/obj/structure/mineral_door/wood/fancywood,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"QL" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/wisp,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Rm" = (
+/obj/structure/chair/bench/couchablack/r,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Rn" = (
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"RG" = (
+/obj/structure/chair/stool/rogue,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Sb" = (
+/obj/effect/wisp,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Sc" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Sg" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1";
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Sw" = (
+/obj/structure/underworld/carriageman{
+	pixel_x = -15;
+	pixel_y = -20
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Ty" = (
+/obj/structure/well/fountain,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Uo" = (
+/obj/structure/flora/roguetree/happyrandom,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Uv" = (
+/mob/living/simple_animal/butterfly,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"UB" = (
+/obj/structure/flora/roguetree/stump/log,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"UU" = (
+/turf/open/floor/fakespace,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Vj" = (
+/obj/structure/underworld/barrier,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"VQ" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"VX" = (
+/obj/effect/landmark/underworldsafe,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Wb" = (
+/obj/structure/underworld/barrier,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Wn" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Wx" = (
+/obj/structure/flora/junglebush/c,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"WU" = (
+/obj/structure/flora/roguetree/underworld,
+/obj/structure/spacevine,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"WV" = (
+/obj/structure/flora/roguetree/underworld,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Xl" = (
+/obj/effect/wisp,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Xm" = (
+/obj/structure/flora/roguetree/happyrandom{
+	icon_state = "t3";
+	desc = "An old, beloved tree that even elves could love."
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Xv" = (
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa2"
+	},
+/mob/living/carbon/spirit,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"XT" = (
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"XZ" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Yh" = (
+/obj/structure/chair/bench{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Yq" = (
+/obj/structure/underworld/barrier,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Yx" = (
+/obj/structure/flora/roguetree/happyrandom{
+	icon_state = "t12";
+	desc = "An old, beloved tree that even elves could love."
+	},
+/turf/open/floor/grass,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"YW" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/water/cleanshallow,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
+"Zr" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
+	first_time_text = "Twilight Shores";
+	name = "Twilight Shores"
+	})
 
 (1,1,1) = {"
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnmWmWRnRnmWRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUdsrRrRdsrRrRrRrRrRrRrRrRrRrRdsdsdsdsXmUUUUUUUUUUUURnRnUURnRnRnmWmWmWmWmWRnUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnzxmWRnUURnRnUUdsUUUUUURnRnXmUUUUUURnRnXmRnRnRnRnRnRndsRnUUUUbuRnRnRnRnRnRnRnRnRnRnRnXmRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnzxWUmWRnRnRnRndsXmUUUUXmRnRnRnRnRnRnRnRnRnXmRnXmRnRndsRnUURnRnRnRnRnzxRnRnRnRnRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnzxmWRnRnXmRndsRnRnRnRnUURnRnYqYqYqYqYqRnRnUURnRnXmdsRnRnRnUURnXmRnzxzxnPnPzxzxRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnXmRnUUzxRnRnRnRnRndsUURnRnRnRnRnRnVjaxwtYqRnRnojRnmWmWRndsRnRnRnRnRnRnRnRnmWmWzxzxzxzxRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnUUUURnRnXmRnRnRnBeCjCjCjRnRnojdBNbNbGfRnRnRnRnRnpuCjCjCtmWRnRnRnRnRnRnRnRnRnmWzxnPnPzxzxzxRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWmWRnUUUURnRnRnRnRnWVWVWVCjWVWVWViVNbNbNbiVCjCjWVWVpuWVWVhaCjCjCjsZsZsZRnRnRnRnRnRnzxzxmWRnRnmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnmWWURnRnRnsZsZCjpxpuWVCjLlCjUBdHQdNbGfNbCjQdpxpuUUCjWVWVpuCjCjpxCjCjCjsZlFlFXZlUbKbKyvRnRnmWmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnzxzxmWRnRnsZsZCjCjpuWVCjzYdHKnxcdHGfGfNbWbCjCjeWCjpxWVWVpupxdHCjCjCjCjlUCjCjCjCjCjCjsZRnRnmWmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnzxWURnRnsZpxCjCjCjWVCjCjXlxcCjCjNbNbNbSwCjCjlUCjCjWVCjCjCjdndHCjCjCjuSuSuSuSCjCjCjsZRnRnRnmWUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUURnRnRnWUmWsZsZpuCjpxCjWVpxCjCjCjKndHGfPXNbCjCjCjCjWVCjWVCjCjCjCjdHCjpxuSHBHBHBHBuSCjCjsZRnRnRnRnUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnmWWURnRnsZCjCjpuCjCjWVWVWVCjCjCjdHNbNbGfCjzYCjRnWVCjCjpxCjpxCjCjHBHBHBHBHBHBHBHBHBpxlFlFRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnWUzxRnsZlUCjpupupxCjpuWVXZRnRniVNbGfaSiVCjRnRnWVpxCjCjXZmOCjCjHBuSuShmBxGfGfHBHBHBCjbKzxzxRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnmWmWRnsZCjCjmOpupuCjpuWVCjCjRnCjNbaSaSdHCjRnXZWVCjCjCjCjlUCjCjHBuSwOGfGfGfScQLBxuSCjsZRnzxRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnUURnRnRnRnsZCjWVCjCjCjCjCjWVWVXZCjCjNbNbNbWVCjWVWVWVdHdHpxCjCjCjpxHBScGfGfNpGfBxScBxuSCjsZRnRnzxRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnUUUURnRnsZsZWVCjCjzYCjpxCjWVWVWVCjCjNbNbNbCjpxCjWVWVCjdHCjdHdHCjCjHBlAScGfGfGfBxGfuSHBCjsZsZRnzxRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnUUUURnsZsZdHCjdHlUCjxcCjpuWVWVpxLRGfNbGfCjQdXZpuWVCjdHCjCjdHdHCjHBBxGfGfGfGfScScuSHBpxlUsZRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnUUUURnsZsZdHdHKndHxcxcCjCjWVCjCjdHScNbNbCjCjCjCjWVpxlUCjCjCjdHCjnoGfGfGfGfGflUdHdHnoCjCjsZRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUXmRnRnUURnsZyvCjdHdHKnridHCjCjWVCjdHCjGfNbNbdHCjCjCjCjCjCjCjCjCjCjCjCjPGPGiLiLBeBeBeemdHCjCjlFRnmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnsZpuWVpuCjxcKndHzYlUWVpxCjdHNbNbNbdHdHscCjpxCjCjdHCjCjCjCjCjCjdHdHCjCjCjCjCjCjdHJOsZRnmWRnUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnyvCjWVCjBPxcKnKndHCjCjBeVQdHScNbNbCjdHdHCjBeCjCjCjdHdHCjzYCjCjCjdHWnCjRnRnRnzYCjEUZrRnmWmWUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnyvWVWVWVridHCjCjCjdHCjBeCjiVNbGfNbiVCjeWCjBeCjCjCjCjdHCjCjCjdHdHWnGcYWYWRnRnCjCjCjZrYWmWmWUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnXmRnRnyvbKpupuCjCjdHWVCjCjCjBeCjCjGfNbNbCjCjCjCjBeCjCjlUCjCjCjCjCjBwYWGcMqRnYWRnRnCjCjCjsZYWYWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnmWsZsZsZsZsZyvyvWVCjCjCjBeBeLiVXVXQjBeBeBeCjCjCjCjCjdHCjCjCjRnRnMqMqRnRnRnWxCjpusZRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUURnRnRnRnRnRnzxRnRnRnRnRnsZsZyvsZCjXZKndHCjaSNbGfCjCjCjCjXZCjpuCjCjdHdnCjCjRnRnMqYWRnRnCjCjCjWVyvRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnmWzxzxmWRnRnRnRnRnsZsZpuCjdHKnxcdHNbaSNbGfCjCjCjCjCjpupupxWVdHCjCjCjRnRnEFdHCjlUCjyvbKnPRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnmWmWRnzxRnRnRnRnRnRnsZCjCjCjdHxcxcdHCjGfNbNbaSEXCjCjCjCjpuRnWVpupupxCjCjCjCjCjCjCjCjyvRnzxRnRnXmRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnzxzxRnRnRnRnRnRnRnsZCjCjCVdHXvbfKneWCjGfNbNbaSQdYxpuLlpuRnzxzxzxyvpzCjCjdHCjCjlFsZRnzxzxRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnzxRnRnRnUURnXmRnRnCjCjCjCjCjdHxcxcKndHCjCjGfNbNbNbOxpupupuCVRnzxRnmWRnsZsZZrZrlFsZRnRnzxzxmWmWmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnRnUUUURnRnRnCjCjCjpxCjCjCjdHxcdHdHdHiVGfNbGfNbGfWnKnpuCjCjRnzxzxmWmWRnRnRnRnRnRnmWRnzxzxzxmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnRnUUUURnRnRnCjCVCjlUCjCVdHbGiHbGbGlUGfXTNbNbNbNbGfLRKnCjCVRnRnzxzxRnRnRnRnRnRnRnRnmWmWRnzxmWRnUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnXmUURnRnRnRnCjCjCjCjCjCjiHzUtCCRbGKEiHbGNbNbNbNbKjNbCjKnVQCjRnRnzxzxRnRnRnRnXmRnRnRnRnzxzxRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnmWRnRnRnRnRnRnRnCVCjCjCVCjCjbGDhInInhUzbLnbGNbGfNbGfNbewCVKnCjCjRnRnRnRnRnRnRnRnRnRnRnRnRnRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnmWmWRnRnRnXmRnRnCjCjpxCjlUCjhtInhUhUhUzbgDiHNbGfTyNbNbScWnjQCjCjsZRnRnXmRnRnRnRnRnRnRnRnRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWRnRnRnRnRnRnRnCjpupuCjByCjiHgDzbzbzbgDgDQBVXNbNbNbNbQdxcdHCjpxsZRnRnRnRnRnUUUURnRnRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUURnRnRnRnRnRnRnRnRnCVCjpuCjCjpuhtgDgDgDgDgDgDQBVXNbNbNbGfCjCjdHvGCjCjRnRnRnRnUUUUUUUURnRnRnRnmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnUURnRnCjCjpupuCVpubGpigDgDgDgDgDiHGfNbNbGfYhCVCjzYCjCjCVRnRnRnRnRnRnUUUUUURnXmRnmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUURnRnRnXmRnUUUUzxzxRnCVCjpuCjdHiHBVghzbSgzbGpbGNbNbGfNbQdCjCjlUCjCjlFRnXmRnRnRnRnRnUUUUUURnRnmWRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnUUUUzxzxzxCjCjpxCjCDxcbGiHKEiHKEiHbGNbaSGfNbCjCjlUCjCjsZRnRnRnRnRnRnRnRnUUUUUURnRnmWmWRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWRnRnUUUUUUzxnPRnRnCVCjCjCjaSFuMppueWdnxcQdNbScaSNbqICjCjCjCjsZRnRnRnUURnRnRnXmUUUURnRnRnRnmWRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWRnRnUURnRnnPnPRnRnsZlFCjzYaSdXLYBCqWRmdHCjNbNbNbNbCjCjCjCjUoRnXmRnRnUURnRnRnRnUUUUzxRnRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUmWmWRnRnRnRnzxzxzxRnRnsZsZCVCjpkRGRGfVLYvgNbdHGfNbNbGfCjCjCVlFRnRnRnRnUUUUzxzxRnRnRnRnzxRnRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWmWRnzxzxnPzxRnRnRnRnRnsZlFCjCjzYaSFuazCjCjCjCjNbCjCjVQsZsZRnRnRnRnRnUUUUzxRnmWRnRnzxzxzxzxRnRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnmWRnzxnPzxzxRnRnRnRnRnRnRnsZsZsZCjsZsZCjdHsZsZpzCjCjsZsZsZRnSbRnRnmWRnUURnzxRnmWmWmWRnRnzxnPzxRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUURnRnRnzxzxRnRnRnRnRnRnRnSbRnRnRnsZsZRnRnsZsZRnRnRnsZUvRnRnRnRnRnRnmWmWRnnPzxRnRnRnRnmWmWRnRnzxzxzxzxUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnRnmWRnRnRnXmRnRnDERnRnRnRnRnDERnRnRnRnDERnRnRnRnRnRnDERnmWRnzxnPRnRnRnRnRnRnmWRnRnzxzxRnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnRnRnRnmWmWRnUURnRnRnRnRnRnDEUUUURnRnUURnRnRnRnRnDERnUURnRnRnRnzxzxzxRnRnRnRnXmRnRnRnUURnzxRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnXmRnUUmWJjUUbuRnUUUUUURnRnUUUUbuRnUUUUUURnSbUUUUUUUUSbRnRnzxUUUUzxzxRnUURnRnRnUURnUURnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUURnRnUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUmSUUUUUUUUUUUUUUUUUURnUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUmSUUUUUUUUUUUUUUUUUUUUUUmSUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUbuUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(2,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+bu
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(3,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(4,1,1) = {"
+UU
+bu
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(5,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(6,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+mW
+Rn
+Rn
+UU
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+Rn
+zx
+Rn
+Rn
+Rn
+mW
+mW
+mW
+Rn
+Rn
+Rn
+Rn
+mW
+mW
+mW
+mW
+mW
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(7,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Xm
+Rn
+mW
+mW
+zx
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+mW
+mW
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(8,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+UU
+Rn
+WU
+zx
+zx
+Rn
+WU
+WU
+mW
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+Rn
+zx
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+"}
+(9,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+zx
+zx
+Rn
+UU
+UU
+UU
+Rn
+mW
+WU
+WU
+Rn
+zx
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+zx
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+Rn
+zx
+nP
+zx
+Rn
+Rn
+Xm
+Rn
+UU
+UU
+UU
+"}
+(10,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+mW
+WU
+zx
+zx
+Rn
+UU
+Rn
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+sZ
+sZ
+sZ
+sZ
+sZ
+yv
+yv
+yv
+mW
+Rn
+mW
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(11,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+yv
+pu
+Cj
+WV
+bK
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+UU
+UU
+UU
+UU
+Rn
+zx
+nP
+zx
+Rn
+mW
+mW
+UU
+UU
+UU
+UU
+UU
+"}
+(12,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Xm
+Rn
+sZ
+sZ
+sZ
+sZ
+Cj
+lU
+Cj
+Cj
+WV
+dH
+dH
+Cj
+WV
+WV
+WV
+pu
+sZ
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+zx
+nP
+zx
+zx
+Rn
+Rn
+Rn
+mW
+mW
+UU
+UU
+UU
+UU
+"}
+(13,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+sZ
+sZ
+px
+pu
+Cj
+Cj
+Cj
+WV
+Cj
+Cj
+dH
+dH
+pu
+Cj
+WV
+pu
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+nP
+nP
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Jj
+UU
+UU
+UU
+UU
+"}
+(14,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Cj
+Cj
+Cj
+Cj
+pu
+pu
+mO
+Cj
+Cj
+dH
+Kn
+dH
+Cj
+BP
+ri
+Cj
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Cj
+Cj
+Cj
+CV
+Cj
+Cj
+CV
+Cj
+Rn
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(15,1,1) = {"
+UU
+UU
+bu
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+px
+Cj
+Cj
+px
+Cj
+pu
+pu
+Cj
+zY
+lU
+dH
+Kn
+xc
+xc
+dH
+Cj
+sZ
+sZ
+Rn
+Rn
+Rn
+Cj
+Cj
+CV
+Cj
+Cj
+Cj
+pu
+Cj
+Cj
+CV
+Cj
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+bu
+UU
+UU
+UU
+UU
+"}
+(16,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+ds
+ds
+ds
+ds
+Be
+WV
+pu
+pu
+Cj
+Cj
+Cj
+px
+pu
+Cj
+Cj
+Cj
+xc
+ri
+Kn
+Kn
+Cj
+dH
+yv
+sZ
+sZ
+sZ
+sZ
+Cj
+Cj
+Cj
+Cj
+Cj
+px
+pu
+pu
+pu
+Cj
+Cj
+CV
+sZ
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(17,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+UU
+Xm
+Rn
+UU
+Cj
+WV
+WV
+WV
+WV
+WV
+WV
+Cj
+Cj
+Cj
+px
+xc
+xc
+dH
+dH
+Kn
+Cj
+WV
+yv
+yv
+sZ
+Cj
+Cj
+Cj
+px
+lU
+Cj
+CV
+Cj
+Cj
+Cj
+pu
+pu
+px
+Cj
+lF
+sZ
+Rn
+Rn
+Sb
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(18,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+UU
+UU
+Rn
+Rn
+Cj
+WV
+Cj
+Cj
+Cj
+px
+WV
+pu
+pu
+Cj
+Cj
+Cj
+Cj
+Cj
+zY
+dH
+Cj
+Cj
+WV
+sZ
+pu
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+lU
+By
+Cj
+CV
+Cj
+Cj
+Cj
+Cj
+CV
+sZ
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(19,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+UU
+UU
+Rn
+Rn
+Cj
+Cj
+Ll
+zY
+Cj
+Cj
+WV
+WV
+WV
+WV
+WV
+pu
+Cj
+Cj
+lU
+Cj
+dH
+Cj
+Cj
+Cj
+Cj
+Cj
+CV
+Cj
+Cj
+CV
+Cj
+Cj
+Cj
+Cj
+pu
+pu
+dH
+CD
+Cj
+zY
+Cj
+lF
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(20,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+Rn
+Xm
+Rn
+Rn
+Rn
+WV
+Cj
+dH
+Xl
+Cj
+Cj
+XZ
+Cj
+WV
+WV
+WV
+WV
+WV
+WV
+Cj
+Cj
+Cj
+Cj
+XZ
+dH
+dH
+dH
+dH
+Cj
+dH
+iH
+bG
+ht
+iH
+ht
+bG
+iH
+xc
+aS
+aS
+pk
+Cj
+sZ
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(21,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+Rn
+Rn
+UU
+Rn
+Rn
+WV
+UB
+Kn
+xc
+Cj
+Cj
+Rn
+Cj
+XZ
+WV
+WV
+Cj
+Cj
+px
+Be
+Be
+Be
+Cj
+Kn
+Kn
+xc
+Xv
+xc
+dH
+bG
+zU
+Dh
+In
+gD
+gD
+pi
+BV
+bG
+Fu
+dX
+RG
+Cj
+sZ
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(22,1,1) = {"
+UU
+UU
+UU
+Rn
+rR
+Xm
+Rn
+Rn
+Rn
+oj
+WV
+dH
+xc
+Cj
+Kn
+Cj
+Rn
+Rn
+Cj
+Cj
+px
+Cj
+dH
+Cj
+VQ
+Cj
+Cj
+Be
+dH
+xc
+xc
+bf
+xc
+xc
+iH
+tC
+In
+hU
+zb
+gD
+gD
+gh
+iH
+Mp
+LY
+RG
+zY
+Cj
+sZ
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(23,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+UU
+Rn
+Rn
+Rn
+dB
+iV
+Qd
+dH
+Cj
+dH
+dH
+iV
+Cj
+Cj
+Cj
+LR
+dH
+Cj
+dH
+dH
+iV
+Cj
+Be
+Cj
+dH
+dH
+Kn
+Kn
+dH
+bG
+CR
+In
+hU
+zb
+gD
+gD
+zb
+KE
+pu
+BC
+fV
+aS
+sZ
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(24,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+UU
+Rn
+Yq
+Vj
+Nb
+Nb
+Nb
+Gf
+Nb
+Gf
+Nb
+Nb
+Nb
+Nb
+Nb
+Gf
+Sc
+Gf
+Nb
+Sc
+Nb
+Gf
+Li
+aS
+Nb
+Cj
+eW
+dH
+dH
+bG
+bG
+hU
+hU
+zb
+gD
+gD
+Sg
+iH
+eW
+qW
+LY
+Fu
+sZ
+Rn
+Rn
+Rn
+UU
+bu
+UU
+UU
+UU
+"}
+(25,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+UU
+Rn
+Yq
+ax
+Nb
+Nb
+Gf
+Gf
+Nb
+PX
+Nb
+Gf
+aS
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Gf
+Nb
+VX
+Nb
+aS
+Gf
+Cj
+Cj
+dH
+lU
+KE
+zb
+zb
+gD
+gD
+gD
+zb
+KE
+dn
+Rm
+LY
+az
+Cj
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(26,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+Rn
+Rn
+Yq
+wt
+Gf
+Nb
+Nb
+Nb
+Nb
+Nb
+Gf
+aS
+aS
+Nb
+Nb
+Gf
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+VX
+Gf
+Nb
+Nb
+Gf
+Cj
+iV
+Gf
+iH
+Ln
+gD
+gD
+gD
+gD
+Gp
+iH
+xc
+dH
+Nb
+Cj
+dH
+sZ
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(27,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+Rn
+Rn
+Yq
+Yq
+Rn
+iV
+Cj
+Wb
+Sw
+Cj
+Cj
+iV
+dH
+WV
+Cj
+Cj
+Cj
+dH
+dH
+Cj
+iV
+Cj
+Qj
+Cj
+Gf
+Nb
+Nb
+Gf
+Gf
+XT
+bG
+bG
+iH
+QB
+QB
+iH
+bG
+bG
+Qd
+Cj
+dH
+Cj
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(28,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+Xm
+Rn
+Yq
+Rn
+Rn
+Cj
+Qd
+Cj
+Cj
+Cj
+zY
+Cj
+Cj
+Cj
+px
+Qd
+Cj
+Cj
+dH
+dH
+Cj
+Cj
+Be
+Cj
+Cj
+aS
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+VX
+VX
+Gf
+Nb
+Nb
+Nb
+Nb
+Gf
+Cj
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(29,1,1) = {"
+UU
+UU
+UU
+UU
+rR
+Rn
+Rn
+Rn
+Rn
+Rn
+Cj
+px
+Cj
+Cj
+Cj
+Cj
+Rn
+Rn
+WV
+Cj
+XZ
+Cj
+Cj
+sc
+dH
+eW
+Cj
+Be
+Cj
+Cj
+EX
+aS
+Nb
+Gf
+Nb
+Nb
+Gf
+Gf
+Nb
+Nb
+Nb
+Nb
+aS
+Sc
+Nb
+Nb
+Cj
+pz
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(30,1,1) = {"
+bu
+UU
+UU
+UU
+rR
+Rn
+Xm
+Rn
+oj
+Rn
+WV
+pu
+eW
+lU
+Cj
+Rn
+Rn
+XZ
+WV
+WV
+pu
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Be
+Cj
+Cj
+Cj
+Qd
+Nb
+Nb
+Nb
+Nb
+Nb
+Ty
+Nb
+Nb
+Nb
+Gf
+Gf
+aS
+Nb
+Nb
+Nb
+Cj
+sZ
+Rn
+Rn
+Sb
+UU
+UU
+bu
+UU
+"}
+(31,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+Rn
+Rn
+UU
+Rn
+Rn
+WV
+UU
+Cj
+Cj
+WV
+WV
+WV
+WV
+WV
+WV
+WV
+WV
+Cj
+px
+Be
+Be
+Be
+Cj
+XZ
+Cj
+Cj
+Yx
+Ox
+Gf
+Nb
+Nb
+Gf
+Nb
+Nb
+Nb
+Gf
+Nb
+Nb
+Nb
+Nb
+Gf
+Cj
+Cj
+Uv
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(32,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+Rn
+Xm
+Rn
+mW
+pu
+pu
+Cj
+px
+Cj
+Cj
+Cj
+px
+Cj
+dH
+Cj
+Cj
+px
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+pu
+pu
+Wn
+Gf
+Kj
+Nb
+Nb
+Nb
+Gf
+Yh
+Qd
+Cj
+qI
+Cj
+Cj
+Cj
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(33,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+Rn
+Rn
+Rn
+mW
+Cj
+WV
+WV
+WV
+WV
+WV
+Cj
+Cj
+Cj
+dH
+dH
+dH
+lU
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+pu
+pu
+Cj
+Ll
+pu
+Kn
+LR
+Nb
+ew
+Sc
+Qd
+Cj
+CV
+Cj
+Cj
+Cj
+Cj
+Cj
+VQ
+sZ
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(34,1,1) = {"
+UU
+UU
+UU
+UU
+ds
+Rn
+Rn
+Xm
+Rn
+Cj
+WV
+WV
+WV
+Cj
+Cj
+px
+Cj
+Cj
+px
+Cj
+Cj
+Cj
+Cj
+dH
+Cj
+Cj
+lU
+Cj
+Cj
+pu
+pu
+pu
+pu
+pu
+Kn
+Cj
+CV
+Wn
+xc
+Cj
+Cj
+Cj
+lU
+Cj
+Cj
+CV
+sZ
+sZ
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(35,1,1) = {"
+UU
+UU
+UU
+UU
+Xm
+ds
+ds
+ds
+ds
+Ct
+ha
+pu
+pu
+Cj
+Cj
+Cj
+XZ
+Cj
+Cj
+dH
+Cj
+Cj
+Cj
+Cj
+dH
+Cj
+Cj
+Cj
+Cj
+px
+Rn
+Rn
+CV
+Cj
+Cj
+Kn
+Kn
+jQ
+dH
+dH
+zY
+lU
+Cj
+Cj
+Cj
+lF
+sZ
+Rn
+Rn
+Rn
+Rn
+Sb
+UU
+UU
+UU
+UU
+"}
+(36,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+mW
+Cj
+Cj
+px
+Cj
+Cj
+px
+mO
+lU
+Cj
+dH
+dH
+Cj
+Cj
+Cj
+dH
+dH
+Cj
+dH
+dH
+WV
+WV
+zx
+Rn
+Cj
+CV
+VQ
+Cj
+Cj
+Cj
+vG
+Cj
+Cj
+Cj
+Cj
+Uo
+Rn
+Rn
+Sb
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(37,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Cj
+Cj
+dH
+dn
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+dH
+dH
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+dn
+dH
+pu
+zx
+zx
+Rn
+Rn
+Cj
+Cj
+Cj
+px
+Cj
+Cj
+Cj
+sZ
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+"}
+(38,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Cj
+px
+Cj
+dH
+dH
+Cj
+Cj
+Cj
+px
+Cj
+Cj
+Cj
+Cj
+Cj
+zY
+Cj
+Cj
+Cj
+Cj
+Cj
+pu
+zx
+Rn
+zx
+Rn
+Rn
+Rn
+sZ
+sZ
+Cj
+CV
+lF
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+mW
+mW
+Rn
+zx
+UU
+UU
+UU
+UU
+"}
+(39,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+bu
+Rn
+UU
+Rn
+Rn
+sZ
+Cj
+Cj
+Cj
+Cj
+HB
+HB
+HB
+HB
+HB
+HB
+no
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+px
+yv
+mW
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+mW
+Rn
+zx
+UU
+UU
+UU
+UU
+UU
+"}
+(40,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+sZ
+Cj
+Cj
+Cj
+px
+HB
+uS
+uS
+Sc
+lA
+Bx
+Gf
+PG
+Cj
+Cj
+dH
+Bw
+Rn
+Rn
+Cj
+Cj
+pz
+Rn
+mW
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+UU
+Rn
+Rn
+Rn
+zx
+zx
+UU
+UU
+UU
+UU
+UU
+"}
+(41,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Xm
+Rn
+Rn
+sZ
+Cj
+Cj
+Cj
+uS
+HB
+uS
+wO
+Gf
+Sc
+Gf
+Gf
+PG
+dH
+Cj
+dH
+YW
+Rn
+Rn
+Rn
+Cj
+Cj
+sZ
+mW
+Rn
+zx
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+nP
+nP
+zx
+zx
+UU
+UU
+UU
+UU
+"}
+(42,1,1) = {"
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+sZ
+lU
+uS
+HB
+HB
+hm
+Gf
+Gf
+Gf
+Gf
+Gf
+iL
+dH
+dH
+Wn
+Gc
+Mq
+Mq
+Rn
+Cj
+Cj
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+UU
+Rn
+zx
+Rn
+Rn
+zx
+UU
+UU
+UU
+UU
+"}
+(43,1,1) = {"
+UU
+UU
+UU
+UU
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+Rn
+lF
+Cj
+uS
+HB
+HB
+Bx
+Gf
+Np
+Gf
+Gf
+Gf
+iL
+Cj
+Wn
+Gc
+Mq
+Mq
+YW
+EF
+Cj
+dH
+Zr
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(44,1,1) = {"
+UU
+UU
+UU
+Rn
+UU
+Rn
+Rn
+zx
+mW
+Rn
+Rn
+lF
+Cj
+uS
+HB
+HB
+Gf
+Gf
+Gf
+Gf
+Gf
+Gf
+Be
+Cj
+Cj
+YW
+Rn
+Rn
+Rn
+dH
+Cj
+Cj
+Zr
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+bu
+"}
+(45,1,1) = {"
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+nP
+mW
+Rn
+Rn
+XZ
+Cj
+uS
+HB
+HB
+Gf
+Sc
+Bx
+Bx
+Sc
+lU
+Be
+Cj
+Rn
+YW
+YW
+Rn
+Rn
+Cj
+Cj
+Cj
+lF
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Xm
+Rn
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(46,1,1) = {"
+UU
+UU
+UU
+mW
+Rn
+Rn
+Rn
+nP
+zx
+mW
+Rn
+lU
+Cj
+Cj
+uS
+HB
+HB
+QL
+Sc
+Gf
+Sc
+dH
+Be
+Cj
+Rn
+Rn
+Rn
+Rn
+Cj
+lU
+Cj
+lF
+sZ
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+mW
+Rn
+Rn
+Xm
+Rn
+UU
+UU
+UU
+UU
+"}
+(47,1,1) = {"
+UU
+UU
+UU
+mW
+Rn
+Rn
+Rn
+zx
+zx
+zx
+Rn
+bK
+Cj
+Cj
+Cj
+HB
+HB
+Bx
+Bx
+uS
+uS
+dH
+em
+Cj
+Rn
+Rn
+Rn
+Wx
+Cj
+Cj
+Cj
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(48,1,1) = {"
+UU
+UU
+UU
+Rn
+mW
+Rn
+Rn
+zx
+zx
+nP
+zx
+bK
+Cj
+Cj
+Cj
+px
+HB
+uS
+uS
+HB
+HB
+no
+dH
+Cj
+zY
+Cj
+Cj
+Cj
+Cj
+yv
+yv
+Rn
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+Rn
+zx
+zx
+zx
+Rn
+mW
+mW
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(49,1,1) = {"
+UU
+UU
+UU
+Rn
+mW
+Rn
+Rn
+Rn
+zx
+nP
+zx
+yv
+sZ
+sZ
+sZ
+lF
+Cj
+Cj
+Cj
+Cj
+px
+Cj
+Cj
+dH
+Cj
+Cj
+Cj
+pu
+WV
+bK
+Rn
+zx
+zx
+Rn
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Xm
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(50,1,1) = {"
+UU
+UU
+UU
+mW
+mW
+Rn
+Rn
+Rn
+Rn
+zx
+mW
+Rn
+Rn
+Rn
+Rn
+lF
+bK
+sZ
+sZ
+sZ
+lU
+Cj
+Cj
+JO
+EU
+Cj
+Cj
+sZ
+yv
+nP
+zx
+zx
+zx
+zx
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(51,1,1) = {"
+UU
+UU
+UU
+Rn
+mW
+Xm
+Rn
+Rn
+Rn
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+zx
+Rn
+Rn
+sZ
+sZ
+sZ
+lF
+sZ
+Zr
+Zr
+sZ
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+zx
+Rn
+zx
+Rn
+Rn
+Rn
+mW
+mW
+mW
+mW
+Rn
+Rn
+Rn
+zx
+nP
+zx
+zx
+Rn
+Rn
+UU
+UU
+UU
+UU
+"}
+(52,1,1) = {"
+UU
+UU
+UU
+Rn
+mW
+Rn
+UU
+Rn
+Rn
+zx
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+YW
+YW
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+zx
+zx
+zx
+Rn
+Rn
+UU
+Rn
+Rn
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+zx
+zx
+zx
+zx
+Rn
+UU
+UU
+UU
+UU
+"}
+(53,1,1) = {"
+UU
+UU
+UU
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+mW
+mW
+mW
+mW
+Rn
+UU
+Rn
+Rn
+zx
+zx
+Rn
+Rn
+mW
+mW
+mW
+mW
+YW
+Rn
+Rn
+Rn
+Xm
+Rn
+mW
+mW
+mW
+Rn
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+UU
+Rn
+Rn
+zx
+Rn
+Rn
+UU
+UU
+UU
+UU
+UU
+"}
+(54,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+mW
+mW
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+Rn
+UU
+UU
+UU
+UU
+Rn
+Rn
+UU
+UU
+UU
+Rn
+Rn
+zx
+Rn
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(55,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(56,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(57,1,1) = {"
+UU
+UU
+UU
+UU
+bu
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+bu
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+"}
+(58,1,1) = {"
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
+UU
 "}

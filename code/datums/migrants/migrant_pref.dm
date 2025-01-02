@@ -9,9 +9,13 @@
 /datum/migrant_pref/New(datum/preferences/passed_prefs)
 	. = ..()
 	prefs = passed_prefs
-	
+
 /datum/migrant_pref/proc/set_active(new_state, silent = FALSE)
 	if(active == new_state)
+		return
+	var/datum/job/roguetown/migrant/migjob = SSjob.GetJobType(/datum/job/roguetown/migrant)
+	if(get_playerquality(prefs.parent.ckey) < migjob.min_pq)
+		to_chat(prefs.parent, span_warning("You do not have enough reputation."))
 		return
 	active = new_state
 	role_preferences.Cut()

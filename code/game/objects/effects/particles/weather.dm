@@ -25,7 +25,7 @@
 	//alpha = 190
 
 /atom/movable/screen/weather/fog
-	alpha = 180
+	alpha = 150
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state	= "phog1"
 	screen_loc = "1,1"

@@ -18,7 +18,7 @@
 
 /datum/surgery_step/amputate
 	name = "Amputate"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_SCALPEL = 75, 
 		TOOL_SAW = 60,

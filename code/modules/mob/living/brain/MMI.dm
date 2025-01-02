@@ -43,7 +43,7 @@
 			to_chat(user, span_warning("There's already a brain in the MMI!"))
 			return
 		if(!newbrain.brainmob)
-			to_chat(user, span_warning("I aren't sure where this brain came from, but you're pretty sure it's a useless brain!"))
+			to_chat(user, span_warning("I'm not sure where this brain came from, but you're pretty sure it's a useless brain!"))
 			return
 
 		if(!user.transferItemToLoc(O, src))

@@ -11,8 +11,8 @@
 	list_reagents = list(/datum/reagent/medicine/majorhealthpot = 45)
 
 /obj/item/reagent_containers/glass/bottle/rogue/sublimeambrosia
-	list_reagents = list(/datum/reagent/medicine/sublimeambrosia = 5)
-	
+	list_reagents = list(/datum/reagent/medicine/sublimeambrosia = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	list_reagents = list(/datum/reagent/medicine/manapot = 45)
 
@@ -21,6 +21,9 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/antipregnancy
 	list_reagents = list(/datum/reagent/medicine/antipregnancy = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/berrypoison
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 45)
 
 /obj/item/reagent_containers/glass/bottle/rogue/poison
 	list_reagents = list(/datum/reagent/toxin/killersice = 1)
@@ -34,7 +37,10 @@
 /obj/item/reagent_containers/glass/bottle/rogue/milk
 	list_reagents = list(/datum/reagent/consumable/milk = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/cum //for testing purposes, trust me.
+	list_reagents = list(/datum/reagent/consumable/cum = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/nourish
 	name = "NOURISH"
-	desc = "DR.V's vim and vigor meal in a bottle"
+	desc = "vim and vigor meal in a bottle"
 	list_reagents = list(/datum/reagent/consumable/milk = 15, /datum/reagent/consumable/soup/oatmeal/nourish = 25, /datum/reagent/consumable/honey = 10)

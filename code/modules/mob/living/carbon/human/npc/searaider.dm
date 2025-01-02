@@ -40,9 +40,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 /mob/living/carbon/human/species/human/northern/searaider/Initialize()
 	. = ..()
 	set_species(/datum/species/human/northern)
-	spawn(10)
-		after_creation()
-	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
+	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 
 /mob/living/carbon/human/species/human/northern/searaider/after_creation()
@@ -174,7 +172,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	projectiletype = /obj/projectile/bullet/reusable/arrow/orc
+	projectiletype = /obj/projectile/bullet/arrow/npc
 	projectilesound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
 	ranged = 1
 	retreat_distance = 2
@@ -200,7 +198,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/natural/hide = 2, /obj/item/natural/bundle/bone/full = 1)
 	aggressive = 1
-	patron = /datum/patron/inhumen/graggar
+	patron = /datum/patron/inhumen/nyrnhe
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/searaider/simple_limb_hit(zone)

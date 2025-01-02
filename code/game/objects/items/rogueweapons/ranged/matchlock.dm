@@ -1,4 +1,5 @@
 
+//deprecated sorta, replaced by arquebuses which are better detailed.
 /obj/item/gun/ballistic/revolver/grenadelauncher/matchlock
 	name = "matchlock pistol"
 	desc = "A deadly weapon that shoots a ball with terrific power."
@@ -7,22 +8,23 @@
 	item_state = "matchlock"
 	possible_item_intents = list(/datum/intent/shoot/matchlock, /datum/intent/arc/matchlock, INTENT_GENERIC)
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/matchlock
-	slot_flags = ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	randomspread = 2
 	spread = 0
-	can_parry = TRUE
+	can_parry = FALSE
 	pin = /obj/item/firing_pin
 	force = 10
 	var/cocked = FALSE
 	cartridge_wording = "musketball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = 'sound/combat/Ranged/musketfire.ogg'
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2.5
 	var/cocktime = 50
 
+/* no sprite for it
 /obj/item/gun/ballistic/revolver/grenadelauncher/matchlock/rifle
 	name = "matchlock rifle"
 	damfactor = 5
@@ -30,6 +32,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	cocktime = 100
+*/
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/matchlock/getonmobprop(tag)
 	. = ..()

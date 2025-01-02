@@ -313,10 +313,6 @@
 	if(..()) //successful monkey bite.
 		attacked += 10
 
-/mob/living/simple_animal/slime/attack_larva(mob/living/carbon/alien/larva/L)
-	if(..()) //successful larva bite.
-		attacked += 10
-
 /mob/living/simple_animal/slime/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
@@ -364,7 +360,7 @@
 			if(possible_len)
 				var/datum/surgery_step/done_step
 				if(possible_len > 1)
-					var/input = input(M, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+					var/input = input(M, "Which surgery step do you want to perform?", "HERMEIR", ) as null|anything in possible_steps
 					if(input)
 						done_step = possible_steps[input]
 				else
@@ -373,12 +369,6 @@
 					return TRUE
 		if(..()) //successful attack
 			attacked += 10
-
-/mob/living/simple_animal/slime/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if(..()) //if harm or disarm intent.
-		attacked += 10
-		discipline_slime(M)
-
 
 /mob/living/simple_animal/slime/attackby(obj/item/W, mob/living/user, params)
 	if(stat == DEAD && !user.cmode)
@@ -392,7 +382,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(length(possible_steps) > 1)
-				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "Which surgery step do you want to perform?", "HERMEIR", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else

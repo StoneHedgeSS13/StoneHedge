@@ -1,0 +1,6 @@
+{
+    "map_name": "forest",
+    "map_path": "map_files/otherz",
+    "map_file": "forest.dmm",
+	"traits": [{"Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true}]
+}

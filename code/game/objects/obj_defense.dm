@@ -112,10 +112,6 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	return take_damage(damage_amount, damage_type, damage_flag, sound_effect, get_dir(src, user), armor_penetration)
 
-/obj/attack_alien(mob/living/carbon/alien/humanoid/user)
-	if(attack_generic(user, 60, BRUTE, "slash", 0))
-		playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-
 /obj/attack_animal(mob/living/simple_animal/M)
 	if(!M.melee_damage_upper && !M.obj_damage)
 		M.emote("custom", message = "[M.friendly_verb_continuous] [src].")
@@ -239,9 +235,11 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(resistance_flags & ON_FIRE)
 		resistance_flags &= ~ON_FIRE
 		cut_overlay(GLOB.fire_overlay, TRUE)
+		cut_overlays() //doesnt fix the stuck fire overlay no other way idk.
 		SSfire_burning.processing -= src
 		if(fire_burn_start)
 			fire_burn_start = null
+		update_overlays()
 
 ///Called when the obj is hit by a tesla bolt.
 /obj/proc/tesla_act(power, tesla_flags, shocked_targets)
@@ -282,7 +280,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/proc/obj_break(damage_flag)
 	obj_broken = TRUE
 	if(break_sound)
-		playsound(src, break_sound, 100, TRUE)
+		playsound(get_turf(src), break_sound, 80, TRUE)
 	if(break_message)
 		visible_message(break_message)
 
@@ -295,7 +293,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		burn()
 	else
 		if(destroy_sound)
-			playsound(src, destroy_sound, 100, TRUE)
+			playsound(get_turf(src), destroy_sound, 100, TRUE)
 		if(destroy_message)
 			visible_message(destroy_message)
 		deconstruct(FALSE)

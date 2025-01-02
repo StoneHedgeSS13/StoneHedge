@@ -81,10 +81,16 @@ SUBSYSTEM_DEF(nightshift)
 		if(HAS_TRAIT(src, TRAIT_NOROGSTAM) || HAS_TRAIT(src, TRAIT_NOSLEEP))
 			return ..()
 		if(tiredness >= 100)
-			apply_status_effect(/datum/status_effect/debuff/sleepytime)
+			if(HAS_TRAIT(src, TRAIT_NIGHT_OWL))
+				apply_status_effect(/datum/status_effect/debuff/sleepytime/lune)
+			else
+				apply_status_effect(/datum/status_effect/debuff/sleepytime)
 		if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 			return ..()
-		apply_status_effect(/datum/status_effect/debuff/sleepytime)
+		if(HAS_TRAIT(src, TRAIT_NIGHT_OWL))
+			apply_status_effect(/datum/status_effect/debuff/sleepytime/lune)
+		else
+			apply_status_effect(/datum/status_effect/debuff/sleepytime)
 		if(HAS_TRAIT(src, TRAIT_NIGHT_OWL))
 			add_stress(/datum/stressevent/night_owl)
 		else

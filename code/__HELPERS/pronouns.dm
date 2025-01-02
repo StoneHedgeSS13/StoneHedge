@@ -39,6 +39,12 @@
 /datum/proc/p_es(temp_gender)
 	. = "es"
 
+/datum/proc/p_themselves(capitalized, temp_gender)
+	. = p_them(capitalized, temp_gender)
+	if(lowertext(.) == "them")
+		return "[.]selves"
+	return "[.]self"
+
 //like clients, which do have gender.
 /client/p_they(capitalized, temp_gender)
 	if(!temp_gender)
@@ -115,6 +121,11 @@
 		temp_gender = gender
 	if(temp_gender != PLURAL && temp_gender != NEUTER)
 		. = "es"
+
+/client/p_themselves(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	return ..(capitalized, temp_gender)
 
 // LETHALSTONE NOTE: hello! we always return early on PLURAL check here because it's always correct (human mob overrides set it for disguises) and respects disguises. causes some code duplication though
 //mobs(and atoms but atoms don't really matter write your own proc overrides) also have gender!
@@ -345,3 +356,10 @@
 	if((SLOT_PANTS in obscured) && skipface)
 		temp_gender = PLURAL
 	return ..()
+
+/mob/living/carbon/human/p_themselves(capitalized, temp_gender)
+	var/list/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if((SLOT_PANTS in obscured) && skipface)
+		temp_gender = PLURAL
+	return ..(capitalized, temp_gender)

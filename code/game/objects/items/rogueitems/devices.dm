@@ -1,5 +1,5 @@
 /obj/item/gem_device
-	name = "rontz"
+	name = "ruby"
 	icon_state = "ruby_cut"
 	icon = 'icons/roguetown/items/gems.dmi'
 	desc = "Its facets shine so brightly.."
@@ -25,7 +25,7 @@
 	return FALSE
 
 /obj/item/gem_device/goldface
-	name = "gemerald"
+	name = "emerald"
 	icon_state = "emerald_cut"
 	desc = "Glints with verdant brilliance."
 	usage_prompt = "Summon GOLDFACE"

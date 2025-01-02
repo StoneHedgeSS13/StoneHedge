@@ -10,12 +10,12 @@
 
 //Survival Capsule
 /obj/item/survivalcapsule
-	name = "bluespace shelter capsule"
-	desc = ""
-	icon_state = "capsule"
-	icon = 'icons/obj/mining.dmi'
+	name = "Tent Crystal"
+	desc = "A simple tent with comfortable living conditions. beats sleeping on the hard ground. guitar included."
+	icon_state = "tentcrystal"
+	icon = 'icons/roguetown/items/gems.dmi'
 	w_class = WEIGHT_CLASS_TINY
-	var/template_id = "shelter_alpha"
+	var/template_id = "shelter_tent"
 	var/datum/map_template/shelter/template
 	var/used = FALSE
 
@@ -24,17 +24,17 @@
 		return
 	template = SSmapping.shelter_templates[template_id]
 	if(!template)
-		WARNING("Shelter template ([template_id]) not found!")
+		WARNING("housing template ([template_id]) not found!")
 		qdel(src)
 
 /obj/item/survivalcapsule/Destroy()
-	template = null // without this, capsules would be one use. per round.
+	template = null
 	. = ..()
 
 /obj/item/survivalcapsule/examine(mob/user)
 	. = ..()
 	get_template()
-	. += "This capsule has the [template.name] stored."
+	. += "This crystal has the [template.name] stored."
 	. += template.description
 
 /obj/item/survivalcapsule/attack_self()
@@ -67,6 +67,40 @@
 		template.load(deploy_location, centered = TRUE)
 		new /obj/effect/particle_effect/smoke(get_turf(src))
 		qdel(src)
+
+//Non-default crystals
+
+/obj/item/survivalcapsule/tent
+	name = "Tent Crystal"
+	desc = "A simple tent with comfortable living conditions. beats sleeping on the hard ground. guitar included."
+	template_id = "shelter_tent"
+
+
+/obj/item/survivalcapsule/wiz
+	name = "luxury home crystal."
+	desc = "An exorbitantly expensive luxury stone house. every single thing you could possible need to start a new proper life of lonelyness, because you bought this for yourself. to sit in. alone."
+	template_id = "shelter_wiztower"
+
+/obj/item/survivalcapsule/smith
+	name = "Modest home crystal."
+	desc = "A cozy wooden cottage at the flick of a wrist. a modest home and smithy for the starting homesteader."
+	template_id = "shelter_smith"
+
+/obj/item/survivalcapsule/alchemy
+	name = "Alchemy shop crystal."
+	desc = "A cozy wooden cottage at the flick of a wrist. A modest home and alchemy shop for the aspiring alchemist."
+	template_id = "shelter_alchemy"
+
+/obj/item/survivalcapsule/farm
+	name = "Modest farmhouse crystal."
+	desc = "A cozy wooden farmhouse at the flick of a wrist. A modest home for the aspiring farmer."
+	template_id = "shelter_farm"
+
+/*/obj/item/survivalcapsule/bathroom
+	name = "emergency relief capsule"
+	desc = "Provides vital emergency support to employees who are caught short in the field."
+	template_id = "shelter_toilet"*/
+
 
 //Non-default pods
 

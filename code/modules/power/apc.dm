@@ -559,7 +559,6 @@
 		var/turf/host_turf = get_turf(src)
 		if(!host_turf)
 			CRASH("attackby on APC when it's not on a turf")
-			return
 		if (host_turf.intact)
 			to_chat(user, span_warning("I must remove the floor plating in front of the APC first!"))
 			return
@@ -1360,8 +1359,6 @@
 	if(!prob(prb))
 		return 0
 	do_sparks(5, TRUE, src)
-	if(isalien(user))
-		return 0
 	if(electrocute_mob(user, src, src, 1, TRUE))
 		return 1
 	else

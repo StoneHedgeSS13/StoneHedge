@@ -10,6 +10,7 @@
 	sleevetype = "leia"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	flags_inv = HIDEBOOB|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/shirt/slave/red
 	color = "#6F0000"
@@ -22,28 +23,28 @@
 
 //CRAFTING
 
-/datum/crafting_recipe/roguetown/weaving/slave
+/datum/crafting_recipe/roguetown/sewing/slave
 	name = "female slave garment"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/slave)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/slave_red
+/datum/crafting_recipe/roguetown/sewing/slave_red
 	name = "red female slave garment"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/slave/red)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/slave_blue
+/datum/crafting_recipe/roguetown/sewing/slave_blue
 	name = "blue female slave garment"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/slave/blue)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/weaving/slave_purple
+/datum/crafting_recipe/roguetown/sewing/slave_purple
 	name = "purple female slave garment"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/slave/purple)
 	reqs = list(/obj/item/natural/cloth = 2,

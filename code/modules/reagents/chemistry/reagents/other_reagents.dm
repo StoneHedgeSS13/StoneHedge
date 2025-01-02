@@ -124,7 +124,7 @@
 /datum/reagent/water
 	name = "Water"
 	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen."
-	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
+	color = "#b5f8ffff"
 	taste_description = "water"
 	var/cooling_temperature = 2
 	glass_icon_state = "glass_clear"
@@ -133,6 +133,10 @@
 	shot_glass_icon_state = "shotglassclear"
 	var/hydration = 12
 	alpha = 100
+
+/datum/reagent/water/pussjuice
+	name = "pussy juice"
+	description = "A strange slightly gooey substance."
 
 /datum/chemical_reaction/grosswaterify
 	name = "grosswater"
@@ -173,7 +177,7 @@
 /turf/open
 	var/water_level = 0
 	var/last_water_update
-	var/max_water = 500
+	var/max_water = 50
 
 /turf/open/proc/add_water(amt)
 	if(!amt)
@@ -193,7 +197,7 @@
 	if(shouldupdate)
 		update_water()
 
-	if(amt > 101)
+	if(amt > 40)
 		for(var/obj/effect/decal/cleanable/blood/target in src)
 			qdel(target)
 
@@ -210,7 +214,7 @@
 	if(reac_volume >= 5)
 //		T.MakeSlippery(TURF_WET_WATER, reac_volume*1.5 SECONDS, reac_volume*1.5 SECONDS)
 		T.add_water(reac_volume * 3) //nuproc
-	
+
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
 	if(soil)
 		soil.adjust_water(reac_volume)
@@ -302,16 +306,15 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
-	if(!data)
-		data = 1
-	data++
+	var/count = LAZYACCESS(data, "misc") + 1
+	LAZYSET(data, "misc", count)
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(iscultist(M))
 		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
 			to_chat(M, span_cultlarge("My blood rites falter as holy water scours my body!"))
 			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
 				qdel(BS)
-	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
+	if(count >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
@@ -323,7 +326,7 @@
 				M.Unconscious(120)
 				to_chat(M, "<span class='cultlarge'>[pick("Your blood is my bond - you are nothing without it", "Do not forget my place", \
 				"All that power, and you still fail?", "If you cannot scour this poison, I shall scour my meager life!")].</span>")
-	if(data >= 60)	// 30 units, 135 seconds
+	if(count >= 60)	// 30 units, 135 seconds
 		if(iscultist(M))
 			SSticker.mode.remove_cultist(M.mind, FALSE, TRUE)
 		M.jitteriness = 0
@@ -731,16 +734,6 @@
 /datum/reagent/aslimetoxin/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(method != TOUCH)
 		L.ForceContractDisease(new /datum/disease/transformation/slime(), FALSE, TRUE)
-
-/datum/reagent/gluttonytoxin
-	name = "Gluttony's Blessing"
-	description = "An advanced corruptive toxin produced by something terrible."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	can_synth = FALSE
-	taste_description = "decay"
-
-/datum/reagent/gluttonytoxin/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
-	L.ForceContractDisease(new /datum/disease/transformation/morph(), FALSE, TRUE)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -1165,17 +1158,6 @@
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
 		L.ForceContractDisease(new /datum/disease/transformation/robot(), FALSE, TRUE)
 
-/datum/reagent/xenomicrobes
-	name = "Xenomicrobes"
-	description = "Microbes with an entirely alien cellular structure."
-	color = "#535E66" // rgb: 83, 94, 102
-	can_synth = FALSE
-	taste_description = "sludge"
-
-/datum/reagent/xenomicrobes/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
-	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
-		L.ForceContractDisease(new /datum/disease/transformation/xeno(), FALSE, TRUE)
-
 /datum/reagent/fungalspores
 	name = "Tubercle bacillus Cosmosis microbes"
 	description = "Active fungal spores."
@@ -1488,10 +1470,6 @@
 	color = "#2D2D2D"
 	taste_description = "bitterness"
 	taste_mult = 1.5
-
-/datum/reagent/stable_plasma/on_mob_life(mob/living/carbon/C)
-	C.adjustPlasma(10)
-	..()
 
 /datum/reagent/iodine
 	name = "Iodine"
@@ -2080,7 +2058,7 @@
 
 // future food stuff and things
 
-/datum/chemical_reaction/simpleb   /// this will be the recipe 
+/datum/chemical_reaction/simpleb   /// this will be the recipe
 	name = "Simple Broth"
 	results = list(/datum/reagent/consumable/simpleb = 1)  /// the result. see below for reagent you are making
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/milk = 1) /// what it takes to make, trust me make life easier on people keep it 1/1 this example is just water and standard milk
@@ -2092,7 +2070,7 @@
 	color = "#203625" // rgb: 32, 54, 37         this is the color you want the liquid to be, goes off hex coloring.
 	taste_description = "earthy water"
 	hydration_factor = 10 /// does it hydrate too? 12 is water level of hydrate, less is less. otherwise leave out or write null
-	nutriment_factor = 10 //EVERY 1 NUTRIMENT RESTORES 35 NUTRITION             I belive if you use reagent/consumable path it will default to one if left out. 10 is same as sugar. so thats a singular meal. 
+	nutriment_factor = 10 //EVERY 1 NUTRIMENT RESTORES 35 NUTRITION             I belive if you use reagent/consumable path it will default to one if left out. 10 is same as sugar. so thats a singular meal.
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM /// how fast it runs thru the body, standard is 0.5. extremely slow is 0.2 or 0.1. instant is solid number 20
 	overdose_threshold = null /// you wont use this but I added it incase, if you set one for whatever reason you will have to make a overdose_process datum
 

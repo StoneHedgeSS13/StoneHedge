@@ -34,7 +34,7 @@
 		return
 	if(user.mind.antag_datums)
 		for(var/datum/antagonist/D in user.mind.antag_datums)
-			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/werewolf) || istype(D, /datum/antagonist/skeleton) || istype(D, /datum/antagonist/zombie))
+			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/werewolf) || istype(D, /datum/antagonist/skeleton) || istype(D, /datum/antagonist/zombie) || istype(D, /datum/antagonist/lich))
 				return
 	var/mob/living/carbon/human/H = user
 	var/oldsated = sated
@@ -128,8 +128,18 @@
 /datum/charflaw/addiction/godfearing
 	name = "Devout Follower"
 	desc = "I need to pray to my Patron, their blessings are stronger."
-	time = 35 MINUTES
+	time = 40 MINUTES
 	needsate_text = "Time to pray."
+
+///NYMPHOMANIAC
+//why the fuck is it here, oh right modular, as if.
+
+/datum/charflaw/addiction/lovefiend
+	name = "Nymphomaniac"
+	desc = "I got one high maintenance genital..!"
+	time = 1 HOURS
+	needsate_text = "Time to get fuckin'!"
+
 
 /datum/outfit/job/roguetown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE) // added since the previous way it was implemented caused a bunch of runtimes
 	. = ..()
@@ -138,17 +148,17 @@
 	if(!H.wear_neck)
 		var/obj/item/clothing/neck/roguetown/psicross/crosstype
 		switch(H.patron)
-			if(/datum/patron/divine/astrata)
+			if(/datum/patron/divine/elysius)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/astrata
-			if(/datum/patron/divine/noc)
+			if(/datum/patron/divine/lune)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/noc
-			if(/datum/patron/divine/dendor)
+			if(/datum/patron/divine/sylvarn)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/dendor
-			if(/datum/patron/divine/necra)
+			if(/datum/patron/divine/yamais)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/necra
-			if(/datum/patron/divine/ravox)
+			if(/datum/patron/divine/minhur)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/ravox
-			if(/datum/patron/divine/eora)
+			if(/datum/patron/divine/viiritri)
 				crosstype = /obj/item/clothing/neck/roguetown/psicross/eora
 			else
 				if(prob(1))

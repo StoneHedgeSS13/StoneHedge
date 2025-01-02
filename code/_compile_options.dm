@@ -6,15 +6,16 @@
 #define MATURESERVER
 //#define TESTSERVER
 #define ALLOWPLAY
+//#define LOWMEMORYMODE
 
 #define RESPAWNTIME 0
 //0 test
 //12 minutes norma
 //#define ROUNDTIMERBOAT (300 MINUTES)
-#define INITIAL_ROUND_TIMER (150 MINUTES)
+#define INITIAL_ROUND_TIMER (3 HOURS)
 #define ROUND_EXTENSION_TIME (60 MINUTES)
-//180 norma
-//60 test
+#define ROUND_END_TIME (15 MINUTES)
+#define ROUND_END_TIME_VERBAL "15 minutes"
 
 #define MODE_RESTART
 //comment out if you want to restart the server instead of shutting down
@@ -36,7 +37,7 @@
 //#define VISUALIZE_ACTIVE_TURFS	//Highlights atmos active turfs in green
 #endif
 
-//#define UNIT_TESTS			//Enables unit tests via TEST_RUN_PARAMETERF
+//#define UNIT_TESTS			//Enables unit tests
 
 #ifndef PRELOAD_RSC					//set to:
 #define PRELOAD_RSC		2			//	0 to allow using external resources or on-demand behaviour;
@@ -64,11 +65,11 @@
 #define FIND_REF_NO_CHECK_TICK
 #endif
 
-#ifdef TRAVISBUILDING
+#ifdef CIBUILDING
 #define UNIT_TESTS
 #endif
 
-#ifdef TRAVISTESTING
+#ifdef CITESTING
 #define TESTING
 #endif
 

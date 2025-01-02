@@ -1,11 +1,4 @@
 //predominantly negative traits
-
-
-/datum/quirk/myvice
-	name = "MY VICE (Free points)"
-	desc = "Free points for I carry my vice with me."
-	value = -2
-
 /datum/quirk/monochromatic
 	name = "Monochromacy"
 	desc = "I see things all gray."
@@ -69,9 +62,10 @@
 		var/datum/species/species = H.dna.species
 		if(initial(species.liked_food) & MEAT)
 			species.liked_food |= MEAT
-		if(!initial(species.disliked_food) & MEAT)
+		if(!(initial(species.disliked_food) & MEAT))
 			species.disliked_food &= ~MEAT
 
+/*
 /datum/quirk/snob
 	name = "Snob"
 	desc = "I like to be in decorated spaces."
@@ -80,6 +74,7 @@
 	lose_text = span_notice("Well who cares about deco anyways?")
 	medical_record_text = "Patient seems to be rather stuck up."
 	mob_trait = TRAIT_SNOB
+*/
 
 /datum/quirk/blooddeficiency
 	name = "Blood Deficiency"

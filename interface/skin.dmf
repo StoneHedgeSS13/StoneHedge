@@ -120,7 +120,7 @@ window "outputwindow"
 		anchor2 = 100,100
 		background-color = #000000
 		is-default = true
-		max-lines = 200
+		max-lines = 0
 		enable-http-images = true
 	elem "input"
 		type = INPUT
@@ -134,7 +134,7 @@ window "outputwindow"
 		is-default = true
 		border = sunken
 		saved-params = ""
-		command = "say"
+		command = ""
 
 window "statwindow"
 	elem "statwindow"
@@ -209,4 +209,3 @@ window "preferencess_window"
 		right-click = true
 		icon-size = 64
 		zoom-mode = "distort"
-

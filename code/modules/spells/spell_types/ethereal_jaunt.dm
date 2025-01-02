@@ -8,7 +8,7 @@
 	invocation = "VANISHIKA"
 	invocation_type = "shout"
 	range = -1
-	cooldown_min = 550 //50 deciseconds reduction per rank
+	cooldown_min = 120 SECONDS //get out of jail free card.
 	include_user = TRUE
 	nonabstract_req = TRUE
 	var/jaunt_duration = 25 //in deciseconds
@@ -83,11 +83,14 @@
 /obj/effect/dummy/phased_mob/spell_jaunt/relaymove(mob/user, direction)
 	if ((movedelay > world.time) || reappearing || !direction)
 		return
-	var/turf/newLoc = get_step(src,direction)
+	var/turf/open/newLoc = get_step(src,direction) //no going through walls
 	setDir(direction)
 
 	movedelay = world.time + movespeed
 
+	if(!istype(newLoc, /turf/open))
+		to_chat(user, "<span class='warning'>I can't go through that!</span>")
+		return
 	if(newLoc.flags_1 & NOJAUNT_1)
 		to_chat(user, "<span class='warning'>Some strange aura is blocking the way.</span>")
 		return

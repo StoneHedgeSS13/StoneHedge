@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
 	name = "beespider"
+	desc = "The venomous beespiders usually thrive in the deep forests and swamps of Grimoria. They are highly valued for their ability to produce honey, and silk for weaving. Some dark elves see them as a sacred animal."
 	icon_state = "honeys"
 	icon_living = "honeys"
 	icon_dead = "honeys-dead"
@@ -58,7 +59,7 @@
 	maxHealth = 130
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/Initialize()
-	..()
+	. = ..()
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE
@@ -167,3 +168,10 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/tame
 	tame = TRUE
 	deaggroprob = 30
+
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/shapeshift
+
+	faction = list("spiders", "Station")
+	health = 150
+	maxHealth = 150
+	erpable = TRUE

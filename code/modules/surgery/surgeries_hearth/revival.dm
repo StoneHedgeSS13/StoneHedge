@@ -24,20 +24,17 @@
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 
-/datum/surgery_step/infuse_lux/validate_target(mob/user, mob/living/target, target_zone, datum/intent/intent)
-	. = ..()
-	if(target.stat < DEAD)
-		to_chat(user, "They're not dead!")
-		return FALSE
-
 /datum/surgery_step/infuse_lux/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("I begin to revive [target]..."),
 		span_notice("[user] begins to work lux into [target]'s heart."),
 		span_notice("[user] begins to work lux into [target]'s heart."))
 	return TRUE
 
-/datum/surgery_step/infuse_lux/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
+/datum/surgery_step/infuse_lux/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/revive_pq = PQ_GAIN_REVIVE
+	if(target.stat != DEAD)
+		to_chat(user, "They're not dead!")
+		return FALSE
 	if(target.mob_biotypes & MOB_UNDEAD)
 		display_results(user, target, span_notice("You cannot infuse life into the undead! The rot must be cured first."),
 		"[user] works the lux into [target]'s innards.",
@@ -61,16 +58,11 @@
 	target.emote("breathgasp")
 	target.Jitter(100)
 	target.update_body()
-	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
+	target.client.prefs.copy_to(target, TRUE, FALSE) //reapply prefs for skin color and shit
+	target.visible_message(span_notice("[target] is dragged back from Yamais's hold!"), span_green("I awake from the void."))
 	qdel(tool)
 	if(target.mind)
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 			adjust_playerquality(revive_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
-	return TRUE
-
-/datum/surgery_step/infuse_lux/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	display_results(user, target, span_warning("I screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] works the lux into [target]'s innards."), TRUE)
 	return TRUE

@@ -40,7 +40,9 @@
 /datum/sex_action/throat_sex/on_perform(mob/living/user, mob/living/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s throat."))
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(target, 'sound/misc/mat/segso.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
@@ -55,7 +57,8 @@
 		var/oxyloss = 1.3
 		if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
 			oxyloss*=2
-		user.sexcon.perform_sex_action(target, 0, 7, FALSE)
+		if(!isseelie(user)) //cock too small
+			user.sexcon.perform_sex_action(target, 0, 7, FALSE)
 		user.sexcon.perform_deepthroat_oxyloss(target, oxyloss)
 	target.sexcon.handle_passive_ejaculation()
 

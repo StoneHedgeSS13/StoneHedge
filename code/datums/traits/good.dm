@@ -62,7 +62,7 @@
 	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
 
 /* no clowns but jesters here
-datum/quirk/fan_clown
+/datum/quirk/fan_clown
 	name = "Clown Fan"
 	desc = ""
 	value = 1
@@ -80,7 +80,7 @@ datum/quirk/fan_clown
 	)
 	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
 
-datum/quirk/fan_mime
+/datum/quirk/fan_mime
 	name = "Mime Fan"
 	desc = ""
 	value = 1
@@ -143,8 +143,8 @@ datum/quirk/fan_mime
 
 /datum/quirk/musician
 	name = "Musician"
-	desc = "I am good at playing music."
-	value = 1
+	desc = "I am good at playing music. I've also hidden a lute!"
+	value = 2
 	mob_trait = TRAIT_MUSICIAN
 	gain_text = span_notice("I know everything about musical instruments.")
 	lose_text = span_danger("I forget how musical instruments work.")
@@ -152,12 +152,8 @@ datum/quirk/fan_mime
 
 /datum/quirk/musician/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/choice_beacon/music/B = new(get_turf(H))
-	var/list/slots = list (
-		"backpack" = SLOT_IN_BACKPACK,
-		"hands" = SLOT_HANDS,
-	)
-	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/music, 3, TRUE)
+	H.mind.special_items["Lute"] = /obj/item/rogue/instrument/lute
 
 /datum/quirk/night_vision
 	name = "Low Light Vision"
@@ -172,7 +168,7 @@ datum/quirk/fan_mime
 	var/obj/item/organ/eyes/eyes = H.getorgan(/obj/item/organ/eyes)
 	if(!eyes || eyes.lighting_alpha)
 		return
-	eyes.see_in_dark = 7
+	eyes.see_in_dark = 7 // Same as half-darksight eyes
 	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	eyes.Insert(H)
 
@@ -225,12 +221,14 @@ datum/quirk/fan_mime
 	mob_trait = TRAIT_SELF_AWARE
 	medical_record_text = "Patient demonstrates an uncanny knack for self-diagnosis."
 
+/*
 /datum/quirk/skittish
 	name = "Skittish"
 	desc = "I can leap into things to hide."
 	value = 2
 	mob_trait = TRAIT_SKITTISH
 	medical_record_text = "Patient demonstrates a high aversion to danger and has described hiding in containers out of fear."
+*/
 
 /datum/quirk/spiritual
 	name = "Spiritual"

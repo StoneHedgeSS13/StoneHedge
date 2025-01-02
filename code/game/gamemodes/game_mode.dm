@@ -52,18 +52,25 @@
 	var/gamemode_ready = FALSE //Is the gamemode all set up and ready to start checking for ending conditions.
 	var/setup_error		//What stopepd setting up the mode.
 
+	var/roundvoteend = FALSE
+	var/round_ends_at
+
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
+	var/list/datum/mind/liches = list()
 	var/list/datum/mind/vampires = list()
 	var/list/datum/mind/deathknights = list() //Vrell - moving this here to maybe fix runtime bugs.
 	var/list/datum/mind/werewolves = list()
 	var/list/datum/mind/bandits = list()
+	var/list/datum/mind/cultists = list()
 
 	var/list/datum/mind/pre_villains = list()
+	var/list/datum/mind/pre_liches = list()
 	var/list/datum/mind/pre_werewolves = list()
 	var/list/datum/mind/pre_vampires = list()
 	var/list/datum/mind/pre_bandits = list()
 	var/list/datum/mind/pre_delfs = list()
 	var/list/datum/mind/pre_rebels = list()
+	var/list/datum/mind/pre_cultists = list()
 	var/list/datum/mind/pre_aspirants = list()
 	var/list/datum/mind/aspirants = list()
 
@@ -128,11 +135,10 @@
 			query_round_game_mode.Execute()
 			qdel(query_round_game_mode)
 	if(report)
-		addtimer(CALLBACK(src, .proc/send_intercept, 0), rand(waittime_l, waittime_h))
+		addtimer(CALLBACK(src, PROC_REF(send_intercept), 0), rand(waittime_l, waittime_h))
 	generate_station_goals()
 	gamemode_ready = TRUE
 	return 1
-
 
 ///Handles late-join antag assignments
 /datum/game_mode/proc/make_antag_chance(mob/living/carbon/human/character)

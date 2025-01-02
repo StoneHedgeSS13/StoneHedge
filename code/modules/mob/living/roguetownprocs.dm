@@ -8,9 +8,11 @@
 	if(target.grabbedby == user)
 		if(user.grab_state >= GRAB_AGGRESSIVE)
 			return zone
-	if(!(target.mobility_flags & MOBILITY_STAND))
+	if(!(target.mobility_flags & MOBILITY_STAND)) // Fallen enemies will always be hit in the target zone.
 		return zone
-	if( (target.dir == turn(get_dir(target,user), 180)))
+	if( (target.dir == turn(get_dir(target,user), 180))) // Perfect backstabs always land on target. (This makes no sense for facial features, but whatever.)
+		return zone
+	if(!(target.cmode)) // Someone who isn't alert will let you line up a shot. Maybe this should just be a modifier.
 		return zone
 
 	var/chance2hit = 0
@@ -26,6 +28,8 @@
 			chance2hit += user.STAPER
 		if(used_intent.blade_class == BCLASS_CUT)
 			chance2hit += round(user.STAPER/2)
+		if(used_intent.blade_class == BCLASS_PICK) // Daggers are used on downed people to finish them off, not standing mid-fight. Downed strikes always hit target and ignore accuracy calc (above mobility flag check).
+			chance2hit -= 20 // Because daggers are WLENGTH_SHORT, this is effectively -20 accuracy, then PER, aimed style, and skill come in. Sucks for pickaxe enjoyers, but improvised weapon should be hard to aim. (Edit: reduced this from 30 to 20 later on.)
 
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)
@@ -37,7 +41,7 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 		chance2hit += (user.STAPER)*2
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		chance2hit -= 20
+		chance2hit -= 30
 
 	chance2hit = CLAMP(chance2hit, 5, 99)
 
@@ -213,7 +217,6 @@
 			if(weapon_parry == TRUE)
 				if(do_parry(used_weapon, drained, user)) //show message
 					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
-						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
 						mind.adjust_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
 					// defender skill gain
 					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
@@ -235,7 +238,6 @@
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
 						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
 							U.mind.adjust_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
 						if((U.mobility_flags & MOBILITY_STAND) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
 							if(AB)
@@ -256,7 +258,7 @@
 					else
 						flash_fullscreen("blackflash2")
 
-					var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
+					var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/8),1)
 					if(dam2take)
 						used_weapon.take_damage(max(dam2take,1), BRUTE, used_weapon.d_type)
 					return TRUE
@@ -266,7 +268,6 @@
 			if(weapon_parry == FALSE)
 				if(do_unarmed_parry(drained, user))
 					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
-						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
 						H.mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
 					if((mobility_flags & MOBILITY_STAND) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
 						H.mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT), 0), FALSE)
@@ -407,9 +408,9 @@
 		if(!H?.check_armor_skill())
 			H.Knockdown(1)
 			return FALSE
-//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
-			if(H?.check_dodge_skill())
-				drained = drained - 5
+		//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
+		if(H?.check_dodge_skill())
+			drained = drained - 5
 
 		if(I) //the enemy attacked us with a weapon
 			if(!I.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack

@@ -8,7 +8,11 @@
 	bloody_icon_state = "bloodyhands"
 	sleevetype = "shirt"
 	max_heat_protection_temperature = 361
+	siemens_coefficient = 1
 	w_class = WEIGHT_CLASS_SMALL
+	sewrepair = TRUE
+	fiber_salvage = FALSE
+	salvage_amount = 1
 
 /obj/item/clothing/gloves/roguetown/carapace
 	name = "carapace gauntlets"
@@ -25,27 +29,35 @@
 	anvilrepair = null
 	sewrepair = TRUE
 /obj/item/clothing/gloves/roguetown/carapace/dragon
-	name = "dragon gauntlets"
-	desc = "Strong dragonbone plated gauntlets."
-	color = "red"
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	name = "dragonscale gauntlets"
+	desc = "Strong dragonscale plated gauntlets."
+	color = "#9e5761"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
 
 /obj/item/clothing/gloves/roguetown/leather
 	name = "leather gloves"
 	desc = "Leather gloves usually worn by laborers."
 	icon_state = "leather_gloves"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	resistance_flags = null
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
+	max_integrity = 150
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/leather/black
 	icon_state = "gloves_black"
+
+/obj/item/clothing/gloves/roguetown/leather/advanced
+	name = "hardened leather gloves"
+	desc = "Sturdy, durable, flexible. A marvel of the dark ages that exists solely to protect your fingers."
+	icon_state = "algloves"
+	max_integrity = 200
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 50, "slash" = 40, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
@@ -56,24 +68,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
-
-
-/obj/item/clothing/gloves/roguetown/angle
-	name = "heavy leather gloves"
-	desc = "A thick pair of leather gloves."
-	icon_state = "angle"
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
-	blocksound = SOFTHIT
-	max_integrity = 100
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
@@ -87,15 +81,16 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
 	desc = "Gauntlets made with interlinking rings, provides adequate protection against slashing attacks. Iron is cheaper - but mildly weaker."
 	max_integrity = 125
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 //rogtodo sprites for this
@@ -111,12 +106,13 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/graggaritegauntletsleader
-	name = "graggarite leader gauntlets"
+	name = "nyrnheite leader gauntlets"
 	desc = "A heavy set of plate gauntlets which provide excellent protection. Sharp."
 	icon_state = "graggaritegauntletsleader"
 	item_state = "graggaritegauntletsleader"
@@ -128,7 +124,7 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	clothing_flags = CANT_SLEEP_IN
 
@@ -159,13 +155,13 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	icon_state = "footmangauntlets"
 	item_state = "footmangauntlets"
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/gloves/roguetown/graggaritegauntlets
-	name = "graggarite gauntlets"
+	name = "nyrnheite gauntlets"
 	desc = "Gauntlets worn by Graggarite fanatics."
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
@@ -175,7 +171,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	icon_state = "graggaritegauntlets"
 	item_state = "graggaritegauntlets"
 	smeltresult = /obj/item/ingot/iron
@@ -191,7 +187,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	icon_state = "katefractoiigauntlets"
 	item_state = "katefractoiigauntlets"
 	smeltresult = /obj/item/ingot/iron
@@ -217,7 +213,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	icon_state = "darkelfgauntlets"
 	item_state = "darkelfgauntlets"
 	smeltresult = /obj/item/ingot/steel
@@ -241,7 +237,7 @@
 	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/gloves/roguetown/plate/spellslingergauntlets
@@ -257,7 +253,7 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/gloves/roguetown/plate/zybantinegauntlets
@@ -273,7 +269,7 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/gloves/roguetown/feldgloves

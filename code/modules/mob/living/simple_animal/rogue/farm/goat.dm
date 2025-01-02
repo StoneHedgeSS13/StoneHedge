@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Destroy()
@@ -244,7 +244,7 @@
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Destroy()

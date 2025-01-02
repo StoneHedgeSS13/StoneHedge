@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(isemptylist(music))
 		music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
-		login_music = pick(music)
+		login_music = safepick(music)
 	else
 		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"
 
@@ -417,8 +417,8 @@ SUBSYSTEM_DEF(ticker)
 //	else
 //		mode.announce()
 
-//	if(!CONFIG_GET(flag/ooc_during_round))
-//		toggle_ooc(FALSE) // Turn it off
+	if(!CONFIG_GET(flag/ooc_during_round))
+		toggle_ooc(FALSE) // Turn it off
 
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left

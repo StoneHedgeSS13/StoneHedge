@@ -18,18 +18,18 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	outfit_female = null
 
 	display_order = JDO_ADVENTURER
-	show_in_credits = FALSE
-	min_pq = -5
+	show_in_credits = TRUE
+	min_pq = 4
 	max_pq = null
 
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 20)
+	advclass_cat_rolls = list(CTAG_ADVENTURER = 30)
 	PQ_boost_divider = 10
 
-	wanderer_examine = TRUE
+	give_bank_account = TRUE
+	wanderer_examine = FALSE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
-	same_job_respawn_delay = 15 MINUTES
 
 /datum/job/roguetown/adventurer/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

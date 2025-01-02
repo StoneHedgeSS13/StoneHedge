@@ -14,12 +14,13 @@
 	var/maxStepsTick = 6
 	var/resisting = FALSE
 	var/pickpocketing = FALSE
-	var/del_on_deaggro = null
+//	var/del_on_deaggro = null
 	var/last_aggro_loss = null
 	var/wander = TRUE
 	var/ai_when_client = FALSE
 	var/next_idle = 0
 	var/next_seek = 0
+	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
 
@@ -226,23 +227,21 @@
 		last_special = world.time + CLICK_CD_BREAKOUT
 		cuff_resist(I)
 
-/mob/living/carbon/human/proc/should_target(mob/living/L)
+/mob/living/carbon/human/proc/should_target(mob/living/L, attack_lying = FALSE)
 	if(!L)
 		return FALSE
 
 	//those are here for proc dependancy.
-	if(L.lying && !L.get_active_held_item()) //laying with no items in hand, no threat.
-		if(prob(4) && L.has_quirk(/datum/quirk/monsterhunter) && erpable) //tiny chance to trigger abuss.
+	if(!attack_lying && L.lying && !L.get_active_held_item()) //laying with no items in hand, no threat.
+		if(prob(4) && (L.has_quirk(/datum/quirk/monsterhuntermale) || L.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //tiny chance to trigger abuss.
 			fuckcd = 0
 		return FALSE
 
-	var/mob/living/carbon/lcarbon = L
-	if(istype(lcarbon, /mob/living/carbon)) //leave alone if handcuffed.
-		if(lcarbon.handcuffed)
-			if(prob(8) && lcarbon.has_quirk(/datum/quirk/monsterhunter) && erpable) //small chance to trigger abuss.
+	if(ishuman(L)) //leave alone if handcuffed.
+		var/mob/living/carbon/human/lhuman = L
+		if(lhuman.handcuffed)
+			if(prob(8) && (lhuman.has_quirk(/datum/quirk/monsterhuntermale) || lhuman.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //small chance to trigger abuss.
 				fuckcd = 0
-			return FALSE
-		if(lcarbon.sexcon.beingfucked) //dont touch the battlefucked
 			return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_PACIFISM))
@@ -251,7 +250,11 @@
 	if(L == src)
 		return FALSE
 
-	if(!is_in_zweb(src.z,L.z))
+
+	if (L.alpha == 0 && L.rogue_sneaking)
+		return FALSE
+
+	if(!is_in_zweb(src,L))
 		return FALSE
 
 	if(L.stat == DEAD)
@@ -282,12 +285,19 @@
 				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
 						retaliate(L)
+					if (world.time >= next_passive_detect && L.alpha > 100 && prob(STAPER / 2))
+						if (!npc_detect_sneak(L, -20)) // attempt a passive detect with 20% increased difficulty
+							next_passive_detect = world.time + STAPER SECONDS
 
 		if(AI_HUNT)		// hunting for attacker
 			if(target != null)
 				if(!should_target(target))
-					back_to_idle()
-					return TRUE
+					if (target.alpha <= 100) // attempt one detect since we were just fighting them and have lost them
+						if (npc_detect_sneak(target))
+							retaliate(target)
+					else
+						back_to_idle()
+						return TRUE
 				m_intent = MOVE_INTENT_WALK
 				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target)
 
@@ -317,7 +327,7 @@
 				frustration = 0
 				face_atom(target)
 				monkey_attack(target)
-				if(flee_in_pain && (target.stat == CONSCIOUS))
+				if(flee_in_pain && (target?.stat == CONSCIOUS))
 					var/paine = get_complex_pain()
 					if(paine >= ((STAEND * 10)*0.9))
 //						mode = AI_FLEE
@@ -426,6 +436,13 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
+		if (L.alpha <= 100)
+			// we just got hit by something hidden so try and find them
+			if (prob(5))
+				visible_message(span_notice("[src] begins searching around frantically..."))
+			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
+			if (!npc_detect_sneak(L, extra_chance))
+				return
 		mode = AI_HUNT
 		last_aggro_loss = null
 		face_atom(L)
@@ -434,6 +451,36 @@
 		target = L
 		enemies |= L
 
+/mob/living/proc/npc_detect_sneak(mob/living/target, extra_prob = 0)
+	if (target.alpha > 100)
+		return TRUE
+	var/probby = 3 * STAPER //this is 10 by default - npcs get an easier time to detect to slightly thwart cheese
+	probby += extra_prob
+	var/sneak_bonus = 0
+	if(target.mind)
+		if (world.time < target.mob_timers[MT_INVISIBILITY])
+			// we're invisible as per the spell effect, so use the highest of our arcane magic (or holy) skill instead of our sneaking
+			sneak_bonus = (max(target.mind?.get_skill_level(/datum/skill/magic/arcane), target.mind?.get_skill_level(/datum/skill/magic/holy)) * 10)
+			probby -= 20 // also just a fat lump of extra difficulty for the npc since spells are hard, you know?
+		else
+			sneak_bonus = (target.mind?.get_skill_level(/datum/skill/misc/sneaking) * 5)
+		probby -= sneak_bonus
+	if(!target.check_armor_skill())
+		probby += 85 //armor is loud as fuck
+		if (sneak_bonus)
+			probby += sneak_bonus // you don't get sneak bonus in heavy armor at all, on top of that
+	if (target.badluck(5))
+		probby += (10 - target.STALUC) * 5 // drop 5% chance for every bit of fortune we're missing
+	if (target.goodluck(5))
+		probby -= (10 - target.STALUC) * 5 // make it 5% harder for every bit of fortune over 10 that we do have
+
+	if (prob(probby))
+		// whoops it saw us
+		to_chat(target, span_danger("[src] sees me! I'm found!"))
+		target.apply_status_effect(/datum/status_effect/debuff/stealthcd)
+		return TRUE
+	else
+		return FALSE
 
 /mob/living/carbon/human/attackby(obj/item/W, mob/user, params)
 	. = ..()

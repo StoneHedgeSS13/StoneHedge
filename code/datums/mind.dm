@@ -88,6 +88,10 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
+	var/funeral = FALSE // used for tracking funeral status between living/dead mobs and underworld spirits
+
+	var/mugshot_set = FALSE
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
@@ -191,8 +195,7 @@
 	var/datum/mind/M = person
 	var/mob/living/carbon/human/H = current
 	if(M.known_people && istype(H))
-		if(M.known_people[H.real_name])
-			M.known_people[H.real_name] = null
+		M.known_people -= H.real_name
 
 
 /datum/mind/proc/unknow_all_people()
@@ -206,7 +209,7 @@
 		return
 	var/contents = "<center>People that [name] knows:</center><BR>"
 	for(var/P in known_people)
-		if(known_people.Find(P)) //Vrell - safety check in case someone gets deleted durring this process since apparently that's an issue we're having.
+		if(known_people.Find(P)) // Safety check in case someone gets deleted during this process
 			var/fcolor = known_people[P]["VCOLOR"]
 			if(!fcolor)
 				continue
@@ -221,8 +224,8 @@
 	popup.set_content(contents)
 	popup.open()
 
-
 /datum/mind/proc/get_language_holder()
+	RETURN_TYPE(/datum/language_holder)
 	if(!language_holder)
 		var/datum/language_holder/L = current.get_language_holder(shadow=FALSE)
 		language_holder = L.copy(src)
@@ -273,6 +276,7 @@
 
 	///Adjust experience of a specific skill
 /datum/mind/proc/adjust_experience(skill, amt, silent = FALSE)
+	add_sleep_experience(skill, amt/2, silent) //adds half of the experience to your eepytime for free.
 	var/datum/skill/S = GetSkillRef(skill)
 	skill_experience[S] = max(0, skill_experience[S] + amt) //Prevent going below 0
 	var/old_level = known_skills[S]
@@ -310,6 +314,7 @@
 			to_chat(current, span_nicegreen("My [S.name] grows to [SSskills.level_names[known_skills[S]]]!"))
 		if(skill == /datum/skill/magic/arcane)
 			adjust_spellpoints(1)
+			current.calculate_attunement_points()
 	else
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
@@ -330,6 +335,8 @@
 	var/amt2gain = 0
 	if(skill == /datum/skill/magic/arcane)
 		adjust_spellpoints(amt)
+		current.calculate_attunement_points()
+		current.calculate_spell_slots()
 	if(amt > 0) //positive at
 		for(var/i in 1 to amt)
 			switch(skill_experience[S])
@@ -482,6 +489,7 @@
 		A.on_removal()
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
+	RETURN_TYPE(datum_type)
 	if(!datum_type)
 		return
 	. = FALSE

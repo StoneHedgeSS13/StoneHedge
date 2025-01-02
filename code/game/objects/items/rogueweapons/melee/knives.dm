@@ -25,10 +25,14 @@
 	wdefense = 3
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_dagger.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_dagger.ogg'
 
-
+/obj/item/rogueweapon/huntingknife/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_dagger.ogg", "modular_helmsguard/sound/sheath_sounds/draw_dagger2.ogg")
+	. = ..()
 
 /datum/intent/dagger
 	clickcd = 8
@@ -98,7 +102,6 @@
 	desc = "A big, heavy knife designed to chop through meat with ease."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 15
@@ -113,14 +116,7 @@
 	desc = "A swift and deadly combat knife."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
-	icon = 'icons/roguetown/weapons/32.dmi'
-	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
-	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	throwforce = 16
-	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CHOP
-	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -156,6 +152,63 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	penfactor = 30
 
+/obj/item/rogueweapon/huntingknife/scissors
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
+	max_integrity = 100
+	name = "iron scissors"
+	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
+	icon_state = "iscissors"
+
+/datum/intent/snip // The salvaging intent! Used only for the scissors for now!
+	name = "snip"
+	icon_state = "insnip"
+	chargetime = 0
+	noaa = TRUE
+	candodge = FALSE
+	canparry = FALSE
+	misscost = 0
+	no_attack = TRUE
+	releasedrain = 0
+	blade_class = BCLASS_PUNCH
+
+/obj/item/rogueweapon/huntingknife/scissors/attack_obj(obj/O, mob/living/user) //This is scissor action! We're putting this here not to lose sight of it!
+	if(user.used_intent.type == /datum/intent/snip && istype(O, /obj/item))
+		var/obj/item/item = O
+		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!
+			var/salvage_time = 70
+			salvage_time = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
+			if(!do_after(user, salvage_time, target = user))
+				return
+			if(item.fiber_salvage) //We're getting fiber as base if fiber is present on the item
+				new /obj/item/natural/fibers(get_turf(item))
+			if(istype(item, /obj/item/storage))
+				var/obj/item/storage/bag = item
+				bag.emptyStorage()
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			if(prob(50 - (skill_level * 10))) // We are dumb and we failed!
+				to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
+				playsound(item, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				qdel(item)
+				user.mind.adjust_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
+				return //We are returning early if the skill check fails!
+			item.salvage_amount -= item.torn_sleeve_number
+			for(var/i = 1; i <= item.salvage_amount; i++) // We are spawning salvage result for the salvage amount minus the torn sleves!
+				var/obj/item/Sr = new item.salvage_result(get_turf(item))
+				Sr.color = item.color
+			user.visible_message(span_notice("[user] salvages [item] into usable materials."))
+			playsound(item, 'sound/items/flint.ogg', 100, TRUE) //In my mind this sound was more fitting for a scissor
+			qdel(item)
+			user.mind.adjust_experience(/datum/skill/misc/sewing, (user.STAINT)) //We're getting experience for salvaging!
+	..()
+
+/obj/item/rogueweapon/huntingknife/scissors/steel
+	force = 14
+	max_integrity = 150
+	name = "steel scissors"
+	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
+	icon_state = "sscissors"
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/rogueweapon/huntingknife/idagger
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
@@ -163,7 +216,6 @@
 	name = "iron dagger"
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
-	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"
@@ -176,7 +228,8 @@
 	name = "steel parrying dagger"
 	desc = "This is a parrying dagger made of solid steel, used to catch opponent's weapons in the handguard, even more durable."
 	icon_state = "spdagger"
-	max_integrity = 200
+	force = 18
+	max_integrity = 225 //this shit costs 2 steel, more than a rapier somehow.
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 6
 
@@ -213,8 +266,11 @@
 				H.Paralyze(10)
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(20)
-			H.Paralyze(20)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
@@ -270,26 +326,25 @@
 				H.Knockdown(10)
 				H.Paralyze(10)
 				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("The silver burns me!"))
-				H.adjustFireLoss(30)
-				H.Paralyze(20)
-				H.fire_act(1,4)
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 			else
 				H.Stun(20)
-				to_chat(H, span_userdanger("The silver burns me!"))
-				H.adjustFireLoss(30)
-				H.Paralyze(20)
-				H.fire_act(1,4)
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 		if(V_lord)
 			if(V_lord.vamplevel < 4 && !V)
-				if(V_lord.disguised)
-					H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				H.Stun(10)
-				to_chat(H, span_userdanger("The silver burns me!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
 				H.adjustFireLoss(25)
 				H.fire_act(1,10)
 				src.last_used = world.time
@@ -301,9 +356,12 @@
 				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
 				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
 		if(W && W.transformed == TRUE)
-			H.Stun(40)
-			H.Paralyze(40)
-			to_chat(H, span_userdanger("The silver burns me!"))
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))
 			src.last_used = world.time
 
 /obj/item/rogueweapon/huntingknife/stoneknife
@@ -326,8 +384,8 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
 	name = "drowish dagger"
 	desc = "This ominous, jeweled dagger was crafted by the assassin race of nite elves."
-	force = 25
+	force = 22
 	sellprice = 75
-	icon = 'modular_stonehedge/icons/roguetown/weapons/32.dmi'
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/roguetown/weapons/32.dmi'
 	icon_state = "drowdagger"
 	item_state = "drowdag"

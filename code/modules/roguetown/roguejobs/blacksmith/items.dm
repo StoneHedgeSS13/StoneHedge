@@ -88,21 +88,19 @@
 	if(!istype(O, /obj/structure))
 		return ..()
 	var/obj/structure/S = O
-	if(linking)
-		if(linking == O)
-			to_chat(user, span_warning("You cannot link me to myself."))
-			return
-		if(linking in S.redstone_attached)
-			to_chat(user, span_warning("Already linked."))
-			linking = null
-			return
-		S.redstone_attached |= linking
-		linking.redstone_attached |= S
-		linking = null
-		to_chat(user, span_notice("Link complete."))
-		return
-	else
+	if(!linking)
 		linking = S
 		to_chat(user, span_info("Link beginning..."))
 		return
-	..()
+	if(linking == O)
+		to_chat(user, span_warning("You cannot link me to myself."))
+		return
+	if(linking in S.redstone_attached)
+		to_chat(user, span_warning("Already linked."))
+		linking = null
+		return
+	S.redstone_attached |= linking
+	linking.redstone_attached |= S
+	linking = null
+	to_chat(user, span_notice("Link complete."))
+	return

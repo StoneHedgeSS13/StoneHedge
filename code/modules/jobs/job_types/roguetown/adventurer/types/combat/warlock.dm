@@ -4,28 +4,30 @@
 	gaining supernatural powers in exchange for their faith or other significant sacrifice. \
 	Their powers are derived from sources beyond mortal understanding and are often associated with dark magic and forbidden knowledge."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS	
+	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/warlock
-	//traits_applied = list(TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/combat_bandit_mage.ogg'
 
 /datum/outfit/job/roguetown/adventurer/warlock
-	allowed_patrons = list(/datum/patron/godless)
+
 
 /datum/outfit/job/roguetown/adventurer/warlock/pre_equip(mob/living/carbon/human/H)
 	..()
-	
+
 	H.adjust_blindness(-3)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+		H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
+		H.mind.adjust_spellpoints(1) // all warlocks get at least 3 points to spend
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 1, TRUE)
+		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = null
 	var/patrons = list( //who is your patron?
@@ -33,7 +35,7 @@
 		"celestial", //a celestial being | utility | faithless healer
 		"fathomless", //a creecher from the depths of the sea | melee combat | medium armor | water themed
 		"fiend", //caster
-		"genie", //a spirit trapped in an item | utility | specialty gear 
+		"genie", //a spirit trapped in an item | utility | specialty gear
 		"great old one", //your typical lovecraftian creecher | caster | magic tab
 		"hexblade", //a sentient weapon | melee combat | medium armor | specialty gear
 		"undead" //a creecher from the grave | utility | heavy armor | tank
@@ -67,7 +69,8 @@
 		"love", //ring of soulbinding
 		"friendship", //Pact of the Chain
 		"power", //empowered eldritch blast
-		"purpose" //Pact of the Star Chain
+		"purpose", //Pact of the Star Chain
+		"revenge" //give curse
 	)
 
 	var/boonchoice = input("What did you sell your faith for?", "Available boons") as anything in boons
@@ -85,86 +88,106 @@
 			H.put_in_hands(givebook(patronchoice), FALSE)
 			H.change_stat("intelligence", 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/guidance5e)
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC) // Goo-locks and book pacts can actually be a mage
 		if("power") //empowered eldritch blast
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e/empowered)
 			H.change_stat("intelligence", 1)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.mind.adjust_spellpoints(1)
 		if("love") //ring of soulbinding
 			H.put_in_hands(givering(H))
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+			H.change_stat("endurance", 1)
 			H.set_blindness(0)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eoracurse)
 		if("health") //make healthier
 			givehealing(H, patronchoice)
+			H.change_stat("constitution", 1)
 			H.set_blindness(0)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		if("wealth") //Pact of the Talisman			
+		if("wealth") //Pact of the Talisman
+			ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 			H.put_in_hands(giveamulet(patronchoice), FALSE)
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+			ADD_TRAIT(H, TRAIT_ALCHEMYKNOWLEDGE, TRAIT_GENERIC)
 			H.set_blindness(0)
 		if("purpose") //Pact of the Star Chain
 			wrists = /obj/item/rope/chain/constellation
 			H.set_blindness(0)
 		if("revenge") //give curse
 			givecurse(H, patronchoice)
+			H.change_stat("speed", 1)
 			H.set_blindness(0)
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/archfeypatron(mob/living/carbon/human/H, patronchoice)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 
 	head = /obj/item/clothing/head/roguetown/helmet/foresterhelmet
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
+	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	r_hand = /obj/item/rogueweapon/woodstaff
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife
-	
+
 	//caster stats (must be 5 stat point total)
 	H.change_stat("intelligence", 2)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/seelie_kiss)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/archfey_warlock_strip)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/archfey_warlock_seelie_kiss)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 
 	ADD_TRAIT(H, TRAIT_WILDMAGIC, TRAIT_GENERIC)
 
 	H.visible_message(span_info("I made a deal with an archseelie from the wild."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/celestialpatron(mob/living/carbon/human/H, patronchoice)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2,   TRUE)
 
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	// armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	if(H.gender == MALE)
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	else
+		shirt = /obj/item/clothing/suit/roguetown/armor/armordress
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/mace
+	r_hand = /obj/item/rogueweapon/spear
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
-	
+
 	//caster stats (must be 5 stat point total)
 	H.change_stat("intelligence", 2)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
+
+	H.mind.adjust_spellpoints(2) // general arcane power, less total gain than other trees, 4 points total (it's hard to give "celestial" a real spell theme)
 
 	givehealing(H, patronchoice, TRUE)
 
 	H.visible_message(span_info("I made a deal with a celestial being from the heavens."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/fathomlesspatron(mob/living/carbon/human/H, patronchoice) // a watery creature
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
 	backl = /obj/item/fishingrod
 	if(prob(50))
@@ -173,7 +196,7 @@
 		head = /obj/item/clothing/head/roguetown/fisherhat
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	cloak = /obj/item/clothing/cloak/raincloak/yellow
-	gloves = /obj/item/clothing/gloves/roguetown/plate/zybantinegauntlets
+	// gloves = /obj/item/clothing/gloves/roguetown/plate/zybantinegauntlets // No plate gloves for you
 	wrists = /obj/item/rope
 	r_hand = /obj/item/rogueweapon/pitchfork
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -190,6 +213,10 @@
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 1)
 	H.change_stat("speed", -1)
+
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/frostbite5e) // "water" and ice magic, less arcane power because armor and dodge training
+
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)
@@ -197,12 +224,14 @@
 	H.visible_message(span_info("I made a deal with a fathomless creecher of the sea."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/fiendpatron(mob/living/carbon/human/H, patronchoice) //hellish fiend
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		
+	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+
 	head = /obj/item/clothing/head/roguetown/roguehood/red
-	mask = /obj/item/clothing/mask/rogue/goldmask
+	mask = /obj/item/clothing/mask/rogue/facemask/gold
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 	back = /obj/item/clothing/cloak/raincloak/red
 	r_hand = /obj/item/rogueweapon/woodstaff
@@ -210,46 +239,56 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	
+
 	//caster stats (must be 5 stat point total)
 	H.change_stat("intelligence", 2)
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
 
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball) // fireball is a very strong spell, fiendkiss makes it even stronger
 	ADD_TRAIT(H, TRAIT_NOFIRE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_FIENDKISS, TRAIT_GENERIC)
 
 	H.visible_message(span_info("I made a deal with a fiend from the hells."))
-	
+
 /datum/outfit/job/roguetown/adventurer/warlock/proc/geniepatron(mob/living/carbon/human/H, patronchoice) //a desert entity
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
 
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	beltr = /obj/item/wisp_lantern
+	beltl = /obj/item/rogueweapon/sword/sabre
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/shalal
+	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	id = /obj/item/clothing/ring/gold/signet
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich)
 
 	//lucky stats (must be 5 stat point total)
-	H.change_stat("endurance", 1) // 
+	H.change_stat("endurance", 1) //
 	H.change_stat("speed", 2)
 	H.change_stat("fortune", 2)
+
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/haste)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell) // going with wind theme, speed and airblast, possibly eventual picker for "which type of genie did you make a deal with"
+
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 	H.visible_message(span_info("I made a deal with a djinn from a magic lamptern."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/goopatron(mob/living/carbon/human/H, patronchoice)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-	
+	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+
+	ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
+
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -267,35 +306,28 @@
 	H.change_stat("perception", 2)
 	H.change_stat("constitution", 1)
 
-	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
-	H.mind.adjust_spellpoints(3)
+	H.mind.adjust_spellpoints(3) // 6 total spell points after arcane adjust; forbidden eldritch knowledge to build your own spellbook, but you get nothing else
 
 	H.visible_message(span_info("Most minds would fracture having spoken to the creecher I made a deal with..."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/hexbladepatron(mob/living/carbon/human/H, patronchoice)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 1, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 1, TRUE)
+	// H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 1, TRUE) // This gets overwritten by the 3 arcane given by the giveweapon proc
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	if(prob(70))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	else if(prob(50))
-		armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+	if(H.gender == MALE)
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	else
-		armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-	if(prob(20))
-		mask = /obj/item/clothing/mask/rogue/facemask
-	else if(prob(60))
-		head = /obj/item/clothing/head/roguetown/helmet/leather
-	else if(prob(20))
-		head = /obj/item/clothing/head/roguetown/helmet/skullcap
-	else
-		head = /obj/item/clothing/head/roguetown/helmet/kettle
+		shirt = /obj/item/clothing/suit/roguetown/armor/armordress // Armor downgrade from hauberk to gambeson
 	beltl = /obj/item/rogueweapon/huntingknife
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 
@@ -308,56 +340,50 @@
 	H.change_stat("endurance", 1)
 	H.change_stat("speed", -1)
 
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/greenflameblade5e) // put that new weapon to work! martial focus means less magic
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending5e)
+
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	H.visible_message(span_info("I made a deal with a sentient weapon."))
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/undeadpatron(mob/living/carbon/human/H, patronchoice)
-	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(1,3), TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 2, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, rand(1,3), TRUE)
-	if(prob(20))
-		head = /obj/item/clothing/head/roguetown/knitcap
-	else
-		head = null
-	if(prob(10))
-		cloak = /obj/item/clothing/cloak/raincloak/brown
-	else
-		cloak = null
-	if(prob(10))
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	else
-		gloves = /obj/item/clothing/gloves/roguetown/brigandinegauntlets
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	else
-		armor = null
-		pants = /obj/item/clothing/under/roguetown/tights/vagrant
-		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant/l
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-		if(prob(50))
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+
+	cloak = /obj/item/clothing/cloak/raincloak/brown
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	wrists = /obj/item/clothing/wrists/roguetown/vambraces
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
+	head = /obj/item/clothing/head/roguetown/helmet/ironpothelmet
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/mace
-	backl = /obj/item/rogueweapon/sword/iron/short
-
+	beltl = /obj/item/rogueweapon/sword/iron/short
+	backl = /obj/item/rogueweapon/shield/tower
+	// They're the tank subclass, so I'm keeping their armor in. If it's a problem, it's pretty easy to comment it out and give them hauberks instead
 	//tank stats (must be 5 stat point total)
+	H.change_stat("strength", 1)
 	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 3)
+	H.change_stat("constitution", 2)
 
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/cloakofflies)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/infestation5e)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chilltouch5e) // decay-themed magic and a skeletal hand to attack people with
+
+	// ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) // Unnecessary with the heavy armor trait
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 
 	H.visible_message(span_info("I made a deal with a horror from the grave."))
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/cloakofflies)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/infestation5e)
 
 ///////////////////////////////
 //	Faithless Healing
@@ -376,14 +402,14 @@
 			eldritchhealing.targetnotification = "I am encircled in a tapestry of glittering starlight."
 			eldritchhealing.othernotification = "is encircled in a tapestry of glittering starlight."
 		if("fathomless")
-			eldritchhealing.targetnotification = "My pain is siphoned away by an inky tendril!."
+			eldritchhealing.targetnotification = "My pain is siphoned away by an inky tendril!"
 			eldritchhealing.othernotification = "'s injuries are siphoned away by an inky tendril!"
 		if("genie")
-			eldritchhealing.targetnotification = "I just feel better all of the sudden."
+			eldritchhealing.targetnotification = "I just feel better all of a sudden."
 			eldritchhealing.othernotification = "looks better."
 		if("great old one")
-			eldritchhealing.targetnotification = "My pain is siphoned away by an inky tendril!."
-			eldritchhealing.othernotification = "'s injuries are siphoned away by an inky tendril!"
+			eldritchhealing.targetnotification = "My wounds distort and fade away."
+			eldritchhealing.othernotification = "'s injuries distort and fade away."
 		if("hexblade")
 			eldritchhealing.targetnotification = "My wounds close leaving scars."
 			eldritchhealing.othernotification = "'s wounds close leaving scars."
@@ -391,6 +417,7 @@
 			eldritchhealing.targetnotification = "Maggots eat away my dead flesh!"
 			eldritchhealing.othernotification = "'s wounds are healed by... Maggots?"
 	H.mind.AddSpell(eldritchhealing)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular) // If you get healing, you get diagnose
 
 ///////////////////////////////
 //	Curse
@@ -398,7 +425,7 @@
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/givecurse(mob/living/carbon/human/H, patronname = "")
 	var/obj/effect/proc_holder/spell/invoked/eldritchcurse/curse = new /obj/effect/proc_holder/spell/invoked/eldritchcurse
-	
+
 	switch(patronname) //god damn put this in a datum or something....
 		if("archfey")
 			curse.curse = /datum/status_effect/buff/eldritchcurse/archfey
@@ -428,7 +455,7 @@
 	item = new item_type
 	item.name = "grimoire of the "+patronchoice
 	return item
-	
+
 /obj/item/book/rogue/eldritch
 	desc = "An earie book containing hidden knowledge."
 	icon_state = "ledger_0"
@@ -446,7 +473,7 @@
 	//removed eldritch blast and infestation
 	spell1 = pick(/obj/effect/proc_holder/spell/invoked/projectile/fireball,/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,/obj/effect/proc_holder/spell/invoked/projectile/fetch,/obj/effect/proc_holder/spell/invoked/projectile/spitfire,/obj/effect/proc_holder/spell/invoked/projectile/firebolt5e,/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e,/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,/obj/effect/proc_holder/spell/invoked/blade_burst,/obj/effect/proc_holder/spell/invoked/frostbite5e,/obj/effect/proc_holder/spell/invoked/poisonspray5e,/obj/effect/proc_holder/spell/invoked/arcyne_storm,/obj/effect/proc_holder/spell/invoked/chilltouch5e,/obj/effect/proc_holder/spell/invoked/mindsliver5e,/obj/effect/proc_holder/spell/targeted/lightninglure5e,/obj/effect/proc_holder/spell/invoked/greenflameblade5e,)
 	spell2 = pick(/obj/effect/proc_holder/spell/invoked/forcewall_weak,/obj/effect/proc_holder/spell/self/bladeward5e,)
-	spell3 = pick(/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,/obj/effect/proc_holder/spell/invoked/message,/obj/effect/proc_holder/spell/invoked/push_spell,/obj/effect/proc_holder/spell/invoked/longjump,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/targeted/guidance5e,/obj/effect/proc_holder/spell/targeted/encodethoughts5e,/obj/effect/proc_holder/spell/invoked/magicstone5e,/obj/effect/proc_holder/spell/invoked/mending5e,/obj/effect/proc_holder/spell/self/light5e,/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,)
+	spell3 = pick(/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,/obj/effect/proc_holder/spell/invoked/message,/obj/effect/proc_holder/spell/invoked/push_spell,/obj/effect/proc_holder/spell/invoked/longjump,/obj/effect/proc_holder/spell/aoe_turf/conjure/Wolf,/obj/effect/proc_holder/spell/invoked/guidance5e,/obj/effect/proc_holder/spell/targeted/encodethoughts5e,/obj/effect/proc_holder/spell/invoked/magicstone5e,/obj/effect/proc_holder/spell/invoked/mending5e,/obj/effect/proc_holder/spell/self/light5e,/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,)
 
 
 /obj/item/book/rogue/eldritch/equipped(mob/living/user)
@@ -464,6 +491,7 @@
 		return
 
 /obj/item/book/rogue/eldritch/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your intellect shrinks away"))
 		user.change_stat("intelligence", -1)
@@ -479,42 +507,34 @@
 ///////////////////////////////
 
 /datum/outfit/job/roguetown/adventurer/warlock/proc/giveweapon(mob/living/carbon/human/H, patronchoice)
+	H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 3, TRUE)
 	var/item_pick = pick(1,2,3,4,5,6,7,8,9,10)
 	var/item_type
 	switch(item_pick)
 		if(1)
 			item_type = /obj/item/rogueweapon/sword
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		if(2)
 			item_type = /obj/item/rogueweapon/greatsword
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		if(3)
 			item_type = /obj/item/rogueweapon/spear
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		if(4)
 			item_type = /obj/item/rogueweapon/halberd
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		if(5)
-			item_type = /obj/item/rogueweapon/stoneaxe
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-		if(6)
 			item_type = /obj/item/rogueweapon/stoneaxe/battle
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+		if(6)
+			item_type = /obj/item/rogueweapon/mace/goden/steel
 		if(7)
 			item_type = /obj/item/rogueweapon/mace/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		if(8)
 			item_type = /obj/item/rogueweapon/huntingknife/idagger/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		if(9)
 			item_type = /obj/item/rogueweapon/flail
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 		if(10)
 			item_type = /obj/item/rogueweapon/whip
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
-		
+
 	var/obj/item/item
 	item = new item_type
+	item.infusable = FALSE
 	item.AddComponent(/datum/component/pact_weapon, H, patronchoice)
 	item.AddComponent(/datum/component/singing_item, H)
 	item.AddComponent(/datum/component/spirit_holding, null, null)
@@ -540,6 +560,7 @@
 		return
 
 /obj/item/clothing/ring/gold/signet/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("You feel like a peasant."))
 		REMOVE_TRAIT(user, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -574,6 +595,7 @@
 		return
 
 /obj/item/clothing/neck/roguetown/psicross/eldritch/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your stroke of luck has ended."))
 		user.change_stat("fortune", -3)
@@ -612,6 +634,7 @@
 		return
 
 /obj/item/rope/chain/constellation/dropped(mob/living/user)
+	. = ..()
 	if(active_item)
 		to_chat(user, span_notice("Your purpose is scattered to the wind"))
 
@@ -652,5 +675,6 @@
 			soullink(/datum/soullink/oneway/delay, item_owner, user)
 
 /obj/item/clothing/ring/diamond/soulbond/dropped(mob/living/user)
+	. = ..()
 	qdel(user.GetComponent(/datum/soullink/oneway))
 	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)

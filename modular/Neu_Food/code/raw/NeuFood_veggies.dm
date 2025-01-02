@@ -19,7 +19,9 @@
 	icon_state = "onion_sliced"
 	slices_num = 0
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
-
+	cooked_smell = /datum/pollutant/food/fried_onion
+	can_distill = TRUE
+	distill_amt = 6
 
 /*	..................   Cabbage   ................... */
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
@@ -34,13 +36,14 @@
 	icon_state = "cabbage_sliced"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried
+	cooked_smell = /datum/pollutant/food/fried_cabbage
 
 
 /*	..................   Potato   ................... */
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	desc = "A spud, dwarven icon of growth."
 	eat_effect = null
-	slices_num = 1
+	slices_num = 3
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked
 	tastes = list("potato" = 1)
@@ -51,4 +54,6 @@
 	icon_state = "potato_sliced"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
-
+	cooked_smell = /datum/pollutant/food/baked_potato
+	can_distill = TRUE
+	distill_amt = 8

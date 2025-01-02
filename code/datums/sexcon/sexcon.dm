@@ -21,9 +21,8 @@
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
 	var/last_pain = 0
-	var/beingfucked = FALSE //for npc stuff
-//	var/msg_signature = ""
-//	var/last_msg_signature = 0
+	var/msg_signature = ""
+	var/last_msg_signature = 0
 
 /datum/sex_controller/New(mob/living/owner)
 	user = owner
@@ -55,18 +54,18 @@
 	animate(pixel_x = oldx, pixel_y = oldy, time = time)
 
 /datum/sex_controller/proc/do_message_signature(sigkey)
-/* fuck that -vide
 	var/properkey = "[speed][force][sigkey]"
-	if(properkey == msg_signature && last_msg_signature + 4.0 SECONDS >= world.time)
+	if(user.rogue_sneaking || user.alpha <= 100) //stealth sex les go
+		return FALSE
+	if(properkey == msg_signature && last_msg_signature + 8 SECONDS >= world.time)
+		if(prob(40))
+			user.balloon_alert_to_viewers(pick("*plap*","*plop*","*slap*","*pap*","*slick*"))
 		return FALSE
 	msg_signature = properkey
 	last_msg_signature = world.time
-*/
 	return TRUE
 
 /datum/sex_controller/proc/finished_check()
-	if(arousal > 100 && issimple(user))
-		return TRUE
 	if(!do_until_finished)
 		return FALSE
 	if(!just_ejaculated())
@@ -89,7 +88,7 @@
 	if(user == victim)
 		return FALSE
 	// If user and victim both are not defiant, then no violation needs to happen
-	if(!user.defiant && !victim.defiant)
+	if(!user.client?.prefs.defiant && !victim.client?.prefs.defiant)
 		return FALSE
 	// Need to violate AFK clients
 	if(!victim.mind || !victim.mind.key || !victim.client) // Changed to OR statements to remove ZAPE of mobs without minds or keys
@@ -174,9 +173,6 @@
 		user.clear_fullscreen("horny")
 
 /datum/sex_controller/proc/start(mob/living/new_target)
-	if(!ishuman(new_target))
-		return
-
 	if(HAS_TRAIT(user, TRAIT_EORA_CURSE))
 		to_chat(user, "<span class='warning'>The idea repulses me!</span>")
 		user.cursed_freak_out()
@@ -186,7 +182,7 @@
 	show_ui()
 
 /datum/sex_controller/proc/cum_onto()
-	if(!issimple(target))
+	if(!issimple(target) && target.mind)
 		log_combat(user, target, "Came onto [target]")
 		if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 			if(!user.mob_timers["cumtri"])
@@ -196,35 +192,65 @@
 				to_chat(user, span_love("Our sex was a true TRIUMPH!"))
 		else
 			user.add_stress(/datum/stressevent/cumok)
+	if(!issimple(user) && user.mind)
+		log_combat(target, user, "Came inside [user]")
+		if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+			if(!target.mob_timers["cumtri"])
+				target.mob_timers["cumtri"] = world.time
+				target.adjust_triumphs(1)
+				target.add_stress(/datum/stressevent/cummax)
+				to_chat(target, span_love("Our sex was a true TRIUMPH!"))
+	else
+		target.add_stress(/datum/stressevent/cumok)
 	playsound(target, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(target))
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into(oral = FALSE, vaginal = FALSE, anal = FALSE, nipple = FALSE)
+/datum/sex_controller/proc/cum_into(oral = FALSE, vaginal = FALSE, anal = FALSE, nipple = FALSE, girljuice = FALSE)
 	var/obj/item/organ/filling_organ/testicles/testes = user.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(!issimple(target))
-		log_combat(user, target, "Came inside [target]")
-		if(HAS_TRAIT(target, TRAIT_GOODLOVER))
-			if(!user.mob_timers["cumtri"])
-				user.mob_timers["cumtri"] = world.time
-				user.adjust_triumphs(1)
-				user.add_stress(/datum/stressevent/cummax)
-				to_chat(user, span_love("Our sex was a true TRIUMPH!"))
-	else
-		user.add_stress(/datum/stressevent/cumok)
+	if(target.mind)
+		if(!issimple(target))
+			log_combat(user, target, "Came inside [target]")
+			if(HAS_TRAIT(target, TRAIT_GOODLOVER))
+				if(!user.mob_timers["cumtri"])
+					user.mob_timers["cumtri"] = world.time
+					user.adjust_triumphs(1)
+					user.add_stress(/datum/stressevent/cummax)
+					to_chat(user, span_love("Our sex was a true TRIUMPH!"))
+			else
+				user.add_stress(/datum/stressevent/cumok)
+	if(user.mind)
+		if(!issimple(user))
+			log_combat(target, user, "Came inside [user]")
+			if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+				if(!target.mob_timers["cumtri"])
+					target.mob_timers["cumtri"] = world.time
+					target.adjust_triumphs(1)
+					target.add_stress(/datum/stressevent/cummax)
+					to_chat(target, span_love("Our sex was a true TRIUMPH!"))
+				else
+					target.add_stress(/datum/stressevent/cumok)
+	if(girljuice)
+		if(!issimple(target))
+			target.reagents.add_reagent(/datum/reagent/water/pussjuice, 10)
+			after_ejaculation()
+		else
+			after_ejaculation()
+		return
 	if(issimple(target))
 		if(testes) //simple target just remove the coom.
 			var/cum_to_take = CLAMP((testes.reagents.maximum_volume/2), 1, testes.reagents.total_volume)
 			testes.reagents.remove_reagent(testes.reagent_to_make, cum_to_take)
 			user.add_stress(/datum/stressevent/cumok)
+			after_ejaculation()
 			return
 	if(!issimple(target) && testes)
 		if(oral)
 			playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 			var/cum_to_take = CLAMP((testes.reagents.maximum_volume/2), 1, testes.reagents.total_volume)
-			testes.reagents.trans_to(target, cum_to_take, transfered_by = user)
+			testes.reagents.trans_to(target, cum_to_take, transfered_by = user, method = INGEST)
 		else
-			var/cameloc
+			var/obj/item/organ/filling_organ/cameloc
 			if(vaginal)
 				cameloc = target.getorganslot(ORGAN_SLOT_VAGINA)
 			if(anal)
@@ -232,12 +258,11 @@
 			if(nipple)
 				cameloc = target.getorganslot(ORGAN_SLOT_BREASTS)
 			if(vaginal || anal || nipple)
-				var/obj/item/organ/cameorgan = cameloc
-				var/cum_to_take = CLAMP((testes.reagents.maximum_volume/4), 1, min(testes.reagents.total_volume, cameorgan.reagents.maximum_volume - cameorgan.reagents.total_volume))
-				testes.reagents.trans_to(cameorgan, cum_to_take, transfered_by = user)
+				var/cum_to_take = CLAMP((testes.reagents.maximum_volume/4), 1, min(testes.reagents.total_volume, cameloc.reagents.maximum_volume - cameloc.reagents.total_volume))
+				testes.reagents.trans_to(cameloc, cum_to_take, transfered_by = user, method = INGEST)
 			else
 				var/cum_to_take = CLAMP((testes.reagents.maximum_volume/4), 1, testes.reagents.total_volume)
-				testes.reagents.trans_to(target,  cum_to_take, transfered_by = user) //digest anyway if none of those.
+				testes.reagents.trans_to(target,  cum_to_take, transfered_by = user, method = INGEST) //digest anyway if none of those.
 
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	if(testes && testes.reagents.total_volume <= testes.reagents.maximum_volume / 4)
@@ -289,9 +314,12 @@
 	set_arousal(40)
 	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
 		user.sate_addiction()
-	user.emote("sexmoanhvy", forced = TRUE)
+	if(!user.rogue_sneaking && user.alpha > 100) //stealth sex, keep your voice down.
+		user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
+	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE)||HAS_TRAIT(user, TRAIT_NYMPHO_CURSE))
+		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
 
 /datum/sex_controller/proc/after_intimate_climax()
@@ -311,7 +339,7 @@
 
 /datum/sex_controller/proc/update_erect_state()
 	var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
-	if(penis)
+	if(penis && !istype(penis, /obj/item/organ/penis/internal))
 		penis.update_erect_state()
 
 /datum/sex_controller/proc/adjust_arousal(amount)
@@ -360,7 +388,7 @@
 
 	if(user.stat == DEAD)
 		if(prob(2)) //since there is no proper diseases....
-			target.reagents.add_reagent(/datum/reagent/organpoison, 1)
+			target.reagents.add_reagent(/datum/reagent/toxin/organpoison, 1)
 
 	var/sexhealrand = rand(0.2, 0.4)
 	//go go gadget sex healing.. magic?
@@ -382,10 +410,10 @@
 					to_chat(user, span_green("I feel Viiritri's miracle upon me."))
 					sexhealrand *= 2
 	if(!user.cmode && prob(1)) //surprise heal burst at 1% chance
-		to_chat(user, span_greentextbig("I feel Viiritri smile at me."))
+		to_chat(user, span_greentextbig("I suddenly feel much better thanks to this act..."))
 		sexhealrand *= 5
-	user.adjustBruteLoss(-sexhealrand)
-	user.adjustFireLoss(-sexhealrand/2)
+	user.heal_wounds(sexhealrand)
+	user.heal_overall_damage(sexhealrand, sexhealrand/2, updating_health = TRUE)
 
 	//grant devotion through sex because who needs praying.
 	//not sure if it works right but i dont need to test cuz its asked to be commented out anyway, ffs.
@@ -421,6 +449,8 @@
 		return
 	if(user.stat != CONSCIOUS)
 		return
+	if(user.rogue_sneaking || user.alpha <= 100) //stealth sex, keep your voice down.
+		return
 	if(last_moan + MOAN_COOLDOWN >= world.time)
 		return
 	if(prob(50))
@@ -449,7 +479,7 @@
 				if(user.gender == FEMALE && prob(50))
 					chosen_emote = "whimper"
 				else
-					chosen_emote = "cry"
+					chosen_emote = "groan"
 
 	last_moan = world.time
 	user.emote(chosen_emote, forced = TRUE)
@@ -704,6 +734,8 @@
 	while(TRUE)
 		if(!user.rogfat_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
+		if(user.mind)
+			user.mind.adjust_experience(/datum/skill/misc/athletics, (user.STAINT*0.04)*get_stamina_cost_multiplier()) //endurance training boiii
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break
 		if(current_action == null || performed_action_type != current_action)
@@ -884,7 +916,7 @@
 /datum/sex_controller/proc/try_pelvis_crush(mob/living/carbon/human/target)
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 		if(!target.has_wound(/datum/wound/fracture/groin))
-			if(prob(10)){
+			if(prob(5)){
 				var/obj/item/bodypart/groin = target.get_bodypart(check_zone(BODY_ZONE_PRECISE_GROIN))
 				groin.add_wound(/datum/wound/fracture)
 			}

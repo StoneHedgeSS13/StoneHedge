@@ -87,8 +87,6 @@
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
 
 #define MONKEY_BODYPART "monkey"
-#define ALIEN_BODYPART "alien"
-#define LARVA_BODYPART "larva"
 #define DEVIL_BODYPART "devil"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
@@ -313,6 +311,7 @@
 #define OFFSET_CLOAK "cloak"
 #define OFFSET_MOUTH "mouth"
 #define OFFSET_PANTS "wear_pants"
+#define OFFSET_BUTT "butt"
 #define OFFSET_SHIRT "wear_shirt"
 #define OFFSET_ARMOR "wear_armor"
 #define OFFSET_HANDS "hands"
@@ -344,7 +343,7 @@
 #define POCKET_STRIP_DELAY			40	//time taken (in deciseconds) to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE	15	//the amount of damage that airlocks deal when they crush you
 
-#define HUNGER_FACTOR		0.10	//factor at which mob nutrition decreases
+#define HUNGER_FACTOR		0.3	//factor at which mob nutrition decreases
 #define ETHEREAL_CHARGE_FACTOR	0.12 //factor at which ethereal's charge decreases
 #define REAGENTS_METABOLISM 1	//How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
@@ -357,7 +356,7 @@
 
 // Roundstart trait system
 
-#define MAX_QUIRKS 3 //The maximum amount of quirks one character can have at roundstart
+#define MAX_QUIRKS 4 //The maximum amount of quirks one character can have at roundstart
 
 // AI Toggles
 #define AI_CAMERA_LUMINOSITY	5
@@ -473,13 +472,16 @@
 #define SKIN_COLOR_SHATTERHORN "D6D5E2"
 
 //TIEFLING SKIN TONES
-#define SKIN_COLOR_CASTILLIAN "cc5757"
-#define SKIN_COLOR_MYSTERIOUS "ff0000"
-#define SKIN_COLOR_SUCCUBUS "d2042d"
-#define SKIN_COLOR_INCUBUS "a23737"
-#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
 #define SKIN_COLOR_ZARIEL "DBA960"
+#define SKIN_COLOR_LEVISTUS "5B5F96"
+#define SKIN_COLOR_GLASYA "cc5757"
+#define SKIN_COLOR_ASMODEUS "8F3F50"
+#define SKIN_COLOR_BAALZEBUL "991F1D"
+#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
+#define SKIN_COLOR_FIERNA "C62D4C"
 #define SKIN_COLOR_DISPATER "B289C6"
+#define SKIN_COLOR_NYMSEA "A8619E"
+#define SKIN_COLOR_MAMMON "E0CED8"
 
 //ARGONIAN SKIN TONES
 #define SKIN_COLOR_AQUARELA "ffff88"

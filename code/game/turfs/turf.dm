@@ -51,6 +51,7 @@
 	var/neighborlay
 	var/neighborlay_list = list()
 	var/neighborlay_override
+	var/teleport_restricted = FALSE //whether turf teleport spells are forbidden from teleporting to this turf
 
 	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID
 
@@ -61,6 +62,7 @@
 	. = ..()
 
 /turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 #ifdef TESTSERVER
 	if(!icon_state)
 		icon_state = "cantfind"
@@ -96,11 +98,11 @@
 	if(turf_integrity == null)
 		turf_integrity = max_integrity
 
-	var/turf/T = SSmapping.get_turf_above(src)
+	var/turf/T = GET_TURF_ABOVE(src)
 	if(T)
 		T.multiz_turf_new(src, DOWN)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
-	T = SSmapping.get_turf_below(src)
+	T = GET_TURF_BELOW(src)
 	if(T)
 		T.multiz_turf_new(src, UP)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
@@ -122,10 +124,10 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
-	var/turf/T = SSmapping.get_turf_above(src)
+	var/turf/T = GET_TURF_ABOVE(src)
 	if(T)
 		T.multiz_turf_del(src, DOWN)
-	T = SSmapping.get_turf_below(src)
+	T = GET_TURF_BELOW(src)
 	if(T)
 		T.multiz_turf_del(src, UP)
 	STOP_PROCESSING(SSweather,src)
@@ -167,14 +169,14 @@
 	var/area/A = get_area(src)
 	for(var/i in 1 to 6)
 		CT = get_step_multiz(CT, UP)
-		if(!CT)
+		if(!CT) //no z above
 			if(!A.outdoors)
 				can_see_sky = SEE_SKY_NO
 			else
 				can_see_sky = SEE_SKY_YES
 			return can_see_sky()
 		A = get_area(CT)
-		if(!istype(CT, /turf/open/transparent/openspace))
+		if(!istype(CT, /turf/open/transparent))
 			can_see_sky = SEE_SKY_NO
 			return can_see_sky()
 
@@ -605,8 +607,6 @@
 /turf/acid_act(acidpwr, acid_volume)
 	. = 1
 	var/acid_type = /obj/effect/acid
-	if(acidpwr >= 200) //alien acid power
-		acid_type = /obj/effect/acid/alien
 	var/has_acid_effect = FALSE
 	for(var/obj/O in src)
 		if(intact && O.level == 1) //hidden under the floor

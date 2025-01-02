@@ -17,8 +17,6 @@
 		if(issimple(target) && target.gender == MALE && target.sexcon)
 		else
 			return FALSE
-	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))	//Dissabled for Seelie riding non-Seelie
-		return FALSE
 	return TRUE
 
 /datum/sex_action/anal_ride_sex/can_perform(mob/living/user, mob/living/target)
@@ -49,38 +47,36 @@
 /datum/sex_action/anal_ride_sex/on_start(mob/living/user, mob/living/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-		user.visible_message(span_warning("[user] gets on top of [target] trying and failing to ride the tiny cock with their butt!"))
+		user.visible_message(span_warning("[user] gets on top of [target] and begins riding the tiny cock with their butt!"))
 	else
 		user.visible_message(span_warning("[user] gets on top of [target] and begins riding them with their butt!"))
 		playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/anal_ride_sex/on_perform(mob/living/user, mob/living/target)
-	if(user.sexcon.do_message_signature("[type]"))
-		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tries to ride [target], unsuccessfully."))
-			do_thrust_animate(user, target)
-			return	//Return because male seelie cannot succesfully penetrate a large humen target
+	if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
+		user.sexcon.try_pelvis_crush(target)
 
-		if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
-			user.sexcon.try_pelvis_crush(target)
-			
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rides [target]."))
-	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] anally rides [target]."))
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(target, 'sound/misc/mat/segso.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	if(target.sexcon.considered_limp())
-		user.sexcon.perform_sex_action(user, 1.2, 0, TRUE)
+		user.sexcon.perform_sex_action(user, 2.4, 0, TRUE)
 		user.sexcon.perform_sex_action(target, 1.2, 3, TRUE)
 	else
-		user.sexcon.perform_sex_action(user, 2.4, 0, TRUE)
+		user.sexcon.perform_sex_action(user, 4.8, 0, TRUE)
 		user.sexcon.perform_sex_action(target, 2.4, 7, TRUE)
 	user.sexcon.handle_passive_ejaculation()
 
-	user.sexcon.perform_sex_action(target, 2, 4, FALSE)
 	if(target.sexcon.check_active_ejaculation())
-		target.visible_message(span_lovebold("[target] cums into [user]'s butt!"))
+		target.visible_message(span_lovebold("[target] cums into [user]'s ass!"))
 		target.sexcon.cum_into(anal = TRUE)
+//		target.try_impregnate(user)
 		target.virginity = FALSE
+		user.virginity = FALSE
 
 /datum/sex_action/anal_ride_sex/on_finish(mob/living/user, mob/living/target)
 	..()

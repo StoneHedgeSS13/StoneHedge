@@ -56,6 +56,7 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 2 MINUTES
+	miscast_recharge = TRUE
 	miracle = TRUE
 	devotion_cost = 100
 	/// Amount of PQ gained for reviving people
@@ -66,26 +67,10 @@
 	if(isliving(targets[1]))
 		testing("revived1")
 		var/mob/living/target = targets[1]
-		if(HAS_TRAIT(target, TRAIT_FAITHLESS))
-			to_chat(user, span_warning("Elysius light has no effect! He denies aiding a non-believer!"))
-			return FALSE
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)
 			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-
-		var/datum/status_effect/debuff/death_weaken/rip = target.has_status_effect(/datum/status_effect/debuff/death_weaken)
-		if(rip)
-			if(!rip.extralives)
-				rip.examine_text = span_danger("Their body looks entirely devoid of a soul.")
-				to_chat(user, span_warning("Nothing happens."))
-				return FALSE
-			target.visible_message(span_danger("[target]'s soul is violently ripped from Necra's gentle embrace!"), span_userdanger("I am roughly pulled out of Necra's dark embrace, but a piece of me will stay with her forevermore!"))
-			rip.extralives--
-
-		if(HAS_TRAIT(target, TRAIT_NECRA_CURSE))
-			to_chat(user, span_warning("Necra's grasp prevents revival."))
 			return FALSE
 		if(GLOB.tod == "night")
 			to_chat(user, span_warning("Let there be light."))

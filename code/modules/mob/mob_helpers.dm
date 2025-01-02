@@ -90,7 +90,7 @@
 		if ((copytext_char(te, p, p + 1) == " " || prob(pr)))
 			t = text("[][]", t, copytext_char(te, p, p + 1))
 		else
-			t = text("[]*", t)
+			t = text("[]&#42;", t) // stopgap until the custom say verb character is changed
 	if(n > MAX_BROADCAST_LEN)
 		t += "..." //signals missing text
 	return t
@@ -128,6 +128,8 @@
 				newletter+="[newletter]"
 			if(20)
 				newletter+="[newletter][newletter]"
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -140,7 +142,7 @@
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,2)==2)
+		if(prob(50))
 			if(lowertext(newletter)=="o")
 				newletter="u"
 			if(lowertext(newletter)=="t")
@@ -153,7 +155,7 @@
 				newletter=" NAR "
 			if(lowertext(newletter)=="s")
 				newletter=" SIE "
-		if(rand(1,4)==4)
+		if(prob(25))
 			if(newletter==" ")
 				newletter=" no hope... "
 			if(newletter=="H")
@@ -170,6 +172,8 @@
 				newletter="nglu"
 			if(5)
 				newletter="glor"
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -549,6 +553,8 @@
 			hud_used.def_intent.update_icon()
 	update_inv_hands()
 
+//feels and looks like garbage covered in fire.
+//GLOBAL_DATUM_INIT(combat_indicator, /mutable_appearance, mutable_appearance('modular_hearthstone/icons/mob/indicator.dmi', "combat", FLY_LAYER))
 
 /mob/verb/toggle_cmode()
 	set name = "cmode-change"
@@ -569,6 +575,8 @@
 		return
 	if(cmode)
 		playsound_local(src, 'sound/misc/comboff.ogg', 100)
+//		cut_overlay(GLOB.combat_indicator)
+
 		SSdroning.play_area_sound(get_area(src), client)
 		set_cmode(FALSE)
 		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE) && !HAS_TRAIT(src, TRAIT_SCREENSHAKE))
@@ -576,6 +584,8 @@
 	else
 		set_cmode(TRUE)
 		playsound_local(src, 'sound/misc/combon.ogg', 100)
+//		add_overlay(GLOB.combat_indicator)
+
 		if(L.cmode_music)
 			SSdroning.play_combat_music(L.cmode_music, client)
 		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE))
@@ -585,7 +595,9 @@
 		if(hud_used.cmode_button)
 			hud_used.cmode_button.update_icon()
 
-/mob/proc/set_cmode(var/new_cmode)
+	if(cmode)
+		disable_vore_mode()
+/mob/proc/set_cmode(new_cmode)
 	if(cmode == new_cmode)
 		return
 	cmode = new_cmode
@@ -792,7 +804,7 @@
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		if(!notify_suiciders && (O in GLOB.suicided_mob_list))
 			continue
-		if (ignore_key && O.ckey in GLOB.poll_ignore[ignore_key])
+		if (ignore_key && (O.ckey in GLOB.poll_ignore[ignore_key]))
 			continue
 		var/orbit_link
 		if (source && action == NOTIFY_ORBIT)

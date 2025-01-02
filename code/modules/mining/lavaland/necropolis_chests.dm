@@ -756,8 +756,7 @@
 //	var/loot = rand(1,7)
 	var/list/loot = list(/obj/item/book/granter/trait/defense/heavyarmor=35,
 		/obj/item/book/granter/trait/defense/mediumarmor=12,
-		/obj/item/book/granter/trait/war/undying=8,
-		/obj/item/natural/dragon_head = 45)
+		/obj/item/riddleofsteel = 45)
 	if(prob(50))
 		var/I = pickweight(loot)
 		new I(src)
@@ -1420,7 +1419,27 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "gutted", "gored")
 	// sharpness = SHARP_EDGED
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	infusable = FALSE
+	attunement_cost = 5
+	//var/active_item = FALSE
+/*
+/obj/item/melee/sword_of_the_forsaken/equipped(mob/living/user)
+	. = ..()
+	if(active_item)
+		return
+	else
+		active_item = TRUE
+		user.attunement_points_used += attunement_cost
+		user.check_attunement_points()
+		return
 
+/obj/item/melee/sword_of_the_forsaken/dropped(mob/living/user)
+	if(active_item)
+		user.attunement_points_used -= attunement_cost
+		user.check_attunement_points()
+		active_item = FALSE
+		return
+*/
 //Enables the sword to butcher bodies
 /obj/item/melee/sword_of_the_forsaken/Initialize(mapload)
 	. = ..()
@@ -1451,16 +1470,34 @@
 	icon_state = "necklace_forsaken_active"
 	actions_types = list(/datum/action/item_action/hands_free/necklace_of_the_forsaken)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	attunement_cost = 5
+	infusable = FALSE
 	var/mob/living/carbon/active_owner
 	var/numUses = 1
+	var/active_item
+
+/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/equipped(mob/living/user)
+	. = ..()
+	if(active_item)
+		return
+	else
+		active_item = TRUE
+		user.attunement_points_used += attunement_cost
+		user.check_attunement_points()
+		return
 
 /obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/item_action_slot_check(slot)
 	return (..() && (slot == ITEM_SLOT_NECK))
 
 /obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/dropped(mob/user)
 	..()
+	var/mob/living/L = user
 	if(active_owner)
 		remove_necklace()
+	if(active_item)
+		L.attunement_points_used -= attunement_cost
+		L.check_attunement_points()
+		active_item = FALSE
 
 //Apply a temp buff until the necklace is used
 /obj/item/clothing/neck/roguetown/necklace_of_the_forsaken/proc/temp_buff(mob/living/carbon/human/user)
@@ -1523,13 +1560,11 @@
 /obj/structure/closet/crate/necropolis/sif/PopulateContents()
 	var/list/loot = list(/obj/item/rogueweapon/sword/sword_of_the_forsaken=40,
 		/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken=40,
-		/obj/item/book/granter/trait/war/relentless=10,
 		/obj/item/book/granter/spell/spells5e/frostbite5e = 40,
 		/obj/item/book/granter/spell/spells5e/createbonfire5e = 30,
 		/obj/item/book/granter/spell/spells5e/acidsplash5e = 40,)
 	var/list/loot2 = list(/obj/item/rogueweapon/sword/sword_of_the_forsaken=20,
 		/obj/item/clothing/neck/roguetown/necklace_of_the_forsaken=20,
-		/obj/item/book/granter/trait/war/relentless=5,
 		/obj/item/book/granter/spell/spells5e/frostbite5e = 20,
 		/obj/item/book/granter/spell/spells5e/createbonfire5e = 15,
 		/obj/item/book/granter/spell/spells5e/acidsplash5e = 20,

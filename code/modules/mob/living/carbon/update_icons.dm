@@ -100,10 +100,7 @@
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			if(I.bigboy)
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
-					else
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
+					I.screen_loc = "WEST-4:16,SOUTH+7:-16"
 				else
 					if(get_held_index_of_item(I) == 1)
 						I.screen_loc = "WEST-4:0,SOUTH+7:-16"
@@ -111,10 +108,7 @@
 						I.screen_loc = "WEST-3:0,SOUTH+7:-16"
 			else
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-3:0,SOUTH+7"
-					else
-						I.screen_loc = "WEST-3:0,SOUTH+7"
+					I.screen_loc = "WEST-3:0,SOUTH+7"
 				else
 					I.screen_loc = ui_hand_position(get_held_index_of_item(I))
 			client.screen += I
@@ -144,10 +138,10 @@
 				used_prop = "gen"
 				prop = I.getonmobprop(used_prop)
 			if(I.force_reupdate_inhand)
-				if(I.onprop[used_prop])
+				if(I.onprop?[used_prop])
 					prop = I.onprop[used_prop]
 				else
-					I.onprop[used_prop] = prop
+					LAZYSET(I.onprop, used_prop, prop)
 			if(!prop)
 				continue
 			var/flipsprite = FALSE
@@ -308,6 +302,18 @@
 
 	apply_overlay(HEAD_LAYER)
 
+/mob/living/carbon/update_inv_cloak()
+	remove_overlay(CLOAK_LAYER)
+
+	if(client && hud_used && hud_used.inv_slots[SLOT_CLOAK])
+		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
+		inv.update_icon()
+
+	if(wear_cloak)
+		overlays_standing[CLOAK_LAYER] = wear_cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/cloaks.dmi')
+		update_hud_head(wear_cloak)
+
+	apply_overlay(CLOAK_LAYER)
 
 /mob/living/carbon/update_inv_handcuffed()
 	remove_overlay(HANDCUFF_LAYER)

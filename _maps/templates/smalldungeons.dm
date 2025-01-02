@@ -28,7 +28,7 @@
 		/obj/item/clothing/shoes/roguetown/simpleshoes = 4,
 		/obj/item/clothing/suit/roguetown/shirt/undershirt/random = 5,
 		/obj/item/storage/belt/rogue/leather/cloth = 4,
-		/obj/item/clothing/cloak/raincloak/mortus = 3,
+		/obj/item/clothing/cloak/raincloak/rogue = 3,
 		/obj/item/clothing/head/roguetown/armingcap = 4,
 		/obj/item/clothing/cloak/apron/waist = 3,
 		/obj/item/storage/belt/rogue/leather/rope = 3,
@@ -146,7 +146,7 @@
 		/obj/item/clothing/shoes/roguetown/simpleshoes = 4,
 		/obj/item/clothing/suit/roguetown/shirt/undershirt/random = 5,
 		/obj/item/storage/belt/rogue/leather/cloth = 4,
-		/obj/item/clothing/cloak/raincloak/mortus = 3,
+		/obj/item/clothing/cloak/raincloak/rogue = 3,
 		/obj/item/clothing/head/roguetown/armingcap = 4,
 		/obj/item/clothing/cloak/apron/waist = 3,
 		/obj/item/storage/belt/rogue/leather/rope = 3,
@@ -278,6 +278,6 @@
 		/obj/item/book/granter/spell/blackstone/blindness = 1,
 		/obj/item/book/granter/spell/blackstone/invisibility = 3,
 		/obj/item/book/granter/spell/blackstone/sicknessray = 2,
-		/obj/item/book/granter/spell/blackstone/bonechill = 2
+		/obj/item/book/granter/spell/blackstone/strengthen_undead = 2
 	)
 	lootcount = 1

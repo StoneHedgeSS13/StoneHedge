@@ -57,7 +57,7 @@
 	name = "poisoned bolt"
 	damage = 70
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/poison
-	poisontype = /datum/reagent/berrypoison
+	poisontype = /datum/reagent/toxin/berrypoison
 	poisonfeel = "burning" //Ditto
 	poisonamount = 7 //Can't spam crossbows as much as bows, and its a thiccer projectile so slight more poison in bolts.
 
@@ -167,7 +167,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
+	poisontype = /datum/reagent/toxin/berrypoison //Support for future variations of poison for arrow-crafting
 	poisonfeel = "burning" //Ditto
 	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
 
@@ -204,8 +204,9 @@
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
 /obj/projectile/bullet/reusable/bullet
-	name = "lead ball"
-	damage = 50		//Arrow-tier damage, so less than crossbow.
+	name = "iron ball"
+	desc = "I got balls of iron."
+	damage = 75
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -218,13 +219,26 @@
 	armor_penetration = 75	//Crossbow-on-crack AP. Armor only goes up to 100 protection normally; so this ignores most of it but not all. Wear good armor!
 	speed = 0.1		//ZOOM!!!!!
 
+/obj/projectile/bullet/reusable/bullet/steel
+	name = "steel ball"
+	desc = "I got balls of steel."
+	damage = 100 //cock and ball torture from wikipedia the free online encylopedia
+
 /obj/item/ammo_casing/caseless/rogue/bullet
-	name = "lead sphere"
-	desc = "A small lead sphere. This should go well with gunpowder."
+	name = "iron sphere"
+	desc = "A small iron sphere. This should go well with firepowder."
 	projectile_type = /obj/projectile/bullet/reusable/bullet
 	caliber = "musketball"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
+	dropshrink = 0.5
+	possible_item_intents = list(/datum/intent/use)
+	max_integrity = 0
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/ammo_casing/caseless/rogue/bullet/steel
+	name = "steel sphere"
+	desc = "A small iron sphere. This should go well with firepowder."
 	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0

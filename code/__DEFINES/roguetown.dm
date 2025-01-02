@@ -154,21 +154,22 @@
 	/datum/species/anthromorphbig,\
 	/datum/species/demihuman,\
 )
-#define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/eora, /datum/patron/divine/xylix, /datum/patron/divine/ravox, /datum/patron/divine/malum, /datum/patron/divine/abyssor)
+#define ALL_CLERIC_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/yamais, /datum/patron/divine/hermeir, /datum/patron/divine/viiritri, /datum/patron/divine/onder, /datum/patron/divine/minhur, /datum/patron/divine/svaeryog, /datum/patron/divine/abyssia, /datum/patron/divine/jayx, /datum/patron/inhumen/levishth, /datum/patron/inhumen/nyrnhe, /datum/patron/inhumen/thief, /datum/patron/inhumen/sacrifice)
 
-#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra, /datum/patron/divine/eora) // Currently unused.
+#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/hermeir, /datum/patron/divine/viiritri) // Currently unused.
 
 #define ALL_DIVINE_PATRONS list(\
-	/datum/patron/divine/astrata,\
-	/datum/patron/divine/noc,\
-	/datum/patron/divine/dendor,\
-	/datum/patron/divine/abyssor,\
-	/datum/patron/divine/ravox,\
-	/datum/patron/divine/necra,\
-	/datum/patron/divine/xylix,\
-	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum,\
-	/datum/patron/divine/eora\
+	/datum/patron/divine/elysius,\
+	/datum/patron/divine/lune,\
+	/datum/patron/divine/sylvarn,\
+	/datum/patron/divine/abyssia,\
+	/datum/patron/divine/minhur,\
+	/datum/patron/divine/yamais,\
+	/datum/patron/divine/onder,\
+	/datum/patron/divine/hermeir,\
+	/datum/patron/divine/svaeryog,\
+	/datum/patron/divine/viiritri,\
+	/datum/patron/divine/jayx\
 )
 
 #define TEN_CURSES list(\
@@ -198,7 +199,7 @@
 	INHUMEN_CURSES\
 )
 
-#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god)
+#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/abyssia, /datum/patron/divine/minhur, /datum/patron/divine/yamais, /datum/patron/divine/onder, /datum/patron/divine/hermeir, /datum/patron/divine/svaeryog, /datum/patron/divine/viiritri, /datum/patron/divine/jayx, /datum/patron/old_god)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -256,6 +257,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_PILGRIM 		"CAT_PILGRIM"  		// Pilgrim classes
 #define CTAG_ADVENTURER 	"CAT_ADVENTURER"  	// Adventurer classes
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercenary classes
+#define CTAG_HENCH			"CAT_HENCH"		// Henchman classes
 #define CTAG_SELLSWORD		"CAT_SELLSWORD"		// Sellsword classes
 #define CTAG_TOWNER 		"CAT_TOWNER"  		// Villager class - Villagers can use it
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
@@ -266,6 +268,8 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_WATCH			"CAT_WATCH"			// Town-Watch classes; sloppy class selection system.
 #define CTAG_ROYALGUARD		"CAT_ROYALGUARD"	// Royal Guard classes; sloppy class selection system.
 #define CTAG_HEIR			"CAT_HEIR"			// Royal heir classes, as above.
+#define CTAG_LADY			"CAT_LADY"			// Consort Classes, as above.
+#define CTAG_SQUIRE			"CAT_SQUIRE"		// Squire Love, Classes, as above.
 
 /*
 	Defines for the triumph buy datum categories

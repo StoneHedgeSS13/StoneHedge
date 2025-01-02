@@ -4,6 +4,7 @@
 	desc = "A bottle of pleasantly smelling fragrance."
 	icon = 'icons/roguetown/items/perfume.dmi'
 	icon_state = "perfume-bottle-empty"
+	dropshrink = 0.5
 
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON

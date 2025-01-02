@@ -26,11 +26,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	spans |= speech_span
 	if(!language)
 		language = get_default_language()
-	send_speech(message, 7, src, , spans, message_language=language)
-	if(language.flags & SIGNLANG)
+	send_speech(message, 7, src, null, spans, message_language=language)
+	// fallback for non-mob atoms using sign language, somehow
+	var/datum/language/lang_datum = GLOB.language_datum_instances[language]
+	if(lang_datum.flags & SIGNLANG)
 		//do emote from list
-		var/emote = pick(language.signlang_verb)
-		src.visible_message(span_emote("[emote]"))
+		visible_message(span_emote(pick(lang_datum.signlang_verb)))
 
 /atom/movable/proc/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
@@ -97,10 +98,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			if(istype(speaker, /mob/living))
 				var/mob/living/L = speaker
 				namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
-				if(message_language.flags & SIGNLANG)
-					//do emote from list
-					var/emote = pick(message_language.signlang_verb)
-					L.emote(emote)
 			else
 				namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"
@@ -176,10 +173,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /proc/get_radio_name(freq)
 	return freq
-	var/returntext = GLOB.reverseradiochannels["[freq]"]
-	if(returntext)
-		return returntext
-	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
 
 /proc/attach_spans(input, list/spans)
 	return "[message_spans_start(spans)][input]</span>"

@@ -26,7 +26,7 @@
 /datum/surgery_step/set_bone
 	name = "Set bones"
 	time = 6.4 SECONDS
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	accept_hand = TRUE
 	implements = list(
 		TOOL_BONESETTER = 80,

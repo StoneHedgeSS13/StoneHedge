@@ -69,12 +69,13 @@
 
 /atom/movable/screen/alert/status_effect/debuff/stealthcd
 	name = "Stealth Broken"
-	desc = "I've recently dealt a sneak attack and can't sneak again for a short while"
-	icon_state = "sleepy"
+	desc = "I've either been found or recently dealt a sneak attack and can't sneak again for a short while"
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "stealthcd"
 
 /datum/status_effect/debuff/stealthcd/on_apply()
 	if(owner.mind)
-		duration = duration - (owner.mind.get_skill_level(/datum/skill/misc/sneaking))
+		duration = duration - ((owner.mind.get_skill_level(/datum/skill/misc/sneaking)) SECONDS * 2)
 	if(owner.m_intent == MOVE_INTENT_SNEAK)
 		owner.toggle_rogmove_intent(MOVE_INTENT_WALK)
 		owner.update_sneak_invis()
@@ -222,6 +223,17 @@
 	desc = "I should get some rest."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/sleepytime/lune
+	id = "sleepytimelune"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime/lune
+	effectedstats = list()
+
+/atom/movable/screen/alert/status_effect/debuff/sleepytime/lune
+	name = "Tired"
+	desc = "Night is beautiful, I should sleep however."
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "sleepylune"
+
 /datum/status_effect/debuff/trainsleep
 	id = "trainsleep"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/trainsleep
@@ -262,6 +274,17 @@
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/cumbrained
+	id = "cumbrained"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/cumbrained
+	effectedstats = list("intelligence" = -10, "strength" = -6, "speed" = -6)
+	duration = 60 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/cumbrained
+	name = "Cum Brained"
+	desc = "It's hard to think..."
+	icon_state = "fentanyl"
+
 //Death debuff
 
 /datum/status_effect/debuff/death_weaken
@@ -270,7 +293,7 @@
 	status_type = STATUS_EFFECT_UNIQUE
 	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
 	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
-	var/extralives = 1
+	duration = 10 MINUTES
 
 /// SURRENDERING DEBUFFS
 
@@ -329,3 +352,108 @@
 	name = "Curse of the Seelie"
 	desc = "I've been cursed for my horrific deed..."
 	icon_state = "stressb"
+
+/datum/status_effect/debuff/bigboobs
+	id = "bigboobs"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/bigboobs
+	examine_text = span_notice("They have massive MAGICAL GOODS!")
+	effectedstats = list("constitution" = 3,"endurance" = -2, "speed" = -1)
+	duration = 10 MINUTES
+	var/initialpenis
+	var/initialbutt
+	var/initialball
+	var/initialbreasts
+	var/nodrawback = FALSE
+
+/datum/status_effect/debuff/bigboobs/permanent
+	duration = -1 //used for quirk
+
+/datum/status_effect/debuff/bigboobs/permanent/lite
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/bigboobslite
+	examine_text = span_notice("They have massive GOODS!")
+	nodrawback = TRUE
+
+/atom/movable/screen/alert/status_effect/debuff/bigboobs
+	name = "Enchanted Endowment" //was gonna name it a curse but it isn't a technically one.
+	desc = "They feel as heavy as gold and are massive... My back hurts."
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "bigboobs"
+
+/atom/movable/screen/alert/status_effect/debuff/bigboobslite
+	name = "Natural Endowment"
+	desc = "I got unusually large, natural bits, they aren't as heavy as an enchanted one thankfully."
+	icon = 'modular_stonehedge/licensed-eaglephntm/icons/mob/screen_alert.dmi'
+	icon_state = "bigboobslite"
+
+/datum/status_effect/debuff/bigboobs/on_apply()
+	. = ..()
+	var/mob/living/carbon/human/species/user = owner
+	if(!user)
+		return
+	if(nodrawback)
+		ADD_TRAIT(user, TRAIT_ENDOWMENTLITE, id)
+	else
+		ADD_TRAIT(user, TRAIT_ENDOWMENT, id)
+	to_chat(user, span_warning("Gah! my [user.gender == FEMALE ? "TITS" : "JUNK"] expand to impossible sizes!"))
+	//max them out.
+	for(var/obj/item/organ/forgan as anything in user.internal_organs) //as anything cause i either do this or use for() twice which is i guess worse.
+		if(istype(forgan, /obj/item/organ/penis))
+			initialpenis = forgan.organ_size
+			forgan.organ_size = TOTAL_PENIS_SIZE
+			continue
+		if(istype(forgan, /obj/item/organ/butt))
+			initialbutt = forgan.organ_size
+			forgan.organ_size = TOTAL_BUTT_SIZE
+			continue
+		if(istype(forgan, /obj/item/organ/filling_organ/testicles))
+			initialball = forgan.organ_size
+			forgan.organ_size = TOTAL_TESTICLES_SIZE
+			continue
+		if(istype(forgan, /obj/item/organ/filling_organ/breasts))
+			initialbreasts = forgan.organ_size
+			forgan.organ_size = TOTAL_BREASTS_SIZE
+			continue
+		continue
+	user.update_body_parts(TRUE)
+	//drop our unwearable equipment to the floor.
+	if(user.gender == MALE)
+		var/obj/item/clothing/thepants = user.wear_pants
+		if(thepants && !thepants?.can_hold_endowed)
+			user.dropItemToGround(thepants)
+	else
+		var/obj/item/clothing/theshirt = user.wear_shirt
+		var/obj/item/clothing/thearmor = user.wear_armor
+		if(theshirt && !theshirt?.can_hold_endowed)
+			user.dropItemToGround(theshirt)
+		if(thearmor && !thearmor?.can_hold_endowed)
+			user.dropItemToGround(thearmor)
+
+/datum/status_effect/debuff/bigboobs/on_remove()
+	. = ..()
+	var/mob/living/carbon/human/species/user = owner
+	if(!user)
+		return
+	REMOVE_TRAIT(user, TRAIT_ENDOWMENT, id)
+	to_chat(user, span_notice("Phew, My bits shrunk back to the way they were."))
+	//return to pref sizes.
+	for(var/obj/item/organ/forgan as anything in user.internal_organs)
+		if(istype(forgan, /obj/item/organ/penis))
+			forgan.organ_size = initialpenis
+			continue
+		if(istype(forgan, /obj/item/organ/butt))
+			forgan.organ_size = initialbutt
+			continue
+		if(istype(forgan, /obj/item/organ/filling_organ/testicles))
+			forgan.organ_size = initialball
+			continue
+		if(istype(forgan, /obj/item/organ/filling_organ/breasts))
+			forgan.organ_size = initialbreasts
+			continue
+		continue
+	user.update_body_parts(TRUE)
+
+/datum/status_effect/debuff/lepermask
+	id = "lepermask"
+	alert_type = null
+	effectedstats = list("perception" = -5) //should make you pretty blind.
+	duration = -1

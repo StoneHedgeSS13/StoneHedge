@@ -1,7 +1,9 @@
 /mob/living/proc/update_rogfat() //update hud and regen after last_fatigued delay on taking
-//	maxrogfat = round(100 * (rogstam/maxrogstam))
-//	if(maxrogfat < 5)
-//		maxrogfat = 5
+	maxrogfat = maxrogstam / 10
+	var/athletics_skill = 0
+	if(mind)
+		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	maxrogfat = (STAEND + (athletics_skill) / 2) * 10 //This here is the calculation for max FATIGUE / GREEN
 
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = rogstam / maxrogstam
@@ -19,7 +21,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
+	maxrogstam = (STAEND + (athletics_skill) / 2) * 100 // STAMINA / BLUE
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
@@ -30,8 +32,9 @@
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM) || HAS_TRAIT(src, TRAIT_ZOMBIE_SPEECH))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
+		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
-		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.08))
 		mind.adjust_experience(/datum/skill/misc/athletics, (STAINT*0.08))
 	rogstam += added
 	if(rogstam > maxrogstam)
@@ -106,7 +109,7 @@
 		heart_attacking = TRUE
 		shake_camera(src, 1, 3)
 		blur_eyes(10)
-		var/stuffy = list("ZIZO GRABS MY WEARY HEART!","ARGH! MY HEART BEATS NO MORE!","NO... MY HEART HAS BEAT IT'S LAST!","MY HEART HAS GIVEN UP!","MY HEART BETRAYS ME!","THE METRONOME OF MY LIFE STILLS!")
+		var/stuffy = list("LEVISHTH GRABS MY WEARY HEART!","ARGH! MY HEART BEATS NO MORE!","NO... MY HEART HAS BEAT IT'S LAST!","MY HEART HAS GIVEN UP!","MY HEART BETRAYS ME!","THE METRONOME OF MY LIFE STILLS!")
 		to_chat(src, span_userdanger("[pick(stuffy)]"))
 		emote("breathgasp", forced = TRUE)
 		addtimer(CALLBACK(src, PROC_REF(adjustOxyLoss), 110), 30)
@@ -117,7 +120,7 @@
 /mob/proc/do_freakout_scream() // currently solely used for vampire snowflake stuff
 	emote("scream", forced=TRUE)
 
-/mob/living/carbon/freak_out() // currently solely used for vampire snowflake stuff
+/mob/living/carbon/freak_out(add_stress = TRUE) // currently solely used for vampire snowflake stuff
 	if(mob_timers["freakout"])
 		if(world.time < mob_timers["freakout"] + 10 SECONDS)
 			flash_fullscreen("stressflash")
@@ -126,7 +129,9 @@
 	shake_camera(src, 1, 3)
 	flash_fullscreen("stressflash")
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	add_stress(/datum/stressevent/freakout)
+	Stun(20)
+	if(add_stress)
+		add_stress(/datum/stressevent/freakout)
 	emote("fatigue", forced = TRUE)
 	if(hud_used)
 		var/matrix/skew = matrix()

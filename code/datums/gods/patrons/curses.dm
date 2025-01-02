@@ -11,23 +11,27 @@
 	/// Trait given by this curse
 	var/trait
 
+	var/fear = FALSE
+
 /datum/curse/proc/on_life()
-	return 
-
-/datum/curse/proc/on_death()
-	return 
-
-/datum/curse/proc/on_gain(mob/living/carbon/human/owner)
-	ADD_TRAIT(owner, trait, TRAIT_CURSE)
-	to_chat(owner, span_userdanger("Something is wrong... I feel cursed."))
-	to_chat(owner, span_danger(description))
-	owner.playsound_local(get_turf(owner), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
 	return
 
-/datum/curse/proc/on_loss(mob/living/carbon/human/owner)
+/datum/curse/proc/on_death()
+	return
+
+/datum/curse/proc/on_gain(mob/living/carbon/human/owner, silent)
+	ADD_TRAIT(owner, trait, TRAIT_CURSE)
+	if(!silent)
+		to_chat(owner, span_userdanger("Something is wrong... I feel cursed."))
+		to_chat(owner, span_danger(description))
+		owner.playsound_local(get_turf(owner), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
+	return
+
+/datum/curse/proc/on_loss(mob/living/carbon/human/owner, silent)
 	REMOVE_TRAIT(owner, trait, TRAIT_CURSE)
-	to_chat(owner, span_userdanger("Something has changed... I feel relieved."))
-	owner.playsound_local(get_turf(owner), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
+	if(!silent)
+		to_chat(owner, span_userdanger("Something has changed... I feel relieved."))
+		owner.playsound_local(get_turf(owner), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
 	qdel(src)
 	return
 
@@ -36,25 +40,27 @@
 		var/datum/curse/C = curse
 		C.on_life(src)
 
-/mob/living/carbon/human/proc/add_curse(datum/curse/C)
+/mob/living/carbon/human/proc/add_curse(datum/curse/C, silent)
 	if(is_cursed(C))
 		return FALSE
 
 	C = new C()
 	curses += C
-	C.on_gain(src)
+	if(!silent)
+		C.on_gain(src)
+	else
+		C.on_gain(src, TRUE)
 	return TRUE
 
-/mob/living/carbon/human/proc/remove_curse(datum/curse/C)
+/mob/living/carbon/human/proc/remove_curse(datum/curse/C, silent)
 	if(!is_cursed(C))
 		return FALSE
-	
+
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
-			curse.on_loss(src)
+			curse.on_loss(src, silent)
 			curses -= curse
 			return TRUE
-			break
 
 	return FALSE
 
@@ -65,7 +71,7 @@
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
 			return TRUE
-	
+
 	return FALSE
 
 //////////////////////
@@ -74,73 +80,78 @@
 
 /datum/curse/atheism
 	name = "Curse of Atheism"
-	description = "I cannot stand any mention of the divine, and I refuse to believe either the gods or miracles are real."
+	description = "I have lost the divine, and I refuse to follow them.."
 	trait = TRAIT_ATHEISM_CURSE
 	var/datum/patron/old_patron
 
 //////////////////////
-///   TEN CURSES   ///
+///   Common Curses   ///
 //////////////////////
 
 /datum/curse/astrata
-	name = "Astrata's Curse"
-	description = "I am forsaken by the Sun. Healing miracles have no effect on me."
+	name = "Healer's Curse"
+	description = "Healing miracles have no effect on me."
 	trait = TRAIT_ASTRATA_CURSE
 
 /datum/curse/noc
-	name = "Noc's Curse"
+	name = "Jayx's Curse"
 	description = "Magical knowledge is now beyond my grasp."
 	trait = TRAIT_NOC_CURSE
 
 /datum/curse/ravox
-	name = "Ravox's Curse"
-	description = "Violence disgusts me. I cannot bring myself to wield any kind of weapon."
+	name = "Minhur's Curse"
+	description = "I'm tired. I cannot bring myself to wield any kind of weapon. What's the point?"
 	trait = TRAIT_RAVOX_CURSE
 
 /datum/curse/necra
-	name = "Necra's Curse"
-	description = "Necra has claimed my soul. No one will bring me back from the dead."
+	name = "Curse of final Reaping"
+	description = "No one will bring me back from the dead. Yamais has claimed me for good this time."
 	trait = TRAIT_NECRA_CURSE
 
 /datum/curse/xylix
-	name = "Xylix's Curse"
+	name = "Fortune's Woe"
 	description = "Fortune is no longer on my side."
 	trait = TRAIT_XYLIX_CURSE
 
 /datum/curse/pestra
-	name = "Pestra's Curse"
+	name = "The Rot"
 	description = "I feel sick to my stomach, and my skin is slowly starting to rot."
 	trait = TRAIT_PESTRA_CURSE
 
 /datum/curse/eora
-	name = "Eora's Curse"
+	name = "Curse of Apathy"
 	description = "I am unable to show any kind of affection or love, whether carnal or platonic."
 	trait = TRAIT_EORA_CURSE
 
 //////////////////////
-/// INHUMEN CURSES ///
+/// Uncommon Curses ///
 //////////////////////
 
 /datum/curse/zizo
-	name = "Zizo's Curse"
+	name = "Levishth's Curse"
 	description = "I can no longer distinguish reality from delusion."
 	trait = TRAIT_ZIZO_CURSE
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
 /datum/curse/graggar
-	name = "Graggar's Curse"
+	name = "Curse of the Beast"
 	description = "I am engulfed by unspeakable rage. I cannot stop myself from harming others. When that's not an option, my rage is directed inward."
 	trait = TRAIT_GRAGGAR_CURSE
 
 /datum/curse/matthios
-	name = "Matthios' Curse"
+	name = "Thief's Curse"
 	description = "I hate the sight of wealth, and I cannot have anything to do with mammons."
-	trait = TRAIT_MATTHIOS_CURSE	
+	trait = TRAIT_MATTHIOS_CURSE
 
 /datum/curse/baotha
-	name = "Baotha's Curse"
+	name = "Viriitri's Trial"
 	description = "I'm in a constant state of arousal, and I cannot control my urges."
 	trait = TRAIT_BAOTHA_CURSE
+
+/datum/curse/nympho
+	name = "Nymph's Curse"
+	description = "I'm in a constant state of arousal, and I cannot control my urges, even clothes get me off..."
+	trait = TRAIT_NYMPHO_CURSE
 
 //////////////////////
 /// ON GAIN / LOSS ///
@@ -179,7 +190,7 @@
 //////////////////////
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["pestra_curse"])
 		if(world.time < owner.mob_timers["pestra_curse"] + rand(30,60)SECONDS)
 			return
@@ -200,24 +211,38 @@
 
 /datum/curse/baotha/on_life(mob/living/carbon/human/owner)
 	. = ..()
+	if(owner.mob_timers["baotha_curse_passive"])
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(2,10)SECONDS)
+			return
+	owner.mob_timers["baotha_curse_passive"] = world.time
+	owner.sexcon.arousal += 1
 	if(owner.mob_timers["baotha_curse"])
-		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,60)SECONDS)
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,90)SECONDS)
 			return
 	owner.mob_timers["baotha_curse"] = world.time
+	owner.sexcon.arousal += rand(-20,50)
 
-	var/effect = rand(1, 3)
-	if(owner.gender == "female")
-		switch(effect)
-			if(1)
-				owner.emote("sexmoanhvy")
-			if(2)
-				owner.emote("sexmoanlight")
-			if(3)
-				owner.cursed_freak_out()
-	//else //we dont have male moans yet
+/datum/curse/nympho/on_life(mob/living/carbon/human/owner)
+	. = ..()
+	if(owner.mob_timers["nympho_curse_passive"])
+		if(world.time < owner.mob_timers["nympho_curse"] + rand(2,10)SECONDS)
+			return
+	owner.mob_timers["nympho_curse_passive"] = world.time
+	if(owner.wear_pants)
+		if(owner.wear_pants.flags_inv & HIDECROTCH && !owner.wear_pants.genitalaccess)
+			owner.sexcon.arousal += 1
+	if(owner.mob_timers["nympho_curse"])
+		if(world.time < owner.mob_timers["nympho_curse"] + rand(15,90)SECONDS)
+			return
+	owner.mob_timers["nympho_curse"] = world.time
+	if(owner.wear_pants)
+		if(owner.wear_pants.flags_inv & HIDECROTCH && !owner.wear_pants.genitalaccess)
+			if(rand(5))
+				to_chat(owner, span_love("I feel my [owner.wear_pants] rub against me..."))
+			owner.sexcon.arousal += rand(5,50)
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["graggar_curse"])
 		if(world.time < owner.mob_timers["graggar_curse"] + rand(15,60)SECONDS)
 			return
@@ -233,9 +258,23 @@
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
 	handle_maniac_visions(owner, hallucinations)
-	handle_maniac_hallucinations(owner)
+	if(HAS_TRAIT(owner, TRAIT_SOONTOWAKEUP) && SSticker.mode?.roundvoteend) //If the round timer isn't up yet, it'll do the normal hallucination..
+		handle_waking_up(owner)
+	else
+		handle_maniac_hallucinations(owner)
 	handle_maniac_floors(owner)
 	handle_maniac_walls(owner)
+	if(HAS_TRAIT(owner, TRAIT_SOONTOWAKEUP) && !fear && SSticker.mode?.roundvoteend) //wake up..
+		REMOVE_TRAIT(owner, TRAIT_SOONTOWAKEUP, TRAIT_GENERIC)
+		var/sound/im_sick = sound('sound/villain/imsick.ogg', TRUE, FALSE, CHANNEL_IMSICK, 5)
+		SEND_SOUND(owner, im_sick)
+		owner.overlay_fullscreen("dream", /atom/movable/screen/fullscreen/dreaming)
+		owner.overlay_fullscreen("wakeup", /atom/movable/screen/fullscreen/dreaming/waking_up)
+		to_chat(owner, span_userdanger("<span class='big'>WHAT IS HAPPENING?!</span>"))
+		ADD_TRAIT(owner, TRAIT_MANIAC_AWOKEN, TRAIT_GENERIC) // The only change is when someone examines the owner.
+		ADD_TRAIT(owner, TRAIT_SCREENSHAKE, TRAIT_GENERIC)
+		fear = TRUE
+		return FALSE
 
 
 // cursed_freak_out() is freak_out() without stress adjustments
@@ -262,11 +301,11 @@
 	if(hud_used)
 		var/matrix/skew = matrix()
 		skew.Scale(2)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)
 				continue
 			animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
 			animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
-	
+

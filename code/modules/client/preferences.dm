@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/enable_tips = TRUE
 	var/tip_delay = 500 //tip delay in milliseconds
 	// Commend variable on prefs instead of client to prevent reconnect abuse (is persistant on prefs, opposed to not on client)
-	var/commendedsomeone = FALSE
+	var/commendedtimes = 0
 
 	//Antag preferences
 	var/list/be_special = list()		//Special role selection
@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	//character preferences
 	var/slot_randomized					//keeps track of round-to-round randomization of the character slot, prevents overwriting
 	var/real_name						//our character's name
+	var/custom_race_name				//custom race name
 	var/gender = MALE					//gender of character (well duh) (LETHALSTONE EDIT: this no longer references anything but whether the masculine or feminine model is used)
 	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
 	var/pronouns = HE_HIM				// LETHALSTONE EDIT: character's pronouns (well duh)
@@ -86,7 +87,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/species/pref_species = new /datum/species/human/northern()	//Mutant race
 	var/static/datum/species/default_species = new /datum/species/human/northern()
 	var/datum/patron/selected_patron
-	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
+	var/static/datum/patron/default_patron = /datum/patron/divine/elysius
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/list/friendlyGenders = list("male" = "masculine", "female" = "feminine")
@@ -126,6 +127,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/mastervol = 50
 
 	var/anonymize = TRUE
+	var/masked_examine = FALSE
 
 	var/lastclass
 
@@ -168,9 +170,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/personality
 	var/strengths
 	var/weakness
+	var/theme
 */
 
-	var/theme
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
@@ -347,8 +349,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 
 			dat += "<BR>"
-			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
-
+			dat += "<b>Race Origin:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			dat += "<b>Race Name:</b> <a href='?_src_=prefs;preference=customracename;task=input'>Change: [custom_race_name]</a><BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
@@ -458,8 +460,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Personality:</b> <a href='?_src_=prefs;preference=personality;task=input'>Change</a>"
 			dat += "<br><b>Strengths:</b> <a href='?_src_=prefs;preference=strengths;task=input'>Change</a>"
 			dat += "<br><b>Weaknesses:</b> <a href='?_src_=prefs;preference=weakness;task=input'>Change</a>"
-*/
 			dat += "<br><b>Infocard Music:</b> <a href='?_src_=prefs;preference=theme;task=input'>Change</a>"
+*/
 			dat += "<br><b>__________________________</b>"
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
@@ -789,7 +791,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Watchmen Captain", "Prophet", "Merchant Prince", "Archivist", "Nightmaster", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Chieftain"), widthPerColumn = 295, height = 620) //295 620
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Guild Physician", "Archpriest", "Merchant Prince", "Academy Archmage", "Blacksmith", "Nightmaster", "Towner", "Grenzelhoft Mercenary", "Low Life", "Prisoner", "Chieftain"), widthPerColumn = 295, height = 620) //295 620
 	if(!SSjob)
 		return
 
@@ -1080,7 +1082,7 @@ Slots: [job.spawn_positions]</span>
 		dat += "<center><a href='?_src_=prefs;preference=trait;task=close'>Done</a></center>"
 		dat += "<hr>"
 		dat += "<center><b>Current quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
-		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] max positive quirks<br>\
+		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS + max(0, round(get_playerquality(parent.ckey)/10))] max positive quirks<br>\
 		<b>Quirk balance remaining:</b> [GetQuirkBalance()]</center><br>"
 		for(var/V in SSquirks.quirks)
 			var/datum/quirk/T = SSquirks.quirks[V]
@@ -1125,6 +1127,8 @@ Slots: [job.spawn_positions]</span>
 
 /datum/preferences/proc/GetQuirkBalance()
 	var/bal = 0
+	bal += 2 //vice
+	bal += max(0, round(get_playerquality(parent.ckey)/10))
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
@@ -1306,8 +1310,8 @@ Slots: [job.spawn_positions]</span>
 						return
 					all_quirks -= quirk
 				else
-					if(GetPositiveQuirkCount() >= MAX_QUIRKS)
-						to_chat(user, span_warning("I can't have more than [MAX_QUIRKS] positive quirks!"))
+					if(GetPositiveQuirkCount() >= MAX_QUIRKS + max(0, round(get_playerquality(parent.ckey)/10)))
+						to_chat(user, span_warning("I can't have more than [MAX_QUIRKS + max(0, round(get_playerquality(parent.ckey)/10))] positive quirks!"))
 						return
 					if(balance - value < 0)
 						to_chat(user, span_warning("I don't have enough balance to gain this quirk!"))
@@ -1636,7 +1640,6 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<font color='red'>Value must be between [MIN_VOICE_PITCH] and [MAX_VOICE_PITCH].</font>")
 							return
 						voice_pitch = new_voice_pitch
-
 				if("background")
 					to_chat(user, "<span class='notice'>This will be used for the background image of your infocard")
 					to_chat(user, "<span class='notice'>This works best with a repeating pattern image, as the image placed in the background will be repeated.</span>")
@@ -1754,7 +1757,6 @@ Slots: [job.spawn_positions]</span>
 					weakness = new_weakness
 					to_chat(user, "<span class='notice'>Successfully updated weaknesses</span>")
 					log_game("[user] has set their weaknesses to '[weakness]'.")
-*/
 				if("theme")
 					to_chat(user, "<span class='notice'>Spice up your character profile with a nice theme.</span>")
 					var/new_theme = input(user, "Input your link here:", "theme", theme) as message|null
@@ -1771,6 +1773,25 @@ Slots: [job.spawn_positions]</span>
 					theme = new_theme
 					to_chat(user, "<span class='notice'>Successfully updated theme.</span>")
 					log_game("[user] has set their theme to '[theme]'.")
+*/
+
+				if("customracename")
+					to_chat(user, "<span class='notice'>What are you?</span>")
+					var/new_custom_race_name = input(user, "Input your custom race name:", "Custom Race Name", custom_race_name) as message|null
+					if(new_custom_race_name == null)
+						return
+					if(new_custom_race_name == "")
+						custom_race_name = null
+						ShowChoices(user)
+						return
+					if(!valid_custom_race_name(user, new_custom_race_name))
+						custom_race_name = null
+						ShowChoices(user)
+						return
+					custom_race_name = new_custom_race_name
+					to_chat(user, "<span class='notice'>Successfully updated Race Name</span>")
+					log_game("[user] has set their Race Name to '[custom_race_name]'.")
+
 
 				if("headshot")
 					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
@@ -1911,12 +1932,9 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
 
 				if("char_accent")
-					var/list/accent = GLOB.character_accents.Copy()
-					var/result = input(user, "Select an accent", "Stonehedge") as null|anything in accent
-					if(result)
-						result = accent[result]
-						var/datum/char_accent/C = new result()
-						char_accent = C
+					var/selectedaccent = input(user, "Choose your character's accent:", "Character Preference") as null|anything in GLOB.character_accents
+					if(selectedaccent)
+						char_accent = selectedaccent
 
 				if("mutant_color")
 					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #1 color:", "Character Preference","#"+features["mcolor"])
@@ -2431,7 +2449,6 @@ Slots: [job.spawn_positions]</span>
 	character.detail = detail
 	character.set_patron(selected_patron)
 	character.backpack = backpack
-	character.defiant = defiant
 
 	character.jumpsuit_style = jumpsuit_style
 
@@ -2456,9 +2473,9 @@ Slots: [job.spawn_positions]</span>
 	character.personality = personality
 	character.strengths = strengths
 	character.weakness = weakness
-*/
-
 	character.theme = theme
+*/
+	character.custom_race_name = custom_race_name
 
 	character.nsfw_info = nsfw_info
 	// LETHALSTONE ADDITION BEGIN: additional customizations
@@ -2669,6 +2686,12 @@ Slots: [job.spawn_positions]</span>
 		return FALSE
 	return TRUE
 /proc/valid_weakness(mob/user, value, silent = FALSE)
+
+	if(!length(value))
+		return FALSE
+	return TRUE
+
+/proc/valid_custom_race_name(mob/user, value, silent = FALSE)
 
 	if(!length(value))
 		return FALSE

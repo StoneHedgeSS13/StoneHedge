@@ -147,14 +147,15 @@ SUBSYSTEM_DEF(vote)
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
 					addomen(OMEN_ROUNDSTART)
-					GLOB.round_timer = GLOB.round_timer + (32 MINUTES)
+					GLOB.round_timer = GLOB.round_timer + ROUND_EXTENSION_TIME
 				else
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
 					var/datum/game_mode/chaosmode/C = SSticker.mode
 					if(istype(C))
 						log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
-						to_chat(world, "\n<font color='purple'>15 minutes remain.</font>")
+						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL] remain.</font>")
 						C.roundvoteend = TRUE
+						C.round_ends_at = GLOB.round_timer + ROUND_END_TIME
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -184,7 +185,7 @@ SUBSYSTEM_DEF(vote)
 					if(H.stat != DEAD)
 						vote_power += 3
 					if(H.job)
-						var/list/list_of_powerful = list("Monarch", "Consort", "Prophet", "Steward", "Hand")
+						var/list/list_of_powerful = list("Monarch", "Consort", "Archpriest", "Guildmaster", "Guild Appraiser", "Hand")
 						if(H.job in list_of_powerful)
 							vote_power += 5
 						else

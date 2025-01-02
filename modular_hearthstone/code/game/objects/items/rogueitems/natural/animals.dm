@@ -1,7 +1,7 @@
 /obj/item/hearthnatural/beespider_fang
 	name = "beespider fang"
 	icon_state = "beespider_fang"
-	desc = "The torn fang of a venomous beespider."
+	desc = "The torn fang of a venomous beespider. Could be grinded for it's venom or used in alchemy."
 	dropshrink = 0.90
 	force = 0
 	throwforce = 0
@@ -10,9 +10,6 @@
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	sellprice = 20
 	dropshrink = 0.50
-	var/venomamount = 5
+	grind_results = list(/datum/reagent/toxin/venom = 5)
 
-/obj/item/hearthnatural/beespider_fang/Initialize()
-	. = ..()
-	create_reagents(venomamount, DRAINABLE|DRAWABLE) //you can drain it or take with syringes but can not put anything inside.
-	reagents.add_reagent(/datum/reagent/toxin/venom, venomamount)
+

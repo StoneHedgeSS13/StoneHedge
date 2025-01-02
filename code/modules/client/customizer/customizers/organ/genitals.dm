@@ -19,32 +19,32 @@
 /datum/customizer_choice/organ/penis/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
-	penis_entry.penis_size = sanitize_integer(penis_entry.penis_size, MIN_PENIS_SIZE, MAX_PENIS_SIZE, DEFAULT_PENIS_SIZE)
+	penis_entry.organ_size = sanitize_integer(penis_entry.organ_size, MIN_PENIS_SIZE, MAX_PENIS_SIZE, DEFAULT_PENIS_SIZE)
 
 /datum/customizer_choice/organ/penis/imprint_organ_dna(datum/organ_dna/organ_dna, datum/customizer_entry/entry, datum/preferences/prefs)
 	..()
 	var/datum/organ_dna/penis/penis_dna = organ_dna
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
-	penis_dna.penis_size = penis_entry.penis_size
+	penis_dna.organ_size = penis_entry.organ_size
 
 /datum/customizer_choice/organ/penis/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
-	dat += "<br>Penis size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=penis_size''>[find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)]</a>"
+	dat += "<br>Penis size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=organ_size''>[find_key_by_value(GLOB.named_penis_sizes, penis_entry.organ_size)]</a>"
 
 /datum/customizer_choice/organ/penis/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
 	switch(href_list["customizer_task"])
-		if("penis_size")
-			var/named_size = input(user, "Choose your penis size:", "Character Preference", find_key_by_value(GLOB.named_penis_sizes, penis_entry.penis_size)) as anything in GLOB.named_penis_sizes
+		if("organ_size")
+			var/named_size = input(user, "Choose your penis size:", "Character Preference", find_key_by_value(GLOB.named_penis_sizes, penis_entry.organ_size)) as anything in GLOB.named_penis_sizes
 			if(isnull(named_size))
 				return
 			var/new_size = GLOB.named_penis_sizes[named_size]
-			penis_entry.penis_size = sanitize_integer(new_size, MIN_PENIS_SIZE, MAX_PENIS_SIZE, DEFAULT_PENIS_SIZE)
+			penis_entry.organ_size = sanitize_integer(new_size, MIN_PENIS_SIZE, MAX_PENIS_SIZE, DEFAULT_PENIS_SIZE)
 
 /datum/customizer_entry/organ/penis
-	var/penis_size = DEFAULT_PENIS_SIZE
+	var/organ_size = DEFAULT_PENIS_SIZE
 
 /datum/customizer/organ/penis/human
 	customizer_choices = list(/datum/customizer_choice/organ/penis/human)
@@ -115,7 +115,6 @@
 		/datum/sprite_accessory/penis/human,
 		/datum/sprite_accessory/penis/thick,
 		/datum/sprite_accessory/penis/knotted,
-		/datum/sprite_accessory/penis/knotted2,
 		)
 
 /datum/customizer_choice/organ/penis/equine
@@ -162,7 +161,6 @@
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/human,
 		/datum/sprite_accessory/penis/knotted,
-		/datum/sprite_accessory/penis/knotted2,
 		/datum/sprite_accessory/penis/barbknot,
 		)
 
@@ -287,8 +285,8 @@
 					return
 				var/new_size = GLOB.named_ball_sizes[named_size]
 				testicles_entry.organ_size = sanitize_integer(new_size, MIN_TESTICLES_SIZE, MAX_TESTICLES_SIZE, DEFAULT_TESTICLES_SIZE)
-		if("virile")
-			testicles_entry.virility = !testicles_entry.virility
+			if("virile")
+				testicles_entry.virility = !testicles_entry.virility
 /datum/customizer/organ/testicles/external
 	customizer_choices = list(/datum/customizer_choice/organ/testicles/external)
 
@@ -545,4 +543,72 @@
 		/datum/sprite_accessory/vagina/spade,
 		/datum/sprite_accessory/vagina/furred,
 		/datum/sprite_accessory/vagina/cloaca,
+		)
+
+/datum/customizer/organ/vagina/cursed
+	customizer_choices = list(/datum/customizer_choice/organ/vagina/cursed)
+
+/datum/customizer_choice/organ/vagina/cursed
+	sprite_accessories = list(
+		/datum/sprite_accessory/vagina/tentacle,
+		/datum/sprite_accessory/vagina/dentata,
+		)
+
+/datum/customizer_entry/organ/butt
+	var/organ_size = DEFAULT_BUTT_SIZE
+
+/datum/customizer/organ/butt
+	abstract_type = /datum/customizer/organ/butt
+	name = "Butt"
+	allows_disabling = TRUE
+	default_disabled = FALSE
+
+/datum/customizer_choice/organ/butt
+	abstract_type = /datum/customizer_choice/organ/butt
+	name = "Butt"
+	customizer_entry_type = /datum/customizer_entry/organ/butt
+	organ_type = /obj/item/organ/butt
+	organ_slot = ORGAN_SLOT_BUTT
+	organ_dna_type = /datum/organ_dna/butt
+
+/datum/customizer_choice/organ/butt/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
+	..()
+	var/datum/customizer_entry/organ/butt/butt_entry = entry
+	butt_entry.organ_size = sanitize_integer(butt_entry.organ_size, MIN_BUTT_SIZE, MAX_BUTT_SIZE, DEFAULT_BUTT_SIZE)
+
+/datum/customizer_choice/organ/butt/imprint_organ_dna(datum/organ_dna/organ_dna, datum/customizer_entry/entry, datum/preferences/prefs)
+	..()
+	var/datum/organ_dna/butt/butt_dna = organ_dna
+	var/datum/customizer_entry/organ/butt/butt_entry = entry
+	butt_dna.organ_size = butt_entry.organ_size
+
+/datum/customizer_choice/organ/butt/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	..()
+	var/datum/customizer_entry/organ/butt/butt_entry = entry
+	dat += "<br>Butt size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=organ_size''>[find_key_by_value(GLOB.named_butt_sizes, butt_entry.organ_size)]</a>"
+
+/datum/customizer_choice/organ/butt/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	..()
+	var/datum/customizer_entry/organ/butt/butt_entry = entry
+	switch(href_list["customizer_task"])
+		if("organ_size")
+			var/named_size = input(user, "Choose your butt size:", "Character Preference", find_key_by_value(GLOB.named_butt_sizes, butt_entry.organ_size)) as anything in GLOB.named_butt_sizes
+			if(isnull(named_size))
+				return
+			var/new_size = GLOB.named_butt_sizes[named_size]
+			butt_entry.organ_size = sanitize_integer(new_size, MIN_BUTT_SIZE, MAX_BUTT_SIZE, DEFAULT_BUTT_SIZE)
+
+/datum/customizer/organ/butt/human
+	customizer_choices = list(/datum/customizer_choice/organ/butt/human)
+
+/datum/customizer_choice/organ/butt/human
+	sprite_accessories = list(/datum/sprite_accessory/butt/pair)
+	allows_accessory_color_customization = FALSE
+
+/datum/customizer/organ/butt/animal
+	customizer_choices = list(/datum/customizer_choice/organ/butt/animal)
+
+/datum/customizer_choice/organ/butt/animal
+	sprite_accessories = list(
+		/datum/sprite_accessory/butt/pair
 		)

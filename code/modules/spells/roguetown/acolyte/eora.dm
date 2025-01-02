@@ -103,3 +103,56 @@
 	timer = 5 MINUTES
 	stressadd = -5
 	desc = "<span class='green'>I feel.. h-hot..  g-getting hard to.. think..</span>"
+
+/obj/effect/proc_holder/spell/invoked/torsion
+	name = "Torsion"
+	overlay_state = "raiseskele" // Menacing skull icon warning you to not cast this for funsies.
+	releasedrain = 60
+	chargetime = 30 // Longer windup than most spells, on par with resurrection's. This is really annoying to get hit by, using it in a fight should be hard.
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	charge_max = 45 SECONDS // 50% more than lightning bolt. Less lethal upfront stun, but annoying lingering wound. This spell does nothing if used on the same target again before they heal.
+	miracle = TRUE
+	devotion_cost = 100  // Highest cost tier of divine spells.
+
+/obj/effect/proc_holder/spell/invoked/torsion/cast(list/targets, mob/living/user) // The actual CBT code is stolen entirely from the admin CBT punishment command.
+	var/mob/living/target = targets[1]
+	if(!ishuman(target))
+		return FALSE
+	var/mob/living/carbon/human/humie = target
+	var/obj/item/bodypart/affecting = humie.get_bodypart(BODY_ZONE_CHEST)
+	if(!affecting)
+		return FALSE // I don't know when a human would not have a chest, but this was in the admin command and I'm sure whoever dev'd that ran into an issue otherwise.
+	if(target.gender != MALE) // This uses body type instead of actual genitals, but so does the wound itself. I shudder to think of what would get torsioned in people with no genitals...
+		user.say("Viiritri, twist their ovaries!")
+	else
+		user.say("Viiritri, twist their balls!")	
+	target.visible_message(span_warning("The air churns strangely around [target]!"), span_danger("I feel a deep sense of dread..."))
+	affecting.add_wound(/datum/wound/cbt) // This has its own flavor text, so above flavor text is less explicit about the torsion.
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/torsion/arcane // If some maniac wants to make this available through scrolls, it can't be a miracle.
+	name = "Telekinetic Torsion"
+	miracle = FALSE
+	devotion_cost = 0
+	associated_skill = /datum/skill/magic/arcane
+	invocation = "Twist and fall!"
+	invocation_type = "shout"
+	cost = 4 // Same cost as Fireball. Definitely stronger than lightning bolt.
+	
+/obj/effect/proc_holder/spell/invoked/torsion/arcane/cast(list/targets, mob/living/user) // Separate effect because we aren't asking Eora for help, we're doing it ourselves.
+	var/mob/living/target = targets[1]
+	if(!ishuman(target))
+		return FALSE
+	var/mob/living/carbon/human/humie = target
+	var/obj/item/bodypart/affecting = humie.get_bodypart(BODY_ZONE_CHEST)
+	if(!affecting)
+		return FALSE
+	target.visible_message(span_warning("The air churns strangely around [target]!"), span_danger("I feel a deep sense of dread..."))
+	affecting.add_wound(/datum/wound/cbt)
+	return TRUE

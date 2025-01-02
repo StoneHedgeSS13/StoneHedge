@@ -3,7 +3,7 @@
 	/// Name of the role
 	var/name = "MIGRANT ROLE"
 	/// Restricts species if the list is not null
-	var/list/allowed_races = RACES_VERY_SHUNNED_UP	//QUICK FIX TO EXCLUDE SEELIE
+	var/list/allowed_races = RACES_ALL_KINDSPLUS	//QUICK FIX TO EXCLUDE SEELIE
 	/// Restricts sexes if list is not null
 	var/list/allowed_sexes
 	/// Restricts ages if list is not null
@@ -25,18 +25,20 @@
 	var/banned_lunatic = TRUE
 
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
+	SSquirks.AssignQuirks(character, character.client, TRUE)
 	return
 
 /datum/migrant_role/pilgrim
 	name = "Pilgrim"
 	banned_leprosy = FALSE
-	advclass_cat_rolls = list(CTAG_PILGRIM = 20)
+	advclass_cat_rolls = list(CTAG_PILGRIM = 30)
 
 /datum/migrant_role/adventurer
 	name = "Adventurer"
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 20)
+	advclass_cat_rolls = list(CTAG_ADVENTURER = 30)
 
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
+	advclass_cat_rolls = list(CTAG_BANDIT = 20)
 	grant_lit_torch = TRUE

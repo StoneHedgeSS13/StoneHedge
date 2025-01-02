@@ -2,7 +2,7 @@
 	abstract_type = /datum/sprite_accessory/tail
 	icon = 'icons/mob/sprite_accessory/tails/tails.dmi'
 	color_key_name = "Tail"
-	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
+	relevant_layers = list(BODY_FRONT_FRONT_LAYER, BODY_BEHIND_LAYER) //made it front front hoping itd hide butts and not break.
 	var/can_wag = FALSE
 
 /datum/sprite_accessory/tail/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -31,7 +31,7 @@
 /datum/sprite_accessory/tail/cat
 	name = "Cat"
 	icon_state = "cat"
-	relevant_layers = list(BODY_FRONT_LAYER)
+	relevant_layers = list(BODY_FRONT_FRONT_LAYER)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/monkey

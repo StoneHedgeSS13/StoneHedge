@@ -35,7 +35,8 @@
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/force_suck_nipples/on_perform(mob/living/user, mob/living/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck their nipples."))
+	if(user.sexcon.do_message_signature("[type]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck their nipples."))
 	target.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -45,7 +46,7 @@
 		user.sexcon.perform_deepthroat_oxyloss(target, 0.6)
 	target.sexcon.handle_passive_ejaculation()
 
-	var/obj/item/organ/filling_organ/breasts/tiddies = target.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/filling_organ/breasts/tiddies = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var/milk_to_add = min(max(tiddies.organ_size, 1), tiddies.reagents.total_volume)
 	if(milk_to_add > 0 && prob(25))
 		tiddies.reagents.trans_to(target, milk_to_add, TRUE, TRUE, FALSE, user, FALSE, INGEST)

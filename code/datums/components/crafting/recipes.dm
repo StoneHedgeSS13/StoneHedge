@@ -17,13 +17,16 @@
 	var/verbage_simple = "craft"
 	var/verbage = "crafts"
 	var/craftsound = 'sound/foley/bandage.ogg'
+	/// Whether or not subtypes of paths in reqs are acceptable.
 	var/subtype_reqs = FALSE
 	var/structurecraft = null
 	var/buildsame = FALSE //allows palisades to be built on top of each other just not the same dir
 	var/wallcraft = FALSE
 	var/craftdiff = 1
 	var/sellprice = 0
+	var/can_be_qualitied = TRUE
 	//crafting diff, every diff removes 25% chance to craft
+	var/alchemists_only = FALSE
 
 /datum/crafting_recipe/pin_removal
 	name = "Pin Removal"

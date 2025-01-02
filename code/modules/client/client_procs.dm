@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
 	//byond bug ID:2256651
-	if (asset_cache_job && asset_cache_job in completed_asset_jobs)
+	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
 		to_chat(src, span_danger("An error has been detected in how my client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
 
@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
-//	chatOutput = new /datum/chatOutput(src)
+	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
@@ -350,7 +350,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		set_macros()
 		update_movement_keys()
 
-//	chatOutput.start() // Starts the chat
+	chatOutput.start() // Starts the chat
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -1110,16 +1110,16 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 /client/proc/can_commend(silent = FALSE)
 	if(!prefs)
 		return FALSE
-	if(prefs.commendedsomeone)
+	if(prefs.commendedtimes > 2)
 		if(!silent)
-			to_chat(src, span_danger("You already commended someone this round."))
+			to_chat(src, span_danger("You already commended maximum amount of people this round."))
 		return FALSE
 	return TRUE
 
-/client/proc/commendsomeone(var/forced = FALSE)
-	if(!can_commend(forced))
+/client/proc/commendsomeone(silent = FALSE)
+	if(!can_commend(silent))
 		return
-	if(alert(src,"Was there a character during this round that you would like to anonymously commend?", "Commendation", "YES", "NO") != "YES")
+	if(alert(src,"Was there a character during this round that you would like to anonymously commend? (commendation #[(prefs.commendedtimes + 1)])", "Commendation", "YES", "NO") != "YES")
 		return
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
@@ -1138,10 +1138,12 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(theykey == ckey)
 		to_chat(src,"You can't commend yourself.")
 		return
-	if(!can_commend(forced))
+	if(!can_commend(silent))
 		return
 	if(theykey)
-		prefs.commendedsomeone = TRUE
+		prefs.commendedtimes ++
+		if(prefs.commendedtimes < 3)
+			commendsomeone(silent = TRUE)
 		add_commend(theykey, ckey)
 		to_chat(src,"[selection] commended.")
 		log_game("COMMEND: [ckey] commends [theykey].")

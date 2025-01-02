@@ -13,7 +13,9 @@ Format:
 	votable (is this map votable)
 endmap
 
-map elfkeep
+map dreamhold
 	default
-	votable
+endmap
+
+map roguetest
 endmap

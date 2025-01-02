@@ -13,6 +13,7 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
+	rogue_enabled = TRUE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
 		TRAIT_CRITICAL_RESISTANCE,
@@ -288,7 +289,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		qdel(brain)
 
 // Culls any living maniacs in the world apart from the victor.
-/datum/antagonist/maniac/proc/cull_competitors(var/mob/living/carbon/victor)
+/datum/antagonist/maniac/proc/cull_competitors(mob/living/carbon/victor)
 	for(var/mob/living/carbon/C in GLOB.carbon_list - victor)
 		var/datum/antagonist/maniac/competitor = C.mind?.has_antag_datum(/datum/antagonist/maniac)
 		if(competitor)

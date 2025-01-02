@@ -17,26 +17,26 @@
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			if(X.real_name in names_to)
 				if(!X.stat)
-					to_chat(X, span_info("[msg]"))
+					to_chat(X, span_biginfo("[msg]"))
 
 SUBSYSTEM_DEF(treasury)
 	name = "treasury"
 	wait = 1
 	priority = FIRE_PRIORITY_WATER_LEVEL
 	var/tax_value = 0.11
-	var/queens_tax = 0.15
+	var/queens_tax = 0.2
 	var/treasury_value = 0
 	var/list/bank_accounts = list()
 	var/list/stockpile_datums = list()
 	var/multiple_item_penalty = 0.66
-	var/interest_rate = 0.25
+	var/interest_rate = 0.15
 	var/next_treasury_check = 0
 	var/list/log_entries = list()
+	var/list/vault_accounting = list() //used for the vault count, cleared every fire()
 
 
 /datum/controller/subsystem/treasury/Initialize()
-	treasury_value = rand(800,1500)
-	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
+	treasury_value = rand(500,1000)
 
 	for(var/path in subtypesof(/datum/roguestock/bounty))
 		var/datum/D = new path
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/fire(resumed = 0)
 	if(world.time > next_treasury_check)
 		next_treasury_check = world.time + rand(5 MINUTES, 8 MINUTES)
-		var/list/stockpile_items = list()
+		vault_accounting = list()
 		if(SSticker.current_state == GAME_STATE_PLAYING)
 			for(var/datum/roguestock/X in stockpile_datums)
 				if(!X.stable_price && !X.transport_item)
@@ -60,32 +60,33 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)
+			for(var/datum/roguestock/stockpile/A in stockpile_datums) //Generate some remote resources
+				A.held_items[2] += A.passive_generation
+				A.held_items[2] = min(A.held_items[2],10) //To a maximum of 10
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/vault]
 		var/amt_to_generate = 0
 		for(var/obj/item/I in A)
 			if(!isturf(I.loc))
 				continue
-			if(I.get_real_price() <= 0 || istype(I, /obj/item/roguecoin))
-				continue
-			if(!I.submitted_to_stockpile)
-				I.submitted_to_stockpile = TRUE
-			if(I.type in stockpile_items)
-				stockpile_items[I.type] *= multiple_item_penalty
-			else
-				stockpile_items[I.type] = I.get_real_price()
-			amt_to_generate += (stockpile_items[I.type]*interest_rate)
+			amt_to_generate += add_to_vault(I)
+		for(var/obj/structure/closet/C in A)
+			for(var/obj/item/I in C.contents)
+				amt_to_generate += add_to_vault(I)
 		amt_to_generate = amt_to_generate - (amt_to_generate * queens_tax)
 		amt_to_generate = round(amt_to_generate)
-		give_money_treasury(amt_to_generate, "wealth horde")
-		var/people_told = 0
-		for(var/mob/living/carbon/human/X in GLOB.human_list)
-			switch(X.job)
-				if("Monarch", "Steward", "Clerk")
-					people_told += 1
-					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-					if(people_told > 3)
-						return
-			
+		give_money_treasury(amt_to_generate, "wealth hoard")
+		send_ooc_note("Income from wealth hoard: +[amt_to_generate]", job = list("Monarch", "Steward", "Clerk"))
+
+/datum/controller/subsystem/treasury/proc/add_to_vault(obj/item/I)
+	if(I.get_real_price() <= 0 || istype(I, /obj/item/roguecoin))
+		return
+	if(!I.submitted_to_stockpile)
+		I.submitted_to_stockpile = TRUE
+	if(I.type in vault_accounting)
+		vault_accounting[I.type] *= multiple_item_penalty
+	else
+		vault_accounting[I.type] = I.get_real_price()
+	return (vault_accounting[I.type]*interest_rate)
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)
 	if(!name)
@@ -100,60 +101,62 @@ SUBSYSTEM_DEF(treasury)
 	return TRUE
 
 //increments the treasury directly (tax collection)
-/datum/controller/subsystem/treasury/proc/give_money_treasury(amt, source)
+/datum/controller/subsystem/treasury/proc/give_money_treasury(amt, source, silent = FALSE)
 	if(!amt)
 		return
 	treasury_value += amt
+	if(silent)
+		return
 	if(source)
 		log_to_steward("+[amt] to treasury ([source])")
 	else
 		log_to_steward("+[amt] to treasury")
 
 //pays to account from treasury (payroll)
-/datum/controller/subsystem/treasury/proc/give_money_account(amt, name, source)
-    if(!amt)
-        return
-    if(!name)
-        return
-    var/found_account
-    if (amt > treasury_value)  // Check if the amount exceeds the treasury balance
-        send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = name)
-        return FALSE  // Return early if the treasury balance is insufficient
-    for(var/X in bank_accounts)
-        if(X == name)
-            if(amt > 0)
-                bank_accounts[X] += amt  // Deposit the money into the player's account
-                treasury_value -= amt   // Deduct the given amount from the treasury
-            else
-                // Check if the amount to be fined exceeds the player's account balance
-                if(abs(amt) > bank_accounts[X])
-                    send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the fine.", name = name)
-                    return FALSE  // Return early if the player has insufficient funds
-                bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
-                treasury_value += abs(amt)  // Add the fined amount to the treasury
-            found_account = TRUE
-            break
-    if(!found_account)
-        return FALSE
+/datum/controller/subsystem/treasury/proc/give_money_account(amt, target, source)
+	if(!amt)
+		return
+	if(!target)
+		return
+	amt = min(amt, 10000) //No exponentials, please!
+	var/target_name = target
+	if(istype(target,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+		target_name = H.real_name
+	var/found_account
+	for(var/X in bank_accounts)
+		if(X == target)
+			if(amt > 0)
+				bank_accounts[X] += amt  // Add funds into the player's account
+			else
+				// Check if the amount to be fined exceeds the player's account balance
+				if(abs(amt) > bank_accounts[X])
+					send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the account to complete the fine.", name = target_name)
+					return FALSE  // Return early if the player has insufficient funds
+				bank_accounts[X] -= abs(amt)  // Deduct the fine amount from the player's account
+			found_account = TRUE
+			break
+	if(!found_account)
+		return FALSE
 
-    if (amt > 0)
-        // Player received money
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You received money. ([source])", name = name)
-            log_to_steward("[amt] from treasury to [name] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You received money.", name = name)
-            log_to_steward("[amt] from treasury to [name]")
-    else
-        // Player was fined
-        if(source)
-            send_ooc_note("<b>The Bank:</b> You were fined. ([source])", name = name)
-            log_to_steward("[name] was fined [amt] ([source])")
-        else
-            send_ooc_note("<b>The Bank:</b> You were fined.", name = name)
-            log_to_steward("[name] was fined [amt]")
+	if (amt > 0)
+		// Player received money
+		if(source)
+			send_ooc_note("<b>MEISTER:</b> You received [amt]m. ([source])", name = target_name)
+			log_to_steward("+[amt] from treasury to [target_name] ([source])")
+		else
+			send_ooc_note("<b>MEISTER:</b> You received [amt]m.", name = target_name)
+			log_to_steward("+[amt] from treasury to [target_name]")
+	else
+		// Player was fined
+		if(source)
+			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m. ([source])", name = target_name)
+			log_to_steward("[name] was fined [amt] ([source])")
+		else
+			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m.", name = target_name)
+			log_to_steward("[name] was fined [amt]")
 
-    return TRUE
+	return TRUE
 
 ///Deposits money into a character's bank account. Taxes are deducted from the deposit and added to the treasury.
 ///@param amt: The amount of money to deposit.
@@ -166,38 +169,46 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	var/taxed_amount = 0
 	var/original_amt = amt
+	treasury_value += amt
 	if(character in bank_accounts)
-		if((character.job in GLOB.noble_positions) || HAS_TRAIT(character, TRAIT_NOBLE))
+		if(HAS_TRAIT(character, TRAIT_NOBLE))
 			bank_accounts[character] += amt
 		else
 			taxed_amount = round(amt * tax_value)
 			amt -= taxed_amount
 			bank_accounts[character] += amt
-			treasury_value += taxed_amount
 	else
 		return FALSE
 
-	log_to_steward("+[taxed_amount] taxation of [character], who deposited [original_amt]")
+	log_to_steward("+[original_amt] deposited by [character.real_name] of which taxed [taxed_amount]")
 
 	return TRUE
 
 
-/datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, name)
-    if(!amt)
-        return
-    var/found_account
-    for(var/X in bank_accounts)
-        if(X == name)
-            if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
-                send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
-                return  // Return without processing the transaction
-            bank_accounts[X] -= amt
-            found_account = TRUE
-            break
-    if(!found_account)
-        return
-    log_to_steward("-[amt] withdrawn by [name]")
-    return TRUE
+/datum/controller/subsystem/treasury/proc/withdraw_money_account(amt, target)
+	if(!amt)
+		return
+	var/target_name = target
+	if(istype(target,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+		target_name = H.real_name
+	var/found_account
+	for(var/X in bank_accounts)
+		if(X == target)
+			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
+				send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
+				return  // Return without processing the transaction
+			if(treasury_value < amt)  // Check if the amount exceeds the treasury balance
+				send_ooc_note("<b>MEISTER:</b> Error: Insufficient funds in the treasury to complete the transaction.", name = target_name)
+				return  // Return early if the treasury balance is insufficient
+			bank_accounts[X] -= amt //The account accounts accountingly. Shame on you if you copy this, apple.
+			treasury_value -= amt
+			found_account = TRUE
+			break
+	if(!found_account)
+		return
+	log_to_steward("-[amt] withdrawn by [target_name]")
+	return TRUE
 
 
 /datum/controller/subsystem/treasury/proc/log_to_steward(log)

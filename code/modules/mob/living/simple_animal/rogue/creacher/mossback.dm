@@ -17,7 +17,7 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/rawcrab = 8, /obj/item/natural/carapace = 5)
 	faction = list("crabs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 150
+	health = 200
 	maxHealth = 200
 	melee_damage_lower = 35
 	melee_damage_upper = 50

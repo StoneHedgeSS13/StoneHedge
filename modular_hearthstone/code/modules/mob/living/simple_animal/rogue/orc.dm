@@ -35,65 +35,60 @@
 	obj_damage = 1
 	speak_emote = list("grunts")
 	speak = list("WAAAGH!", "KRUSH AND KILL!", "Never should have come here!", "Slaughter them all!", "Kill everything!", "Hahaha! Die!")
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc,
-			/obj/item/rogueweapon/stoneaxe/boneaxe,
+	loot = list(/obj/item/rogueweapon/stoneaxe/boneaxe,
 			/obj/effect/decal/cleanable/blood)
 	faction = list("orcs")
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	del_on_death = TRUE
+	del_on_death = FALSE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/natural/hide = 2, /obj/item/natural/bundle/bone/full = 1)
 	aggressive = 1
-	patron = /datum/patron/inhumen/graggar		//Flavor + recognized as hostile if preformed miracles on instead of as faithless.
+	patron = /datum/patron/inhumen/nyrnhe		//Flavor + recognized as hostile if preformed miracles on instead of as faithless.
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc2
 	icon_state = "savageorc2"
 	icon_living = "savageorc2"
-	icon_dead = "savageorc2"
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
-			/obj/item/rogueweapon/stoneaxe/boneaxe,
+	icon_dead = "savageorc2_dead"
+	loot = list(/obj/item/rogueweapon/stoneaxe/boneaxe,
 			/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder
 	name = "Orc Marauder"
 	icon_state = "orcmarauder"
 	icon_living = "orcmarauder"
-	icon_dead = "orcmarauder"
+	icon_dead = "orcmarauder_dead"
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 	armor_penetration = 35
 	maxHealth = 200
 	health = 200
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcmarauder,
-			/obj/item/rogueweapon/sword/iron/messer,
+	loot = list(/obj/item/rogueweapon/sword/iron/messer,
 			/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/spear
 	icon_state = "orcmarauder_spear"
 	icon_living = "orcmarauder_spear"
-	icon_dead = "orcmarauder_spear"
+	icon_dead = "orcmarauder_spear_dead"
 	base_intents = list(/datum/intent/simple/spear)
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcmarauder,
-			/obj/item/rogueweapon/spear,
+	loot = list(/obj/item/rogueweapon/spear,
 			/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/ravager
 	icon_state = "orcravager"
 	icon_living = "orcravager"
-	icon_dead = "orcravager"
+	icon_dead = "orcravager_dead"
 	melee_damage_lower = 40
 	melee_damage_upper = 50
 	armor_penetration = 40
 	maxHealth = 500
 	health = 500
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcravager,
-			/obj/item/rogueweapon/halberd/bardiche,
+	loot = list(/obj/item/rogueweapon/halberd/bardiche,
 			/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/spear
 	icon_state = "savageorc_spear"
 	icon_living = "savageorc_spear"
-	icon_dead = "savageorc_spear"
+	icon_dead = "savageorc_spear_dead"
 	base_intents = list(/datum/intent/simple/spear)
 	melee_damage_lower = 30
 	melee_damage_upper = 30
@@ -101,8 +96,7 @@
 	attack_verb_continuous = list("stabs", "slashes", "skewers")
 	attack_verb_simple = "stab"
 	attack_sound = 'sound/blank.ogg'
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc,
-			/obj/item/rogueweapon/spear/bonespear,
+	loot = list(/obj/item/rogueweapon/spear/bonespear,
 			/obj/effect/decal/cleanable/blood)
 
 
@@ -111,9 +105,8 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/spear2
 	icon_state = "savageorc_spear2"
 	icon_living = "savageorc_spear2"
-	icon_dead = "savageorc_spear2"
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
-			/obj/item/rogueweapon/spear/bonespear,
+	icon_dead = "savageorc_spear2_dead"
+	loot = list(/obj/item/rogueweapon/spear/bonespear,
 			/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/get_sound(input)
@@ -184,13 +177,15 @@
 			return "foreleg"
 	return ..()
 
-/obj/projectile/bullet/reusable/arrow/orc
+//hopefully no longer spams the shit out of em outta npcs since its not reusable.
+/obj/projectile/bullet/arrow/npc
+	name = "arrow"
 	damage = 20
 	damage_type = BRUTE
 	armor_penetration = 40
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/npc
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
@@ -198,23 +193,33 @@
 	flag = "bullet"
 	speed = 2
 
+/obj/item/ammo_casing/caseless/rogue/arrow/npc
+	name = "arrow"
+	desc = "A wooden shaft with a pointy iron end."
+	projectile_type = /obj/projectile/bullet/arrow/npc
+	caliber = "arrow"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrow"
+	force = 7
+	dropshrink = 0.6
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
+	max_integrity = 1
+	w_class = WEIGHT_CLASS_SMALL
+
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/ranged
 	name = "savage orc archer"
 	desc = ""
 	icon_state = "orcbow"
 	icon_living = "orcbow"
-	icon_dead = "orcbow"
-	projectiletype = /obj/projectile/bullet/reusable/arrow/orc
+	icon_dead = "orcbow_dead"
+	projectiletype = /obj/projectile/bullet/arrow/npc
 	projectilesound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
 	ranged = 1
 	retreat_distance = 2
 	minimum_distance = 5
 	ranged_cooldown_time = 60
 	check_friendly_fire = 1
-	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
-			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-			/obj/item/quiver/arrows,
-			/obj/effect/decal/cleanable/blood)
+	loot = list(/obj/effect/decal/cleanable/blood)
 	maxHealth = 50
 	health = 50
 
@@ -250,7 +255,7 @@
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	projectiletype = /obj/projectile/bullet/reusable/arrow/orc
+	projectiletype = /obj/projectile/bullet/arrow/npc
 	projectilesound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
 	ranged = 1
 	retreat_distance = 2
@@ -266,27 +271,21 @@
 	defdrain = 20
 	obj_damage = 1
 	speak_emote = list("grunts")
-	loot = list(/obj/effect/mob_spawn/human/goblin,
-			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-			/obj/item/quiver/arrows,
-			/obj/effect/decal/cleanable/blood)
+	loot = list(/obj/effect/decal/cleanable/blood)
 	faction = list("orcs")
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	del_on_death = TRUE
+	del_on_death = FALSE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/natural/hide = 2, /obj/item/natural/bundle/bone/full = 1)
 	aggressive = 1
-	patron = /datum/patron/inhumen/graggar
+	patron = /datum/patron/inhumen/nyrnhe
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goblin/cave
 	icon_state = "goblinarcher2"
 	icon_living = "goblinarcher2"
 	icon_dead = "goblinarcher2_dead"
-	loot = list(/obj/effect/mob_spawn/human/goblin_cave,
-			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-			/obj/item/quiver/arrows,
-			/obj/effect/decal/cleanable/blood)
+	loot = list(/obj/effect/decal/cleanable/blood)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goblin/simple_limb_hit(zone)
 	if(!zone)

@@ -39,7 +39,6 @@
 /obj/item/clothing/proc/ResetAdjust(mob/user)
 	adjustable = initial(adjustable)
 	icon_state = "[initial(icon_state)]"
-	slowdown = initial(slowdown)
 	body_parts_covered = initial(body_parts_covered)
 	flags_inv = initial(flags_inv)
 	flags_cover = initial(flags_cover)

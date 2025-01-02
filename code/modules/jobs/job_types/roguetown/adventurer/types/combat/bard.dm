@@ -2,13 +2,14 @@
 /datum/advclass/bard
 	name = "Bard"
 	tutorial = "Bards make up one of the largest populations of \
-	registered adventurers in Enigma, mostly because they are \
+	registered adventurers in Astralith, mostly because they are \
 	the last ones in a party to die. Their wish is to experience \
 	the greatest adventures of the age and write amazing songs about them."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/bard
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/combat_jester.ogg'
 
 /datum/outfit/job/roguetown/adventurer/bard/pre_equip(mob/living/carbon/human/H)
 	..() // The entertaining jack of all trades, uniquely handy with crossbows and swords. They're incredibly well travelled, can sneak, steal and survive on their own.
@@ -21,16 +22,16 @@
 		if("Bard")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Bards make their fortunes in brothels, flop houses and taverns -- gaining fame for their songs and legends. If there is any truth to them, that is."))
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/music, 5, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -46,25 +47,25 @@
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
-			H.change_stat("endurance", 1)
+			H.change_stat("endurance", 2)
 			H.change_stat("speed", 2)
 		if("Skald")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Skalds are wandering storytellers, and for many villages they are local historians keeping the tales of great legends and heroes alive."))
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3 , TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3 , TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/music, 4, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -80,22 +81,23 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 			l_hand = /obj/item/rogueweapon/sword/iron
 			H.change_stat("constitution", 2)
-			H.change_stat("strength", 1)
+			H.change_stat("strength", 2)
 			H.change_stat("speed", 1)
+			H.change_stat("endurance", 1)
 		if("Arcanist")
 			H.set_blindness(0)
-			to_chat(H, span_warning("Some bards are can craft musical sorceries, so it makes sense some pick up actual ones. Perhaps not as good as the real deal, of course."))
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
+			to_chat(H, span_warning("Many bards can craft musical sorceries, so it makes sense some pick up traditional sorcery. Not quite as good as the real deal, of course."))
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/music, 5, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/spitfire)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
@@ -112,10 +114,11 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-			H.change_stat("intelligence", 1)
+			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
-			H.change_stat("speed", 2)		
+			H.change_stat("speed", 2)
+			ADD_TRAIT(H, TRAIT_LEARNMAGIC, TRAIT_GENERIC)
 			H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 
 	var/colleges = list(
@@ -123,7 +126,7 @@
 		"College of Eloquence",
 		"College of Spirits",
 		"College of Swords",
-		"College of Whispers")			
+		"College of Whispers")
 	var/collegechoice = input("Choose your college", "Available colleges") as anything in colleges
 	switch(collegechoice)
 		if("College of Lore")
@@ -141,7 +144,7 @@
 		if("College of Swords")
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.give_fightingstyle() //gives one fighting style 
+			H.give_fightingstyle() //gives one fighting style
 
 		if("College of Whispers")
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -164,6 +167,8 @@
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)	//You have speed, use it. What musucian plays with cumbersome armor anyway?
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	if(!HAS_TRAIT(H, TRAIT_LEARNMAGIC))
+		ADD_TRAIT(H, TRAIT_USEMAGIC, TRAIT_GENERIC)
 	if(isseelie(H))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)

@@ -7,7 +7,7 @@
 /datum/statpack/physical/muscular
 	name = "Muscular"
 	desc = "Hard labor has honed you into a mass of sinew - a valuable trait in a world where might makes right."
-	stat_array = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -2, STAT_CONSTITUTION = 1, STAT_SPEED = -1)
+	stat_array = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -1, STAT_CONSTITUTION = 1, STAT_SPEED = -1)
 
 /datum/statpack/physical/tactician
 	name = "Alert"
@@ -22,4 +22,4 @@
 /datum/statpack/physical/toil
 	name = "Toil-hardened"
 	desc = "Your life, hard-lived, has imparted one solitary adage: carry on above all else. And so you endure."
-	stat_array = list(STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -1, STAT_CONSTITUTION = 1, STAT_ENDURANCE = 2)
+	stat_array = list(STAT_STRENGTH = -1, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -1, STAT_CONSTITUTION = 2, STAT_ENDURANCE = 2)

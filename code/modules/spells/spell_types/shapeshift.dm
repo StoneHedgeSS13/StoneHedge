@@ -4,7 +4,7 @@
 	clothes_req = FALSE
 	human_req = FALSE
 	charge_max = 200
-	cooldown_min = 50
+	cooldown_min = 20 SECONDS
 	range = -1
 	include_user = TRUE
 	invocation = ""
@@ -17,11 +17,11 @@
 	var/convert_damage_type = BRUTE //Since simplemobs don't have advanced damagetypes, what to convert damage back into.
 
 	var/shapeshift_type
-	var/list/possible_shapes = list(/mob/living/simple_animal/hostile/retaliate/rogue/spider,
-	/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
-	/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
-	/mob/living/simple_animal/hostile/retaliate/rogue/mole,
-	/mob/living/simple_animal/hostile/retaliate/rogue/saiga)
+	var/list/possible_shapes = list(/mob/living/simple_animal/hostile/retaliate/rogue/spider/shapeshift,
+	/mob/living/simple_animal/hostile/retaliate/rogue/wolf/shapeshift,
+	/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/shapeshift,
+	/mob/living/simple_animal/hostile/retaliate/rogue/mole/shapeshift,
+	/mob/living/simple_animal/hostile/retaliate/rogue/saiga/shapeshift)
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/cast(list/targets,mob/user = usr)
 	if(src in user.mob_spell_list)
@@ -67,6 +67,7 @@
 
 	var/mob/living/shape = new shapeshift_type(caster.loc)
 	H = new(shape,src,caster)
+	shape.gender = H.gender
 
 	clothes_req = FALSE
 	human_req = FALSE
@@ -85,8 +86,6 @@
 	name = "Dragon Form"
 	desc = ""
 	invocation = "RAAAAAAAAWR!"
-	convert_damage = FALSE
-
 
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/megafauna/dragon/lesser
 
@@ -165,12 +164,17 @@
 	if(death)
 		stored.death()
 	else if(source.convert_damage)
-		stored.revive(full_heal = TRUE, admin_revive = FALSE)
+		stored.revive(full_heal = FALSE, admin_revive = FALSE)
 
 		var/damage_percent = (shape.maxHealth - shape.health)/shape.maxHealth;
 		var/damapply = stored.maxHealth * damage_percent
 
 		stored.apply_damage(damapply, source.convert_damage_type, forced = TRUE)
+		//fuck you, now you cant be immortal.
+		source.charge_counter = 0
+		source.start_recharge()
+		if(source.action)
+			source.action.UpdateButtonIcon()
 	qdel(shape)
 	qdel(src)
 

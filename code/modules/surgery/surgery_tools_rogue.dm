@@ -169,3 +169,71 @@
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
 	new /obj/item/needle/pestra(src)
+
+//improv tools
+
+/obj/item/rogueweapon/surgery/saw/improv
+	name = "improvised saw"
+	desc = "A tool used to carve through bone......poorly, but better than nothing."
+	icon_state = "bonesaw_wood"
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
+	slot_flags = ITEM_SLOT_HIP
+	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
+	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
+	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
+	force = 12
+	throwforce = 12
+	wdefense = 3
+	wbalance = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	thrown_bclass = BCLASS_CHOP
+	tool_behaviour = TOOL_SAW
+
+/obj/item/rogueweapon/surgery/hemostat/improv
+	name = "improvised clamp"
+	desc = "A tool used to clamp down on soft tissue. A poor alternative to metal but, better than nothing."
+	icon_state = "forceps_wood"
+	possible_item_intents = list(/datum/intent/use)
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
+	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
+	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
+	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
+	tool_behaviour = TOOL_HEMOSTAT
+
+/obj/item/rogueweapon/surgery/retractor/improv
+	name = "improvised retractor"
+	desc = "A tool used to spread tissue open for surgical access. hopefully it will hold."
+	icon_state = "speculum_wood"
+	possible_item_intents = list(/datum/intent/use)
+	slot_flags = ITEM_SLOT_HIP
+	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
+	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
+	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
+	wdefense = 3
+	wbalance = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	thrown_bclass = BCLASS_BLUNT
+	tool_behaviour = TOOL_RETRACTOR
+
+////////////////////////////////////////////////////// craft reci///////////////////////////////////////////////////////////////
+
+/datum/crafting_recipe/roguetown/impsaw
+	name = "improvised saw"
+	result = /obj/item/rogueweapon/surgery/saw/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 3, /obj/item/grown/log/tree/small = 1,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impretra
+	name = "improvised clamp"
+	result = /obj/item/rogueweapon/surgery/hemostat/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/imphemo
+	name = "improvised retractor"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting

@@ -73,14 +73,14 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	if(lastminer.goodluck(2) && mineralType)
-//		to_chat(lastminer, span_notice("Bonus ducks!"))
+	if(lastminer && lastminer.goodluck(2) && mineralType) // Check if lastminer is not null
+//        to_chat(lastminer, span_notice("Bonus ducks!"))
 		new mineralType(src)
-	gets_drilled(lastminer, give_exp = FALSE)
+	gets_drilled(lastminer)
 	queue_smooth_neighbors(src)
 	..()
 
-/turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
+/turf/closed/mineral/proc/gets_drilled(mob/living/user, triggered_by_explosion = FALSE)
 	new /obj/item/natural/stone(src)
 	if(prob(30))
 		new /obj/item/natural/stone(src)
@@ -92,17 +92,18 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
-	else if(user.goodluck(2))
+	else if(user && user.goodluck(2)) // Check if user is not null
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
-//		to_chat(user, span_notice("Bonus ducks!"))
+//        to_chat(user, span_notice("Bonus ducks!"))
 		new newthing(src)
-//	if(ishuman(user))
-//		var/mob/living/carbon/human/H = user
-//		if(give_exp)
-//			if (mineralType && (mineralAmt > 0))
-//				H.mind.adjust_experience(/datum/skill/labor/mining, initial(mineralType.mine_experience) * mineralAmt)
-//			else
-//				H.mind.adjust_experience(/datum/skill/labor/mining, 4)
+//    if(ishuman(user))
+//        var/mob/living/carbon/human/H = user
+//        if(give_exp)
+//            if (mineralType && (mineralAmt > 0))
+//                H.mind.adjust_experience(/datum/skill/labor/mining, initial(mineralType.mine_experience) * mineralAmt)
+//            else
+//                H.mind.adjust_experience(/datum/skill/labor/mining, 4)
+
 
 	for(var/obj/effect/temp_visual/mining_overlay/M in src)
 		qdel(M)
@@ -118,12 +119,6 @@
 		gets_drilled(user)
 	..()
 
-/turf/closed/mineral/attack_alien(mob/living/carbon/alien/M)
-	to_chat(M, span_notice("I start digging into the rock..."))
-	playsound(src, 'sound/blank.ogg', 50, TRUE)
-	if(do_after(M, 40, target = src))
-		to_chat(M, span_notice("I tunnel into the rock."))
-		gets_drilled(M)
 /*
 /turf/closed/mineral/Bumped(atom/movable/AM)
 	..()
@@ -149,12 +144,12 @@
 	switch(severity)
 		if(3)
 			if (prob(75))
-				gets_drilled(null, 1)
+				gets_drilled(null, triggered_by_explosion = TRUE)
 		if(2)
 			if (prob(90))
-				gets_drilled(null, 1)
+				gets_drilled(null, triggered_by_explosion = TRUE)
 		if(1)
-			gets_drilled(null, 1)
+			gets_drilled(null, triggered_by_explosion = TRUE)
 	return
 
 /turf/closed/mineral/Spread(turf/T)
@@ -574,7 +569,7 @@
 		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
 
 
-/turf/closed/mineral/strong/gets_drilled(user)
+/turf/closed/mineral/strong/gets_drilled(user, triggered_by_explosion = FALSE)
 	drop_ores()
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag

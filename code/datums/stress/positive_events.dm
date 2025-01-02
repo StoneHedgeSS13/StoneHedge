@@ -172,3 +172,8 @@
 	stressadd = -1
 	desc = span_green("A soothing fragrance envelops me.")
 	timer = 10 MINUTES
+
+/datum/stressevent/zizodefeated
+	timer = 30 MINUTES
+	stressadd = -5
+	desc = span_green("THE NEW DARK GOD HAS FALLEN!")

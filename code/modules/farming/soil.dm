@@ -48,7 +48,6 @@
 	if(!produce_ready)
 		return
 	apply_farming_fatigue(user, 5)
-	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 	adjust_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
@@ -270,10 +269,10 @@
 	if(plant && plant_dead)
 		plant_dead = FALSE
 		plant_health = 10.0
-	// If low on nutrition, Dendor provides
+	// If low on nutrition, Sylvarhn provides
 	if(nutrition < 30)
 		adjust_nutrition(max(30 - nutrition, 0))
-	// If low on water, Dendor provides
+	// If low on water, Sylvarhn provides
 	if(water < 30)
 		adjust_water(max(30 - water, 0))
 	// And it grows a little!
@@ -281,7 +280,7 @@
 		add_growth(2 MINUTES)
 
 /obj/structure/soil/proc/fertilize_soil()
-	blessed_time = 60 MINUTES //Meant to outlast the effects of dendor's blessing
+	blessed_time = INFINITY //Farmers can do things other than babysit their crops
 
 	// Similar effects on nutrition
 	if(nutrition < 100)
@@ -314,11 +313,18 @@
 
 /obj/structure/soil/Initialize()
 	START_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list += src
 	. = ..()
 
 /obj/structure/soil/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list -= src
 	. = ..()
+
+/obj/structure/soil/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	water = min(MAX_PLANT_WATER, water + min(5, severity / 4))
 
 /obj/structure/soil/process()
 	var/dt = 10
@@ -437,8 +443,8 @@
 #define WEED_RESISTANCE_DECAY_RATE 20 / (1 MINUTES)
 
 // These get multiplied by 0.0 to 1.0 depending on amount of weeds
-#define WEED_WATER_CONSUMPTION_RATE 5 / (1 MINUTES)
-#define WEED_NUTRITION_CONSUMPTION_RATE 5 / (1 MINUTES)
+#define WEED_WATER_CONSUMPTION_RATE 3 / (1 MINUTES)
+#define WEED_NUTRITION_CONSUMPTION_RATE 1 / (1 MINUTES)
 
 /obj/structure/soil/proc/process_weeds(dt)
 	// Blessed soil will have the weeds die

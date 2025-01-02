@@ -544,10 +544,11 @@
 	return ..()
 
 /datum/action/spell_action/Trigger()
-	if(!..())
-		return FALSE
 	if(target)
 		var/obj/effect/proc_holder/S = target
+		if(!..())
+			S.deactivate(usr)
+			return FALSE
 		S.Click()
 		return TRUE
 
@@ -564,16 +565,6 @@
 	var/obj/effect/proc_holder/spell/S = target
 	if(owner)
 		return S.can_cast(owner)
-	return FALSE
-
-/datum/action/spell_action/alien
-
-/datum/action/spell_action/alien/IsAvailable()
-	if(!target)
-		return FALSE
-	var/obj/effect/proc_holder/alien/ab = target
-	if(owner)
-		return ab.cost_check(ab.check_turf,owner,1)
 	return FALSE
 
 

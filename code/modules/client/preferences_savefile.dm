@@ -167,6 +167,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["musicvol"]			>> musicvol
 	S["anonymize"]			>> anonymize
+	S["masked_examine"]		>> masked_examine
 	S["crt"]				>> crt
 	S["shake"]				>> shake
 	S["mastervol"]			>> mastervol
@@ -259,6 +260,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["triumphs"], triumphs)
 	WRITE_FILE(S["musicvol"], musicvol)
 	WRITE_FILE(S["anonymize"], anonymize)
+	WRITE_FILE(S["masked_examine"], masked_examine)
 	WRITE_FILE(S["crt"], crt)
 	WRITE_FILE(S["shake"], shake)
 	WRITE_FILE(S["lastclass"], lastclass)
@@ -422,11 +424,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_appearence(S)
 
 	var/patron_typepath
-	S["selected_patron"]	>> patron_typepath
+	S["selected_patron"] >> patron_typepath
 	if(patron_typepath)
-		selected_patron = GLOB.patronlist[patron_typepath]
-		if(!selected_patron) //failsafe
+		selected_patron = null
+		for(var/p_type in GLOB.patronlist)
+			if("[p_type]" == "[patron_typepath]")
+				var/datum/patron/P = GLOB.patronlist[p_type]
+				if(P?.name == "FUCK!")
+					selected_patron = GLOB.patronlist[default_patron]
+					break
+				selected_patron = P
+				break
+
+		if(!selected_patron)
 			selected_patron = GLOB.patronlist[default_patron]
+	else
+		selected_patron = GLOB.patronlist[default_patron]
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -477,6 +490,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["ooc_notes"]			>> ooc_notes
 	if(!valid_ooc_notes(null, ooc_notes, TRUE))
 		ooc_notes = null
+
+	S["custom_race_name"]			>> custom_race_name
+	if(!valid_custom_race_name(null, custom_race_name, TRUE))
+		custom_race_name = null
 /* useless shit from hearthstone.
 	S["alias"]			>> alias
 	if(!valid_alias(null, alias, TRUE))
@@ -496,11 +513,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["weakness"]			>> weakness
 	if(!valid_weakness(null, weakness, TRUE))
 		weakness = null
-*/
 	S["theme"]			>> theme
 	if(!valid_theme(null, theme, TRUE))
 		theme = null
-
+*/
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
@@ -573,6 +589,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	validate_customizer_entries()
 	if(!S["is_updated_for_genitalia"]) //Vrell - should fix loading old characters giving all genitals.
 		genderize_customizer_entries()
+
+	load_vore_prefs(S)
 
 	// STONEKEEP ADDITION START
 	S["family_id"]			>> family_id
@@ -662,8 +680,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["personality"] , personality)
 	WRITE_FILE(S["strengths"] , strengths)
 	WRITE_FILE(S["weakness"] , weakness)
-*/
 	WRITE_FILE(S["theme"] , theme)
+*/
+	WRITE_FILE(S["custom_race_name"] , custom_race_name)
+
 	WRITE_FILE(S["char_accent"] , char_accent)
 	WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["voice_type"] , voice_type)
@@ -672,6 +692,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else
 		WRITE_FILE(S["loadout"] , null)
+
+	save_vore_prefs(S)
 
 	WRITE_FILE(S["flavor_text"] , flavor_text)
 
@@ -707,7 +729,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 #endif
 
-/datum/preferences/proc/validate_job_prefs(var/list/job_prefs)
+/datum/preferences/proc/validate_job_prefs(list/job_prefs)
 	for(var/job in job_prefs)
 		if(!SSjob.GetJob(job))
 			job_prefs -= job

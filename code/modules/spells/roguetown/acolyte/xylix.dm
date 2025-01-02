@@ -1,6 +1,6 @@
 // Xylixan
 /obj/effect/proc_holder/spell/invoked/Joy_takes_flight
-	name = "Joy takes flight"
+	name = "Steal Speed"
 	overlay_state = "Joy Takes Flight"
 	releasedrain = 30
 	chargedrain = 0
@@ -11,7 +11,7 @@
 	chargedloop = null
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/webspin.ogg'
-	invocation = "My trick is done, I'll speed from sight! I'll move so fast that joy takes flight!"
+	invocation = "Sap my strength and speed my step!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -28,7 +28,7 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/Laughing_god
-	name = "Laughing god"
+	name = "Steal Time"
 	desc = ""
 	overlay_state = "Laughing God"
 	releasedrain = 30
@@ -39,7 +39,7 @@
 	movement_interrupt = FALSE
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	sound = 'sound/magic/webspin.ogg'
-	invocation = "The Trickster skirts the edges of the rule, whilst witless louts are made to act the fool!"
+	invocation = "Take their time and make it mine!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -49,22 +49,14 @@
 
 /obj/effect/proc_holder/spell/invoked/Laughing_god/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
-		if(prob(75))
-			var/mob/living/target = targets[1]
-			var/giggle_to_public = pick("[target] giggles!", "[target] struggles to not chuckle!", "[target] starts to laugh!", "[target] frowns, as if they don't get the joke")
-			var/giggle_to_target = pick("That is so funny!", "You start to giggle!", "Your mouth turns upwards in a smile!", "What a horrible thing to say...")
-			target.visible_message(span_warning("[giggle_to_public]"), span_warning("[giggle_to_target]"))
-			target.Stun(10)
-			target.Jitter(rand(5))
-			if(prob(66))
-				target.emote(pick("giggle","laugh","chuckle"))
-		else 
-			user.Stun(40) 
-			user.visible_message(span_userdanger("Looks like I am the fool..."))
-
+		var/mob/living/target = targets[1]
+		var/freeze_to_public = pick("[target] slows to a stop!", "[target] struggles to move!", "[target] freezes in place!")
+		var/freeze_to_target = pick("You can't seem to move!", "Your body fails you for a moment!", "Your muscles lock up!")
+		target.visible_message(span_warning("[freeze_to_public]"), span_warning("[freeze_to_target]"))
+		target.Stun(10)
 
 /obj/effect/proc_holder/spell/invoked/Smokebomb
-	name = "Smoke Bomb"
+	name = "Steal Sight"
 	overlay_state = "Smoke Bomb"
 	releasedrain = 30
 	chargedrain = 0
@@ -74,7 +66,7 @@
 	range = 0
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	invocation = "The Trickster is a clever chap, it's time to hide under his cap!"
+	invocation = "Steal away their sight so your work may be done!"
 	invocation_type = "whisper"
 	sound = 'sound/misc/area.ogg'
 	associated_skill = /datum/skill/magic/holy

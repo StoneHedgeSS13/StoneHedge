@@ -22,8 +22,10 @@
 /datum/species/vampire/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
 	to_chat(C, "[info_text]")
+	C.faction = list("undead")
 	C.skin_tone = "albino"
 	C.update_body(0)
+	C.update_body_parts(TRUE)
 	if(isnull(batform))
 		batform = new
 		C.AddSpell(batform)
@@ -115,17 +117,6 @@
 
 #undef VAMP_DRAIN_AMOUNT
 
-
-/mob/living/carbon/Stat()
-	..()
-	return
-	if(statpanel("Status")) //RTCHANGE
-		var/obj/item/organ/heart/vampire/darkheart = getorgan(/obj/item/organ/heart/vampire)
-		if(darkheart)
-			stat(null, span_notice("Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."))
-			return 1
-
-
 /obj/item/organ/heart/vampire
 	name = "vampire heart"
 	color = "#1C1C1C"
@@ -135,7 +126,7 @@
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 500
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
@@ -145,7 +136,7 @@
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 1000
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE

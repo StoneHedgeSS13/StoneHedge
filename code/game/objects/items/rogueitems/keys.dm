@@ -42,7 +42,7 @@
 
 /obj/item/roguekey/lord
 	name = "master key"
-	desc = "The Lord's key."
+	desc = "The Monarch's key."
 	icon_state = "bosskey"
 	lockid = "lord"
 
@@ -148,6 +148,12 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
+/obj/item/roguekey/tailor
+	name = "tailor key"
+	desc = "This key should open and close the tailor shop."
+	icon_state = "brownkey"
+	lockid = "tailor"
+
 /obj/item/roguekey/velder
 	name = "elder's key"
 	desc = "This key should open and close the elder's home."
@@ -211,11 +217,29 @@
 	icon_state = "brownkey"
 	lockid = "roomvi"
 
-/obj/item/roguekey/roomhunt
-	name = "room HUNT key"
-	desc = "This is the HUNT key!"
+/obj/item/roguekey/roomvii
+	name = "room VII key"
+	desc = "The key to the seventh room."
 	icon_state = "brownkey"
-	lockid = "roomhunt"
+	lockid = "roomvii"
+
+/obj/item/roguekey/roomviii
+	name = "room VIII key"
+	desc = "The key to the eighth room."
+	icon_state = "brownkey"
+	lockid = "roomviii"
+
+/obj/item/roguekey/roombard
+	name = "bard room key"
+	desc = "The key to the bard's room."
+	icon_state = "brownkey"
+	lockid = "roombard"
+
+/obj/item/roguekey/roominnkeep
+	name = "innkeeper room key"
+	desc = "The key to the innkeeper's room."
+	icon_state = "brownkey"
+	lockid = "roominnkeep"
 
 //vampire mansion//
 /obj/item/roguekey/vampire
@@ -247,6 +271,12 @@
 	icon_state = "rustkey"
 	lockid = "farm"
 
+/obj/item/roguekey/veteran
+	name = "guildmaster key"
+	desc = "This key is for adventurer's guild."
+	icon_state = "ekey"
+	lockid = "veteran"
+
 /obj/item/roguekey/butcher
 	name = "butcher key"
 	desc = "This is a rusty key that'll open butcher doors."
@@ -263,13 +293,19 @@
 	name = "priest's key"
 	desc = "This is the master key of the church."
 	icon_state = "cheesekey"
-	lockid = "Prophet"
+	lockid = "Archpriest"
 
 /obj/item/roguekey/tower
 	name = "tower key"
 	desc = "This key should open anything within the tower."
 	icon_state = "greenkey"
 	lockid = "tower"
+
+/obj/item/roguekey/grove
+	name = "grove key"
+	desc = "This key should open any door controlled by the the Grove."
+	icon_state = "greenkey"
+	lockid = "grove"
 
 /obj/item/roguekey/mage
 	name = "magicians's key"
@@ -308,7 +344,7 @@
 	lockid = "merc"
 
 /obj/item/roguekey/physician
-	name = "physician key"
+	name = "guild physician key"
 	desc = "The key smells of herbs, feeling soothing to the touch."
 	icon_state = "greenkey"
 	lockid = "physician"
@@ -327,7 +363,7 @@
 
 /obj/item/roguekey/hand
 	name = "hand's key"
-	desc = "This regal key belongs to the King's Right Hand."
+	desc = "This regal key belongs to the Monarch's Right Hand."
 	icon_state = "cheesekey"
 	lockid = "hand"
 
@@ -482,6 +518,7 @@
 	else if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockhash != 0)
 		var/obj/item/roguekey/custom/F = new (get_turf(src))
 		F.lockhash = src.lockhash
+		F.lockid = lockhash
 		to_chat(user, span_notice("You finish [F]."))
 		qdel(src)
 

@@ -76,6 +76,18 @@
 			return 0
 	return 1
 
+/proc/playerless_in_area(area/the_area, mob/must_be_alone, check_type = /mob/living/carbon)
+	var/area/our_area = get_area(the_area)
+	for(var/C in GLOB.player_list)
+		if(!istype(C, check_type))
+			continue
+		if(C == must_be_alone)
+			continue
+		if(our_area == get_area(C))
+			return 0
+	return 1
+
+
 //We used to use linear regression to approximate the answer, but Mloc realized this was actually faster.
 //And lo and behold, it is, and it's more accurate to boot.
 /proc/cheap_hypotenuse(Ax,Ay,Bx,By)
@@ -442,9 +454,12 @@
 
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		candidates += G
-	
+
 	for(var/mob/living/carbon/spirit/bigchungus in GLOB.player_list)
 		candidates += bigchungus
+
+	for(var/mob/dead/new_player/lobby_nerd in GLOB.player_list)
+		candidates += lobby_nerd
 
 	return pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
 
@@ -455,7 +470,7 @@
 	var/list/result = list()
 	for(var/m in group)
 		var/mob/M = m
-		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && M.ckey in GLOB.poll_ignore[ignore_category]))
+		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))

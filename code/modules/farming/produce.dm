@@ -123,8 +123,8 @@
 	worn_y_dimension = 64
 	rotprocess = 20 MINUTES
 	can_distill = TRUE
+	mill_result = /obj/item/reagent_containers/powder/heal
 	distill_reagent = /datum/reagent/medicine/shroomt
-	mill_result = /obj/item/reagent_containers/powder/flour // mushroom flour. it exists. and its gross.
 
 /obj/item/reagent_containers/food/snacks/grown/apple/On_Consume(mob/living/eater)
 	..()
@@ -173,6 +173,7 @@
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
 	rotprocess = 10 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/berry
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -210,9 +211,10 @@
 	seed = /obj/item/seeds/berryrogue/poison
 	icon_state = "berries"
 	tastes = list("berry" = 1)
-	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
-	grind_results = list(/datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/toxin/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
 	color_index = "bad"
+	mill_result = /obj/item/reagent_containers/powder/alch/berryp
+
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
@@ -222,7 +224,7 @@
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/berrypoison = 5)
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = 15 MINUTES
@@ -236,7 +238,7 @@
 	bitesize_mod = 1
 	foodtype = VEGETABLES
 	tastes = list("sweet" = 1,"bitterness" = 1)
-	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
+	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	rotprocess = 15 MINUTES
@@ -278,7 +280,7 @@
 	pipe_reagents = list(/datum/reagent/drug/nicotine = 30)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	list_reagents = list(/datum/reagent/drug/nicotine = 5, /datum/reagent/consumable/nutriment = 1)
-	grind_results = list(/datum/reagent/drug/nicotine = 10)
+	mill_result = /obj/item/reagent_containers/powder/alch/pipe
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
 	seed = null
@@ -288,7 +290,7 @@
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/space_drugs = 30)
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
-	grind_results = list(/datum/reagent/drug/space_drugs = 5)
+	mill_result = /obj/item/reagent_containers/powder/alch/swamp
 	eat_effect = /datum/status_effect/debuff/badmeal
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/nettle //TO-DO - Implement the remaining medicinal herbs, their farmable versions, and the recipes tied to them.
@@ -331,6 +333,7 @@
 	foodtype = SUGAR
 	tastes = list("sugar" = 1)
 	grind_results = list(/datum/reagent/sugar = 10)
+	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/rum
 
 /obj/item/reagent_containers/food/snacks/grown/pumpkin
@@ -443,13 +446,15 @@
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"
+	desc = "a nut with mild stimulant properties"
 	seed = /obj/item/seeds/nut
 	icon_state = "nut"
 	tastes = list("nutty" = 1)
 	filling_color = "#6b4d18"
-	bitesize = 3
+	bitesize = 1
 	foodtype = FRUIT
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
+	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 
 /obj/item/reagent_containers/food/snacks/grown/tomato
 	name = "tomato"

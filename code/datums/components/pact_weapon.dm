@@ -5,10 +5,10 @@
 	var/weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver, /obj/item/rogueweapon/huntingknife/idagger/steel, //daggers
 		/obj/item/rogueweapon/sword/rapier, /obj/item/rogueweapon/sword/long, /obj/item/rogueweapon/greatsword, //swords
-		/obj/item/rogueweapon/mace, //blunt
+		/obj/item/rogueweapon/mace/steel, /obj/item/rogueweapon/mace/goden/steel, //blunt
 		/obj/item/rogueweapon/stoneaxe/woodcut/steel, /obj/item/rogueweapon/stoneaxe/battle, //axes
-		/obj/item/rogueweapon/whip, /obj/item/rogueweapon/flail, //flails
-		/obj/item/rogueweapon/spear, /obj/item/rogueweapon/halberd, /obj/item/rogueweapon/sickle/scythe //polearms
+		/obj/item/rogueweapon/whip, /obj/item/rogueweapon/flail/sflail, /obj/item/rogueweapon/flail/peasantwarflail, //flails
+		/obj/item/rogueweapon/spear, /obj/item/rogueweapon/halberd, /obj/item/rogueweapon/eaglebeak, /obj/item/rogueweapon/sickle/scythe //polearms
 		)
 
 /datum/component/pact_weapon/Initialize(mob/living/L, pc)
@@ -19,11 +19,18 @@
 		weapon_owner = L
 		weapon = parent
 		weapon.name += " of the [patronchoice]"
-		weapon.desc += " It is enchanted to use arcane skill rather than it's regular skill"
+		weapon.desc += " It is enchanted to use arcane skill rather than its regular skill. Right click with an empty hand to change this weapon's form."
 		weapon.force *= 1.2
+		weapon.throwforce *= 1.2
+		weapon.block_chance *= 1.2
+		weapon.armor_penetration *= 1.2
+		weapon.wdefense *= 1.2
 		weapon.max_blade_int *= 1.2
-		weapon.max_integrity *= 1.2
+		weapon.blade_int = weapon.max_blade_int
+		weapon.max_integrity *= 2
+		weapon.obj_integrity = weapon.max_integrity
 		weapon.minstr = 1
+		ADD_TRAIT(weapon, TRAIT_NOEMBED, TRAIT_GENERIC)
 		weapon.associated_skill = /datum/skill/magic/arcane
 		//var/mutable_appearance/magic_overlay = mutable_appearance('icons/effects/effects.dmi', "electricity")
 		//item.add_overlay(magic_overlay)
@@ -32,7 +39,7 @@
 	if(istype(parent, /obj/item/rogueweapon))
 		RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND_RIGHT, PROC_REF(attack_right))
 		RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(equipped))
-		RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(dropped))
+		// RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(dropped))
 
 /datum/component/pact_weapon/proc/attack_right(obj/item/source, mob/user)
 	var/mob/living/target = user
@@ -55,10 +62,10 @@
 /datum/component/pact_weapon/proc/equipped(obj/item/source, mob/user, slot)
 	var/mob/living/target = user
 	if(target != weapon_owner) //you dont own the weapon
-		to_chat(weapon_owner, span_warning("[target] has equipped [weapon]!")) //message the rightful owner 
-		to_chat(target, span_warning("[weapon] burns you as you equip it!")) //message the wielder
-		target.apply_status_effect(/datum/status_effect/buff/pact_weapon_debuff) //apply debuff to wielder
-
+		to_chat(weapon_owner, span_warning("[target] tried to equip [weapon]!")) //message the rightful owner 
+		to_chat(target, span_danger("[weapon] slips from your grasp!")) //message the wielder
+		target.dropItemToGround(source) //this is not yours, drop it
+/*
 /datum/component/pact_weapon/proc/dropped(obj/item/source, mob/user)
 	var/mob/living/target = user
 	if(target != weapon_owner) //you dont own the weapon
@@ -81,3 +88,4 @@
 	name = "Cursed Item"
 	desc = "An item I have equipped burns me periodically."
 	icon_state = "debuff"
+*/

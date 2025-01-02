@@ -274,3 +274,59 @@
 	name = "Seelie Blessing"
 	desc = "A nearby Seelie has brought me fortune."
 	icon_state = "stressg"
+
+/atom/movable/screen/alert/status_effect/buff/healing
+	name = "Healing Miracle"
+	desc = "Divine intervention relieves me of my ailments."
+	icon_state = "buff"
+
+/datum/status_effect/buff/healing
+	id = "healing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
+	duration = 10 SECONDS
+	var/healing_on_tick = 1
+
+/datum/status_effect/buff/healing/tick()
+	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal(get_turf(owner))
+	H.color = "#FF0000"
+	var/list/wCount = owner.get_wounds()
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	if(wCount.len > 0)
+		owner.heal_wounds(healing_on_tick)
+		owner.update_damage_overlays()
+	owner.adjustBruteLoss(-healing_on_tick, 0)
+	owner.adjustFireLoss(-healing_on_tick, 0)
+	owner.adjustOxyLoss(-healing_on_tick, 0)
+	owner.adjustToxLoss(-healing_on_tick, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_LUNGS, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_HEART, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_TONGUE, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_EARS, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_EYES, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_LIVER, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_STOMACH, -healing_on_tick)
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
+
+/atom/movable/screen/alert/status_effect/buff/healing/musicalhealing
+	name = "Musical Regeneration"
+	desc = "Sweet music eases the pain, if only a little..."
+	icon_state = "buff"
+
+/datum/status_effect/buff/healing/musicalhealing
+	id = "musicalhealing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/musicalhealing
+	duration = 30 SECONDS
+	healing_on_tick = 0.01
+
+/atom/movable/screen/alert/status_effect/buff/fortify
+	name = "Fortifying Miracle"
+	desc = "Divine intervention bolsters me and aids my recovery."
+	icon_state = "buff"
+
+/datum/status_effect/buff/fortify //Increases all healing while it lasts.
+	id = "fortify"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
+	duration = 1 MINUTES

@@ -3,7 +3,8 @@
 /// Incision
 /datum/surgery_step/incise
 	name = "Incise"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
+	lying_required = TRUE
 	implements = list(
 		TOOL_SCALPEL = 80,
 		TOOL_SHARP = 60,
@@ -37,6 +38,7 @@
 	implements = list(
 		TOOL_HEMOSTAT = 75,
 		TOOL_WIRECUTTER = 60,
+		TOOL_IMPROVISED_HEMOSTAT = 38,
 	)
 	time = 2.4 SECONDS
 	ignore_clothes = TRUE
@@ -67,6 +69,7 @@
 		TOOL_RETRACTOR = 75,
 		TOOL_SCREWDRIVER = 50,
 		TOOL_WIRECUTTER = 35,
+		TOOL_IMPROVISED_RETRACTOR = 38,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_RETRACTED
@@ -144,7 +147,7 @@
 /// Saw bone
 /datum/surgery_step/saw
 	name = "Saw bone"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_SAW = 80,
 		TOOL_SHOVEL = 50,
@@ -203,7 +206,7 @@
 /// Drill bone
 /datum/surgery_step/drill
 	name = "Drill bone"
-	ignore_clothes = TRUE
+	ignore_clothes = FALSE
 	implements = list(
 		TOOL_DRILL = 80,
 		TOOL_SCREWDRIVER = 25,

@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(job)
 
 	var/list/occupations = list()		//List of all jobs
 	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles
-	var/list/type_occupations = list()	//Dict of all jobs, keys are types
+	var/list/datum/job/type_occupations = list()	//Dict of all jobs, keys are types
 	var/list/unassigned = list()		//Players who need jobs
 	var/initial_players_to_assign = 0 	//used for checking against population caps
 
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(job)
 		SetupOccupations()
 	return type_occupations[jobtype]
 
-/datum/controller/subsystem/job/proc/AssignRole(mob/dead/new_player/player, rank, latejoin = FALSE)
+/datum/controller/subsystem/job/proc/AssignRole(mob/player, rank, latejoin = FALSE)
 	JobDebug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
 		var/datum/job/job = GetJob(rank)
@@ -91,6 +91,10 @@ SUBSYSTEM_DEF(job)
 		if(!latejoin)
 			position_limit = job.spawn_positions
 		JobDebug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
+		if(player.mind.assigned_role)
+			var/datum/job/old_job = SSjob.GetJob(player.mind.assigned_role)
+			if(old_job)
+				old_job.current_positions = max(old_job.current_positions - 1, 0)
 		player.mind.assigned_role = rank
 		unassigned -= player
 		job.current_positions++
@@ -107,7 +111,7 @@ SUBSYSTEM_DEF(job)
 				player.client.prefs.save_preferences()
 		if(player.client && player.client.prefs)
 			player.client.prefs.has_spawned = TRUE
-		job.greet(player)
+		addtimer(CALLBACK(player.client, TYPE_PROC_REF(/client, job_greet),job), 5 SECONDS)
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE
@@ -203,7 +207,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ player not enough xp, Player: [player]")
 			continue
 
-		if(player.mind && job.title in player.mind.restricted_roles)
+		if(player.mind && (job.title in player.mind.restricted_roles))
 			JobDebug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
 			continue
 
@@ -233,10 +237,6 @@ SUBSYSTEM_DEF(job)
 
 		if(!isnull(job.max_pq) && (get_playerquality(player.ckey) > job.max_pq) && !is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
 			JobDebug("GRJ incompatible with maxPQ, Player: [player], Job: [job.title]")
-			continue
-
-		if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
-			JobDebug("GRJ incompatible with leprosy, Player: [player], Job: [job.title]")
 			continue
 
 		if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
@@ -451,7 +451,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player not enough xp, Player: [player], Job:[job.title]")
 					continue
 
-				if(player.mind && job.title in player.mind.restricted_roles)
+				if(player.mind && (job.title in player.mind.restricted_roles))
 					JobDebug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
 
@@ -474,10 +474,6 @@ SUBSYSTEM_DEF(job)
 					continue
 
 				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
-					continue
-
-				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
-					JobDebug("DO incompatible with leprosy, Player: [player], Job: [job.title]")
 					continue
 
 				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
@@ -555,7 +551,7 @@ SUBSYSTEM_DEF(job)
 				if(job.required_playtime_remaining(player.client))
 					continue
 
-				if(player.mind && job.title in player.mind.restricted_roles)
+				if(player.mind && (job.title in player.mind.restricted_roles))
 					continue
 
 				if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
@@ -571,9 +567,6 @@ SUBSYSTEM_DEF(job)
 					continue
 
 				if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
-					continue
-
-				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))
 					continue
 
 				if(job.banned_leprosy && is_misc_banned(player.client.ckey, BAN_MISC_LEPROSY))

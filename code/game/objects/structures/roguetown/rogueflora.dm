@@ -15,8 +15,8 @@
 	plane = GAME_PLANE_UPPER
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/woodhit.ogg'
-	debris = list(/obj/item/grown/log/tree/stick = 4)
-	static_debris = list(/obj/item/grown/log/tree = 2)
+	debris = list(/obj/item/grown/log/tree/stick = 8, /obj/item/reagent_containers/food/snacks/grown/nut = 1)
+	static_debris = list(/obj/item/grown/log/tree/large = 4)
 	alpha = 200
 	leanable = TRUE
 	var/stump_type = /obj/structure/flora/roguetree/stump
@@ -82,7 +82,7 @@
 
 /obj/structure/flora/roguetree/Initialize()
 	. = ..()
-	icon_state = "t[rand(1,16)]"
+	icon_state = "t[rand(1,14)]"
 
 /obj/structure/flora/roguetree/evil/Initialize()
 	. = ..()
@@ -94,8 +94,8 @@
 	soundloop.stop()
 	if(controller)
 		controller.endvines()
-	controller.tree = null
-	controller = null
+		controller.tree = null
+		controller = null
 	. = ..()
 
 /obj/structure/flora/roguetree/evil
@@ -193,7 +193,7 @@
 	opacity = 0
 	max_integrity = 200
 	blade_dulling = DULLING_CUT
-	static_debris = list(/obj/item/grown/log/tree = 1)
+	static_debris = list(/obj/item/grown/log/tree/large = 1)
 	climb_offset = 14
 	stump_type = FALSE
 
@@ -375,7 +375,7 @@
 	leanable = TRUE
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
-	..()
+	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
@@ -400,7 +400,7 @@
 	static_debris = null
 
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
-	..()
+	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 
@@ -417,7 +417,7 @@
 	layer = 4.81
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/woodhit.ogg'
-	static_debris = list(/obj/item/grown/log/tree = 2,/obj/item/grown/log/tree/small = 1)
+	static_debris = list(/obj/item/grown/log/tree/large = 2,/obj/item/grown/log/tree/small = 1)
 	dir = SOUTH
 
 /obj/structure/flora/rogueshroom/attack_right(mob/user)
@@ -435,7 +435,7 @@
 
 
 /obj/structure/flora/rogueshroom/Initialize()
-	..()
+	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)
@@ -714,8 +714,8 @@
 	plane = GAME_PLANE_UPPER
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/woodhit.ogg'
-	debris = list(/obj/item/grown/log/tree/stick = 2)
-	static_debris = list(/obj/item/grown/log/tree = 1)
+	debris = list(/obj/item/grown/log/tree/stick = 4)
+	static_debris = list(/obj/item/grown/log/tree/large = 2)
 	alpha = 200
 	var/stump_type = /obj/structure/flora/roguetree/stump
 

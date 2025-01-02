@@ -49,7 +49,7 @@
 			var/needed_amount = R.reqs[A]
 			for(var/B in contents)
 				if(ispath(B, A))
-					if(!R.subtype_reqs && B in subtypesof(A))
+					if(!R.subtype_reqs && B != A)
 						continue
 					if (R.blacklist.Find(B))
 						testing("foundinblacklist")
@@ -215,6 +215,9 @@
 		if(!(locate(R.structurecraft) in T))
 			to_chat(user, span_warning("I'm missing a structure I need."))
 			return
+	if(R.alchemists_only && !HAS_TRAIT(user, TRAIT_ALCHEMYKNOWLEDGE))
+		to_chat(user, span_warning("I do not know how to work on that."))
+		return
 	if(check_contents(R, contents))
 		if(check_tools(user, R, contents))
 			if(R.craftsound)
@@ -271,6 +274,66 @@
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
+
+							//item qualities
+							if(user.mind && R.can_be_qualitied)
+								var/skill_quality = user.mind?.get_skill_level(R.skillcraft)
+								var/modifier
+								switch(skill_quality)
+									if(0)
+										I.name = "awful [I.name]"
+										modifier = 0.5
+									if(1)
+										I.name = "crude [I.name]"
+										modifier = 0.8
+									if(2)
+										I.name = "rough [I.name]"
+										modifier = 0.9
+									if(3)
+										modifier = 1
+										I.desc = "[I.desc] It is competently made."
+									if(4)
+										I.name = "fine [I.name]"
+										modifier = 1.1
+									if(5)
+										I.name = "flawless [I.name]"
+										modifier = 1.2
+									if(6)
+										I.name = "legendary [I.name]"
+										modifier = 1.3
+
+								if(istype(I, /obj/item))
+									var/obj/item/it = I
+									it.obj_integrity *= modifier
+									it.max_integrity  *= modifier
+									it.sellprice *= modifier
+								if(istype(I, /obj/item/rogueweapon))
+									var/obj/item/rogueweapon/W = I
+									W.force *= modifier
+									W.throwforce *= modifier
+									W.block_chance *= modifier
+									W.armor_penetration *= modifier
+									W.wdefense *= modifier
+								if(istype(I, /obj/item/clothing))
+									var/obj/item/clothing/C = I
+									C.damage_deflection *= modifier
+									C.integrity_failure /= modifier
+									C.armor = C.armor.multiplymodifyAllRatings(modifier)
+									C.equip_delay_self *= modifier
+								if(istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher/bow)) //Bows
+									var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/RAB = I
+									RAB.force *= modifier
+									RAB.damfactor *= modifier
+								if(istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)) //Crossbows
+									var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/RAC = I
+									RAC.force *= modifier
+									RAC.damfactor *= modifier
+								if(istype(I, /obj/item/gun/ballistic/arquebus)) //Guns
+									var/obj/item/gun/ballistic/arquebus/RAG = I
+									RAG.force *= modifier
+									RAG.force_wielded *= modifier
+									RAG.damfactor *= modifier
+
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
 										span_notice("I [R.verbage_simple] \a [R.name]!"))
@@ -281,7 +344,6 @@
 							if(R.craftdiff > 0) //difficult recipe
 								amt2raise += (R.craftdiff * 10) // also gets more
 							if(amt2raise > 0)
-								user.mind.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
 								user.mind.adjust_experience(R.skillcraft, amt2raise, FALSE)
 					return
 //				if(isitem(I))
@@ -327,7 +389,7 @@
 	var/amt
 	main_loop:
 		for(var/A in R.reqs)
-			amt = R.reqs[A]
+			amt = R.reqs[A] || 1 // if null (no key) assume 1
 			surroundings = get_environment(user)
 			surroundings -= Deletion
 			if(ispath(A, /datum/reagent))

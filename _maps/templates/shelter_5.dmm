@@ -1,0 +1,302 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"e" = (
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	icon_state = "borderfall"
+	},
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/seeds/apple,
+/obj/item/seeds/bean,
+/obj/item/seeds/beet,
+/obj/item/seeds/bellpepper,
+/obj/item/seeds/berryrogue,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/carrot,
+/obj/item/seeds/cherry,
+/obj/item/seeds/cucumber,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/garlic,
+/obj/item/seeds/nut,
+/obj/item/seeds/olive,
+/obj/item/seeds/onion,
+/obj/item/seeds/pear,
+/obj/item/seeds/peas,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/potato,
+/obj/item/seeds/pumpkin,
+/obj/item/seeds/radish,
+/obj/item/seeds/rice,
+/obj/item/seeds/shroom,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/tea,
+/obj/item/seeds/tomato,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat/oat,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"f" = (
+/obj/structure/fluff/millstone,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"g" = (
+/obj/structure/bars{
+	icon_state = "barsbent"
+	},
+/obj/structure/bars/passage/shutter/open,
+/obj/structure/table/wood/crafted,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors)
+"h" = (
+/turf/open/floor/rogue/wood,
+/area/rogue)
+"i" = (
+/obj/structure/closet/crate/chest/crafted,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"j" = (
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/indoors)
+"k" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/structure/sink/copper/crafted,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"n" = (
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	icon_state = "borderfall"
+	},
+/obj/structure/composter/full,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"v" = (
+/turf/open/transparent/openspace,
+/area/rogue)
+"w" = (
+/obj/item/customblank,
+/obj/item/customlock,
+/obj/item/customlock,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"x" = (
+/obj/structure/roguemachine/stockpile,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors)
+"A" = (
+/obj/structure/closet/crate/roguecloset/dark,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"C" = (
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	icon_state = "borderfall"
+	},
+/obj/structure/plough,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"D" = (
+/obj/structure/mineral_door/wood/fancywood{
+	keylock = 0
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"E" = (
+/obj/structure/bars/passage/shutter/open,
+/obj/structure/mineral_door/wood/fancywood{
+	keylock = 0
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"F" = (
+/obj/structure/stairs/d{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"G" = (
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors)
+"I" = (
+/obj/structure/bed/rogue/inn/wool,
+/obj/item/bedsheet/rogue/wool,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"J" = (
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	icon_state = "borderfall"
+	},
+/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/item/storage/roguebag/crafted,
+/obj/item/storage/roguebag/crafted,
+/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/rogueweapon/stoneaxe/woodcut/steel,
+/obj/item/rogueweapon/shovel,
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/hoe,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
+"L" = (
+/obj/machinery/light/rogue/oven/east,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"M" = (
+/obj/item/customlock,
+/obj/item/rogueweapon/hammer/stone,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"Q" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors)
+"U" = (
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"V" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/item/roguegear,
+/obj/structure/lever/wall{
+	dir = 4;
+	pixel_x = 9
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+"X" = (
+/obj/structure/roguemachine/atm,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors)
+
+(1,1,1) = {"
+f
+e
+J
+F
+n
+C
+a
+"}
+(2,1,1) = {"
+j
+x
+G
+G
+G
+G
+k
+"}
+(3,1,1) = {"
+j
+j
+j
+D
+Q
+j
+j
+"}
+(4,1,1) = {"
+j
+X
+U
+M
+L
+w
+E
+"}
+(5,1,1) = {"
+j
+i
+U
+U
+U
+U
+g
+"}
+(6,1,1) = {"
+j
+i
+U
+V
+A
+I
+j
+"}
+(7,1,1) = {"
+j
+j
+j
+j
+j
+j
+j
+"}
+
+(1,1,2) = {"
+v
+v
+v
+v
+v
+v
+v
+"}
+(2,1,2) = {"
+h
+v
+v
+v
+v
+v
+v
+"}
+(3,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+"}
+(4,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+"}
+(5,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+"}
+(6,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+"}
+(7,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+"}

@@ -51,12 +51,12 @@
 	switch(stage)
 		if(STARTUP_STAGE)
 			return "bla1"
-//			return telegraph_overlay
+			// return telegraph_overlay
 		if(MAIN_STAGE)
 			return pick("rain")
 		if(WIND_DOWN_STAGE)
 			return "bla2"
-			return end_overlay
+			// return end_overlay
 	return "bla3"
 
 /datum/weather/rain/starteffected()

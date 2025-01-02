@@ -2,7 +2,7 @@
 	name = "Dye Station"
 	desc = "A station to give your apparel a fresh new color! Recommended to use with white items for best results."
 	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dyestation"
+	icon_state = "dye_bin"
 	density = TRUE
 	anchored = TRUE
 	var/atom/movable/inserted
@@ -52,14 +52,14 @@
 		"Russet" = "#7f461b"
 		)
 /obj/machinery/gear_painter/Destroy()
-	inserted.forceMove(drop_location())
+	inserted?.forceMove(drop_location())
 	return ..()
 
 /obj/machinery/gear_painter/dye_bin
 	name = "Dye bin"
 	desc = "A bin used to paint things."
 	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dyestation"
+	icon_state = "dye_bin"
 	color = "#ceab5f"
 
 /obj/machinery/gear_painter/attackby(obj/item/I, mob/living/user)

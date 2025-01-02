@@ -74,6 +74,25 @@
 	icon_state = "oresand"
 	smeltresult = /obj/item/ingot/glass
 	sellprice = 4
+
+// pocket sand!!
+// copied from /obj/item/stack/ore/glass/throw_impact
+/obj/item/rogueore/sand/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(..() || !ishuman(hit_atom))
+		return
+	// 20% chance if thrown by an explosion or something, otherwise thrower must have targeted head
+	if((isnull(throwingdatum?.target_zone) && prob(80)) || ran_zone(throwingdatum?.target_zone) != BODY_ZONE_HEAD)
+		return
+	var/mob/living/carbon/human/humie = hit_atom
+	if(humie.is_eyes_covered())
+		humie.visible_message(span_danger("[humie]'s eye protection blocks the sand!"), span_warning("My eye protection blocks the sand!"))
+		return
+	humie.adjust_blurriness(6)
+	humie.adjustStaminaLoss(15)//the pain from my eyes burning does stamina damage
+	humie.confused += 5
+	to_chat(humie, span_danger("\The [src] gets into my eyes! The pain, it burns!"))
+	qdel(src)
+
 /obj/item/rogueore/cinnabar
 	name = "cinnabar"
 	desc = "Red gems that contain the essence of quicksilver."
@@ -175,4 +194,12 @@
 	icon_state = "ingotglass"
 	smeltresult = /obj/item/ingot/glass
 	grind_results = list(/datum/reagent/glass = 15)
+	sellprice = 15
+
+/obj/item/rogueore/psteel
+	name = "pig iron mix"
+	desc = "a crude mix of carbon and iron, wasteful but smeltable into steel."
+	icon_state = "oreada"
+	smeltresult = /obj/item/ingot/steel
+	grind_results = list(/datum/reagent/iron = 15)
 	sellprice = 15

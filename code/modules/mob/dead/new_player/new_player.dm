@@ -560,7 +560,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	character.assign_family() // STONEKEEP CHANGE add families
 	if(humanc)
 		var/fakekey = character.ckey
-		if(ckey in GLOB.anonymize)
+		if(character.ckey in GLOB.anonymize)
 			fakekey = get_fake_key(character.ckey)
 		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank])<BR>"
 		GLOB.character_ckey_list[character.real_name] = character.ckey
@@ -600,9 +600,11 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 	var/list/omegalist = list()
 	omegalist += list(GLOB.noble_positions)
+	omegalist += list (GLOB.grove_positions)
 	omegalist += list(GLOB.courtier_positions)
 	omegalist += list(GLOB.garrison_positions)
 	omegalist += list(GLOB.church_positions)
+	omegalist += list(GLOB.academy_positions)
 	omegalist += list(GLOB.yeoman_positions)
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
@@ -641,12 +643,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			switch (SSjob.name_occupations[category[1]].department_flag)
 				if (NOBLEMEN)
 					cat_name = "Nobles"
+				if (GROVE)
+					cat_name = "Breuddwyd Grove"
 				if (COURTIERS)
 					cat_name = "Courtiers"
 				if (GARRISON)
 					cat_name = "Garrison"
 				if (CHURCHMEN)
 					cat_name = "Churchmen"
+				if (ACADEMY)
+					cat_name = "Ravenloft Academy"
 				if (YEOMEN)
 					cat_name = "Yeomen"
 				if (PEASANTS)

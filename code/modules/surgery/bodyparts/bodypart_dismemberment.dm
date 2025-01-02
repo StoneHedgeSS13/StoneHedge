@@ -39,6 +39,8 @@
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 	if(body_zone == BODY_ZONE_HEAD)
 		C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
+		for(var/datum/wound/wound as anything in wounds)
+			qdel(wound)
 	else
 		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B>"))
 	C.emote("painscream")

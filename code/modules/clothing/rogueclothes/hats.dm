@@ -10,6 +10,7 @@
 	bloody_icon_state = "helmetblood"
 	experimental_onhip = TRUE
 	w_class = WEIGHT_CLASS_SMALL
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
@@ -86,7 +87,11 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	max_integrity = 100
-	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
+
+/obj/item/clothing/head/roguetown/roguehood/white
+	color = CLOTHING_WHITE
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -109,7 +114,6 @@
 	toggle_icon_state = TRUE
 	blocksound = SOFTHIT
 	max_integrity = 100
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/AdjustClothes(mob/user)
 	if(loc == user)
@@ -122,6 +126,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
+				H.update_inv_wear_mask()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
@@ -147,7 +152,6 @@
 	toggle_icon_state = TRUE
 	blocksound = SOFTHIT
 	max_integrity = 100
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/shalalz/AdjustClothes(mob/user)
 	if(loc == user)
@@ -160,6 +164,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
+				H.update_inv_wear_mask()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
@@ -218,10 +223,9 @@
 	item_state = "necrahood"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/psydonhood
-	name = "psydon hood"
+	name = "seraph-iros hood"
 	desc = "Blood of Psydon preserve me."
 	color = null
 	icon_state = "psydonhood"
@@ -232,23 +236,23 @@
 
 /obj/item/clothing/head/roguetown/dendormask
 	name = "briarmask"
-	desc = "A mask of wood worn by druids in service to Dendor."
+	desc = "A mask of wood worn by druids in service to Sylvan Lords."
 	color = null
 	icon_state = "dendormask"
 	item_state = "dendormask"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 	dynamic_hair_suffix = ""
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/necromhood
 	name = "necromancers hood"
 	color = null
+	icon = 'modular_stonehedge/icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "necromhood"
 	item_state = "necromhood"
 	body_parts_covered = NECK
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/priestmask
 	name = "solar visage"
@@ -258,9 +262,9 @@
 	item_state = "priesthead"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/priestmask/pickup(mob/living/user)
+	..()
 	if(!HAS_TRAIT(user, TRAIT_CHOSEN))
 		to_chat(user, "<font color='yellow'>UNWORTHY HANDS TOUCH THE VISAGE, CEASE OR BE PUNISHED</font>")
 		spawn(30)
@@ -276,11 +280,11 @@
 
 /obj/item/clothing/head/roguetown/roguehood/random/Initialize()
 	color = pick("#544236", "#435436", "#543836", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/mage/Initialize()
 	color = pick("#4756d8", "#759259", "#bf6f39", "#c1b144", "#b8252c")
-	..()
+	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/AdjustClothes(mob/user)
 	if(loc == user)
@@ -288,24 +292,25 @@
 			adjustable = CADJUSTED
 			if(toggle_icon_state)
 				icon_state = "[initial(icon_state)]_t"
-			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+			flags_inv = HIDEEARS|HIDEHAIR
 			body_parts_covered = NECK|HAIR|EARS|HEAD
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
-				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//				H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 				H.update_inv_cloak()
-			block2add = FOV_BEHIND
+			return
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 			flags_inv = null
+			body_parts_covered = NECK
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
-					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
+//					H.update_inv_wear_mask() //Snowflake case for Desert Merc hood
 					H.update_inv_cloak()
-		user.update_fov_angles()
+		return
 
 
 /obj/item/clothing/head/roguetown/menacing
@@ -315,8 +320,7 @@
 	item_state = "menacing"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
-	sewrepair = TRUE
-	//dropshrink = 0.75
+	fiber_salvage = FALSE
 
 /obj/item/clothing/head/roguetown/menacing/bandit
 	icon_state = "bandithood"
@@ -326,7 +330,6 @@
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_CUT)
 	anvilrepair = null
-	sewrepair = TRUE
 	max_integrity = 200
 	blocksound = SOFTHIT
 
@@ -336,43 +339,37 @@
 	icon_state = "jester"
 	item_state = "jester"
 	dynamic_hair_suffix = "+generic"
-	sewrepair = TRUE
 	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
 	desc = "Keeps the sun off your head while toiling the fields."
 	icon_state = "strawhat"
-	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fibers
 
 /obj/item/clothing/head/roguetown/puritan
 	name = "buckled hat"
 	icon_state = "puritan_hat"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/nightman
 	name = "teller's hat"
 	icon_state = "tophat"
 	color = CLOTHING_BLACK
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/bardhat
 	name = "hat"
 	icon_state = "bardhat"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/fancyhat
 	name = "fancy hat"
 	desc = "A fancy looking hat with colorful feathers sticking out of it."
 	icon_state = "fancy_hat"
 	item_state = "fancyhat"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/hatfur
 	name = "fur hat"
 	desc = "A comfortable warm hat lined with fur."
 	icon_state = "hatfur"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/papakha
 	name = "papakha"
@@ -385,38 +382,29 @@
 	name = "fur hat"
 	desc = "A blue hat lined with fur."
 	icon_state = "hatblu"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/fisherhat
 	name = "straw hat"
 	desc = "A hat worn by fishermen to protect from the sun."
 	icon_state = "fisherhat"
 	item_state = "fisherhat"
-	sewrepair = TRUE
-//	color = "#fbc588"
-	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/flathat
 	name = "flat hat"
 	icon_state = "flathat"
 	item_state = "flathat"
-	sewrepair = TRUE
-
 
 /obj/item/clothing/head/roguetown/chaperon
 	name = "chaperon hat"
 	desc = "A fancy hat worn by nobles."
 	icon_state = "chaperon"
 	item_state = "chaperon"
-	sewrepair = TRUE
-	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/cookhat
 	name = "cook hat"
 	desc = "A hat which signifies one as well versed in the arts of cooking."
 	icon_state = "chef"
 	item_state = "chef"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/chaperon/greyscale
 	icon_state = "chap_alt"
@@ -439,8 +427,6 @@
 	name = "chef's hat"
 	desc = "A hat which signifies one as well versed in the arts of cooking."
 	icon_state = "chef"
-	sewrepair = TRUE
-	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/armingcap
 	name = "cap"
@@ -454,8 +440,6 @@
 	name = "knit cap"
 	desc = "A simple knitted cap."
 	icon_state = "knitcap"
-	sewrepair = TRUE
-	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/armingcap/dwarf
 	color = "#cb3434"
@@ -465,8 +449,8 @@
 	desc = "A simple headband to keep sweat out of your eyes."
 	icon_state = "headband"
 	item_state = "headband"
-	sewrepair = TRUE
-	//dropshrink = 0.75
+	fiber_salvage = FALSE
+	salvage_amount = 1
 	dynamic_hair_suffix = null
 
 /obj/item/clothing/head/roguetown/headband/red
@@ -476,12 +460,14 @@
 	name = "crown of stonehedge"
 	desc = ""
 	icon_state = "serpcrown"
-	//dropshrink = 0
 	dynamic_hair_suffix = null
 	sellprice = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	clothing_flags = CANT_SLEEP_IN
+	sewrepair = FALSE
+
+/obj/item/clothing/head/roguetown/crown/serpcrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
@@ -505,49 +491,40 @@
 
 /obj/item/clothing/head/roguetown/crown/sparrowcrown
 	name = "champion's circlet"
-	desc = ""
 	icon_state = "sparrowcrown"
-	//dropshrink = 0
-	dynamic_hair_suffix = null
-	resistance_flags = FIRE_PROOF | ACID_PROOF
 	sellprice = 50
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/priesthat
 	name = "priest's hat"
 	desc = ""
-	icon_state = "Prophet"
-	//dropshrink = 0
+	icon_state = "priest"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	dynamic_hair_suffix = "+generic"
 	sellprice = 77
 	worn_x_dimension = 64
 	worn_y_dimension = 64
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/reqhat
 	name = "serpent crown"
 	desc = ""
 	icon_state = "reqhat"
 	sellprice = 100
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/headdress
 	name = "foreign headdress"
 	desc = ""
 	icon_state = "headdress"
 	sellprice = 10
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/headdress/alt
 	icon_state = "headdressalt"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/nun
 	name = "nun's habit"
 	icon_state = "nun"
 	sellprice = 5
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/hennin
 	name = "hennin"
@@ -555,7 +532,6 @@
 	icon_state = "hennin"
 	sellprice = 19
 	dynamic_hair_suffix = "+generic"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/paddedcap
 	name = "padded cap"
@@ -571,7 +547,6 @@
 	blocksound = SOFTHIT
 	max_integrity = 75
 	color = "#463C2B"
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -587,13 +562,15 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	dynamic_hair_suffix = "+generic"
 	bloody_icon_state = "helmetblood"
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
+	armor_class = ARMOR_CLASS_LIGHT
 	clothing_flags = CANT_SLEEP_IN
 	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -638,9 +615,6 @@
 	icon_state = "sallet_visor"
 	max_integrity = 275
 	adjustable = CAN_CADJUST
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = FULL_HEAD
 	block2add = FOV_BEHIND
 	max_integrity = 400
 
@@ -665,6 +639,50 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 		user.update_fov_angles()
+
+/obj/item/clothing/head/roguetown/helmet/astratahelm
+	name = "astrata helmet"
+	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
+	icon_state = "astratahelm"
+	item_state = "astratahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/helmet/nochelm
+	name = "jayx helmet"
+	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
+	icon_state = "nochelm"
+	item_state = "nochelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/helmet/necrahelm
+	name = "Yamaian helmet"
+	desc = "Headwear commonly worn by Templars in service to Yamais. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	icon_state = "necrahelm"
+	item_state = "necrahelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/helmet/dendorhelm
+	name = "Sylvan helmet"
+	desc = "Headwear commonly worn by Templars in service to Sylvarhn. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	icon_state = "dendorhelm"
+	item_state = "dendorhelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
+	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
@@ -707,6 +725,13 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
+
+/obj/item/clothing/head/roguetown/helmet/elfbarbutewings/Hedgeguard
+	name = "hedgeguard's helm"
+	desc = "An ironwood helm in the style of the Hedge-Guard of the Breuddwyd Grove. It's adorned with ornate thorns and iconography, signifying devotion to Sylvarn."
+	icon_state = "dendorhelm"
+	item_state = "dendorhelm"
+	color = "#9a7a54"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
@@ -937,15 +962,14 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
-
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
 	desc = "A helmet which covers the whole of the head. Offers excellent protection. This one has a golden cross-shaped brow."
 	icon_state = "topfhelm_gold"
 	item_state = "topfhelm_gold"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
-	name = "astrata helmet"
-	desc = "Headwear commonly worn by Templars in service to Astrata. The firstborn child's light will forever shine on within its crest."
+	name = "Elysian helmet"
+	desc = "Headwear commonly worn by Templars in service to Elysius. The solar dragons light will forever shine on within its crest."
 	icon_state = "astratahelm"
 	item_state = "astratahelm"
 	emote_environment = 3
@@ -954,18 +978,17 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psyhelm
-	name = "psydon helmet"
-	desc = "A helmet formerly worn by those who were templars in service to Psydon. The time where Psydon once had templars is long passed now, but these relics still remain."
+	name = "Cultist helmet"
+	desc = "A helmet formerly worn by those who were templars in service to Dragon Cults."
 	icon_state = "psydonhelm"
 	item_state = "psydonhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
-    name = "eora helmet"
-    desc = "Headwear commonly worn by Templars in service to Eora. The chained heart on its front demonstrates its wearer's commitment to protect unbound love, even at ones own expense."
+    name = "Viriitran helmet"
+    desc = "Headwear commonly worn by Templars in service to Viriitri. The chained heart on its front demonstrates its wearer's commitment to protect unbound love, even at ones own expense."
     icon_state = "eorahelm"
     item_state = "eorahelm"
     emote_environment = 3
@@ -974,34 +997,31 @@
     smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
-	name = "noc helmet"
-	desc = "Hearwear commonly worn by Templars in service to Noc. Without the night there can be no day, without Noc there can be no light in the dark hours."
+	name = "Luneite helmet"
+	desc = "Hearwear commonly worn by Templars in service to Lune. Without the night there can be no day, without Noc there can be no light in the dark hours."
 	icon_state = "nochelm"
 	item_state = "nochelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-	name = "necra helmet"
-	desc = "Headwear commonly worn by Templars in service to Necra. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
+	name = "Yamain helmet"
+	desc = "Headwear commonly worn by Templars in service to Yamais. Let its skeletal features remind you of the only thing which is guaranteed in life. You will die."
 	icon_state = "necrahelm"
 	item_state = "necrahelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
-	name = "dendor helmet"
-	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
+	name = "Sylvan helmet"
+	desc = "Headwear commonly worn by Templars in service to Sylvarhn. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
 
 
 
@@ -1048,7 +1068,6 @@
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR
 	block2add = FOV_BEHIND
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/helmetbars
 	name = "helmetbars"
@@ -1192,9 +1211,9 @@
 	smeltresult = /obj/item/ash
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 /obj/item/clothing/head/roguetown/helmet/carapacecap/dragon
-	name = "dragon cap"
+	name = "dragonscale cap"
 	desc = "Fiery armored plates sown together to protect your head."
-	color = "red"
+	color = "#9e5761"
 	armor = list("blunt" = 60, "slash" = 60, "stab" = 60, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
 
 /obj/item/clothing/head/roguetown/helmet/carapacehelm
@@ -1208,64 +1227,45 @@
 	icon_state = "carapacehelm"
 	item_state = "carapacehelm"
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
 	max_integrity = 150
 	anvilrepair = null
 	sewrepair = TRUE
 	blocksound = PLATEHIT
 	smeltresult = /obj/item/ash
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+
 /obj/item/clothing/head/roguetown/helmet/carapacehelm/dragon
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "dragonslayer full helm"
-	desc = "Helmet crafted from the bones of a dragon."
-	color = "red"
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 60, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
-	max_integrity = 200
+	desc = "Helmet crafted from the head of a dragon."
+	body_parts_covered = HEAD|HAIR|EARS|NOSE|NECK
+	icon_state = "dragonscalehelm"
+	item_state = "dragonscalehelm"
+	color = "#693a41"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	max_integrity = 300
 	sellprice = 50
-
-/obj/item/clothing/head/roguetown/helmet/leather
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
-	name = "leather helmet"
-	desc = "A helmet made of leather."
-	body_parts_covered = HEAD|HAIR|EARS|NOSE
-	icon_state = "leatherhelm"
-	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
-	anvilrepair = null
-	smeltresult = null
-	sewrepair = TRUE
-	blocksound = SOFTHIT
-	clothing_flags = null
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 	name = "volf helmet"
 	desc = "A helmet made using the remains of a volf, surprisingly comfortable."
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR
-	icon_state = "volfhelm"
-	item_state = "volfhelm"
+	icon_state = "volfhead"
+	item_state = "volfhead"
 	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 
-/obj/item/clothing/head/roguetown/helmet/leather/volfhead
-	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
-	name = "volf head"
-	desc = "A helmet made using the head of a volf."
-	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEHAIR
-	icon_state = "volfhead"
-	item_state = "volfhead"
-	armor = list("blunt" = 45, "slash" = 25, "stab" = 35, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
-	anvilrepair = null
-	sewrepair = TRUE
-	blocksound = SOFTHIT
-	clothing_flags = null
+/obj/item/clothing/head/roguetown/helmet/leather/volfhelm/greatdruid
+	name = "sylvarn's pelt-covered helm"
+	desc = "A sacred helm passed between Great Druids, crafted from the pelt of one of Sylvarn's own familiars. The volf who provided this pelt was said to have lived for centuries protecting the four aspects of the Wyld Huntsman's seasons, before it was murdered by a group of adventurers for coin. It serves as a reminder that civilization is cruel, as are its people."
 
 /obj/item/clothing/head/roguetown/helmet/leather/bearhead
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -1273,12 +1273,13 @@
 	desc = "Upon closer inspection, this is made of volf fur, not bear fur, but who will know the difference?"
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR|HIDEEARS
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "bearpelt"
 	item_state = "bearpelt"
 	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
-	sewrepair = TRUE
 	blocksound = SOFTHIT
 	clothing_flags = null
 
@@ -1290,7 +1291,6 @@
 	dynamic_hair_suffix = "+generic"
 	worn_x_dimension = 64
 	worn_y_dimension = 64
-	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/wizhat/red
 	icon_state = "wizardhatred"
@@ -1343,7 +1343,7 @@
 	dynamic_hair_suffix = null
 	sellprice = 100
 	resistance_flags = FIRE_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	name = "grenzelhoft plume hat"
@@ -1412,9 +1412,11 @@
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	smeltresult = null
-	sewrepair = TRUE
 	blocksound = SOFTHIT
 	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -1437,8 +1439,8 @@
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	smeltresult = null
-	sewrepair = TRUE
 	blocksound = SOFTHIT
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/footmanhelmet
 	name = "footman helmet"
@@ -1628,8 +1630,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonianknighthelm
-	name = "psydonian knight helmet"
-	desc = "PSYDON lives."
+	name = "seraph-irosian knight helmet"
+	desc = "SERAPH-IROS lives."
 	icon_state = "psydonianknighthelm"
 	item_state = "psydonianknighthelm"
 	emote_environment = 3
@@ -1680,8 +1682,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
-	name = "malum fullmask"
-	desc = "Headwear commonly worn by acolytes in service to Malum. Like Malum, they are shackled to this world with not a care for how they suffer. Such is the way of the children of the opinionless god."
+	name = "Svaeryhog fullmask"
+	desc = "Headwear commonly worn by acolytes in service to Svaeryhog."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEHAIR
@@ -1766,8 +1768,8 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/malumhelmet
-	name = "malum helmet"
-	desc = "Headwear commonly worn by Templars in service to Malum. It resembles the helmet worn by slaves sent to death in gladiatorial bouts."
+	name = "Svaeryhog helmet"
+	desc = "Headwear commonly worn by Templars in service to Svaeryhog. It resembles the helmet worn by slaves sent to death in gladiatorial bouts."
 	block2add = FOV_BEHIND
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEFACIALHAIR
 	icon_state = "slavehelm"
@@ -1958,7 +1960,7 @@
 		"Stripes"="stripes_decoration",
 		"Red Castle"="castle_red_decoration",
 		"White Castle"="castle_white_decoration",
-		"Graggar"="graggar_decoration",
+		"Nyrnhe"="graggar_decoration",
 		"Efreet"="efreet_decoration",
 		"Sun"="sun_decoration",
 		"Feathers"="feathers_decoration",
@@ -2012,7 +2014,7 @@
 		"Stripes"="stripes_houndecoration",
 		"Red Castle"="castle_red_houndecoration",
 		"White Castle"="castle_white_houndecoration",
-		"Graggar"="graggar_houndecoration",
+		"Nyrnhe"="graggar_houndecoration",
 		"Efreet"="efreet_houndecoration",
 		"Sun"="sun_houndecoration",
 		"Feathers"="feathers_houndecoration",
@@ -2066,7 +2068,7 @@
 		"Stripes"="stripes_bucket",
 		"Red Castle"="castle_red_bucket",
 		"White Castle"="castle_white_bucket",
-		"Graggar"="graggar_bucket",
+		"Nyrnhe"="graggar_bucket",
 		"Efreet"="efreet_bucket",
 		"Sun"="sun_bucket",
 		"Feathers"="feathers_bucket",
@@ -2120,7 +2122,7 @@
 		"Stripes"="stripes_gbucket",
 		"Red Castle"="castle_red_gbucket",
 		"White Castle"="castle_white_gbucket",
-		"Graggar"="graggar_gbucket",
+		"Nyrnhe"="graggar_gbucket",
 		"Efreet"="efreet_gbucket",
 		"Sun"="sun_gbucket",
 		"Feathers"="feathers_gbucket",
@@ -2151,3 +2153,6 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+	clothing_flags = null
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide

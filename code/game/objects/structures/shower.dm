@@ -148,6 +148,9 @@
 		if(M.head && wash_obj(M.head,clean))
 			M.update_inv_head()
 
+		if(M.wear_cloak && wash_obj(M.wear_cloak,clean))
+			M.update_inv_cloak()
+
 		if(M.glasses && !(SLOT_GLASSES in obscured) && wash_obj(M.glasses,clean))
 			M.update_inv_glasses()
 

@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/atm
 	name = "MEISTER"
-	desc = "Stores and withdraws currency for accounts managed by the Kingdom of StoneHedge."
+	desc = "Stores and withdraws currency for accounts managed by the Monarch of the Realm."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "atm"
 	density = FALSE
@@ -15,6 +15,10 @@
 	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 		H.cursed_freak_out()
+		return
+
+	if(HAS_TRAIT(H, TRAIT_GROVE_MARKED))
+		to_chat(H, span_warning("The machine rejects you, sensing the Breuddwyd Grove's mark of judgment upon you."))
 		return
 
 	if(H in SStreasury.bank_accounts)
@@ -40,7 +44,7 @@
 			mod = 10
 		if(selection == "SILVER")
 			mod = 5
-		var/coin_amt = input(user, "There is [SStreasury.treasury_value] mammon in the treasury. You may withdraw [amt/mod] [selection] COINS from your account.", src) as null|num
+		var/coin_amt = input(user, "There is [SStreasury.treasury_value] mammon in the treasury. You may withdraw [floor(amt/mod)] [selection] COINS from your account.", src) as null|num
 		coin_amt = round(coin_amt)
 		if(coin_amt < 1)
 			return
@@ -74,15 +78,18 @@
 
 /obj/structure/roguemachine/atm/attackby(obj/item/P, mob/user, params)
 	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
 
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
-			var/mob/living/carbon/human/H = user
 			to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 			H.cursed_freak_out()
 			return
 
+		if(HAS_TRAIT(H, TRAIT_GROVE_MARKED))
+			to_chat(H, span_warning("The machine rejects you, sensing the Breuddwyd Grove's mark of judgment upon you."))
+			return
+
 		if(istype(P, /obj/item/roguecoin))
-			var/mob/living/carbon/human/H = user
 			if(H in SStreasury.bank_accounts)
 				SStreasury.generate_money_account(P.get_real_price(), H)
 				if(!(H.job in GLOB.noble_positions) && !HAS_TRAIT(H, TRAIT_NOBLE))

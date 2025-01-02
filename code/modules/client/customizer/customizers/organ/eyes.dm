@@ -75,12 +75,19 @@
 
 /datum/customizer_choice/organ/eyes/humanoid
 
-/datum/customizer_choice/organ/eyes/elf
-	organ_type = /obj/item/organ/eyes/night_vision/elf
+/datum/customizer_choice/organ/eyes/full_darksight
+	organ_type = /obj/item/organ/eyes/night_vision/full_darksight
 
-/datum/customizer/organ/eyes/elf
-	customizer_choices = list(/datum/customizer_choice/organ/eyes/elf)
-	default_choice = /datum/customizer_choice/organ/eyes/elf
+/datum/customizer/organ/eyes/full_darksight
+	customizer_choices = list(/datum/customizer_choice/organ/eyes/full_darksight)
+	default_choice = /datum/customizer_choice/organ/eyes/full_darksight
+
+/datum/customizer_choice/organ/eyes/half_darksight
+	organ_type = /obj/item/organ/eyes/half_darksight
+
+/datum/customizer/organ/eyes/half_darksight
+	customizer_choices = list(/datum/customizer_choice/organ/eyes/half_darksight)
+	default_choice = /datum/customizer_choice/organ/eyes/half_darksight
 
 /datum/customizer/organ/eyes/moth
 	customizer_choices = list(/datum/customizer_choice/organ/eyes/moth)

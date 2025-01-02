@@ -1,0 +1,6 @@
+{
+    "map_name": "lichmap",
+    "map_path": "map_files/dungeons",
+    "map_file": "lichmap.dmm",
+	"traits": [{"Up": true},  {"Up": true, "Down": true}, {"Down": true}]
+}

@@ -41,8 +41,6 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	race_bonus = list(STAT_INTELLIGENCE = 1)
 	enflamed_icon = "widefire"
 	customizers = list(
@@ -56,14 +54,25 @@
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/belly/human,
+		/datum/customizer/organ/butt/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
+	
+/datum/species/human/northern/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
+	..()
+	languages(foreign)
+	
+/datum/species/human/northern/proc/languages(mob/living/carbon/human/foreign)
+	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
+		foreign.grant_language(/datum/language/grenzelhoftian)
 
 /datum/species/human/northern/get_skin_list()
 	return list(

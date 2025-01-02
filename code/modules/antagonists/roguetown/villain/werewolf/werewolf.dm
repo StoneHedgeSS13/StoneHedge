@@ -10,6 +10,7 @@
 		"BEWARE THE BEAST!",
 		"MY LUPINE MARK!",
 	)
+	rogue_enabled = TRUE
 	var/special_role = ROLE_WEREWOLF
 	var/transformed
 	var/transforming

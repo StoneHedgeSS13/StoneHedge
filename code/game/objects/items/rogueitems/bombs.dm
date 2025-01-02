@@ -11,7 +11,7 @@
 	throw_speed = 0.5
 	var/fuze = 50
 	var/lit = FALSE
-	var/prob2fail = 23
+	var/prob2fail = 0 //how can this fail?
 
 
 /obj/item/bomb/spark_act()

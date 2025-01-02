@@ -16,7 +16,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/maces
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
@@ -25,6 +25,12 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
+
+/obj/item/rogueweapon/mace/equipped(mob/user, slot, initial = FALSE)
+	pickup_sound = pick("modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg", "modular_helmsguard/sound/sheath_sounds/draw_blunt2.ogg")
+	. = ..()
 
 /obj/item/rogueweapon/duster
 	force = 15
@@ -43,7 +49,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	sharpness = IS_BLUNT
 	smeltresult = /obj/item/ingot/iron
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
 	minstr = 2
@@ -51,7 +57,8 @@
 	wbalance = 1
 	blade_dulling = DULLING_BASH
 	gripped_intents = null
-
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_blunt.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 
 /obj/item/rogueweapon/mace/church
 	force = 25
@@ -65,15 +72,15 @@
 	wdefense = 3
 
 /obj/item/rogueweapon/mace/steel
-	force = 30
-	force_wielded = 40
+	force = 25
+	force_wielded = 35
 	name = "steel mace"
 	desc = "This steel mace is objectively superior to an iron one."
 	icon_state = "smace"
 	wbalance = -1
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
-	wdefense = 3
+	wdefense = 2
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
@@ -148,7 +155,7 @@
 	swingdelay = 10
 	icon_state = "insmash"
 	item_d_type = "blunt"
-	
+
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
@@ -178,8 +185,8 @@
 	smeltresult = /obj/item/ash
 	minstr = 0
 
-/obj/item/rogueweapon/mace/woodclub/New()
-	..()
+/obj/item/rogueweapon/mace/woodclub/Initialize(mapload)
+	. = ..()
 	icon_state = "club[rand(1,2)]"
 
 /datum/intent/mace/strike/wood
@@ -320,11 +327,13 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/mace/goden/steel
+	possible_item_intents = list(/datum/intent/mace/strike)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/rangedthrust)
 	name = "grand mace"
 	desc = "A massive mace that can crush any opposition with ease."
 	icon_state = "polemace"
-	force = 15
-	force_wielded = 35
+	force = 20
+	force_wielded = 40
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()

@@ -27,7 +27,7 @@
 #define TRAIT_CYCLOPS_RIGHT "Cyclops (Right)" //poked right eye
 #define TRAIT_RETARD_ANATOMY "Inhumen Anatomy" //can't wear hats and shoes
 #define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
-#define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water +HS EDIT:Poison berries too
+#define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water +DK EDIT:organs too, no longer protects from berry poison
 #define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
 #define TRAIT_DISFIGURED "Disfigured"
@@ -41,6 +41,7 @@
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_GOODRUNNER "Good Runner"
 #define TRAIT_TINY "Tiny"
+#define TRAIT_SEESPIRITS "Spectral Sight"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -49,8 +50,8 @@
 
 //Hearthstone change
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //! Will always find any tracks and analyzes them perfectly.
-#define TRAIT_NOCSNEAK "Blessing of Noc" // I can hide in dim light.
-#define TRAIT_MALUMSGRACE "Malum's Grace" // For now, just means you dont combust when snorting malum's fire.
+#define TRAIT_NOCSNEAK "Blessing of Shadow" // I can hide in dim light.
+#define TRAIT_MALUMSGRACE "Fire's Grace" // For now, just means you dont combust when snorting malum's fire.
 #define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 #define TRAIT_STRONGTHROW "Strong Throw" // 1.5x throw distance and force
@@ -59,13 +60,14 @@
 #define TRAIT_PUGILIST "Pugilist" //more punch damage
 #define TRAIT_WILDMAGIC "Wild Magic" //low chance for insane stuff to happen when casting
 #define TRAIT_FIENDKISS "Kiss of the Fiend" //after casting some spells, hurl a firebolt at the same location
-#define TRAIT_CHARGER "Charger" //after casting some spells, hurl a firebolt at the same location
+#define TRAIT_CHARGER "Charger" //advantage on running into people.
 #define TRAIT_ARTIFICER "Artificer" //after casting some spells, hurl a firebolt at the same location
 #define TRAIT_NODETECT "Nondetection" //You can not be scryed on
+#define TRAIT_VORE "Vore" //can access vore
 //Hearthstone end.
 
 // PATRON GOD TRAITS
-#define TRAIT_ROT_EATER "Blessing of Rot" //can eat rotten food
+#define TRAIT_ROT_EATER "Eldritch gut" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Hunger" //can eat organs
 #define TRAIT_VINE_WALKER "Blessing of Nature"
 #define TRAIT_SOUL_EXAMINE "Blessing of Hermeir" //can check bodies to see if they have departed
@@ -74,7 +76,10 @@
 #define TRAIT_CHOSEN "Sunherald's Chosen"
 #define TRAIT_SEXDEVO "Blessing of Love" //sex devotion gain and extra healing.
 #define TRAIT_ABYSSOR_SWIM "Blessing of Tides" //less base fatigue drain when swimming
+#define TRAIT_NORTHMAN "Worshipper of the Fey" //recognized by the fae courts as another loyalist.
 #define TRAIT_FAITHLESS "Ignorant" //being faithless means gods won't really help you, will they
+#define TRAIT_SNEK "Levishth's Resolve" //immune to infections of all types
+#define TRAIT_GROVE_MARKED "Marked by the Grove" //you have been marked by the grove as a wanted criminal.
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -98,22 +103,32 @@
 #define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Picky Sleeper"
+#define TRAIT_ENDOWMENT "Enchanted Endowment" // should apply +3 CON -2 END -1 SPD, restricts most armor and using bows/crossbows, slows getting up.
+#define TRAIT_ENDOWMENTLITE "Natural Endowment" // no drawback version.
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
 #define TRAIT_ATHEISM_CURSE "Curse of Atheism"
-#define TRAIT_PSYDON_CURSE "Psydon's Curse"
+#define TRAIT_PSYDON_CURSE "Seraph-Iros's Curse"
 #define TRAIT_ASTRATA_CURSE "Astrata's Curse"
-#define TRAIT_NOC_CURSE "Noc's Curse"
-#define TRAIT_RAVOX_CURSE "Ravox's Curse"
-#define TRAIT_NECRA_CURSE "Necra's Curse"
-#define TRAIT_XYLIX_CURSE "Xylix's Curse"
-#define TRAIT_PESTRA_CURSE "Pestra's Curse"
-#define TRAIT_EORA_CURSE "Eora's Curse"
-#define TRAIT_ZIZO_CURSE "Zizo's Curse"
+#define TRAIT_NOC_CURSE "Jayx's Curse"
+#define TRAIT_RAVOX_CURSE "Minhur's Curse"
+#define TRAIT_NECRA_CURSE "Yamais Curse"
+#define TRAIT_XYLIX_CURSE "Tricksters Curse"
+#define TRAIT_PESTRA_CURSE "Hermeirs Curse"
+#define TRAIT_EORA_CURSE "Viriitri's Curse"
+#define TRAIT_ZIZO_CURSE "Levishth's Mark"
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
-#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
-#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+#define TRAIT_MATTHIOS_CURSE "Shadowlord Touched"
+#define TRAIT_BAOTHA_CURSE "The Sacrifice"
+#define TRAIT_NYMPHO_CURSE "Nymphs Curse"
+
+//STONEHEDGE TRAITS
+#define TRAIT_USEMAGIC "Use Magic"
+#define TRAIT_LEARNMAGIC "Learn Magic" //You dont need usemagic if you have learnmagic.
+#define TRAIT_FEINT_IMMUNITY "Unfeintable"
+#define TRAIT_SOONTOWAKEUP "Soon to WAKE up"
+#define TRAIT_ALCHEMYKNOWLEDGE "Alchemy Knowledge"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -159,12 +174,14 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SHOCKIMMUNE = "I am immune to electrical shocks.",
 	TRAIT_NOSLEEP = span_warning("I can't sleep."),
 	TRAIT_ROT_EATER = span_necrosis("I can eat rotten food."),
+	TRAIT_SNEK = span_necrosis("I heal from infections and am immune to them"),
 	TRAIT_ORGAN_EATER = span_bloody("I can eat organs and raw flesh."),
 	TRAIT_KNEESTINGER_IMMUNITY = "I am immune to the shock of kneestingers.",
 	TRAIT_VINE_WALKER = "I can gracefully cross through weepvines.",
 	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
+	TRAIT_NORTHMAN = span_bloody("I can recognize fellow Feypacted Individuals, and they can recognize me too. I don't know which pact they are, however."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
@@ -189,7 +206,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_FIENDKISS = "When I cast projectile magic, the fiend also hurls a fire bolt at the same location.", // Hearthstone change
 	TRAIT_CHARGER = "I can charge into people like a ram.", // Hearthstone change
 	TRAIT_ARTIFICER = "I can use gems to improve items.", // Hearthstone change
-
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands.", // Hearthstone change
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
@@ -197,7 +213,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_FASTSLEEP = span_info("I am narcoleptic and may fall asleep where I stand. Moondust can help me stay awake."),
 	TRAIT_NIGHT_VISION = span_info("Whether because of my species, my career choice, or by some boon of my patron, my eyes have adapted to see well in the dark."),
 	TRAIT_SUPER_NV = span_info("My ability to see in the dark extends further than that of most others, and I can consciously control how bright my surroundings appear to me."),
-	TRAIT_BLINDFIGHTING = span_info("I have an incredible sense of awareness, allowing me to dodge and parry attacks even when I can't see them coming, and I'm never in danger from sneak attacks."),
+	TRAIT_BLINDFIGHTING = span_info("I have an incredible sense of awareness, allowing me to dodge and parry attacks even when I can't see them coming, If i am in high awareness, I can even prevent sneak attacks."),
+	TRAIT_SEESPIRITS = span_necrosis("My eyes peer beyond the veil of life and death, allowing me to perceive spirits."),
+	TRAIT_USEMAGIC = span_info("I know my way around magic items by legit means or trickery."),
+	TRAIT_FEINT_IMMUNITY = span_info("Those fools can not feint me."),
+	TRAIT_LEARNMAGIC = span_info("I can memorize spells long as my intellect allow me."),
+	TRAIT_ALCHEMYKNOWLEDGE = span_info("I know how to transmute things.")
 ))
 
 // trait accessor defines
@@ -282,7 +303,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
-#define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
@@ -374,6 +394,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOEMBED			"noembed"
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
+#define TRAIT_UNPICKPOCKETABLE  "unpickpocketable" //cannot be pickpocketed
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"

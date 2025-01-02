@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0		//Disables round-start spawn of pilgrims but allows migrant waves via total positions. Pilgrim = Towners now.
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_ALL_KINDSPLUS
 	tutorial = "Fleeing misfortune you head your way towards StoneHedge, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
 
 	outfit = null
@@ -13,7 +13,7 @@
 	bypass_lastclass = TRUE
 	banned_leprosy = FALSE
 
-	advclass_cat_rolls = list(CTAG_PILGRIM = 20, CTAG_ADVENTURER = 3)	//Get some adventurer options sometimes.
+	advclass_cat_rolls = list(CTAG_PILGRIM = 30, CTAG_ADVENTURER = 3)	//Get some adventurer options sometimes.
 	PQ_boost_divider = 10
 
 	display_order = JDO_PILGRIM

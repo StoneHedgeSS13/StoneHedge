@@ -16,6 +16,7 @@
 	START_PROCESSING(SSroguerot, src)
 
 /datum/component/rot/Destroy()
+	STOP_PROCESSING(SSroguerot, src)
 	if(soundloop)
 		soundloop.stop()
 	. = ..()
@@ -70,19 +71,26 @@
 			else
 				if(amount > 25 MINUTES)
 					if(!is_zombie)
-						B.skeletonize()
 						if(C.dna && C.dna.species)
 							C.dna.species.species_traits |= NOBLOOD
-						C.change_stat("constitution", -99, "skeletonized")
+						C.change_stat("constitution", -99)
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
 		if(amount > 35 MINUTES)
 			if(!is_zombie)
 				if(B.skeletonized)
-					dustme = TRUE
-
+					if(!B.owner.client) //so cliented mfers dont get dusted.
+						dustme = TRUE
 	if(dustme)
+		//stonehedge mob decomposition
+		C.visible_message(span_smallgreen("[C] decomposes..."))
+		var/datum/reagents/R = new/datum/reagents(5)
+		R.add_reagent(/datum/reagent/toxin/organpoison, 5)
+		var/datum/effect_system/smoke_spread/chem/smoke = new
+		smoke.set_up(R, 2, get_turf(C), FALSE)
+		smoke.start()
+		//stonehedge mob decomposition end
 		qdel(src)
 		return C.dust(drop_items=TRUE)
 
@@ -109,7 +117,7 @@
 
 /datum/component/rot/simple/process()
 	..()
-	var/mob/living/L = parent
+	var/mob/living/simple_animal/L = parent
 	if(L.stat != DEAD)
 		qdel(src)
 		return
@@ -119,7 +127,15 @@
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.add_pollutants(/datum/pollutant/rot, 5)
-	if(amount > 25 MINUTES)
+	if(amount > 20 MINUTES)
+		//stonehedge simple mob decomposition
+		L.visible_message(span_smallgreen("[L] decomposes..."))
+		var/datum/reagents/R = new/datum/reagents(5)
+		R.add_reagent(/datum/reagent/toxin/organpoison, 5)
+		var/datum/effect_system/smoke_spread/chem/smoke = new
+		smoke.set_up(R, 2, get_turf(L), FALSE)
+		smoke.start()
+		//stonehedge simple mob decomposition end
 		qdel(src)
 		return L.dust(drop_items=TRUE)
 
@@ -129,5 +145,5 @@
 /datum/looping_sound/fliesloop
 	mid_sounds = list('sound/misc/fliesloop.ogg')
 	mid_length = 60
-	volume = 50
+	volume = 30
 	extra_range = 0

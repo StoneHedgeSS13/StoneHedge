@@ -6,10 +6,11 @@
 	if(!stat)
 		if(job)
 			var/datum/job/j = SSjob.GetJob(job)
-			j.current_positions--
+			if(!j.antag_job)
+				j.current_positions--
 		mob_timers["mirrortime"] = world.time
 		var/begin_time = world.time
-		var/new_name = input(src, "What should your [input] name be?", "HEARTHSTONE")
+		var/new_name = input(src, "What should your [input] name be?", "DREAMKEEP")
 		if(world.time > begin_time + 60 SECONDS)
 			to_chat(src, "<font color='red'>You waited too long.</font>")
 			return

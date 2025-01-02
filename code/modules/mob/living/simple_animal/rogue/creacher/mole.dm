@@ -130,3 +130,6 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/mole/shapeshift
+	faction = list("wolfs", "Station")
+	erpable = TRUE

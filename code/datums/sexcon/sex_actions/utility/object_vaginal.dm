@@ -26,8 +26,8 @@
 		var/mob/living/carbon/human/userhuman = user
 		if(userhuman.wear_pants)
 			var/obj/item/clothing/under/roguetown/pantsies = userhuman.wear_pants
-			if(pantsies.flags_inv & HIDECROTCH) 
-				if(!pantsies.genitalaccess) 
+			if(pantsies.flags_inv & HIDECROTCH)
+				if(!pantsies.genitalaccess)
 					return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_VAGINA))
 		return FALSE
@@ -67,7 +67,20 @@
 	var/pain_amt = 3 //base pain amt to use
 	var/obj/item/dildo = user.get_active_held_item()
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks their cunt with \the [dildo]."))
-	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
+	if(user.rogue_sneaking || user.alpha <= 100)
+		segsovolume *= 0.5
+	playsound(user, 'sound/misc/mat/fingering.ogg', segsovolume, TRUE, -2, ignore_walls = FALSE)
+	var/obj/item/organ/filling_organ/vagina/uservagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+
+	if(prob(2))
+		if(dildo.w_class < WEIGHT_CLASS_SMALL && !uservagina.contents.len)
+			to_chat(user, span_userdanger("Oh shit \the [dildo] is so small it slipped and now it's inside my hole."))
+			dildo.extinguish()
+			dildo.forceMove(uservagina)
+			uservagina.contents += dildo
+		else if (dildo.w_class < WEIGHT_CLASS_SMALL && uservagina.contents.len)
+			to_chat(user, span_userdanger("Ah shit \the [dildo] is so small i dropped it on the ground."))
+			user.dropItemToGround(dildo)
 
 	if(dildo.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_SPREAD)
 		ouchietext = pick("OUCH! \the [dildo] burns my cunt!", "YOUCH! \the [dildo] burns my pussy!", "OW! \the [dildo] chars my walls!", "AGH! \the [dildo] burns my cunt!")
@@ -125,7 +138,6 @@
 		if(user.lying) //double spill odds if lying down due gravity and stuff.
 			spillchance *= 2
 		if(contdildo.spillable && prob(spillchance) && contdildo.reagents.total_volume)
-			var/obj/item/organ/uservagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 			if(uservagina.reagents.total_volume >= (uservagina.reagents.maximum_volume -0.5))
 				user.visible_message(span_notice("[contdildo] splashes it's contents around [user]'s hole as it is packed full!"))
 				contdildo.reagents.reaction(user, TOUCH, sc.speed, FALSE)

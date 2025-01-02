@@ -10,6 +10,14 @@
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/clothing/cloak/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
 
 //////////////////////////
 /// TABARD
@@ -93,7 +101,7 @@
 	return
 
 /obj/item/clothing/cloak/tabard/knight/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -109,7 +117,7 @@
 	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/clothing/cloak/tabard/crusader/attack_right(mob/user)
@@ -223,7 +231,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/tabard/knight/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -267,7 +275,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 	var/picked
 
 /obj/item/clothing/cloak/stabard/attack_right(mob/user)
@@ -337,7 +345,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/stabard/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -387,7 +395,7 @@
 	detail_tag = "_quad"
 
 /obj/item/clothing/cloak/stabard/mercenary/Initialize()
-	..()
+	. = ..()
 	detail_tag = pick("_quad", "_spl", "_box", "_dim")
 	color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
 	detail_color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
@@ -486,7 +494,7 @@
 
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -520,6 +528,7 @@
 //	allowed_sex = list(MALE)
 	detail_tag = "_det"
 	detail_color = CLOTHING_PURPLE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/lordcloak/update_icon()
 	cut_overlays()
@@ -538,7 +547,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/lordcloak/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -547,16 +556,6 @@
 /obj/item/clothing/cloak/lordcloak/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
-
-
-/obj/item/clothing/cloak/lordcloak/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 4
-		STR.max_w_class = WEIGHT_CLASS_BULKY
-		STR.max_items = 1
 
 /obj/item/clothing/cloak/lordcloak/dropped(mob/living/carbon/human/user)
 	..()
@@ -588,6 +587,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
 	boobed = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -648,33 +648,20 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
+	flags_inv = HIDEBOOB
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
 	if(hood)
 		wash_atom(hood,clean)
 
-/obj/item/clothing/cloak/raincloak/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
-
-/obj/item/clothing/cloak/raincloak/dropped(mob/living/carbon/human/user)
-	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
-
-
-
 /obj/item/clothing/cloak/raincloak/red
 	color = CLOTHING_RED
+
+/obj/item/clothing/cloak/raincloak/rogue
+	desc = "A cloak worn by people who want to stay in the shadows."
+	color = CLOTHING_BLACK
 
 /obj/item/clothing/cloak/raincloak/mortus
 	name = "funeral cloak"
@@ -722,6 +709,8 @@
 	icon_state = "furgrey"
 	inhand_mod = FALSE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood/furhood
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/raincloak/furcloak/crafted/Initialize()
 	. = ..()
@@ -816,6 +805,7 @@
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
 	nodismemsleeves = TRUE
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
@@ -855,6 +845,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	sellprice = 50
 	nodismemsleeves = TRUE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
@@ -873,8 +864,9 @@
 	toggle_icon_state = FALSE
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
-	flags_inv = null
+	flags_inv = HIDEBOOB // Put this here, since the covered boob otherwise clips through
 	w_class = WEIGHT_CLASS_SMALL
+	salvage_amount = 1
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -891,9 +883,10 @@
 	color = CLOTHING_RED
 	allowed_sex = list(MALE, FEMALE)
 	inhand_mod = FALSE
+	flags_inv = null
 
 /obj/item/clothing/cloak/half/vet/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -955,6 +948,8 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 666
 	static_price = TRUE
+	attunement_cost = 5
+	infusable = FALSE
 	var/active_item = FALSE
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -975,8 +970,11 @@
 	else
 		to_chat(user, span_notice("I feel an evil power about that necklace.."))
 		armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	user.attunement_points_used += attunement_cost
+	user.check_attunement_points()
 
 /obj/item/clothing/neck/roguetown/blkknight/dropped(mob/living/user)
+	..()
 	if(!active_item)
 		return
 	active_item = FALSE
@@ -989,8 +987,10 @@
 		user.change_stat("endurance", -2)
 		user.change_stat("speed", -2)
 	else
-		to_chat(user, span_notice("Strange, I don't feel that power anymore.."))
+		to_chat(user, span_notice("Strange, I don't feel that power anymore..."))
 		armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	user.attunement_points_used -= attunement_cost
+	user.check_attunement_points()
 
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight
 	slot_flags = ITEM_SLOT_ARMOR
@@ -1022,6 +1022,7 @@
 	detail_color = CLOTHING_PURPLE
 	icon_state = "guard_hood"
 	body_parts_covered = CHEST
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/stabard/guardhood/attack_right(mob/user)
 	if(picked)
@@ -1042,7 +1043,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/stabard/guardhood/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -1070,7 +1071,7 @@
 	return ..()
 
 /obj/item/clothing/cloak/templar/psydon
-	name = "psydon tabard"
+	name = "seraph-iros tabard"
 	desc = "A medieval overcoat meant to be used over the armor. This one has the symbol of Psydon on it."
 	icon_state = "tabard_weeping"
 	alternate_worn_layer = TABARD_LAYER
@@ -1081,7 +1082,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/astrata
 	name = "Elysian tabard"
@@ -1095,7 +1096,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/noc
 	name = "Lunite tabard"
@@ -1109,7 +1110,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/dendor
 	name = "Sylvan tabard"
@@ -1123,7 +1124,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/necra
 	name = "Yamain tabard"
@@ -1137,7 +1138,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/abyssor
 	name = "abyssian tabard"
@@ -1151,7 +1152,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/malum
 	name = "Svaeryonite tabard"
@@ -1165,7 +1166,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/eora
 	name = "viriitran tabard"
@@ -1179,7 +1180,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/pestra
 	name = "hermeian tabard"
@@ -1193,7 +1194,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/ravox
 	name = "minhurite tabard"
@@ -1207,7 +1208,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/templar/xylix
 	name = "Onderite tabard"
@@ -1221,7 +1222,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 /obj/item/clothing/cloak/cape/crusader
 	name = "crusader cloak"
@@ -1229,11 +1230,12 @@
 	icon_state = "crusader_cloak"
 	item_state = "crusader_cloak"
 
-/obj/item/clothing/cloak/cape/tribalcloak
-	name = "fur cloak"
+/obj/item/clothing/cloak/raincloak/furcloak/tribalcloak
+	name = "thick fur cloak"
 	desc = "A cloak made of thick fur which covers both the front and back for maximum warmth."
 	icon_state = "tribal"
 	item_state = "tribal"
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/feltcloak
 	name = "felt cloak"
@@ -1274,3 +1276,36 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	nodismemsleeves = TRUE
+
+/obj/item/clothing/cloak/fauld
+	name = "fauld"
+	desc = "A piece of cloth usually worn to cover the hips and part of the legs."
+	color = null
+	icon_state = "faulds"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = LEGS|GROIN
+	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_PANTS
+	flags_inv = HIDECROTCH
+	detail_tag = "_belt"
+
+/obj/item/clothing/cloak/fauld/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/cloak/fauld/battleskirt
+	name = "battle skirt"
+	desc = "A skirt usually worn on battle with the colors of the wearer."
+	icon_state = "battleskirt"
+
+/obj/item/clothing/cloak/fauld/battleskirt/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)

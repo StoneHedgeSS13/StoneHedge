@@ -51,11 +51,13 @@
 				if(istype(attacked_item, /obj/item/clothing))
 					var/obj/item/clothing/C = attacked_item
 					C.update_clothes_damaged_state(FALSE)
+				attacked_item.update_overlays()
 			blacksmith_mind.adjust_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(5, BRUTE, "blunt")
+			user.visible_message(span_info("[user] fumbles trying to repair [attacked_item]!"))
+			//attacked_item.take_damage(5, BRUTE, "blunt")
+			user.mind.adjust_experience(/datum/skill/craft/blacksmithing, (user.STAINT) / 2) // We learn a bit from our failures.
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
@@ -68,7 +70,6 @@
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
 		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
-		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained) //We gain as much exp as we fix
 		blacksmith_mind.adjust_experience(attacked_structure.hammer_repair, exp_gained) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
@@ -81,7 +82,8 @@
 	icon_state = "stonehammer"
 	force = 16
 	smeltresult = null
-	max_integrity = 15
+	max_integrity = 40
+	anvilrepair = null
 
 /obj/item/rogueweapon/hammer/claw
 	icon_state = "clawh"
@@ -147,6 +149,7 @@
 	//dropshrink = 0.8
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
+	tool_behaviour = TOOL_IMPROVISED_HEMOSTAT
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
@@ -232,7 +235,8 @@
 	icon_state = "stonetongs"
 	force = 5
 	smeltresult = null
-	max_integrity = 15
+	max_integrity = 40
+	anvilrepair = null
 
 /obj/item/rogueweapon/tongs/stone/update_icon()
 	. = ..()

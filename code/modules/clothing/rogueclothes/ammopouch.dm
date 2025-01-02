@@ -21,7 +21,7 @@
 	sewrepair = TRUE
 
 /obj/item/ammopouch/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+	if(istype(A, /obj/item/ammo_casing/caseless/rogue))
 		if(bullets.len < max_storage)
 			A.forceMove(src)
 			bullets += A
@@ -29,6 +29,7 @@
 		else
 			to_chat(loc, span_warning("Full!"))
 		return
+/*
 	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/matchlock))
 		var/obj/item/gun/ballistic/revolver/grenadelauncher/matchlock/B = A
 		if(bullets.len && !B.chambered)
@@ -38,6 +39,7 @@
 					B.attackby(AR, loc, params)
 					break
 		return
+*/
 	..()
 
 /obj/item/ammopouch/attack_right(mob/user)

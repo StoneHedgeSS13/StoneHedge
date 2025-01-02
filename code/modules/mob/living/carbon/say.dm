@@ -17,4 +17,5 @@
 	if(T)
 		. = T.could_speak_in_language(dt)
 	else
-		. = initial(dt.flags) & TONGUELESS_SPEECH
+		var/datum/language/language_datum = GLOB.language_datum_instances[dt]
+		. = language_datum.flags & (TONGUELESS_SPEECH | SIGNLANG)

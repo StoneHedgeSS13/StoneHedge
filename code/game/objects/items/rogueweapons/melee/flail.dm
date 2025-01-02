@@ -11,13 +11,15 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -130,7 +132,6 @@
 
 /obj/item/rogueweapon/whip
 	force = 21
-	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
 	desc = "A leather whip, built to last with an sharp stone for a tip."
 	icon_state = "whip"
@@ -140,14 +141,18 @@
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BELT
+	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	associated_skill = /datum/skill/combat/whipsflails
 	sewrepair = TRUE
 	embedding = list("embedded_pain_multiplier" = 0, "embed_chance" = 0, "embedded_fall_chance" = 0)
+	anvilrepair = /datum/skill/craft/hunting
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = WHIPWOOSH
 	throwforce = 5
 	wdefense = 0
 	minstr = 6
+	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_gen.ogg'
+	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_to_leather.ogg'
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()
@@ -157,8 +162,12 @@
 				return list("shrink" = 0.5,"sx" = -10,"sy" = -3,"nx" = 11,"ny" = -2,"wx" = -7,"wy" = -3,"ex" = 3,"ey" = -3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 22,"sturn" = -23,"wturn" = -23,"eturn" = 29,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+/obj/item/rogueweapon/whip/Initialize()
+    . = ..()
 
-
+/obj/item/rogueweapon/whip/attack(mob/living/target, mob/living/user)
+	 force = 21
+	 . = ..()
 /obj/item/rogueweapon/whip/antique
 	force = 29
 	name = "Repenta En"

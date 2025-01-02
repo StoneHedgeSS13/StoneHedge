@@ -17,7 +17,7 @@
 
 	//gender = FEMALE
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)	//Default shit that ever race gets
-	inherent_traits = list(TRAIT_NOMOBSWAP)	//Use this to add custom Fae traits
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_EASYDISMEMBER, TRAIT_CRITICAL_WEAKNESS, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_ZJUMP, TRAIT_DODGEEXPERT)	//Use this to add custom Fae traits
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
@@ -43,14 +43,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
-	specstats = list(
-		"perception" = 4,
-		"intelligence" = 2,
-		"constitution" = -1,
-		"endurance" = 0,
-		"speed" = 7,
-		"fortune" = 2
-		)
+	race_bonus = list(STAT_SPEED = 1)
+
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -75,13 +69,18 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/wings/seelie,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
+		/datum/customizer/organ/belly/human,
+		/datum/customizer/organ/butt/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
@@ -99,7 +98,7 @@
 	C.transform = C.transform.Scale(0.5, 0.5)
 	C.update_transform()
 	C.pass_flags = PASSTABLE | PASSMOB
-	//C.movement_type = FLYING
+	C.movement_type = FLYING
 	C.set_mob_offsets("pixie_hover", _x = 0, _y = 10)
 	C.set_light(3, 1, "#d4fcac")
 
@@ -118,7 +117,7 @@
 	C.update_transform()
 	C.pass_flags = 0
 	C.reset_offsets("pixie_hover")
-	//C.movement_type = (C.movement_type | ~FLYING)
+	C.movement_type = (C.movement_type | ~FLYING)
 	//C.Jitter(0)
 	C.set_light(0, 0, null)
 

@@ -10,7 +10,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 20 SECONDS
+	charge_max = 30 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -76,7 +76,7 @@
 	hitscan = TRUE
 	movement_type = UNSTOPPABLE
 	light_color = LIGHT_COLOR_WHITE
-	damage = 10
+	damage = 25
 	damage_type = BURN
 	nodamage = FALSE
 	speed = 0.3
@@ -179,7 +179,6 @@
 	flag = "magic"
 	light_color = "#e74141"
 	light_range = 7
-	var/mob/living/carbon/human/sender
 
 /obj/projectile/magic/bloodsteal/on_hit(target)
 	. = ..()
@@ -230,7 +229,7 @@
 	exp_light = 0
 	exp_flash = 1
 	exp_fire = 1
-	damage = 10
+	damage = 20
 	damage_type = BURN
 	nodamage = FALSE
 	flag = "magic"
@@ -277,6 +276,8 @@
 	exp_light = 1
 	exp_flash = 2
 	exp_fire = 2
+	damage = 25
+	damage_type = BURN
 	flag = "magic"
 	speed = 4
 
@@ -740,7 +741,7 @@
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 4 cost
+	var/list/obj/effect/proc_holder/spell/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 4 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
@@ -803,7 +804,7 @@
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
 	desc = "A wall of pure arcyne force."
-	name = "Arcyne Wall"
+	name = "Arcayne Wall"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "forcefield"
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
@@ -854,8 +855,8 @@
 
 // no slowdown status effect defined, so this just immobilizes for now
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
-	name = "Ensnare"
-	desc = "Tendrils of arcyne force hold anyone in a small area in place for a short while."
+	name = "Black Tentacles"
+	desc = "Tendrils of arcayne force hold anyone in a small area in place for a short while."
 	cost = 3
 	xp_gain = TRUE
 	releasedrain = 20
@@ -963,7 +964,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	var/stun_amt = 5
-	var/maxthrow = 3
+	var/maxthrow = 1
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
 	var/repulse_force = MOVE_FORCE_EXTREMELY_STRONG
 	var/push_range = 1

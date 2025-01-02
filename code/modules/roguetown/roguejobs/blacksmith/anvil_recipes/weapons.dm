@@ -1,12 +1,12 @@
 /datum/anvil_recipe/weapons
-	appro_skill = /datum/skill/craft/weaponsmithing  // inheritance yay !!
+	appro_skill = /datum/skill/craft/blacksmithing  // inheritance yay !!
 	craftdiff = 1
 
 /// BASIC IRON WEAPONS
 // Craft Difficulty: 1 (Base)
 
 /datum/anvil_recipe/weapons/isword
-	name = "Sword"
+	name = "Iron Sword"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/sword/iron
 	i_type = "Weapons"
@@ -123,7 +123,7 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/ssword
-	name = "Sword"
+	name = "Steel Sword"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword
 	i_type = "Weapons"
@@ -247,6 +247,22 @@
 	craftdiff = 3
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/greataxe
+	name = "Great Axe (+1 Steel Ingot, +1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/greataxe
+	craftdiff = 3
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/beardedaxe
+	name = "Bearded Axe (+2 Steel Ingot, +1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small, /obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/greataxe/bearded
+	craftdiff = 4
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/zweihander
 	name = "Zweihander (+2 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -271,6 +287,14 @@
 	craftdiff = 3
 	i_type = "Weapons"
 
+/datum/anvil_recipe/weapons/scythe
+	name = "Scythe (+1 Steel) (+1 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/sickle/scythe
+	craftdiff = 3
+	i_type = "Weapons"
+
 /datum/anvil_recipe/weapons/lucerne
 	name = "Lucerne (+ iron) (+1 Small Log)"
 	req_bar = /obj/item/ingot/iron
@@ -290,7 +314,7 @@
 /// SHIELDS
 /datum/anvil_recipe/weapons/ironshield
 	name = "Tower Shield (+1 Small Log)"
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/shield/tower
@@ -307,7 +331,7 @@
 
 /datum/anvil_recipe/weapons/steelshield
 	name = "Heraldic Shield (+1 Steel +1 Hide)"
-	appro_skill = /datum/skill/craft/armorsmithing
+	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
@@ -413,6 +437,28 @@
 	name = "Elvish Dagger"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
+
+/// SHIELDS
+/datum/anvil_recipe/weapons/steel/kiteshield
+	name = "Heraldic Shield (+1 Steel +1 Hide)"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
+	created_item = /obj/item/rogueweapon/shield/tower/metal
+	craftdiff = 2
+
+/datum/anvil_recipe/weapons/iron/towershield
+	name = "Tower Shield (+1 Small Log)"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/shield/tower
+
+/datum/anvil_recipe/weapons/steel/buckler
+	name = "Buckler Shield"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/shield/buckler
 	craftdiff = 3
 	i_type = "Weapons"
 

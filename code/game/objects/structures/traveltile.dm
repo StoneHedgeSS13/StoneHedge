@@ -47,6 +47,7 @@
 	var/check_other_side = FALSE
 	var/invis_without_trait = FALSE
 	var/list/revealed_to = list()
+	var/time2go = 0
 
 /obj/structure/fluff/traveltile/Initialize()
 	GLOB.traveltiles += src
@@ -62,7 +63,7 @@
 		var/image/I = image(icon = 'icons/turf/roguefloor.dmi', icon_state = "travel", layer = ABOVE_OPEN_TURF_LAYER, loc = src)
 		add_alt_appearance(/datum/atom_hud/alternate_appearance/basic, required_trait, I)
 
-/obj/structure/fluff/traveltile/proc/get_other_end_turf(var/return_travel = FALSE)
+/obj/structure/fluff/traveltile/proc/get_other_end_turf(return_travel = FALSE)
 	if(!aportalgoesto)
 		return null
 	for(var/obj/structure/fluff/traveltile/travel in shuffle(GLOB.traveltiles))
@@ -94,7 +95,7 @@
 	if(AM.pulledby)
 		return FALSE
 	if(AM.recent_travel)
-		if(world.time < AM.recent_travel + 15 SECONDS)
+		if(world.time < AM.recent_travel + 2 SECONDS)
 			. = FALSE
 	if(. && required_trait && isliving(AM))
 		var/mob/living/L = AM
@@ -126,15 +127,15 @@
 		return
 	if(!can_go(user))
 		return
-	var/time2go = 5 SECONDS
-	if(check_other_side && the_tile.required_trait)
-		for(var/mob/living/M in hearers(7, get_turf(the_tile)))
-			if(!HAS_TRAIT(M, the_tile.required_trait))
-				to_chat(user, span_warning("I sense something off at the end of the trail."))
-				time2go = 7 SECONDS
-				break
-	if(!do_after(user, time2go, FALSE, target = src))
-		return
+	if(time2go) //more than 0
+		if(check_other_side && the_tile.required_trait)
+			for(var/mob/living/M in hearers(7, get_turf(the_tile)))
+				if(!HAS_TRAIT(M, the_tile.required_trait))
+					to_chat(user, span_warning("I sense something off at the end of the trail."))
+					time2go *= 1.2
+					break
+		if(!do_after(user, time2go, FALSE, target = src))
+			return
 	if(!can_go(user))
 		return
 	if(user.pulling)
@@ -142,7 +143,7 @@
 	user.recent_travel = world.time
 	if(can_gain_with_sight)
 		reveal_travel_trait_to_others(user)
-	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait))
+	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait) && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't find your way
 		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
 	if(invis_without_trait && !revealed_to.Find(user))
 		show_travel_tile(user)
@@ -155,7 +156,7 @@
 	if(!HAS_TRAIT(user, required_trait))
 		return
 	for(var/mob/living/carbon/human/H in view(6,src))
-		if(!HAS_TRAIT(H, required_trait))
+		if(!HAS_TRAIT(H, required_trait) && !HAS_TRAIT(H, TRAIT_BLIND))
 			to_chat(H, "<b>I discover a well hidden entrance</b>")
 			ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
 
@@ -180,12 +181,14 @@
 			break
 
 /obj/structure/fluff/traveltile/bandit
+	required_trait = TRAIT_BANDITCAMP
 	can_gain_with_sight = TRUE
 	can_gain_by_walking = TRUE
 	check_other_side = TRUE
 	invis_without_trait = TRUE
 
 /obj/structure/fluff/traveltile/vampire
+	required_trait = TRAIT_VAMPMANSION
 	can_gain_with_sight = TRUE
 	can_gain_by_walking = TRUE
 	check_other_side = TRUE
@@ -216,3 +219,9 @@
 		else
 			to_chat(user, "<b>It's too dangerous to sail this way.</b>")
 			return FALSE
+
+/obj/structure/fluff/traveltile/forest
+
+/obj/structure/fluff/traveltile/lavaplace
+
+/obj/structure/fluff/traveltile/underdark

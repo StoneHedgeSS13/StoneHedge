@@ -1,7 +1,13 @@
 // Statpacks focusing on Ranger/Rogue archetypes.
+
+/datum/statpack/agile/none
+	name = "None"
+	desc = "There is nothing special about you beyond whatever training you have taken, you have no special qualities of your own."
+	stat_array = list()
+
 /datum/statpack/agile/swift
 	name = "Swift"
-	desc = "With the wind in your hair and trouble at your back, your speed has oft been your salvation."
+	desc = "With the wind in your hair and trouble at your back, your speed has often been your salvation."
 	stat_array = list(STAT_STRENGTH = -1, STAT_PERCEPTION = -1, STAT_CONSTITUTION = -1, STAT_ENDURANCE = 1, STAT_SPEED = 2)
 
 /datum/statpack/agile/hardy

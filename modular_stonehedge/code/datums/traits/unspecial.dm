@@ -1,6 +1,8 @@
 //BE SPECIAL converted most to regular quirk traits for consistency in characters -- vide noir.
 //Will need rebalancing costs and stuff.
 
+//includes non special related, original traits aswell cuz we dumb.
+
 /datum/quirk/greaternightvision
 	name = "Darkvision"
 	desc = "I can easily see in the dark."
@@ -11,34 +13,46 @@
 	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(!eyes)
 		return
-	eyes.see_in_dark = 7
+	eyes.see_in_dark = 14 // Same as full darksight eyes
 	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	eyes.Insert(H)
+	H.update_sight()
 
 /datum/quirk/thickskin
-	name = "Tough"
-	desc = "I feel it. Thick Skin. Dense Flesh. Durable Bones. I'm a punch-taking machine."
-	value = 3
+	name = "Tough" //probably perfect for raw power classes, strange for unrelated ones but i guess.
+	desc = "I can take more beatings than others and being on high alert does not tire me."
+	value = 4
 
 /datum/quirk/thickskin/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_BREADY, QUIRK_TRAIT)
 	H.change_stat("constitution", 2)
 
+/*
+/datum/quirk/charger
+	name = "Charger"
+	desc = "I am like a raging bull, whoever gets in my way will fall."
+	value = 3
+
+/datum/quirk/charger/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_CHARGER, QUIRK_TRAIT)
+	H.change_stat("constitution", 1)
+*/
+
 /datum/quirk/curseofcain
 	name = "Flawed Immortality"
-	desc = "I don't need to eat or breathe anymore... Is this normal?"
-	value = 3
+	desc = "I don't need to eat, drink water, or breathe anymore, but I lack the endless stamina and bloodthirst of a true vampyre"
+	value = 4
 
 /datum/quirk/curseofcain/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_NOHUNGER, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_NOBREATH, QUIRK_TRAIT)
-	H.change_stat("endurance", 2)
+	H.change_stat("endurance", 1)
 
 /datum/quirk/deadened
 	name = "Deadened"
-	desc = "Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out."
+	desc = "Ever since <b>it</b> happened, I've never been able to feel anything emotionally."
 	value = 2
 
 /datum/quirk/deadened/on_spawn()
@@ -48,7 +62,7 @@
 /datum/quirk/value
 	name = "Skilled Appraiser"
 	desc = "I know how to estimate an item's value, more or less."
-	value = 1
+	value = 2
 
 /datum/quirk/value/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -74,28 +88,152 @@
 
 //positive
 /datum/quirk/duelist
-	name = "Swordmaster"
-	desc = "I was the student of a legendary sword master, my skill is rivalled by few! I've also hidden a rapier."
-	value = 4
+	name = "Sword Training"
+	desc = "I sword training and stashed a short sword."
+	value = 2
 
 /datum/quirk/duelist/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.change_stat("speed", 2)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.special_items["Short Sword"] = /obj/item/rogueweapon/sword/short
+
+/datum/quirk/fence
+	name = "Fencer"
+	desc = "I have trained in agile sword fighting. I dodge more easily and have stashed my rapier nearby"
+	value = 4
+
+/datum/quirk/fence/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, QUIRK_TRAIT)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
+
+/datum/quirk/training2
+	name = "Mace Training"
+	desc = "I have mace training and stashed a mace."
+	value = 2
+
+/datum/quirk/training2/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+	H.mind.special_items["Mace"] = /obj/item/rogueweapon/mace/spiked
+
+/datum/quirk/training4
+	name = "Polearms Training"
+	desc = "I have polearm training and stashed a spear."
+	value = 2
+
+/datum/quirk/training4/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.special_items["Spear"] = /obj/item/rogueweapon/spear
+
+/datum/quirk/training5
+	name = "Knife Training"
+	desc = "I have knife training and stashed a cleaver."
+	value = 2
+
+/datum/quirk/training5/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE)
+	H.mind.special_items["Dagger"] = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+
+/datum/quirk/training6
+	name = "Axe Training"
+	desc = "I have axe training, including woodchopping. and stashed a hatchet"
+	value = 2
+
+/datum/quirk/training6/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 3, TRUE)
+	H.mind.special_items["Axe"] = /obj/item/rogueweapon/stoneaxe/woodcut
+
+/datum/quirk/training7
+	name = "Firearms Training"
+	desc = "I have journeyman firearms skills."
+	value = 1
+
+/datum/quirk/training7/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/firearms, 3, TRUE)
+
+/datum/quirk/training8
+	name = "Shield Training"
+	desc = "I have shield training and stashed a shield."
+	value = 2
+
+/datum/quirk/training8/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
+	H.mind.special_items["Shield"] = /obj/item/rogueweapon/shield/wood
+
+/datum/quirk/training9
+	name = "Unarmed Training"
+	desc = "I have journeyman unarmed training and stashed some dusters."
+	value = 2
+
+/datum/quirk/training9/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	H.mind.special_items["Dusters"] = /obj/item/rogueweapon/duster
+
+/datum/quirk/pugilist
+	name = "Fists of iron"
+	desc = "I have journeyman unarmed training and my punches are hard as iron."
+	value = 4
+
+/datum/quirk/pugilist/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	ADD_TRAIT(H, TRAIT_PUGILIST, QUIRK_TRAIT)
+
+/datum/quirk/mtraining1
+	name = "Medical Training"
+	desc = "I have basic medical training and stashed some med supplies."
+	value = 2
+
+/datum/quirk/mtraining1/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+	H.mind.special_items["Patch Kit"] = /obj/item/storage/fancy/ifak
+	H.mind.special_items["Surgery Kit"] = /obj/item/storage/fancy/skit
+
+/datum/quirk/greenthumb
+	name = "Green Thumb"
+	desc = "I've always been rather good at tending to plants, and I have some powerful fertilizer stashed away and a women of ill repute. (Raises skill to journeyman)"
+	value = 1
+
+/datum/quirk/greenthumb/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
+	H.mind.special_items["Fertilizer 1"] = /obj/item/fertilizer
+	H.mind.special_items["Fertilizer 2"] = /obj/item/fertilizer
+	H.mind.special_items["Fertilizer 3"] = /obj/item/fertilizer
+	H.mind.special_items["Whore"] = /obj/item/rogueweapon/hoe // I too respect a humble farmer.
 
 /datum/quirk/eagle_eyed
 	name = "Eagle Eyed"
-	desc = "With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts."
-	value = 4
+	desc = "I was always goot at spotting distant things.."
+	value = 2
 
 /datum/quirk/eagle_eyed/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.change_stat("perception", 2)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
-	H.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	H.mind.special_items["Bolts"] = /obj/item/quiver/bolts
+
+/datum/quirk/training10
+	name = "Bow Training"
+	desc = "I have journeyman bow training and stashed a bow."
+	value = 2
+
+/datum/quirk/training10/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.special_items["Bow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+	H.mind.special_items["Quiver"] = /obj/item/quiver/arrows
 
 /datum/quirk/mule
 	name = "Mule"
@@ -111,17 +249,18 @@
 
 /datum/quirk/bookworm
 	name = "Bookworm"
-	desc = "I love books and I became quite skillfull at reading and writing."
-	value = 1
+	desc = "I love books and I became quite skillfull at reading and writing. What's more, my mind is much sharper for the experience."
+	value = 2
 
 /datum/quirk/bookworm/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
+	H.change_stat("intelligence", 2)
 
 /datum/quirk/arsonist
 	name = "Arsonist"
-	desc = "I like seeing things combust and burn. I have hidden around two firebobms"
-	value = 2
+	desc = "I like seeing things combust and burn. I have hidden around two firebombs.."
+	value = 3
 
 /datum/quirk/arsonist/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -132,12 +271,12 @@
 /datum/quirk/pineapple
 	name = "No safeword."
 	desc = "I enjoy whipping people until they squirm and whine, I am skilled at using whips, and have a hidden one somewhere."
-	value = 4
+	value = 2
 
 /datum/quirk/pineapple/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
-	H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE)
 
 /datum/quirk/packed_lunch
 	name = "Packed Lunch"
@@ -149,28 +288,22 @@
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(H))
 	H.put_in_hands(bag, forced = TRUE)
 
-/datum/quirk/spring_in_my_step
-	name = "Spring in my Step"
-	desc = "My legs are quite strong and where most have to climb, I can just jump"
-	value = 2
-
-/datum/quirk/spring_in_my_step/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H, TRAIT_ZJUMP, QUIRK_TRAIT)
-
 /datum/quirk/thief
 	name = "Thief"
-	desc = "Life's not easy around here, but I've made mine a little easier by taking things of others. I am a great at picking pockets."
+	desc = "Life's not easy around here, but I've made mine a little easier by taking things of others. I am a great at picking pockets and locks. Istashed some picks nearby."
 	value = 3
 
 /datum/quirk/thief/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 4, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
+	H.mind.special_items["Lockpicks"] = /obj/item/lockpickring/mundane
+
 
 /datum/quirk/languagesavant
 	name = "Polyglot"
-	desc = "I have always picked up on languages easily, even those that are forbidden to mortals."
-	value = 3
+	desc = "I have always picked up on languages easily. I know the languages of all the races found in this land, and my flexible tongue is certainly useful in the bedchamber."
+	value = 2//Believe it or not, this is a really niche quirk with very few actual use-cases.
 
 /datum/quirk/languagesavant/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -181,6 +314,8 @@
 	H.grant_language(/datum/language/orcish)
 	H.grant_language(/datum/language/beast)
 	H.grant_language(/datum/language/draconic)
+	H.grant_language(/datum/language/faexin)
+	ADD_TRAIT(H, TRAIT_GOODLOVER, QUIRK_TRAIT)
 
 /datum/quirk/civilizedbarbarian
 	name = "Tavern Brawler"
@@ -191,23 +326,67 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets.
 
-/datum/quirk/mastercraftsmen
-	name = "Master Craftsman"
-	desc = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft. I am passable at each of them."
-	value = 3
+/datum/quirk/mastercraftsmen // Named this way to absorb the old quirk. Keeps old saves cleaner without them needing to reset quirks.
+	name = "Jack of All Trades"
+	desc = "I've always had steady hands. I'm experienced enough in most fine craftsmanship to make a career out of it, if I can procure my own tools."
+	value = 3 //
 
 /datum/quirk/mastercraftsmen/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 3, TRUE)
+
+/datum/quirk/masterbuilder
+	name = "Practiced Builder"
+	desc = "I have experience in putting up large structures and foundations for buildings. I can even use a sawmill if I can find one, and I have a handcart and two sacks hidden away for transporting my construction materials."
+	value = 1 // I have a lot of respect for people who actually bother making buildings that will be deleted within an hour or two.
+
+/datum/quirk/masterbuilder/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE) // Needed to install things like levers in a house. This unfortunately means construction workers can make illegal firearms.
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE) // Pretty sure some crafting stations use this. Also stone axes and whatever other basic tools they need.
+	H.mind.special_items["Handcart"] = /obj/structure/handcart //TO-DO: Implement sawmill and the trait to use it. Giving them a handcart to move materials with.
+	H.mind.special_items["Sack 1"] = /obj/item/storage/roguebag
+	H.mind.special_items["Sack 2"] = /obj/item/storage/roguebag
+
+/datum/quirk/mastersmith
+	name = "Practiced Smith"
+	desc = "I am a metalworker by trade, and I have the tools for my practice stashed away." //play a proper smith if you want starting smith gear.
+	value = 1 // Armor-making. Weapon-making. Everyone wants the gamer gear.
+
+/datum/quirk/mastersmith/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+	H.mind.special_items["Hammer"] = /obj/item/rogueweapon/hammer/claw // works same as normal hammer.
+	H.mind.special_items["Tongs"] = /obj/item/rogueweapon/tongs
+	H.mind.special_items["Coal"] = /obj/item/rogueore/coal
+
+/datum/quirk/mastertailor
+	name = "Practiced Tailor"
+	desc = "I'm particularly skilled in working with needle, thread, and loom, and I've got needle, thread, and scissors hidden away."
+	value = 1
+
+/datum/quirk/mastertailor/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 3, TRUE)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)//Being skilled with a needle offers some overlap with stitching up peoples' wounds. Also, weaving isn't a skill anymore so...
+	H.mind.special_items["Scissors"] = /obj/item/rogueweapon/huntingknife/scissors/steel
+	H.mind.special_items["Needle"] = /obj/item/needle
+	H.mind.special_items["Thread"] = /obj/item/natural/bundle/fibers/full
 
 /datum/quirk/bleublood
 	name = "Noble Lineage"
@@ -232,19 +411,19 @@
 /datum/quirk/swift
 	name = "Speedster"
 	desc = "I am very athletic and fast. I can also dodge anything as long as I am not weighted down by medium or heavier armor."
-	value = 5
+	value = 4
 
 /datum/quirk/swift/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_GOODRUNNER, QUIRK_TRAIT)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
-	H.change_stat("speed", 3)
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+	H.change_stat("speed", 1)
 
 /datum/quirk/gourmand
 	name = "Gourmand"
 	desc = "I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies. I'm even immune to the berry poison some folk like to coat their arrows with."
-	value = 3
+	value = 2
 
 /datum/quirk/gourmand/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -254,7 +433,7 @@
 /datum/quirk/backproblems
 	name = "Giant"
 	desc = "I've always been called a giant (atleast among my kin). I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously."
-	value = 0
+	value = 0 //-2 speed is -30% movement speed, and the single point of constitution is traded for a significantly larger sprite. Remove the speed penalty or it stays neutral.
 
 /datum/quirk/backproblems/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -293,18 +472,19 @@
 	qdel(pouch)
 
 /datum/quirk/hussite
-	name = "Known Heretic"
-	desc = "I've been denounced by the church for either reasons legitimate or not!"
-	value = -2
+	name = "Excommunicated"
+	desc = "I've been denounced by powerful men of faith, for reasons legitimate or not, and can no longer use divine magic, if I could in the first place. I came to Stonehedge on a rumor that the local Adventurers' Guild could put in a good word for me with the local shrine and find the Gods' forgiveness."
+	value = -1
 
 /datum/quirk/hussite/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	GLOB.excommunicated_players += H.real_name
+	H.devotion?.excommunicate()
 
 /datum/quirk/bounty
-	name = "Hunted Man"
-	desc = "Someone put a bounty on my head!"
-	value = -4
+	name = "Hunted Man (NOT WANTED BY GROVE)"
+	desc = "Someone put a bounty on my head, whether for legitimate reasons or not. The local Adventurers' Guild might be able to protect me if I can make some friends there, but my life will always be in danger from those seeking to collect. (I can get attacked by other people for bounty as justification, for capture or death.)"
+	value = -3
 
 /datum/quirk/bounty/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -320,35 +500,37 @@
 	else
 		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
-	var/amount = rand(40,100)
+	var/amount = rand(150,300)
 	switch(rand(1,8))
 		if(1)
-			reason = "murder"
+			reason = "insulting a noble's crest"
 		if(2)
-			reason = "kinslaying"
+			reason = "spilling wine on a noble's cloak"
 		if(3)
 			reason = "besmirching a noble's name"
 		if(4)
-			reason = "treason"
+			reason = "refusing to bow"
 		if(5)
-			reason = "arson"
+			reason = "painting an unflattering portrait"
 		if(6)
-			reason = "heresy"
+			reason = "gossip"
 		if(7)
-			reason = "robbing a noble"
+			reason = "upstaging a harlequin"
 		if(8)
-			reason = "burglary"
+			reason = "fluffery"
 	add_bounty(H.real_name, amount, FALSE, reason, employer)
-	to_chat(H, span_notice("Whether I done it or not, I have been accused of [reason], and the [employer] put a bounty on my head!"))
+	to_chat(H, span_notice("Whether I done it or not, I have been accused of [reason], and a [employer] put a bounty on my head!"))
 
 /datum/quirk/outlaw
-	name = "Known Outlaw"
-	desc = "Whether for crimes I did or was accused of, I have been declared an outlaw!"
+	name = "Outlaw (WANTED BY GROVE)"
+	desc = "I'm on the wrong side of the law, I've managed to avoid capture so far but the law is coming for me, it's only a matter of time."
 	value = -4
 
 /datum/quirk/outlaw/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
+	H.apply_status_effect(/datum/status_effect/grove_outlaw, "Wanted Fugitive")
 	make_outlaw(H.real_name, TRUE)
+	H.mind.special_items["Rag Mask"] = /obj/item/clothing/mask/rogue/ragmask
 
 /datum/quirk/sillyvoice
 	name = "Annoying"
@@ -388,7 +570,6 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/turf/location = get_spawn_turf_for_job("Pilgrim")
 	H.forceMove(location)
-	grant_lit_torch(H)
 
 /datum/quirk/atrophy
 	name = "Atrophy"
@@ -408,6 +589,135 @@
 
 /datum/quirk/nude_sleeper/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.change_stat("endurance", 1) //since sleeping naked will probably get you sick or some shit.
-	H.change_stat("constitution", 1)
 	ADD_TRAIT(H, TRAIT_NUDE_SLEEPER, QUIRK_TRAIT)
+
+// disgustingly hooking into quirks to provide a convenient way to become a vampire
+/datum/quirk/vampire
+	name = "Cursed Blood (Vampire)"
+	desc = "You are gifted by Undeath. A lone vampire forced to roam the lands and drink blood to survive, albeit 'immortal'. Whether you are Ancient or a new vampire, you are no lord or no spawn and have no reason to antagonize the mortals beyond occasionally finding blood to keep you going. (You are a vampire but NOT an ANTAGONIST.)"
+//	desc = "You've existed long before the gods existed, you know the truth and have no reason to worship them. You are faithless. After attaining power, Levishth has cursed your people, bringing bad omens where ever you go. For this reason, the people of Stonehedge have shunned you and discriminated against you, there is no possible way an antediluvian will ever hold a position of power in Stonehedge, let alone be welcomed. Levishth has only shown favor to one antediluvian, rewarding them with the title of Vampire Lord, and gifting them powers far beyond that of a regular nitecreacher. Your pale skin, fangs, and eerie eyes are EASILY identifable features, so it is best to stay covered at all times in public areas."
+	value = 5
+
+/datum/quirk/vampire/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/antagonist/vampirelord/lesser/secret/new_antag = new ()
+	H.mind.add_antag_datum(new_antag)
+
+/datum/antagonist/vampirelord/lesser/secret
+	ashes = FALSE
+	is_solo = TRUE
+	confess_lines = list(
+		"THE CRIMSON CALLS!",
+		"THE SUN IS ENEMY!",
+	)
+
+/datum/antagonist/vampirelord/lesser/secret/on_gain()
+	. = ..()
+	owner.current.verbs -= /mob/living/carbon/human/proc/vampire_telepathy
+
+/datum/antagonist/vampirelord/lesser/secret/roundend_report()
+	return
+
+/datum/antagonist/vampirelord/lesser/secret/move_to_spawnpoint()
+	return
+
+/datum/quirk/hypersensitivity
+	name = "Hypersensitivity"
+	desc = "I am so senstiive even my pants are enough to constantly arouse me... I must not wear pants or wear things that don't touch my groin. Atleast my experiences with certain things make me good in bed."
+	value = -3 // this thing really really sucks to have. I watched someone suffer all round with it.
+
+/datum/quirk/hypersensitivity/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/nympho, TRUE)
+	ADD_TRAIT(H, TRAIT_GOODLOVER, QUIRK_TRAIT)
+
+/datum/quirk/loveless
+	name = "Loveless"
+	desc = "I am unable to show any kind of affection or love, whether carnal or platonic."
+	value = -3
+
+/datum/quirk/loveless/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/eora, TRUE)
+
+/datum/quirk/pacifist
+	name = "Pacifist"
+	desc = "Violence disgusts me. I cannot bring myself to wield any kind of physical weapon."
+	value = -6
+
+/datum/quirk/pacifist/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_PACIFISM, QUIRK_TRAIT)
+
+
+/datum/quirk/endowed
+	name = "Endowment Curse"
+	desc = "I was cursed with endowment... This makes life hard."
+	value = -2
+
+/datum/quirk/endowed/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent)
+
+/datum/quirk/endowedlite
+	name = "Naturally Endowed"
+	desc = "I have massive bits, they are natural and not emburdening like an enchanted endowment."
+	value = 0
+
+/datum/quirk/endowedlite/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent/lite)
+
+/datum/quirk/vore
+    name = "Vore"
+    desc = "You can engage in Vore."
+    value = 0
+    mob_trait = TRAIT_VORE
+
+/datum/quirk/vore/add()
+    var/mob/living/carbon/human/H = quirk_holder
+    var/list/vore_verbs = list(
+        /mob/living/carbon/verb/toggle_vore_mode_verb,
+        /mob/living/verb/insidePanel,
+        /mob/living/verb/escapeOOC,
+        /mob/living/verb/lick,
+        /mob/living/verb/preyloop_refresh
+    )
+    H.verbs |= vore_verbs
+    H.vore_flags |= SHOW_VORE_PREFS
+
+/datum/quirk/vore/remove()
+    var/mob/living/carbon/human/H = quirk_holder
+    var/list/vore_verbs = list(
+        /mob/living/carbon/verb/toggle_vore_mode_verb,
+        /mob/living/verb/insidePanel,
+        /mob/living/verb/escapeOOC,
+        /mob/living/verb/lick,
+        /mob/living/verb/preyloop_refresh
+    )
+    H.verbs -= vore_verbs
+    H.vore_flags &= ~SHOW_VORE_PREFS
+    H.disable_vore_mode()
+
+/datum/quirk/maniac
+	name = "Cursed"
+	desc = "...I keep experiencing vivid hallucinations, What is happening here?"
+	value = -4 //it can stun you and knock you down if you get hit by a certain hallucination and make your screen shake in combat.
+
+/datum/quirk/maniac/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/zizo, TRUE)
+	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
+	H.cmode_music = 'sound/music/combat_maniac2.ogg' //You gotta understand it's very important.
+
+/datum/quirk/maniacextra
+	name = "Cursed (Extra)"
+	desc = "..I keep experiencing vivid hallucinations, What is happening here? (Same as Cursed, Except the fourth wonder sequence will start when the round start ending.)"
+	value = -4
+
+/datum/quirk/maniacextra/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.add_curse(/datum/curse/zizo, TRUE)
+	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_SOONTOWAKEUP, QUIRK_TRAIT)
+	H.cmode_music = 'sound/music/combat_maniac2.ogg'

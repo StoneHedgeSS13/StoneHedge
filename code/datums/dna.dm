@@ -310,7 +310,6 @@
 		update_body_parts(TRUE)
 		update_mutations_overlay()// no lizard with human hulk overlay please.
 
-
 /mob/proc/has_dna()
 	return
 

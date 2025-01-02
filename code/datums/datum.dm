@@ -106,10 +106,10 @@
 		if(length(all_components))
 			for(var/I in all_components)
 				var/datum/component/C = I
-				qdel(C, FALSE, TRUE)
+				qdel(C, FALSE)
 		else
 			var/datum/component/C = all_components
-			qdel(C, FALSE, TRUE)
+			qdel(C, FALSE)
 		dc.Cut()
 
 	var/list/lookup = comp_lookup
@@ -195,11 +195,9 @@
 	if(!islist(jsonlist))
 		if(!istext(jsonlist))
 			CRASH("Invalid JSON")
-			return
 		jsonlist = json_decode(jsonlist)
 		if(!islist(jsonlist))
 			CRASH("Invalid JSON")
-			return
 	if(!jsonlist["DATUM_TYPE"])
 		return
 	if(!ispath(jsonlist["DATUM_TYPE"]))

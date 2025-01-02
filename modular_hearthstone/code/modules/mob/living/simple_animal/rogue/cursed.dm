@@ -51,7 +51,7 @@
 	dodgetime = 10
 	canparry = TRUE
 	retreat_health = null
-	patron = /datum/patron/inhumen/zizo		//So they can be hurt by holy fire/healing
+	patron = /datum/patron/inhumen/levishth		//So they can be hurt by holy fire/healing
 
 /mob/living/simple_animal/hostile/rogue/ghost/cursed/cursed2
 	icon_state = "cursed2"

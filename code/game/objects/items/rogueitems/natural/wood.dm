@@ -15,6 +15,8 @@
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
 
+/obj/item/grown/log/tree/large
+
 /obj/item/grown/log/tree/small
 	name = "small log"
 	desc = "Smaller log that came from a larger log. Suitable for building."
@@ -39,12 +41,45 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 
+/obj/item/grown/log/tree/bowpartial
+	name = "unstrung bow"
+	desc = "A partially completed bow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 30
+	firefuel = 10 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/recurvebowpartial
+	name = "unstrung recurve bow"
+	desc = "A partially completed recurve bow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 60
+	firefuel = 10 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/longbowpartial
+	name = "unstrung longbow"
+	desc = "A partially completed longbow, still waiting to be strung."
+	icon_state = "bowpartial"
+	max_integrity = 60
+	firefuel = 20 MINUTES
+	twohands_required = FALSE
+	gripped_intents = null
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/rogueore/coal
+
 /obj/item/grown/log/tree/stick
 	name = "stick"
 	icon_state = "stick1"
 	desc = "A dry stick from a tree branch."
 	blade_dulling = 0
-	max_integrity = 20
+	max_integrity = 5
 	static_debris = null
 	firefuel = 5 MINUTES
 	obj_flags = null
@@ -64,6 +99,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha <= 100) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/grown/log/tree/stick/Initialize()
@@ -116,6 +153,7 @@
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
+	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 	obj_flags = null
 	w_class = WEIGHT_CLASS_SMALL
 	twohands_required = FALSE

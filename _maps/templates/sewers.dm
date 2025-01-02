@@ -19,7 +19,7 @@
 		/obj/item/clothing/shoes/roguetown/simpleshoes = 4,
 		/obj/item/clothing/suit/roguetown/shirt/undershirt/random = 5,
 		/obj/item/storage/belt/rogue/leather/cloth = 4,
-		/obj/item/clothing/cloak/raincloak/mortus = 3,
+		/obj/item/clothing/cloak/raincloak/rogue = 3,
 		/obj/item/clothing/head/roguetown/armingcap = 4,
 		/obj/item/clothing/cloak/apron/waist = 3,
 		/obj/item/storage/belt/rogue/leather/rope = 3,

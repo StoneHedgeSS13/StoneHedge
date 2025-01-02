@@ -23,8 +23,6 @@
 		if(TRUE)
 			to_chat(src, span_warning("My aura is now one of misery"))
 			User.aura = FALSE
-			src.log_message("[key_name(src)] has switched their aura to apply bad luck")
 		if(FALSE)
 			to_chat(src, span_warning("My aura is now one of blessing"))
 			User.aura = TRUE
-			src.log_message("[key_name(src)] has switched their aura to apply good luck")
