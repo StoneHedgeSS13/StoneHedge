@@ -39,19 +39,26 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 	families = list()
 	stack_trace("Failed to [fail_verb] [FAMILY_FILE]")
 
-/datum/family/proc/can_modify_family(mob/source, mob/target, relation)
-	if(!ismob(source) || !ismob(target))
-		stack_trace("[source] and [target] must be mobs!")
+/datum/family/proc/can_modify_family(client/source, client/target, relation)
+	if(!istype(source))
+		stack_trace("[source] must be a client!")
 		return FALSE
-	if(!source.client || !source.ckey || !target.client || !target.ckey) // expected fails, so no logging
+	if(!istype(target))
+		stack_trace("[target] must be a client!")
 		return FALSE
-	if(!source.client.prefs || !target.client.prefs)
-		stack_trace("[source.client] or [target.client] are somehow missing their prefs datum?")
+	if(!source.prefs)
+		stack_trace("[source] is somehow missing its prefs datum?")
+		return FALSE
+	if(!target.prefs)
+		stack_trace("[target] is somehow missing its prefs datum?")
 		return FALSE
 	if(!length(families))
 		load_families()
-	if(!is_valid_id(source.client.prefs.family_id) || !is_valid_id(target.client.prefs.family_id))
-		stack_trace("[source.client] or [target.client] are somehow missing their unique family id?")
+	if(!is_valid_id(source.prefs.family_id))
+		stack_trace("[source] is somehow missing their unique family id?")
+		return FALSE
+	if(!is_valid_id(target.prefs.family_id))
+		stack_trace("[target] is somehow missing their unique family id?")
 		return FALSE
 	return TRUE
 
@@ -85,13 +92,13 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 		load_families()
 	return find_player_info(family_id)
 
-/datum/family/proc/add_family(mob/source, mob/target, relation)
+/datum/family/proc/add_family(client/source, client/target, relation, name, gender)
 	if(!can_modify_family(source, target, relation))
 		return FALSE
-	var/source_id = source.client.prefs.family_id
+	var/source_id = source.prefs.family_id
 	var/list/source_info = find_player_info(source_id)
 	if(!source_info)
-		source_info[source_id] = generate_player_info(source)
+		source_info[source_id] = generate_player_info(source, name, gender)
 
 	for(var/list/relationship as anything in source_info["relations"])
 		if(relation_matches(target, relationship, relationship["relation"])) // please no duplicates of the same relation type
@@ -100,21 +107,21 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 	source_info["relations"] += generate_relation(target, relation)
 	return TRUE
 
-/datum/family/proc/generate_player_info(mob/target)
+/datum/family/proc/generate_player_info(client/target, name, gender)
 	return list(
 		"ckey" = target.ckey,
-		"character" = target.real_name,
-		"gender" = target.gender,
+		"character" = name,
+		"gender" = gender,
 	)
 
-/datum/family/proc/generate_relation(mob/target, relation)
+/datum/family/proc/generate_relation(client/target, relation)
 	return list(
-		"id" = target.client.prefs.family_id,
+		"id" = target.prefs.family_id,
 		"relation" = relation,
 	)
 
 /// Remove family relatiopn from source of target with the relation string
-/datum/family/proc/remove_family(mob/source, mob/target, relation)
+/datum/family/proc/remove_family(client/source, client/target, relation)
 	if(!can_modify_family(target, relation))
 		return FALSE
 	if(!remove_from_relations(source, target, relation))
@@ -122,8 +129,8 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 	CallAsync(src, save_families())
 	return FALSE
 
-/datum/family/proc/remove_from_relations(mob/source, mob/target, relation)
-	var/list/source_relations = get_family_info(target.client.prefs.family_id)
+/datum/family/proc/remove_from_relations(client/source, client/target, relation)
+	var/list/source_relations = get_family_info(target.prefs.family_id)
 	var/found_relation = FALSE // even though there should be only one identical relation, we remove all matching relations here because I have trust issues
 	for(var/list/list_entry as anything in source_relations)
 		if(relation_matches(target, list_entry, relation))
@@ -132,15 +139,15 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 		found_relation = TRUE
 	return found_relation
 
-/datum/family/proc/relation_matches(mob/target, list/family, relation)
-	if(family["id"] != target.client.prefs.family_id || family["relation"] != relation)
+/datum/family/proc/relation_matches(client/target, list/family, relation)
+	if(family["id"] != target.prefs.family_id || family["relation"] != relation)
 		return FALSE
 	return TRUE
 
-/datum/family/proc/assign_family(mob/target)
-	if(!target?.client?.prefs?.family_id)
+/datum/family/proc/assign_family(client/target)
+	if(!target?.prefs?.family_id)
 		return
-	var/target_family_id = target.client.prefs.family_id
+	var/target_family_id = target.prefs.family_id
 	if(!ishuman(target))
 		CRASH("tried to assign family properties to a non-human mob!")
 	var/mob/living/carbon/human/human_target = target
@@ -150,7 +157,7 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 	var/list/relatives = list()
 	for(var/mob/player as anything in GLOB.player_list)
 		// track down any mobs that match relatives
-		var/family_id = target?.client?.prefs?.family_id 
+		var/family_id = target?.prefs?.family_id 
 		if(!family_id && family_id == "")
 			continue
 		for(var/list/relation in relations)

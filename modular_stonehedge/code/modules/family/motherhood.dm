@@ -4,7 +4,7 @@
 #define CHILD_VERB_CATEGORY "OOC"
 
 #define BECOME_CHILD_VERB_NAME "Become Child"
-
+// iffy code, i don't like it
 /// returns a stage(number) of motherhood
 /datum/family/proc/check_motherhood(family_id)
 	var/list/relations = get_family_info(family_id)
@@ -61,12 +61,13 @@
 		return
 
 	to_chat(src, span_love("Ckey valid, [ckey] will now be able to create a character that is your child, as long as they choose within this round."))
+	to_chat(src, span_love("This will tie them to your current loaded character"))
 	found_client.verbs += /client/proc/become_child
 	var/keyname = found_client.ckey
 	if(ckey in GLOB.anonymize)
 		keyname = get_fake_key(ckey)
 
-	GLOB.families.family_offer[src] = found_client
+	GLOB.families.family_offer[src] = list("receiver_client" = found_client, "mother_name" = prefs.real_name)
 	to_chat(found_client, span_love("You have been offered to become the child of [keyname]."))
 	to_chat(found_client, span_love("Use the verb [BECOME_CHILD_VERB_NAME] in the [CHILD_VERB_CATEGORY] category \
 		and choose one of your character slots to become a child of [keyname]. This offer will only be valid within this round."))
@@ -77,9 +78,11 @@
 	set desc = "Choose a savefile to become the child of a player."
 
 	var/client/found_client
+	var/client/found_real_name
 	for(var/client/client as anything in GLOB.families.family_offer)
-		if(GLOB.families[client] == src)
+		if(GLOB.families.family_offer[client]["receiver_client"] == src && GLOB.families.family_offer[client]["mother_name"])
 			found_client = client
+			found_real_name = GLOB.families.family_offer[client]["mother_name"]
 			break
 
 	if(!found_client)
@@ -111,10 +114,15 @@
 
 	choice = choices[choice]
 	if(!prefs.load_character(choice))
+		to_chat(src, span_love("No character found in slot [choice], creating a new character."))
 		prefs.random_character()
 		prefs.save_character()
 
-	GLOB.families.add_family() // todo
+	// no mob so we don't use the helpers
+	GLOB.families.add_family(src, found_client, child_relation(prefs.gender), prefs.real_name)
+	// assuming mother can only be female
+	GLOB.families.add_family(found_client, src, parent_relation(FEMALE), found_real_name)
+	GLOB.families.family_offer -= found_client
 	verbs -= /client/proc/become_child
 	to_chat(found_client, span_love("You have succesfully joined the family of "))
 
