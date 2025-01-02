@@ -125,40 +125,8 @@
 	bloatable = TRUE
 	var/pre_pregnancy_size = 0
 
-//we handle all of this here because cant timer another goddamn thing from here correctly.
-/obj/item/organ/filling_organ/vagina/proc/be_impregnated(silent = FALSE)
-	if(pregnant || !pregnantaltorgan || !owner || owner.stat == DEAD)
-		return
-	if(!silent && owner.has_quirk(/datum/quirk/selfawaregeni))
-		to_chat(owner, span_love("I feel a surge of warmth in my [name], I’m definitely pregnant!"))
-	pregnant = TRUE
-	pre_pregnancy_size = pregnantaltorgan.organ_size
-
-	var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
-	if(breasties && !breasties.refilling)
-		breasties.refilling = TRUE
-		if(owner.has_quirk(/datum/quirk/selfawaregeni))
-			to_chat(owner, span_love("My [breasties] should start lactating soon..."))
-
-	var/obj/item/organ/belly/belly = owner.getorganslot(ORGAN_SLOT_BELLY)
-	if(belly)
-		pre_pregnancy_size = belly.organ_size
-
-	RegisterSignal(SSticker, COMSIG_ROUNDEND, PROC_REF(save_preggo))
-	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(undo_preggoness))
-
-/obj/item/organ/filling_organ/vagina/proc/undo_preggoness()
-	if(!pregnant)
-		return
-	pregnant = FALSE
-	to_chat(owner, span_love("I feel my [src] shrink to how it was before. Pregnancy is no more."))
-	if(owner.getorganslot(ORGAN_SLOT_BELLY))
-		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
-		bellyussy.organ_size = pre_pregnancy_size
-	owner.update_body_parts(TRUE)
-
 /obj/item/organ/filling_organ/vagina/proc/handle_preggoness()
-	var/obj/item/organ/belly/belly = owner.getorganslot(ORGAN_SLOT_BELLY)
+	var/obj/item/organ/belly/belly = owner?.getorganslot(ORGAN_SLOT_BELLY)
 	if(belly && belly.organ_size < 4)
 		to_chat(owner, span_lovebold("I notice my belly has grown due to pregnancy...")) //dont need to repeat this probably if size cant grow anyway.
 		belly.organ_size = belly.organ_size + 1
@@ -166,13 +134,13 @@
 
 
 /obj/item/organ/filling_organ/vagina/proc/be_impregnated(silent = FALSE)
-	if(pregnant || !pregnantaltorgan || !owner || owner.stat == DEAD)
+	var/obj/item/organ/belly/belly = owner?.getorganslot(ORGAN_SLOT_BELLY)
+	if(pregnant || !owner || owner.stat == DEAD || !belly)
 		return
 	if(!silent && owner.has_quirk(/datum/quirk/selfawaregeni))
 		to_chat(owner, span_love("I feel a surge of warmth in my [name], I’m definitely pregnant!"))
 	pregnant = TRUE
-	pre_pregnancy_size = pregnantaltorgan.organ_size
-	preggotimer = addtimer(CALLBACK(src, PROC_REF(handle_preggo_growth)), 2 HOURS, TIMER_STOPPABLE)
+	pre_pregnancy_size = belly.organ_size
 
 	var/obj/item/organ/filling_organ/breasts/breasties = owner.getorganslot(ORGAN_SLOT_BREASTS)
 	if(breasties && !breasties.refilling && owner.has_quirk(/datum/quirk/selfawaregeni))
@@ -182,25 +150,28 @@
 	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(undo_preggoness))
 
 /obj/item/organ/filling_organ/vagina/proc/save_preggo()
-	if(!owner && !pregnant && owner.stat == DEAD)
+	var/obj/item/organ/belly/belly = owner?.getorganslot(ORGAN_SLOT_BELLY)
+	if(!owner || !pregnant || owner.stat == DEAD || !belly)
 		return
 	// technically, there's 4 stages, and motherhood needs to consider that, and the other number is to increment it next time
-	owner.set_persistent_motherhood_stage(pregnantaltorgan.organ_size + 2)
+	owner.set_persistent_motherhood_stage(belly.organ_size + 2)
 
 /obj/item/organ/filling_organ/vagina/proc/handle_preggo_growth()
+	var/obj/item/organ/belly/belly = owner?.getorganslot(ORGAN_SLOT_BELLY)
 	if(!owner)
 		return
+	if(!belly)
+		return
 	if(organ_size < 3)
-		set_preggo_stage(pregnantaltorgan.organ_size + 1)
+		set_preggo_stage(belly.organ_size + 1)
 
 /obj/item/organ/filling_organ/vagina/proc/set_preggo_stage(stage = 1)
-	if(!pregnant || !pregnantaltorgan)
+	var/obj/item/organ/belly/belly = owner?.getorganslot(ORGAN_SLOT_BELLY)
+	if(!pregnant || !belly)
 		return
-	to_chat(owner, span_love("I noticed my [pregnantaltorgan.name] has grown...")) //dont need to repeat this probably if size cant grow anyway.
+	to_chat(owner, span_love("I noticed my [belly.name] has grown...")) //dont need to repeat this probably if size cant grow anyway.
 	if(organ_sizeable)
-		pregnantaltorgan.set_preggoness_stage(stage)
-	if(preggotimer)
-		deltimer(preggotimer)
+		belly.set_preggoness_stage(stage)
 	pregnancy_debuff(stage * 2)
 
 /obj/item/organ/filling_organ/vagina/proc/pregnancy_debuff(debuff_value = 1)
