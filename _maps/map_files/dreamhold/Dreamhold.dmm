@@ -14303,6 +14303,9 @@
 "hJP" = (
 /obj/structure/roguemachine/scomm,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry{
+	friendlyjobs = list("Guild Appraiser", "Guildmaster")
+	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/town/vault)
 "hJQ" = (
@@ -16236,6 +16239,10 @@
 /obj/structure/table/vtable,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
+"iLd" = (
+/obj/machinery/tanningrack,
+/turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue/indoors/town)
 "iLq" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
@@ -20111,6 +20118,14 @@
 /obj/machinery/light/rogue/chand,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cavewet)
+"kMN" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/machinery/tanningrack,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/garrison{
+	first_time_text = "Adventurers Guild";
+	name = "Adventurers Guild"
+	})
 "kMP" = (
 /obj/structure/grove_shrine,
 /turf/open/floor/rogue/grass,
@@ -133045,7 +133060,7 @@ beK
 nFS
 mJe
 pdF
-sdQ
+kMN
 mJR
 hiA
 hiA
@@ -145741,7 +145756,7 @@ ubI
 dIC
 enz
 xsa
-nhz
+iLd
 kqj
 gZr
 sPO
