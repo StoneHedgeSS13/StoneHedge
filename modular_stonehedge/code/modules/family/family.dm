@@ -84,7 +84,7 @@ GLOBAL_DATUM_INIT(families, /datum/family, new)
 	// 		]
 	// }]
 	if(!families[family_id])
-		families[family_id] = list()
+		return list()
 	return families[family_id]
 
 /datum/family/proc/get_family_info(family_id)
