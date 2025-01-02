@@ -25,12 +25,23 @@
 
 /mob/living/carbon/human/species/human/smart_npc/Initialize()
 	gender = pick(MALE,FEMALE)
+	hairstyle = pick("Bobcut", "Braid (High)", "Afro", "Pigtails", "Pixie Cut", "Bald")
+	skin_tone = pick(GLOB.skin_tones)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //until someone adds self healing and stam regen
 	spawn(10)
 		after_creation()
+
+/mob/living/carbon/human/species/human/smart_npc/after_creation()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC) //necessary cause they dont path around those shit and die.
+	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
+	if(organ_eyes)
+		organ_eyes.eye_color = pick("27becc", "35cc27", "000000")
+	update_hair()
+	update_body()
 
 /mob/living/carbon/human/species/human/smart_npc/should_target(mob/living/L)
 	if(!L)
@@ -46,9 +57,6 @@
 		return FALSE
 
 	if(L.alpha <= 100) //if mostly invisible dont see it, surely this wont go wrong.
-		return FALSE
-
-	if(L.InFullCritical())
 		return FALSE
 
 	if(L.name in friends)
@@ -74,12 +82,18 @@
 				badboi.grabbedby += G
 				put_in_hands(G)
 				G.update_hands(src)
-				// Apply both handcuffs and legcuffs
-				var/obj/item/rope/handropey = new /obj/item/rope
-				handropey.apply_cuffs(badboi, src)
-				var/obj/item/rope/legropey = new /obj/item/rope
-				legropey.apply_cuffs(badboi, src, TRUE)  // TRUE for legcuffs
 				start_pulling(badboi)
+				visible_message("[src] starts to tie [badboi] up!")
+				if(do_after_mob(src, badboi, 4 SECONDS, FALSE)) //some chance to escape
+					// Apply both handcuffs and legcuffs
+					var/obj/item/rope/handropey = new /obj/item/rope
+					handropey.apply_cuffs(badboi, src)
+					var/obj/item/rope/legropey = new /obj/item/rope
+					legropey.apply_cuffs(badboi, src, TRUE)  // TRUE for legcuffs
+				else
+					dropItemToGround(G)
+		return FALSE
+	if(L.InFullCritical())
 		return FALSE
 	if(L == lasthitter && L.alpha > 100)
 		return TRUE

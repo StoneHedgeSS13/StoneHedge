@@ -1,7 +1,10 @@
 //bandit npcs
 /mob/living/carbon/human/species/human/smart_npc/bandit
-	friendlyfactions = list("Bandits") //only cool with themselves
-	dodgetime = 20
+	faction = list("bandits") //only cool with themselves
+	friendlyfactions = list("bandits", "rogueanimal", "saiga", "chickens", "goats", "cows", "turtles", "rats", "crabs", "horse") //dont need to attack everything probably
+	dodgetime = 18
+	seeksfuck = TRUE
+	erpable = TRUE
 	aggromessages = list(
 		"I'll cut you like the walkin' coin purse you are.",
 		"Start beggin.",
@@ -14,23 +17,14 @@
 	)
 
 /mob/living/carbon/human/species/human/smart_npc/bandit/Initialize()
-	//not sure if those will load right
-	race = pick(/datum/species/human, /datum/species/halforc, /datum/species/elf/dark, /datum/species/elf, /datum/species/dwarf, /datum/species/goblin/, /datum/species/lupian)
+	//white skin possible races cause their shit dont really randomize...
+	race = pick(/datum/species/human/northern, /datum/species/elf/wood, /datum/species/dwarf/mountain)
 	. = ..()
-
-/mob/living/carbon/human/species/human/smart_npc/bandit/ambush
-	del_on_deaggro = TRUE
 
 /mob/living/carbon/human/species/human/smart_npc/bandit/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC) //necessary cause they dont path around those shit and die.
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/smart_npc/bandit)
-	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
-	if(organ_eyes)
-		organ_eyes.eye_color = pick("27becc", "35cc27", "000000")
-	update_hair()
-	update_body()
 
 /mob/living/carbon/human/species/human/smart_npc/bandit/handle_combat()
 	if(mode == AI_HUNT)
@@ -39,60 +33,87 @@
 	. = ..()
 
 /datum/outfit/job/roguetown/human/species/human/smart_npc/bandit/pre_equip(mob/living/carbon/human/H)
-	if(prob(50))
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather //leather bracers
-	else
-		wrists = /obj/item/clothing/wrists/roguetown/vambraces //iron bracers
-	if(prob(50))
-		cloak = /obj/item/clothing/cloak/hidecloak //hide cloak
-	if(prob(50))
-		gloves = /obj/item/clothing/gloves/roguetown/leather //leather gloves
-	else
-		gloves = /obj/item/clothing/gloves/roguetown/leather/angle //heavy leather gloves
-	if(prob(50))
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide //hide armor
+	if(prob(85)) //normal bois
+		if(prob(50))
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather //leather bracers
+		else
+			wrists = /obj/item/clothing/wrists/roguetown/vambraces //iron bracers
+		if(prob(50))
+			cloak = /obj/item/clothing/cloak/hidecloak //hide cloak
+		if(prob(50))
+			gloves = /obj/item/clothing/gloves/roguetown/leather //leather gloves
+		else
+			gloves = /obj/item/clothing/gloves/roguetown/leather/angle //heavy leather gloves
+		if(prob(50))
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide //hide armor
+			if(H.gender == FEMALE)
+				if(prob(50))
+					armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+				else
+					armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
+		else
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/ironarmor //iron chestplate
+		if(prob(50))
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron //iron chainmail
+			if(H.gender == FEMALE)
+				if(prob(50))
+					shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
+				else
+					shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
+		else
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail //steel chainmail
+			if(H.gender == FEMALE)
+				if(prob(50))
+					shirt  = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+				else
+					shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra
+		if(prob(50))
+			pants = /obj/item/clothing/under/roguetown/trou/leather //leather pants
+			if(H.gender == FEMALE)
+				pants = /obj/item/clothing/under/roguetown/trou/leather/skirt
+		else
+			pants = /obj/item/clothing/under/roguetown/chainlegs/iron //iron chain leggings
+			if(H.gender == FEMALE)
+				if(prob(50))
+					pants = /obj/item/clothing/under/roguetown/chainlegs/iron/fishnet
+				else
+					pants = /obj/item/clothing/under/roguetown/chainlegs/iron/skirt
+		if(prob(50))
+			head = /obj/item/clothing/head/roguetown/helmet/bascinet //bascinet helmet
+		else
+			head = /obj/item/clothing/head/roguetown/sackhood //sack hood, creepy.
+		if(prob(50))
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron //iron armor boots
+		else
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather //leather boots
+
+		r_hand = pick(/obj/item/rogueweapon/sword, /obj/item/rogueweapon/huntingknife/cleaver, /obj/item/rogueweapon/mace, /obj/item/rogueweapon/stoneaxe/battle, /obj/item/rogueweapon/sword/falchion)
+	else //THICC bois
+		wrists = /obj/item/clothing/wrists/roguetown/bracers //bracers
+		if(prob(50))
+			cloak = /obj/item/clothing/cloak/hidecloak //hide cloak
+		gloves = /obj/item/clothing/gloves/roguetown/plate
+		armor = /obj/item/clothing/suit/roguetown/armor/plate //half plate
 		if(H.gender == FEMALE)
 			if(prob(50))
-				pants = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/bikini
 			else
-				pants = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini/bra
-	else
-		armor = /obj/item/clothing/suit/roguetown/armor/plate/ironarmor //iron chestplate
-	if(prob(50))
-		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron //iron chainmail
-		if(H.gender == FEMALE)
-			if(prob(50))
-				pants = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini
-			else
-				pants = /obj/item/clothing/suit/roguetown/armor/chainmail/iron/bikini/bra
-	else
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/bikini/bra
 		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail //steel chainmail
 		if(H.gender == FEMALE)
 			if(prob(50))
-				pants = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
+				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 			else
-				pants = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra
-	if(prob(50))
-		pants = /obj/item/clothing/under/roguetown/trou/leather //leather pants
-		if(H.gender == FEMALE)
-			pants = /obj/item/clothing/under/roguetown/trou/leather/skirt
-	else
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron //iron chain leggings
+				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bra
+		pants = /obj/item/clothing/under/roguetown/chainlegs //steel chain leggings
 		if(H.gender == FEMALE)
 			if(prob(50))
-				pants = /obj/item/clothing/under/roguetown/chainlegs/iron/fishnet
+				pants = /obj/item/clothing/under/roguetown/chainlegs/fishnet
 			else
-				pants = /obj/item/clothing/under/roguetown/chainlegs/iron/skirt
-	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/helmet/bascinet //bascinet helmet
-	else
-		head = /obj/item/clothing/head/roguetown/sackhood //sack hood.
-	if(prob(50))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron //iron armor boots
-	else
-		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather //leather boots
-
-	r_hand = pick(/obj/item/rogueweapon/sword, /obj/item/rogueweapon/huntingknife/cleaver, /obj/item/rogueweapon/mace, /obj/item/rogueweapon/stoneaxe/battle, /obj/item/rogueweapon/sword/falchion)
+				pants = /obj/item/clothing/under/roguetown/chainlegs/skirt
+		head = /obj/item/clothing/head/roguetown/helmet/bascinet/helmetbars //bascinet barred helmet
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor //steel armor boots
+		r_hand = pick(/obj/item/rogueweapon/sword, /obj/item/rogueweapon/huntingknife/cleaver, /obj/item/rogueweapon/mace, /obj/item/rogueweapon/stoneaxe/battle, /obj/item/rogueweapon/sword/falchion)
 	H.STASPD = 12
 	H.STAPER = 8
 	H.STACON = 12

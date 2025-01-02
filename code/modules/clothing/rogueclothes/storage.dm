@@ -95,14 +95,12 @@
 	icon_state = "rope"
 	item_state = "rope"
 	color = "#b9a286"
-	heldz_items = 1
 	salvage_result = /obj/item/rope
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
-	heldz_items = 1
 	salvage_result = /obj/item/natural/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
