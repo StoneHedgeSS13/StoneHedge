@@ -18,12 +18,12 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/rogueweapon/pick
 	backl = /obj/item/storage/backpack/rogue/backpack
-	
+
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE)

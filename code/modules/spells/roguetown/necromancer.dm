@@ -10,7 +10,7 @@
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/blood
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	charge_max = 5 SECONDS //you are likely to have many undeads and no other way to heal them so it should be fast.
 	miracle = FALSE
 	invocation = "Infuse unlife!"
 	invocation_type = "shout"
@@ -18,25 +18,29 @@
 
 /obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
+	if(!ismob(targets[1])) //no miscasting this shit on empty turfs.
+		return FALSE
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //negative energy heals the undead
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
 			if(affecting)
-				if(affecting.heal_damage(50, 50))
+				if(affecting.heal_damage(150, 150))
 					target.update_damage_overlays()
-				if(affecting.heal_wounds(50))
+				if(affecting.heal_wounds(50)) //this shit is per limb and slow so damn.
 					target.update_damage_overlays()
-			target.heal_overall_damage(50, 50, updating_health = TRUE)
+			target.heal_overall_damage(150, 150, updating_health = TRUE)
 			target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
 			return TRUE
+/*
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
 			target.emote("scream")
-			target.Stun(30)
+			target.Stun(20)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
+*/
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/eyebite
@@ -153,6 +157,17 @@
 
 	return FALSE
 
+/mob/living/carbon/human
+
+	///npc's master that it should follow around.
+	var/mob/living/carbon/human/mastermob = null
+
+/mob/living/carbon/human/npc_idle()
+	. = ..()
+	if(mastermob)
+		if(mode == AI_IDLE || mode == AI_HUNT) //if not in combat, follow master.
+			walk2derpless(mastermob)
+
 /**
   * Turns a mob into a skeletonized minion. Used for raising undead minions.
   * If a ckey is provided, the minion will be controlled by the player, NPC otherwise.
@@ -171,9 +186,11 @@
 	if(ckey) //player
 		src.ckey = ckey
 	else //npc
+		mastermob = master
 		aggressive = 1
 		mode = AI_HUNT
 		wander = TRUE
+		mastermob = master
 
 	if(!mind)
 		mind_initialize()
@@ -195,7 +212,8 @@
 
 	patron = master.patron
 	mob_biotypes = MOB_UNDEAD
-	faction = list("undead")
+	faction = master.faction //master's factions so it dont attack people in same faction as master.
+	faction |= "undead" //its also an undead
 	ambushable = FALSE
 	underwear = "Nude"
 
@@ -226,7 +244,7 @@
 
 	update_body()
 
-	to_chat(src, span_userdanger("My master is [master.real_name]."))
+	to_chat(src, span_userdanger("My master is [master.real_name]. I must follow their orders and protect them, no matter what."))
 
 	master.minions += src
 
@@ -344,3 +362,46 @@
 			to_chat(sender, span_blue("I feel some of my wounds mend."))
 		sender.update_damage_overlays()
 	qdel(src)
+
+/obj/effect/proc_holder/spell/invoked/control_undead
+	name = "Control Undead"
+	overlay_state = "raiseskele"
+	releasedrain = 1
+	chargetime = 1
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	associated_skill = /datum/skill/magic/blood
+	antimagic_allowed = TRUE
+	charge_max = 2 SECONDS
+	miracle = FALSE
+	invocation = "incants a command."
+	invocation_type = "emote"
+	xp_gain = FALSE
+
+/obj/effect/proc_holder/spell/invoked/control_undead/cast(list/targets, mob/user)
+	. = ..()
+	for(var/mob/living/carbon/human/minion in orange(7, user)) //a necromancer can control all mindless undead even if not of their rising.
+		if(minion.mob_biotypes & ~MOB_UNDEAD)
+			continue
+		if(minion.client) //we dont touch mobs that are connected players.
+			continue
+		if(user == targets[1])
+			minion.back_to_idle()
+			minion.emote("idle")
+			minion.walk2derpless(user)
+			minion.balloon_alert(user, "Going to [user].")
+		if(isturf(targets[1]))
+			minion.back_to_idle()
+			minion.emote("idle")
+			var/turf/turftarget = targets[1]
+			minion.balloon_alert(user, "Going to [turftarget].")
+			minion.walk2derpless(turftarget)
+		if(ismob(targets[1]) && user != targets[1])
+			var/mob/living/mobtarget = targets[1]
+			minion.target = mobtarget
+			minion.mode = AI_COMBAT
+			minion.emote("laugh")
+			minion.balloon_alert(user, "Attacking [mobtarget.name].")

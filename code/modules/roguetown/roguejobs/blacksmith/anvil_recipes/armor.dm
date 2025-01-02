@@ -125,7 +125,7 @@
 /datum/anvil_recipe/armor/studdedskirt
 	name = "Studded Skirt (+1 Leather Skirt)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/clothing/under/roguetown/trou/skirt)
+	additional_items = list(/obj/item/clothing/under/roguetown/trou/leather/skirt)
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron/studdedskirt
 	i_type = "Armor"
 

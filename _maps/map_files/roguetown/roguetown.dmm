@@ -1369,7 +1369,7 @@
 "IH" = (/obj/structure/table/wood{icon_state = "tablewood1"},/obj/item/storage/roguebag,/turf/open/floor/rogue/hexstone,/area/rogue/indoors/town/church)
 "IJ" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town)
 "IL" = (/obj/structure/stairs,/turf/open/floor/rogue/woodturned,/area/rogue/indoors)
-"IM" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
+"IM" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/armor/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
 "IP" = (/turf/open/floor/rogue/tile/tilerg,/area/rogue/indoors/town/manor)
 "IQ" = (/obj/structure/fluff/statue/gargoyle,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/town/basement)
 "IR" = (/obj/machinery/light/rogue/torchholder/c,/turf/open/floor/rogue/grass,/area/rogue/indoors/town/church)

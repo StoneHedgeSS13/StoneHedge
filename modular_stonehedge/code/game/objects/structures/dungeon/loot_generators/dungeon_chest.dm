@@ -326,7 +326,7 @@
 				/obj/item/clothing/shoes/roguetown/boots/carapace = 50,
 				/obj/item/clothing/shoes/roguetown/boots/armoriron = 55,
 				/obj/item/clothing/shoes/roguetown/boots/armor = 50,
-				/obj/item/clothing/shoes/roguetown/boots/leather = 55,
+				/obj/item/clothing/shoes/roguetown/boots/armor/leather = 55,
 				/obj/item/clothing/shoes/roguetown/boots/footmangreaves = 30
 				)
 		if("food")

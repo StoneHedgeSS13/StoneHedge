@@ -810,7 +810,7 @@
 "apD" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 8},/obj/machinery/light/rogue/wallfire/candle/r,/turf/open/floor/rogue/wood,/area/rogue)
 "apE" = (/obj/structure/fluff/wallclock/l,/obj/structure/rack/rogue,/turf/open/floor/rogue/woodturned,/area/rogue)
 "apF" = (/obj/structure/table/wood{icon_state = "longtable"; dir = 1},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue)
-"apG" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue)
+"apG" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/armor/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue)
 "apH" = (/obj/structure/chair/stool/rogue{icon_state = "barstool"; dir = 1},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue)
 "apI" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/rogue)
 "apJ" = (/obj/structure/roguemachine/scomm/l,/turf/open/floor/rogue/woodturned,/area/rogue)

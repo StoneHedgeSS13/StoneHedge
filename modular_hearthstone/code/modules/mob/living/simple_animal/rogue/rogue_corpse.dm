@@ -179,7 +179,7 @@
 			if(prob(10))
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 	if(prob(70))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		if(prob(30))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 			if(prob(70))
@@ -235,7 +235,7 @@
 			if(prob(10))
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 	if(prob(70))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		if(prob(30))
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armoriron
 			if(prob(70))

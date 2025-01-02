@@ -46,7 +46,7 @@
 	H.change_stat("fortune", 2)
 
 	if(H.gender == MALE)	//Male clothing stuff
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	else					//Female clothing stuff
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random

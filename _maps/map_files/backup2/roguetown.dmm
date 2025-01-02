@@ -1306,7 +1306,7 @@
 "AT" = (/turf/closed/mineral/rogue,/area/rogue/under/town/basement)
 "AU" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/church)
 "AV" = (/obj/structure/closet/crate/roguecloset/inn/south,/obj/item/paper/scroll,/obj/item/paper/scroll,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/tavern)
-"AW" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
+"AW" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/armor/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
 "AX" = (/obj/structure/closet/crate/drawer/inn,/obj/item/storage/belt/rogue/pouch/coins/poor,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/tavern)
 "AY" = (/obj/machinery/light/rogue/chand,/turf/open/transparent/openspace,/area/rogue/indoors/town/tavern)
 "AZ" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 6},/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/garrison)

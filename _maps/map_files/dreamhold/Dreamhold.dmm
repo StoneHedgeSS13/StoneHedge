@@ -4278,7 +4278,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "cpy" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
@@ -8384,7 +8384,7 @@
 	name = "far stonehedge"
 	})
 "eCw" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/bog)
 "eCy" = (
@@ -11743,8 +11743,7 @@
 /obj/item/rogueweapon/sickle,
 /obj/item/rogueweapon/hoe,
 /obj/machinery/light/rogue/torchholder{
-	dir = 4;
-	icon_state = "torchwall1"
+	dir = 4
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/garrison{
@@ -12250,7 +12249,7 @@
 	})
 "gAd" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
@@ -15492,8 +15491,7 @@
 	})
 "ipS" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 4;
-	icon_state = "torchwall1"
+	dir = 4
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/town/garrison{
@@ -15752,7 +15750,6 @@
 /obj/effect/decal/dirt{
 	dir = 4
 	},
-/mob/living/carbon/human/species/human/smartnpc/townguard,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
@@ -23927,7 +23924,7 @@
 /area/rogue/outdoors/caves)
 "mOd" = (
 /obj/structure/flora/grass/jungle/b,
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge"
@@ -25113,10 +25110,11 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/river)
 "nuz" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard/brute,
-/turf/open/floor/rogue/cobble/mossy,
+/mob/living/carbon/human/species/human/smart_npc/townguard/brute,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+	first_time_text = "Stonehedge Borders";
+	name = "far stonehedge"
 	})
 "nuA" = (
 /turf/open/floor/rogue/rooftop{
@@ -25371,7 +25369,7 @@
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/shelter/town)
 "nBp" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/dirt/nrich{
 	icon_state = "road"
 	},
@@ -25929,7 +25927,7 @@
 /obj/item/clothing/shoes/roguetown/gladiator{
 	pixel_x = 9
 	},
-/obj/item/clothing/shoes/roguetown/boots/leather{
+/obj/item/clothing/shoes/roguetown/boots/armor/leather{
 	pixel_x = -5;
 	pixel_y = -5
 	},
@@ -29407,12 +29405,6 @@
 	first_time_text = "The Sylver Dragonne..";
 	name = "Silver Dragon"
 	})
-"pIz" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge"
-	})
 "pIF" = (
 /obj/machinery/light/rogue/oven/east,
 /turf/open/floor/rogue/hexstone,
@@ -29683,12 +29675,6 @@
 /area/rogue/outdoors/exposed/church{
 	first_time_text = "Shrine of Natures";
 	name = "Shrine of Natures"
-	})
-"pOV" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge"
 	})
 "pOW" = (
 /obj/structure/glowshroom{
@@ -31018,13 +31004,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/cavewet)
-"qwx" = (
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/tavern{
-	first_time_text = "The Sylver Dragonne..";
-	name = "Silver Dragon"
-	})
 "qwU" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/rogue/grass,
@@ -35016,13 +34995,6 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
-"sCW" = (
-/obj/structure/flora/grass/jungle/b,
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge"
-	})
 "sCZ" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/hexstone,
@@ -36891,8 +36863,7 @@
 	})
 "tCY" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 8;
-	icon_state = "torchwall1"
+	dir = 8
 	},
 /obj/structure/closet/crate/roguecloset/dark{
 	keylock = 1;
@@ -44566,7 +44537,7 @@
 	})
 "xKH" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/mob/living/carbon/human/species/human/smartnpc/townguard/sentry,
+/mob/living/carbon/human/species/human/smart_npc/townguard/sentry,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
@@ -141112,7 +141083,7 @@ fqz
 fqz
 fqz
 fqz
-nuz
+fqz
 vil
 foY
 vVw
@@ -143551,7 +143522,7 @@ pFL
 uxu
 nPY
 nPY
-pIz
+hGY
 pwR
 oea
 pwR
@@ -143939,7 +143910,7 @@ nnZ
 qCV
 fhZ
 xBY
-pOV
+xBY
 xBY
 xBY
 drI
@@ -174228,7 +174199,7 @@ enU
 tJb
 tJb
 tJb
-qwx
+tJb
 tJb
 tJb
 tJb
@@ -176441,7 +176412,7 @@ dKA
 fqz
 fqz
 fqz
-sCW
+qnW
 nnZ
 xBY
 sPO
@@ -180988,7 +180959,7 @@ beK
 beK
 beK
 qJZ
-ijB
+nuz
 hcX
 mBE
 pTJ

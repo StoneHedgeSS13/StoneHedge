@@ -87,10 +87,16 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/seeklewd()
 	if(!erpable)
 		return
+	if(!retreating)
+		return
+	if(sexcon.current_action)
+		return
+	if(fuckcd > 0)
+		return
+	if(!(mobility_flags & MOBILITY_STAND))
+		return
 	var/mob/living/carbon/human/L
 	var/list/foundfuckmeat = list()
-	if(!retreating && sexcon.current_action && fuckcd > 0)
-		return
 	for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
 		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg
@@ -265,10 +271,14 @@
 		stoppedfucking(timedout = TRUE)
 
 /mob/living/carbon/human/proc/seeklewd()
+	if(sexcon.current_action)
+		return
+	if(fuckcd > 0)
+		return
+	if(!(mobility_flags & MOBILITY_STAND))
+		return
 	var/mob/living/carbon/human/L
 	var/list/foundfuckmeat = list()
-	if(sexcon.current_action && fuckcd > 0)
-		return
 	for(var/mob/living/carbon/human/fucktarg in view(10, src))
 		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg

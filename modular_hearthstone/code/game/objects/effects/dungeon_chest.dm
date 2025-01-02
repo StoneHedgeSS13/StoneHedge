@@ -44,7 +44,7 @@
 		/obj/item/clothing/under/roguetown/tights/vagrant = 15,
 		/obj/item/clothing/gloves/roguetown/leather = 15,
 		/obj/item/clothing/shoes/roguetown/boots = 15,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 15,
+		/obj/item/clothing/shoes/roguetown/boots/armor/leather = 15,
 
 		// Money
 		/obj/item/roguecoin/copper = 50,
@@ -212,7 +212,7 @@
 		/obj/item/clothing/shoes/roguetown/boots/carapace = 50,
 		/obj/item/clothing/shoes/roguetown/boots/armoriron = 55,
 		/obj/item/clothing/shoes/roguetown/boots/armor = 50,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 55,
+		/obj/item/clothing/shoes/roguetown/boots/armor/leather = 55,
 		/obj/item/clothing/shoes/roguetown/boots/footmangreaves = 30
 		)
 	var/I = pickweight(loot)

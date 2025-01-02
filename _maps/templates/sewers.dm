@@ -26,7 +26,7 @@
 		/obj/item/clothing/under/roguetown/tights/vagrant = 4,
 		/obj/item/clothing/gloves/roguetown/leather = 4,
 		/obj/item/clothing/shoes/roguetown/boots = 4,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/clothing/shoes/roguetown/boots/armor/leather = 4,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,

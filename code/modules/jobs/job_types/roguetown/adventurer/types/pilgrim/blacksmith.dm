@@ -46,7 +46,7 @@
 
 	if(H.gender == MALE)
 
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	else
 

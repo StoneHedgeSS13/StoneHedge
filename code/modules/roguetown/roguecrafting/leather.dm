@@ -83,7 +83,7 @@
 
 /datum/crafting_recipe/roguetown/leather/leatherskirt
 	name = "leather skirt"
-	result = list(/obj/item/clothing/under/roguetown/trou/skirt)
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/skirt)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10
 
@@ -97,7 +97,7 @@
 
 /datum/crafting_recipe/roguetown/leather/boots
 	name = "leather boots"
-	result = /obj/item/clothing/shoes/roguetown/boots/leather
+	result = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10	//Costs about ~6 to make, sells well.
 
