@@ -185,6 +185,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/devotion_cost = 0
 	var/ignore_cockblock = FALSE //whether or not to ignore TRAIT_SPELLCOCKBLOCK
 	var/ignore_fiendkiss = TRUE //whether or not to ignore TRAIT_FIENDKISS
+	var/requires_arms = TRUE
 
 	action_icon_state = "spell0"
 	action_icon = 'icons/mob/actions/roguespells.dmi'
@@ -314,7 +315,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			to_chat(user, span_warning("This spell can only be cast by physical beings!"))
 			return FALSE
 
-	if(ishuman(user))
+	if(ishuman(user) && requires_arms)
 		var/mob/living/carbon/human/huser = user
 		if(huser.handcuffed || huser.get_num_arms(TRUE) < 1) //not handcuffed and has atleast one working arm to make invocations and direct the spells.
 			to_chat(user, span_warning("I can't without my arms!"))
@@ -379,7 +380,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			else
 				user.whisper(invocation)
 		if("emote")
-			user.visible_message(invocation, invocation_emote_self) //same style as in mob/living/emote.dm
+			user.visible_message("[user][invocation]", invocation_emote_self) //same style as in mob/living/emote.dm
 
 /obj/effect/proc_holder/spell/proc/playMagSound()
 	var/ss = sound

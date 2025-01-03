@@ -232,7 +232,7 @@
 		return FALSE
 
 	//those are here for proc dependancy.
-	if(!attack_lying && L.lying && !L.get_active_held_item()) //laying with no items in hand, no threat.
+	if(!attack_lying && L.lying && !L.get_active_held_item() && L.ckey) //laying with no items in hand, no threat, also its a player mob.
 		if(prob(4) && (L.has_quirk(/datum/quirk/monsterhuntermale) || L.has_quirk(/datum/quirk/monsterhunterfemale)) && erpable) //tiny chance to trigger abuss.
 			fuckcd = 0
 		return FALSE

@@ -13,6 +13,7 @@
 	invocation = "RAAAAAAAAAAAAAA!!"
 	miracle = FALSE
 	invocation_type = "shout" //can be none, whisper, emote and shout
+	requires_arms = FALSE
 
 /obj/effect/proc_holder/spell/invoked/barbarian_rage/cast(list/targets, mob/user)
 	if(user && user.mind)

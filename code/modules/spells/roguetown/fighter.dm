@@ -28,6 +28,7 @@
 
 	invocation = ""
 	invocation_type = "none" //can be none, whisper, emote and shout
+	requires_arms = FALSE
 
 /obj/effect/proc_holder/spell/self/secondwind/cast(mob/user = usr)
 	var/mob/living/target = user

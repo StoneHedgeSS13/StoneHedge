@@ -6,7 +6,7 @@
 	range = 3
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation = "blows some dust from their palm."
+	invocation = " blows some dust from their palm."
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/seelie_dust/cast(list/targets, mob/living/user)
@@ -127,7 +127,7 @@
 	charge_max = 3 MINUTES
 	range = 1
 	sound = 'sound/magic/churn.ogg'
-	invocation = "flutters energetically."
+	invocation = " flutters energetically."
 	invocation_type = "emote"
 	//random_target = TRUE
 	//random_target_priority = TARGET_RANDOM
@@ -175,7 +175,7 @@
 	range = 1
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation = "spreads some seelie dust around."
+	invocation = " spreads some seelie dust around."
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/invoked/replenish/cast(list/targets, mob/user)

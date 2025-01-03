@@ -161,10 +161,11 @@
 
 	///npc's master that it should follow around.
 	var/mob/living/carbon/human/mastermob = null
+	var/following_master = FALSE
 
 /mob/living/carbon/human/npc_idle()
 	. = ..()
-	if(mastermob)
+	if(mastermob && following_master)
 		if(mode == AI_IDLE || mode == AI_HUNT) //if not in combat, follow master.
 			walk2derpless(mastermob)
 
@@ -190,7 +191,7 @@
 		aggressive = 1
 		mode = AI_HUNT
 		wander = TRUE
-		mastermob = master
+		following_master = TRUE
 
 	if(!mind)
 		mind_initialize()
@@ -212,8 +213,7 @@
 
 	patron = master.patron
 	mob_biotypes = MOB_UNDEAD
-	faction = master.faction //master's factions so it dont attack people in same faction as master.
-	faction |= "undead" //its also an undead
+	faction = list("undead")
 	ambushable = FALSE
 	underwear = "Nude"
 
@@ -365,9 +365,8 @@
 
 /obj/effect/proc_holder/spell/invoked/control_undead
 	name = "Control Undead"
+	desc = "Use on a undead to toggle it's aggressiveness, use on yourself to get your minions to follow you and stop being aggressive, use on a turf to send your minions to attack, use on a mob to send your minions to attack that mob. "
 	overlay_state = "raiseskele"
-	releasedrain = 1
-	chargetime = 1
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
@@ -377,31 +376,54 @@
 	antimagic_allowed = TRUE
 	charge_max = 2 SECONDS
 	miracle = FALSE
-	invocation = "incants a command."
-	invocation_type = "emote"
+	invocation = ""
+	invocation_type = "none"
 	xp_gain = FALSE
 
 /obj/effect/proc_holder/spell/invoked/control_undead/cast(list/targets, mob/user)
 	. = ..()
-	for(var/mob/living/carbon/human/minion in orange(7, user)) //a necromancer can control all mindless undead even if not of their rising.
+	for(var/mob/living/carbon/human/minion in orange(10, user)) //a necromancer can control their own risen undead.
 		if(minion.mob_biotypes & ~MOB_UNDEAD)
 			continue
+		if(minion.stat == DEAD) //cant command the dead-dead
+			continue
+		if(user.mind.has_antag_datum(/datum/antagonist/lich)) //lich control ALL undead, that is not owned and their own.
+			if(minion.mastermob && minion.mastermob != user) //skip if this mob has a master AND it's not you, if it's masterless or your own, it should command.
+				continue
+		else
+			if(minion.mastermob != user) //if you are not lich and you are not master of this mob, skip.
+				continue
 		if(minion.client) //we dont touch mobs that are connected players.
 			continue
+		if(minion == targets[1] && minion.mastermob == user)
+			minion.aggressive = !minion.aggressive
+			if(!minion.aggressive)
+				minion.back_to_idle()
+			minion.balloon_alert(user, "Now [minion.aggressive ? "" : "not"] aggressive.")
+			return
 		if(user == targets[1])
 			minion.back_to_idle()
 			minion.emote("idle")
 			minion.walk2derpless(user)
-			minion.balloon_alert(user, "Going to [user].")
+			user.visible_message("[user] beckons while incanting.")
+			minion.balloon_alert(user, "Returning to master.")
+			minion.aggressive = FALSE
+			minion.following_master = TRUE
 		if(isturf(targets[1]))
 			minion.back_to_idle()
 			minion.emote("idle")
 			var/turf/turftarget = targets[1]
-			minion.balloon_alert(user, "Going to [turftarget].")
+			user.visible_message("[user] points at \the [turftarget] while incanting.")
+			minion.balloon_alert(user, "Marching to [turftarget].")
+			minion.mode = AI_HUNT
+			minion.aggressive = TRUE
+			minion.following_master = FALSE
 			minion.walk2derpless(turftarget)
 		if(ismob(targets[1]) && user != targets[1])
+			minion.back_to_idle() //so he stops attacking something if it is right now.
 			var/mob/living/mobtarget = targets[1]
-			minion.target = mobtarget
 			minion.mode = AI_COMBAT
-			minion.emote("laugh")
-			minion.balloon_alert(user, "Attacking [mobtarget.name].")
+			minion.aggressive = TRUE
+			minion.retaliate(mobtarget)
+			user.visible_message("[user] points menacingly at [mobtarget.name] while incanting.")
+			minion.balloon_alert(user, "Marked [mobtarget.name] as target.")

@@ -18729,7 +18729,7 @@
 	first_time_text = "The Twilight Woods"
 	})
 "kcf" = (
-/obj/structure/fluff/statue/small,
+/obj/structure/fluff/statue/lewd,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
 "kct" = (
@@ -26007,6 +26007,11 @@
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
+"nRY" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/landmark/start/henchman,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/bath)
 "nSe" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -27115,6 +27120,10 @@
 /obj/effect/decal/border/ruinedwood/inverted,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
+"oAv" = (
+/obj/effect/landmark/start/henchman,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/bath)
 "oAL" = (
 /obj/effect/decal/border{
 	dir = 4
@@ -38561,6 +38570,12 @@
 /area/rogue/outdoors{
 	first_time_text = "Stonehedge Borders";
 	name = "far stonehedge"
+	})
+"uuW" = (
+/obj/effect/landmark/start/henchman,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/indoors/town/bath{
+	first_time_text = "The Dreamers Demesne.."
 	})
 "uvi" = (
 /obj/structure/fluff/railing/wood{
@@ -102299,7 +102314,7 @@ evw
 gec
 gec
 evw
-wuK
+nRY
 ixO
 ixO
 odP
@@ -102502,7 +102517,7 @@ mkf
 evw
 evw
 eMU
-odP
+oAv
 ixO
 odP
 fgV
@@ -137652,11 +137667,11 @@ kVm
 ouB
 bDQ
 bDQ
+uuW
 bDQ
 bDQ
 bDQ
-bDQ
-bDQ
+uuW
 uXz
 jsd
 xNt
