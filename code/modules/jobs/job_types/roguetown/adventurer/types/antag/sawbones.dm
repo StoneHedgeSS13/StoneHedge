@@ -266,7 +266,6 @@
 	desc = "this thing seems barely functional"
 
 /datum/status_effect/debuff/wheart
-	name = "Weakened Heart"
 	id = "wheart"
 	effectedstats = list("constitution" = -1)
 
@@ -284,7 +283,6 @@
 	desc = "this thing seems barely functional"
 
 /datum/status_effect/debuff/wliver
-	name = "Weakened liver"
 	id = "wliver"
 	effectedstats = list("endurance" = -1)
 
