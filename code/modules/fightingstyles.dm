@@ -61,3 +61,23 @@
 			ADD_TRAIT(src, TRAIT_STRONG_GRABBER, TRAIT_GENERIC)
 			src.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 
+/mob/living/carbon/human/proc/give_smithingstyle(two = FALSE)
+	var/list/smithingstyles = list(
+		"Weaponsmith",
+		"Armorsmith",
+		)
+
+	var/smithingstylechoice = input("Choose your smithing specialization", "Available smithing specialization") as anything in smithingstyles
+	trygivesmithingstyle(smithingstylechoice)
+	if(two)
+		smithingstyles.Remove(smithingstylechoice)
+		var/smithingstylechoice_two = input("Choose your second specialization", "Available smithing styles") as anything in smithingstyles
+		trygivesmithingstyle(smithingstylechoice_two)
+
+/mob/living/carbon/human/proc/trygivesmithingstyle(SS)
+	switch(SS)
+		if("Weaponsmith")
+			ADD_TRAIT(src, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
+
+		if("Armorsmith")
+			ADD_TRAIT(src, TRAIT_ARMORSMITH, TRAIT_GENERIC)

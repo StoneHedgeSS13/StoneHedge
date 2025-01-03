@@ -16,24 +16,6 @@
 
 /datum/outfit/job/roguetown/tribalsmith/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_blindness(-3)
-	var/classes = list(
-		"Weaponsmith", //Weapons
-		"Armorsmith", //Armor
-		)
-
-	var/classchoice = input("Choose your specialization", "Available styles") as anything in classes
-
-
-	switch(classchoice)
-
-		if("Weaponsmith")
-			H.set_blindness(0)
-			ADD_TRAIT(H, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
-
-		if("Armorsmith")
-			H.set_blindness(0)
-			ADD_TRAIT(H, TRAIT_ARMORSMITH, TRAIT_GENERIC)
 
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
@@ -61,3 +43,5 @@
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", -2)
+		ADD_TRAIT(src, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_ARMORSMITH, TRAIT_GENERIC)

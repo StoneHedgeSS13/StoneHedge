@@ -5,37 +5,16 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-
 	allowed_races = RACES_ALL_KINDSPLUS
-
-	tutorial = "You've studied for many decades under a master smith. This placed you ahead of your peers by becoming the best in a specialization."
-	outfit = /datum/outfit/job/roguetown/blacksmith
+	tutorial = "You've studied for many decades under a master smith."
 	display_order = JDO_BLACKSMITH
 	give_bank_account = 400
 	min_pq = 0
 	max_pq = null
+	outfit = /datum/outfit/job/roguetown/blacksmith/
 
 /datum/outfit/job/roguetown/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_blindness(-3)
-	var/classes = list(
-		"Weaponsmith", //Weapons
-		"Armorsmith", //Armor
-		)
-
-	var/classchoice = input("Choose your specialization", "Available styles") as anything in classes
-
-
-	switch(classchoice)
-
-		if("Weaponsmith")
-			H.set_blindness(0)
-			ADD_TRAIT(H, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
-
-		if("Armorsmith")
-			H.set_blindness(0)
-			ADD_TRAIT(H, TRAIT_ARMORSMITH, TRAIT_GENERIC)
-
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
@@ -75,3 +54,5 @@
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
+	ADD_TRAIT(src, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_ARMORSMITH, TRAIT_GENERIC)
