@@ -143,7 +143,7 @@
 					playsound(src, 'sound/combat/feint.ogg', 100, TRUE)
 					visible_message(span_emote("[src] feints an attack at [target]!"))
 					target.OffBalance(50) //since they cant defeat the parries might aswell give them a fat feint.
-				else if(prob(10))
+				else if(prob(5)) //knockdown is annoying so less likely.
 					say(pick("Sit the fuck down.", "Fuck away from me.", "Stay down."))
 					visible_message(span_emote("[src] bashes [target] away!"))
 					playsound(src,"punch_hard",100,TRUE)
