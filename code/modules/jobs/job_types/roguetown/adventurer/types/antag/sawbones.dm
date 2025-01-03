@@ -267,12 +267,7 @@
 
 /datum/status_effect/debuff/wheart
 	id = "wheart"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/wheart
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
-
-/atom/movable/screen/alert/status_effect/debuff/wheart
-	name = "Weak Heart"
-	desc = "I feel drained and sluggish, I should get a new heart."
+	effectedstats = list("constitution" = -1)
 
 /obj/item/organ/heart/weak/Insert(mob/living/carbon/M)
 	..()
@@ -289,12 +284,7 @@
 
 /datum/status_effect/debuff/wliver
 	id = "wliver"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/wliver
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
-
-/atom/movable/screen/alert/status_effect/debuff/wliver
-	name = "Weak Liver"
-	desc = "I feel drained and sluggish, I should get a new liver."
+	effectedstats = list("endurance" = -1)
 
 /obj/item/organ/liver/weak/Insert(mob/living/carbon/M)
 	..()
