@@ -193,6 +193,7 @@
 	for(var/datum/bounty/b in GLOB.head_bounties)
 		if(b.target == target.real_name)
 			GLOB.head_bounties -= b
+			target.remove_status_effect(/datum/status_effect/grove_outlaw)
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)

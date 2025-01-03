@@ -20,7 +20,7 @@
 	var/weapons = list( //what did you primarily train with?
 		"Swords",
 		"Axes",
-		"Maces",
+		"Maces & Flails",
 		"Polearms"
 	)
 

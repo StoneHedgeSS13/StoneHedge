@@ -397,7 +397,7 @@
 			if(minion.mastermob != user) //if you are not lich and you are not master of this mob, skip.
 				continue
 			commanded ++
-			if(commanded >= 3) //shouldnt allow commanding more than 3 minions per cast, atleast makes it inconvenient to get a party of 10 skeletons to go do bad shit. I'm too lazy to make an entire system for keeping track of minions.
+			if(commanded >= 4) //shouldnt allow commanding more than 3 minions per cast, atleast makes it inconvenient to get a party of 10 skeletons to go do bad shit. I'm too lazy to make an entire system for keeping track of minions.
 				to_chat(user, span_necrosis("I can't easily control more than three undead at once."))
 				return
 		if(minion == targets[1] && minion.mastermob == user)
@@ -425,8 +425,10 @@
 			minion.following_master = FALSE
 			minion.walk2derpless(turftarget)
 		if(ismob(targets[1]) && user != targets[1])
-			minion.back_to_idle() //so he stops attacking something if it is right now.
 			var/mob/living/mobtarget = targets[1]
+			if(mobtarget.mob_biotypes & MOB_UNDEAD)
+				return
+			minion.back_to_idle() //so he stops attacking something if it is right now.
 			minion.mode = AI_COMBAT
 			minion.aggressive = TRUE
 			minion.retaliate(mobtarget)
