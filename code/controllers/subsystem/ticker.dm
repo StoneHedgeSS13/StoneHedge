@@ -583,6 +583,7 @@ SUBSYSTEM_DEF(ticker)
 		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)
 		if(ishuman(character))
 			SSquirks.AssignQuirks(character, new_player.client, TRUE)
+		character.assign_family()
 		CHECK_TICK
 //	if(captainless)
 //		for(var/i in GLOB.new_player_list)

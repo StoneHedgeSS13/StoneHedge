@@ -279,11 +279,11 @@
 	alpha = 200
 
 /datum/reagent/medicine/antipregnancy/on_mob_life(mob/living/carbon/M)
-	for(var/obj/item/organ/filling_organ/vagina/forgan in M.internal_organs)
-		if(forgan.pregnant)
-			to_chat(M, "I feel like I lost a part of me. The pregnancy is no more.")
-			forgan.undo_preggoness()
-	M.add_nausea(0.2)
+	var/obj/item/organ/filling_organ/vagina/forgan = holder
+	if(istype(forgan) && forgan.pregnant)
+		to_chat(M, "I feel like I lost a part of me. The pregnancy is no more.")
+		forgan.undo_preggoness()
+	M.add_nausea(2)
 	..()
 	. = 1
 
