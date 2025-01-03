@@ -278,6 +278,7 @@
 		/obj/item/book/granter/spell/blackstone/blindness = 1,
 		/obj/item/book/granter/spell/blackstone/invisibility = 3,
 		/obj/item/book/granter/spell/blackstone/sicknessray = 2,
-		/obj/item/book/granter/spell/blackstone/strengthen_undead = 2
+		/obj/item/book/granter/spell/spells5e/strengthenundead5e = 2,
+		/obj/item/book/granter/spell/spells5e/controlundead = 2
 	)
 	lootcount = 1
