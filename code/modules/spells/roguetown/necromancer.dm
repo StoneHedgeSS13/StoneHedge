@@ -240,7 +240,7 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 
 	update_body()
 
@@ -382,10 +382,13 @@
 
 /obj/effect/proc_holder/spell/invoked/control_undead/cast(list/targets, mob/user)
 	. = ..()
-	for(var/mob/living/carbon/human/minion in orange(10, user)) //a necromancer can control their own risen undead.
+	var/commanded = 0
+	for(var/mob/living/carbon/human/minion in orange(7, user)) //a necromancer can control their own risen undead.
 		if(minion.mob_biotypes & ~MOB_UNDEAD)
 			continue
 		if(minion.stat == DEAD) //cant command the dead-dead
+			continue
+		if(minion.client) //we dont touch mobs that are connected players.
 			continue
 		if(user.mind.has_antag_datum(/datum/antagonist/lich)) //lich control ALL undead, that is not owned and their own.
 			if(minion.mastermob && minion.mastermob != user) //skip if this mob has a master AND it's not you, if it's masterless or your own, it should command.
@@ -393,8 +396,10 @@
 		else
 			if(minion.mastermob != user) //if you are not lich and you are not master of this mob, skip.
 				continue
-		if(minion.client) //we dont touch mobs that are connected players.
-			continue
+			commanded ++
+			if(commanded >= 3) //shouldnt allow commanding more than 3 minions per cast, atleast makes it inconvenient to get a party of 10 skeletons to go do bad shit. I'm too lazy to make an entire system for keeping track of minions.
+				to_chat(user, span_necrosis("I can't easily control more than three undead at once."))
+				return
 		if(minion == targets[1] && minion.mastermob == user)
 			minion.aggressive = !minion.aggressive
 			if(!minion.aggressive)
