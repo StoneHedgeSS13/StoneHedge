@@ -153,6 +153,8 @@
 					return
 				if(newtax < 1)
 					return
+				if(newtax > SStreasury.treasury_value)
+					return
 				SStreasury.give_money_account(newtax, A, "NERVE MASTER")
 				break
 	if(href_list["fineaccount"])
