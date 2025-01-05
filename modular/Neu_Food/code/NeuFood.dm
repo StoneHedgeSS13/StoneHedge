@@ -355,7 +355,7 @@
 	color = "#c38553"
 	nutriment_factor = 15
 	metabolization_rate = 0.5 // half as fast as normal, last twice as long
-	taste_description = "sweet oats flavored water"
+	taste_description = "sweet oats flad water"
 	taste_mult = 5
 	hydration = 8
 

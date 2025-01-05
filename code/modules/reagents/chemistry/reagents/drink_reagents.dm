@@ -728,7 +728,7 @@
 
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
-	description = "A cherry flavored milkshake."
+	description = "A cherry flad milkshake."
 	color = "#FFB6C1"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 4 * REAGENTS_METABOLISM
@@ -826,7 +826,7 @@
 
 /datum/reagent/consumable/grenadine
 	name = "Grenadine"
-	description = "Not cherry flavored!"
+	description = "Not cherry flad!"
 	color = "#EA1D26"
 	taste_description = "sweet pomegranates"
 	glass_name = "glass of grenadine"
@@ -848,7 +848,7 @@
 
 /datum/reagent/consumable/cream_soda
 	name = "Cream Soda"
-	description = "A classic space-American vanilla flavored soft drink."
+	description = "A classic space-American vanilla flad soft drink."
 	color = "#dcb137"
 	quality = DRINK_VERYGOOD
 	taste_description = "fizzy vanilla"

@@ -210,7 +210,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			continue
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
-		/// Visible messages are shown to things which contain them and vice versa, mostly to help with vore system UX. Also - dont hide msg from self
+		/// Visible messages are shown to things which contain them and vice versa, mostly to help with  system UX. Also - dont hide msg from self
 		if(!in_contents_recursive(src, M) && !in_contents_recursive(M, src) && M != src)
 			if(M.see_invisible < invisibility)//if src is invisible to M
 				msg = blind_message

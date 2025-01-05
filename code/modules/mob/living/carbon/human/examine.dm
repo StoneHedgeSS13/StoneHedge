@@ -557,7 +557,7 @@
 			if(inscryption_key && (inscryption_key in maniac.key_nums))
 				. += span_danger("[t_He] know[p_s()] [inscryption_key], I AM SURE OF IT!")
 
-	var/cursed_stuff = examine_bellies() //vore Code
+	var/cursed_stuff = examine_bellies() // Code
 	if(cursed_stuff)
 		. += cursed_stuff
 

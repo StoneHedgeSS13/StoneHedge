@@ -668,36 +668,36 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.apply_status_effect(/datum/status_effect/debuff/bigboobs/permanent/lite)
 
-/datum/quirk/vore
-    name = "Vore"
-    desc = "You can engage in Vore."
+/datum/quirk/
+    name = ""
+    desc = "You can engage in ."
     value = 0
-    mob_trait = TRAIT_VORE
+    mob_trait = TRAIT_
 
-/datum/quirk/vore/add()
+/datum/quirk//add()
     var/mob/living/carbon/human/H = quirk_holder
-    var/list/vore_verbs = list(
-        /mob/living/carbon/verb/toggle_vore_mode_verb,
+    var/list/_verbs = list(
+        /mob/living/carbon/verb/toggle__mode_verb,
         /mob/living/verb/insidePanel,
         /mob/living/verb/escapeOOC,
         /mob/living/verb/lick,
         /mob/living/verb/preyloop_refresh
     )
-    H.verbs |= vore_verbs
-    H.vore_flags |= SHOW_VORE_PREFS
+    H.verbs |= _verbs
+    H._flags |= SHOW__PREFS
 
-/datum/quirk/vore/remove()
+/datum/quirk//remove()
     var/mob/living/carbon/human/H = quirk_holder
-    var/list/vore_verbs = list(
-        /mob/living/carbon/verb/toggle_vore_mode_verb,
+    var/list/_verbs = list(
+        /mob/living/carbon/verb/toggle__mode_verb,
         /mob/living/verb/insidePanel,
         /mob/living/verb/escapeOOC,
         /mob/living/verb/lick,
         /mob/living/verb/preyloop_refresh
     )
-    H.verbs -= vore_verbs
-    H.vore_flags &= ~SHOW_VORE_PREFS
-    H.disable_vore_mode()
+    H.verbs -= _verbs
+    H._flags &= ~SHOW__PREFS
+    H.disable__mode()
 
 /datum/quirk/maniac
 	name = "Cursed"

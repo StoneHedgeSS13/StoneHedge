@@ -286,7 +286,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/malum
 	name = "amulet of the Forge"
-	desc = "Favored by those of the forge."
+	desc = "Fad by those of the forge."
 	icon_state = "malum"
 
 /obj/item/clothing/neck/roguetown/psicross/ravox
@@ -364,7 +364,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden divine symbol"
-	desc = "This symbol is made from gold, known to be favored for its conductive properties."
+	desc = "This symbol is made from gold, known to be fad for its conductive properties."
 	icon_state = "psicrossg"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF

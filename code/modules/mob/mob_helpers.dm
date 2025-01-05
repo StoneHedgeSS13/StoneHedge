@@ -596,7 +596,7 @@
 			hud_used.cmode_button.update_icon()
 
 	if(cmode)
-		disable_vore_mode()
+		disable__mode()
 /mob/proc/set_cmode(new_cmode)
 	if(cmode == new_cmode)
 		return

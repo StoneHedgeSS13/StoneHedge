@@ -490,7 +490,7 @@
 /*	.................   Pastry   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/pastry
 	name = "pastry"
-	desc = "Favored among children and sweetlovers."
+	desc = "Fad among children and sweetlovers."
 	icon_state = "pastry"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("crispy butterdough" = 1)
@@ -908,7 +908,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/ccake
 	name = "cheesecake"
-	desc = "Humenity's favored creation."
+	desc = "Humenity's fad creation."
 	icon_state = "cheesecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/ccakeslice

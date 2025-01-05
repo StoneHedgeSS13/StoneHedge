@@ -10,10 +10,10 @@
 		gib_animation()
 
 	spill_embedded_objects()
-	
+
 	spill_organs(no_brain, no_organs, no_bodyparts)
 
-	release_vore_contents(silent = TRUE) // return of the bomb safe internals.
+	release__contents(silent = TRUE) // return of the bomb safe internals.
 
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs)
@@ -44,11 +44,11 @@
 
 	if(drop_items)
 		unequip_everything()
-	
+
 	if(buckled)
 		buckled.unbuckle_mob(src, force = TRUE)
 
-	release_vore_contents(silent = TRUE) //technically grief protection, I guess? if they're SM'd it doesn't matter seconds after anyway.
+	release__contents(silent = TRUE) //technically grief protection, I guess? if they're SM'd it doesn't matter seconds after anyway.
 
 	dust_animation()
 	spawn_dust(just_ash)

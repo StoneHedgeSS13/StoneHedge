@@ -1106,7 +1106,7 @@
 		return
 
 	// CIT CHANGE - climbing out of a gut.
-	if(vore_process_resist())
+	if(_process_resist())
 		//Sure, give clickdelay for anti spam. shouldn't be combat voring anyways.
 		return TRUE
 

@@ -934,8 +934,8 @@
 /obj/item/storage/box/ingredients/grains
 	theme_name = "grains"
 
-/obj/item/storage/box/ingredients/carnivore
-	theme_name = "carnivore"
+/obj/item/storage/box/ingredients/carni
+	theme_name = "carni"
 
 /obj/item/storage/box/ingredients/exotic
 	theme_name = "exotic"

@@ -60,7 +60,7 @@
 	foodtype = SUGAR //We use SUGAR as a base line to act in as junkfood, other wise we use fruit
 
 /obj/item/reagent_containers/food/snacks/snowcones/lime
-	name = "lime flavored snowcone"
+	name = "lime flad snowcone"
 	desc = ""
 	icon_state = "lime_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/limejuice = 5)
@@ -68,7 +68,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/lemon
-	name = "lemon flavored snowcone"
+	name = "lemon flad snowcone"
 	desc = ""
 	icon_state = "lemon_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/lemonjuice = 5)
@@ -76,7 +76,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/apple
-	name = "apple flavored snowcone"
+	name = "apple flad snowcone"
 	desc = ""
 	icon_state = "blue_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/applejuice = 5)
@@ -84,7 +84,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/grape
-	name = "grape flavored snowcone"
+	name = "grape flad snowcone"
 	desc = ""
 	icon_state = "grape_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/grapejuice = 5)
@@ -92,7 +92,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/orange
-	name = "orange flavored snowcone"
+	name = "orange flad snowcone"
 	desc = ""
 	icon_state = "orange_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/orangejuice = 5)
@@ -100,7 +100,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/blue
-	name = "bluecherry flavored snowcone"
+	name = "bluecherry flad snowcone"
 	desc = ""
 	icon_state = "red_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/bluecherryjelly = 5)
@@ -108,7 +108,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/red
-	name = "cherry flavored snowcone"
+	name = "cherry flad snowcone"
 	desc = ""
 	icon_state = "blue_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/cherryjelly = 5)
@@ -116,7 +116,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/mix
-	name = "mixed berry flavored snowcone"
+	name = "mixed berry flad snowcone"
 	desc = ""
 	icon_state = "berry_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/berryjuice = 10)
@@ -124,7 +124,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/fruitsalad
-	name = "mixed fruit flavored snowcone"
+	name = "mixed fruit flad snowcone"
 	desc = ""
 	icon_state = "fruitsalad_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/lemonjuice = 5, /datum/reagent/consumable/limejuice = 5, /datum/reagent/consumable/orangejuice = 5)
@@ -132,7 +132,7 @@
 	foodtype = FRUIT
 
 /obj/item/reagent_containers/food/snacks/snowcones/pineapple
-	name = "pineapple flavored snowcone"
+	name = "pineapple flad snowcone"
 	desc = ""
 	icon_state = "pineapple_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/water = 10)
@@ -147,14 +147,14 @@
 	tastes = list("nothing" = 5)
 
 /obj/item/reagent_containers/food/snacks/snowcones/clown
-	name = "joke flavored snowcone"
+	name = "joke flad snowcone"
 	desc = ""
 	icon_state = "clown_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/pwr_game = 5)
 	tastes = list("jokes" = 5, "brainfreeze" = 5, "joy" = 5)
 
 /obj/item/reagent_containers/food/snacks/snowcones/soda
-	name = "sodawater flavored snowcone"
+	name = "sodawater flad snowcone"
 	desc = ""
 	icon_state = "soda_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sodawater = 5)
@@ -162,7 +162,7 @@
 	foodtype = JUNKFOOD | SUGAR
 
 /obj/item/reagent_containers/food/snacks/snowcones/pwgrmer
-	name = "pwergamer flavored snowcone"
+	name = "pwergamer flad snowcone"
 	desc = ""
 	icon_state = "pwergamer_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/laughter = 1)
@@ -170,7 +170,7 @@
 	foodtype = JUNKFOOD | SUGAR
 
 /obj/item/reagent_containers/food/snacks/snowcones/honey
-	name = "honey flavored snowcone"
+	name = "honey flad snowcone"
 	desc = ""
 	icon_state = "honey_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/honey = 5)
