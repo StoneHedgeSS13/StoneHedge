@@ -122,7 +122,6 @@
 	QDEL_NULL(sexcon)
 	STOP_PROCESSING(SShumannpc, src)
 	QDEL_NULL(physiology)
-	QDEL_NULL_LIST(_organs) // CITADEL EDIT belly stuff
 	GLOB.human_list -= src
 	return ..()
 
@@ -854,24 +853,6 @@
 	if(user == target)
 		return FALSE
 	//normal  check.
-	if(user.pulling == target && user.grab_state && user.mode)
-		if(ismob(user.pulling))
-			user._attack(user, target, src) // User, Pulled, Predator target (which can be user, pulling, or src)
-			return TRUE
-	if(pulling == target && stat == CONSCIOUS)
-		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
-		if(user == target && can_piggyback(target))
-			piggyback(target)
-			return TRUE
-		//If you dragged them to you and you're aggressively grabbing try to carry them
-		else if(user != target && can_be_firemanned(target))
-			var/obj/G = get_active_held_item()
-			if(G)
-				if(istype(G, /obj/item/grabbing))
-					fireman_carry(target)
-					return TRUE
-	. = ..()
-
 /mob/living/carbon/human/proc/shoulder_ride(mob/living/carbon/target)
 	buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
 	visible_message(span_notice("[target] gently sits on [src]'s shoulder."))

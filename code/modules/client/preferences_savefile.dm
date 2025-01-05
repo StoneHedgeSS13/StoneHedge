@@ -590,8 +590,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(!S["is_updated_for_genitalia"]) //Vrell - should fix loading old characters giving all genitals.
 		genderize_customizer_entries()
 
-	load__prefs(S)
-
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -688,8 +686,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else
 		WRITE_FILE(S["loadout"] , null)
-
-	save__prefs(S)
 
 	WRITE_FILE(S["flavor_text"] , flavor_text)
 

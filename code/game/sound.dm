@@ -366,38 +366,6 @@
 			if("punchwoosh")
 				soundin = pick('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
 			//START OF CIT CHANGES - adds random  sounds
-			if ("struggle_sound")
-				soundin = pick( 'modular_causticcove/sound//pred/struggle_01.ogg','modular_causticcove/sound//pred/struggle_02.ogg','modular_causticcove/sound//pred/struggle_03.ogg',
-								'modular_causticcove/sound//pred/struggle_04.ogg','modular_causticcove/sound//pred/struggle_05.ogg')
-			if ("prey_struggle")
-				soundin = pick( 'modular_causticcove/sound//prey/struggle_01.ogg','modular_causticcove/sound//prey/struggle_02.ogg','modular_causticcove/sound//prey/struggle_03.ogg',
-								'modular_causticcove/sound//prey/struggle_04.ogg','modular_causticcove/sound//prey/struggle_05.ogg')
-			if ("digest_pred")
-				soundin = pick( 'modular_causticcove/sound//pred/digest_01.ogg','modular_causticcove/sound//pred/digest_02.ogg','modular_causticcove/sound//pred/digest_03.ogg',
-								'modular_causticcove/sound//pred/digest_04.ogg','modular_causticcove/sound//pred/digest_05.ogg','modular_causticcove/sound//pred/digest_06.ogg',
-								'modular_causticcove/sound//pred/digest_07.ogg','modular_causticcove/sound//pred/digest_08.ogg','modular_causticcove/sound//pred/digest_09.ogg',
-								'modular_causticcove/sound//pred/digest_10.ogg','modular_causticcove/sound//pred/digest_11.ogg','modular_causticcove/sound//pred/digest_12.ogg',
-								'modular_causticcove/sound//pred/digest_13.ogg','modular_causticcove/sound//pred/digest_14.ogg','modular_causticcove/sound//pred/digest_15.ogg',
-								'modular_causticcove/sound//pred/digest_16.ogg','modular_causticcove/sound//pred/digest_17.ogg','modular_causticcove/sound//pred/digest_18.ogg')
-			if ("death_pred")
-				soundin = pick( 'modular_causticcove/sound//pred/death_01.ogg','modular_causticcove/sound//pred/death_02.ogg','modular_causticcove/sound//pred/death_03.ogg',
-								'modular_causticcove/sound//pred/death_04.ogg','modular_causticcove/sound//pred/death_05.ogg','modular_causticcove/sound//pred/death_06.ogg',
-								'modular_causticcove/sound//pred/death_07.ogg','modular_causticcove/sound//pred/death_08.ogg','modular_causticcove/sound//pred/death_09.ogg',
-								'modular_causticcove/sound//pred/death_10.ogg')
-			if ("digest_prey")
-				soundin = pick( 'modular_causticcove/sound//prey/digest_01.ogg','modular_causticcove/sound//prey/digest_02.ogg','modular_causticcove/sound//prey/digest_03.ogg',
-								'modular_causticcove/sound//prey/digest_04.ogg','modular_causticcove/sound//prey/digest_05.ogg','modular_causticcove/sound//prey/digest_06.ogg',
-								'modular_causticcove/sound//prey/digest_07.ogg','modular_causticcove/sound//prey/digest_08.ogg','modular_causticcove/sound//prey/digest_09.ogg',
-								'modular_causticcove/sound//prey/digest_10.ogg','modular_causticcove/sound//prey/digest_11.ogg','modular_causticcove/sound//prey/digest_12.ogg',
-								'modular_causticcove/sound//prey/digest_13.ogg','modular_causticcove/sound//prey/digest_14.ogg','modular_causticcove/sound//prey/digest_15.ogg',
-								'modular_causticcove/sound//prey/digest_16.ogg','modular_causticcove/sound//prey/digest_17.ogg','modular_causticcove/sound//prey/digest_18.ogg')
-			if ("death_prey")
-				soundin = pick( 'modular_causticcove/sound//prey/death_01.ogg','modular_causticcove/sound//prey/death_02.ogg','modular_causticcove/sound//prey/death_03.ogg',
-								'modular_causticcove/sound//prey/death_04.ogg','modular_causticcove/sound//prey/death_05.ogg','modular_causticcove/sound//prey/death_06.ogg',
-								'modular_causticcove/sound//prey/death_07.ogg','modular_causticcove/sound//prey/death_08.ogg','modular_causticcove/sound//prey/death_09.ogg',
-								'modular_causticcove/sound//prey/death_10.ogg')
-			if("hunger_sounds")
-				soundin = pick(	'modular_causticcove/sound//growl1.ogg','modular_causticcove/sound//growl2.ogg','modular_causticcove/sound//growl3.ogg','modular_causticcove/sound//growl4.ogg',
-								'modular_causticcove/sound//growl5.ogg')
+			 // removed fucker
 			//END OF CIT CHANGES
 	return soundin

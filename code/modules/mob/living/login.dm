@@ -34,8 +34,6 @@
 	if(changeling)
 		changeling.regain_powers()
 
-	if((_flags & _INIT) && !(_flags & PREF_INIT)) //'s been initialized, prefs haven't. If this triggers then that means that prefs failed to load due to the client being missing.
-		copy_from_prefs_vr()
 
 	set_ssd_indicator(FALSE) //Hearthstone apple change - ssd indicator
 

@@ -1105,10 +1105,7 @@
 		resist_grab()
 		return
 
-	// CIT CHANGE - climbing out of a gut.
-	if(_process_resist())
-		//Sure, give clickdelay for anti spam. shouldn't be combat voring anyways.
-		return TRUE
+
 
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)
