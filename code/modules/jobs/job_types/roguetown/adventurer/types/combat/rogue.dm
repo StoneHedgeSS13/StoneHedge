@@ -232,7 +232,7 @@
 		H.mind.adjust_spellpoints(1)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
-	//H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/rogue_knock) No, dude, just no.
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/rogue_knock)
 
 //Phantom, A death based rogue that can speak with the dead. (based on phantom archetype from 5e)
 /datum/outfit/job/roguetown/adventurer/rogue/proc/phantomarch(mob/living/carbon/human/H)

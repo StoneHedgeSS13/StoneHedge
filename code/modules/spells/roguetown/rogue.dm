@@ -10,7 +10,7 @@
 	chargedrain = 1
 	chargetime = 15
 	cast_without_targets = TRUE
-	charge_max = 120 SECONDS
+	charge_max = 5 MINUTES
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
 	chargedloop = /datum/looping_sound/invokegen
