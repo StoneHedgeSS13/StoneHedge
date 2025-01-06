@@ -115,6 +115,7 @@
 	H.change_stat("speed", -1)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/command_undead)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/control_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)

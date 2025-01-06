@@ -18,7 +18,7 @@
 		if("Ranger")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Rangers are masters of nature, often hired as pathfinders, bodyguards and mercenaries in areas of wilderness untraversable to common soldiery."))
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/reagent_containers/glass/bottle/waterskin
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -55,7 +55,7 @@
 		if("Gloom Stalker")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Gloom Stalkers specialize in navigating dark places, such as the Underdark or in hunting at night. For this reason, they tend to have darkvision."))
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			gloves = /obj/item/clothing/gloves/roguetown/leather

@@ -1383,7 +1383,7 @@
 
 		if(isliving(who))
 			var/mob/living/L = who
-			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND && L.client)
 				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
 				return
 			if(L.surrendering)

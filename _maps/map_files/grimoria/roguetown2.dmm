@@ -1178,7 +1178,7 @@
 "wI" = (/obj/structure/fluff/wallclock/l,/obj/structure/rack/rogue,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/dwarfin)
 "wJ" = (/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/dwarfin)
 "wK" = (/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
-"wL" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
+"wL" = (/obj/structure/closet/crate/roguecloset/dark,/obj/item/clothing/suit/roguetown/armor/leather/vest,/obj/item/clothing/shoes/roguetown/boots/armor/leather,/obj/item/clothing/suit/roguetown/armor/armordress,/turf/open/floor/rogue/wood,/area/rogue/indoors/town/dwarfin)
 "wM" = (/turf/closed/wall/mineral/rogue/craftstone,/area/rogue/indoors/town/dwarfin)
 "wN" = (/obj/effect/decal/cleanable/cobweb,/turf/open/transparent/openspace,/area/rogue/indoors/town)
 "wO" = (/obj/structure/roguemachine/vendor,/turf/open/floor/rogue/woodturned,/area/rogue/indoors/town/shop)

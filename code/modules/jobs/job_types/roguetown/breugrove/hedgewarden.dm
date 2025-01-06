@@ -43,7 +43,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor/grove
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/mace/cudgel/thornlash

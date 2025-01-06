@@ -770,7 +770,7 @@
 
 /datum/crafting_recipe/roguetown/leatherskirtconv
 	name = "leather pants to skirt"
-	result = list(/obj/item/clothing/under/roguetown/trou/skirt)
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/skirt)
 	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1)
 
 /datum/crafting_recipe/roguetown/leatherskirtconvtwo

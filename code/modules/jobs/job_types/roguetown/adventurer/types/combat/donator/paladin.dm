@@ -20,7 +20,7 @@
 	var/weapons = list( //what did you primarily train with?
 		"Swords",
 		"Axes",
-		"Maces",
+		"Maces & Flails",
 		"Polearms"
 	)
 
@@ -102,7 +102,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife
@@ -165,7 +165,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather/hand
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife

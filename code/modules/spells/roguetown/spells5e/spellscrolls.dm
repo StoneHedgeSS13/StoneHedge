@@ -391,6 +391,14 @@
 	spell = /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	spellname = "infuse unlife"
 	icon_state = "scrollpurple"
+	remarks = list("Mediolanum ventis..", "Sana damnatorum..", "Frigidus ossa mortuorum..")
+
+//this aint in 5e but using the parent anyway fuck youuu.
+/obj/item/book/granter/spell/spells5e/controlundead
+	name = "Scroll of Control Undead"
+	spell = /obj/effect/proc_holder/spell/invoked/control_undead
+	spellname = "control undead"
+	icon_state = "scrollpurple"
 
 // Mapping only
 /obj/item/book/granter/spell/spells5e/random

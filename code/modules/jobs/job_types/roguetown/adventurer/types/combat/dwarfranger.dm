@@ -27,7 +27,7 @@
 	if(prob(23))
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 	if(prob(23))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	cloak = /obj/item/clothing/cloak/raincloak/brown
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)

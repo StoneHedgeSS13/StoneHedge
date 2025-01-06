@@ -10,10 +10,10 @@
 	category_tags = list(CTAG_DISABLED)
 	maximum_possible_slots = 1
 	pickprob = 5
-	
+
 /datum/outfit/job/roguetown/adventurer/grandmastermason/pre_equip(mob/living/carbon/human/H)
 	..()
-	
+
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 3, TRUE)
@@ -33,7 +33,7 @@
 	cloak = /obj/item/clothing/cloak/apron/waist/bar
 	pants = /obj/item/clothing/under/roguetown/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/rogueweapon/pick

@@ -1133,7 +1133,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	xp_gain = TRUE
-	invocation = "runs a hand over their eyes, chanting before they open with a new-found sparkle."
+	invocation = " runs a hand over their eyes, chanting before they open with a new-found sparkle."
 	invocation_type = "emote"
 	cost = 2
 

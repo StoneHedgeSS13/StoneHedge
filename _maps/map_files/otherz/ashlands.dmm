@@ -850,6 +850,13 @@
 "js" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/indoors/shelter/town)
+"jv" = (
+/obj/effect/landmark/start/vampthrall,
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "jE" = (
 /obj/structure/flora/roguetree/burnt,
 /obj/structure/flora/roguegrass/thorn_bush,
@@ -1716,6 +1723,13 @@
 /obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
+"sb" = (
+/obj/effect/landmark/start/vampthrall,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "sf" = (
 /obj/structure/fermenting_barrel/water,
 /obj/structure/fluff/railing/border,
@@ -27487,15 +27501,15 @@ qw
 qw
 qw
 qw
-qw
-qw
+sb
+sb
 ky
 ky
 ky
 qw
 ky
-ky
-qw
+jv
+sb
 ky
 BI
 Fn
@@ -27619,15 +27633,15 @@ Sn
 hG
 BI
 ky
-ky
-ky
+jv
+jv
 ky
 Bo
 La
 Bn
 qw
-ky
-ky
+jv
+jv
 ky
 aA
 aE

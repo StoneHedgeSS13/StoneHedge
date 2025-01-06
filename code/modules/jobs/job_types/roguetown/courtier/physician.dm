@@ -35,7 +35,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/vest
 	gloves = /obj/item/clothing/gloves/roguetown/surggloves
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/reagent_containers/glass/bottle/waterskin
 	beltr = /obj/item/storage/keyring/physician

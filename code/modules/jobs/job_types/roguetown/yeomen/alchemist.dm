@@ -32,7 +32,7 @@
 //Requires a lot of sprites, so this is just a placeholder
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -48,7 +48,7 @@
 		H.change_stat("speed", -1)
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid

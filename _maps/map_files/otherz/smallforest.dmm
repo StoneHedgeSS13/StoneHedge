@@ -911,13 +911,13 @@
 /area/rogue/indoors)
 "wR" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "xc" = (

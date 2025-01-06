@@ -15,7 +15,7 @@
 
 /datum/outfit/job/roguetown/adventurer/sentinal/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
