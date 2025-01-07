@@ -316,10 +316,10 @@
 			switch(bodytemperature)
 				if(-INFINITY to BODYTEMP_COLD_DAMAGE_LIMIT)
 					msg += span_blue("I feel freezing cold!")
-				if(BODYTEMP_COLD_DAMAGE_LIMIT to BODYTEMP_NORMAL)
-					msg += span_notice("I am shivering from the cold.")
-				if(BODYTEMP_NORMAL to BODYTEMP_HEAT_DAMAGE_LIMIT)
-					msg += span_notice("I am sweating from the heat.")
+				if(BODYTEMP_COLD_DAMAGE_LIMIT to (BODYTEMP_NORMAL-10))
+					msg += span_notice("I feel a bit cold.")
+				if((BODYTEMP_NORMAL+10) to BODYTEMP_HEAT_DAMAGE_LIMIT)
+					msg += span_notice("I am sweating a bit.")
 				if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
 					msg += span_red("I feel burning hot!")
 
@@ -509,7 +509,7 @@
 		var/mob/living/L = user
 		var/final_str = STASTR
 		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-			final_str = 10
+			final_str = L.STASTR - rand(2,5)
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
@@ -522,6 +522,35 @@
 				. += span_warning("[t_He] look[p_s()] weaker than I.")
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
+
+	if(isliving(user))
+		var/mob/living/L = user
+		if(HAS_TRAIT(L, TRAIT_MARTIALEYE))
+			var/final_spd = STASPD
+			var/speed_diff = final_spd - L.STASPD
+			var/stamina = rogstam
+			switch(speed_diff)
+				if(5 to INFINITY)
+					. += "<span class='warning'><B>[t_He] look[p_s()] much faster than I.</B></span>"
+				if(1 to 5)
+					. += "<span class='warning'>[t_He] look[p_s()] faster than I.</span>"
+				if(0)
+					. += "[t_He] look[p_s()] about as fast as I."
+				if(-5 to -1)
+					. += "<span class='warning'>[t_He] look[p_s()] slower than I.</span>"
+				if(-INFINITY to -5)
+					. += "<span class='warning'><B>[t_He] look[p_s()] much slower than I.</B></span>"
+			switch(stamina)
+				if(1001 to INFINITY)
+					. += "[t_He] look[p_s()] well rested and unexerted."
+				if(701 to 1000)
+					. += "[t_He] look[p_s()] a little tired, but still combat ready."
+				if(401 to 700)
+					. += "<span class='warning'>[t_He] [t_is] breathing heavily, beads of sweat running down [t_his] skin.</span>"
+				if(151 to 400)
+					. += "<span class='warning'><B>[t_He] [t_is] struggling to maintain [t_his] posture, exhaustion overtaking [t_He].</B></span>"
+				if(-INFINITY to 150)
+					. += "<span class='warning'><B>[t_He] look[p_s()] on the brink of collapsing from exhaustion.</B></span>"
 
 		//The Nymphomaniac Underground
 		if((!appears_dead) && stat == CONSCIOUS && src.has_flaw(/datum/charflaw/addiction/lovefiend))

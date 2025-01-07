@@ -65,20 +65,20 @@
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
-	
+
 /datum/species/human/northern/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
 	..()
 	languages(foreign)
-	
+
 /datum/species/human/northern/proc/languages(mob/living/carbon/human/foreign)
-	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
+	if(foreign.skin_tone == SKIN_COLOR_AVAR)
 		foreign.grant_language(/datum/language/grenzelhoftian)
 
 /datum/species/human/northern/get_skin_list()
 	return list(
-		"Frostlander" = SKIN_COLOR_GRENZELHOFT,
+		"Frostlander" = SKIN_COLOR_AVAR,
 		"Umberite" = SKIN_COLOR_HAMMERHOLD,
-		"Grenzelhoft" = SKIN_COLOR_AVAR,
+		"Grenzelhoft" = SKIN_COLOR_GRENZELHOFT,
 		"StoneHedge" = SKIN_COLOR_STONEHEDGE,
 		"Heartfell" = SKIN_COLOR_OTAVA,
 		"Highlander" = SKIN_COLOR_ETRUSCA,

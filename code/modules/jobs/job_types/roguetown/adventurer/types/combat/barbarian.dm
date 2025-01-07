@@ -12,7 +12,7 @@
 /datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)
 	..() // Compared to the Warrior the barbarian is more suited to the wilds. But they are able to make use of almost any weapon by talent and killer instinct.
 	H.adjust_blindness(-3)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/barbarian_rage)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/barbarian_rage)
 
 	ADD_TRAIT(H, TRAIT_PERFECT_TRACKER, TRAIT_GENERIC) //danger sense.
 	var/classes = list("Warrior","Hunter Killer", "Ravager")
@@ -38,7 +38,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			if(prob(55))
 				head = /obj/item/clothing/head/roguetown/helmet/horned
@@ -78,7 +78,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
@@ -114,7 +114,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -157,7 +157,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					if(prob(55))
 						head = /obj/item/clothing/head/roguetown/helmet/horned
@@ -200,7 +200,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 					if(prob(33))
@@ -236,7 +236,7 @@
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife
 					backl = /obj/item/storage/backpack/rogue/satchel
-					shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+					shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 					H.change_stat("intelligence", -1)
 					H.change_stat("strength", pick(3,4)) // The bear wolf is an endurance fighter. Never tiring. Unrelenting.

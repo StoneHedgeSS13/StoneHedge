@@ -34,7 +34,7 @@
 	cloak = /obj/item/clothing/cloak/apron/waist
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/trou
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

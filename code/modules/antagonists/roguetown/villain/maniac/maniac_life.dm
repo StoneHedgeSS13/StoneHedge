@@ -34,6 +34,11 @@
 	//Talking objects
 	else if(prob(4))
 		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_object_hallucination), target)
+	else if(prob(1) && prob(5) && HAS_TRAIT(target, TRAIT_SOONTOWAKEUP))
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_admin_bwoink_hallucination), target)
+	else if(prob(1) && prob(2) && HAS_TRAIT(target, TRAIT_SOONTOWAKEUP))
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_admin_ban_hallucination), target)
+
 
 /proc/handle_maniac_object_hallucination(mob/living/target)
 	var/list/objects = list()
@@ -179,6 +184,33 @@
 	animate(shit, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
 	target.client?.images -= shit
+
+/proc/handle_maniac_admin_bwoink_hallucination(mob/living/target)
+	var/fakemin = "Trey Liam"
+	if(length(GLOB.admin_datums))
+		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
+		if(badmin?.owner?.key)
+			fakemin = badmin.owner.key
+	var/message = ""
+	message = pick_list_replacements("maniac.json", "dreamer_ahelp")
+	to_chat(target, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
+	to_chat(target, span_danger("Admin PM from-<b><span style='color: #0099cc;'>[fakemin]</span></b>: <span style='color: #0099cc;'>[message]</span>"))
+	to_chat(target, span_danger("<i>Click on the administrator's name to reply, or see all of your tickets in the admin column.</i>"))
+	SEND_SOUND(target, sound('sound/adminhelp.ogg'))
+
+/proc/handle_maniac_admin_ban_hallucination(mob/living/target)
+	var/fakemin = "Trey Liam"
+	if(length(GLOB.admin_datums))
+		var/datum/admins/badmin = GLOB.admin_datums[pick(GLOB.admin_datums)]
+		if(badmin?.owner?.key)
+			fakemin = badmin.owner.key
+	var/message = ""
+	var/ban_appeal = "your grave"
+	message = pick_list_replacements("maniac.json", "dreamer_ban")
+	to_chat(target, span_boldwarning("<BIG>You have been banned by [fakemin] from the server.\nReason: [message]</BIG>"))
+	to_chat(target, span_danger("This is a permanent ban. The round ID is [GLOB.rogue_round_id]."))
+	to_chat(target, span_danger("To appeal this ban go to <span style='color: #0099cc;'>[ban_appeal]</span>"))
+	to_chat(target, "<div class='connectionClosed internal'>You are either AFK, experiencing lag or the connection has closed.</div>")
 
 /proc/handle_waking_up(mob/living/target)
 	if(!target.client)

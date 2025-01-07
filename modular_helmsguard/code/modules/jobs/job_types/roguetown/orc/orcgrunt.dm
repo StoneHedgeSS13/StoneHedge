@@ -32,7 +32,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/orc
 	beltr = /obj/item/rogueweapon/stoneaxe/battle
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/orc_carapace
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_VIKINGCAMP, TRAIT_GENERIC)

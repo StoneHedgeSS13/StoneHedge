@@ -717,17 +717,20 @@
 				if(move_after(src, 30, target = src))
 					set_resting(FALSE, FALSE)
 			else
-				src.visible_message(span_notice("[src] stands up."))
-				if(move_after(src, 10, target = src))
-					set_resting(FALSE, FALSE)
-					if(resting)
-						src.visible_message(span_warning("[src] tries to stand up."))
-						return FALSE // workaround for broken legs and stuff
-					src.visible_message(span_notice("[src] stands up."))
-					return TRUE
+				if(HAS_TRAIT(src, TRAIT_KICKUP))
+					src.visible_message("<span class='notice'>[src] jumps to their feet!</span>")
+					if(move_after(src, 5, target = src))
+						set_resting(FALSE, FALSE)
+						return TRUE
+				else
+					src.visible_message("<span class='notice'>[src] stands up.</span>")
+					if(move_after(src, 20, target = src))
+						set_resting(FALSE, FALSE)
+						return TRUE
+				/* just to be sure need to check in game first.
 				else
 					src.visible_message(span_warning("[src] tries to stand up."))
-					return FALSE
+					return FALSE */
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
 			return FALSE
@@ -753,9 +756,16 @@
 				if(move_after(src, 30, target = src))
 					set_resting(FALSE, FALSE)
 			else
-				src.visible_message(span_info("[src] begins to stand up."))
-				if(move_after(src, 10, target = src))
-					set_resting(FALSE, FALSE)
+				if(HAS_TRAIT(src, TRAIT_KICKUP))
+					src.visible_message("<span class='notice'>[src] jumps to their feet!</span>")
+					if(move_after(src, 5, target = src)) //This still respects the knockdown time, so it's usually longer than half a second regardless.
+						set_resting(FALSE, FALSE)
+						return TRUE
+				else
+					src.visible_message("<span class='info'>[src] stands up.</span>")
+					if(move_after(src, 20, target = src))
+						set_resting(FALSE, FALSE)
+						return TRUE
 		else
 			src.visible_message(span_warning("[src] struggles to stand up."))
 	else
@@ -1383,7 +1393,7 @@
 
 		if(isliving(who))
 			var/mob/living/L = who
-			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND && L.client)
 				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
 				return
 			if(L.surrendering)

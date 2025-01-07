@@ -1,7 +1,7 @@
 /obj/item/hearthnatural/beespider_fang
-	name = "beespider fang"
+	name = "spider fang"
 	icon_state = "beespider_fang"
-	desc = "The torn fang of a venomous beespider. Could be grinded for it's venom or used in alchemy."
+	desc = "The torn fang of a venomous spider. Could be grinded for it's venom or used in alchemy."
 	dropshrink = 0.90
 	force = 0
 	throwforce = 0

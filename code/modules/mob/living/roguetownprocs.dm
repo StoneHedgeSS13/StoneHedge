@@ -130,6 +130,8 @@
 					return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/feinted))
 				return FALSE
+			if(has_status_effect(/datum/status_effect/buff/barbarian_rage))
+				return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/riposted))
 				return FALSE
 			last_parry = world.time
@@ -391,8 +393,14 @@
 	if(L.rogfat >= L.maxrogfat)
 		return FALSE
 	if(L)
-		if(H?.check_dodge_skill())
-			prob2defend = prob2defend + (L.STASPD * 15)
+		if(HAS_TRAIT(src, TRAIT_DODGEEXPERT) && (H.wear_armor.armor_class == ARMOR_CLASS_HEAVY || H.wear_shirt.armor_class == ARMOR_CLASS_HEAVY || H.wear_pants.armor_class == ARMOR_CLASS_HEAVY))
+			prob2defend = prob2defend + (L.STASPD * 10)
+		else if(HAS_TRAIT(src, TRAIT_DODGEEXPERT) && (H.wear_armor.armor_class == ARMOR_CLASS_MEDIUM || H.wear_shirt.armor_class == ARMOR_CLASS_MEDIUM || H.wear_pants.armor_class == ARMOR_CLASS_MEDIUM))
+			prob2defend = prob2defend + (L.STASPD * 12)
+		else if(HAS_TRAIT(src, TRAIT_DODGEEXPERT))
+			prob2defend = prob2defend + (L.STASPD * 14)
+		else if(HAS_TRAIT(src, TRAIT_DODGEADEPT))
+			prob2defend = prob2defend + (L.STASPD * 12)
 		else
 			prob2defend = prob2defend + (L.STASPD * 10)
 	if(U)
@@ -409,7 +417,7 @@
 			H.Knockdown(1)
 			return FALSE
 		//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
-		if(H?.check_dodge_skill())
+		if(HAS_TRAIT(H, TRAIT_DODGEEXPERT) && HAS_TRAIT(H, TRAIT_DODGEADEPT))
 			drained = drained - 5
 
 		if(I) //the enemy attacked us with a weapon

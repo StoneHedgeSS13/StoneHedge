@@ -54,6 +54,10 @@
 		perc = 0
 	if(user.has_status_effect(/datum/status_effect/debuff/feintcd))
 		perc -= rand(10,30)
+	if(HAS_TRAIT(L,TRAIT_FEINTMASTER))
+		perc -= rand(20,40)
+	if(HAS_TRAIT(user,TRAIT_FEINTMASTER))
+		perc += rand(10,20)
 	user.apply_status_effect(/datum/status_effect/debuff/feintcd)
 	perc = CLAMP(perc, 0, 90) //no zero risk superfeinting
 	if(prob(perc)) //feint intent increases the immobilize duration significantly

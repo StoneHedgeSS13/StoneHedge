@@ -10,7 +10,7 @@
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/blood
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	charge_max = 5 SECONDS //you are likely to have many undeads and no other way to heal them so it should be fast.
 	miracle = FALSE
 	invocation = "Infuse unlife!"
 	invocation_type = "shout"
@@ -18,25 +18,29 @@
 
 /obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
+	if(!ismob(targets[1])) //no miscasting this shit on empty turfs.
+		return FALSE
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD) //negative energy heals the undead
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
 			if(affecting)
-				if(affecting.heal_damage(50, 50))
+				if(affecting.heal_damage(150, 150))
 					target.update_damage_overlays()
-				if(affecting.heal_wounds(50))
+				if(affecting.heal_wounds(50)) //this shit is per limb and slow so damn.
 					target.update_damage_overlays()
-			target.heal_overall_damage(50, 50, updating_health = TRUE)
+			target.heal_overall_damage(150, 150, updating_health = TRUE)
 			target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
 			return TRUE
+/*
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
 			target.emote("scream")
-			target.Stun(30)
+			target.Stun(20)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
+*/
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/eyebite
@@ -153,6 +157,18 @@
 
 	return FALSE
 
+/mob/living/carbon/human
+
+	///npc's master that it should follow around.
+	var/mob/living/carbon/human/mastermob = null
+	var/following_master = FALSE
+
+/mob/living/carbon/human/npc_idle()
+	. = ..()
+	if(mastermob && following_master)
+		if(mode == AI_IDLE || mode == AI_HUNT) //if not in combat, follow master.
+			walk2derpless(mastermob)
+
 /**
   * Turns a mob into a skeletonized minion. Used for raising undead minions.
   * If a ckey is provided, the minion will be controlled by the player, NPC otherwise.
@@ -171,9 +187,11 @@
 	if(ckey) //player
 		src.ckey = ckey
 	else //npc
+		mastermob = master
 		aggressive = 1
 		mode = AI_HUNT
 		wander = TRUE
+		following_master = TRUE
 
 	if(!mind)
 		mind_initialize()
@@ -222,11 +240,11 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 
 	update_body()
 
-	to_chat(src, span_userdanger("My master is [master.real_name]."))
+	to_chat(src, span_userdanger("My master is [master.real_name]. I must follow their orders and protect them, no matter what."))
 
 	master.minions += src
 
@@ -344,3 +362,75 @@
 			to_chat(sender, span_blue("I feel some of my wounds mend."))
 		sender.update_damage_overlays()
 	qdel(src)
+
+/obj/effect/proc_holder/spell/invoked/control_undead
+	name = "Control Undead"
+	desc = "Use on a undead to toggle it's aggressiveness, use on yourself to get your minions to follow you and stop being aggressive, use on a turf to send your minions to attack, use on a mob to send your minions to attack that mob. "
+	overlay_state = "raiseskele"
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	associated_skill = /datum/skill/magic/blood
+	antimagic_allowed = TRUE
+	charge_max = 2 SECONDS
+	miracle = FALSE
+	invocation = ""
+	invocation_type = "none"
+	xp_gain = FALSE
+
+/obj/effect/proc_holder/spell/invoked/control_undead/cast(list/targets, mob/user)
+	. = ..()
+	var/commanded = 0
+	for(var/mob/living/carbon/human/minion in orange(7, user)) //a necromancer can control their own risen undead.
+		if(minion.mob_biotypes & ~MOB_UNDEAD)
+			continue
+		if(minion.stat == DEAD) //cant command the dead-dead
+			continue
+		if(minion.client) //we dont touch mobs that are connected players.
+			continue
+		if(user.mind.has_antag_datum(/datum/antagonist/lich)) //lich control ALL undead, that is not owned and their own.
+			if(minion.mastermob && minion.mastermob != user) //skip if this mob has a master AND it's not you, if it's masterless or your own, it should command.
+				continue
+		else
+			if(minion.mastermob != user) //if you are not lich and you are not master of this mob, skip.
+				continue
+			commanded ++
+			if(commanded >= 4) //shouldnt allow commanding more than 3 minions per cast, atleast makes it inconvenient to get a party of 10 skeletons to go do bad shit. I'm too lazy to make an entire system for keeping track of minions.
+				to_chat(user, span_necrosis("I can't easily control more than three undead at once."))
+				return
+		if(minion == targets[1] && minion.mastermob == user)
+			minion.aggressive = !minion.aggressive
+			if(!minion.aggressive)
+				minion.back_to_idle()
+			minion.balloon_alert(user, "Now [minion.aggressive ? "" : "not"] aggressive.")
+			return
+		if(user == targets[1])
+			minion.back_to_idle()
+			minion.emote("idle")
+			minion.walk2derpless(user)
+			user.visible_message("[user] beckons while incanting.")
+			minion.balloon_alert(user, "Returning to master.")
+			minion.aggressive = FALSE
+			minion.following_master = TRUE
+		if(isturf(targets[1]))
+			minion.back_to_idle()
+			minion.emote("idle")
+			var/turf/turftarget = targets[1]
+			user.visible_message("[user] points at \the [turftarget] while incanting.")
+			minion.balloon_alert(user, "Marching to [turftarget].")
+			minion.mode = AI_HUNT
+			minion.aggressive = TRUE
+			minion.following_master = FALSE
+			minion.walk2derpless(turftarget)
+		if(ismob(targets[1]) && user != targets[1])
+			var/mob/living/mobtarget = targets[1]
+			if(mobtarget.mob_biotypes & MOB_UNDEAD)
+				return
+			minion.back_to_idle() //so he stops attacking something if it is right now.
+			minion.mode = AI_COMBAT
+			minion.aggressive = TRUE
+			minion.retaliate(mobtarget)
+			user.visible_message("[user] points menacingly at [mobtarget.name] while incanting.")
+			minion.balloon_alert(user, "Marked [mobtarget.name] as target.")

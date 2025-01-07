@@ -25,6 +25,7 @@
 
 		if("Shield Master")
 			src.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
+			ADD_TRAIT(src, TRAIT_SHIELDEXPERT, TRAIT_GENERIC)
 
 		if("Tavern Brawler")
 			ADD_TRAIT(src, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)

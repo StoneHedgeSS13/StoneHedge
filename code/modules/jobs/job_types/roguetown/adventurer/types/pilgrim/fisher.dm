@@ -41,7 +41,7 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		head = /obj/item/clothing/head/roguetown/fisherhat
 		mouth = /obj/item/rogueweapon/huntingknife
@@ -54,7 +54,7 @@
 		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		head = /obj/item/clothing/head/roguetown/fisherhat
 		mouth = /obj/item/rogueweapon/huntingknife

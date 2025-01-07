@@ -4487,7 +4487,7 @@
 "tl" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /obj/item/clothing/suit/roguetown/armor/armordress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -4823,7 +4823,7 @@
 "uK" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /obj/item/clothing/suit/roguetown/armor/armordress,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)

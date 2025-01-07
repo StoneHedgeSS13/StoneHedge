@@ -349,7 +349,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	amount_per_transfer_from_this = 9
 	possible_transfer_amounts = list(9)
-	volume = 70
+	volume = 198
 	flags_inv = HIDEHAIR
 	reagent_flags = OPENCONTAINER
 	obj_flags = CAN_BE_HIT

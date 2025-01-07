@@ -205,7 +205,7 @@
 		to_chat(user, span_alert("Roleplay accordingly to your collar's effects."))
 
 /obj/item/clothing/neck/roguetown/gorget/servant/canStrip(mob/living/carbon/human/stripper, mob/living/carbon/human/owner)
-	if(stripper.job in list("Great Druid", "Druid", "Hedge Warden", "Hedge Knight", "Ovate"))
+	if(stripper.job in list("Great Druid", "Druid", "Druidess", "Great Druidess", "Hedge Warden", "Hedge Knight", "Ovate"))
 		REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		return TRUE
 	return FALSE

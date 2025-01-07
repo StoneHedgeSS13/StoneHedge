@@ -1116,3 +1116,31 @@
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/combattantepant
+	name = "Combattante Pant (3 leather, 1 fiber)"
+	result = /obj/item/clothing/under/roguetown/trou/leather/advanced/combattante
+	reqs = list(/obj/item/natural/hide/cured = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/combattanteboots
+	name = "Combattante Boots (3 leather, 1 fiber)"
+	result = /obj/item/clothing/shoes/roguetown/nobleboot/combattante
+	reqs = list(/obj/item/natural/hide/cured = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/combattantehat
+	name = "Combattante Hat (3 Cloths, 1 fiber)"
+	result = /obj/item/clothing/head/roguetown/paddedcap/combattante
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/combattantevest
+	name = "Combattante Vest (3 Cloths, 1 fiber)"
+	result = /obj/item/clothing/suit/roguetown/armor/combattante
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3

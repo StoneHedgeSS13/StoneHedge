@@ -3673,7 +3673,7 @@
 /area/rogue/indoors)
 "bKk" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -6574,7 +6574,7 @@
 /area/rogue/under/town/basement)
 "dBX" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "dBY" = (
@@ -8916,13 +8916,13 @@
 /area/rogue/indoors/town/tavern)
 "eUw" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "eUz" = (
@@ -11941,7 +11941,7 @@
 "gRd" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "gRg" = (
@@ -39520,8 +39520,8 @@
 /area/rogue/indoors)
 "yfz" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
+/obj/item/clothing/shoes/roguetown/boots/armor/leather,
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)

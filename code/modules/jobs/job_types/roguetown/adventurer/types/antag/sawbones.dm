@@ -268,7 +268,7 @@
 /datum/status_effect/debuff/wheart
 	id = "wheart"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/wheart
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
+	effectedstats = list("constitution" = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/wheart
 	name = "Weak Heart"
@@ -290,7 +290,7 @@
 /datum/status_effect/debuff/wliver
 	id = "wliver"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/wliver
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
+	effectedstats = list("endurance" = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/wliver
 	name = "Weak Liver"

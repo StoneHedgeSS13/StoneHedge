@@ -63,6 +63,8 @@
 						adjust_triumphs(1)
 			if(has_status_effect(/datum/status_effect/debuff/trainsleep))
 				remove_status_effect(/datum/status_effect/debuff/trainsleep)
+			if(has_status_effect(/datum/status_effect/debuff/barbfalter))
+				remove_status_effect(/datum/status_effect/debuff/barbfalter)
 		if(HAS_TRAIT(src, TRAIT_LEPROSY))
 			if(!mob_timers["leper_bleed"] || mob_timers["leper_bleed"] + 6 MINUTES < world.time && prob(10))
 				to_chat(src, span_warning("My skin opens up and bleeds..."))

@@ -29,7 +29,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	head = /obj/item/clothing/head/roguetown/roguehood
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

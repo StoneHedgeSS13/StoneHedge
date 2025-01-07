@@ -41,14 +41,13 @@
 
 /datum/quirk/curseofcain
 	name = "Flawed Immortality"
-	desc = "I don't need to eat, drink water, or breathe anymore, but I lack the endless stamina and bloodthirst of a true vampyre"
+	desc = "Some fell magick has rendered me inwardly unliving - I do not hunger, and I do not breathe."
 	value = 4
 
 /datum/quirk/curseofcain/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_NOHUNGER, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_NOBREATH, QUIRK_TRAIT)
-	H.change_stat("endurance", 1)
 
 /datum/quirk/deadened
 	name = "Deadened"
@@ -99,14 +98,16 @@
 
 /datum/quirk/fence
 	name = "Fencer"
-	desc = "I have trained in agile sword fighting. I dodge more easily and have stashed my rapier nearby"
+	desc = "I have trained in agile sword fighting. I dodge more easily without wearing anything and have stashed my rapier nearby"
 	value = 4
 
 /datum/quirk/fence/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_DODGEADEPT, QUIRK_TRAIT)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
+	H.verbs += list(/mob/living/carbon/human/proc/declare_duel)
+	H.cmode_music = 'sound/music/combat_combattante.ogg'
 
 /datum/quirk/training2
 	name = "Mace Training"
@@ -160,13 +161,14 @@
 
 /datum/quirk/training8
 	name = "Shield Training"
-	desc = "I have shield training and stashed a shield."
+	desc = "I have shield training and stashed a shield and as long as I have a shield in one hand, I can catch arrows with ease"
 	value = 2
 
 /datum/quirk/training8/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 	H.mind.special_items["Shield"] = /obj/item/rogueweapon/shield/wood
+	ADD_TRAIT(H, TRAIT_SHIELDEXPERT, QUIRK_TRAIT)
 
 /datum/quirk/training9
 	name = "Unarmed Training"
@@ -315,6 +317,9 @@
 	H.grant_language(/datum/language/beast)
 	H.grant_language(/datum/language/draconic)
 	H.grant_language(/datum/language/faexin)
+	H.grant_language(/datum/language/canilunzt)
+	H.grant_language(/datum/language/grenzelhoftian)
+	H.grant_language(/datum/language/thievescant)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, QUIRK_TRAIT)
 
 /datum/quirk/civilizedbarbarian
@@ -408,17 +413,19 @@
 	var/obj/item/pouch = new /obj/item/storage/belt/rogue/pouch/coins/rich(get_turf(H))
 	H.put_in_hands(pouch, forced = TRUE)
 
+
 /datum/quirk/swift
 	name = "Speedster"
-	desc = "I am very athletic and fast. I can also dodge anything as long as I am not weighted down by medium or heavier armor."
+	desc = "I am very athletic and fast, I can not only avoid collisions with anything but I can also dodge hits coming in my way if i'm not wearing any armor."
 	value = 4
 
 /datum/quirk/swift/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_SWIFTRUNNER, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_GOODRUNNER, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_DODGEADEPT, QUIRK_TRAIT)
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
-	H.change_stat("speed", 1)
+	H.change_stat("speed", 2)
 
 /datum/quirk/gourmand
 	name = "Gourmand"
@@ -488,7 +495,7 @@
 
 /datum/quirk/bounty/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/reason = ""
+	var/bounty_reason = ""
 	var/employer = "unknown employer"
 	var/employer_gender
 	if(prob(65))
@@ -501,25 +508,9 @@
 		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
 	var/amount = rand(150,300)
-	switch(rand(1,8))
-		if(1)
-			reason = "insulting a noble's crest"
-		if(2)
-			reason = "spilling wine on a noble's cloak"
-		if(3)
-			reason = "besmirching a noble's name"
-		if(4)
-			reason = "refusing to bow"
-		if(5)
-			reason = "painting an unflattering portrait"
-		if(6)
-			reason = "gossip"
-		if(7)
-			reason = "upstaging a harlequin"
-		if(8)
-			reason = "fluffery"
-	add_bounty(H.real_name, amount, FALSE, reason, employer)
-	to_chat(H, span_notice("Whether I done it or not, I have been accused of [reason], and a [employer] put a bounty on my head!"))
+	bounty_reason = pick_list_replacements("bounties.json", "bounties_reasons")
+	add_bounty(H.real_name, amount, FALSE, bounty_reason, employer)
+	to_chat(H, span_notice("Whether I done it or not, I have been accused of [bounty_reason], and a [employer] put a bounty on my head!"))
 
 /datum/quirk/outlaw
 	name = "Outlaw (WANTED BY GROVE)"
@@ -540,7 +531,6 @@
 /datum/quirk/sillyvoice/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_COMICSANS, QUIRK_TRAIT)
-	H.dna.add_mutation(WACKY)
 
 /datum/quirk/unlucky
 	name = "Unlucky"
@@ -713,7 +703,7 @@
 /datum/quirk/maniacextra
 	name = "Cursed (Extra)"
 	desc = "..I keep experiencing vivid hallucinations, What is happening here? (Same as Cursed, Except the fourth wonder sequence will start when the round start ending.)"
-	value = -4
+	value = -6
 
 /datum/quirk/maniacextra/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -721,3 +711,72 @@
 	ADD_TRAIT(H, TRAIT_SCHIZO_AMBIENCE, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_SOONTOWAKEUP, QUIRK_TRAIT)
 	H.cmode_music = 'sound/music/combat_maniac2.ogg'
+
+/datum/quirk/guarded
+	name = "Guarded"
+	desc = "I have long kept my true capabilities a secret. Sometimes being deceptively weak can save one's life. Such a virtue allows me to see and avoid feints easier."
+	value = 3
+
+/datum/quirk/guarded/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_FEINTMASTER, QUIRK_TRAIT)
+
+/datum/quirk/rotcured
+	name = "Rot-Cured"
+	desc = "I was once afflicted with the accursed rot, and was cured. It has left me changed: my limbs are weaker, but I feel no pain and have no need to breathe..."
+
+/datum/quirk/rotcured/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_EASYDISMEMBER, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_NOPAIN, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_NOBREATH, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_ROTMAN, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_TOXIMMUNE, QUIRK_TRAIT)
+	H.update_body()
+
+/datum/quirk/ambidextrous
+	name = "Ambidextrous"
+	desc = "I am able to use my right and left hands equally well."
+	value = 1
+
+/datum/quirk/ambidextrous/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_AMBIDEXTROUS, QUIRK_TRAIT)
+
+/datum/quirk/doggo
+	name = "Strong Bite"
+	desc = "Biting peoples have never been so much easier."
+	value = 3 //It is literally strong.
+
+/datum/quirk/doggo/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_STRONGBITE, QUIRK_TRAIT)
+
+/datum/quirk/prosopagnosia
+	name = "Face-blind"
+	desc = "I am unable to recognize faces at all."
+	value = -3
+
+/datum/quirk/prosopagnosia/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_PROSOPAGNOSIA, QUIRK_TRAIT)
+
+/datum/quirk/martialeye
+	name = "Martial Eye"
+	desc = "Unlike others, I can gauge someone's speed and exertion at a glance"
+	value = 3
+
+/datum/quirk/martialeye/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_MARTIALEYE, QUIRK_TRAIT)
+
+/datum/quirk/sloppysleeper
+	name = "Sloppy Sleeper"
+	desc = "I can sleep a bit faster and I can easily sleep in my armor if i have one.."
+	value = 3
+
+/datum/quirk/sloppysleeper/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H, TRAIT_FASTSLEEP, QUIRK_TRAIT)
+	ADD_TRAIT(H, TRAIT_SLOPPYSLEEPER, QUIRK_TRAIT)

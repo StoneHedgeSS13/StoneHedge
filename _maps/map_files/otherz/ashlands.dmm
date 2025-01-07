@@ -850,6 +850,13 @@
 "js" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/indoors/shelter/town)
+"jv" = (
+/obj/effect/landmark/start/vampthrall,
+/turf/open/floor/rogue/blocks/stone,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "jE" = (
 /obj/structure/flora/roguetree/burnt,
 /obj/structure/flora/roguegrass/thorn_bush,
@@ -1659,7 +1666,7 @@
 	},
 /area/rogue/under/cavewet)
 "rH" = (
-/obj/structure/roguewindow/stained/yellow,
+/obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue)
 "rJ" = (
@@ -1716,6 +1723,13 @@
 /obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
+"sb" = (
+/obj/effect/landmark/start/vampthrall,
+/turf/open/floor/rogue/blocks/stone/stonepattern3,
+/area/rogue/indoors/town/manor{
+	first_time_text = "Underkeep";
+	name = "Underkeep"
+	})
 "sf" = (
 /obj/structure/fermenting_barrel/water,
 /obj/structure/fluff/railing/border,
@@ -1966,7 +1980,9 @@
 /area/rogue/under/cavewet)
 "uR" = (
 /obj/item/roguecoin/gold/pile,
-/obj/structure/fluff/statue/dragonl,
+/obj/structure/fluff/statue/dragonl{
+	icon_state = "6"
+	},
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue)
 "uT" = (
@@ -2006,7 +2022,9 @@
 	})
 "vu" = (
 /obj/item/roguecoin/gold/pile,
-/obj/structure/fluff/statue/dragonr,
+/obj/structure/fluff/statue/dragonr{
+	icon_state = "5"
+	},
 /turf/open/floor/rogue/blocks/stone/stonepattern2,
 /area/rogue)
 "vw" = (
@@ -2975,10 +2993,6 @@
 	first_time_text = "Underkeep";
 	name = "Underkeep"
 	})
-"Fy" = (
-/obj/structure/roguewindow/stained/yellow,
-/turf/open/floor/rogue/blocks/stone/stonepattern3,
-/area/rogue)
 "FA" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /obj/structure/fluff/railing/wood{
@@ -27487,15 +27501,15 @@ qw
 qw
 qw
 qw
-qw
-qw
+sb
+sb
 ky
 ky
 ky
 qw
 ky
-ky
-qw
+jv
+sb
 ky
 BI
 Fn
@@ -27619,15 +27633,15 @@ Sn
 hG
 BI
 ky
-ky
-ky
+jv
+jv
 ky
 Bo
 La
 Bn
 qw
-ky
-ky
+jv
+jv
 ky
 aA
 aE
@@ -45643,8 +45657,8 @@ CP
 Vv
 Vv
 Vv
-Vv
-Vv
+rH
+rH
 Vv
 Vv
 Vv
@@ -45912,7 +45926,7 @@ cw
 Lx
 cw
 FR
-Fy
+UC
 vP
 dZ
 Eu
@@ -46308,7 +46322,7 @@ RE
 iQ
 iQ
 FR
-Fy
+UC
 Rq
 Rq
 Rq
@@ -47364,7 +47378,7 @@ gi
 tm
 Hd
 FR
-Fy
+UC
 Rq
 Rq
 Rq
@@ -47496,7 +47510,7 @@ Dl
 Hd
 Hd
 FR
-Fy
+UC
 Rq
 Rq
 Rq
@@ -48151,8 +48165,8 @@ CP
 Vv
 Vv
 Vv
-Vv
-Vv
+rH
+rH
 Vv
 Vv
 Vv

@@ -1,8 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur
 	icon = 'modular_hearthstone/icons/mob/newminotaur.dmi'
 	name = "Minotaur"
-	icon_state = "MinotaurMale"
-	icon_living = "MinotaurMale"
+	icon_state = "MinotaurMale_Lewd"
+	icon_living = "MinotaurMale_Lewd"
 	icon_dead = "MinotaurMale_dead"
 	gender = MALE
 	emote_hear = null
@@ -71,8 +71,8 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/female
-	icon_state = "MinotaurFem"
-	icon_living = "MinotaurFem"
+	icon_state = "MinotaurFem_Lewd"
+	icon_living = "MinotaurFem_Lewd"
 	icon_dead = "MinotaurFem_dead"
 	gender = FEMALE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
@@ -197,4 +197,4 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/female/horny
 	seeksfuck = TRUE
-	
+

@@ -89,3 +89,10 @@
 	contains = list(
 					/obj/item/book/granter/spell/spells5e/strengthenundead5e
 				)
+
+/datum/supply_pack/rogue/l3/controlundead
+	name = "Control Undead"
+	cost = 200
+	contains = list(
+					/obj/item/book/granter/spell/spells5e/controlundead
+				)

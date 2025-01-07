@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_lich()
 
 	// Proper pop only
-	if(num_players() < 20)
+	if(num_players() < 30)
 		return FALSE
 
 	restricted_jobs = list(

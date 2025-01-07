@@ -19,7 +19,6 @@
 /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	name = "hardened leather helmet"
 	desc = "Sturdy, durable, flexible. A confortable and reliable hood made of hardened leather."
-	icon_state = "alhelmet"
 	max_integrity = 250
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
@@ -28,7 +27,6 @@
 /obj/item/clothing/head/roguetown/helmet/leather/masterwork
 	name = "enhanced leather helmet"
 	desc = "This helmet is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
-	icon_state = "alhelmet"
 	max_integrity = 300
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST) //like carapace armors.

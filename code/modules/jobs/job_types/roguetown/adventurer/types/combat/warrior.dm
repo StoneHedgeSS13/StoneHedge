@@ -19,7 +19,7 @@
 		"Monster Hunter",
 		"Knight-Errant",
 		"Leper",
-		"Combattante"
+		//"Combattante"
 		//"Eldritch Knight", //give eldritch blast, that's it
 		//"Champion", //higher crit rate
 		//"Battle Master", //give three combat manuevers
@@ -33,7 +33,7 @@
 		"Polearms"
 	)
 
-	if((classchoice != "Leper") && (classchoice != "Combattante"))//lepers get big sword chungus. and duellist get rapier
+	if((classchoice != "Leper"))//lepers get big sword chungus. and duellist get rapier
 		var/weaponschoice = input("What did train with the most?", "Available weapons") as anything in weapons
 
 		switch(weaponschoice)
@@ -188,8 +188,10 @@
 			// beltl = /obj/item/rogueweapon/sword/rapier
 			beltr = /obj/item/rogueweapon/shield/buckler
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //they can already get to legendary weapon skill over martial styles so no heavy.
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
 			H.change_stat("endurance", 1)
@@ -268,6 +270,7 @@
 				H.apply_status_effect(STATUS_EFFECT_FAKE_VIRUS)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 		//Duellist, Similar to duelists but not quite the same.
+		/*
 		if("Combattante")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Originating in Grenzelhoft but now known across the world, the Combattante Association Duellists handle duels in almost any capacity. Mostly observing for their own records, Combattantes also train others, or duel on people's behalf for pay. Other mercenary work sometimes comes to them, but it is not their speciality."))
@@ -290,7 +293,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			head = /obj/item/clothing/head/roguetown/paddedcap/combattante
 			armor = /obj/item/clothing/suit/roguetown/armor/combattante
-			pants = /obj/item/clothing/under/roguetown/trou/leather/advanced/combattante
+			pants =  /obj/item/clothing/under/roguetown/trou/leather/advanced/combattante
 			shoes = /obj/item/clothing/shoes/roguetown/nobleboot/combattante
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
 			cloak = /obj/item/clothing/cloak/combattante
@@ -301,6 +304,7 @@
 			H.cmode_music = 'sound/music/combat_combattante.ogg'
 			H.verbs -= list(/mob/living/carbon/human/proc/mark_target)
 			H.verbs += list(/mob/living/carbon/human/proc/declare_duel)
+			*/
 
 
 	H.give_fightingstyle(TRUE)

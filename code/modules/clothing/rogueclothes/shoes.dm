@@ -228,16 +228,6 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/shoes/roguetown/boots/leather
-	name = "leather boots"
-	//dropshrink = 0.75
-	desc = "Boots made of leather."
-	gender = PLURAL
-	icon_state = "leatherboots"
-	item_state = "leatherboots"
-	sewrepair = TRUE
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-
 /obj/item/clothing/shoes/roguetown/jester
 	name = "funny shoes"
 	desc = "Perfect for performing a jig or running for your life after a bad joke."

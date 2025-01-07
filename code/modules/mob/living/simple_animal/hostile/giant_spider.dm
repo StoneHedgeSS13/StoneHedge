@@ -34,7 +34,7 @@
 	vision_range = 5
 	aggro_vision_range = 9
 	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/spider = 2, /obj/item/natural/silk = 6, /obj/item/reagent_containers/food/snacks/spidereggs = 1)
+	butcher_results = list(/obj/item/hearthnatural/beespider_fang = 2, /obj/item/reagent_containers/food/snacks/meat/slab/spider = 2, /obj/item/natural/silk = 6, /obj/item/reagent_containers/food/snacks/spidereggs = 1)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -142,7 +142,7 @@
 	icon_living = "nurse"
 	icon_dead = "nurse_dead"
 	gender = FEMALE
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/spider = 2, /obj/item/natural/silk = 6, /obj/item/reagent_containers/food/snacks/spidereggs = 4)
+	butcher_results = list(/obj/item/hearthnatural/beespider_fang = 2, /obj/item/reagent_containers/food/snacks/meat/slab/spider = 2, /obj/item/natural/silk = 6, /obj/item/reagent_containers/food/snacks/spidereggs = 4)
 	maxHealth = 40
 	health = 40
 	melee_damage_lower = 5

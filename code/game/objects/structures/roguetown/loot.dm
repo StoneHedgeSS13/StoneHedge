@@ -45,7 +45,8 @@
 		/obj/item/book/granter/spell/blackstone/fireball = 5,
 		/obj/item/book/granter/spell/blackstone/blindness = 5,
 		/obj/item/book/granter/spell/blackstone/sicknessray = 5,
-		/obj/item/book/granter/spell/blackstone/strengthen_undead = 3,
+		/obj/item/book/granter/spell/spells5e/strengthenundead5e = 3,
+		/obj/item/book/granter/spell/spells5e/controlundead = 3,
 		/obj/item/book/granter/spell/blackstone/skeleton = 3,
 		/obj/item/book/granter/spell/blackstone/invisibility = 3,
 		/obj/item/book/granter/spell/blackstone/greaterfireball = 2)))

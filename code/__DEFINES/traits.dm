@@ -47,6 +47,14 @@
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 #define TRAIT_BLINDFIGHTING "Blind Fighting"
+#define TRAIT_SWIFTRUNNER "Swift Runner"
+#define TRAIT_KICKUP "Kick-Up"
+#define TRAIT_MARTIALEYE "Martial Eye"
+#define TRAIT_SHIELDEXPERT "Shield Expert"
+#define TRAIT_FEINTMASTER "Feint Master"
+#define TRAIT_AMBIDEXTROUS "Ambidestrous"
+#define TRAIT_DODGEADEPT "Solid Reflexes"
+#define TRAIT_SLOPPYSLEEPER "Sloppy Sleeper"
 
 //Hearthstone change
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //! Will always find any tracks and analyzes them perfectly.
@@ -156,7 +164,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BREADY = "Defensive stance does not passively fatigue me.",
 	TRAIT_MEDIUMARMOR = "I can move freely in medium armor.",
 	TRAIT_HEAVYARMOR = "I can move freely in both heavy and medium armor.",
-	TRAIT_DODGEEXPERT = "I can dodge easily while only wearing light armor.",
+	TRAIT_DODGEEXPERT = "I can dodge easily in light armor, and nearly as well in medium armor.",
 	TRAIT_DECEIVING_MEEKNESS = "People look at me and think I am a weakling. They are mistaken.",
 	TRAIT_CRITICAL_RESISTANCE = "I am resistant to wounds that would be life threatening to others.",
 	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
@@ -225,6 +233,14 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_WEAPONSMITH = span_info("I have mastered smithing weapons."),
 	TRAIT_ARMORSMITH = span_info("I have mastered smithing protection."),
 	TRAIT_TAILOR = span_info("I weave cloth like a god weaves time.")
+	TRAIT_FEINTMASTER = span_info("I've learned how to properly feint those fools, and how to avoid theirs."),
+	TRAIT_SWIFTRUNNER = span_info("I can run gracefully, avoiding collisions."),
+	TRAIT_SHIELDEXPERT = span_info("So long as I have a shield in one hand, I can catch arrows with ease."),
+	TRAIT_MARTIALEYE =  span_info("I can gauge an opponent's speed and exertion at a glance."),
+	TRAIT_KICKUP =  span_info("I can quickly get back on my feet."),
+	TRAIT_AMBIDEXTROUS = span_info("I can use both of my hands effectively."),
+	TRAIT_DODGEADEPT = span_info("I can dodge well in light armor."),
+	TRAIT_SLOPPYSLEEPER = span_info("I can sleep anywhere.)
 ))
 
 // trait accessor defines

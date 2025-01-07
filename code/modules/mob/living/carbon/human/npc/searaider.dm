@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	else
 		r_hand = /obj/item/rogueweapon/stoneaxe/battle
 	l_hand = /obj/item/rogueweapon/shield/wood
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	if(prob(30))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 		H.eye_color = pick("27becc", "35cc27", "000000")

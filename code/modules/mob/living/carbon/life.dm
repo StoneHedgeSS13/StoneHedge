@@ -38,10 +38,11 @@
 		var/cant_fall_asleep = FALSE
 		var/cause = " I just can't..."
 		for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
-			if(thing.clothing_flags & CANT_SLEEP_IN)
-				cant_fall_asleep = TRUE
-				cause = " \The [thing] bothers me..."
-				break
+			if(!HAS_TRAIT(src, TRAIT_SLOPPYSLEEPER))
+				if(thing.clothing_flags & CANT_SLEEP_IN)
+					cant_fall_asleep = TRUE
+					cause = " \The [thing] bothers me..."
+					break
 
 		if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
 			if(length(get_equipped_items()))

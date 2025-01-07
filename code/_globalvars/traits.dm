@@ -166,6 +166,13 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CHARGER" = TRAIT_CHARGER,
 		"TRAIT_ARTIFICER" = TRAIT_ARTIFICER,
 		"TRAIT_NODETECT" = TRAIT_NODETECT,
+		"Swift Runner" = TRAIT_SWIFTRUNNER,
+		"Kick-Up" = TRAIT_KICKUP,
+		"Martial Eye" = TRAIT_MARTIALEYE,
+		"Shield Expert" = TRAIT_SHIELDEXPERT,
+		"Feint Master" = TRAIT_FEINTMASTER,
+		"Ambidestrous" = TRAIT_AMBIDEXTROUS,
+
 
 		//HS Edit: Some non-rogue traits werent even listed here
 		"TRAIT_NOPAIN" = TRAIT_NOPAIN,

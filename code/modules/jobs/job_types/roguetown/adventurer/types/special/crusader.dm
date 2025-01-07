@@ -62,7 +62,7 @@
 	if(H.gender == FEMALE)
 		backr = /obj/item/storage/backpack/rogue/satchel
 		gloves = null
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/storage/belt/rogue/pouch/coins/rich=1)
 		H.change_stat("strength", 1)
 

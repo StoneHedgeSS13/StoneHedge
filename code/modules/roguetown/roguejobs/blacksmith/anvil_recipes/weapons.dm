@@ -470,3 +470,10 @@
 	created_item = /obj/item/rogueweapon/sword/long/exe
 	craftdiff = 3
 	i_type = "Weapons"
+
+/datum/anvil_recipe/valuables/combattante
+	name = "Combattante Rapier (+2 Steel)"
+	req_bar = /obj/item/ingot/steel // was tempted to make it silver but it isn't a anti-vampire weapon
+	created_item = /obj/item/rogueweapon/sword/rapier/combattante
+	craftdiff = 3
+	i_type = "Weapons"

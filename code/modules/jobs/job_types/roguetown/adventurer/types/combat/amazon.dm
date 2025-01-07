@@ -12,7 +12,7 @@
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/barbarian_rage)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/barbarian_rage)
 
 	ADD_TRAIT(H, TRAIT_PERFECT_TRACKER, TRAIT_GENERIC) //danger sense.
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)

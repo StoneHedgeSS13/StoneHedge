@@ -129,6 +129,8 @@
 			H.change_stat("intelligence", 3)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //suppose the thing about necromancers should be tanky
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/control_undead)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chilltouch5e)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)

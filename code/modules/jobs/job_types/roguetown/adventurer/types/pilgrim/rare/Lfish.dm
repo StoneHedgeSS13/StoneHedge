@@ -21,7 +21,7 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 6, TRUE)
 	pants = /obj/item/clothing/under/roguetown/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	head = /obj/item/clothing/head/roguetown/fisherhat
 	backr = /obj/item/storage/backpack/rogue/satchel

@@ -372,6 +372,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bigboobslite
 	examine_text = span_notice("They have massive GOODS!")
 	nodrawback = TRUE
+	effectedstats = null
 
 /atom/movable/screen/alert/status_effect/debuff/bigboobs
 	name = "Enchanted Endowment" //was gonna name it a curse but it isn't a technically one.

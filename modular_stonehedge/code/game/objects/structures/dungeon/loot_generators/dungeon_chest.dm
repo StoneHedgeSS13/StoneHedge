@@ -326,7 +326,7 @@
 				/obj/item/clothing/shoes/roguetown/boots/carapace = 50,
 				/obj/item/clothing/shoes/roguetown/boots/armoriron = 55,
 				/obj/item/clothing/shoes/roguetown/boots/armor = 50,
-				/obj/item/clothing/shoes/roguetown/boots/leather = 55,
+				/obj/item/clothing/shoes/roguetown/boots/armor/leather = 55,
 				/obj/item/clothing/shoes/roguetown/boots/footmangreaves = 30
 				)
 		if("food")
@@ -346,7 +346,8 @@
 				/obj/item/book/granter/spell/blackstone/blindness = 1,
 				/obj/item/book/granter/spell/blackstone/invisibility = 3,
 				/obj/item/book/granter/spell/blackstone/sicknessray = 2,
-				/obj/item/book/granter/spell/blackstone/strengthen_undead = 2
+				/obj/item/book/granter/spell/spells5e/strengthenundead5e = 2,
+				/obj/item/book/granter/spell/spells5e/controlundead = 2
 			)
 		if("tools")
 			loot = list(

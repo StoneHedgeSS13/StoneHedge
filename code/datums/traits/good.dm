@@ -100,11 +100,11 @@
 */
 
 /datum/quirk/freerunning
-	name = "Freerunning"
-	desc = "I can climb things pretty quickly."
-	value = 2
-	mob_trait = TRAIT_FREERUNNING
-	gain_text = span_notice("I feel lithe on your feet!")
+	name = "Kick-up"
+	desc = "I can get up from being knocked down faster."
+	value = 1
+	mob_trait = TRAIT_KICKUP
+	gain_text = span_notice("I feel lithe on my feet!")
 	lose_text = span_danger("I feel clumsy again.")
 	medical_record_text = "Patient scored highly on cardio tests."
 
@@ -134,12 +134,16 @@
 
 /datum/quirk/light_step
 	name = "Light Step"
-	desc = "I walk with a light step, making less noise."
+	desc = "Years of skulking about have left my steps quiet, and my hunched gait quicker."
 	value = 1
 	mob_trait = TRAIT_LIGHT_STEP
 	gain_text = span_notice("I walk with a little more litheness.")
 	lose_text = span_danger("I start tromping around like a barbarian.")
 	medical_record_text = "Patient's dexterity belies a strong capacity for stealth."
+
+/datum/quirk/light_step/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 3, TRUE)
 
 /datum/quirk/musician
 	name = "Musician"
@@ -171,7 +175,7 @@
 	eyes.see_in_dark = 7 // Same as half-darksight eyes
 	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	eyes.Insert(H)
-
+/*
 /datum/quirk/elvishtalker
 	name = "Knows Elvish"
 	desc = "I learned to speak elvish in my time here."
@@ -181,7 +185,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.grant_language(/datum/language/elvish)
 
-/*
+
 /datum/quirk/photographer
 	name = "Photographer"
 	desc = ""
