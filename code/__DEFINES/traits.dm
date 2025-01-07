@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ALCHEMYKNOWLEDGE = span_info("I know how to transmute things."),
 	TRAIT_WEAPONSMITH = span_info("I have mastered smithing weapons."),
 	TRAIT_ARMORSMITH = span_info("I have mastered smithing protection."),
-	TRAIT_TAILOR = span_info("I weave cloth like a god weaves time.")
+	TRAIT_TAILOR = span_info("I weave cloth like a god weaves time."),
 	TRAIT_FEINTMASTER = span_info("I've learned how to properly feint those fools, and how to avoid theirs."),
 	TRAIT_SWIFTRUNNER = span_info("I can run gracefully, avoiding collisions."),
 	TRAIT_SHIELDEXPERT = span_info("So long as I have a shield in one hand, I can catch arrows with ease."),
