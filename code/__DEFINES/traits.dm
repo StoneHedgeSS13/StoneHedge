@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_KICKUP =  span_info("I can quickly get back on my feet."),
 	TRAIT_AMBIDEXTROUS = span_info("I can use both of my hands effectively."),
 	TRAIT_DODGEADEPT = span_info("I can dodge well in light armor."),
-	TRAIT_SLOPPYSLEEPER = span_info("I can sleep anywhere.)
+	TRAIT_SLOPPYSLEEPER = span_info("I can sleep anywhere."),
 ))
 
 // trait accessor defines
