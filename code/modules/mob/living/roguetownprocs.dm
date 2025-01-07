@@ -417,7 +417,7 @@
 			H.Knockdown(1)
 			return FALSE
 		//Dreamkeep Change -- Re-enabled alongside the addition of skill-based reduction of parry costs.
-		if(HAS_TRAIT(H, TRAIT_DODGEEXPERT) && HAS_TRAIT(H, TRAIT_DODGEADEPT))
+		if(HAS_TRAIT(H, TRAIT_DODGEEXPERT) || HAS_TRAIT(H, TRAIT_DODGEADEPT))
 			drained = drained - 5
 
 		if(I) //the enemy attacked us with a weapon

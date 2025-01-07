@@ -521,7 +521,9 @@
 	if(!domhand || !num)
 		return STASTR
 	var/used = STASTR
-	if((num == domhand) && HAS_TRAIT(src, TRAIT_AMBIDEXTROUS))
+	if(num == domhand)
+		return used
+	else if(HAS_TRAIT(src, TRAIT_AMBIDEXTROUS))
 		return used
 	else
 		used = STASTR - 1
