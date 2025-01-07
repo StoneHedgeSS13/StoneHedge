@@ -8,8 +8,28 @@
 
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
 
+
 /datum/outfit/job/roguetown/adventurer/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.adjust_blindness(-3)
+	var/classes = list(
+		"Weaponsmith", //Weapons
+		"Armorsmith", //Armor
+		)
+
+	var/classchoice = input("Choose your specialization", "Available styles") as anything in classes
+
+
+	switch(classchoice)
+
+		if("Weaponsmith")
+			H.set_blindness(0)
+			ADD_TRAIT(H, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
+
+		if("Armorsmith")
+			H.set_blindness(0)
+			ADD_TRAIT(H, TRAIT_ARMORSMITH, TRAIT_GENERIC)
+
 	belt = /obj/item/storage/belt/rogue/leather
 
 	beltr = /obj/item/rogueweapon/hammer

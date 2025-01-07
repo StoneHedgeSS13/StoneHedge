@@ -1,3 +1,6 @@
+/datum/anvil_recipe/tools
+	appro_skill = /datum/skill/craft/blacksmithing
+	craftdiff = 1
 
 // --------- IRON -----------
 /datum/anvil_recipe/tools/surgery/surgerytools

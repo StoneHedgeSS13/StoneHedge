@@ -13,6 +13,7 @@
 	var/quality_mod = 0
 	var/progress
 	var/i_type
+	var/anvilskill = /datum/anvil_recipe/
 
 	var/datum/parent
 
@@ -34,8 +35,8 @@
 	var/skill_level
 	if(user.mind)
 		skill_level = user.mind.get_skill_level(appro_skill)
-		moveup += round((skill_level * 6) * (breakthrough == 1 ? 1.5 : 1))
-		moveup -= 3 * craftdiff
+		moveup += (((skill_level * 4) + 6) * (breakthrough == 1 ? 1.5 : 1)) //Was skill_level * 6
+		moveup -= ((2 * craftdiff) + 4) //Was craft diff * 3
 		if(!user.mind.get_skill_level(appro_skill))
 			proab = 23
 	if(prob(proab))
@@ -53,9 +54,39 @@
 		return FALSE
 	else
 		if(user.mind && isliving(user))
-			skill_quality += (rand(skill_level*8, skill_level*17)*moveup)
 			var/mob/living/L = user
 			var/boon = user.mind.get_learning_boon(appro_skill)
+			if(anvilskill == /datum/anvil_recipe/weapons)
+				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup) //journeyman, difficulty 2, 1.6 - 2, 1.8 average + 1 = fine gear, Legendary, difficulty 4, 3.888 - 5.184, 4.536 average + 1 = consistent legendaries
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup) //journeyman, difficulty 2, 1 - 1.4, 1.2 average + 1 = average gear, legendary, difficulty 4, 2.16 - 3.024, 2.592 average + 1 = consistent flawless if using good steel
+			if(anvilskill == /datum/anvil_recipe/armor)
+				if(HAS_TRAIT(user, TRAIT_ARMORSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup)
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup)
+			if(anvilskill == /datum/anvil_recipe/valuables)
+				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup)
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup)
+			if(anvilskill == /datum/anvil_recipe/tools)
+				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup)
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup)
+			if(anvilskill == /datum/anvil_recipe/valuables)
+				if(HAS_TRAIT(user, TRAIT_ARMORSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup)
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup)
+			if(anvilskill == /datum/anvil_recipe/tools)
+				if(HAS_TRAIT(user, TRAIT_ARMORSMITH))
+					skill_quality += (rand(skill_level*8, skill_level*10)*moveup)
+				else
+					skill_quality += (rand(skill_level*5, skill_level*7)*moveup)
+						
 			var/amt2raise = L.STAINT/2 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
 			//i feel like leveling up takes forever regardless, this would just make it faster
 			if(amt2raise > 0)
@@ -77,32 +108,32 @@
 	needed_item_text = null
 
 /datum/anvil_recipe/proc/handle_creation(obj/item/I)
-	material_quality = floor(material_quality/num_of_materials)-2
+	material_quality = floor(material_quality/num_of_materials)/2 //1 poor bar = 0.5, 1 normal bar = 1, 1 good bar = 1.5, 2 good bars = 1.5, 1 normal + 1 good = 1.25
 	skill_quality = floor((skill_quality/num_of_materials)/1500)+material_quality
 	var/modifier
 	switch(skill_quality)
-		if(BLACKSMITH_LEVEL_MIN to BLACKSMITH_LEVEL_SPOIL)
+		if(BLACKSMITH_LEVEL_MIN to BLACKSMITH_LEVEL_SPOIL) //-2
 			I.name = "spoilt [I.name]"
 			modifier = 0.3
-		if(BLACKSMITH_LEVEL_AWFUL)
+		if(BLACKSMITH_LEVEL_AWFUL) //-1
 			I.name = "awful [I.name]"
 			modifier = 0.5
-		if(BLACKSMITH_LEVEL_CRUDE)
+		if(BLACKSMITH_LEVEL_CRUDE) //0
 			I.name = "crude [I.name]"
 			modifier = 0.8
-		if(BLACKSMITH_LEVEL_ROUGH)
+		if(BLACKSMITH_LEVEL_ROUGH) //1
 			I.name = "rough [I.name]"
 			modifier = 0.9
-		if(BLACKSMITH_LEVEL_COMPETENT)
+		if(BLACKSMITH_LEVEL_COMPETENT) //2
 			modifier = 1
 			I.desc = "[I.desc] It is competently made."
-		if(BLACKSMITH_LEVEL_FINE)
+		if(BLACKSMITH_LEVEL_FINE) //3
 			I.name = "fine [I.name]"
 			modifier = 1.1
-		if(BLACKSMITH_LEVEL_FLAWLESS)
+		if(BLACKSMITH_LEVEL_FLAWLESS) //4
 			I.name = "flawless [I.name]"
 			modifier = 1.2
-		if(BLACKSMITH_LEVEL_LEGENDARY to BLACKSMITH_LEVEL_MAX)
+		if(BLACKSMITH_LEVEL_LEGENDARY to BLACKSMITH_LEVEL_MAX) //5
 			I.name = "legendary [I.name]"
 			modifier = 1.3
 	

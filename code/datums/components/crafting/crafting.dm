@@ -278,6 +278,10 @@
 							//item qualities
 							if(user.mind && R.can_be_qualitied)
 								var/skill_quality = user.mind?.get_skill_level(R.skillcraft)
+								if(R.skillcraft == /datum/skill/misc/sewing)
+									if(!HAS_TRAIT(user, TRAIT_TAILOR))
+										if(R.skillcraft >= 6)
+											skill_quality = 5
 								var/modifier
 								switch(skill_quality)
 									if(0)

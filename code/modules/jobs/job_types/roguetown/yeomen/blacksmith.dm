@@ -8,8 +8,7 @@
 
 	allowed_races = RACES_ALL_KINDSPLUS
 
-	tutorial = "You've studied for many decades under quite a number of master smiths. Whether it's cookware or tools of war, you're unmatched at the art of bending metal to your will."
-
+	tutorial = "You've studied for many decades under a master smith. This placed you ahead of your peers by becoming the best in a specialization."
 	outfit = /datum/outfit/job/roguetown/blacksmith
 	display_order = JDO_BLACKSMITH
 	give_bank_account = 400
@@ -18,6 +17,25 @@
 
 /datum/outfit/job/roguetown/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.adjust_blindness(-3)
+	var/classes = list(
+		"Weaponsmith", //Weapons
+		"Armorsmith", //Armor
+		)
+
+	var/classchoice = input("Choose your specialization", "Available styles") as anything in classes
+
+
+	switch(classchoice)
+
+		if("Weaponsmith")
+			H.set_blindness(0)
+			ADD_TRAIT(H, TRAIT_WEAPONSMITH, TRAIT_GENERIC)
+
+		if("Armorsmith")
+			H.set_blindness(0)
+			ADD_TRAIT(H, TRAIT_ARMORSMITH, TRAIT_GENERIC)
+
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
@@ -27,11 +45,11 @@
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 5, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 4, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/craft/smelting, 5, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 	if(H.pronouns == SHE_HER)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
