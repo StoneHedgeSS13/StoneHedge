@@ -211,6 +211,7 @@
 	to_chat(target, span_danger("This is a permanent ban. The round ID is [GLOB.rogue_round_id]."))
 	to_chat(target, span_danger("To appeal this ban go to <span style='color: #0099cc;'>[ban_appeal]</span>"))
 	to_chat(target, "<div class='connectionClosed internal'>You are either AFK, experiencing lag or the connection has closed.</div>")
+	SEND_SOUND(target, sound(null))
 
 /proc/handle_waking_up(mob/living/target)
 	if(!target.client)
