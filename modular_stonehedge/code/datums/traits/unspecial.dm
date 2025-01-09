@@ -48,6 +48,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	ADD_TRAIT(H, TRAIT_NOHUNGER, QUIRK_TRAIT)
 	ADD_TRAIT(H, TRAIT_NOBREATH, QUIRK_TRAIT)
+	H.change_stat("endurance", 1)
 
 /datum/quirk/deadened
 	name = "Deadened"
