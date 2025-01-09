@@ -13,8 +13,8 @@
 	movement_interrupt = FALSE
 	chargedloop = null
 	sound = 'sound/magic/heal.ogg'
-	invocation = "Eldritch healing!"
-	invocation_type = "shout"
+	invocation = "Wounds, be sealed."
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	charge_max = 20 SECONDS
@@ -77,6 +77,7 @@
 
 /datum/status_effect/buff/eldritchcurse
 	id = "eldritchcurse"
+	effectedstats = list("fortune" = -4) // This default case will be overridden for warlocks. Low luck is the closest to a "generic" curse, randomly failing a bit at everything.
 	alert_type = /atom/movable/screen/alert/status_effect/buff/eldritchcurse
 	duration = -1
 
@@ -124,7 +125,7 @@
 	xp_gain = FALSE
 	miracle = FALSE
 
-	invocation = "Cloak of flies!"
+	invocation = "Shield me with rot!"
 	invocation_type = "shout"
 	var/activated = FALSE
 	var/rot_type = /datum/component/rot/warlock
@@ -182,7 +183,7 @@
 	xp_gain = FALSE
 	miracle = FALSE
 
-	invocation = "Come forth familiar."
+	invocation = "Come forth, familiar."
 	invocation_type = "whisper"
 
 	var/mob/living/fam

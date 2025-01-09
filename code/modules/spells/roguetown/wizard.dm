@@ -18,7 +18,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
-	invocation = "Lightning bolt!"
+	invocation = "Strike them down!"
 	invocation_type = "shout"
 	xp_gain = TRUE
 
@@ -116,7 +116,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 3
-	invocation = "Blood bolt!"
+	invocation = "Strike them down!"
 	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
@@ -227,7 +227,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 4
-	invocation = "Fireball!"
+	invocation = "Burn!"
 	invocation_type = "shout"
 	xp_gain = TRUE
 
@@ -276,7 +276,7 @@
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokegen
 	cost = 10
-	invocation = "FIREBALL!!!"
+	invocation = "Incinerate!"
 	invocation_type = "shout"
 	xp_gain = TRUE
 
@@ -311,7 +311,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 1
-	invocation = "Spitfire!"
+	invocation = "Char!"
 	invocation_type = "shout"
 	xp_gain = TRUE
 
@@ -481,7 +481,7 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	invocation = "Fetch."
+	invocation = "Come here."
 	invocation_type = "whisper"
 	cost = 2
 	xp_gain = TRUE
@@ -791,7 +791,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	invocation = "Forcewall!"
+	invocation = "Stay back!"
 	invocation_type = "shout"
 	cost = 3
 
@@ -865,7 +865,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	range = 6
 	overlay_state = "ensnare"
-	invocation = "Black tentacles!"
+	invocation = "Trip and fall!"
 	invocation_type = "shout"
 	var/area_of_effect = 1
 	var/duration = 2.5 SECONDS
@@ -1019,7 +1019,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
-	invocation = "blade burst."
+	invocation = "Cut them down."
 	invocation_type = "whisper"
 	var/delay = 7
 	var/damage = 45
@@ -1060,7 +1060,7 @@
 	dropmessage = "I release my arcyne focus."
 	school = "abjuration"
 	charge_max = 30 SECONDS
-	invocation = "Nondetection."
+	invocation = "Shroud their vision."
 	invocation_type = "whisper"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
@@ -1178,7 +1178,7 @@
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	charging_slowdown = 2
-	invocation = "featherfall."
+	invocation = "Land safely."
 	invocation_type = "whisper"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
@@ -1207,7 +1207,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	charging_slowdown = 2
-	invocation = "haste!"
+	invocation = "Quickened step!"
 	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
