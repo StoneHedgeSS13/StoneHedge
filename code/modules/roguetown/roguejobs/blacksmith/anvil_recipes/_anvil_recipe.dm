@@ -54,27 +54,23 @@
 	else
 		if(user.mind && isliving(user))
 			if(i_type == "Weapons")
+				//traited maths at comments are now probably wrong cuz i lowered the gap from 4 to 2 so its 12 to 14 now instead of 10 to 14 randomization, hope nothing will break. -- vide
 				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH))
-					skill_quality += (rand(skill_level*10, skill_level*14)*moveup) //journeyman, difficulty 2, 1.6 - 2, 1.8 average + 1.5 = fine gear, Legendary, difficulty 4, 3.888 - 5.184, 4.536 average + 1 = consistent legendaries
+					skill_quality += (rand(skill_level*12, skill_level*14)*moveup) //journeyman, difficulty 2, 1.6 - 2, 1.8 average + 1.5 = fine gear, Legendary, difficulty 4, 3.888 - 5.184, 4.536 average + 1 = consistent legendaries
 				else
 					skill_quality += (rand(skill_level*7, skill_level*9)*moveup) //journeyman, difficulty 2, 1 - 1.4, 1.2 average + 1 = average gear, legendary, difficulty 4, 2.16 - 3.024, 2.592 average + 1 = consistent flawless if using good steel
 			if(i_type == "Armor")
 				if(HAS_TRAIT(user, TRAIT_ARMORSMITH))
-					skill_quality += (rand(skill_level*10, skill_level*14)*moveup) 
+					skill_quality += (rand(skill_level*12, skill_level*14)*moveup)
 				else
 					skill_quality += (rand(skill_level*7, skill_level*9)*moveup)
-			if(!i_type == "Weapons" && !i_type == "Armor")
-				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH))
-					skill_quality += (rand(skill_level*10, skill_level*14)*moveup) 
-				else
-					skill_quality += (rand(skill_level*7, skill_level*9)*moveup)
-			if(!i_type == "Weapons" && !i_type == "Armor")
-				if(HAS_TRAIT(user, TRAIT_ARMORSMITH))
-					skill_quality += (rand(skill_level*10, skill_level*14)*moveup) 
+			if(!i_type == "Weapons" && !i_type == "Armor") //anything else than weapon or armor
+				if(HAS_TRAIT(user, TRAIT_WEAPONSMITH) || HAS_TRAIT(user, TRAIT_ARMORSMITH))
+					skill_quality += (rand(skill_level*12, skill_level*14)*moveup)
 				else
 					skill_quality += (rand(skill_level*7, skill_level*9)*moveup)
 			var/mob/living/L = user
-			var/boon = user.mind.get_learning_boon(appro_skill)						
+			var/boon = user.mind.get_learning_boon(appro_skill)
 			var/amt2raise = L.STAINT/2 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
 			//i feel like leveling up takes forever regardless, this would just make it faster
 			if(amt2raise > 0)

@@ -53,7 +53,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Acid splash!"
+	invocation = "Wear them away!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -143,7 +143,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Blade ward!"
+	invocation = "Blades, be dulled!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 // Notes: Bard, Sorcerer, Warlock, Wizard
 
@@ -203,7 +203,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Booming blade!"
+	invocation = "Stay still!" // Incantation should explain a confusing spell's mechanic.
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/boomingblade5e/cast(list/targets, mob/living/user)
@@ -287,7 +287,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Chill touch!"
+	invocation = "Be torn apart!"
 	invocation_type = "shout"
 	ignore_fiendkiss = FALSE
 
@@ -480,7 +480,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Decompose."
+	invocation = "Return to rot."
 	invocation_type = "whisper"
 
 /obj/effect/proc_holder/spell/invoked/decompose5e/cast(list/targets, mob/living/user)
@@ -557,7 +557,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Eldritch blast!"
+	invocation = "Eldritch blast!" // Bad incantation but it's funny.
 	invocation_type = "shout"
 	ignore_fiendkiss = FALSE
 
@@ -672,7 +672,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 1
-	invocation = "Firebolt!"
+	invocation = "Sear!"
 	invocation_type = "shout"
 	xp_gain = TRUE
 
@@ -718,7 +718,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Frostbite!"
+	invocation = "Freeze!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -838,7 +838,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Guidance."
+	invocation = "Light the path."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 
 
@@ -906,7 +906,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Infestation!"
+	invocation = "Rot, take them!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 
@@ -1157,7 +1157,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Lightning lure!"
+	invocation = "Get back!" // This is INTENDED as a "get off me" tool, though rarely actually used for that. Also immediately explains what a target should do.
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	include_user = FALSE
 
@@ -1213,7 +1213,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Magic stone."
+	invocation = "Stay sharp and strong."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 	var/magic_color = "#c8daff"
 
@@ -1262,7 +1262,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Mending."
+	invocation = "Be reformed."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 
 /obj/effect/proc_holder/spell/invoked/mending5e/cast(list/targets, mob/living/user)
@@ -1314,7 +1314,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Mind Sliver!"
+	invocation = "Steal their thoughts!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	var/delay = 7
 	ignore_fiendkiss = FALSE
@@ -1452,7 +1452,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Primal savagery."
+	invocation = "Teeth of a serpent."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 // Notes: Bard, Sorcerer, Warlock, Wizard
 
@@ -1508,7 +1508,7 @@
 	xp_gain = TRUE
 	miracle = FALSE
 
-	invocation = "Ray of Frost!"
+	invocation = "Chill!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	ignore_fiendkiss = FALSE
 

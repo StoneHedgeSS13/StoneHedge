@@ -377,8 +377,8 @@
 //Invisible spawners capable of handling carbon mobs. Use in dungeons and areas with respawning chests.
 
 /obj/effect/mob_spawner/goblin
-	max_spawned_mobs = 14
-	mobs_to_spawn = 7
+	max_spawned_mobs = 8
+	mobs_to_spawn = 4
 	spawn_interval = 4500 //7.5 minutes
 	spawn_range = 9
 	player_range = 13
@@ -390,8 +390,8 @@
 		/mob/living/carbon/human/species/goblin/npc/moon = 1)
 
 /obj/effect/mob_spawner/skeleton
-	max_spawned_mobs = 10
-	mobs_to_spawn = 5
+	max_spawned_mobs = 6
+	mobs_to_spawn = 3
 	spawn_interval = 3600
 	spawn_range = 10
 	player_range = 15
@@ -406,8 +406,8 @@
 		/mob/living/carbon/human/species/skeleton/npc/dungeon/boss = 5)
 
 /obj/effect/mob_spawner/minotaur
-	max_spawned_mobs = 8
-	mobs_to_spawn = 4
+	max_spawned_mobs = 4
+	mobs_to_spawn = 2
 	spawn_interval = 3600
 	spawn_range = 10
 	player_range = 15
@@ -418,8 +418,8 @@
 	/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female = 5)
 
 /obj/effect/mob_spawner/mossback
-	max_spawned_mobs = 8
-	mobs_to_spawn = 4
+	max_spawned_mobs = 4
+	mobs_to_spawn = 2
 	spawn_interval = 3000
 	spawn_range = 10
 	player_range = 15
@@ -440,8 +440,8 @@
 	/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig = 15)
 
 /obj/effect/mob_spawner/wilderness/hostile
-	max_spawned_mobs = 8
-	mobs_to_spawn = 4
+	max_spawned_mobs = 4
+	mobs_to_spawn = 2
 	spawn_interval = 6000
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 10,
 	/mob/living/simple_animal/hostile/retaliate/rogue/spider = 5,

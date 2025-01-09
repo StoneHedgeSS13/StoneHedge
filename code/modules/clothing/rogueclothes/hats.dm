@@ -1169,6 +1169,8 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/beakhelmet
 	name = "beak helmet"
 	desc = "Odd spherical helmet with a beaklike visor."
+	icon = 'modular_stonehedge/icons/armor/head.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/head.dmi'
 	icon_state = "beakhelmet"
 	item_state = "beakhelmet"
 	emote_environment = 3
