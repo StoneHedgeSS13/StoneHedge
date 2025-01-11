@@ -90,7 +90,7 @@
 	backl = /obj/item/rogueweapon/shield/wood
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/storage/keyring/guard = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
-	H.change_stat("strenght", 3)
+	H.change_stat("strength", 3)
 	H.change_stat("constitution", 3)
 	H.change_stat("perception", 1)
 	H.change_stat("endurance", 3)
@@ -150,7 +150,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
 	r_hand = /obj/item/rogueweapon/spear
 	backpack_contents = list(/obj/item/storage/keyring/guard = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
-	H.change_stat("strenght", 2)
+	H.change_stat("strength", 2)
 	H.change_stat("constitution", 2)
 	H.change_stat("perception", 3)
 	H.change_stat("endurance", 3)
@@ -210,7 +210,7 @@
 	backl = /obj/item/rogueweapon/shield/tower
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	backpack_contents = list(/obj/item/storage/keyring/guard = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
-	H.change_stat("strenght", 2)
+	H.change_stat("strength", 2)
 	H.change_stat("constitution", 4)
 	H.change_stat("perception", 1)
 	H.change_stat("endurance", 3)
@@ -329,7 +329,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	gloves = /obj/item/clothing/shoes/roguetown/boots/armor/leather
 	backpack_contents = list(/obj/item/storage/keyring/guard = 1, /obj/item/rope/chain = 1, /obj/item/signal_horn = 1)
-	H.change_stat("strenght", 3)
+	H.change_stat("strength", 3)
 	H.change_stat("constitution", 3)
 	H.change_stat("perception", 2)
 	H.change_stat("endurance", 3)
