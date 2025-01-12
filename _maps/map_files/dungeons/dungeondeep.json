@@ -2,5 +2,4 @@
     "map_name": "dungeondeep",
     "map_path": "map_files/dungeons",
     "map_file": "dungeondeep.dmm",
-	"traits": [{"Up": true},  {"Up": true, "Down": true}, {"Down": true}]
 }

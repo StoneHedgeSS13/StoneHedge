@@ -48,9 +48,13 @@
 		return
 	if(sexcon && !chasesfuck)
 		for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
+			if(fucktarg == src)
+				continue
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
-			if((fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale)) && CanAttack(fucktarg, TRUE))
+			if(fucktarg.alpha <= 100)
+				continue
+			if((fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale)))
 				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
 					continue
 				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
@@ -62,9 +66,7 @@
 				else
 					visible_message(span_boldwarning("[src] has her eyes on [fucktarg], cunt dripping!"))
 					say(pick(female_lewdtalk), language = /datum/language/common)
-				break
-			else
-				continue
+			break
 	if(chasesfuck) //until fuck is acquired, keep chasing.
 		seekboredom += 1
 		enemies = list()
@@ -87,7 +89,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/seeklewd()
 	if(!erpable)
 		return
-	if(!retreating)
+	if(retreating)
 		return
 	if(sexcon.current_action)
 		return
@@ -237,13 +239,16 @@
 	if(sexcon && !chasesfuck)
 		var/list/around = view(10, src)
 		for(var/mob/living/carbon/human/fucktarg in around)
+			if(fucktarg == src)
+				continue
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
 				continue
-			if(should_target(fucktarg, TRUE)) //normally checks !sexcon.beingfucked but carbon mobs arent directly on top of the mob to fuck so its probably fine to get ganged.
-				if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
-					continue
-				if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
-					continue
+			if(fucktarg.alpha <= 100)
+				continue
+			if(gender == MALE && !fucktarg.has_quirk(/datum/quirk/monsterhuntermale))
+				continue
+			if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
+				continue
 				chasesfuck = TRUE
 				if(lewd_talk)
 					if(gender == MALE)
@@ -252,9 +257,7 @@
 					else
 						visible_message(span_boldwarning("[src] has her eyes on [fucktarg], cunt dripping!"))
 						say(pick(female_lewdtalk), language = /datum/language/common)
-				break
-			else
-				continue
+			break
 	if(chasesfuck) //until fuck is acquired, keep chasing.
 		seekboredom += 1
 		if(prob(10) && lewd_talk)
