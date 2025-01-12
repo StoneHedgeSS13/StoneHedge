@@ -13,9 +13,13 @@ Format:
 	votable (is this map votable)
 endmap
 
-map dreamhold
+map dreamkeep
 	default
 endmap
 
+map dreamhold
+endmap
+
 map roguetest
+	disabled
 endmap
