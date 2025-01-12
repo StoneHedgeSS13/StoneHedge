@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	selection_color = JCOLOR_YEOMAN
 	allowed_races = RACES_ALL_KINDSPLUS
-	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. Counting coins is a simple pleasure for any person, but you've made it an artform. These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that."
+	tutorial = "You have reached a high standing on the merchant guild's sultanate, and you were granted the title of Prince or princess. You may not be actual royalty, but anyone who dares not treat you like such may find an increase on taxes, or become subject to your prodigious arcane talents. Hire adventurers and mercenaries to protect you and bring you riches from the forsaken ruins that plague this place to grow your wealth."
 
 	display_order = JDO_MERCHANT
 
@@ -61,7 +61,7 @@
 	id = /obj/item/clothing/ring/gold
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow = 1)
 	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/boots/armor/leather
+		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/gladiator

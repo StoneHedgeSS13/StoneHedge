@@ -3,8 +3,9 @@
 	flag = STEWARD
 	department_flag = NOBLEMEN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0 //merged with the merchant, useless until reworked to something else
+	spawn_positions = 0
+
 	allowed_races = RACES_ALL_KINDSPLUS
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
@@ -13,8 +14,7 @@
 	give_bank_account = 17
 	min_pq = 0
 	max_pq = null
-	announce_latejoin = TRUE
-	always_show_on_latechoices = TRUE
+
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == FEMALE)

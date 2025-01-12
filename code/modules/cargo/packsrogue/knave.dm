@@ -41,7 +41,7 @@
 
 //Armor
 
-/datum/supply_pack/rogue/Knave/leather/armor
+/datum/supply_pack/rogue/Knave/leather
 	name = "Hardened Leather Armor"
 	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced)

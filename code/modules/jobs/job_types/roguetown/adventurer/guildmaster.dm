@@ -8,12 +8,12 @@
 
 	allowed_sexes = list(MALE, FEMALE) //same as town guard
 	allowed_races = RACES_ALL_KINDSPLUS // same as town guard
-	tutorial = "You've known combat your entire life. There isn't a way to kill a man or beast you havent practiced in the tapestries of adventuring itself. You would call yourself a hero, given how you made much of this legacy through those you didn't leave behind. those belong to the men left rotting in the fields of where you practiced your ancient trade. You've slept better at night ever since you found purpose here..."
+	tutorial = "A legend of your field, many a towns are alive thanks only to your hands and your long forgotten companions. You have left your print in the world, but it will all be in vain if there are not more like you to defend your legacy. Take these greenhorns, organize them, tell them what to do, and teach them how to fight. You'll make the world a safer place one newbie at a time."
 	display_order = JDO_VET
 	whitelist_req = FALSE
 
 	outfit = /datum/outfit/job/roguetown/veteran
-	give_bank_account = 1500
+	give_bank_account = 2500
 	min_pq = 15
 	max_pq = null
 

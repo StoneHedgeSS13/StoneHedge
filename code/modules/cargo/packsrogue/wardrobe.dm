@@ -5,66 +5,58 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/wardrobe/cloaks/bhalfcloaks
-	name = "Half-Cloaks"
+	name = "Half-Cloak"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/cloak/half,
 					/obj/item/clothing/cloak/half,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/bcloaks
-	name = "Blue Cloaks"
+	name = "Blue Cloak"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/cloak/raincloak/blue,
 					/obj/item/clothing/cloak/raincloak/blue,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/rcloaks
-	name = "Red Cloaks"
+	name = "Red Cloak"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/cloak/raincloak/red,
 					/obj/item/clothing/cloak/raincloak/red,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/gcloaks
-	name = "Green Cloaks"
+	name = "Green Cloak"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/cloak/raincloak/green,
 					/obj/item/clothing/cloak/raincloak/green,
 				)
 
 /datum/supply_pack/rogue/wardrobe/gloves/fgloves
-	name = "Fingerless Gloves"
+	name = "Fingerless Glove"
 	cost = 5
 	contains = list(
-					/obj/item/clothing/gloves/roguetown/fingerless,
 					/obj/item/clothing/gloves/roguetown/fingerless,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/witchhat
-	name = "Witch-Hunter's Hats"
+	name = "Witch-Hunter's Hat"
 	cost = 10
 	contains = list(
-					/obj/item/clothing/head/roguetown/puritan,
 					/obj/item/clothing/head/roguetown/puritan,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/physicianhat
-	name = "Physician's Hats"
+	name = "Physician's Hat"
 	cost = 10
 	contains = list(
-					/obj/item/clothing/head/roguetown/physician,
 					/obj/item/clothing/head/roguetown/physician,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/nightmanhat
-	name = "Teller's Hats"
+	name = "Teller's Hat"
 	cost = 10
 	contains = list(
-					/obj/item/clothing/head/roguetown/nightman,
 					/obj/item/clothing/head/roguetown/nightman,
 				)
 
@@ -72,7 +64,6 @@
 	name = "Minstrel's Hat"
 	cost = 10
 	contains = list(
-					/obj/item/clothing/head/roguetown/bardhat,
 					/obj/item/clothing/head/roguetown/bardhat,
 				)
 
@@ -88,7 +79,6 @@
 	cost = 10
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/armor/shalal,
-					/obj/item/clothing/shoes/roguetown/armor/shalal,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/sandals
@@ -96,22 +86,19 @@
 	cost = 5
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/gladiator,
-					/obj/item/clothing/shoes/roguetown/gladiator,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/blackdress
-	name = "Black Dresses"
+	name = "Black Dress"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
 					/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/bluedress
-	name = "Blue Dresses"
+	name = "Blue Dresse"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
 					/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
 				)
 
@@ -120,16 +107,33 @@
 	cost = 30
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe/white,
-					/obj/item/clothing/suit/roguetown/shirt/robe/white,
 				)
 
-/datum/supply_pack/rogue/wardrobe/suits/magerobes
-	name = "Mage Robes"
+/datum/supply_pack/rogue/wardrobe/suits/magerobesblue
+	name = "Blue Mage Robes"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe/mageblue,
+				)
+
+/datum/supply_pack/rogue/wardrobe/suits/magerobesgreen
+	name = "Green Mage Robes"
+	cost = 30
+	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe/magegreen,
+				)
+
+/datum/supply_pack/rogue/wardrobe/suits/magerobesorange
+	name = "Orange Mage Robes"
+	cost = 30
+	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe/mageorange,
+				)
+
+/datum/supply_pack/rogue/wardrobe/suits/magerobesyellow
+	name = "Yellow Mage Robes"
+	cost = 30
+	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe/mageyellow,
 				)
 
@@ -138,14 +142,12 @@
 	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
-					/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
 				)
 
 /datum/supply_pack/rogue/wardrobe/pants/formal
 	name = "Formal Pants"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/under/roguetown/tights/black,
 					/obj/item/clothing/under/roguetown/tights/black,
 				)
 
@@ -154,14 +156,12 @@
 	cost = 30
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/nobleboot,
-					/obj/item/clothing/shoes/roguetown/nobleboot,
 				)
 
 /datum/supply_pack/rogue/wardrobe/belt/exoticsilkbelt
 	name = "Exotic Silk Belt"
 	cost = 80
 	contains = list(
-					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
 					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
 				)
 
@@ -170,7 +170,6 @@
 	cost = 80
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
-					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
 				)
 
 /datum/supply_pack/rogue/wardrobe/mask/exoticsilkmask
@@ -178,12 +177,10 @@
 	cost = 80
 	contains = list(
 					/obj/item/clothing/mask/rogue/exoticsilkmask,
-					/obj/item/clothing/mask/rogue/exoticsilkmask,
 				)
 /datum/supply_pack/rogue/wardrobe/shoes/goldanklets
 	name = "Golden Anklets"
 	cost = 50
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/anklets,
 					/obj/item/clothing/shoes/roguetown/anklets,
 				)
