@@ -474,7 +474,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			ascended = TRUE
 			C.ascended = TRUE
 			for(var/datum/mind/thrall in C.vampires)
-				if(thrall.special_role == "Vampire Spawn")
+				var/datum/antagonist/vampirelord/vampness = thrall.has_antag_datum(/datum/antagonist/vampirelord)
+				if(thrall.special_role == "Vampire Spawn" && !vampness?.is_solo) //no giving those who are not your spawn.
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
 					thrall.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
