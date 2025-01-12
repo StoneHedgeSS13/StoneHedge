@@ -249,14 +249,14 @@
 				continue
 			if(gender == FEMALE && !fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 				continue
-				chasesfuck = TRUE
-				if(lewd_talk)
-					if(gender == MALE)
-						visible_message(span_boldwarning("[src] has his eyes on [fucktarg], cock throbbing!"))
-						say(pick(male_lewdtalk), language = /datum/language/common)
-					else
-						visible_message(span_boldwarning("[src] has her eyes on [fucktarg], cunt dripping!"))
-						say(pick(female_lewdtalk), language = /datum/language/common)
+			chasesfuck = TRUE
+			if(lewd_talk)
+				if(gender == MALE)
+					visible_message(span_boldwarning("[src] has his eyes on [fucktarg], cock throbbing!"))
+					say(pick(male_lewdtalk), language = /datum/language/common)
+				else
+					visible_message(span_boldwarning("[src] has her eyes on [fucktarg], cunt dripping!"))
+					say(pick(female_lewdtalk), language = /datum/language/common)
 			break
 	if(chasesfuck) //until fuck is acquired, keep chasing.
 		seekboredom += 1
