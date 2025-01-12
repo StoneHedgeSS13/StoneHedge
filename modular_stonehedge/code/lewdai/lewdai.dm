@@ -47,7 +47,7 @@
 	if(handcuffed || legcuffed || lying)
 		return
 	if(sexcon && !chasesfuck)
-		for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
+		for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, 1))
 			if(fucktarg == src)
 				continue
 			if(!aggressive && fucktarg.cmode) //skip if the target has cmode on and the mob is not aggressive.
@@ -99,7 +99,7 @@
 		return
 	var/mob/living/carbon/human/L
 	var/list/foundfuckmeat = list()
-	for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, src))
+	for(var/mob/living/carbon/human/fucktarg in view(aggro_vision_range, 1))
 		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg
 		if(foundfuckmeat.len)
@@ -237,7 +237,7 @@
 	if(sexcon.current_action)
 		return
 	if(sexcon && !chasesfuck)
-		var/list/around = view(10, src)
+		var/list/around = view(7, 1)
 		for(var/mob/living/carbon/human/fucktarg in around)
 			if(fucktarg == src)
 				continue
@@ -282,7 +282,7 @@
 		return
 	var/mob/living/carbon/human/L
 	var/list/foundfuckmeat = list()
-	for(var/mob/living/carbon/human/fucktarg in view(10, src))
+	for(var/mob/living/carbon/human/fucktarg in view(7, 1))
 		if(fucktarg.has_quirk(/datum/quirk/monsterhuntermale) || fucktarg.has_quirk(/datum/quirk/monsterhunterfemale))
 			foundfuckmeat += fucktarg
 		if(foundfuckmeat.len)
