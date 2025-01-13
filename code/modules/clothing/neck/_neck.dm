@@ -1,3 +1,13 @@
+#include "../../antagonists/collar_master/collar_master.dm"
+
+#define COMSIG_MOB_ATTACK "mob_attack"
+#define COMSIG_MOB_SAY "mob_say"
+#define COMSIG_MOB_CLICKON "mob_clickon"
+#define COMSIG_ITEM_PRE_UNEQUIP "item_pre_unequip"
+#define COMPONENT_CANCEL_ATTACK "cancel_attack"
+#define COMPONENT_CANCEL_SAY "cancel_say"
+#define COMPONENT_ITEM_BLOCK_UNEQUIP (1<<0)
+
 /obj/item/clothing/neck
 	name = "necklace"
 	icon = 'icons/obj/clothing/neck.dmi'
@@ -223,3 +233,96 @@
 			user.visible_message(span_notice("I untie [oldName] back into a [newBand.name]."), span_notice("[user] unties [oldName] back into a [newBand.name]."))
 		else
 			to_chat(user, span_warning("I must be holding [src] in order to untie it!"))
+
+/obj/item/clothing/neck/roguetown/cursed_collar
+	name = "cursed collar"
+	desc = "A sinister looking collar with emerald studs. It seems to radiate a dark energy."
+	icon_state = "listenstone"
+	item_state = "listenstone"
+	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	var/mob/living/carbon/human/victim = null
+	var/mob/living/carbon/human/collar_master = null
+	var/listening = FALSE
+	var/silenced = FALSE
+	resistance_flags = INDESTRUCTIBLE
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/neck/roguetown/cursed_collar/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+	if(silenced)
+		speech_args[SPEECH_MESSAGE] = ""
+		var/mob/living/carbon/human/H = source
+		if(istype(H))
+			H.say("*[pick(list(
+				"whines softly.",
+				"makes a pitiful noise.",
+				"whimpers.",
+				"lets out a submissive bark.",
+				"mewls pathetically."
+			))]")
+		return COMPONENT_CANCEL_SAY
+	return NONE
+
+/obj/item/clothing/neck/roguetown/cursed_collar/proc/check_attack(datum/source, atom/target)
+	SIGNAL_HANDLER
+	if(!istype(target, /mob/living/carbon/human))
+		return NONE
+
+	if(target == collar_master)
+		to_chat(source, span_warning("The collar sends painful shocks through your body as you try to attack your master!"))
+		var/mob/living/carbon/human/H = source
+		H.electrocute_act(25, src, flags = SHOCK_NOGLOVES)
+		H.Paralyze(600) // 1 minute stun
+		playsound(H, 'sound/blank.ogg', 50, TRUE)
+		return COMPONENT_CANCEL_ATTACK
+	return NONE
+
+/obj/item/clothing/neck/roguetown/cursed_collar/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
+	if(!istype(M) || !istype(user))
+		return ..()
+
+	if(M.get_item_by_slot(SLOT_NECK))
+		to_chat(user, span_warning("[M] is already wearing something around their neck!"))
+		return
+
+	if(!do_mob(user, M, 50))
+		return
+
+	victim = M
+	collar_master = user
+	if(!M.equip_to_slot_if_possible(src, SLOT_NECK, 0, 0, 1))
+		to_chat(user, span_warning("You fail to collar [M]!"))
+		victim = null
+		collar_master = null
+		return
+
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	to_chat(M, span_userdanger("The collar snaps shut around your neck!"))
+	to_chat(user, span_notice("You successfully collar [M]."))
+
+	if(user.mind)
+		var/datum/antagonist/collar_master/CM = new()
+		CM.my_collar = src
+		user.mind.add_antag_datum(CM)
+
+/obj/item/clothing/neck/roguetown/cursed_collar/Destroy()
+	victim = null
+	collar_master = null
+	return ..()
+
+/obj/item/clothing/neck/roguetown/cursed_collar/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_NECK && user == victim)
+		RegisterSignal(src, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(prevent_removal))
+		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+		RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(check_attack))
+
+/obj/item/clothing/neck/roguetown/cursed_collar/proc/prevent_removal(datum/source, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+	if(user == victim)
+		to_chat(user, span_userdanger("The collar's magic holds it firmly in place! You can't remove it!"))
+		playsound(user, 'sound/blank.ogg', 50, TRUE)
+		return COMPONENT_ITEM_BLOCK_UNEQUIP
+	return NONE

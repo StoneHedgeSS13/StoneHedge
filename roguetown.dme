@@ -1687,6 +1687,7 @@
 #include "code\modules\antagonists\changeling\powers\strained_muscles.dm"
 #include "code\modules\antagonists\changeling\powers\tiny_prick.dm"
 #include "code\modules\antagonists\changeling\powers\transform.dm"
+#include "code\modules\antagonists\collar_master\collar_master.dm"
 #include "code\modules\antagonists\creep\creep.dm"
 #include "code\modules\antagonists\cult\blood_magic.dm"
 #include "code\modules\antagonists\cult\cult.dm"

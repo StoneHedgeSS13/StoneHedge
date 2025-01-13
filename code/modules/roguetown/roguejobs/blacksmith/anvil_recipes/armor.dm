@@ -851,3 +851,9 @@
 	additional_items = list(/obj/item/clothing/wrists/roguetown/bracers/leather, /obj/item/roguegear)
 	created_item = /obj/item/clothing/wrists/roguetown/hiddenblade
 	i_type = "Armor"
+	
+/datum/anvil_recipe/armor/cursed_collar
+	name = "Cursed Collar"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/neck/roguetown/cursed_collar
+	craftdiff = 3
