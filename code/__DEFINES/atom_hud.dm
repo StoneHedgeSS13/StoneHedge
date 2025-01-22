@@ -83,6 +83,8 @@
 //rogue
 #define ROGUE_HUD_MARRIED	27
 
+#define ROGUE_HUD_FAMILY 28 // STONEHEDGE ADDITION
+
 // Notification action types
 #define NOTIFY_JUMP "jump"
 #define NOTIFY_ATTACK "attack"

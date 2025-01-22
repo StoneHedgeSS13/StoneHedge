@@ -184,6 +184,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/datum/loadout_item/loadout
 
+	// a unique ID to identify this character even if the name changes
+	var/family_id = ""
+
 /datum/preferences/New(client/C)
 	parent = C
 	migrant  = new /datum/migrant_pref(src)
@@ -426,7 +429,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
 
 				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
-				dat += "<br>"
+				// DREAMKEEP EDIT: Add family
+				var/list/families = GLOB.families.get_family_info(user.client.ckey, real_name)
+				if(length(families))
+					dat += "<b>Family: <b>[english_list(families)]"
+				else
+					dat += "<br>"
+				// DREAMKEEP EDIT END: Add family
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 

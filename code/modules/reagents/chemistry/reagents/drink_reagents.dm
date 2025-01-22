@@ -212,11 +212,13 @@
 
 /datum/reagent/consumable/cum/on_transfer(atom/A, method, trans_volume)
 	. = ..()
-	if(istype(A, /obj/item/organ/filling_organ/vagina) && virile)
-		var/obj/item/organ/filling_organ/vagina/forgan = A
-		if(forgan.fertility && !forgan.pregnant)
-			if(prob(20))
-				forgan.be_impregnated() //boom
+	var/obj/item/organ/filling_organ/vagina/forgan = A
+	if(!istype(forgan) || !virile)
+		return
+	if(!forgan.fertility || forgan.pregnant)
+		return
+	if(prob(trans_volume)) //i was gonna make it have a chance each tick but couldnt, this works somewhat same ig
+		forgan.be_impregnated() //boom
 
 /datum/reagent/consumable/cum/on_mob_life(mob/living/carbon/M)
 	if(M.getBruteLoss() && prob(20))

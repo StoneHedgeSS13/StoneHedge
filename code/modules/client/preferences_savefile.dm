@@ -592,6 +592,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	load_vore_prefs(S)
 
+	// STONEKEEP ADDITION START
+	S["family_id"]			>> family_id
+	family_id		= sanitize_text(family_id, "")
+	// STONEKEEP ADDITION END
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -698,6 +702,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["nsfw_info"] , nsfw_info)
 
 	WRITE_FILE(S["is_updated_for_genitalia"], TRUE)
+
+	if(family_id == "")
+		family_id = "[parent.ckey]_[default_slot]"
+	WRITE_FILE(S["family_id"], family_id)
 
 	return TRUE
 
