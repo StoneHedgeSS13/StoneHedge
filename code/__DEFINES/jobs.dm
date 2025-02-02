@@ -1,4 +1,3 @@
-
 #define ENGSEC			(1<<0)
 
 #define CAPTAIN			(1<<0)
@@ -421,3 +420,6 @@
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
 	/datum/job/roguetown/guardsman
+
+// Job category tags
+#define CTAG_SERVANT "Servant"

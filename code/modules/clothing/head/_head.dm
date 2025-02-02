@@ -76,3 +76,44 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_head()
+
+/obj/item/clothing/head/hblinders
+	name = "head blinders"
+	desc = "Keeps the wearer focused ahead. Made of reinforced leather."
+	icon = 'modular_stonehedge/icons/armor/head.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/head.dmi'
+	icon_state = "hblinders"
+	item_state = "hblinders"
+	body_parts_covered = HEAD
+	max_integrity = 400
+	armor = list("blunt" = 75, "slash" = 60, "stab" = 60, "bullet" = 40, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	sewrepair = TRUE
+	smeltresult = /obj/item/stack/sheet/leather
+
+/obj/item/clothing/head/hbit
+	name = "head bit"
+	desc = "A restraining head piece made of reinforced leather."
+	icon = 'modular_stonehedge/icons/armor/face.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/face.dmi'
+	icon_state = "hbit"
+	item_state = "hbit"
+	body_parts_covered = HEAD|FACE
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	max_integrity = 400
+	armor = list("blunt" = 75, "slash" = 60, "stab" = 60, "bullet" = 40, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	sewrepair = TRUE
+	smeltresult = /obj/item/stack/sheet/leather
+
+/obj/item/clothing/head/hblinders/mob_can_equip(mob/living/M, slot, disable_warning = FALSE)
+	. = ..()
+	if(!HAS_TRAIT(M, TRAIT_PONYGIRL_RIDEABLE))
+		to_chat(M, span_warning("You lack the proper training to wear this harness!"))
+		return FALSE
+
+/obj/item/clothing/head/hbit/mob_can_equip(mob/living/M, slot, disable_warning = FALSE)
+	. = ..()
+	if(!HAS_TRAIT(M, TRAIT_PONYGIRL_RIDEABLE))
+		to_chat(M, span_warning("You lack the proper training to wear this harness!"))
+		return FALSE

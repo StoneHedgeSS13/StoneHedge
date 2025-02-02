@@ -140,6 +140,7 @@
 */
 	var/PQ_boost_divider = 0
 
+	var/advsetup = FALSE  // Whether this job uses advanced setup menu
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE

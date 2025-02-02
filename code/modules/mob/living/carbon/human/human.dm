@@ -846,44 +846,32 @@
 
 //Target = what was clicked on, User = thing doing the clicking
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
-	// Seelies can sit on anyone's shoulders
-	if(isseelie(target) && !(HAS_TRAIT(src, TRAIT_TINY)))
-		if(can_piggyback(target))
-			shoulder_ride(target)
-			return TRUE
+	// Seelie shoulder sitting
+	if(isseelie(target) && user == target)
+		shoulder_ride(target)
+		return
 
-	// Anyone can sit on anthromorphbig's shoulders
-	if(istype(src.dna?.species, /datum/species/anthromorphbig))
-		if(user == target && can_piggyback(target))  // Make sure the person dragging is the one trying to sit
-			shoulder_ride(target)
-			return TRUE
-
-	if(user == target)
-		return FALSE
-	//normal vore check.
-	if(user.pulling == target && user.grab_state && user.voremode)
-		if(ismob(user.pulling))
-			user.vore_attack(user, target, src) // User, Pulled, Predator target (which can be user, pulling, or src)
-			return TRUE
-	if(pulling == target && stat == CONSCIOUS)
-		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
-		if(user == target && can_piggyback(target))
-			piggyback(target)
-			return TRUE
-		//If you dragged them to you and you're aggressively grabbing try to carry them
-		else if(user != target && can_be_firemanned(target))
-			var/obj/G = get_active_held_item()
-			if(G)
-				if(istype(G, /obj/item/grabbing))
-					fireman_carry(target)
+	// Ponygirl mounting
+	if(HAS_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE))
+		if(user == target && can_buckle && !buckled_mobs?.len)
+			if(user.incapacitated() || user.stat || user.restrained())
+				return
+			user.visible_message(span_notice("[user] starts mounting [src]..."))
+			if(do_after(user, 15, target = src))
+				if(user.incapacitated())
+					return
+				if(buckle_mob(user, TRUE, FALSE))
 					return TRUE
-	. = ..()
+		return
+	return ..()
+
 
 /mob/living/carbon/human/proc/shoulder_ride(mob/living/carbon/target)
+	if(!isseelie(target))
+		return
 	buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
 	visible_message(span_notice("[target] gently sits on [src]'s shoulder."))
-	if(istype(target.dna?.species, /datum/species/anthromorphbig))
-		target.pixel_y += 6  // Adjust this value as needed for proper visual alignment
+	target.pixel_y += 6  // Adjust for proper visual alignment
 
 /mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
 	return (istype(target) && target.stat == CONSCIOUS)

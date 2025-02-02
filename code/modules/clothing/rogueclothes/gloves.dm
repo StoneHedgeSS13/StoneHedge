@@ -274,3 +274,24 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+
+/obj/item/clothing/gloves/roguetown/armor/harms
+	name = "arm harness"
+	desc = "Reinforced leather bindings for the arms."
+	icon = 'modular_stonehedge/icons/armor/arms.dmi'
+	mob_overlay_icon = 'modular_stonehedge/icons/armor/onmob/arms.dmi'
+	icon_state = "harms"
+	item_state = "harms"
+	body_parts_covered = HANDS
+	max_integrity = 400
+	armor = list("blunt" = 75, "slash" = 60, "stab" = 60, "bullet" = 40, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
+	sewrepair = TRUE
+	smeltresult = /obj/item/stack/sheet/leather
+	sleeved = FALSE
+
+/obj/item/clothing/gloves/roguetown/armor/harms/mob_can_equip(mob/living/M, slot, disable_warning = FALSE)
+	. = ..()
+	if(!HAS_TRAIT(M, TRAIT_PONYGIRL_RIDEABLE))
+		to_chat(M, span_warning("You lack the proper training to wear this harness!"))
+		return FALSE
