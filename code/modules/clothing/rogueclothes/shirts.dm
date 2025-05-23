@@ -13,7 +13,7 @@
 	bloody_icon_state = "bodyblood"
 	boobed = TRUE
 	sewrepair = TRUE
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDEBELLY
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -29,6 +29,7 @@
 	name = "undervestments"
 	desc = ""
 	icon_state = "priestunder"
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDEBUTT|HIDECROTCH
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 
@@ -146,7 +147,7 @@
 	item_state = "rags"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 	fiber_salvage = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
@@ -160,7 +161,7 @@
 	sleevetype = "tunic"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -170,6 +171,7 @@
 	boobed = TRUE
 	icon_state = "tribalrag"
 	item_state = "tribalrag"
+	flags_inv = HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
@@ -204,7 +206,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -303,7 +305,7 @@
 	boobed = TRUE
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -366,6 +368,7 @@
 	item_state = "exoticsilkbra"
 	gender = PLURAL
 	body_parts_covered = CHEST|ARMS|VITALS
+	flags_inv = HIDEBOOB
 	sewrepair = TRUE
 
 /obj/item/clothing/suit/roguetown/shirt/grenzknightshirt
@@ -433,4 +436,5 @@
 	desc = ""
 	icon_state = "ravoxrobe"
 	sleeved = null
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDEBUTT|HIDECROTCH
 	allowed_sex = list(MALE, FEMALE)

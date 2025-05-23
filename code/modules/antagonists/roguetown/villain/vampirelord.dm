@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vrobe"
 	item_state = "vrobe"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/head/roguetown/vampire
 	name = "crown of darkness"
@@ -252,6 +252,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = 3
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/shoes/roguetown/boots/armor/vampire

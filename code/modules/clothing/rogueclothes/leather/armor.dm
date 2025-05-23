@@ -16,7 +16,7 @@
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
 	can_hold_endowed = TRUE
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDEBOOB
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -36,6 +36,7 @@
 	max_integrity = 400
 	//no stab prot unlike studded leather but better overall, legendary studded leather will still surpass this however, probably.
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH, BCLASS_CHOP)
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	armor = list("blunt" = 100, "slash" = 70, "stab" = 40, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	filters = list(list("type" = "drop_shadow", "x" = 0, "y" = 0, "size" = 0.5, "offset" = 1, "color" = "#daa520"))
 
@@ -45,6 +46,7 @@
 	icon_state = "hidearmor"
 	max_integrity = 230
 	armor_class = ARMOR_CLASS_LIGHT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded
 	name = "studded leather armor"
@@ -59,6 +61,7 @@
 	max_integrity = 300
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest
 	name = "leather vest"
@@ -125,6 +128,7 @@
 	sleevetype = null
 	sleeved = null
 	armor_class = ARMOR_CLASS_LIGHT
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
@@ -133,7 +137,7 @@
 	icon_state = "sailorvest"
 	color = null
 	slot_flags = ITEM_SLOT_ARMOR
-	flags_inv = HIDEBOOB|HIDEBUTT
+	flags_inv = HIDEBOOB|HIDEBUTT|HIDEBELLY
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	sleevetype = "shirt"
 
@@ -152,6 +156,7 @@
 	icon_state = "leathervest"
 	item_state = "leathervest"
 	allowed_race = CLOTHED_RACES_TYPES
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 	name = "silk jacket"
@@ -159,7 +164,7 @@
 	icon_state = "nightman" // No gendered/dwarf sprites
 	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
 	allowed_sex = list(MALE, FEMALE)
-	flags_inv = HIDEBOOB|HIDEBUTT
+	flags_inv = HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/hand
@@ -167,6 +172,7 @@
 	desc = "A soft vest of finest fabric."
 	icon_state = "handcoat"
 	color = null
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/black

@@ -34,7 +34,7 @@
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	var/picked
 
 /obj/item/clothing/cloak/tabard/update_icon()
@@ -275,7 +275,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 	var/picked
 
 /obj/item/clothing/cloak/stabard/attack_right(mob/user)
@@ -575,7 +575,7 @@
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
 	allowed_race = CLOTHED_RACES_TYPES
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/cloak/apron/blacksmith
@@ -617,7 +617,7 @@
 	item_state = "aproncook"
 	body_parts_covered = CHEST
 	boobed = FALSE
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /*
 /obj/item/clothing/cloak/apron/waist/ComponentInitialize()
@@ -805,7 +805,7 @@
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
 	nodismemsleeves = TRUE
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
@@ -864,7 +864,7 @@
 	toggle_icon_state = FALSE
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
-	flags_inv = HIDEBOOB // Put this here, since the covered boob otherwise clips through
+	flags_inv = HIDEBOOB|HIDEBELLY // Put this here, since the covered boob/belly otherwise clips through
 	w_class = WEIGHT_CLASS_SMALL
 	salvage_amount = 1
 
@@ -1003,6 +1003,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
 	name = "blacksteel boots"
@@ -1082,7 +1083,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/astrata
 	name = "Elysian tabard"
@@ -1096,7 +1097,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/noc
 	name = "Lunite tabard"
@@ -1110,7 +1111,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/dendor
 	name = "Sylvan tabard"
@@ -1124,7 +1125,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/necra
 	name = "Yamain tabard"
@@ -1138,7 +1139,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/abyssor
 	name = "abyssian tabard"
@@ -1152,7 +1153,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/malum
 	name = "Svaeryonite tabard"
@@ -1166,7 +1167,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/eora
 	name = "viriitran tabard"
@@ -1180,7 +1181,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/pestra
 	name = "hermeian tabard"
@@ -1194,7 +1195,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/ravox
 	name = "minhurite tabard"
@@ -1208,7 +1209,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/templar/xylix
 	name = "Onderite tabard"
@@ -1222,7 +1223,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT|HIDEBELLY
 
 /obj/item/clothing/cloak/cape/crusader
 	name = "crusader cloak"
@@ -1235,7 +1236,7 @@
 	desc = "A cloak made of thick fur which covers both the front and back for maximum warmth."
 	icon_state = "tribal"
 	item_state = "tribal"
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/cloak/feltcloak
 	name = "felt cloak"
@@ -1246,7 +1247,7 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN|VITALS
 	allowed_race = CLOTHED_RACES_TYPES
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/cloak/hidecloak
 	name = "hide cloak"
@@ -1256,6 +1257,7 @@
 	item_state = "mantle_hide"
 	alternate_worn_layer = TABARD_LAYER
 	allowed_race = CLOTHED_RACES_TYPES
+	flags_inv = null
 
 /obj/item/clothing/cloak/vampcloak
 	name = "dark cloak"
@@ -1266,6 +1268,7 @@
 	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 	nodismemsleeves = TRUE
 
 /obj/item/clothing/cloak/combattante

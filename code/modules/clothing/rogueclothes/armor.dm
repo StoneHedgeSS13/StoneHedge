@@ -25,7 +25,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	experimental_onhip = TRUE
 	nodismemsleeves = TRUE
-	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBUTT
+	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBUTT|HIDEBELLY
 	w_class = WEIGHT_CLASS_NORMAL //death to all pouch abusers
 
 //Drayco's max_integrity notes
@@ -87,6 +87,7 @@
 	max_integrity = 125
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	flags_inv = HIDEBOOB|HIDEBELLY
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
@@ -182,7 +183,7 @@
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
-	flags_inv = HIDEBOOB // No sprite exists as of yet, so this is temporary
+	flags_inv = HIDEBOOB
 	max_integrity = 200
 	equip_delay_self = 30
 
@@ -206,7 +207,7 @@
 	color = "#9e5761"
 	icon_state = "carapacecuirass"
 	item_state = "carapacecuirass"
-	flags_inv = HIDEBOOB // No sprite exists as of yet, so this is temporary
+	flags_inv = HIDEBOOB
 	max_integrity = 450
 	equip_delay_self = 30
 	sellprice = 50
@@ -256,7 +257,6 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDEBOOB
 
 //gold cuirass for leper, unique and cant be crafted.
 /obj/item/clothing/suit/roguetown/armor/plate/half/leper
@@ -281,7 +281,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/armor/plate/ironarmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -290,7 +290,7 @@
 	body_parts_covered = CHEST|VITALS
 	icon_state = "ironarmor"
 	item_state = "ironarmor"
-	flags_inv = HIDEBOOB // No gendered/dwarf sprites
+	flags_inv = HIDEBOOB|HIDEBELLY // No gendered/dwarf sprites
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 20, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	do_sound = FALSE
@@ -316,6 +316,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "half-plate bikini"
@@ -350,6 +351,7 @@
 	equip_delay_other = 80
 	strip_delay = 60
 	armor_class = ARMOR_CLASS_HEAVY
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "fullplate bikini"
@@ -377,7 +379,6 @@
 	icon_state = "ibreastplate"
 	max_integrity = 250
 	smeltresult = /obj/item/ingot/iron
-	flags_inv = HIDEBOOB
 	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/shortbrigandine
@@ -401,7 +402,7 @@
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT
-	flags_inv = HIDEBOOB // No gendered/dwarf sprites
+	flags_inv = HIDEBOOB|HIDEBELLY // No gendered/dwarf sprites
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -416,6 +417,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	slot_flags = ITEM_SLOT_ARMOR
@@ -648,7 +650,6 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	max_integrity = 500
-	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/footmanchestplate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -659,7 +660,6 @@
 	max_integrity = 225
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/graggaritearmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -670,7 +670,7 @@
 	max_integrity = 400
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/barrelarmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -698,6 +698,7 @@
 	max_integrity = 200
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/plate/dwarffull
 	name = "dwarven fullarmor"
@@ -706,6 +707,7 @@
 	item_state = "dwarvenchestplate"
 	max_integrity = 700
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	equip_delay_self = 80
 
 /obj/item/clothing/suit/roguetown/armor/plate/darkelfchestplate
@@ -724,7 +726,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/foresterarmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -735,6 +737,7 @@
 	max_integrity = 100
 	smeltresult = /obj/item/ash
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDEBOOB|HIDEBELLY|HIDECROTCH
 
 /obj/item/clothing/suit/roguetown/armor/plate/fancycuirass
 	slot_flags = ITEM_SLOT_ARMOR
@@ -753,6 +756,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/noblecuirass
 	slot_flags = ITEM_SLOT_ARMOR
@@ -771,6 +775,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor
 	slot_flags = ITEM_SLOT_ARMOR
@@ -788,6 +793,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT //Designed for the infirm.
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	var/active_item = FALSE //Prevents issues like dragon ring giving negative str instead
 
 /obj/item/clothing/suit/roguetown/armor/plate/spellslingerarmor/equipped(mob/living/user, slot) //I forgor.
@@ -837,12 +843,14 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/zybantinearmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "zybantinearmor"
 	desc = "Medium armor worn by Zybantine soldiers."
 	body_parts_covered = CHEST|VITALS
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 	icon_state = "zybantinearmor" // No gendered/dwarf sprites
 	item_state = "zybantinearmor"
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -869,6 +877,7 @@
 	max_integrity = 150
 	smeltresult = /obj/item/ash
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/nephilimchest
 	slot_flags = ITEM_SLOT_ARMOR
@@ -886,6 +895,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/plate/heavyplateroyalguard
 	slot_flags = ITEM_SLOT_ARMOR
@@ -903,6 +913,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_HEAVY
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/valorianarmor
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -925,7 +936,7 @@
 	smeltresult = /obj/item/ingot/iron
 	equip_delay_self = 20
 	armor_class = ARMOR_CLASS_LIGHT
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/plate/vikingbodyguardchestplate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -939,6 +950,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBELLY|HIDEBUTT
 
 /obj/item/clothing/suit/roguetown/armor/goldchestplate
 	slot_flags = ITEM_SLOT_ARMOR
@@ -954,7 +966,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/gold
 	armor_class = ARMOR_CLASS_MEDIUM
-	flags_inv = HIDEBOOB
+	flags_inv = HIDEBOOB|HIDEBELLY
 
 /obj/item/clothing/suit/roguetown/armor/bone/chestplate
 	name = "bone chestplate"

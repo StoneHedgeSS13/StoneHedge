@@ -5,7 +5,7 @@
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
 	name = "strapless dress"
 	desc = "It barely covers anything at all!"
-	flags_inv = HIDEBOOB|HIDECROTCH
+	flags_inv = HIDEBOOB|HIDECROTCH|HIDEBELLY
 	body_parts_covered = null
 	icon_state = "strapless"
 	sleevetype = null

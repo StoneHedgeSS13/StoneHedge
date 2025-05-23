@@ -167,6 +167,7 @@
 #define HIDETAIL		(1<<14)
 #define HIDEBUTT		(1<<15)
 #define HIDEWINGS		(1<<16)
+#define HIDEBELLY		(1<<17)
 
 //blocking_behavior var on clothing items
 #define BLOCKBOOTS		(1<<0)
@@ -201,7 +202,7 @@
 #define NOSE		(1<<16)
 #define RIGHT_EYE	(1<<17)
 #define LEFT_EYE	(1<<18)
-#define HAIR		(1<<19) 
+#define HAIR		(1<<19)
 #define EYES		(LEFT_EYE | RIGHT_EYE)
 #define FACE		(MOUTH | NOSE | EYES)
 #define FULL_HEAD	(HEAD | MOUTH | NOSE | EYES | EARS | HAIR)
