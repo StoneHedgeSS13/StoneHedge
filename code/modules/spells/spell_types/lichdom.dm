@@ -45,6 +45,11 @@
 		if(!marked_item)
 			to_chat(M, span_warning("None of the items you hold are suitable for emplacement of your fragile soul."))
 			return
+		if(ishuman(M))
+			var/mob/living/carbon/human/V = M
+			if(V.has_quirk(/datum/quirk/vampire))
+				to_chat(V, span_warning("You are a vampire and have no mortal life to give"))
+				return
 
 		playsound(user, 'sound/misc/deadbell.ogg', 100, FALSE)
 		playsound(user, pick('sound/vo/male/gen/agony (1).ogg','sound/vo/male/gen/agony (2).ogg'), 50, FALSE)
@@ -85,10 +90,10 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/bodypart/B in H.bodyparts)
-				B.skeletonize(FALSE)
+				/*B.skeletonize(FALSE)
 
 			H.hair_color = "bababa"
-			H.facial_hair_color = "bababa"
+			H.facial_hair_color = "bababa"*/
 			H.update_body()
 			H.update_hair()
 			H.update_body_parts(redraw = TRUE)
@@ -101,7 +106,7 @@
 			ADD_TRAIT(H, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOSLEEP, TRAIT_GENERIC)
 			H.mob_biotypes |= MOB_UNDEAD
-			H.faction |= list("lesser_undead")
+			H.faction |= list("lesser_undead", "undead", "lich")
 
 			H.change_stat("strength", -5)
 			H.change_stat("endurance", -5)
@@ -183,14 +188,14 @@
 	lich.facial_hair_color = "bababa"
 	lich.update_body()
 	lich.update_hair()
-	lich.update_body_parts(redraw = TRUE)
+	lich.update_body_parts(redraw = TRUE) 
 
 	var/base_health = 75
 	var/new_max_health = max(25, base_health - (25 * resurrections))
 	lich.setMaxHealth(new_max_health)
 	lich.health = lich.maxHealth
 	lich.mob_biotypes |= MOB_UNDEAD
-	lich.faction |= list("lesser_undead")
+	lich.faction |= list("lesser_undead", "undead", "lich")
 
 	ADD_TRAIT(lich, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(lich, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
@@ -267,4 +272,6 @@
 		var/direction = get_dir(U, T)
 		. += span_warning("The bone pulls [dir2text(direction)].")
 	else
+		. += span_warning("The bone seems inert.")
+
 		. += span_warning("The bone seems inert.")

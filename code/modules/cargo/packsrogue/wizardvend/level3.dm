@@ -46,14 +46,14 @@
 					/obj/item/book/granter/spell/spells5e/findfamiliar5e
 				)
 
-/*
+
 /datum/supply_pack/rogue/l3/lichdom5e
 	name = "Lichdom"
-	cost = 200
+	cost = 300
 	contains = list(
 					/obj/item/book/granter/spell/spells5e/lichdom5e
 				)
-*/
+
 
 /datum/supply_pack/rogue/l3/lifesteal5e
 	name = "Life Steal"

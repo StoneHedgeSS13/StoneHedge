@@ -353,7 +353,7 @@
 	spellname = "find familiar"
 	icon_state = "scrollpurple"
 
-/* it's broken but i'll fix it later.
+// Really powerful BUT it works
 /obj/item/book/granter/spell/spells5e/lichdom5e
 	name = "Scroll of Lesser Lichdom"
 	desc = "A dark necromantic scroll that seems to pulse with an otherworldly energy. The parchment is made of an unusual material that feels cold to the touch, and the ink seems to writhe and move of its own accord."
@@ -361,7 +361,7 @@
 	spellname = "lesser lichdom"
 	icon_state = "scrollpurple"
 	remarks = list("The pursuit of immortality through lichdom is a dangerous path, one that strips away not only your mortal form but your very soul.", "A soul bound to a phylactery is never truly free. The price of eternal life is a curse, for the lich will never know rest again.", "To achieve lichdom, one must master the deepest secrets of necromancy—those that most would call abominable. But is it worth the cost?", "In the pursuit of godlike power, a lich sacrifices all that is left of their humanity. The question remains—what is the point of eternal life if you lose what makes you truly alive?")
-*/
+
 /obj/item/book/granter/spell/spells5e/lifesteal5e
 	name = "Scroll of Life Steal"
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/lifesteal
