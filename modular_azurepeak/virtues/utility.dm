@@ -274,7 +274,7 @@
 	added_stashed_items = list(
 		"Steel Pickaxe" = /obj/item/rogueweapon/pick/steel,
 		"Lamptern" = /obj/item/flashlight/flare/torch/lantern)
-	added_skills = list(list(/datum/skill/labor/mining, 3, 6))
+	added_skills = list(list(/datum/skill/labor/mining, 1, 6))
 
 /datum/virtue/utility/ugly
 	name = "Ugly"
