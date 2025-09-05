@@ -1550,8 +1550,8 @@
 //Eora content from Stonekeep
 
 /obj/item/clothing/head/roguetown/eoramask
-	name = "eoran mask"
-	desc = "A silver rabbet mask worn by the faithful of Eora, usually during their rituals."
+	name = "Viriitran mask"
+	desc = "A silver rabbit mask worn by the faithful of Viriitri, usually during their rituals."
 	color = null
 	icon_state = "eoramask"
 	item_state = "eoramask"

@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDSPLUS
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
-	traits_applied = list(TRAIT_HEAVYARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR) // This is applied after the outfit, so it deletes the half-plate on spawn
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
@@ -98,6 +98,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/targeted/churn)
 			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/invoked/lesser_heal)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // So that the armor doesn't get deleted on spawn
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
@@ -158,6 +159,7 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // So that the armor doesn't get deleted on spawn
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/targeted/churn)
 			H.mind.AddSpell(new	/obj/effect/proc_holder/spell/invoked/lesser_heal)

@@ -13,9 +13,10 @@
 	   representing reincarnation and the great cosmic wheel of the planes. \
 	Seraph-Iros is an ancient being, considered cryptic and wise but often unfathomable.\
 	 This is unlike other gods, some believing that\
-	  Seraphiros would not have the time nor desire to answer mortal prayers; nor needing their faith."
+	  Seraph-Iros would not have the time nor desire to answer mortal prayers; nor needing their faith."
 	worshippers = "Animists, Tribals, Old-Souls, Mystics, Sages, Fools, Scholars."
 	associated_faith = /datum/faith/old_god
+	// WHAT WOULD FIT THE FUNNY SNEK?!
 	confess_lines = list(
 		"His scales glimmer with a thousand worlds..",
 		"This is but a mere flicker of his tongue. All of it..!",
