@@ -9,6 +9,15 @@
 
 /turf/open/floor/rogue/grass
 	track_prob = 1
+
+/turf/open/floor/rogue/grassred
+	track_prob = 1
+
+/turf/open/floor/rogue/grassyel
+	track_prob = 1
+
+/turf/open/floor/rogue/grasscold
+	track_prob = 1
 //Probabilities end (albeit mud is handled seperately).
 
 //Analysis levels depending on skillcheck during reveal.
@@ -88,7 +97,7 @@
 	if(!HAS_TRAIT(user, TRAIT_PERFECT_TRACKER))
 		var/diff = 11 //Base Tracking Difficulty
 		diff += tracking_modifier
-		diff += round((world.time - creation_time) / (60 SECONDS), 1) //Gets more difficult to spot the older.
+		diff += round((world.time - creation_time) / (120 SECONDS), 1) //Gets more difficult to spot the older.
 		diff += rand(0, 5) //Entropy.
 
 		var/competence = user.STAPER
@@ -112,7 +121,7 @@
 	if(!HAS_TRAIT(user, TRAIT_PERFECT_TRACKER))
 		var/diff = 11
 		diff += tracking_modifier
-		diff += round((world.time - creation_time) / (60 SECONDS), 1) 
+		diff += round((world.time - creation_time) / (120 SECONDS), 1)
 		var/competence = user.STAPER / 2
 		if(user.mind)
 			competence += 5 * user.mind.get_skill_level(/datum/skill/misc/tracking) //Skill is much more relevant for analysis.
@@ -159,7 +168,7 @@
 		if(SOUTHEAST)
 			facing = "southeast"
 	real_image = image(icon, src, real_icon_state, ABOVE_OPEN_TURF_LAYER, track_source.dir) //Recreate image with correct dir.
-	deletion_timer = addtimer(CALLBACK(src, PROC_REF(track_expire)), 15 MINUTES, TIMER_STOPPABLE) //Tracks naturally expire after 15 minutes (although at that point their DC is pretty high anyways.)
+	deletion_timer = addtimer(CALLBACK(src, PROC_REF(track_expire)), 30 MINUTES, TIMER_STOPPABLE) //Tracks naturally expire after 30 minutes (although at that point their DC is pretty high anyways.)
 
 ///Adds a new person to the list of people who can see this track.
 /obj/effect/track/proc/add_knower(mob/living/tracker, competence = 1)
@@ -266,7 +275,7 @@
 		return //Guh?
 	if(!(movement_type & GROUND) || (movement_type & (FLOATING|FLYING))) //For some reason some mobs have both ground and flying at once.
 		return
-	var/probability = round(track_creation_prob(new_turf), 0.1) 
+	var/probability = round(track_creation_prob(new_turf), 0.1)
 	if(!probability)
 		return
 	if(!prob(probability))

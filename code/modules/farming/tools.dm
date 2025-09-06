@@ -220,7 +220,7 @@
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
 	if(user.used_intent.type == /datum/intent/till)
 		user.changeNext_move(CLICK_CD_MELEE)
-		if(istype(T, /turf/open/floor/rogue/grass))
+		if(istype(T, /turf/open/floor/rogue/grass) || istype(T, /turf/open/floor/rogue/grassyel) || istype(T, /turf/open/floor/rogue/grassred) || istype(T, /turf/open/floor/rogue/grasscold))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			if (do_after(user, 3 SECONDS, target = src))
 				apply_farming_fatigue(user, 10)
