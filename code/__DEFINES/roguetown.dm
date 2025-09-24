@@ -154,7 +154,7 @@
 	/datum/species/anthromorphbig,\
 	/datum/species/demihuman,\
 )
-#define ALL_CLERIC_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/yamais, /datum/patron/divine/hermeir, /datum/patron/divine/viiritri, /datum/patron/divine/onder, /datum/patron/divine/minhur, /datum/patron/divine/svaeryog, /datum/patron/divine/abyssia, /datum/patron/divine/jayx, /datum/patron/inhumen/levishth, /datum/patron/inhumen/nyrnhe, /datum/patron/inhumen/thief, /datum/patron/inhumen/sacrifice)
+#define ALL_CLERIC_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/yamais, /datum/patron/divine/hermeir, /datum/patron/divine/viiritri, /datum/patron/divine/onder, /datum/patron/divine/minhur, /datum/patron/divine/svaeryog, /datum/patron/divine/abyssia, /datum/patron/divine/jayx, /datum/patron/inhumen/levishth, /datum/patron/inhumen/nyrnhe, /datum/patron/inhumen/thief, /datum/patron/inhumen/sacrifice, /datum/patron/fae/lathrandyr, /datum/patron/fae/tashari, /datum/patron/fae/menrhue, /datum/patron/old_god)
 
 #define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/elysius, /datum/patron/divine/lune, /datum/patron/divine/sylvarn, /datum/patron/divine/hermeir, /datum/patron/divine/viiritri) // Currently unused.
 

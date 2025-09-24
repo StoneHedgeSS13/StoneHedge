@@ -12,7 +12,7 @@
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/revive
-	t4 = /obj/effect/proc_holder/spell/invoked/projectile/spitfire
+	t4 = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	confess_lines = list(
 		"Elysius is my Gilded Armor!",
 		"GREAT-WYRM BRINGS LAW!",
@@ -25,8 +25,10 @@
 	desc = "Lune, the Silver Dragon. Twin of Elysius, symbolized by the moon. She is Patron of wisdom."
 	worshippers = "Wizards, Scholars, Wisened Folk,"
 	mob_traits = list(TRAIT_NOCSNEAK, TRAIT_NIGHT_OWL)
-	t1 = /obj/effect/proc_holder/spell/invoked/blindness
-	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t1 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t2 = /obj/effect/proc_holder/spell/self/extinguish
+	t3 = /obj/effect/proc_holder/spell/invoked/conjuredreambeast
+	t4 = /obj/effect/proc_holder/spell/invoked/moonbeam
 	confess_lines = list(
 		"LUNE IS WISDOM!",
 		"LUNE'S PALE GLOWING EYES SEE ALL!",
@@ -55,9 +57,13 @@
 	desc = "The Beloved Daughter of the Sea, gifted primordial kin food and water. She is said to be both cruel and calm, if her icey waters and wailing winds are heeded ahead of time. She is the warning and the Omen."
 	worshippers = "Men and Women of the Sea, Primitive Aquatics, Merfolk, Druids, Creatures of the Deep."
 	mob_traits = list (TRAIT_WATERBREATHING, TRAIT_ABYSSOR_SWIM)
+	t1 = /obj/effect/proc_holder/spell/invoked/divine_angling
+	t2 = /obj/effect/proc_holder/spell/invoked/seasickness
+	t3 = /obj/effect/proc_holder/spell/invoked/riptide
+	t4 = /obj/effect/proc_holder/spell/invoked/abyssalstrength
 	confess_lines = list(
 		"ABYSSIA COMMANDS THE WAVES!",
-		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
+		"THE OCEAN'S FURY IS ABYSSIA'S WILL!",
 		"I AM DRAWN BY THE PULL OF HER TIDES!",
 	)
 
@@ -66,6 +72,10 @@
 	domain = "War, Dance, Tactic, Rejoice, Celebration."
 	desc = "The dervish of Blades, Minhur teaches that battle is like a dance; the duality between life/death and revelry. Minhur's followers prefer dexterity and tactful dancelike movements; encouraging mortals to act with decorum, etiquette and poise whenever possible."
 	worshippers = "Warriors, Sellswords & Fencers."
+	t1 = /obj/effect/proc_holder/spell/invoked/smite
+	t2 = /obj/effect/proc_holder/spell/invoked/haste
+	t3 = /obj/effect/proc_holder/spell/invoked/divine_weapon
+	t4 = /obj/effect/proc_holder/spell/invoked/revive/minhur
 	mob_traits = list (TRAIT_CIVILIZEDBARBARIAN, TRAIT_DEATHBYSNOOSNOO) // "duality between life/death and revelry"
 	confess_lines = list(
 		"MINHUR'S WHIRLWIND!",
@@ -95,6 +105,7 @@
 	desc = "Onder is said to be inspiration itself. The god of Stories, Music and Memory. Onder is worshipped by bards and rogues alike. Onder’s story of being a changeling bard who walked amidst many cultures, gathering their tales and impressive many beings alike made them the god of charisma and luck."
 	worshippers = "Bards, Gamblers, Poets, Musicians, Diplomats and Artists."
 	mob_traits = list(TRAIT_BOG_TREKKING)
+	// To-Do. Something with song and dance?
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
 	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
 	confess_lines = list(
@@ -168,10 +179,10 @@
 	desc = "Jayx is known as the Herald of change, often depicted as a two-tailed comet or Phoenix. The Divine Phoenix represents the immortal cycle of growth and advancement, often a god of both magic and art; they are known more than anything as the passage of time itself and bright blue magical fire. (Mana)"
 	worshippers = "Mages, Alchemists, Soul-Searchers, Fateweavers, Supernatural Creatures, Soothsayers."
 	mob_traits = list(TRAIT_USEMAGIC)
-	t1 = /obj/effect/proc_holder/spell/invoked/forcewall_weak
-	t2 = /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
-	t3 = /obj/effect/proc_holder/spell/invoked/invisibility
-	t4 = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
+	t1 = /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
+	t2 = /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e/empowered
+	t3 = /obj/effect/proc_holder/spell/invoked/forcewall_weak
+	t4 = /obj/effect/proc_holder/spell/invoked/arcyne_storm
 	confess_lines = list(
 		"THE PHOENIX BURNS BRIGHT AND PURE!",
 		"IN HIS FLAMES I AM REBORN!",

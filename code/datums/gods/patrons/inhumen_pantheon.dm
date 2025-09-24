@@ -2,6 +2,7 @@
 	name = null
 	associated_faith = /datum/faith/inhumen
 	undead_hater = FALSE
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
 	confess_lines = list(
 		"GRRRRR!",
 		"GRRRRRRRRRRRR!!",
@@ -14,7 +15,6 @@
 	desc = "Discovered long ago, Levisth gives power to the weak who do his bidding,elevating them in time. There are many tales of those who serve the greatsnake, all which eventuate with tales of how it yearns to gain power over all things, jealous of it's 'rivals' the other gods."
 	worshippers = "Power-Hungry, Powerful, Charismatic, Liars."
 	mob_traits = list(TRAIT_NASTY_EATER, TRAIT_SNEK, TRAIT_ZOMBIE_IMMUNE) //had to add zombie immune so as not to double dip when making the infection immune
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
 	t1 = /obj/effect/proc_holder/spell/invoked/eldritchhealing/any
 	t2 = /obj/effect/proc_holder/spell/invoked/projectile/lifesteal
 	t3 = /obj/effect/proc_holder/spell/invoked/strengthen_undead
@@ -31,7 +31,6 @@
 	desc = "Nyrnhe, Goddess of many dark elves - mistress of pain, suffering and venoms. Nyrnhe revels in pain-giving, pain-receiving and suffering. Contrary to belief; to kill is against her creed in comparison to the struggle and entropy."
 	worshippers = "Assasins, Alchemists, Torturers, Dark Elves, Cruel folk, Masochists."
 	mob_traits = list(TRAIT_USEMAGIC)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
 	t1 = /obj/effect/proc_holder/spell/invoked/eldritchhealing/any
 	t2 = /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e
 	t3 = /obj/effect/proc_holder/spell/targeted/lightninglure5e
@@ -48,7 +47,6 @@
 	desc = "Man turned God, the 'Giver' 'The Thief' stole fire from 'Elysius' and gave it to primitive Mortal Kin huddled in darkness and demands the riches flame creates in sacrifice."
 	worshippers = "Free-Men, Outlaws and Frontiersmen"
 	mob_traits = list(TRAIT_COMMIE, TRAIT_GOODRUNNER)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
 	t1 = /obj/effect/proc_holder/spell/invoked/Joy_takes_flight
 	t2 = /obj/effect/proc_holder/spell/invoked/Laughing_god
 	t3 = /obj/effect/proc_holder/spell/invoked/Smokebomb
@@ -65,7 +63,8 @@
 	desc = "The Sacrifice wishes to take from you, and for you to give it willingly. You will never get it back if you go too far. But you will always have the sacrifice."
 	worshippers = "Nihilists, Gamblers, Warlocks, and Villains."
 	mob_traits = list(TRAIT_CRACKHEAD)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal_inhumen
+	t1 = /obj/effect/proc_holder/spell/invoked/projectile/fetch // Hehe, yoink
+	// To-do the rest
 	confess_lines = list(
 		"I do not yearn for anything!!",
 		"I CANNOT LOSE WHAT I COULD NEVER HOPE TO HOLD!",
