@@ -638,20 +638,6 @@
 		var/mob/living/carbon/human/H = user
 		if(H.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			message_param = "slaps %t's ass!"
-
-			// Handle spurring if target is a ponygirl being ridden
-			if(isliving(H.buckled) && istype(H.buckled, /mob/living/carbon/human))
-				var/mob/living/carbon/human/mount = H.buckled
-				if(HAS_TRAIT(mount, TRAIT_PONYGIRL_RIDEABLE))
-					mount.pony_sprint = min(mount.pony_sprint + 5, mount.pony_max_sprint)
-					mount.change_stat("speed", mount.pony_sprint * 0.1)
-					mount.spurred = TRUE
-					REMOVE_TRAIT(mount, TRAIT_NOROGSTAM, TRAIT_GENERIC)
-					mount.visible_message(span_notice("[H] spurs [mount], increasing their pace!"), \
-									 span_notice("The sharp sting drives you to move faster!"), \
-									 span_notice("You hear a sharp slap!"))
-					mount.pony_sprint_cooldown = world.timeofday + 50
-
 	return ..()
 
 /mob/living/carbon/human/verb/emote_slap()
