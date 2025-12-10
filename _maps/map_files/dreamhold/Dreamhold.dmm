@@ -72,7 +72,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "aaQ" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/dirt,
@@ -707,7 +707,7 @@
 "asD" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/river,
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "asG" = (
 /obj/structure/flora/roguetree/happyrandom{
 	desc = "An old, beloved tree that even elves could love.";
@@ -1877,15 +1877,10 @@
 	name = "Schoolgrounds"
 	})
 "aRy" = (
-/obj/structure/curtain{
-	icon_state = "bounty-closed";
-	color = "#1c3c7f"
-	},
-/turf/open/floor/rogue/blocks/stonered/tiny,
-/area/rogue/indoors/town/garrison{
-	first_time_text = "Adventurers Guild";
-	name = "Adventurers Guild"
-	})
+/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet)
 "aRQ" = (
 /obj/structure/spacevine,
 /obj/structure/spacevine,
@@ -2005,7 +2000,7 @@
 "aTe" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/roguegrass,
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
@@ -2571,7 +2566,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
@@ -4345,14 +4340,13 @@
 	},
 /area/rogue/indoors/cave)
 "bZD" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/newbranch{
-	dir = 8
+/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa1"
 	},
-/turf/open/floor/rogue/grassyel,
-/area/rogue/indoors/town/tavern{
-	first_time_text = "The Sylver Dragonne..";
-	name = "Silver Dragon"
+/turf/open/floor/rogue/grasscold,
+/area/rogue/outdoors/woods{
+	first_time_text = "The Twilight Woods"
 	})
 "cak" = (
 /obj/machinery/light/rogue/torchholder/l{
@@ -4770,10 +4764,12 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
 "cjU" = (
-/obj/structure/flora/roguegrass/bush/wall{
-	icon_state = "rosehedge8"
-	},
-/area/rogue/outdoors/caves)
+/obj/machinery/light/rogue/hearth,
+/obj/item/reagent_containers/glass/bucket/pot,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/outdoors/woods/grove{
+	first_time_text = "The Great Tree"
+	})
 "cjY" = (
 /obj/structure/table/church{
 	icon_state = "churchtable_end"
@@ -5590,7 +5586,7 @@
 /turf/open/water/river{
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "cCV" = (
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/mountains)
@@ -6478,7 +6474,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "cYI" = (
 /obj/effect/wisp,
 /turf/open/floor/rogue/naturalstone,
@@ -6694,14 +6690,17 @@
 	name = "Schoolgrounds"
 	})
 "ddT" = (
-/obj/structure/bearpelt{
-	icon_state = "brownbear"
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/tavern{
-	first_time_text = "The Sylver Dragonne..";
-	name = "Silver Dragon"
-	})
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "del" = (
 /obj/structure/rack/rogue,
 /obj/item/natural/bundle/cloth,
@@ -7397,7 +7396,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "duH" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -9505,12 +9504,16 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/shelter/town)
 "eoc" = (
-/obj/item/reagent_containers/food/snacks/crow,
 /obj/effect/decal/dirt/grass{
 	dir = 4
 	},
 /obj/effect/decal/stone/mossy{
 	pixel_y = -8
+	},
+/obj/structure/mineral_door/wood/fancywood{
+	locked = 1;
+	lockid = "grove";
+	name = "Great Tree"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/woods/grove{
@@ -11146,7 +11149,7 @@
 /obj/item/natural/rock,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "eZj" = (
 /obj/structure/stairs{
 	dir = 1
@@ -13065,6 +13068,7 @@
 /obj/structure/flora/roguegrass/bush/wall{
 	icon_state = "bushwall3"
 	},
+/turf/open/floor/grass,
 /area/rogue/outdoors/caves)
 "fPH" = (
 /obj/structure/flora/grass/jungle/b,
@@ -14678,7 +14682,8 @@
 	})
 "gDs" = (
 /obj/structure/fluff/statue/dragonl{
-	icon_state = "4"
+	icon_state = "4";
+	desc = "An ornamental stone statue of a dragon. You are fairly certain this one is a Golden dragon; Like Elysius."
 	},
 /turf/open/floor/rogue/blocks/stone/stonepattern3,
 /area/rogue/outdoors/exposed/church{
@@ -15648,7 +15653,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "hex" = (
 /obj/effect/mist,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -17598,7 +17603,8 @@
 "hWO" = (
 /obj/structure/flora/roguetree/wise{
 	pixel_x = -11;
-	pixel_y = 19
+	pixel_y = 19;
+	desc = "A mystical tree. Said to contain the spirit of a dryad; a form of guardian-spirit that watches over the woodland realms.."
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -18486,7 +18492,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/flora/newbranch/leafless,
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "tablewood1"
@@ -18634,7 +18639,7 @@
 /turf/open/water/river{
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "itE" = (
 /turf/open/water/river{
 	dir = 1;
@@ -18978,9 +18983,17 @@
 	first_time_text = "The Twilight Woods"
 	})
 "iBh" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/under/cavewet)
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "iBl" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
@@ -18993,9 +19006,6 @@
 /area/rogue/outdoors/caves)
 "iBB" = (
 /obj/structure/fluff/railing/border,
-/obj/structure/flora/newbranch{
-	dir = 1
-	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
 	first_time_text = "The Sylver Dragonne..";
@@ -19438,10 +19448,11 @@
 	first_time_text = "Stonehedge"
 	})
 "iKq" = (
-/obj/structure/flora/roguegrass/bush/wall{
-	icon_state = "rosehedge6"
+/obj/structure/stairs{
+	dir = 4
 	},
-/area/rogue/outdoors/caves)
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "iKA" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -19526,7 +19537,7 @@
 /obj/structure/flora/roguetree/burnt,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "iNQ" = (
 /obj/structure/glowshroom,
 /turf/open/water/river{
@@ -19536,7 +19547,11 @@
 "iNR" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/fluff/statue/dragonl{
-	icon_state = "4"
+	icon_state = "4";
+	desc = "An ornamental stone statue of a dragon. You are fairly certain this one is a Golden dragon; Like Elysius."
+	},
+/obj/structure/fluff/psycross/copper{
+	name = "Elysian Effigy"
 	},
 /turf/open/floor/grass,
 /area/rogue/indoors/town/church/chapel{
@@ -19999,7 +20014,11 @@
 /area/rogue/under/cavewet)
 "iZI" = (
 /obj/effect/wisp/prestidigitation,
-/turf/open/water/cleanshallow,
+/obj/structure/flora/roguetree/wise{
+	pixel_x = -25;
+	pixel_y = 33
+	},
+/turf/open/floor/grass,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
 	})
@@ -21825,7 +21844,7 @@
 "jOg" = (
 /obj/structure/fluff/psycross,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "jOm" = (
 /obj/structure/roguewindow/academy,
 /turf/open/floor/rogue/hexstone,
@@ -22045,10 +22064,11 @@
 	first_time_text = "The Deepwoods"
 	})
 "jTP" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/open/water/river,
-/area/rogue/outdoors/caves)
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig,
+/area/rogue/outdoors/river)
 "jTU" = (
 /obj/structure/bars/steel,
 /turf/open/water/bath,
@@ -22303,7 +22323,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/outdoors/river)
 "jZg" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -22485,7 +22505,6 @@
 /obj/structure/grove_speaker{
 	pixel_x = 16
 	},
-/mob/living/simple_animal/pet/fox/Renault,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
@@ -24337,7 +24356,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/outdoors/river)
 "kRw" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -24953,7 +24972,7 @@
 "lgO" = (
 /obj/structure/curtain{
 	icon_state = "bounty-closed";
-	color = "#661e42"
+	color = "#264d29"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern{
@@ -25514,9 +25533,7 @@
 	})
 "lsh" = (
 /obj/item/reagent_containers/food/snacks/crow,
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
 	})
@@ -26139,7 +26156,7 @@
 	},
 /obj/structure/curtain{
 	icon_state = "bounty-closed";
-	color = "#661e42"
+	color = "#264d29"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/bath)
@@ -26801,15 +26818,11 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
 "maT" = (
-/obj/effect/decal/dirt/grass{
-	dir = 1
+/obj/structure/flora/roguetree/stump/log,
+/turf/open/water/river{
+	icon_state = "rockwd"
 	},
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
-/area/rogue/outdoors/woods/grove{
-	first_time_text = "The Great Tree"
-	})
+/area/rogue/under/cavewet)
 "mba" = (
 /obj/structure/closet/crate/chest/dungeon/medicine,
 /turf/open/floor/rogue/hexstone,
@@ -27266,7 +27279,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
@@ -27309,7 +27322,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "mmN" = (
 /obj/structure/flora/newtree,
 /turf/open/water/river{
@@ -27581,9 +27594,6 @@
 "mtb" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
-	},
-/obj/structure/flora/newbranch{
-	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern{
@@ -28617,7 +28627,7 @@
 "mOc" = (
 /obj/item/flashlight/flare/torch/metal,
 /obj/machinery/light/rogue/campfire/densefire,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet)
 "mOu" = (
 /obj/effect/decal/border/ruinedwood{
@@ -29205,7 +29215,7 @@
 /obj/structure/flora/rogueshroom2{
 	icon_state = "shroom3"
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/woods{
 	first_time_text = "The Twilight Woods"
 	})
@@ -29916,7 +29926,6 @@
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguetree/wise,
 /obj/structure/fluff/psycross{
 	desc = "A curious depiction of the fairy king is here. His gnarled ramlike horns and face look up to the godrays that hit this statue amidst the tree's of the grove.";
 	icon_state = "bstatue";
@@ -34111,7 +34120,7 @@
 	})
 "phX" = (
 /obj/structure/ladder,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
 "phY" = (
 /obj/structure/flora/grass/jungle{
@@ -34325,10 +34334,13 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "plW" = (
-/obj/structure/spacevine/dendor,
-/turf/open/floor/rogue/blocks/stone/stonepattern2,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+/obj/structure/bearpelt{
+	icon_state = "brownbear"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern{
+	first_time_text = "The Sylver Dragonne..";
+	name = "Silver Dragon"
 	})
 "pmb" = (
 /obj/structure/mineral_door/wood/fancywood,
@@ -35274,7 +35286,6 @@
 /obj/structure/chair/wood{
 	dir = 1
 	},
-/mob/living/simple_animal/parrot,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "pHO" = (
@@ -35578,7 +35589,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "pPc" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -35761,9 +35772,12 @@
 	first_time_text = "The Twilight Woods"
 	})
 "pSb" = (
-/obj/effect/wisp,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/caves)
+/obj/structure/flora/roguetree/burnt,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet)
 "pSf" = (
 /obj/structure/flora/rogueshroom/happyrandom{
 	icon_state = "mush2"
@@ -37010,10 +37024,9 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/caves)
 "qst" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/open/water/river,
-/area/rogue/outdoors/caves)
+/obj/effect/mist,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet)
 "qsu" = (
 /obj/effect/landmark/start/grovedruid,
 /obj/effect/decal/stone/mossy{
@@ -37255,7 +37268,7 @@
 /obj/structure/well/fountain{
 	pixel_w = 3
 	},
-/turf/open/water/cleanshallow,
+/turf/open/floor/grass,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
 	})
@@ -37455,14 +37468,18 @@
 	first_time_text = "Stonehedge"
 	})
 "qCC" = (
-/obj/structure/flora/roguetree/happyrandom{
-	desc = "An old, beloved tree that even elves could love.";
-	icon_state = "t4"
-	},
 /obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/jungle{
+	icon_state = "grassa1"
+	},
+/obj/structure/flora/roguetree/wise{
+	pixel_x = -7;
+	pixel_y = 15;
+	desc = "A mystical tree. Said to contain the spirit of a dryad; a form of guardian-spirit that watches over the woodland realms.."
+	},
 /turf/open/floor/rogue/grass,
-/area/rogue/outdoors{
-	first_time_text = "Stonehedge"
+/area/rogue/outdoors/woods{
+	first_time_text = "The Twilight Woods"
 	})
 "qCD" = (
 /obj/structure/roguemachine/scomm,
@@ -38266,9 +38283,7 @@
 /obj/effect/decal/dirt/grass{
 	dir = 4
 	},
-/obj/machinery/light/rogue/hearth,
-/obj/item/reagent_containers/glass/bucket/pot,
-/turf/open/floor/rogue/greenstone,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
 	})
@@ -38685,7 +38700,8 @@
 "rdi" = (
 /obj/structure/flora/roguetree/wise{
 	pixel_x = -7;
-	pixel_y = 15
+	pixel_y = 15;
+	desc = "A mystical tree. Said to contain the spirit of a dryad; a form of guardian-spirit that watches over the woodland realms.."
 	},
 /turf/open/water/bath,
 /area/rogue/outdoors/exposed/bath)
@@ -41223,13 +41239,10 @@
 	first_time_text = "The Twilight Woods"
 	})
 "sjy" = (
-/obj/structure/fluff/railing/stonehedge{
-	dir = 4
-	},
-/turf/open/lava,
-/area/rogue/outdoors/exposed/church{
-	first_time_text = "Shrine of Elysius";
-	name = "Shrine of Elysius"
+/obj/item/seeds/random,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods/grove{
+	first_time_text = "The Great Tree"
 	})
 "sjF" = (
 /turf/open/floor/rogue/blocks/stone/stonepattern3{
@@ -41572,7 +41585,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "ssd" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grassred,
@@ -41643,12 +41656,9 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "stu" = (
-/obj/structure/flora/roguegrass/water,
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/outdoors/caves)
+/obj/structure/flora/roguegrass/thorn_bush,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet)
 "stO" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -42394,6 +42404,7 @@
 /obj/structure/flora/roguegrass/bush/wall{
 	icon_state = "rosehedge7"
 	},
+/turf/open/floor/grass,
 /area/rogue/outdoors/caves)
 "sNJ" = (
 /obj/structure/fluff/walldeco/rpainting/forest,
@@ -47487,15 +47498,14 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/town/roofs)
 "uYJ" = (
-/obj/structure/mineral_door/wood/fancywood{
-	locked = 1;
-	lockid = "grove";
-	name = "Great Tree"
+/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/glowshroom{
+	icon_state = "glowshroom2"
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/woods/grove{
-	first_time_text = "The Great Tree"
-	})
+/turf/open/water/river{
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet)
 "uYM" = (
 /obj/structure/closet/dirthole/closed/loot,
 /turf/open/floor/rogue/dirt/road,
@@ -49393,13 +49403,14 @@
 	name = "Adventurers Guild"
 	})
 "vTo" = (
-/obj/structure/fluff/railing/stonehedge{
-	dir = 8
+/obj/structure/flora/roguetree/happyrandom{
+	desc = "An old, beloved tree that even elves could love.";
+	icon_state = "t4"
 	},
-/turf/open/lava,
-/area/rogue/outdoors/exposed/church{
-	first_time_text = "Shrine of Elysius";
-	name = "Shrine of Elysius"
+/turf/closed/wall/mineral/rogue/stone/moss,
+/area/rogue/indoors/town/tavern{
+	first_time_text = "The Sylver Dragonne..";
+	name = "Silver Dragon"
 	})
 "vTq" = (
 /obj/effect/mist,
@@ -50841,9 +50852,7 @@
 	})
 "wFi" = (
 /obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt/nrich{
-	icon_state = "road"
-	},
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
 	})
@@ -50987,9 +50996,6 @@
 	dir = 4
 	},
 /obj/structure/flora/roguegrass,
-/obj/structure/flora/roguetree/wise{
-	pixel_x = -10
-	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/magiciantower{
 	first_time_text = "Ravenloft Academy";
@@ -51345,14 +51351,13 @@
 	first_time_text = "The Twilight Woods"
 	})
 "wTq" = (
-/obj/structure/flora/roguetree/wise{
-	pixel_x = -25
+/obj/structure/glowshroom{
+	icon_state = "glowshroom2"
 	},
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/woods/grove{
-	first_time_text = "The Great Tree"
-	})
+/turf/open/water/river{
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet)
 "wTz" = (
 /obj/structure/closet/crate/chest/dungeon/mimic,
 /turf/open/floor/rogue/cobblerock,
@@ -52259,6 +52264,8 @@
 	icon_state = "tablewood1"
 	},
 /obj/effect/wisp/prestidigitation,
+/obj/item/reagent_containers/food/snacks/crow,
+/obj/item/seeds/random,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
@@ -52336,7 +52343,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "xpr" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -53160,13 +53167,17 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet)
 "xIO" = (
-/obj/item/seeds/random,
 /obj/effect/decal/stone/mossy{
 	dir = 4;
 	pixel_y = 17
 	},
 /obj/effect/decal/stone/mossy{
 	dir = 4
+	},
+/obj/structure/mineral_door/wood/fancywood{
+	locked = 1;
+	lockid = "grove";
+	name = "Great Tree"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods/grove{
@@ -53574,7 +53585,9 @@
 	name = "Silver Dragon"
 	})
 "xQZ" = (
-/obj/structure/flora/roguetree/wise,
+/obj/structure/flora/roguetree/wise{
+	desc = "A mystical tree. Said to contain the spirit of a dryad; a form of guardian-spirit that watches over the woodland realms.."
+	},
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/woods/grove{
 	first_time_text = "The Great Tree"
@@ -53638,7 +53651,8 @@
 /area/rogue/outdoors/caves)
 "xSx" = (
 /obj/structure/fluff/statue/dragonl{
-	icon_state = "4"
+	icon_state = "4";
+	desc = "An ornamental stone statue of a dragon. You are fairly certain this one is a Golden dragon; Like Elysius."
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/exposed/church{
@@ -54405,7 +54419,7 @@
 	dir = 8;
 	icon_state = "rockwd"
 	},
-/area/rogue/outdoors/caves)
+/area/rogue/under/cavewet)
 "yjx" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/chair/wood/rogue{
@@ -99314,7 +99328,7 @@ cgq
 lyF
 lyF
 oEO
-ifi
+bIN
 oEO
 cgq
 cgq
@@ -99516,7 +99530,7 @@ cgq
 cgq
 cgq
 ifi
-ifi
+bIN
 ifi
 cgq
 cgq
@@ -99717,13 +99731,13 @@ cgq
 cgq
 oEO
 ifi
-ifi
+bIN
 wiZ
 ifi
 ifi
 cgq
 ifi
-ifi
+bIN
 wiZ
 wiZ
 cgq
@@ -99909,8 +99923,8 @@ cgq
 cgq
 cgq
 cgq
-ifi
-ifi
+bIN
+bIN
 cgq
 ifi
 oEO
@@ -99923,8 +99937,8 @@ oEO
 wiZ
 wiZ
 cgq
-ifi
-ifi
+bIN
+bIN
 wiZ
 wiZ
 wiZ
@@ -100114,7 +100128,7 @@ ifi
 wiZ
 wiZ
 wiZ
-ifi
+bIN
 ifi
 oEO
 oEO
@@ -100317,7 +100331,7 @@ wiZ
 wiZ
 wiZ
 wiZ
-ifi
+bIN
 cgq
 cgq
 oEO
@@ -100333,7 +100347,7 @@ wiZ
 wiZ
 wiZ
 wiZ
-ifi
+bIN
 ifi
 cgq
 lyF
@@ -100519,7 +100533,7 @@ wiZ
 wiZ
 wiZ
 wiZ
-ifi
+bIN
 ifi
 cgq
 cgq
@@ -100528,14 +100542,14 @@ ifi
 bIN
 wiZ
 wiZ
+oEO
 wiZ
 wiZ
 wiZ
 wiZ
 wiZ
 wiZ
-wiZ
-ifi
+bIN
 cgq
 lyF
 rxm
@@ -100716,7 +100730,7 @@ nVt
 cgq
 oEO
 ifi
-ifi
+bIN
 wiZ
 wiZ
 wiZ
@@ -100730,9 +100744,9 @@ ifi
 bIN
 wiZ
 wiZ
-wiZ
-wiZ
-wiZ
+oEO
+oEO
+oEO
 wiZ
 wiZ
 wiZ
@@ -100918,7 +100932,7 @@ cgq
 cgq
 oEO
 cgq
-ifi
+bIN
 wiZ
 wiZ
 wiZ
@@ -100933,8 +100947,8 @@ bIN
 wiZ
 wiZ
 wiZ
-wiZ
-wiZ
+oEO
+oEO
 wiZ
 wiZ
 wiZ
@@ -101120,22 +101134,22 @@ cgq
 cgq
 oEO
 ifi
-ifi
-ifi
+bIN
+bIN
 wiZ
 wiZ
 wiZ
 wiZ
 cgq
 ifi
-ifi
+oEO
 ifi
 oEO
 ifi
 cgq
 wiZ
 wiZ
-wiZ
+oEO
 wiZ
 wiZ
 wiZ
@@ -101328,12 +101342,12 @@ cgq
 wiZ
 wiZ
 ifi
-ifi
-ifi
+oEO
+oEO
 ifi
 ifi
 vYC
-ifi
+bIN
 vYC
 cgq
 wiZ
@@ -101533,10 +101547,10 @@ bIN
 bIN
 bIN
 ifi
-ifi
-ifi
+bIN
+bIN
 phX
-ifi
+bIN
 ifi
 vYC
 bIN
@@ -101737,11 +101751,11 @@ ifi
 ifi
 ifi
 vYC
-ifi
+bIN
 vYC
 ifi
-ifi
-ifi
+oEO
+oEO
 cgq
 ifi
 ifi
@@ -101930,7 +101944,7 @@ cgq
 ifi
 ifi
 ifi
-ifi
+bIN
 wiZ
 wiZ
 wiZ
@@ -101938,8 +101952,8 @@ wiZ
 oEO
 ifi
 ifi
-ifi
-ifi
+oEO
+bIN
 cgq
 ifi
 oEO
@@ -102131,7 +102145,7 @@ cgq
 cgq
 ifi
 ifi
-ifi
+bIN
 wiZ
 wiZ
 wiZ
@@ -102140,7 +102154,7 @@ wiZ
 cgq
 oEO
 hBk
-hBk
+kdz
 aYj
 fDV
 fDV
@@ -102343,8 +102357,8 @@ qXK
 ogq
 kdz
 hBk
-aYj
-aYj
+hBk
+jkv
 fDV
 fDV
 kdz
@@ -102545,8 +102559,8 @@ lyF
 cYV
 flO
 dEr
-aYj
-aYj
+dEr
+hBk
 fDV
 fDV
 fDV
@@ -102736,7 +102750,7 @@ cgq
 cgq
 oEO
 ifi
-ifi
+bIN
 wiZ
 wiZ
 wiZ
@@ -102747,9 +102761,9 @@ ccD
 flO
 dEr
 dEr
-aYj
-aYj
-aYj
+dEr
+hBk
+jkv
 fDV
 fDV
 fDV
@@ -102892,7 +102906,7 @@ nVt
 nVt
 rxm
 nVt
-iKq
+tPr
 nis
 iFN
 nvc
@@ -102939,8 +102953,8 @@ cgq
 oEO
 cgq
 ifi
-ifi
-ifi
+bIN
+bIN
 ifi
 lyF
 iYu
@@ -102949,10 +102963,10 @@ vyO
 dEr
 dEr
 dEr
-aYj
-aYj
-aYj
-aYj
+dEr
+dEr
+hBk
+jkv
 fDV
 fDV
 cgq
@@ -103094,7 +103108,7 @@ rxm
 rxm
 rxm
 nVt
-cjU
+cnb
 tmk
 nvc
 iCx
@@ -103151,10 +103165,10 @@ dEr
 dEr
 dEr
 dEr
-aYj
-aYj
-aYj
-aYj
+dEr
+dEr
+hBk
+jkv
 cYV
 fDV
 cgq
@@ -103296,7 +103310,7 @@ rxm
 rxm
 rxm
 nVt
-nVt
+dRD
 htr
 lbP
 jlm
@@ -103353,9 +103367,9 @@ cAm
 dEr
 dEr
 dEr
-aYj
-aYj
-aYj
+dEr
+dEr
+jkv
 lAx
 cYV
 cYV
@@ -103555,9 +103569,9 @@ dEr
 flO
 dEr
 dEr
-aYj
-aYj
-iBh
+dEr
+hBk
+maN
 jkv
 jkv
 cYV
@@ -103757,8 +103771,8 @@ flO
 cYV
 flO
 dEr
-aYj
-aYj
+dEr
+hBk
 mOc
 maN
 lqd
@@ -103959,9 +103973,9 @@ cYV
 cYV
 dEr
 dEr
-aYj
-aYj
-iBh
+hBk
+jkv
+maN
 jkv
 jkv
 cYV
@@ -104161,8 +104175,8 @@ dEr
 dEr
 dEr
 pZV
-aYj
-aYj
+jkv
+jkv
 jkv
 jkv
 lAx
@@ -104363,8 +104377,8 @@ dEr
 pZV
 pZV
 pZV
-aYj
-aYj
+jkv
+jkv
 jkv
 iYu
 iYu
@@ -104565,7 +104579,7 @@ pZV
 pZV
 cYV
 cYV
-jkv
+hBk
 jkv
 jkv
 pla
@@ -104766,7 +104780,7 @@ pZV
 hMq
 cYV
 cYV
-jkv
+hBk
 jkv
 jkv
 jkv
@@ -104967,7 +104981,7 @@ pZV
 hMq
 pZV
 cYV
-jkv
+hBk
 jkv
 jkv
 lqd
@@ -109186,7 +109200,7 @@ nVt
 ifi
 shG
 oYX
-seI
+qst
 iYu
 jkv
 jkv
@@ -109388,7 +109402,7 @@ riF
 shG
 lyF
 seI
-seI
+qst
 jkv
 jkv
 jkv
@@ -109589,8 +109603,8 @@ rOe
 shG
 rxm
 lyF
-lyF
-mDX
+iYu
+jkv
 jkv
 jkv
 vyO
@@ -109791,8 +109805,8 @@ jlJ
 rxm
 rxm
 lyF
-mUW
-mDX
+lAx
+jkv
 lAx
 vyO
 hMq
@@ -109993,8 +110007,8 @@ rxm
 rxm
 lyF
 lyF
-mDX
-mDX
+jkv
+jkv
 gNW
 vyO
 hMq
@@ -110195,8 +110209,8 @@ nVt
 rxm
 lyF
 lyF
-wjR
-wjR
+vyO
+vyO
 vyO
 hMq
 hMq
@@ -110396,7 +110410,7 @@ ifi
 nVt
 rxm
 lyF
-tiC
+uYJ
 ezW
 hMq
 hMq
@@ -110598,7 +110612,7 @@ nVt
 nVt
 lyF
 lyF
-wjR
+vyO
 pZV
 hMq
 hMq
@@ -110800,7 +110814,7 @@ nVt
 lyF
 lyF
 lyF
-ccD
+cYV
 hMq
 vyO
 vyO
@@ -111001,8 +111015,8 @@ rxm
 rxm
 lyF
 lyF
-ccD
-ccD
+cYV
+cYV
 hMq
 vyO
 iYu
@@ -111202,9 +111216,9 @@ nVt
 rxm
 lyF
 lyF
-dUA
+maT
 itC
-ehz
+pZV
 hMq
 gNW
 iYu
@@ -111404,9 +111418,9 @@ rxm
 rxm
 lyF
 lyF
-kGs
-ehz
-pay
+wTq
+pZV
+hMq
 hMq
 iYu
 iYu
@@ -111605,10 +111619,10 @@ nVt
 rxm
 rxm
 lyF
-wjR
-ehz
-pay
-stu
+vyO
+pZV
+hMq
+wsP
 hMq
 iYu
 iYu
@@ -111807,9 +111821,9 @@ ifi
 rxm
 rxm
 lyF
-wjR
-pay
-pay
+vyO
+hMq
+hMq
 aaN
 iYu
 iYu
@@ -112008,11 +112022,11 @@ ifi
 ifi
 rxm
 lyF
-wjR
-pay
-pay
-pay
-pay
+vyO
+hMq
+hMq
+hMq
+hMq
 iYu
 iYu
 nhM
@@ -112210,11 +112224,11 @@ rxm
 rxm
 lyF
 lyF
-wjR
-pay
-pay
-stu
-lyF
+vyO
+hMq
+hMq
+wsP
+iYu
 iYu
 iYu
 nhM
@@ -112412,11 +112426,11 @@ lyF
 lyF
 lyF
 asD
-pay
-ehz
-pay
+hMq
+pZV
+hMq
 pOW
-lyF
+iYu
 nhM
 nhM
 nhM
@@ -112612,13 +112626,13 @@ oYX
 jlJ
 lyF
 lyF
-wjR
-ehz
-ehz
-ehz
-pay
-lyF
-lyF
+vyO
+pZV
+pZV
+pZV
+hMq
+iYu
+iYu
 nhM
 nhM
 nhM
@@ -112814,13 +112828,13 @@ rxm
 rxm
 lyF
 lyF
-wjR
-pay
+vyO
+hMq
 srU
-pay
-lyF
-lyF
-lyF
+hMq
+iYu
+iYu
+iYu
 nhM
 nhM
 nhM
@@ -113016,11 +113030,11 @@ rxm
 lyF
 lyF
 lyF
-jTP
-pay
-lyF
-lyF
-lyF
+tFb
+hMq
+iYu
+iYu
+iYu
 nhM
 nhM
 nhM
@@ -113217,11 +113231,11 @@ nVt
 lyF
 lyF
 lyF
-wjR
-ehz
-pay
-lyF
-rxm
+vyO
+pZV
+hMq
+iYu
+nhM
 nhM
 nhM
 nhM
@@ -113418,12 +113432,12 @@ rxm
 lyF
 lyF
 lyF
-jTP
-ehz
-pay
+tFb
+pZV
+hMq
 pOW
-lyF
-rxm
+iYu
+nhM
 nhM
 nhM
 nhM
@@ -113620,12 +113634,12 @@ lyF
 lyF
 lyF
 lyF
-wjR
-pay
-pay
+vyO
+hMq
+hMq
 cYC
-lyF
-lyF
+iYu
+iYu
 nhM
 nhM
 nhM
@@ -113821,13 +113835,13 @@ lyF
 lyF
 lyF
 lyF
-dUA
-ehz
-pay
-vMt
-lyF
-lyF
-lyF
+maT
+pZV
+hMq
+iUb
+iYu
+iYu
+iYu
 nhM
 nhM
 nhM
@@ -114021,12 +114035,12 @@ lyF
 lyF
 lyF
 lyF
-wjR
+vyO
 itC
 aaN
-pay
+hMq
 hdS
-lyF
+iYu
 lyF
 rxm
 nhM
@@ -114221,14 +114235,14 @@ rxm
 rxm
 lyF
 lyF
-wjR
-wjR
-wjR
-pay
-pay
+vyO
+vyO
+vyO
+hMq
+hMq
 srU
-lyF
-lyF
+iYu
+iYu
 lyF
 rxm
 nhM
@@ -114422,13 +114436,13 @@ prw
 lyF
 lyF
 lyF
-wjR
-ehz
-stu
+vyO
+pZV
+wsP
 pOW
-pay
-lyF
-lyF
+hMq
+iYu
+iYu
 lyF
 rxm
 rxm
@@ -114625,8 +114639,8 @@ lyF
 lyF
 wjR
 cCy
-pay
-pay
+hMq
+hMq
 lyF
 lyF
 lyF
@@ -114825,9 +114839,9 @@ iWX
 prw
 lyF
 asD
-ehz
-pay
-pay
+pZV
+hMq
+hMq
 lyF
 lyF
 rxm
@@ -115026,9 +115040,9 @@ vVw
 xbK
 prw
 lyF
-wjR
-pay
-pay
+vyO
+hMq
+hMq
 lyF
 lyF
 lyF
@@ -115229,9 +115243,9 @@ vVw
 prw
 lyF
 mmH
-pay
-stu
-mUW
+hMq
+wsP
+lAx
 lyF
 rxm
 rxm
@@ -115426,14 +115440,14 @@ tyR
 rbd
 lwG
 tyR
-pay
+vVw
+mtE
+lAx
+stu
+vyO
 mmH
-mUW
-fKg
-wjR
-mmH
-pay
-mDX
+hMq
+jkv
 lyF
 lyF
 rxm
@@ -115628,14 +115642,14 @@ lwG
 lwG
 lwG
 tyR
-mmH
-pay
+mtE
+vVw
 jOg
-mDX
-mDX
-qst
-pay
-ext
+jkv
+jkv
+sVR
+hMq
+rKm
 eZg
 lyF
 rxm
@@ -115830,15 +115844,15 @@ lwG
 lwG
 tyR
 tyR
-stu
+nlx
 jYV
-fKg
-pSb
-mDX
-jTP
-pay
-mDX
-mDX
+stu
+gKb
+jkv
+tFb
+hMq
+jkv
+jkv
 lyF
 rxm
 rxm
@@ -116032,15 +116046,15 @@ cTw
 lwG
 lyF
 lyF
-srU
+cqD
 kRt
-mDX
-iMy
-mDX
+jkv
+lte
+jkv
 srU
 duv
-mDX
-mDX
+jkv
+jkv
 lyF
 lyF
 rxm
@@ -116234,16 +116248,16 @@ lwG
 lyF
 lyF
 lyF
-stu
-vMt
+nlx
+xbK
 jOg
-mDX
+jkv
 xpl
-pay
+hMq
 mmH
-mDX
-mDX
-mDX
+jkv
+jkv
+jkv
 lyF
 rxm
 rxm
@@ -116435,17 +116449,17 @@ dyv
 gdR
 lyF
 lyF
-mUW
-pay
-pay
-mDX
+lAx
+vVw
+vVw
+jkv
 iNs
-pay
-pay
-pay
-vMt
-mDX
-mDX
+hMq
+hMq
+hMq
+iUb
+jkv
+jkv
 lyF
 rxm
 rxm
@@ -116637,17 +116651,17 @@ tyR
 jGV
 lyF
 lyF
-mDX
-pll
-pay
-mDX
-lyF
-stu
+jkv
+pSb
+hMq
+jkv
+iYu
+wsP
 mmH
-stu
-vMt
-mDX
-mUW
+wsP
+iUb
+jkv
+lAx
 lyF
 rxm
 rxm
@@ -116839,16 +116853,16 @@ lwG
 lyF
 lyF
 lyF
-mDX
-vMt
+jkv
+iUb
 mmH
-lyF
-lyF
-ccD
-pay
-pay
-stu
-mDX
+iYu
+iYu
+cYV
+hMq
+hMq
+wsP
+jkv
 lyF
 lyF
 rxm
@@ -117040,17 +117054,17 @@ lwG
 lwG
 lyF
 rxm
-mDX
-mUW
-vMt
+jkv
+lAx
+iUb
 duv
-rxm
-lyF
-ccD
+nhM
+iYu
+cYV
 mmH
-stu
-pay
-iMy
+wsP
+hMq
+lte
 lyF
 rxm
 rxm
@@ -117242,17 +117256,17 @@ jGV
 lwG
 rxm
 lyF
-mUW
-fKg
+lAx
+stu
 yjw
-pay
-lyF
-ccD
+hMq
+iYu
+cYV
 mmH
-pay
-pay
-pay
-mDX
+hMq
+hMq
+hMq
+jkv
 lyF
 lyF
 rxm
@@ -117444,17 +117458,17 @@ cVH
 rxm
 rxm
 uDg
-mDX
-mDX
-pay
-stu
-lyF
-pay
-pay
-pay
-pay
-mUW
-mDX
+jkv
+jkv
+hMq
+wsP
+iYu
+hMq
+hMq
+hMq
+hMq
+lAx
+jkv
 lyF
 rxm
 rxm
@@ -117647,11 +117661,11 @@ lyF
 mUW
 mDX
 ext
-mDX
+jkv
 cYC
-pay
-pay
-stu
+hMq
+hMq
+wsP
 mmH
 asD
 lyF
@@ -117849,13 +117863,13 @@ lyF
 mDX
 fKg
 iMy
-iMy
-mDX
+lte
+jkv
 cYC
-pay
-pay
-pay
-wjR
+hMq
+hMq
+hMq
+vyO
 lyF
 lyF
 lyF
@@ -118051,13 +118065,13 @@ mDX
 uDg
 mDX
 mDX
-mDX
-fKg
-pay
-pay
-pll
+jkv
+stu
+hMq
+hMq
+pSb
 yjw
-wjR
+vyO
 lyF
 rxm
 rxm
@@ -118255,10 +118269,10 @@ mDX
 mDX
 uDg
 mDX
-mDX
-pay
-pay
-pll
+jkv
+hMq
+hMq
+pSb
 lyF
 lyF
 nVt
@@ -118458,7 +118472,7 @@ fKg
 mDX
 mDX
 mDX
-uDg
+aRy
 lyF
 lyF
 lyF
@@ -135883,8 +135897,8 @@ gQC
 feG
 feG
 tba
-sjy
-sjy
+arh
+arh
 arh
 rkC
 kpW
@@ -136044,7 +136058,7 @@ foO
 eQO
 vdm
 aTe
-tkg
+ias
 erA
 kiD
 yld
@@ -136244,8 +136258,8 @@ huw
 get
 iqL
 oZS
-wtN
-mET
+ruc
+bZD
 oEl
 oZS
 wPk
@@ -136287,8 +136301,8 @@ gQC
 feG
 feG
 tba
-vTo
-vTo
+eot
+eot
 eot
 rkC
 fDU
@@ -136491,7 +136505,7 @@ tFf
 gQC
 gQC
 gQC
-gQC
+lzj
 feG
 feG
 feG
@@ -136853,7 +136867,7 @@ qUP
 ilr
 oVq
 kwK
-mET
+qCC
 ruc
 oZS
 sNr
@@ -137257,7 +137271,7 @@ mET
 nzb
 ohn
 mlX
-mET
+bZD
 oZS
 nYw
 lbk
@@ -137456,10 +137470,10 @@ gAX
 qDd
 ohn
 osL
-oZS
+tMa
 nty
 wtN
-mET
+bZD
 oZS
 tMa
 rpv
@@ -137658,8 +137672,8 @@ gnm
 tfW
 pEq
 fSk
-oZS
-kHM
+tMa
+sZN
 mVp
 fSk
 dHY
@@ -149741,7 +149755,7 @@ roS
 roS
 jCD
 qCo
-wTq
+ctV
 iZI
 xWI
 pGP
@@ -150106,12 +150120,12 @@ oCe
 oCe
 tNZ
 pxU
-tNZ
+xgx
 iZp
 jIf
-tNb
+lwK
 hCl
-hMQ
+mgO
 jIf
 nCM
 hCl
@@ -150318,9 +150332,9 @@ rps
 rps
 rps
 rps
-rth
-buM
-buM
+iBh
+iKq
+iKq
 vwh
 rps
 vVw
@@ -150506,7 +150520,7 @@ oCe
 oCe
 oCe
 oCe
-gdc
+mzC
 kqH
 tNZ
 hMQ
@@ -151328,9 +151342,9 @@ rps
 rps
 rps
 gFo
-rth
-buM
-buM
+ddT
+jTP
+jTP
 pir
 apm
 gdc
@@ -151550,7 +151564,7 @@ wLq
 twO
 wLq
 nGq
-iCj
+bcc
 pwR
 gTl
 qJZ
@@ -151752,7 +151766,7 @@ sPO
 mHO
 nJP
 oea
-xBY
+bcc
 oea
 nFS
 rLF
@@ -151954,7 +151968,7 @@ sPO
 sPO
 wLq
 pwR
-plW
+gTG
 pwR
 dff
 beK
@@ -153570,7 +153584,7 @@ vzP
 obX
 dQs
 pwR
-iEJ
+gTG
 pwR
 umo
 qDH
@@ -153772,7 +153786,7 @@ cBG
 obX
 dQs
 gZr
-plW
+gTG
 oea
 vle
 usN
@@ -180811,7 +180825,7 @@ fSQ
 fSQ
 lgU
 trT
-xSm
+plW
 rrf
 aTb
 tJb
@@ -182426,21 +182440,21 @@ rYJ
 lgU
 kMP
 pin
-bZD
+hKy
 tcV
-bZD
+hKy
 mSC
 erJ
 tJb
 xsk
 mtQ
 rlX
-jWr
+jsD
 mQD
 uIS
-jsD
-mtQ
-qCC
+jWr
+vTo
+syG
 rAz
 bcc
 bcc
@@ -182828,7 +182842,7 @@ niT
 irk
 rXw
 enU
-ddT
+tJb
 rFK
 mtb
 fSQ
@@ -182839,10 +182853,10 @@ tJb
 tJb
 fcI
 rlX
-jWr
+jsD
 qjc
 xCc
-jsD
+jWr
 fPH
 pKQ
 gue
@@ -183243,10 +183257,10 @@ aKk
 lrQ
 mtQ
 rlX
-jWr
+jsD
 aQR
 ucO
-jsD
+jWr
 pgH
 eTY
 rAz
@@ -184079,7 +184093,7 @@ kFw
 vsT
 ncP
 seM
-uYJ
+rPR
 rPR
 seM
 seM
@@ -185089,7 +185103,7 @@ kFw
 gFP
 iGu
 srQ
-uYJ
+rPR
 rPR
 rPR
 seM
@@ -212385,7 +212399,7 @@ fME
 dYB
 dYB
 vvy
-aRy
+cav
 nMr
 aZy
 aZy
@@ -219029,7 +219043,7 @@ sDq
 ufX
 rPR
 seM
-rPR
+cjU
 sDq
 mzY
 bGU
@@ -219236,7 +219250,7 @@ bOL
 jPz
 rLP
 twR
-jCD
+itZ
 bUc
 kXv
 tKa
@@ -219438,7 +219452,7 @@ twR
 twR
 twR
 kdf
-jCD
+itZ
 aog
 toK
 toK
@@ -219640,7 +219654,7 @@ xst
 twR
 jDv
 twR
-jCD
+itZ
 aog
 toK
 aZy
@@ -219842,7 +219856,7 @@ oPy
 eLZ
 twR
 olC
-jCD
+itZ
 bUc
 toK
 toK
@@ -220041,9 +220055,9 @@ rPR
 qgC
 jrc
 kax
-maT
+eLZ
 twR
-vwj
+sjy
 uwd
 aog
 toK

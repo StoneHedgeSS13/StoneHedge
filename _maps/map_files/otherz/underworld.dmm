@@ -1112,7 +1112,7 @@
 /obj/structure/flora/grass/jungle{
 	icon_state = "grassa2"
 	},
-/turf/open/floor/fakespace,
+/turf/open/water/cleanshallow,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
 	first_time_text = "Twilight Shores";
 	name = "Twilight Shores"
@@ -1304,13 +1304,6 @@
 "IM" = (
 /obj/effect/landmark/underworldsafe,
 /obj/effect/mist,
-/turf/open/floor/fakespace,
-/area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
-	first_time_text = "Twilight Shores";
-	name = "Twilight Shores"
-	})
-"Jj" = (
-/obj/structure/spacevine,
 /turf/open/floor/fakespace,
 /area/rogue/under/cavewet/bogcaves/sunkencity/psydon{
 	first_time_text = "Twilight Shores";
@@ -1749,7 +1742,7 @@
 	})
 "Sj" = (
 /obj/structure/fluff/walldeco/innsign{
-	desc = 'THE AFTER-HOURS - JUST WHAT THE SOUL ORDERED';
+	desc = 'THEAFTER-HOURS-JUSTWHATTHESOULORDERED';
 	name = "THE AFTER-LIGHT"
 	},
 /turf/closed/wall/mineral/rogue/wooddark/window,
@@ -2863,7 +2856,7 @@ sZ
 px
 pu
 Cj
-UU
+Rn
 Cj
 WV
 Cj
@@ -2919,8 +2912,8 @@ Rn
 Cj
 Cj
 Cj
-UU
-Jj
+Rn
+mW
 pu
 mO
 Cj
@@ -3087,7 +3080,7 @@ wc
 UU
 Xm
 Rn
-UU
+Rn
 Cj
 CY
 Ga
@@ -3143,7 +3136,7 @@ UU
 UU
 rR
 UU
-bu
+Sb
 Rn
 Sb
 Cj
@@ -3163,7 +3156,7 @@ Hb
 cA
 dH
 Rn
-UU
+Rn
 bK
 sZ
 pu
@@ -3173,8 +3166,8 @@ Sw
 Cj
 Oy
 sZ
-UU
-bu
+Rn
+Sb
 By
 UU
 CV
@@ -3201,7 +3194,7 @@ UU
 UU
 rR
 UU
-UU
+Rn
 Rn
 PX
 Cj
@@ -3221,8 +3214,8 @@ Oy
 YY
 Cj
 bh
-UU
-UU
+Rn
+Rn
 sZ
 Cj
 Sw
@@ -3231,9 +3224,9 @@ Cj
 Cj
 CV
 Cj
-UU
-UU
-UU
+Rn
+Sw
+sZ
 pu
 pu
 hR
@@ -3286,7 +3279,7 @@ ta
 De
 hR
 Zr
-UU
+Rn
 Zr
 iH
 bG
@@ -3318,7 +3311,7 @@ UU
 IM
 Rn
 Sb
-UU
+Rn
 Rn
 Sb
 CY
@@ -3344,7 +3337,7 @@ Bm
 fw
 Xv
 Ud
-MP
+YW
 bG
 zU
 Dh
@@ -3460,7 +3453,7 @@ Qo
 Qo
 rs
 Kn
-MP
+YW
 bG
 CR
 In
@@ -3577,7 +3570,7 @@ Gf
 Hb
 Sw
 hR
-bu
+AI
 KE
 zb
 zb
