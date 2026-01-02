@@ -11,15 +11,28 @@
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
 	w_class = WEIGHT_CLASS_SMALL
+	var/atom/movable/holdingknife = null
 
-/obj/item/clothing/shoes/roguetown/boots/ComponentInitialize()
+/obj/item/clothing/shoes/roguetown/attackby(obj/item/W, mob/living/carbon/user, params)
+	if(istype(W, /obj/item/rogueweapon/huntingknife))
+		if(holdingknife == null)
+			for(var/obj/item/clothing/shoes/roguetown/B in user.get_equipped_items(TRUE))
+				to_chat(loc, span_warning("I quickly slot [W] into [B]!"))
+				user.transferItemToLoc(W, holdingknife)
+				holdingknife = W
+				playsound(loc, 'sound/foley/equip/swordsmall1.ogg')
+		else
+			to_chat(loc, span_warning("My boot already holds a throwing knife."))
+		return
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+
+/obj/item/clothing/shoes/roguetown/attack_right(mob/user)
+	if(holdingknife != null)
+		if(!user.get_active_held_item())
+			user.put_in_active_hand(holdingknife, user.active_hand_index)
+			holdingknife = null
+			playsound(loc, 'sound/foley/equip/swordsmall1.ogg')
+			return TRUE
 
 /obj/item/clothing/shoes/roguetown/boots
 	name = "dark boots"
