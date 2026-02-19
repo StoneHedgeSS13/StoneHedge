@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo
 	icon = 'icons/roguetown/mob/monster/giantmobs.dmi'
-	name = "Wendigo"
+	name = "Skinwalker"
 	icon_state = "wendigo_noblood"
 	icon_living = "wendigo_noblood"
 	icon_dead = "wendigo_dead"
