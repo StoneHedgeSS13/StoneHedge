@@ -1,8 +1,8 @@
 //By SayonaraEcho
 
 /obj/structure/fluff/statue/sune
-	name = "statue of Sune"
-	desc = "Sune Firehair, goddess of love, beauty, passion, and pleasure. She teaches that beauty is sacred, love is transformative, and desire is a force to be celebrated rather than denied."
+	name = "statue of Viriitri"
+	desc = "Viriitri, goddess of love, beauty, passion, and pleasure. She teaches that beauty is sacred, love is transformative, and desire is a force to be celebrated rather than denied."
 	icon = 'modular_rmh/icons/obj/structures/statues/statue_sune.dmi'
 	icon_state = "sune"
 	max_integrity = 100 // You wanted descructible statues, you'll get them.
@@ -12,8 +12,8 @@
 	SET_BASE_PIXEL(-16, 0)
 
 /obj/structure/fluff/statue/selune
-	name = "statue of Selune"
-	desc = "Selune, the Moonmaiden, goddess of the moon, stars, tides, and travelers by night. A gentle yet ancient power, she is the eternal foe of Shar and a beacon of hope, change, and protection for those who walk in darkness."
+	name = "statue of Lune"
+	desc = "Lune, the Moonmaiden, goddess of the moon, stars, tides, and travelers by night. A gentle yet ancient power, she is the eternal foe of Levishth and a beacon of hope, change, and protection for those who walk in darkness."
 	icon = 'modular_rmh/icons/obj/structures/statues/statue_selune.dmi'
 	icon_state = "selune"
 	max_integrity = 100 // You wanted descructible statues, you'll get them.
@@ -26,7 +26,7 @@
 	icon_state = "selune_left"
 
 /obj/structure/fluff/statue/selune/guard
-	name = "awakened statue of Selune"
+	name = "awakened statue of Lune"
 	icon_state = "selune_guard"
 
 /obj/structure/fluff/statue/selune/guard/Initialize(mapload)
@@ -38,7 +38,7 @@
 	. += emissive_appearance(icon, "selune_guard_overlay", alpha = 60)
 
 /obj/structure/fluff/statue/selune/guard_left
-	name = "awakened statue of Selune"
+	name = "awakened statue of Lune"
 	icon_state = "selune_guard_left"
 
 /obj/structure/fluff/statue/selune/guard_left/Initialize(mapload)
