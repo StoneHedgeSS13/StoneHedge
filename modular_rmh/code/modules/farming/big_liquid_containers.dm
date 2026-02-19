@@ -7,7 +7,7 @@
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/blackgoat,900)
 
 /obj/structure/fermentation_keg/hagwoodbitter
-	desc = "A barrel marked with the Hagwood Bitters emblem. The least bitter thing to be exported from the Grenzelhoft occupied state of Zorn."
+	desc = "A barrel marked with the Hagwood Bitters emblem. The least bitter thing to be exported from the Hagwoods."
 
 /obj/structure/fermentation_keg/hagwoodbitter/Initialize()
 	. = ..()
@@ -23,21 +23,21 @@
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/jagdtrunk,900)
 
 /obj/structure/fermentation_keg/sourwine
-	desc = "A barrel that contains a Grenzelhoftian classic. An extremely sour wine that is watered down with mineral water."
+	desc = "A barrel that contains a Wood Elf classic. An extremely sour wine that is watered down with mineral water."
 
 /obj/structure/fermentation_keg/sourwine/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/sourwine,900)
 
 /obj/structure/fermentation_keg/whitewine
-	desc = "A barrel that contains an Otavan luxury. A sweeter tasting wine that often serves to highlight and enhance savoury notes. The rarer the vintage, the harder the find. The names of the ingredients often grow more ostentatious the closer you get to the capital."
+	desc = "A barrel that contains a Dark Elven Wine. A sweeter tasting wine that often serves to highlight and enhance savoury notes. The rarer the vintage, the harder the find. The names of the ingredients often grow more ostentatious the closer you get to the capital."
 
 /obj/structure/fermentation_keg/whitewine/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/whitewine,900)
 
 /obj/structure/fermentation_keg/redwine
-	desc = "A barrel that contains an Otavan luxury. It was originally served as part of Psydonic communion, eventually becoming wildly enjoyed within Otava to the point of being oft paired with EVERY meal."
+	desc = "A barrel that contains an Dark Elven luxury. It was originally served as part of Religious Communion, eventually becoming wildly enjoyed within The underdark to the point of being oft paired with EVERY meal."
 
 /obj/structure/fermentation_keg/redwine/Initialize()
 	. = ..()
@@ -52,14 +52,14 @@
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/onion,900)
 
 /obj/structure/fermentation_keg/saigamilk
-	desc = "A barrel with a Running Saiga mark. A form of alcohol brewed from the milk of a saiga and salt. Common drink of the nomads living in the steppe."
+	desc = "A barrel with a Running Saiga mark. A form of alcohol brewed from the milk of a saiga and salt. Common drink of the nomads living in the Breuddwyrd Forest."
 
 /obj/structure/fermentation_keg/saigamilk/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/saigamilk,900)
 
 /obj/structure/fermentation_keg/kgsunsake
-	desc = "A barrel with a Golden Swan mark. A translucient, pale-blue liquid made from rice. A favourite drink of the warlords and nobles of Kazengun."
+	desc = "A barrel with a Golden Swan mark. A translucient, pale-blue liquid made from rice. A favourite drink of the warlords and nobles of Far Eastern Dragon Isles."
 
 /obj/structure/fermentation_keg/kgsunsake/Initialize()
 	. = ..()
@@ -67,7 +67,7 @@
 
 
 /obj/structure/fermentation_keg/avarrice
-	desc = "A barrel with a simple mark. A murky, white wine made from rice grown in the steppes of Avar."
+	desc = "A barrel with a simple mark. A murky, white wine made from rice grown in the steppes of the Dragon isles."
 
 /obj/structure/fermentation_keg/avarrice/Initialize()
 	. = ..()
@@ -75,7 +75,7 @@
 
 
 /obj/structure/fermentation_keg/gronmead
-	desc = "A barrel with a Shieldmaiden Brewery mark. A deep red honey-wine, refined with the red berries native to Gronns highlands."
+	desc = "A barrel with a Shieldmaiden Brewery mark. A deep red honey-wine, refined with the red berries native to Dwarven Freeholds."
 
 /obj/structure/fermentation_keg/gronmead/Initialize()
 	. = ..()
