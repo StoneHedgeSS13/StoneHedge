@@ -37,7 +37,6 @@
 	speed = 5
 	move_to_delay = 5
 	ranged = TRUE
-	SET_BASE_PIXEL(-32, 0)
 	aggressive = 1
 	deathmessage = "collapses to the floor with a final roar, the impact rocking the ground."
 	footstep_type = FOOTSTEP_MOB_HEAVY

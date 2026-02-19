@@ -40,8 +40,7 @@
 	retreat_health = 0.3
 
 	attack_sound = list('sound/combat/hits/onstone/wallhit.ogg')
-	SET_BASE_PIXEL(-32, 0)
-	dodgetime =
+	dodgetime = 0
 	aggressive = 1
 
 	base_constitution = 20
