@@ -53,6 +53,7 @@
 #define FILE_DIR "icons/mob/sprite_accessory/tail_features"
 #define FILE_DIR "icons/mob/sprite_accessory/tails"
 #define FILE_DIR "icons/mob/sprite_accessory/wings"
+#define FILE_DIR "icons/mob/summonable"
 #define FILE_DIR "icons/obj"
 #define FILE_DIR "icons/obj/assemblies"
 #define FILE_DIR "icons/obj/atmospherics"
