@@ -105,15 +105,3 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	sewrepair = TRUE
 	smeltresult = /obj/item/stack/sheet/leather
-
-/obj/item/clothing/head/hblinders/mob_can_equip(mob/living/M, slot, disable_warning = FALSE)
-	. = ..()
-	if(!HAS_TRAIT(M, TRAIT_PONYGIRL_RIDEABLE))
-		to_chat(M, span_warning("You lack the proper training to wear this harness!"))
-		return FALSE
-
-/obj/item/clothing/head/hbit/mob_can_equip(mob/living/M, slot, disable_warning = FALSE)
-	. = ..()
-	if(!HAS_TRAIT(M, TRAIT_PONYGIRL_RIDEABLE))
-		to_chat(M, span_warning("You lack the proper training to wear this harness!"))
-		return FALSE
