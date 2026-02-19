@@ -195,17 +195,24 @@
 			var/mob/living/carbon/C = user
 			if(C.is_mouth_covered())
 				return
-		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		user.visible_message(span_info("[user] starts to drink from [src]."))
-		if(do_after(L, 25, target = src))
-			var/list/waterl = list()
-			waterl[water_reagent] = 14
-			var/datum/reagents/reagents = new()
-			reagents.add_reagent_list(waterl)
-			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
-			playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
+		drink_act(user, L)
 		return
 	..()
+
+/turf/open/water/proc/drink_act(mob/user, mob/living/L)
+	playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+	if(L.stat != CONSCIOUS)
+		return
+	if(do_after(L, 25, target = src))
+		var/list/waterl = list()
+		waterl[water_reagent] = 14
+		var/datum/reagents/reagents = new()
+		reagents.add_reagent_list(waterl)
+		reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
+		playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
+		drink_act(user, L)
+	return
 
 /turf/open/water/Destroy()
 	. = ..()
@@ -411,7 +418,7 @@
 	canSmoothWith = list(/turf/open/floor/rogue)
 	neighborlay_override = null
 	water_color = null
-	
+
 /turf/open/water/ocean/Initialize()
 	icon_state = "Sandy_Water2"
 	dir = pick(GLOB.cardinals)
